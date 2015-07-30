@@ -1,7 +1,5 @@
-# LIMX
-================================
-Limecoinx Core staging tree 0.11
-
+# LIMX - Limecoinx Core staging tree 0.11
+=========================================
 
 http://www.limx.eu
 
