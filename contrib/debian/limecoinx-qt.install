@@ -1,0 +1,6 @@
+usr/local/bin/limecoinx-qt usr/bin
+share/pixmaps/limecoinx32.xpm usr/share/pixmaps
+share/pixmaps/limecoinx16.xpm usr/share/pixmaps
+share/pixmaps/limecoinx128.png usr/share/pixmaps
+debian/limecoinx-qt.desktop usr/share/applications
+debian/limecoinx-qt.protocol usr/share/kde4/services/

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Limecoinx
+Comment=Limecoinx P2P Cryptocurrency
+Comment[fr]=Limecoinx, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Limecoinx, eşten eşe kriptografik sanal para birimi
+Exec=limecoinx-qt %u
+Terminal=false
+Type=Application
+Icon=limecoinx128
+MimeType=x-scheme-handler/limecoinx;
+Categories=Office;Finance;

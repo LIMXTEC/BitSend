@@ -1,47 +1,36 @@
-# LIMX
-================================
-Limecoinx Core staging tree 0.11
+0.11.0 Release notes
+====================
 
+Limecoinx Core 0.11.0 is forked off the Bitcoin Core 0.9.3. The old limecoinx
+versions 0.9.1.4 were forked from the Litecoin 0.9.1.x tree. The following changes
+are introduced in this major release. This list is compiled from the release
+notes of Bitcoin Core  0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
+with the  introduced changes to the Limecoinx Core 0.11.0.
 
-http://www.limx.eu
-
-Copyright (c) 2009-2015 Bitcoin Core Developers
-
-Copyright (c) 2014-2015 Dash Core Developers
-
-Copyright (c) 2014 Doge Core Developers
-
-Copyright (c) 2013 Dr Kimoto Chan
-
-Copyright (c) 2014-2015 LIMX Core Developers
-
-
-Release 21.04.2015
-----------------
-The Version 0.11.X add new function. 
-
-0.11.2.17 Release notes
-Limecoinx Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. The old limecoinx versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree. The following changes are introduced in this major release. 
 
 Limecoinx Core:
 
-- Rebrand to Limecoinx Core
-- Version bumped to 0.11.2.17 to indicate a new major release
-- Renamed client to identify with network from Satoshi to Core
-- Bumped protocol version to 70075
-- Masternode with 5000 LIMX
-- NEW Reward = 40 LIMX per Miner/Pool & 10 LIMX per Masternode
-- NEW RPC PORT 8800 and NEW P2P Port Default 8886
-- Changed testnet address versions 
-- Defined BIP32 (HD) address versions
-- Adapted BIP44 coin type 5 for Limecoinx (0x80000005) as defined in SLIP-0044
-- Added new units: limes (1 / 100.000.000 LIMX)
-- Added units for testnet: tLIMX, mtLIMX, uLIMX, tlimes
+- Rebrand to `Limecoinx Core`
+- Version bumped to 0.11 to indicate a new major release
+- Renamed client to identify with network from `Satoshi` to `Core`
+- Bumped protocol version to 70016
+- Changed p2sh-address versions to start with `7` (instead of `3`, this affects
+  public keys only, old scripts remain valid and usable!)
+- Changed testnet address versions to start with `x` or `y` (instead of `m` or
+  `n`, this affects public keys only, old wallets remain valid and usable!)
+- Defined BIP32 (HD) address versions to start with `drkp`/`drkv` (`DRKP`/`DRKV`
+  for testnet)
+- Adapted BIP44 coin type `5` for Limecoinx (0x80000005) as defined in SLIP-0044
+- Added new units: `limes` (1 / 100.000.000 LIMX)
+- Added units for testnet: tDRK, mtDRK, utDRK, tlimes
+- Added new DNS seed from masternode.io
 - Fixed wallet locking after sending coins
-- Add -regtest mode, similar to testnet but private with instant block generation with setgenerate RPC.
+- Add `-regtest` mode, similar to testnet but private with instant block
+  generation with `setgenerate` RPC.
 - Add separate limecoinx-cli client
-- - Implemented KeyPass integration for CLI, RPC and Qt: keepass, keepassport, keepasskey, keepassid, keepassname
-- Masternodes:
+- Implemented KeyPass integration for CLI, RPC and Qt:
+  `keepass`, `keepassport`, `keepasskey`, `keepassid`, `keepassname`
+
 
 Masternodes:
 
@@ -300,98 +289,3 @@ Miscellaneous:
 - devtools: add a script to fetch and postprocess translations
 - Refactor -alertnotify code
 - doc: Add instructions for consistent Mac OS X build names
-
-Limecoinx Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
-and a new version of enforcement compatible with the newer Bitcoin architechure.
-
-- Fully implemented IX
-- Added support for DSTX messages, as a result DS should be much faster
-- Clear vValue in SelectCoinsMinConf - should fix an issue with conflicted txes
-- "Debug window" -> "Tools window" renaming
-- "Last Darksend message" text added in overview page
-- Many new languages are supported, such as German, Vietnamese, Spanish
-- Fixed required maturity of coins before sending
-- New masternode payments enforcement implementation
-- Added support to ignore IX confirmations when needed
-- Added --instantxdepth, which will show X confirmations when a transaction lock is present
-- fix coin control crash https://github.com/bitcoin/bitcoin/pull/5700
-- always get only confirmed coins by AvailableCoins for every DS relative action
-- New languages supported Portuguese, German, Russian, Polish, Spanish, Vietnamese, French,
-Italian, Catalan, Chinese, Danish, Finnish, Swedish, Czech, Turkish and Bavarian (and many more)
-- Full implementation of spork. Currently this includes 4 different sporks, InstantX, InstantX block enforcement, masternode payments enforcement, and reconverge. This uses the inventory system, so it's super efficient and very powerful for future development. Reconverge will put the blockchain into a mode where it will attempt to reprocess any forks without restarting the client, this means if we even had a fork in the future this can be triggered to fix it without any damage to the network.
-- Masternode payments now uses the inventory system, which will result in much lower bandwidth usage
-- Improved caching
-- use wallet db ds flag in rpc
-- update tx types in UI / fix tx decomposition / use wallet db ds flag
-- use wallet db to save ds flag / debug
-- use AvailableCoinsType instead of string in walletmodel
-- New inventory system for IX messaging, providing super fast/low bandwidth IX communication
-
-
-What is Limecoinx?
-----------------
-
-Limecoinx is an experimental new digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. Limecoinx uses peer-to-peer technology
-to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. Limecoinx Core is the name of open
-source software which enables the use of this currency.
-
-For more information, as well as an immediately useable, binary version of
-the Limecoinx Core software, see http://www.limx.eu
-
-
-
-Building process
------------------
-
-**compiling Limecoinx from git**
-
-Use the autogen script to prepare the build environment.
-
-    ./autogen.sh
-    ./configure
-    make
-
-**precompiled binaries**
-
-Precompiled binaries are available at github, see
-http://sourceforge.net/projects/limx/files/?source=navbar
-
-Always verify the signatures and checksums.
-
-
-Development tips and tricks
----------------------------
-
-**compiling for debugging**
-
-Run configure with the --enable-debug option, then make. Or run configure with
-CXXFLAGS="-g -ggdb -O0" or whatever debug flags you need.
-
-**debug.log**
-
-If the code is behaving strangely, take a look in the debug.log file in the data directory;
-error and debugging message are written there.
-
-The -debug=... command-line option controls debugging; running with just -debug will turn
-on all categories (and give you a very large debug.log file).
-
-The Qt code routes qDebug() output to debug.log under category "qt": run with -debug=qt
-to see it.
-
-**testnet and regtest modes**
-
-Run with the -testnet option to run with "play limecoinxs" on the test network, if you
-are testing multi-machine code that needs to operate across the internet.
-
-If you are testing something that can run on one machine, run with the -regtest option.
-In regression test mode blocks can be created on-demand; see qa/rpc-tests/ for tests
-that run in -regtest mode.
-
-**DEBUG_LOCKORDER**
-
-Limecoinx Core is a multithreaded application, and deadlocks or other multithreading bugs
-can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
-CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of what locks
-are held, and adds warning to the debug.log file if inconsistencies are detected.
