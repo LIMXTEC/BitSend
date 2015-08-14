@@ -1,5 +1,4 @@
 # LIMX - Limecoinx Core staging tree 0.11
-=========================================
 
 http://www.limx.eu
 
@@ -18,8 +17,11 @@ Release 21.04.2015
 ----------------
 The Version 0.11.X add new function. 
 
-0.11.2.17 Release notes
-Limecoinx Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. The old limecoinx versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree. The following changes are introduced in this major release. 
+- 0.11.2.17 Release notes
+- Limecoinx Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. Please feel free and compare against forks https://github.com/dashpay
+- The old limecoinx versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/LimecoinX
+- The first limecoin currency is full implemnted in the LIMX chain, done by iparn https://github.com/IParn/limecoin
+- The following changes are introduced in this major release. 
 
 Limecoinx Core:
 
