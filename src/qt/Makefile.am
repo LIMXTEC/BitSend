@@ -292,6 +292,7 @@ RES_IMAGES = \
   res/images/splash_testnet.png \
   res/images/paper_wallet.png \
   res/images/limecoinx_logo_horizontal.png \
+  res/images/limecoinx_logo_horizontal_white.png \
   res/images/drkblue_downArrow.png \
   res/images/drkblue_downArrow_small.png \
   res/images/drkblue_upArrow_small.png \
@@ -299,10 +300,13 @@ RES_IMAGES = \
   res/images/drkblue_rightArrow_small.png \
   res/images/drkblue_qtreeview_selected.png \
   res/images/drkblue_walletFrame_bg.png \
-  res/images/drkblue_walletFrame.png
+  res/images/drkblue_walletFrame.png \
+  res/images/limxlila_walletFrame_bg.png \
+  res/images/limxlila_walletFrame.png
 
 RES_CSS = \
-  res/css/drkblue.css
+  res/css/drkblue.css \
+  res/css/limxlila.css
   
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
