@@ -11,7 +11,7 @@ background-color:#ffffff;
 
 .QFrame {
 background-color:transparent;
-border:0px solid #fff;
+border:0px solid #000;
 }
 
 QMenuBar {
@@ -40,14 +40,14 @@ color:#333;
 }
 
 QToolBar {
-background-color:#000;
+background-color:#42cd42;
 border:0px solid #000;
 padding:0;
 margin:0;
 }
 
 QToolBar > QToolButton {
-background-color:#000;
+background-color:#42cd42;
 border:0px solid #333;
 min-height:2.5em;
 padding: 0em 1em;
@@ -69,7 +69,7 @@ background-color:#f3f3f3;
 
 QLabel { /* Base Text Size & Color */
 font-size:12px;
-color:#333333;
+color:#fff;
 }
 
 .QCheckBox { /* Checkbox Labels */
@@ -101,10 +101,10 @@ background-color:#f2f2f2;
 /*******************************************************/
 
 QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #000, stop: .1 #000, stop: .95 #000, stop: 1 #000);
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #fff, stop: .1 #fff, stop: .95 #fff, stop: 1 #fff);
 border:0;
 border-radius:3px;
-color:#ffffff;
+color:#000;
 font-size:12px;
 font-weight:bold;
 padding-left:25px;
@@ -819,7 +819,7 @@ QWidget .QFrame#frameDarksend .QLabel#label_2 { /* Darksend Header */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
 background-color:#000000;
-color:#fff;
+color:#000;
 margin-right:5px;
 padding-right:5px;
 font-weight:bold;
