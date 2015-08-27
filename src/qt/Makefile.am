@@ -302,10 +302,13 @@ RES_IMAGES = \
   res/images/drkblue_walletFrame_bg.png \
   res/images/drkblue_walletFrame.png \
   res/images/limxlila_walletFrame_bg.png \
-  res/images/limxlila_walletFrame.png
+  res/images/limxlila_walletFrame.png \
+  res/images/limxblack_walletFrame_bg.png \
+  res/images/limxblack_walletFrame.png
 
 RES_CSS = \
   res/css/drkblue.css \
+  res/css/limxlila.css \
   res/css/limxlila.css
   
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)

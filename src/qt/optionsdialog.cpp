@@ -73,6 +73,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     /* Theme selector */
     ui->theme->addItem(QString("LIMX-blue"), QVariant("drkblue"));
     ui->theme->addItem(QString("LIMX-LILA"), QVariant("limxlila"));
+    ui->theme->addItem(QString("LIMX-BLACK"), QVariant("limxblack"));
     ui->theme->addItem(QString("LIMX-traditional"), QVariant("trad"));
 
     
