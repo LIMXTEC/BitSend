@@ -12,7 +12,18 @@ Bakc to KGW @ Block 95000 22-05-2015
 - Funktion Limx Proof Payment
 - Funktion Delta 101000 
 
+################################
 
+const int64_t nLongTimeLimit   = 12 * 60 * 60; 
+if (BlockReading->nHeight > 139950){
+ if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+    {
+        // Limxdev for 11.1.34 LIMX Diffbreak function
+            bnNew /=  bnNew;
+       	
+       /* LogPrintf("<LIMX> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); */
+    }
+ }
 
 ###################################
 Update
