@@ -1509,7 +1509,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         static int nDeltaSwitchover = TestNet ? 90 : 100000;
 
         if (!TestNet()) {
-        	if (pindexLast->nHeight + 1 >= 139975) { retarget = DIFF_KGW; if (pindexLast->nHeight < 141000) LogPrintf("KGW1"); }
+        	if (pindexLast->nHeight + 1 >= 139975) { retarget = DIFF_KGW3; if (pindexLast->nHeight < 141000) LogPrintf("KGW3"); }
         	else if (pindexLast->nHeight + 1 >= 102000) { retarget = DIFF_KGW2; if (pindexLast->nHeight < 102000) LogPrintf("KGW2N"); }
         	else if (pindexLast->nHeight + 1 >= 101000) { retarget = DIFF_DELTA; if (pindexLast->nHeight < 109999) LogPrintf("Delta Diff"); }
 		else if (pindexLast->nHeight + 1 >= 99500) { retarget = DIFF_KGW2; if (pindexLast->nHeight < 99999) LogPrintf("KGW2");}
@@ -1598,11 +1598,19 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             uint64_t pastBlocksMin = pastSecondsMin / blocksTargetSpacing;
             uint64_t pastBlocksMax = pastSecondsMax / blocksTargetSpacing;
             return KimotoGravityWell(pindexLast, pblock, blocksTargetSpacing, pastBlocksMin, pastBlocksMax);
-           // }
-
+          
         }
-        // Just KGW Test Function for Megacoin Friend Regards cgminer-o ;-)
-        else if (retarget == DIFF_KGW2)
+        else if (retarget == DIFF_KGW3)
+        {
+            static const uint64_t blocksTargetSpacing = 6 * 60; 
+            static const unsigned int timeDaySeconds = 60 * 60 * 24;
+            uint64_t pastSecondsMin = timeDaySeconds * 0.25; 
+            uint64_t pastSecondsMax = timeDaySeconds * 7;
+            uint64_t pastBlocksMin = pastSecondsMin / blocksTargetSpacing;
+            uint64_t pastBlocksMax = pastSecondsMax / blocksTargetSpacing;
+            return KimotoGravityWell(pindexLast, pblock, blocksTargetSpacing, pastBlocksMin, pastBlocksMax);
+        }
+       else if (retarget == DIFF_KGW2)
         {	
             static const uint64_t blocksTargetSpacing = 5 * 60; // 5 minutes
             static const unsigned int timeDaySeconds = 60 * 60 * 24;
