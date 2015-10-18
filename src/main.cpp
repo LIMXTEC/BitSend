@@ -1445,28 +1445,28 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     	int64_t ret = blockValue / 5; // start at 20% LIMX Target is in future 50% by over 2000 Masternodes
-    	if(nHeight > 140000) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*14)* 1)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*14)* 2)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*14)* 3)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*14)* 4)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*14)* 5)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 6)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 7)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 8)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 9)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 10)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 11)) ret += blockValue / 20; 
-	if(nHeight > 140000)+((288*30)* 12)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 13)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 14)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 15)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 16)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 17)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 18)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 19)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 20)) ret += blockValue / 50; 
-	if(nHeight > 140000)+((288*30)* 21)) ret += blockValue / 100; 
+	if(nHeight > 140000) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*14)* 1)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*14)* 2)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*14)* 3)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*14)* 4)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*14)* 5)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 6)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 7)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 8)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 9)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 10)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 11)) ret += blockValue / 20; 
+	if(nHeight > 140000+((288*30)* 12)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 13)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 14)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 15)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 16)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 17)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 18)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 19)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 20)) ret += blockValue / 50; 
+	if(nHeight > 140000+((288*30)* 21)) ret += blockValue / 100; 
 
     LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
     return ret;
@@ -2783,6 +2783,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
             if(pindex->GetBlockHash() == block.hashPrevBlock){
                 int64_t masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0].GetValueOut());
 				int64_t hardblockpowreward = block.vtx[0].vout[0].nValue; //write by Limxdev 02-06-2015
+				LogPrintf("## Hardblockreward ## CheckBlock() : LIMX masternode payments %d\n", hardblockpowreward);
 				bool fIsInitialDownload = IsInitialBlockDownload();
 
                 // If we don't already have its previous block, skip masternode payment step
@@ -2812,6 +2813,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 					////////////////////////// nheight Funktion Ende
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
+                        foundPaymentAndPayee = true;
+			LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
 						/*if (nHeight >= 99000){
 						//Limxdev 31-05-2015 Limx proof of payment
 						int64_t sollreward = 1000000000;
@@ -2824,7 +2827,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                         LogPrintf("## Limx proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
 						} else
 							{
-							if (nHeight < 97250) LogPrintf("Disable## Limx proof of payment activate 97250 ## nHeight = %d\n", nHeight);
+							if (nHeight < 97250) 						foundPaymentAndPayee = true;
+											LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
 							foundPaymentAndPayee = true;
 							}*/
                     }
