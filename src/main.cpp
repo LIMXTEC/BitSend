@@ -2819,11 +2819,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 						//Limxdev 31-05-2015 Limx proof of payment
 						int64_t sizesum1 = block.vtx[0].vout.size();
             LogPrintf("Sizesum1 %d\n", sizesum1);
-						if(sizesum1 >= 1) //write by Limxdev 18-10-2015
+						if(sizesum1 > 1){ //write by Limxdev 18-10-2015
                             foundPaymentAndPayee = true;
 
                         LogPrintf("## Limx proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-						                      } 
+						                      }
+							
+						} 
             }
 					}
 					
@@ -2838,16 +2840,16 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                             foundPaymentAndPayee = true;
                     }
                     ////////////////
-                    if (nHeight >= 134000){
-        						//Limxdev 18-10-2015 Limx proof of payment Number 2
-        						int64_t sizesum1 = block.vtx[0].vout.size();
-                    LogPrintf("Sizesum1 %d\n", sizesum1);
-        						if(sizesum1 >= 1 || foundPaymentAndPayee = true) 
+                    
+        	//Limxdev 18-10-2015 Limx proof of payment Number 2
+        	int64_t sizesum2 = block.vtx[0].vout.size();
+                LogPrintf("Sizesum1 %d\n", sizesum2);
+        	if(sizesum2 > 1 || foundPaymentAndPayee == true) 
                     {
-                                  foundPaymentAndPayee = true;
-                                  }
-                                  else {foundPaymentAndPayee = false; LogPrintf("## Limx proof of payment Error2"); }
-                                  }
+                    foundPaymentAndPayee = true;
+                    }
+                    else {foundPaymentAndPayee = false; LogPrintf("## Limx proof of payment Error2"); }
+                                  
                                 
         					  /////////////////
 
