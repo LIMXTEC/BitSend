@@ -2818,7 +2818,6 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 						if (nHeight >= 134000){
 						//Limxdev 31-05-2015 Limx proof of payment
 						int sizesum1 = block.vtx[0].vout.size();
-            LogPrintf("Sizesum1 %d\n", sizesum1);
 						if(sizesum1 > 1){ //write by Limxdev 18-10-2015
                             foundPaymentAndPayee = true;
 
@@ -2843,8 +2842,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     
         	//Limxdev 18-10-2015 Limx proof of payment Number 2
         	int sizesum2 = block.vtx[0].vout.size();
-                LogPrintf("Sizesum1 %d\n", sizesum2);
-        	if(sizesum2 > 1 || foundPaymentAndPayee == true) 
+                 	if(sizesum2 > 1 || foundPaymentAndPayee == true) 
                     {
                     foundPaymentAndPayee = true;
                     }
