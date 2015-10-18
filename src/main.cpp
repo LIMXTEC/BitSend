@@ -2813,28 +2813,22 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 					////////////////////////// nheight Funktion Ende
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
-                        foundPaymentAndPayee = true;
+                      //  foundPaymentAndPayee = true;
 			LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-						/*if (nHeight >= 99000){
+						if (nHeight >= 134000){
 						//Limxdev 31-05-2015 Limx proof of payment
-						int64_t sollreward = 1000000000;
-						int64_t blockpowreward = 4900000000;// + nFees; later
-						int64_t maxsumm = 10000000000;// + nFees; later
-						int64_t maxsumm2 = hardblockpowreward + masternodePaymentAmount;
-						if(masternodePaymentAmount >= sollreward && blockpowreward > hardblockpowreward && maxsumm > maxsumm2) //write by Limxdev 02-06-2015
+						int64_t sizesum1 = block.vtx[0].vout.size();
+            LogPrintf("Sizesum1 %d\n", sizesum1);
+						if(sizesum1 >= 1) //write by Limxdev 18-10-2015
                             foundPaymentAndPayee = true;
 
                         LogPrintf("## Limx proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-						} else
-							{
-							if (nHeight < 97250) 						foundPaymentAndPayee = true;
-											LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-							foundPaymentAndPayee = true;
-							}*/
-                    }
+						                      } 
+            }
 					}
 					
 					// nheight Funktion Ende zweite Spannge
+          // Funtion no Intitial Download
                     for (unsigned int i = 0; i < block.vtx[0].vout.size(); i++) {
                         if(block.vtx[0].vout[i].nValue == masternodePaymentAmount )
                             foundPaymentAmount = true;
@@ -2843,6 +2837,19 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 					if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
                             foundPaymentAndPayee = true;
                     }
+                    ////////////////
+                    if (nHeight >= 134000){
+        						//Limxdev 18-10-2015 Limx proof of payment Number 2
+        						int64_t sizesum1 = block.vtx[0].vout.size();
+                    LogPrintf("Sizesum1 %d\n", sizesum1);
+        						if(sizesum1 >= 1 || foundPaymentAndPayee = true) 
+                    {
+                                  foundPaymentAndPayee = true;
+                                  }
+                                  else {foundPaymentAndPayee = false; LogPrintf("## Limx proof of payment Error2"); }
+                                  }
+                                
+        					  /////////////////
 
 
                     CTxDestination address1;
