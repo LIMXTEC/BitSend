@@ -98,10 +98,10 @@ PaperWalletDialog::PaperWalletDialog(QWidget *parent) :
     ui->buttonBox->addButton(tr("Close"), QDialogButtonBox::RejectRole);
 
     // Begin with a small bold monospace font for the textual version of the key and address.
-    QFont font("Monospace");
-    font.setBold(true);
+    QFont font("Sans");
+    font.setBold(false);
     font.setStyleHint(QFont::TypeWriter);
-    font.setPixelSize(1);
+    font.setPixelSize(0.6);
     ui->addressText->setFont(font);
     ui->privateKeyText->setFont(font);
     ui->addressText->setAlignment(Qt::AlignJustify);
