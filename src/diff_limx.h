@@ -106,7 +106,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 PastRateActualSeconds = LatestBlockTime - BlockReading->GetBlockTime(); //Fix Limxdev
                 PastRateTargetSeconds = TargetBlocksSpacingSeconds * PastBlocksMass;
                 PastRateAdjustmentRatio = double(1);
-                if (BlockReading->nHeight > 139830){
+                if (BlockReading->nHeight > 139800){
             //this should slow down the upward difficulty change
             if (PastRateActualSeconds < 15) { PastRateActualSeconds = 15; }
         }
@@ -144,14 +144,15 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
         
         ///////////////////////
 	// LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
+	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
 	const int nLongTimeLimit   = 8 * 60 * 60; 
 	// LogPrintf("Vordiff %d \n", nLongTimeLimit);
 	// LogPrintf(" %d Block", BlockReading->nHeight );
-	if (BlockReading->nHeight > 139830){ 
+	if (BlockReading->nHeight > 139800){ 
 	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
 	{
 	// Limxdev for 11.1.34 LIMX Diffbreak function
-	const int nLongTimebnNew   = 2500;
+	const int nLongTimebnNew   = 3500;
 	bnNew = bnNew * nLongTimebnNew;
        	//LogPrintf("<LIMX> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
 	}
