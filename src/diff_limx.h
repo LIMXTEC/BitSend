@@ -145,7 +145,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
         ///////////////////////
 	// LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
-	const int nLongTimeLimit   = 8 * 60 * 60; 
+	const int nLongTimeLimit   = 6 * 60 * 60; 
 	// LogPrintf("Vordiff %d \n", nLongTimeLimit);
 	// LogPrintf(" %d Block", BlockReading->nHeight );
 	if (BlockReading->nHeight > 139800){ 
