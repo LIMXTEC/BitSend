@@ -1445,28 +1445,28 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     	int64_t ret = blockValue / 5; // start at 20% LIMX Target is in future 50% by over 2000 Masternodes
-	if(nHeight > 140000) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*14)* 1)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*14)* 2)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*14)* 3)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*14)* 4)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*14)* 5)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 6)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 7)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 8)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 9)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 10)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 11)) ret += blockValue / 20; 
-	if(nHeight > 140000+((288*30)* 12)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 13)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 14)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 15)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 16)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 17)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 18)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 19)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 20)) ret += blockValue / 50; 
-	if(nHeight > 140000+((288*30)* 21)) ret += blockValue / 100; 
+	if(nHeight > 140500) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
 
     LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
     return ret;
