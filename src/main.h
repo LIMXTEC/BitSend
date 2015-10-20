@@ -38,6 +38,7 @@ enum DiffMode {
     DIFF_KGW2    = 3,// Retarget using Kimoto Gravity Well
     DIFF_DGW     = 4,
     DIFF_DELTA   = 5,
+    DIFF_KGW3    = 6,
     DIFF_NULL    = 0,// Retarget using Dark Gravity Wave v3
 };
 
