@@ -134,8 +134,7 @@ Build Instructions: Ubuntu & Debian
 	Manually start limecoinxd
 	-------------------------
 	cd .limecoinx
-	./limecoinxd
-	./limecoinxd set generate true 1
+	./limecoinxd	
 	
 	
 	limcoinxd commands
@@ -145,6 +144,12 @@ Build Instructions: Ubuntu & Debian
 	./limecoinxd masternode debug
 	./limecoinxd masternode stop
 	./limecoinxd help
+	
+	
+	Start Mining
+	----------------------
+	./limecoinx.cli setgenerate true
+	./limecoinx.cli gethashespersec
 	
 
 Windows Limecoinx-Qt Client configuration 
@@ -181,7 +186,7 @@ Windows Limecoinx-Qt Client configuration
 Updating the Masternode & OpenSSL version
 -----------------------------------------
 
-	./limecoinxd set generate false
+	./limecoinx.cli setgenerate false
 	./limecoinxd stop
 
 	$ sudo apt-get remove libssl1.0.0*
@@ -200,4 +205,7 @@ Updating the Masternode & OpenSSL version
 	
 	./limecoinxd
 	./limecoinxd getinfo
+	
+	./limecoinx.cli setgenerate true
+	./limecoinx.cli gethashespersec
 
