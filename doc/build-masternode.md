@@ -1,4 +1,4 @@
-MASTERNODE BUILD NOTES
+MASTERNODE BUILD NOTES [written by MangledBlue & LIMXSUPPORT]
 ======================
 Some notes on how to build a Limx Masternode in Ubuntu server. Using Windows Qt Client to configure.
 
@@ -135,6 +135,7 @@ Build Instructions: Ubuntu & Debian
 	-------------------------
 	cd .limecoinx
 	./limecoinxd
+	./limecoinxd set generate true 1
 	
 	
 	limcoinxd commands
@@ -180,6 +181,7 @@ Windows Limecoinx-Qt Client configuration
 Updating the Masternode & OpenSSL version
 -----------------------------------------
 
+	./limecoinxd set generate false
 	./limecoinxd stop
 
 	$ sudo apt-get remove libssl1.0.0*
