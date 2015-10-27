@@ -751,9 +751,6 @@
          <property name="text">
           <string>Darksend</string>
          </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
         </widget>
        </item>
        <item>
