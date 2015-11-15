@@ -1446,27 +1446,71 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     	int64_t ret = blockValue / 5; // start at 20% LIMX Target is in future 50% by over 2000 Masternodes
 	if(nHeight > 140500) ret += blockValue / 20; 
+	// Add this Lines... Steps by Steps
+	// 140500  
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20; 
-	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20; 
+	// 144532  
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
+	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20;
+	// 148564 
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20; 
+	// 152596 
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20; 
+	// 156628
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20; 
+	// 160660
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20; 
+	// 192340
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20; 
+	// 200980
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20; 
+	// 218260
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20; 
-	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20; 
+	// 226900
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
+	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20;
+	// 235540
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
+	//  244180
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
+	// 252820
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50; 
+	// 261460
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50; 
+	// 270100
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50; 
+	// 278740
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
+	// 287380
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
+	// 296020
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50; 
+	// 304660
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50; 
+	// 313300
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50; 
+	//  321940
+	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
+	//  payee_amount +=data.get('payee_amount', data['coinbasevalue']/100)
 
     LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
     return ret;
