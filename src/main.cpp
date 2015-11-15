@@ -1495,8 +1495,9 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 	// 278740
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
-	// 287380
+	// 287380 
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
+	/* For later ?
 	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
 	// 296020
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
@@ -1511,7 +1512,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
 	//  payee_amount +=data.get('payee_amount', data['coinbasevalue']/100)
-
+	*/
     LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
     return ret;
 }
