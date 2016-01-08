@@ -71,8 +71,9 @@ public:
      //   vSeeds.push_back(CDNSSeedData("", ""));  //Limxian
      //   vSeeds.push_back(CDNSSeedData("", "")); //coinwall
         vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));
+        vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
         vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
-        vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
+    //    vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
     //    vSeeds.push_back(CDNSSeedData("27.192.144.58", "27.192.144.58"));
     //    vSeeds.push_back(CDNSSeedData("212.227.91.190", "212.227.91.190"));  //p2pool.palim.eu
     //    vSeeds.push_back(CDNSSeedData("5.9.39.9", "5.9.39.9"));       //Bchain
