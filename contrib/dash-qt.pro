@@ -1,4 +1,4 @@
-# lupdate-qt4 ./limecoinx-qt.pro -ts ../src/qt/locale/limecoinx_en.ts
+# lupdate-qt4 ./bitsend-qt.pro -ts ../src/qt/locale/bitsend_en.ts
 
 HEADERS += \
     ../src/activemasternode.h \
@@ -7,7 +7,7 @@ HEADERS += \
     ../src/allocators.h \
     ../src/base58.h \
     ../src/bignum.h \
-    ../src/limecoinx-config.h \
+    ../src/bitsend-config.h \
     ../src/bloom.h \
     ../src/chainparams.h \
     ../src/checkpoints.h \
@@ -135,8 +135,8 @@ SOURCES += \
     ../src/core.cpp \
     ../src/crypter.cpp \
     ../src/cubehash.c \
-    ../src/limecoinx-cli.cpp \
-    ../src/limecoinxd.cpp \
+    ../src/bitsend-cli.cpp \
+    ../src/bitsendd.cpp \
     ../src/darksend.cpp \
     ../src/db.cpp \
     ../src/echo.c \
@@ -213,7 +213,7 @@ SOURCES += \
     ../src/test/serialize_tests.cpp \
     ../src/test/sighash_tests.cpp \
     ../src/test/sigopcount_tests.cpp \
-    ../src/test/test_limecoinx.cpp \
+    ../src/test/test_bitsend.cpp \
     ../src/test/transaction_tests.cpp \
     ../src/test/uint256_tests.cpp \
     ../src/test/util_tests.cpp \
@@ -224,13 +224,13 @@ SOURCES += \
     ../src/qt/bitcoinaddressvalidator.cpp \
     ../src/qt/bitcoinamountfield.cpp \
     ../src/qt/bitcoingui.cpp \
-    ../src/qt/limecoinxstrings.cpp \
+    ../src/qt/bitsendstrings.cpp \
     ../src/qt/bitcoinunits.cpp \
     ../src/qt/clientmodel.cpp \
     ../src/qt/coincontroldialog.cpp \
     ../src/qt/coincontroltreewidget.cpp \
     ../src/qt/csvmodelwriter.cpp \
-    ../src/qt/limecoinx.cpp \
+    ../src/qt/bitsend.cpp \
     ../src/qt/darksendconfig.cpp \
     ../src/qt/editaddressdialog.cpp \
     ../src/qt/guiutil.cpp \
@@ -288,7 +288,7 @@ SOURCES += \
     ../src/qt/paymentrequest.pb.cc \
     ../src/qt/paymentrequestplus.cpp \
     ../src/qt/paymentserver.cpp \
-    ../src/qt/qrc_limecoinx.cpp \
+    ../src/qt/qrc_bitsend.cpp \
     ../src/qt/qvalidatedlineedit.cpp \
     ../src/qt/qvaluecombobox.cpp \
     ../src/qt/receivecoinsdialog.cpp \
@@ -339,7 +339,7 @@ FORMS += \
     ../src/qt/forms/transactiondescdialog.ui
 
 RESOURCES += \
-    ../src/qt/limecoinx.qrc
+    ../src/qt/bitsend.qrc
 
 QT += \
     printsupport

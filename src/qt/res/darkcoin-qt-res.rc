@@ -8,7 +8,7 @@ IDI_ICON2 ICON DISCARDABLE "icons/bitcoin_testnet.ico"
 #define VER_PRODUCTVERSION_STR STRINGIZE(CLIENT_VERSION_MAJOR) "." STRINGIZE(CLIENT_VERSION_MINOR) "." STRINGIZE(CLIENT_VERSION_REVISION) "." STRINGIZE(CLIENT_VERSION_BUILD)
 #define VER_FILEVERSION        VER_PRODUCTVERSION
 #define VER_FILEVERSION_STR    VER_PRODUCTVERSION_STR
-#define COPYRIGHT_STR          "2009-" STRINGIZE(COPYRIGHT_YEAR) " The Bitcoin and Limecoinx developers"
+#define COPYRIGHT_STR          "2009-" STRINGIZE(COPYRIGHT_YEAR) " The Bitcoin and Bitsend developers"
 
 VS_VERSION_INFO VERSIONINFO
 FILEVERSION     VER_FILEVERSION
@@ -20,14 +20,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Limecoinx"
-            VALUE "FileDescription",    "Limecoinx Core (OSS GUI client for Limecoinx)"
+            VALUE "CompanyName",        "Bitsend"
+            VALUE "FileDescription",    "Bitsend Core (OSS GUI client for Bitsend)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "limecoinx-qt"
+            VALUE "InternalName",       "bitsend-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "limecoinx-qt.exe"
-            VALUE "ProductName",        "Limecoinx Core"
+            VALUE "OriginalFilename",   "bitsend-qt.exe"
+            VALUE "ProductName",        "Bitsend Core"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

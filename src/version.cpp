@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,9 +8,9 @@
 #include <string>
 
 // Name of client reported in the 'version' message. Report the same name
-// for both limecoinxd and limecoinx-qt, to make it harder for attackers to
+// for both bitsendd and bitsend-qt, to make it harder for attackers to
 // target servers or GUI users specifically.
-const std::string CLIENT_NAME("LIMX Core");
+const std::string CLIENT_NAME("BSD Core");
 
 // Client version number
 #define CLIENT_VERSION_SUFFIX   "-beta"

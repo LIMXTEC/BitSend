@@ -1,9 +1,9 @@
-Limecoinx 0.11.x BETA
+Bitsend 0.11.x BETA
 ====================
 
 Copyright (c) 2009-2015 Bitcoin Developers
 
-Copyright (c) 2014-2015 Limecoinx Developers
+Copyright (c) 2014-2015 Bitsend Developers
 
 
 Setup

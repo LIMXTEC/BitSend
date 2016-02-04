@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -182,7 +182,7 @@ void Intro::pickDataDirectory()
                 TryCreateDirectory(GUIUtil::qstringToBoostPath(dataDir));
                 break;
             } catch(fs::filesystem_error &e) {
-                QMessageBox::critical(0, tr("Limecoinx"),
+                QMessageBox::critical(0, tr("Bitsend"),
                     tr("Error: Specified data directory \"%1\" can not be created.").arg(dataDir));
                 /* fall through, back to choosing screen */
             }
@@ -191,8 +191,8 @@ void Intro::pickDataDirectory()
         settings.setValue("strDataDir", dataDir);
     }
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the limecoinx.conf file in the default data directory
-     * (to be consistent with limecoinxd behavior)
+     * override -datadir in the bitsend.conf file in the default data directory
+     * (to be consistent with bitsendd behavior)
      */
     if(dataDir != getDefaultDataDirectory())
         SoftSetArg("-datadir", GUIUtil::qstringToBoostPath(dataDir).string()); // use OS locale for path setting

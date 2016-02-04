@@ -5,8 +5,8 @@ AM_CPPFLAGS += -I$(top_srcdir)/src \
   -I$(top_builddir)/src/qt \
   $(PROTOBUF_CFLAGS) \
     $(QR_CFLAGS)
-bin_PROGRAMS = test_limecoinx-qt
-TESTS = test_limecoinx-qt
+bin_PROGRAMS = test_bitsend-qt
+TESTS = test_bitsend-qt
 
 TEST_QT_MOC_CPP = moc_uritests.cpp
 
@@ -21,26 +21,26 @@ TEST_QT_H = \
 
 BUILT_SOURCES = $(TEST_QT_MOC_CPP)
 
-test_limecoinx_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) $(QT_TEST_INCLUDES)
+test_bitsend_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) $(QT_TEST_INCLUDES)
 
-test_limecoinx_qt_SOURCES = \
+test_bitsend_qt_SOURCES = \
   test_main.cpp \
   uritests.cpp \
   $(TEST_QT_H)
 if ENABLE_WALLET
-test_limecoinx_qt_SOURCES += \
+test_bitsend_qt_SOURCES += \
   paymentservertests.cpp
 endif
 
-nodist_test_limecoinx_qt_SOURCES = $(TEST_QT_MOC_CPP)
+nodist_test_bitsend_qt_SOURCES = $(TEST_QT_MOC_CPP)
 
-test_limecoinx_qt_LDADD = $(LIBBITCOINQT) $(LIBBITCOIN_SERVER)
+test_bitsend_qt_LDADD = $(LIBBITCOINQT) $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-test_limecoinx_qt_LDADD += $(LIBBITCOIN_WALLET)
+test_bitsend_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
-test_limecoinx_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) \
+test_bitsend_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) \
   $(LIBMEMENV) $(BOOST_LIBS) $(QT_DBUS_LIBS) $(QT_TEST_LIBS) $(QT_LIBS) \
   $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
-test_limecoinx_qt_LDFLAGS = $(QT_LDFLAGS)
+test_bitsend_qt_LDFLAGS = $(QT_LDFLAGS)
 
 CLEANFILES = $(BUILT_SOURCES) *.gcda *.gcno

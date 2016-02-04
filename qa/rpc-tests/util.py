@@ -1,5 +1,5 @@
 # Copyright (c) 2014 The Bitcoin Core developers
-# Copyright (c) 2014-2015 The Limecoinx developers
+# Copyright (c) 2014-2015 The Bitsend developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -62,26 +62,26 @@ def initialize_chain(test_dir):
     """
     Create (or copy from cache) a 200-block-long chain and
     4 wallets.
-    limecoinxd and limecoinx-cli must be in search path.
+    bitsendd and bitsend-cli must be in search path.
     """
 
     if not os.path.isdir(os.path.join("cache", "node0")):
         devnull = open("/dev/null", "w+")
-        # Create cache directories, run limecoinxds:
+        # Create cache directories, run bitsendds:
         for i in range(4):
             datadir = os.path.join("cache", "node"+str(i))
             os.makedirs(datadir)
-            with open(os.path.join(datadir, "limecoinx.conf"), 'w') as f:
+            with open(os.path.join(datadir, "bitsend.conf"), 'w') as f:
                 f.write("regtest=1\n");
                 f.write("rpcuser=rt\n");
                 f.write("rpcpassword=rt\n");
                 f.write("port="+str(START_P2P_PORT+i)+"\n");
                 f.write("rpcport="+str(START_RPC_PORT+i)+"\n");
-            args = [ "limecoinxd", "-keypool=1", "-datadir="+datadir ]
+            args = [ "bitsendd", "-keypool=1", "-datadir="+datadir ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(START_P2P_PORT))
             bitcoind_processes.append(subprocess.Popen(args))
-            subprocess.check_call([ "limecoinx-cli", "-datadir="+datadir,
+            subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
                                     "-rpcwait", "getblockcount"], stdout=devnull)
         devnull.close()
         rpcs = []
@@ -114,13 +114,13 @@ def initialize_chain(test_dir):
         shutil.copytree(from_dir, to_dir)
 
 def start_nodes(num_nodes, dir):
-    # Start limecoinxds, and wait for RPC interface to be up and running:
+    # Start bitsendds, and wait for RPC interface to be up and running:
     devnull = open("/dev/null", "w+")
     for i in range(num_nodes):
         datadir = os.path.join(dir, "node"+str(i))
-        args = [ "limecoinxd", "-datadir="+datadir ]
+        args = [ "bitsendd", "-datadir="+datadir ]
         bitcoind_processes.append(subprocess.Popen(args))
-        subprocess.check_call([ "limecoinx-cli", "-datadir="+datadir,
+        subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
                                   "-rpcwait", "getblockcount"], stdout=devnull)
     devnull.close()
     # Create&return JSON-RPC connections

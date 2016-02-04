@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,7 +58,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     // Set current copyright year
     ui->copyrightLabel->setText(tr("Copyright") + QString(" &copy; 2009-%1 ").arg(COPYRIGHT_YEAR) + tr("The Bitcoin and Dash Core developers") + QString("<br />")
                                  + tr("Copyright") + QString(" &copy; 2014  ")+ tr("Paperwallet by Dogecoin Core developers") + QString("<br />")
-                                 + tr("Copyright") + QString(" &copy; 2014-%1 ").arg(COPYRIGHT_YEAR) + tr("The LIMX Core developers."));
+                                 + tr("Copyright") + QString(" &copy; 2014-%1 ").arg(COPYRIGHT_YEAR) + tr("The BSD Core developers."));
 }
 
 void AboutDialog::setModel(ClientModel *model)
@@ -88,7 +88,7 @@ void AboutDialog::on_buttonBox_accepted()
     close();
 }
 
-/** "PaperWallet" dialog box Limxdev 28-04-2015 */
+/** "PaperWallet" dialog box Bitsenddev 28-04-2015 */
 PaperWalletDialog::PaperWalletDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PaperWalletDialog)
@@ -300,7 +300,7 @@ void PaperWalletDialog::on_printButton_clicked()
         bool ok;
 
         // Ask for an amount to send to each paper wallet. It might be better to try to use the BitcoinAmountField, but this works fine.
-        double amountInput = QInputDialog::getDouble(this, tr("Load Paper Wallets"), tr("Please wait for wallets to print and verify readability.<br/>Enter the number of LIMX you wish to send to each wallet:"), 0, 0, 2147483647, 8, &ok);
+        double amountInput = QInputDialog::getDouble(this, tr("Load Paper Wallets"), tr("Please wait for wallets to print and verify readability.<br/>Enter the number of BSD you wish to send to each wallet:"), 0, 0, 2147483647, 8, &ok);
 
         if(!ok) {
             return;
@@ -412,10 +412,10 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent) :
     ui->setupUi(this);
     GUIUtil::restoreWindowGeometry("nHelpMessageDialogWindow", this->size(), this);
 
-    header = tr("Limecoinx Core") + " " + tr("version") + " " +
+    header = tr("Bitsend Core") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  limecoinx-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  bitsend-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage(HMM_BITCOIN_QT));
 
@@ -472,7 +472,7 @@ void ShutdownWindow::showShutdownWindow(BitcoinGUI *window)
     QWidget *shutdownWindow = new QWidget();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(new QLabel(
-        tr("Limecoinx Core is shutting down...") + "<br /><br />" +
+        tr("Bitsend Core is shutting down...") + "<br /><br />" +
         tr("Do not shut down the computer until this window disappears.")));
     shutdownWindow->setLayout(layout);
 

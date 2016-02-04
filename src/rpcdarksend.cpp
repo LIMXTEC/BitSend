@@ -21,8 +21,8 @@ Value darksend(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error(
-            "darksend <limecoinxaddress> <amount>\n"
-            "limecoinxaddress, reset, or auto (AutoDenominate)"
+            "darksend <bitsendaddress> <amount>\n"
+            "bitsendaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and is rounded to the nearest 0.00000001"
             + HelpRequiringPassphrase());
 
@@ -45,14 +45,14 @@ Value darksend(const Array& params, bool fHelp)
 
     if (params.size() != 2)
         throw runtime_error(
-            "darksend <limecoinxaddress> <amount>\n"
-            "limecoinxaddress, denominate, or auto (AutoDenominate)"
+            "darksend <bitsendaddress> <amount>\n"
+            "bitsendaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and is rounded to the nearest 0.00000001"
             + HelpRequiringPassphrase());
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Limecoinx address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitsend address");
 
     // Amount
     int64_t nAmount = AmountFromValue(params[1]);
@@ -105,17 +105,17 @@ Value masternode(const Array& params, bool fHelp)
                 "  genkey       - Generate new masternodeprivkey\n"
                 "  enforce      - Enforce masternode payments\n"
                 "  outputs      - Print masternode compatible outputs\n"
-                "  start        - Start masternode configured in limecoinx.conf\n"
+                "  start        - Start masternode configured in bitsend.conf\n"
                 "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
                 "  start-many   - Start all masternodes configured in masternode.conf\n"
-                "  stop         - Stop masternode configured in limecoinx.conf\n"
+                "  stop         - Stop masternode configured in bitsend.conf\n"
                 "  stop-alias   - Stop single masternode by assigned alias configured in masternode.conf\n"
                 "  stop-many    - Stop all masternodes configured in masternode.conf\n"
                 "  list         - Print list of all known masternodes (see masternodelist for more info)\n"
                 "  list-conf    - Print masternode.conf in JSON format\n"
                 "  winners      - Print list of masternode winners\n"
-                "  vote-many    - Vote on a Limecoinx initiative\n"
-                "  vote         - Vote on a Limecoinx initiative\n"
+                "  vote-many    - Vote on a Bitsend initiative\n"
+                "  vote         - Vote on a Bitsend initiative\n"
                 );
 
 
@@ -712,7 +712,7 @@ Value masternodelist(const Array& params, bool fHelp)
                 "  rank           - Print rank of a masternode based on current block\n"
                 "  status         - Print masternode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
                 "  vin            - Print vin associated with a masternode (can be additionally filtered, partial match)\n"
-                "  votes          - Print all masternode votes for a Limecoinx initiative (can be additionally filtered, partial match)\n"
+                "  votes          - Print all masternode votes for a Bitsend initiative (can be additionally filtered, partial match)\n"
                 );
     }
 

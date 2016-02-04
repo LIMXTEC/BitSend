@@ -1,6 +1,6 @@
 
 
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef MASTERNODE_POS_H
@@ -33,7 +33,7 @@ static const int MIN_MASTERNODE_POS_PROTO_VERSION = 70075;
 	a day of proof-of-service errors for complete removal from the
 	masternode system.
 */
-static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Limxdev  to little Masternode for test
+static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to little Masternode for test
 
 #define SCANNING_SUCCESS                       1
 #define SCANNING_ERROR_NO_RESPONSE             2

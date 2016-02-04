@@ -6,7 +6,7 @@
 #include <boost/lexical_cast.hpp>
 
 //
-// Bootup the Masternode, look for a 5000 LIMX input and register on the network
+// Bootup the Masternode, look for a 5000 BSD input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {
@@ -105,7 +105,7 @@ void CActiveMasternode::ManageStatus()
                 return;
             }
 
-            /* donations are not supported in limecoinx.conf */
+            /* donations are not supported in bitsend.conf */
             CScript donationAddress = CScript();
             int donationPercentage = 0;
 
@@ -403,7 +403,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 5000*COIN) { //exactly        limxdev   04-2015
+        if(out.tx->vout[out.i].nValue == 5000*COIN) { //exactly        bitsenddev   04-2015
             filteredCoins.push_back(out);
         }
     }

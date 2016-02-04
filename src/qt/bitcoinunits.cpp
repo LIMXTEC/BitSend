@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -16,9 +16,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(LIMX);
-    unitlist.append(mLIMX);
-    unitlist.append(uLIMX);
+    unitlist.append(BSD);
+    unitlist.append(mBSD);
+    unitlist.append(uBSD);
     unitlist.append(limes);
     return unitlist;
 }
@@ -27,9 +27,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case LIMX:
-    case mLIMX:
-    case uLIMX:
+    case BSD:
+    case mBSD:
+    case uBSD:
     case limes:
         return true;
     default:
@@ -43,9 +43,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case LIMX: return QString("LIMX");
-            case mLIMX: return QString("mLIMX");
-            case uLIMX: return QString::fromUtf8("μLIMX");
+            case BSD: return QString("BSD");
+            case mBSD: return QString("mBSD");
+            case uBSD: return QString::fromUtf8("μBSD");
             case limes: return QString::fromUtf8("limes");
             default: return QString("???");
         }
@@ -54,9 +54,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case LIMX: return QString("tLIMX");
-            case mLIMX: return QString("mtLIMX");
-            case uLIMX: return QString::fromUtf8("μtLIMX");
+            case BSD: return QString("tBSD");
+            case mBSD: return QString("mtBSD");
+            case uBSD: return QString::fromUtf8("μtBSD");
             case limes: return QString::fromUtf8("tlimes");
             default: return QString("???");
         }
@@ -69,10 +69,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case LIMX: return QString("Limecoinx");
-            case mLIMX: return QString("Milli-Limecoinx (1 / 1,000)");
-            case uLIMX: return QString("Micro-Limecoinx (1 / 1,000,000)");
-            case limes: return QString("Ten Nano-Limecoinx (1 / 100,000,000)");
+            case BSD: return QString("Bitsend");
+            case mBSD: return QString("Milli-Bitsend (1 / 1,000)");
+            case uBSD: return QString("Micro-Bitsend (1 / 1,000,000)");
+            case limes: return QString("Ten Nano-Bitsend (1 / 100,000,000)");
             default: return QString("???");
         }
     }
@@ -80,10 +80,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case LIMX: return QString("TestLimecoinxs");
-            case mLIMX: return QString("Milli-TestLimecoinx (1 / 1,000)");
-            case uLIMX: return QString("Micro-TestLimecoinx (1 / 1,000,000)");
-            case limes: return QString("Ten Nano-TestLimecoinx (1 / 100,000,000)");
+            case BSD: return QString("TestBitsends");
+            case mBSD: return QString("Milli-TestBitsend (1 / 1,000)");
+            case uBSD: return QString("Micro-TestBitsend (1 / 1,000,000)");
+            case limes: return QString("Ten Nano-TestBitsend (1 / 100,000,000)");
             default: return QString("???");
         }
     }
@@ -93,9 +93,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case LIMX:  return 100000000;
-    case mLIMX: return 100000;
-    case uLIMX: return 100;
+    case BSD:  return 100000000;
+    case mBSD: return 100000;
+    case uBSD: return 100;
     case limes: return 1;
     default:   return 100000000;
     }
@@ -105,10 +105,10 @@ qint64 BitcoinUnits::maxAmount(int unit)
 {
     switch(unit)
     {
-    case LIMX:  return Q_INT64_C(525000000); //limxdev 04-2015
-    case mLIMX: return Q_INT64_C(525000000000);   //limxdev 04-2015
-    case uLIMX: return Q_INT64_C(525000000000000); //limxdev 04-2015
-    case limes: return Q_INT64_C(52500000000000000);    //limxdev 04-2015
+    case BSD:  return Q_INT64_C(525000000); //bitsenddev 04-2015
+    case mBSD: return Q_INT64_C(525000000000);   //bitsenddev 04-2015
+    case uBSD: return Q_INT64_C(525000000000000); //bitsenddev 04-2015
+    case limes: return Q_INT64_C(52500000000000000);    //bitsenddev 04-2015
     default:   return 0;
     }
 }
@@ -117,9 +117,9 @@ int BitcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case LIMX: return 8; // 21,000,000 (# digits, without commas)
-    case mLIMX: return 11; // 21,000,000,000
-    case uLIMX: return 14; // 21,000,000,000,000
+    case BSD: return 8; // 21,000,000 (# digits, without commas)
+    case mBSD: return 11; // 21,000,000,000
+    case uBSD: return 14; // 21,000,000,000,000
     case limes: return 16; // 2,100,000,000,000,000
     default: return 0;
     }
@@ -129,9 +129,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case LIMX: return 8;
-    case mLIMX: return 5;
-    case uLIMX: return 2;
+    case BSD: return 8;
+    case mBSD: return 5;
+    case uBSD: return 2;
     case limes: return 0;
     default: return 0;
     }

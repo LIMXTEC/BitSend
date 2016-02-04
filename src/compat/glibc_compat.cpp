@@ -1,4 +1,4 @@
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #include <cstddef>
 #include <sys/select.h>
 

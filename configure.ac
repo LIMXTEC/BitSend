@@ -1,18 +1,18 @@
 dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
 define(_CLIENT_VERSION_MAJOR, 0)
-define(_CLIENT_VERSION_MINOR, 11)
-define(_CLIENT_VERSION_REVISION, 2)
-define(_CLIENT_VERSION_BUILD, 36)
+define(_CLIENT_VERSION_MINOR, 1)
+define(_CLIENT_VERSION_REVISION, 0)
+define(_CLIENT_VERSION_BUILD, 1)
 define(_CLIENT_VERSION_IS_RELEASE, true)
-define(_COPYRIGHT_YEAR, 2015)
-AC_INIT([Limecoinx Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[contact@limx.eu],[limecoinx])
+define(_COPYRIGHT_YEAR, 2016)
+AC_INIT([BitSend Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[info@bitsend.info],[bitsend])
 AC_CONFIG_AUX_DIR([src/build-aux])
 AC_CONFIG_MACRO_DIR([src/m4])
 AC_CANONICAL_HOST
-AH_TOP([#ifndef LIMX_CONFIG_H])
-AH_TOP([#define LIMX_CONFIG_H])
-AH_BOTTOM([#endif //LIMX_CONFIG_H])
+AH_TOP([#ifndef BSD_CONFIG_H])
+AH_TOP([#define BSD_CONFIG_H])
+AH_BOTTOM([#endif //BSD_CONFIG_H])
 
 # This m4 will only be used if a system copy cannot be found. This is helpful
 # on systems where autotools are installed but the pkg-config macros are not in
@@ -62,7 +62,7 @@ AC_ARG_ENABLE([upnp-default],
   [use_upnp_default=$enableval],
   [use_upnp_default=yes])
 
-# Limxdev Enable test 15-06-2015
+# BitSenddev Enable test 15-06-2015
 # AC_ARG_ENABLE(tests,
 #    AS_HELP_STRING([--enable-tests],[compile tests (default is no)]),
 #    [use_tests=$enableval],
@@ -117,7 +117,7 @@ AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[spec
 
 
 AC_CONFIG_SRCDIR([src])
-AC_CONFIG_HEADERS([src/limecoinx-config.h])
+AC_CONFIG_HEADERS([src/bitsend-config.h])
 
 dnl Checks for programs.
 AC_PROG_CXX
@@ -318,7 +318,7 @@ dnl Check for pthread compile/link requirements
 AX_PTHREAD
 INCLUDES="$INCLUDES $PTHREAD_CFLAGS"
 
-# The following macro will add the necessary defines to limecoinx-config.h, but
+# The following macro will add the necessary defines to bitsend-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -561,11 +561,11 @@ fi
 
 BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
-AC_MSG_CHECKING([whether to build limecoinxd])
+AC_MSG_CHECKING([whether to build bitsendd])
 AM_CONDITIONAL([BUILD_BITCOIND], [test x$build_bitcoind = xyes])
 AC_MSG_RESULT($build_bitcoind)
 
-AC_MSG_CHECKING([whether to build limecoinx-cli])
+AC_MSG_CHECKING([whether to build bitsend-cli])
 AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test x$build_bitcoin_cli = xyes])
 AC_MSG_RESULT($build_bitcoin_cli)
 
@@ -658,7 +658,7 @@ if test x$bitcoin_enable_qt != xno; then
     AC_MSG_WARN("xgettext is required to update qt translations")
   fi
 
-  AC_MSG_CHECKING([whether to build test_limecoinx-qt])
+  AC_MSG_CHECKING([whether to build test_bitsend-qt])
   if test x$use_tests$bitcoin_enable_qt_test = xyesyes; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="test"
@@ -667,7 +667,7 @@ if test x$bitcoin_enable_qt != xno; then
   fi
 fi
 
-AC_MSG_CHECKING([whether to build test_limecoinx])
+AC_MSG_CHECKING([whether to build test_bitsend])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="test"

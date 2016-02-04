@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,7 +33,7 @@ using namespace std;
 using namespace boost;
 
 #if defined(NDEBUG)
-# error "Limecoinx cannot be compiled without assertions."
+# error "Bitsend cannot be compiled without assertions."
 #endif
 
 //
@@ -59,7 +59,7 @@ bool fLargeWorkInvalidChainFound = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64_t CTransaction::nMinTxFee = 5000;  // Override with -mintxfee // 12-05-2015 limxdev old 10000
+int64_t CTransaction::nMinTxFee = 5000;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
 int64_t CTransaction::nMinRelayTxFee = 500; // 12-05-2015 old 1000
 
@@ -82,7 +82,7 @@ void EraseOrphansFor(NodeId peer);
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "LimeCoinX Signed Message:\n";
+const string strMessageMagic = "Bitsend Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -1437,14 +1437,14 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 		// 420,000 premined coins + 886,400 already mined LIM coins 
 		// Old Thread https://bitcointalk.org/index.php?topic=637366.0
 		// New Thread https://bitcointalk.org/index.php?topic=895425.0
-		// Limxdev and Limx Support have no Premine Coins
+		// Bitsenddev and Bitsend Support have no Premine Coins
 
     return nSubsidy + nFees;
 }
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
-    	int64_t ret = blockValue / 5; // start at 20% LIMX Target is in future 50% by over 2000 Masternodes
+    	int64_t ret = blockValue / 5; // start at 20% BSD Target is in future 50% by over 2000 Masternodes
 	if(nHeight > 140500) ret += blockValue / 20; 
 	// Add this Lines... Steps by Steps
 	// 140500  
@@ -1517,8 +1517,8 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
     return ret;
 }
 
-static const int64_t nTargetTimespan = 6 * 24 * 60 * 60; // LIMX 5 Day
-static const int64_t nTargetSpacing = 5 * 60; // Limecoinx: 5 minutes   LIMX
+static const int64_t nTargetTimespan = 6 * 24 * 60 * 60; // BSD 5 Day
+static const int64_t nTargetSpacing = 5 * 60; // Bitsend: 5 minutes   BSD
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing; // 288 Blocks
 
 //
@@ -1547,7 +1547,7 @@ unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime)
     return bnResult.GetCompact();
 }
 //unsigned int bnProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
-#include "diff_limx.h"
+#include "diff_bitsend.h"
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
 	unsigned int retarget = DIFF_NULL;
@@ -1599,7 +1599,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
                 }
                 return pindexLast->nBits;
             }
-	 // Limecoinx: This fixes an issue where a 51% attack can change difficulty at will.
+	 // Bitsend: This fixes an issue where a 51% attack can change difficulty at will.
             // Go back the full period unless it's the first retarget after genesis.
             // Code courtesy of Art Forz.
             int blockstogoback = nInterval-1;
@@ -2092,7 +2092,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("limecoinx-scriptch");
+    RenameThread("bitsend-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2775,7 +2775,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         return state.DoS(50, error("CheckBlock() : proof of work failed"),
                          REJECT_INVALID, "high-hash");
 
-    // Limxdev: limit timestamp window 
+    // Bitsenddev: limit timestamp window 
 	if (block.GetBlockTime() > GetAdjustedTime() + 15 * 60)
 	return state.Invalid(error("CheckBlock() : block timestamp too far in the future"),
 			REJECT_INVALID, "time-too-new 2");
@@ -2823,7 +2823,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     }
 
     if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
-        MasternodePayments = true; // Limxdev
+        MasternodePayments = true; // Bitsenddev
         if(fDebug) LogPrintf("CheckBlock() : Masternode payment enforcement is off\n");
     }
 
@@ -2835,8 +2835,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         if(pindex != NULL){
             if(pindex->GetBlockHash() == block.hashPrevBlock){
                 int64_t masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0].GetValueOut());
-				int64_t hardblockpowreward = block.vtx[0].vout[0].nValue; //write by Limxdev 02-06-2015
-				LogPrintf("## Hardblockreward ## CheckBlock() : LIMX masternode payments %d\n", hardblockpowreward);
+				int64_t hardblockpowreward = block.vtx[0].vout[0].nValue; //write by Bitsenddev 02-06-2015
+				LogPrintf("## Hardblockreward ## CheckBlock() : BSD masternode payments %d\n", hardblockpowreward);
 				bool fIsInitialDownload = IsInitialBlockDownload();
 
                 // If we don't already have its previous block, skip masternode payment step
@@ -2847,7 +2847,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     bool foundPaymentAndPayee = false;
 					CScript payee;
                     if(!masternodePayments.GetBlockPayee(chainActive.Tip()->nHeight+1, payee) || payee == CScript()){
-					//////////////////////  Limxdev 02.06.2015
+					//////////////////////  Bitsenddev 02.06.2015
 										 AssertLockHeld(cs_main);
 					// Check for duplicate
 					uint256 hash = block.GetHash();
@@ -2869,12 +2869,12 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                       //  foundPaymentAndPayee = true;
 			LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
 						if (nHeight >= 134000){
-						//Limxdev 31-05-2015 Limx proof of payment
+						//Bitsenddev 31-05-2015 Bitsend proof of payment
 						int sizesum1 = block.vtx[0].vout.size();
-						if(sizesum1 > 1){ //write by Limxdev 18-10-2015
+						if(sizesum1 > 1){ //write by Bitsenddev 18-10-2015
                             foundPaymentAndPayee = true;
 
-                        LogPrintf("## Limx proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
+                        LogPrintf("## Bitsend proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
 						                      }
 							
 						} 
@@ -2893,13 +2893,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     }
                     ////////////////
                     
-        	//Limxdev 18-10-2015 Limx proof of payment Number 2
+        	//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
         	int sizesum2 = block.vtx[0].vout.size();
                  	if(sizesum2 > 1 && foundPaymentAndPayee == true) 
                     {
                     foundPaymentAndPayee = true;
                     }
-                    else {foundPaymentAndPayee = false; LogPrintf("## Limx proof of payment Error2"); }
+                    else {foundPaymentAndPayee = false; LogPrintf("## Bitsend proof of payment Error2"); }
                                   
                                 
         					  /////////////////
@@ -2910,7 +2910,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     CBitcoinAddress address2(address1);
 
                     if(!foundPaymentAndPayee) {
-                        LogPrintf("CheckBlock() : Regards Limxdev !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                        LogPrintf("CheckBlock() : Regards Bitsenddev !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
                         if(!RegTest()) return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));
                     } else {
                         LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
@@ -3007,7 +3007,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
             }
                                     /*
             }
-        }*/ //limxdev Prüfunktion 25-05-20105
+        }*/ //bitsenddev Prüfunktion 25-05-20105
 
         // Check timestamp against prev
         if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())

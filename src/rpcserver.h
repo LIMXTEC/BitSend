@@ -63,7 +63,7 @@ public:
 };
 
 /**
- * Limecoinx RPC command dispatcher.
+ * Bitsend RPC command dispatcher.
  */
 class CRPCTable
 {

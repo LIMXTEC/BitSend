@@ -3,27 +3,27 @@ include Makefile.include
 AM_CPPFLAGS += -I$(builddir)
 
 noinst_LIBRARIES = \
-  liblimecoinx_server.a \
-  liblimecoinx_common.a \
-  liblimecoinx_cli.a
+  libbitsend_server.a \
+  libbitsend_common.a \
+  libbitsend_cli.a
 if ENABLE_WALLET
-noinst_LIBRARIES += liblimecoinx_wallet.a
+noinst_LIBRARIES += libbitsend_wallet.a
 endif
 
 bin_PROGRAMS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += limecoinxd
+  bin_PROGRAMS += bitsendd
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += limecoinx-cli
+  bin_PROGRAMS += bitsend-cli
 endif
 
 SUBDIRS = . $(BUILD_QT) $(BUILD_TEST)
 DIST_SUBDIRS = . qt test
 .PHONY: FORCE
-# limecoinx core #
+# bitsend core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -109,7 +109,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 version.o: obj/build.h
 
-liblimecoinx_server_a_SOURCES = \
+libbitsend_server_a_SOURCES = \
   activemasternode.cpp \
   addrman.cpp \
   alert.cpp \
@@ -135,7 +135,7 @@ liblimecoinx_server_a_SOURCES = \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 
-liblimecoinx_wallet_a_SOURCES = \
+libbitsend_wallet_a_SOURCES = \
   activemasternode.cpp \
   db.cpp \
   crypter.cpp \
@@ -146,7 +146,7 @@ liblimecoinx_wallet_a_SOURCES = \
   keepass.cpp \
   $(BITCOIN_CORE_H)
 
-liblimecoinx_common_a_SOURCES = \
+libbitsend_common_a_SOURCES = \
   activemasternode.cpp \
   base58.cpp \
   allocators.cpp \
@@ -184,47 +184,47 @@ liblimecoinx_common_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-liblimecoinx_common_a_SOURCES += compat/glibc_compat.cpp
-liblimecoinx_common_a_SOURCES += compat/glibcxx_compat.cpp
+libbitsend_common_a_SOURCES += compat/glibc_compat.cpp
+libbitsend_common_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-liblimecoinx_cli_a_SOURCES = \
+libbitsend_cli_a_SOURCES = \
   rpcclient.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_liblimecoinx_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
+nodist_libbitsend_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
 #
 
-# limecoinxd binary #
-limecoinxd_LDADD = \
-  liblimecoinx_server.a \
-  liblimecoinx_cli.a \
-  liblimecoinx_common.a \
+# bitsendd binary #
+bitsendd_LDADD = \
+  libbitsend_server.a \
+  libbitsend_cli.a \
+  libbitsend_common.a \
   $(LIBLEVELDB) \
   $(LIBMEMENV)
 if ENABLE_WALLET
-limecoinxd_LDADD += liblimecoinx_wallet.a
+bitsendd_LDADD += libbitsend_wallet.a
 endif
-limecoinxd_SOURCES = limecoinxd.cpp
+bitsendd_SOURCES = bitsendd.cpp
 #
 
 if TARGET_WINDOWS
-limecoinxd_SOURCES += limecoinxd-res.rc
+bitsendd_SOURCES += bitsendd-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
-limecoinxd_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
+bitsendd_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
 
-# limecoinx-cli binary #
-limecoinx_cli_LDADD = \
-  liblimecoinx_cli.a \
-  liblimecoinx_common.a \
+# bitsend-cli binary #
+bitsend_cli_LDADD = \
+  libbitsend_cli.a \
+  libbitsend_common.a \
   $(BOOST_LIBS)
-limecoinx_cli_SOURCES = limecoinx-cli.cpp
+bitsend_cli_SOURCES = bitsend-cli.cpp
 #
 
 if TARGET_WINDOWS
-limecoinx_cli_SOURCES += limecoinx-cli-res.rc
+bitsend_cli_SOURCES += bitsend-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
@@ -235,7 +235,7 @@ leveldb/%.a:
 	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
 	  OPT="$(CXXFLAGS) $(CPPFLAGS)"
 
-qt/limecoinxstrings.cpp: $(liblimecoinx_server_a_SOURCES) $(liblimecoinx_common_a_SOURCES) $(liblimecoinx_cli_a_SOURCES)
+qt/bitsendstrings.cpp: $(libbitsend_server_a_SOURCES) $(libbitsend_common_a_SOURCES) $(libbitsend_cli_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	@cd $(top_srcdir); XGETTEXT=$(XGETTEXT) share/qt/extract_strings_qt.py
 

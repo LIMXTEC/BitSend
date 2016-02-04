@@ -1,6 +1,6 @@
-# LIMX - Limecoinx Core staging tree 0.11
+# BSD - Bitsend Core staging tree 0.11
 
-http://www.limx.eu
+http://www.bitsend.eu
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
 
@@ -10,7 +10,7 @@ Copyright (c) 2014 Doge Core Developers
 
 Copyright (c) 2013 Dr Kimoto Chan
 
-Copyright (c) 2014-2015 LIMX Core Developers
+Copyright (c) 2014-2015 BSD Core Developers
 
 
 Release 21.04.2015
@@ -18,28 +18,28 @@ Release 21.04.2015
 The Version 0.11.X add new function. 
 
 - 0.11.2.17 Release notes
-- Limecoinx Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. Please feel free and compare against forks https://github.com/dashpay
-- The old limecoinx versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/LimecoinX
-- The first limecoin currency is full implemnted in the LIMX chain, done by iparn https://github.com/IParn/limecoin
+- Bitsend Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. Please feel free and compare against forks https://github.com/dashpay
+- The old bitsend versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/Bitsend
+- The first limecoin currency is full implemnted in the BSD chain, done by iparn https://github.com/IParn/limecoin
 - The following changes are introduced in this major release. 
 
-Limecoinx Core:
+Bitsend Core:
 
-- Rebrand to Limecoinx Core
+- Rebrand to Bitsend Core
 - Version bumped to 0.11.2.17 to indicate a new major release
 - Renamed client to identify with network from Satoshi to Core
 - Bumped protocol version to 70075
-- Masternode with 5000 LIMX
-- NEW Reward = 40 LIMX per Miner/Pool & 10 LIMX per Masternode
+- Masternode with 5000 BSD
+- NEW Reward = 40 BSD per Miner/Pool & 10 BSD per Masternode
 - NEW RPC PORT 8800 and NEW P2P Port Default 8886
 - Changed testnet address versions 
 - Defined BIP32 (HD) address versions
-- Adapted BIP44 coin type 5 for Limecoinx (0x80000005) as defined in SLIP-0044
-- Added new units: limes (1 / 100.000.000 LIMX)
-- Added units for testnet: tLIMX, mtLIMX, uLIMX, tlimes
+- Adapted BIP44 coin type 5 for Bitsend (0x80000005) as defined in SLIP-0044
+- Added new units: limes (1 / 100.000.000 BSD)
+- Added units for testnet: tBSD, mtBSD, uBSD, tlimes
 - Fixed wallet locking after sending coins
 - Add -regtest mode, similar to testnet but private with instant block generation with setgenerate RPC.
-- Add separate limecoinx-cli client
+- Add separate bitsend-cli client
 - - Implemented KeyPass integration for CLI, RPC and Qt: keepass, keepassport, keepasskey, keepassid, keepassname
 - Masternodes:
 
@@ -56,9 +56,9 @@ Masternodes:
 
 Darksend:
 
-- Reduced lower darksend limit to 1.5 LIMX
+- Reduced lower darksend limit to 1.5 BSD
 - Fixed progress bar calculation for low amounts
-- Improved support for adding LIMX after anon has completed
+- Improved support for adding BSD after anon has completed
 - Added denomination information to Overview tab
 - Added more detailed Darksend status information to Overview tab
 - Added Darksend high precision matching engine
@@ -111,13 +111,13 @@ Command-line options:
 - New option: -nospendzeroconfchange to never spend unconfirmed change outputs
 - New option: -zapwallettxes to rebuild the wallet's transaction information
 - Rename option '-tor' to '-onion' to better reflect what it does
-- Add '-disablewallet' mode to let limecoinxd run entirely without wallet (when
+- Add '-disablewallet' mode to let bitsendd run entirely without wallet (when
   built with wallet)
 - Update default '-rpcsslciphers' to include TLSv1.2
 - make '-logtimestamps' default on and rework help-message
 - RPC client option: '-rpcwait', to wait for server start
 - Remove '-logtodebugger'
-- Allow `-noserver` with limecoinxd
+- Allow `-noserver` with bitsendd
 - Make -proxy set all network types, avoiding a connect leak.
 
 
@@ -217,7 +217,7 @@ GUI:
 - Optionally add third party links to transaction context menu
 - Check for !pixmap() before trying to export QR code (avoids crashes when no QR
   code could be generated)
-- Fix "Start limecoinx on system login"
+- Fix "Start bitsend on system login"
 - Switch to Qt 5.2.0 for Windows build
 - Add payment request (BIP 0070) support
 - Improve options dialog
@@ -234,14 +234,14 @@ GUI:
 - Move initialization/shutdown to a thread. This prevents "Not responding"
   messages during startup. Also show a window during shutdown.
 - Don't regenerate autostart link on every client startup
-- Show and store message of normal limecoinx:URI
+- Show and store message of normal bitsend:URI
 - Fix richtext detection hang issue on very old Qt versions
 - OS X: Make use of the 10.8+ user notification center to display Growl-like
   notifications
 - OS X: Added NSHighResolutionCapable flag to Info.plist for better font
   rendering on Retina displays.
-- OS X: Fix limecoinx-qt startup crash when clicking dock icon
-- Linux: Fix Gnome limecoinx: URI handler
+- OS X: Fix bitsend-qt startup crash when clicking dock icon
+- Linux: Fix Gnome bitsend: URI handler
 
 
 Validation:
@@ -301,7 +301,7 @@ Miscellaneous:
 - Refactor -alertnotify code
 - doc: Add instructions for consistent Mac OS X build names
 
-Limecoinx Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
+Bitsend Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
 and a new version of enforcement compatible with the newer Bitcoin architechure.
 
 - Fully implemented IX
@@ -328,24 +328,24 @@ Italian, Catalan, Chinese, Danish, Finnish, Swedish, Czech, Turkish and Bavarian
 - New inventory system for IX messaging, providing super fast/low bandwidth IX communication
 
 
-What is Limecoinx?
+What is Bitsend?
 ----------------
 
-Limecoinx is an experimental new digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. Limecoinx uses peer-to-peer technology
+Bitsend is an experimental new digital currency that enables anonymous, instant
+payments to anyone, anywhere in the world. Bitsend uses peer-to-peer technology
 to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. Limecoinx Core is the name of open
+are carried out collectively by the network. Bitsend Core is the name of open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Limecoinx Core software, see http://www.limx.eu
+the Bitsend Core software, see http://www.bitsend.eu
 
 
 
 Building process
 -----------------
 
-**compiling Limecoinx from git**
+**compiling Bitsend from git**
 
 Use the autogen script to prepare the build environment.
 
@@ -356,7 +356,7 @@ Use the autogen script to prepare the build environment.
 **precompiled binaries**
 
 Precompiled binaries are available at github, see
-http://sourceforge.net/projects/limx/files/?source=navbar
+http://sourceforge.net/projects/bitsend/files/?source=navbar
 
 Always verify the signatures and checksums.
 
@@ -382,7 +382,7 @@ to see it.
 
 **testnet and regtest modes**
 
-Run with the -testnet option to run with "play limecoinxs" on the test network, if you
+Run with the -testnet option to run with "play bitsends" on the test network, if you
 are testing multi-machine code that needs to operate across the internet.
 
 If you are testing something that can run on one machine, run with the -regtest option.
@@ -391,7 +391,7 @@ that run in -regtest mode.
 
 **DEBUG_LOCKORDER**
 
-Limecoinx Core is a multithreaded application, and deadlocks or other multithreading bugs
+Bitsend Core is a multithreaded application, and deadlocks or other multithreading bugs
 can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
 CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of what locks
 are held, and adds warning to the debug.log file if inconsistencies are detected.

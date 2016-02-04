@@ -1,5 +1,5 @@
 WalletFrame {
-border-image: url(':/images/limxblack_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/bitsendblack_walletFrame_bg') 0 0 0 0 stretch stretch;
 border-top:0px solid #000;
 margin:0;
 padding:0;
@@ -694,16 +694,16 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
 border:0;
 }
 
-/* About limx Dialog */
+/* About bitsend Dialog */
 QDialog#AboutDialog {
 background-color:#f3f3f3;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About limx Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About bitsend Contents */
 margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About limx text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About bitsend text */
 margin-right:10px;
 }
 
@@ -757,7 +757,7 @@ font-size:16px;
 min-height:35px;
 }
 
-QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance - was 16px Limxdev */
+QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance - was 16px Bitsenddev */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:14px;
 font-weight:bold;
@@ -1005,7 +1005,7 @@ QWidget .QFrame#frame_2 { /* Transactions Widget */
 min-width:410px;
 margin-right:20px;
 margin-left:0;
-background-image: url(':/images/limecoinx_logo_horizontal_white');
+background-image: url(':/images/bitsend_logo_horizontal_white');
 background-repeat:none;
 }
 

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -28,7 +28,7 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
-    ui->addressIn_VM->setPlaceholderText(tr("Enter a Limecoinx address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);

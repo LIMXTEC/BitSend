@@ -75,18 +75,18 @@ MSYS shell:
 	mkdir miniupnpc
 	cp *.h miniupnpc/
 
-Limecoinx
+Bitsend
 -------
 MSYS shell:
 
-	cd \limecoinx
+	cd \bitsend
 	sh autogen.sh
 	sh configure
 	mingw32-make
-	strip limecoinx.exe
+	strip bitsend.exe
 	
 	
--------------------	compiling limx on windows
+-------------------	compiling bitsend on windows
 	
 	./autogen.sh
 
@@ -112,9 +112,9 @@ MSYS shell:
 
 	make
 
-	strip src/limecoinx-cli.exe
-	strip src/limecoinxd.exe
-	strip src/qt/limecoinx-qt.exe	
+	strip src/bitsend-cli.exe
+	strip src/bitsendd.exe
+	strip src/qt/bitsend-qt.exe	
 	
 	
 	

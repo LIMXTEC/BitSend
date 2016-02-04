@@ -6,7 +6,7 @@
 #define BITCOIN_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #endif
 
 #include "compat.h"

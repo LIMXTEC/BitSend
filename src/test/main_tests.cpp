@@ -1,5 +1,5 @@
 // Copyright (c) 2014 The Bitcoin Core developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE(main_tests)
 
 BOOST_AUTO_TEST_CASE(subsidy_limit_test)
 {
-// Sprungmarke TTTTTTTTT limxdev 12-04-2015 Unbekannte Funktion
+// Sprungmarke TTTTTTTTT bitsenddev 12-04-2015 Unbekannte Funktion
     uint64_t nSum = 0;
     for (int nHeight = 0; nHeight < 14000000; nHeight += 1000) {
         /* @TODO fix subsidity, add nBits */

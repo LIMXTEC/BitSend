@@ -104,7 +104,7 @@ namespace GUIUtil
     // Open debug.log
     void openDebugLogfile();
 	
-    // Open limecoinx.conf
+    // Open bitsend.conf
     void openConfigfile();	
 
 // Browse backup folder

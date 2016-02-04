@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #endif
 
 #include "init.h"
@@ -140,7 +140,7 @@ void Shutdown()
     TRY_LOCK(cs_Shutdown, lockShutdown);
     if (!lockShutdown) return;
 
-    RenameThread("limecoinx-shutoff");
+    RenameThread("bitsend-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopRPCThreads();
     ShutdownRPCMining();
@@ -226,7 +226,7 @@ std::string HelpMessage(HelpMessageMode hmm)
     strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block changes (%s in cmd is replaced by block hash)") + "\n";
     strUsage += "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 288, 0 = all)") + "\n";
     strUsage += "  -checklevel=<n>        " + _("How thorough the block verification of -checkblocks is (0-4, default: 3)") + "\n";
-    strUsage += "  -conf=<file>           " + _("Specify configuration file (default: limecoinx.conf)") + "\n";
+    strUsage += "  -conf=<file>           " + _("Specify configuration file (default: bitsend.conf)") + "\n";
     if (hmm == HMM_BITCOIND)
     {
 #if !defined(WIN32)
@@ -239,7 +239,7 @@ std::string HelpMessage(HelpMessageMode hmm)
     strUsage += "  -maxorphanblocks=<n>   " + strprintf(_("Keep at most <n> unconnectable blocks in memory (default: %u)"), DEFAULT_MAX_ORPHAN_BLOCKS) + "\n";
     strUsage += "  -maxorphantx=<n>       " + strprintf(_("Keep at most <n> unconnectable transactions in memory (default: %u)"), DEFAULT_MAX_ORPHAN_TRANSACTIONS) + "\n";
     strUsage += "  -par=<n>               " + strprintf(_("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)"), -(int)boost::thread::hardware_concurrency(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS) + "\n";
-    strUsage += "  -pid=<file>            " + _("Specify pid file (default: limecoinxd.pid)") + "\n";
+    strUsage += "  -pid=<file>            " + _("Specify pid file (default: bitsendd.pid)") + "\n";
     strUsage += "  -reindex               " + _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup") + "\n";
     strUsage += "  -txindex               " + _("Maintain a full transaction index (default: 0)") + "\n";
 
@@ -351,7 +351,7 @@ std::string HelpMessage(HelpMessageMode hmm)
     strUsage += "\n" + _("Darksend options:") + "\n";
     strUsage += "  -enabledarksend=<n>          " + _("Enable use of automated darksend for funds stored in this wallet (0-1, default: 0)") + "\n";
     strUsage += "  -darksendrounds=<n>          " + _("Use N separate masternodes to anonymize funds  (2-8, default: 2)") + "\n";
-    strUsage += "  -anonymizelimecoinxamount=<n> " + _("Keep N limecoinx anonymized (default: 0)") + "\n";
+    strUsage += "  -anonymizebitsendamount=<n> " + _("Keep N bitsend anonymized (default: 0)") + "\n";
     strUsage += "  -liquidityprovider=<n>       " + _("Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)") + "\n";
 
     strUsage += "\n" + _("InstantX options:") + "\n";
@@ -395,7 +395,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("limecoinx-loadblk");
+    RenameThread("bitsend-loadblk");
 
     // -reindex
     if (fReindex) {
@@ -446,7 +446,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that Limecoinx is running in a usable environment with all
+ *  Ensure that Bitsend is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -462,7 +462,7 @@ bool InitSanityCheck(void)
     return true;
 }
 
-/** Initialize limecoinx.
+/** Initialize bitsend.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2(boost::thread_group& threadGroup)
@@ -665,7 +665,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
     // Sanity check
     if (!InitSanityCheck())
-        return InitError(_("Initialization sanity check failed. Limecoinx Core is shutting down."));
+        return InitError(_("Initialization sanity check failed. Bitsend Core is shutting down."));
 
     std::string strDataDir = GetDataDir().string();
 #ifdef ENABLE_WALLET
@@ -673,18 +673,18 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (strWalletFile != boost::filesystem::basename(strWalletFile) + boost::filesystem::extension(strWalletFile))
         return InitError(strprintf(_("Wallet %s resides outside data directory %s"), strWalletFile, strDataDir));
 #endif
-    // Make sure only a single Limecoinx process is using the data directory.
+    // Make sure only a single Bitsend process is using the data directory.
     boost::filesystem::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fopen(pathLockFile.string().c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
     static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
     if (!lock.try_lock())
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Limecoinx Core is probably already running."), strDataDir));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitsend Core is probably already running."), strDataDir));
 
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Limecoinx version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
+    LogPrintf("Bitsend version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
     LogPrintf("Using OpenSSL version %s\n", SSLeay_version(SSLEAY_VERSION));
 #ifdef ENABLE_WALLET
     LogPrintf("Using BerkeleyDB version %s\n", DbEnv::version(0, 0, 0));
@@ -1131,10 +1131,10 @@ if(nWalletBackups > 0)
                 InitWarning(msg);
             }
             else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Limecoinx") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Bitsend") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE)
             {
-                strErrors << _("Wallet needed to be rewritten: restart Limecoinx to complete") << "\n";
+                strErrors << _("Wallet needed to be rewritten: restart Bitsend to complete") << "\n";
                 LogPrintf("%s", strErrors.str());
                 return InitError(strErrors.str());
             }
@@ -1296,7 +1296,7 @@ if(nWalletBackups > 0)
         nDarksendRounds = 99999;
     }
 
-    nAnonymizeDarkcoinAmount = GetArg("-anonymizelimecoinxamount", 0);
+    nAnonymizeDarkcoinAmount = GetArg("-anonymizebitsendamount", 0);
     if(nAnonymizeDarkcoinAmount > 999999) nAnonymizeDarkcoinAmount = 999999;
     if(nAnonymizeDarkcoinAmount < 2) nAnonymizeDarkcoinAmount = 2;
 
@@ -1318,7 +1318,7 @@ if(nWalletBackups > 0)
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
     LogPrintf("Darksend rounds %d\n", nDarksendRounds);
-    LogPrintf("Anonymize Limecoinx Amount %d\n", nAnonymizeDarkcoinAmount);
+    LogPrintf("Anonymize Bitsend Amount %d\n", nAnonymizeDarkcoinAmount);
 
     /* Denominations
 

@@ -757,7 +757,7 @@ font-size:16px;
 min-height:35px;
 }
 
-QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance wahr 16px Limxdev */
+QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance wahr 16px Bitsenddev */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:14px;
 font-weight:bold;
@@ -994,7 +994,7 @@ QWidget .QFrame#frame_2 { /* Transactions Widget */
 min-width:410px;
 margin-right:20px;
 margin-left:0;
-background-image: url(':/images/limecoinx_logo_horizontal');
+background-image: url(':/images/bitsend_logo_horizontal');
 background-repeat:none;
 }
 

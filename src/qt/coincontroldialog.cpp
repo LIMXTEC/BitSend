@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -598,7 +598,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = BitcoinUnits::LIMX;
+    int nDisplayUnit = BitcoinUnits::BSD;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
@@ -731,7 +731,7 @@ void CoinControlDialog::updateView()
             {
                 sAddress = CBitcoinAddress(outputAddress).ToString().c_str();
 
-                // if listMode or change => show limecoinx address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show bitsend address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
                     

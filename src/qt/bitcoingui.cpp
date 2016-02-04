@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -76,7 +76,7 @@ BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
-    QString windowTitle = tr("Limecoinx Core") + " - ";
+    QString windowTitle = tr("Bitsend Core") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     bool enableWallet = !GetBoolArg("-disablewallet", false);
@@ -183,7 +183,7 @@ BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
         progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #090909, stop: 1 #121212); border-radius: 7px; margin: 0px; }");
-     // old limxdev 04-2015 progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
+     // old bitsenddev 04-2015 progressBar->setStyleSheet("QProgressBar { background-color: #F8F8F8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #00CCFF, stop: 1 #33CCFF); border-radius: 7px; margin: 0px; }");
     }
 
     statusBar()->addWidget(progressBarLabel);
@@ -240,7 +240,7 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Limecoinx address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Bitsend address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -251,7 +251,7 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and limecoinx: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and bitsend: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -288,10 +288,10 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     if (!fIsTestnet)
-        aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Limecoinx Core"), this);
+        aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Bitsend Core"), this);
     else
-        aboutAction = new QAction(QIcon(":/icons/bitcoin_testnet"), tr("&About Limecoinx Core"), this);
-    aboutAction->setStatusTip(tr("Show information about Limecoinx"));
+        aboutAction = new QAction(QIcon(":/icons/bitcoin_testnet"), tr("&About Bitsend Core"), this);
+    aboutAction->setStatusTip(tr("Show information about Bitsend"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -301,7 +301,7 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for Limecoinx"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Bitsend"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     if (!fIsTestnet)
         toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
@@ -320,9 +320,9 @@ void BitcoinGUI::createActions(bool fIsTestnet)
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Limecoinx addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Bitsend addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Limecoinx addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Bitsend addresses"));
     paperWalletAction = new QAction(QIcon(":/icons/print"), tr("&Print paper wallets"), this);
     paperWalletAction->setStatusTip(tr("Print paper wallets"));
 
@@ -343,10 +343,10 @@ usedSendingAddressesAction = new QAction(QIcon(":/icons/address-book"), tr("&Sen
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a limecoinx: URI or payment request"));
+    openAction->setStatusTip(tr("Open a bitsend: URI or payment request"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
-    showHelpMessageAction->setStatusTip(tr("Show the Limecoinx Core help message to get a list with possible Limecoinx command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Bitsend Core help message to get a list with possible Bitsend command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -531,12 +531,12 @@ void BitcoinGUI::createTrayIcon(bool fIsTestnet)
 
     if (!fIsTestnet)
     {
-        trayIcon->setToolTip(tr("Limecoinx client"));
+        trayIcon->setToolTip(tr("Bitsend client"));
         trayIcon->setIcon(QIcon(":/icons/toolbar"));
     }
     else
     {
-        trayIcon->setToolTip(tr("Limecoinx client") + " " + tr("[testnet]"));
+        trayIcon->setToolTip(tr("Bitsend client") + " " + tr("[testnet]"));
         trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
     }
 
@@ -682,7 +682,7 @@ void BitcoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Limecoinx network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Bitsend network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count)
@@ -797,7 +797,7 @@ void BitcoinGUI::setNumBlocks(int count)
 
 void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Limecoinx"); // default title
+    QString strTitle = tr("Bitsend"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -823,7 +823,7 @@ void BitcoinGUI::message(const QString &title, const QString &message, unsigned 
             break;
         }
     }
-    // Append title to "Limecoinx - "
+    // Append title to "Bitsend - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 

@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -30,7 +30,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::LIMX)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::BSD)
     {
 
     }
@@ -232,7 +232,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(ui->toggleDarksend, SIGNAL(clicked()), this, SLOT(toggleDarksend()));
     }
 
-    // update the display unit, to not use the default ("LIMX")
+    // update the display unit, to not use the default ("BSD")
     updateDisplayUnit();
 }
 

@@ -12,8 +12,8 @@
 
 #include <stdint.h>
 
-#define START_MASTERNODE_PAYMENTS_TESTNET 1430465291 //  01-05-2015 limxdev
-#define START_MASTERNODE_PAYMENTS 1430465291 // 01-05-2015 limxdev
+#define START_MASTERNODE_PAYMENTS_TESTNET 1430465291 //  01-05-2015 bitsenddev
+#define START_MASTERNODE_PAYMENTS 1430465291 // 01-05-2015 bitsenddev
 
 static const int64_t DARKSEND_COLLATERAL = (0.01*COIN);
 static const int64_t DARKSEND_POOL_MAX = (4999.99*COIN);
@@ -38,8 +38,8 @@ static const int64_t DARKSEND_POOL_MAX = (4999.99*COIN);
 
 #define MASTERNODE_MIN_CONFIRMATIONS           15
 #define MASTERNODE_MIN_DSEEP_SECONDS           (30*60)
-#define MASTERNODE_MIN_DSEE_SECONDS            (10*60) // 5 * 60 old limxdev 12-05
-#define MASTERNODE_PING_SECONDS                (5*60)  // 1 * 60 old limxdev 12-05
+#define MASTERNODE_MIN_DSEE_SECONDS            (10*60) // 5 * 60 old bitsenddev 12-05
+#define MASTERNODE_PING_SECONDS                (5*60)  // 1 * 60 old bitsenddev 12-05
 #define MASTERNODE_EXPIRATION_SECONDS          (65*60)
 #define MASTERNODE_REMOVAL_SECONDS             (70*60)
 
@@ -48,7 +48,7 @@ static const int MIN_POOL_PEER_PROTO_VERSION = 70075; // minimum peer version ac
 class CTransaction;
 
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 525000000 * COIN;  //limxdev 04-2015
+static const int64_t MAX_MONEY = 525000000 * COIN;  //bitsenddev 04-2015
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */

@@ -1,6 +1,6 @@
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #endif
 
 #ifdef ENABLE_WALLET

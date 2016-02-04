@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -374,7 +374,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
             pblock->vtx[0].vout[payments-1].nValue = masternodePayment;
             blockValue -= masternodePayment;
             LogPrintf("Zugriff miner.cpp 375 blockValue %u\n", blockValue);
-            LogPrintf("Zugriff main.cpp 375 masternodePayment %u\n", masternodePayment); // limxdev
+            LogPrintf("Zugriff main.cpp 375 masternodePayment %u\n", masternodePayment); // bitsenddev
         }
         pblock->vtx[0].vout[0].nValue = blockValue;
 
@@ -523,7 +523,7 @@ void static BitcoinMiner(CWallet *pwallet)
 {
     LogPrintf("DarkcoinMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("limecoinx-miner");
+    RenameThread("bitsend-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);

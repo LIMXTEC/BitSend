@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -38,10 +38,10 @@ namespace Checkpoints
     //   (no blocks before with a timestamp after, none after with
     //    timestamp before)
     // + Contains no strange transactions
-    // limxdev limecoinx 2015-04
+    // bitsenddev bitsend 2015-04
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-          (  0, uint256("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")) //limxdev 04-2015
+          (  0, uint256("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")) //bitsenddev 04-2015
 	( 10000, uint256("0x0000000006c1a1573ca82ad24789c10a36535cf085f201122f1d112a88841271"))
 	( 15790, uint256("0x000000004151f93a4012545309d4bbcac5f2977dea643a178c4bec1310e6c086"))
 	( 21190, uint256("0x000000002a798fd88d0ce270cad1c217aceea236b573c68cfd02b086f5745921"))
@@ -65,7 +65,7 @@ namespace Checkpoints
 
     static MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-        ( 0 , uint256("0x000008030a1e9a647ecc6119e0782166552e49dadfa8353afa26f3a6c2179845"))   //limxdev 04-2015
+        ( 0 , uint256("0x000008030a1e9a647ecc6119e0782166552e49dadfa8353afa26f3a6c2179845"))   //bitsenddev 04-2015
         ;
     static const CCheckpointData dataTestnet = {
         &mapCheckpointsTestnet,

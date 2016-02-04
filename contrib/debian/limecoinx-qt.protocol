@@ -1,6 +1,6 @@
 [Protocol]
-exec=limecoinx-qt '%u'
-protocol=limecoinx
+exec=bitsend-qt '%u'
+protocol=bitsend
 input=none
 output=none
 helper=true

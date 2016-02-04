@@ -1,7 +1,7 @@
 0.11.1 Release notes
 ====================
 
-Limecoinx Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
+Bitsend Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
 and a new version of enforcement compatible with the newer Bitcoin architechure.
 
 - Fully implemented IX

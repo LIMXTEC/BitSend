@@ -14,11 +14,11 @@ int CommandLineRPC(int argc, char *argv[]);
 
 json_spirit::Array RPCConvertValues(const std::string &strMethod, const std::vector<std::string> &strParams);
 
-/** Show help message for limecoinx-cli.
+/** Show help message for bitsend-cli.
  * The mainProgram argument is used to determine whether to show this message as main program
  * (and include some common options) or as sub-header of another help message.
  *
- * @note the argument can be removed once limecoinx-cli functionality is removed from limecoinxd
+ * @note the argument can be removed once bitsend-cli functionality is removed from bitsendd
  */
 std::string HelpMessageCli(bool mainProgram);
 

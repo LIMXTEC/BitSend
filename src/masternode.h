@@ -1,5 +1,5 @@
 
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef MASTERNODE_H
@@ -28,8 +28,8 @@
 
 #define MASTERNODE_MIN_CONFIRMATIONS           15
 #define MASTERNODE_MIN_DSEEP_SECONDS           (30*60)
-#define MASTERNODE_MIN_DSEE_SECONDS            (10*60)  // limxdev 12-05 Old 5*60
-#define MASTERNODE_PING_SECONDS                (5*60)   // limxdev 12-05 OLD 1*60
+#define MASTERNODE_MIN_DSEE_SECONDS            (10*60)  // bitsenddev 12-05 Old 5*60
+#define MASTERNODE_PING_SECONDS                (5*60)   // bitsenddev 12-05 OLD 1*60
 #define MASTERNODE_EXPIRATION_SECONDS          (65*60)
 #define MASTERNODE_REMOVAL_SECONDS             (70*60)
 
@@ -229,11 +229,11 @@ public:
             if(nScanningErrorCount < 0) nScanningErrorCount = 0;
         } else { //all other codes are equally as bad
                     nScanningErrorCount++;
-           /* Limxdev 04/08/2015 
+           /* Bitsenddev 04/08/2015 
                         if(nScanningErrorCount >= 4)
                         {
                         nScanningErrorCount = 0;
-                        LogPrintf("S-Reset Bad Masternodescore \n"); //	Limxdev Set this for Debug
+                        LogPrintf("S-Reset Bad Masternodescore \n"); //	Bitsenddev Set this for Debug
                         }
                         */
             if(nScanningErrorCount > MASTERNODE_SCANNING_ERROR_THESHOLD*2) nScanningErrorCount = MASTERNODE_SCANNING_ERROR_THESHOLD*2;
@@ -308,8 +308,8 @@ public:
     CMasternodePayments() {
         
         // 100: G=0 101: MK just test
-        strMainPubKey = "04521CAE97FEE1CA1F67B4B6D5E4323125D63DBA5291CF2609F71234ED86355A109140B3316366CAD47DCD2D0C04326A3233AC7797231F0AF88C1FE6FE94B7E37C"; // limxdev 04-2015
-        strTestPubKey = "04CBC82D432A42A05F9474A5554413A6166767C928DE669C40144DC585FB85F15E28035EADE398A6B8E38C24A001EAB50023124C4D8328C99EC2FDE47ED54B17BF";  // limxdev do not use 04-2015
+        strMainPubKey = "04521CAE97FEE1CA1F67B4B6D5E4323125D63DBA5291CF2609F71234ED86355A109140B3316366CAD47DCD2D0C04326A3233AC7797231F0AF88C1FE6FE94B7E37C"; // bitsenddev 04-2015
+        strTestPubKey = "04CBC82D432A42A05F9474A5554413A6166767C928DE669C40144DC585FB85F15E28035EADE398A6B8E38C24A001EAB50023124C4D8328C99EC2FDE47ED54B17BF";  // bitsenddev do not use 04-2015
         enabled = false;
     }
 

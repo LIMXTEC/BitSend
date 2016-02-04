@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -245,7 +245,7 @@ public:
 class CDarkSendSigner
 {
 public:
-    /// Is the inputs associated with this public key? (and there is 14000 LIMX - checking if valid masternode)
+    /// Is the inputs associated with this public key? (and there is 14000 BSD - checking if valid masternode)
     bool IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey);
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey);
@@ -341,7 +341,7 @@ public:
             LogPrintf("Zugriff auf StrAdress 341 darksend.h\n");
         } 
         else {
-            strAddress = "y1EZuxhhNMAUofTBEeLqGE1bJrpC2TWRNp"; // Not used Limxdev 01-05
+            strAddress = "y1EZuxhhNMAUofTBEeLqGE1bJrpC2TWRNp"; // Not used Bitsenddev 01-05
         }
         SetCollateralAddress(strAddress);
     }
@@ -483,7 +483,7 @@ public:
 
     void GetDenominationsToString(int nDenom, std::string& strDenom);
 
-    /// Get the denominations for a specific amount of limecoinx.
+    /// Get the denominations for a specific amount of bitsend.
     int GetDenominationsByAmount(int64_t nAmount, int nDenomTarget=0);
     int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount);
 

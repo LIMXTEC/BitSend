@@ -45,7 +45,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
             }
             CBitcoinAddress address(donationAddress);
             if (!address.IsValid()) {
-                strErr = "Invalid Limecoinx address in masternode.conf line: " + line;
+                strErr = "Invalid Bitsend address in masternode.conf line: " + line;
                 streamConfig.close();
                 return false;
             }

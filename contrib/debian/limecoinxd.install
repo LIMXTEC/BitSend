@@ -1,2 +1,2 @@
-usr/local/bin/limecoinxd usr/bin
-usr/local/bin/limecoinx-cli usr/bin
+usr/local/bin/bitsendd usr/bin
+usr/local/bin/bitsend-cli usr/bin

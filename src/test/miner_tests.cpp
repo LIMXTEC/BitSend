@@ -196,7 +196,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
     delete pblocktemplate;
     mempool.clear();
 
-    // subsidy changing  HHHHHHHHDDDD Sprungmarke Unbekannte Funktion limxdev 12-04-2015
+    // subsidy changing  HHHHHHHHDDDD Sprungmarke Unbekannte Funktion bitsenddev 12-04-2015
     int nHeight = chainActive.Height();
     chainActive.Tip()->nHeight = 209999;
     BOOST_CHECK(pblocktemplate = CreateNewBlock(scriptPubKey));

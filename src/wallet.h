@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The BitSend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_WALLET_H
@@ -29,9 +29,9 @@ extern int64_t nTransactionFee;
 extern bool bSpendZeroConfChange;
 
 // -paytxfee default
-static const int64_t DEFAULT_TRANSACTION_FEE = 0;
+static const int64_t DEFAULT_TRANSACTION_FEE = 0.01;
 // -paytxfee will warn if called with a higher fee than this amount (in satoshis) per KB
-static const int nHighTransactionFeeWarning = 0.01 * COIN;
+static const int nHighTransactionFeeWarning = 0.10 * COIN;
 
 class CAccountingEntry;
 class CCoinControl;
@@ -56,7 +56,7 @@ enum AvailableCoinsType
     ALL_COINS = 1,
     ONLY_DENOMINATED = 2,
     ONLY_NONDENOMINATED = 3,
-    ONLY_NONDENOMINATED_NOTMN = 4 // ONLY_NONDENOMINATED and not 1000 LIMX at the same time
+    ONLY_NONDENOMINATED_NOTMN = 4 // ONLY_NONDENOMINATED and not 1000 BSD at the same time
 };
 
 

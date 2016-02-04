@@ -65,7 +65,7 @@ public slots:
     void showConsole();
     /** Switch to network tab and show */
     void showNetwork();
-    /** Open external (default) editor with limecoinx.conf */
+    /** Open external (default) editor with bitsend.conf */
     void showConfEditor();	
     /** Show folder with wallet backups in default browser */
     void showBackups();

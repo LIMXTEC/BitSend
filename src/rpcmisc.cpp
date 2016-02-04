@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -39,8 +39,8 @@ Value getinfo(const Array& params, bool fHelp)
             "  \"version\": xxxxx,           (numeric) the server version\n"
             "  \"protocolversion\": xxxxx,   (numeric) the protocol version\n"
             "  \"walletversion\": xxxxx,     (numeric) the wallet version\n"
-            "  \"balance\": xxxxxxx,         (numeric) the total limecoinx balance of the wallet\n"
-            "  \"darksend_balance\": xxxxxx, (numeric) the anonymized limecoinx balance of the wallet\n"
+            "  \"balance\": xxxxxxx,         (numeric) the total bitsend balance of the wallet\n"
+            "  \"darksend_balance\": xxxxxx, (numeric) the anonymized bitsend balance of the wallet\n"
             "  \"blocks\": xxxxxx,           (numeric) the current number of blocks processed in the server\n"
             "  \"timeoffset\": xxxxx,        (numeric) the time offset\n"
             "  \"connections\": xxxxx,       (numeric) the number of connections\n"
@@ -160,7 +160,7 @@ Value spork(const Array& params, bool fHelp)
         } else {
             return "failure";
             LogPrintf("Zugriff NSporkID rpcmisc %u\n", nSporkID);
-            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Limxdev
+            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Bitsenddev
         }
 
     }
@@ -176,14 +176,14 @@ Value validateaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "validateaddress \"limecoinxaddress\"\n"
-            "\nReturn information about the given limecoinx address.\n"
+            "validateaddress \"bitsendaddress\"\n"
+            "\nReturn information about the given bitsend address.\n"
             "\nArguments:\n"
-            "1. \"limecoinxaddress\"     (string, required) The limecoinx address to validate\n"
+            "1. \"bitsendaddress\"     (string, required) The bitsend address to validate\n"
             "\nResult:\n"
             "{\n"
             "  \"isvalid\" : true|false,         (boolean) If the address is valid or not. If not, this is the only property returned.\n"
-            "  \"address\" : \"limecoinxaddress\", (string) The limecoinx address validated\n"
+            "  \"address\" : \"bitsendaddress\", (string) The bitsend address validated\n"
             "  \"ismine\" : true|false,          (boolean) If the address is yours or not\n"
             "  \"isscript\" : true|false,        (boolean) If the key is a script\n"
             "  \"pubkey\" : \"publickeyhex\",    (string) The hex value of the raw public key\n"
@@ -240,7 +240,7 @@ CScript _createmultisig_redeemScript(const Array& params)
     {
         const std::string& ks = keys[i].get_str();
 #ifdef ENABLE_WALLET
-        // Case 1: Limecoinx address and we have full public key:
+        // Case 1: Bitsend address and we have full public key:
         CBitcoinAddress address(ks);
         if (pwalletMain && address.IsValid())
         {
@@ -292,9 +292,9 @@ Value createmultisig(const Array& params, bool fHelp)
 
             "\nArguments:\n"
             "1. nrequired      (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-            "2. \"keys\"       (string, required) A json array of keys which are limecoinx addresses or hex-encoded public keys\n"
+            "2. \"keys\"       (string, required) A json array of keys which are bitsend addresses or hex-encoded public keys\n"
             "     [\n"
-            "       \"key\"    (string) limecoinx address or hex-encoded public key\n"
+            "       \"key\"    (string) bitsend address or hex-encoded public key\n"
             "       ,...\n"
             "     ]\n"
 
@@ -329,10 +329,10 @@ Value verifymessage(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 3)
         throw runtime_error(
-            "verifymessage \"limecoinxaddress\" \"signature\" \"message\"\n"
+            "verifymessage \"bitsendaddress\" \"signature\" \"message\"\n"
             "\nVerify a signed message\n"
             "\nArguments:\n"
-            "1. \"limecoinxaddress\"  (string, required) The limecoinx address to use for the signature.\n"
+            "1. \"bitsendaddress\"  (string, required) The bitsend address to use for the signature.\n"
             "2. \"signature\"       (string, required) The signature provided by the signer in base 64 encoding (see signmessage).\n"
             "3. \"message\"         (string, required) The message that was signed.\n"
             "\nResult:\n"

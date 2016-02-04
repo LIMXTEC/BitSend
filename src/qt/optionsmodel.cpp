@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #endif
 
 #include "optionsmodel.h"
@@ -57,7 +57,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitcoinUnits::LIMX);
+        settings.setValue("nDisplayUnit", BitcoinUnits::BSD);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("bDisplayAddresses"))
@@ -148,7 +148,7 @@ void OptionsModel::Init()
     if (settings.contains("nDarksendRounds"))
         SoftSetArg("-darksendrounds", settings.value("nDarksendRounds").toString().toStdString());
     if (settings.contains("nAnonymizeDarkcoinAmount"))
-        SoftSetArg("-anonymizelimecoinxamount", settings.value("nAnonymizeDarkcoinAmount").toString().toStdString());
+        SoftSetArg("-anonymizebitsendamount", settings.value("nAnonymizeDarkcoinAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }

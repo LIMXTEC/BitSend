@@ -5,41 +5,41 @@ AM_CPPFLAGS += -I$(top_srcdir)/src \
   -I$(top_builddir)/src/qt/forms \
   $(PROTOBUF_CFLAGS) \
   $(QR_CFLAGS)
-bin_PROGRAMS = limecoinx-qt
-noinst_LIBRARIES = liblimecoinxqt.a
+bin_PROGRAMS = bitsend-qt
+noinst_LIBRARIES = libbitsendqt.a
 SUBDIRS = . $(BUILD_TEST_QT)
 DIST_SUBDIRS = . test
 
-# limecoinx qt core #
+# bitsend qt core #
 QT_TS = \
-  locale/limecoinx_bar.ts \
-  locale/limecoinx_bg.ts \
-  locale/limecoinx_ca.ts \
-  locale/limecoinx_cmn.ts \
-  locale/limecoinx_cs.ts \
-  locale/limecoinx_da.ts \
-  locale/limecoinx_de.ts \
-  locale/limecoinx_el.ts \
-  locale/limecoinx_en.ts \
-  locale/limecoinx_eo.ts \
-  locale/limecoinx_es.ts \
-  locale/limecoinx_fi.ts \
-  locale/limecoinx_fr.ts \
-  locale/limecoinx_hu_HU.ts \
-  locale/limecoinx_it.ts \
-  locale/limecoinx_lv_LV.ts \
-  locale/limecoinx_nb.ts \
-  locale/limecoinx_nl.ts \
-  locale/limecoinx_pl.ts \
-  locale/limecoinx_pt.ts \
-  locale/limecoinx_pt_BR.ts \
-  locale/limecoinx_ru.ts \
-  locale/limecoinx_sk.ts \
-  locale/limecoinx_sv.ts \
-  locale/limecoinx_tr.ts \
-  locale/limecoinx_vi.ts \
-  locale/limecoinx_zh_CN.ts \
-  locale/limecoinx_zh_HK.ts
+  locale/bitsend_bar.ts \
+  locale/bitsend_bg.ts \
+  locale/bitsend_ca.ts \
+  locale/bitsend_cmn.ts \
+  locale/bitsend_cs.ts \
+  locale/bitsend_da.ts \
+  locale/bitsend_de.ts \
+  locale/bitsend_el.ts \
+  locale/bitsend_en.ts \
+  locale/bitsend_eo.ts \
+  locale/bitsend_es.ts \
+  locale/bitsend_fi.ts \
+  locale/bitsend_fr.ts \
+  locale/bitsend_hu_HU.ts \
+  locale/bitsend_it.ts \
+  locale/bitsend_lv_LV.ts \
+  locale/bitsend_nb.ts \
+  locale/bitsend_nl.ts \
+  locale/bitsend_pl.ts \
+  locale/bitsend_pt.ts \
+  locale/bitsend_pt_BR.ts \
+  locale/bitsend_ru.ts \
+  locale/bitsend_sk.ts \
+  locale/bitsend_sv.ts \
+  locale/bitsend_tr.ts \
+  locale/bitsend_vi.ts \
+  locale/bitsend_zh_CN.ts \
+  locale/bitsend_zh_HK.ts
 
 QT_FORMS_UI = \
   forms/aboutdialog.ui \
@@ -114,13 +114,13 @@ BITCOIN_MM = \
   macnotificationhandler.mm
 
 QT_MOC = \
-  limecoinx.moc \
+  bitsend.moc \
   intro.moc \
   overviewpage.moc \
   rpcconsole.moc
 
-QT_QRC_CPP = qrc_limecoinx.cpp
-QT_QRC = limecoinx.qrc
+QT_QRC_CPP = qrc_bitsend.cpp
+QT_QRC = bitsend.qrc
 
 PROTOBUF_CC = paymentrequest.pb.cc
 PROTOBUF_H = paymentrequest.pb.h
@@ -231,7 +231,7 @@ RES_ICONS = \
 
 
 BITCOIN_QT_CPP = \
-  limecoinx.cpp \
+  bitsend.cpp \
   bitcoinaddressvalidator.cpp \
   bitcoinamountfield.cpp \
   bitcoingui.cpp \
@@ -291,8 +291,8 @@ RES_IMAGES = \
   res/images/splash.png \
   res/images/splash_testnet.png \
   res/images/paper_wallet.png \
-  res/images/limecoinx_logo_horizontal.png \
-  res/images/limecoinx_logo_horizontal_white.png \
+  res/images/bitsend_logo_horizontal.png \
+  res/images/bitsend_logo_horizontal_white.png \
   res/images/drkblue_downArrow.png \
   res/images/drkblue_downArrow_small.png \
   res/images/drkblue_upArrow_small.png \
@@ -301,52 +301,52 @@ RES_IMAGES = \
   res/images/drkblue_qtreeview_selected.png \
   res/images/drkblue_walletFrame_bg.png \
   res/images/drkblue_walletFrame.png \
-  res/images/limxlila_walletFrame_bg.png \
-  res/images/limxlila_walletFrame.png \
-  res/images/limxblack_walletFrame_bg.png \
-  res/images/limxblack_walletFrame.png
+  res/images/bitsendlila_walletFrame_bg.png \
+  res/images/bitsendlila_walletFrame.png \
+  res/images/bitsendblack_walletFrame_bg.png \
+  res/images/bitsendblack_walletFrame.png
 
 RES_CSS = \
   res/css/drkblue.css \
-  res/css/limxlila.css \
-  res/css/limxlila.css
+  res/css/bitsendlila.css \
+  res/css/bitsendlila.css
   
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
-LIMX_RC = res/limecoinx-qt-res.rc
+BSD_RC = res/bitsend-qt-res.rc
 
-liblimecoinxqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
+libbitsendqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
-liblimecoinxqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+libbitsendqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS)
 
-nodist_liblimecoinxqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_libbitsendqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP)
 
-BUILT_SOURCES = $(nodist_liblimecoinxqt_a_SOURCES)
+BUILT_SOURCES = $(nodist_libbitsendqt_a_SOURCES)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# limecoinx-qt binary #
-limecoinx_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
+# bitsend-qt binary #
+bitsend_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
-limecoinx_qt_SOURCES = limecoinx.cpp
+bitsend_qt_SOURCES = bitsend.cpp
 if TARGET_DARWIN
-  limecoinx_qt_SOURCES += $(BITCOIN_MM)
+  bitsend_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  limecoinx_qt_SOURCES += $(LIMX_RC)
+  bitsend_qt_SOURCES += $(BSD_RC)
 endif
-limecoinx_qt_LDADD = liblimecoinxqt.a $(LIBBITCOIN_SERVER)
+bitsend_qt_LDADD = libbitsendqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-limecoinx_qt_LDADD += $(LIBBITCOIN_WALLET)
+bitsend_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
-limecoinx_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
+bitsend_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
-limecoinx_qt_LDFLAGS = $(QT_LDFLAGS)
+bitsend_qt_LDFLAGS = $(QT_LDFLAGS)
 
 # forms/foo.h -> forms/ui_foo.h
 QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
@@ -357,15 +357,15 @@ QT_QM=$(QT_TS:.ts=.qm)
 .PHONY: FORCE
 .SECONDARY: $(QT_QM)
 
-limecoinxstrings.cpp: FORCE
-	$(MAKE) -C $(top_srcdir)/src qt/limecoinxstrings.cpp
+bitsendstrings.cpp: FORCE
+	$(MAKE) -C $(top_srcdir)/src qt/bitsendstrings.cpp
 
-translate: limecoinxstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: bitsendstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/limecoinx_en.ts
+	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitsend_en.ts
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS) $(PROTOBUF_H)
-	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name limecoinx -o $(abs_builddir)/$@ $< || \
+	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitsend -o $(abs_builddir)/$@ $< || \
 	  echo error: could not build $@
 	$(SED) -e '/^\*\*.*Created:/d' $@ > $@.n && mv $@{.n,}
 	$(SED) -e '/^\*\*.*by:/d' $@  > $@.n && mv $@{.n,}

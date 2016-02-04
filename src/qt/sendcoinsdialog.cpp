@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -47,7 +47,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
 
-    // Limecoinx specific
+    // Bitsend specific
     if(fLiteMode) {
         ui->checkUseDarksend->setChecked(false);
         ui->checkUseDarksend->setVisible(false);
@@ -58,7 +58,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     }
     connect(ui->checkUseDarksend, SIGNAL(stateChanged ( int )), this, SLOT(updateDisplayUnit()));
     connect(ui->checkInstantX, SIGNAL(stateChanged ( int )), this, SLOT(updateInstantX()));
-    // Just test Limxdev 23-05-2015
+    // Just test Bitsenddev 23-05-2015
    // ui->checkUseDarksend->setChecked(false);
 
     // Coin Control: clipboard actions
@@ -644,7 +644,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         }
         else if (!addr.IsValid()) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Limecoinx address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Bitsend address"));
         }
         else // Valid address
         {

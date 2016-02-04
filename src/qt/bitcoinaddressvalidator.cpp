@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Limecoinx developers
+// Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -89,7 +89,7 @@ BitcoinAddressCheckValidator::BitcoinAddressCheckValidator(QObject *parent) :
 QValidator::State BitcoinAddressCheckValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
-    // Validate the passed Limecoinx address
+    // Validate the passed Bitsend address
     CBitcoinAddress addr(input.toStdString());
     if (addr.IsValid())
         return QValidator::Acceptable;

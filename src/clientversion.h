@@ -2,18 +2,18 @@
 #define CLIENTVERSION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #else
 //
 // client versioning and copyright year
 //
 
-// These need to be macros, as version.cpp's and limecoinx-qt.rc's voodoo requires it
+// These need to be macros, as version.cpp's and bitsend-qt.rc's voodoo requires it
 #define CLIENT_VERSION_MAJOR       0
-#define CLIENT_VERSION_MINOR       11
-#define CLIENT_VERSION_REVISION    2
-#define CLIENT_VERSION_BUILD       36
-// limxfork darkcoin 11.2.17
+#define CLIENT_VERSION_MINOR       1
+#define CLIENT_VERSION_REVISION    0
+#define CLIENT_VERSION_BUILD       1
+// bsdfork darkcoin 11.2.17
 
 
 // Set to true for release, false for prerelease or test build

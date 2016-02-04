@@ -58,7 +58,7 @@
     <string>New Address</string>
    </property>
    <property name="icon">
-    <iconset resource="../limecoinx.qrc">
+    <iconset resource="../bitsend.qrc">
      <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
    </property>
   </widget>
@@ -75,7 +75,7 @@
     <string notr="true"/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../limecoinx.qrc">:/images/paper_wallet</pixmap>
+    <pixmap resource="../bitsend.qrc">:/images/paper_wallet</pixmap>
    </property>
   </widget>
   <widget class="VerticalLabel" name="addressText2">
@@ -150,7 +150,7 @@
     <string>Print</string>
    </property>
    <property name="icon">
-    <iconset resource="../limecoinx.qrc">
+    <iconset resource="../bitsend.qrc">
      <normaloff>:/icons/receiving_addresses</normaloff>:/icons/receiving_addresses</iconset>
    </property>
   </widget>
@@ -180,7 +180,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>LIMX Wallets?</string>
+    <string>BSD Wallets?</string>
    </property>
   </widget>
   <widget class="QComboBox" name="walletCount">
@@ -330,7 +330,7 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../limecoinx.qrc"/>
+  <include location="../bitsend.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -1,6 +1,6 @@
-MASTERNODE BUILD NOTES [written by MangledBlue & LIMXSUPPORT]
+MASTERNODE BUILD NOTES [written by MangledBlue & BSDSUPPORT]
 ======================
-Some notes on how to build a Limx Masternode in Ubuntu server. Using Windows Qt Client to configure.
+Some notes on how to build a Bitsend Masternode in Ubuntu server. Using Windows Qt Client to configure.
 
 
 System requirements
@@ -11,15 +11,15 @@ of memory and 15GB space available when running a Masternode.
 
 Notes
 -----
-You need exactly 5000 LIMX to run a Masternode. Masternode input must have at least 15 confirmations.
+You need exactly 5000 BSD to run a Masternode. Masternode input must have at least 15 confirmations.
 Building a new wallet.dat is also recommended (a seperate .conf is needed). Masternode earnings 
 going to this wallet.dat and address. Send only new earned coins away and pay attention for transaction fees.
-To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self tx of 5000 LIMX.
+To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self tx of 5000 BSD.
 
 
 Start
 -----
-Open your Windows Limecoinx-Qt Client and open the debug console.
+Open your Windows Bitsend-Qt Client and open the debug console.
 
 	masternode genkey
 	copy the generated code to a text file
@@ -28,7 +28,7 @@ Open your Windows Limecoinx-Qt Client and open the debug console.
 	copy the generated address to a text file
 	---
 	encryptwallet "strong password"
-	Send 5000 LIMX to "address 0"
+	Send 5000 BSD to "address 0"
 	
 	
 	Rent a Vultr Ubuntu 14.10 64bit server
@@ -83,20 +83,20 @@ Build Instructions: Ubuntu & Debian
 	$ sudo ufw status
 
 
-	Install LIMX
+	Install BSD
 	------------
-	mkdir .limecoinx
-	cd .limecoinx
-	wget http://sourceforge.net/projects/limx/files/limx-linux64.zip
-	unzip limx-linux64.zip
+	mkdir .bitsend
+	cd .bitsend
+	wget http://sourceforge.net/projects/bitsend/files/bitsend-linux64.zip
+	unzip bitsend-linux64.zip
 	
-	$ sudo cp limecoinxd /usr/bin
-	$ sudo chmod 775 /usr/bin/limecoinxd
+	$ sudo cp bitsendd /usr/bin
+	$ sudo chmod 775 /usr/bin/bitsendd
 
 	
-	Create a limecoinx.conf in nano
+	Create a bitsend.conf in nano
 	-------------------------------
-	cd .limecoinx
+	cd .bitsend
 	nano
 	---
 	rpcuser=<anything>
@@ -123,41 +123,41 @@ Build Instructions: Ubuntu & Debian
 	
 	at bottom of newly created file, insert:
 	---
-	@reboot /usr/bin/limecoinxd -shrinkdebugfile    [to start masternode  (or wherever you keep your daemon)]
-	*/20 * * * * /usr/bin/limecoinxd
+	@reboot /usr/bin/bitsendd -shrinkdebugfile    [to start masternode  (or wherever you keep your daemon)]
+	*/20 * * * * /usr/bin/bitsendd
 	---
 	save nano: Ctrl +  O
 	exit nano: Ctrl +  X
 	cd
 	
 	
-	Manually start limecoinxd
+	Manually start bitsendd
 	-------------------------
-	cd .limecoinx
-	./limecoinxd	
+	cd .bitsend
+	./bitsendd	
 	
 	
 	limcoinxd commands
 	------------------
-	./limecoinxd getinfo
-	./limecoinxd masternode list
-	./limecoinxd masternode debug
-	./limecoinxd masternode stop
-	./limecoinxd help
+	./bitsendd getinfo
+	./bitsendd masternode list
+	./bitsendd masternode debug
+	./bitsendd masternode stop
+	./bitsendd help
 	
 	
 	Start Mining
 	----------------------
-	./limecoinx.cli setgenerate true
-	./limecoinx.cli gethashespersec
+	./bitsend.cli setgenerate true
+	./bitsend.cli gethashespersec
 	
 
-Windows Limecoinx-Qt Client configuration 
+Windows Bitsend-Qt Client configuration 
 -----------------------------------------
-(if using a seperate wallet.dat, a seperate limecoinx.conf is needed)
+(if using a seperate wallet.dat, a seperate bitsend.conf is needed)
 
 	---
-	go to limecoinx.conf in %appdata%
+	go to bitsend.conf in %appdata%
 	
 	---
 	rpcuser=<anything>
@@ -169,12 +169,12 @@ Windows Limecoinx-Qt Client configuration
 	---
 
 	
-	Windows Limecoinx-Qt Client console
+	Windows Bitsend-Qt Client console
 	-----------------------------------
 	masternode start <PSW>
 
 	
-	Windows Limecoinx-Qt Client console commands
+	Windows Bitsend-Qt Client console commands
 	--------------------------------------------
 	masternode list    	 <<find your MN IP
 	masternode debug
@@ -186,8 +186,8 @@ Windows Limecoinx-Qt Client configuration
 Updating the Masternode & OpenSSL version
 -----------------------------------------
 
-	./limecoinx.cli setgenerate false
-	./limecoinxd stop
+	./bitsend.cli setgenerate false
+	./bitsendd stop
 
 	$ sudo apt-get remove libssl1.0.0*
 	$ sudo apt-get install -f
@@ -203,9 +203,9 @@ Updating the Masternode & OpenSSL version
 
 	$ openssl version
 	
-	./limecoinxd
-	./limecoinxd getinfo
+	./bitsendd
+	./bitsendd getinfo
 	
-	./limecoinx.cli setgenerate true
-	./limecoinx.cli gethashespersec
+	./bitsend.cli setgenerate true
+	./bitsend.cli gethashespersec
 

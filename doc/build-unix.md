@@ -1,6 +1,6 @@
 UNIX BUILD NOTES
 ====================
-Some notes on how to build Limecoinx in Unix. 
+Some notes on how to build Bitsend in Unix. 
 
 To Build
 ---------------------
@@ -10,7 +10,7 @@ To Build
 
 	make
 	
-	strip limecoinxd limecoinx-cli limecoinx-qt
+	strip bitsendd bitsend-cli bitsend-qt
 
 This will build bitcoin-qt as well if the dependencies are met.
 
@@ -96,7 +96,7 @@ Optional:
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
-If you want to build Limecoinx-Qt, make sure that the required packages for Qt development
+If you want to build Bitsend-Qt, make sure that the required packages for Qt development
 are installed. Either Qt 4 or Qt 5 are necessary to build the GUI.
 If both Qt 4 and Qt 5 are installed, Qt 4 will be used. Pass `--with-gui=qt5` to configure to choose Qt5.
 To build without GUI pass `--without-gui`.
@@ -113,12 +113,12 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a Limecoinx-qt executable will be
+Once these are installed, they will be found by configure and a Bitsend-qt executable will be
 built by default.
 
 Notes
 -----
-The release is built with GCC and then "strip Limecoinxd" to strip the debug
+The release is built with GCC and then "strip Bitsendd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -136,10 +136,10 @@ Berkeley DB
 It is recommended to use Berkeley DB 4.8. If you have to build it yourself:
 
 ```bash
-LIMECOINX_ROOT=$(pwd)
+BITSEND_ROOT=$(pwd)
 
 # Pick some path to install BDB to, here we create a directory within the bitcoin directory
-BDB_PREFIX="${LIMECOINX_ROOT}/db4"
+BDB_PREFIX="${BITSEND_ROOT}/db4"
 mkdir -p $BDB_PREFIX
 
 # Fetch the source and verify that it is not tampered with
@@ -155,7 +155,7 @@ cd db-4.8.30.NC/build_unix/
 make install
 
 # Configure Bitcoin Core to use our own-built instance of BDB
-cd $LIMECOINX_ROOT
+cd $BITSEND_ROOT
 ./configure (other args...) LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/"
 ```
 
@@ -172,7 +172,7 @@ If you need to build Boost yourself:
 
 Security
 --------
-To help make your LIMECOINX installation more secure by making certain attacks impossible to
+To help make your BITSEND installation more secure by making certain attacks impossible to
 exploit even if a vulnerability is found, binaries are hardened by default.
 This can be disabled with:
 
@@ -196,7 +196,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./limecoinx
+    	scanelf -e ./bitsend
 
     The output should contain:
      TYPE
@@ -204,13 +204,13 @@ Hardening enables the following features:
 
 * Non-executable Stack
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, limecoinx should be built with a non-executable stack
+    vulnerable buffers are found. By default, bitsend should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./limecoinx`
+    `scanelf -e ./bitsend`
 
     the output should contain:
 	STK/REL/PTL
@@ -220,7 +220,7 @@ Hardening enables the following features:
 
 Disable-wallet mode
 --------------------
-When the intention is to run only a P2P node without a wallet, limecoinx may be compiled in
+When the intention is to run only a P2P node without a wallet, bitsend may be compiled in
 disable-wallet mode with:
 
     ./configure --disable-wallet

@@ -1,11 +1,11 @@
 *.tar.gz
 
 *.exe
-src/limecoinx
-src/limecoinxd
-src/limecoinx-cli
-src/test/test_limecoinx
-src/qt/test/test_limecoinx-qt
+src/bitsend
+src/bitsendd
+src/bitsend-cli
+src/test/test_bitsend
+src/qt/test/test_bitsend-qt
 
 Makefile.in
 aclocal.m4
@@ -13,8 +13,8 @@ autom4te.cache/
 config.log
 config.status
 configure
-src/limecoinx-config.h
-src/limecoinx-config.h.in
+src/bitsend-config.h
+src/bitsend-config.h.in
 src/build-aux/
 src/stamp-h1
 share/setup.nsi
@@ -36,7 +36,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.limecoinx
+.bitsend
 *.a
 *.pb.cc
 *.pb.h
@@ -51,12 +51,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-limecoinx-qt
-Limecoinx-Qt.app
+bitsend-qt
+Bitsend-Qt.app
 
 # Unit-tests
 Makefile.test
-limecoinx-qt_test
+bitsend-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -76,7 +76,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_limecoinx.coverage/
+test_bitsend.coverage/
 total.coverage/
 coverage_percent.txt
 

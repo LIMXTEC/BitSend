@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "limecoinx-config.h"
+#include "bitsend-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -71,10 +71,10 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     /* Display elements init */
     
     /* Theme selector */
-    ui->theme->addItem(QString("LIMX-blue"), QVariant("drkblue"));
-    ui->theme->addItem(QString("LIMX-LILA"), QVariant("limxlila"));
-    ui->theme->addItem(QString("LIMX-BLACK"), QVariant("limxblack"));
-    ui->theme->addItem(QString("LIMX-traditional"), QVariant("trad"));
+    ui->theme->addItem(QString("BSD-blue"), QVariant("drkblue"));
+    ui->theme->addItem(QString("BSD-LILA"), QVariant("bitsendlila"));
+    ui->theme->addItem(QString("BSD-BLACK"), QVariant("bitsendblack"));
+    ui->theme->addItem(QString("BSD-traditional"), QVariant("trad"));
 
     
     /* Language selector */
