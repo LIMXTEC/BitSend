@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Bitsend developers
+// Copyright (c) 2014-2015 The BitSend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -38,7 +38,6 @@ enum DiffMode {
     DIFF_KGW2    = 3,// Retarget using Kimoto Gravity Well
     DIFF_DGW     = 4,
     DIFF_DELTA   = 5,
-    DIFF_KGW3    = 6,
     DIFF_NULL    = 0,// Retarget using Dark Gravity Wave v3
 };
 
@@ -47,9 +46,9 @@ class CBloomFilter;
 class CInv;
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
-static const unsigned int MAX_BLOCK_SIZE = 1000000;
+static const unsigned int MAX_BLOCK_SIZE = 4000000; //bsddev 04.02.2016 Old 1 MB
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
-static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
+static const unsigned int DEFAULT_BLOCK_MAX_SIZE = MAX_BLOCK_SIZE*3/4; // bsddev 04.02.2016 Old 750 KB
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 50000;
@@ -68,7 +67,7 @@ static const unsigned int BLOCKFILE_CHUNK_SIZE = 0x1000000; // 16 MiB
 /** The pre-allocation chunk size for rev?????.dat files (since 0.8) */
 static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-static const int COINBASE_MATURITY = 25; //bitsenddev 13-04-2015
+static const int COINBASE_MATURITY = 25; //bsddev 13-04-2015
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 /** Maximum number of script-checking threads allowed */
