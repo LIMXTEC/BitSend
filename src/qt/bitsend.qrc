@@ -65,10 +65,10 @@
         <file alias="drkblue_qtreeview_selected">res/images/drkblue_qtreeview_selected.png</file>
         <file alias="drkblue_walletFrame_bg">res/images/drkblue_walletFrame_bg.png</file>
         <file alias="drkblue_walletFrame">res/images/drkblue_walletFrame.png</file>
-	<file alias="bitsendlila_walletFrame_bg">res/images/limecoinxlila_walletFrame_bg.png</file>
-        <file alias="bitsendlila_walletFrame">res/images/limecoinxlila_walletFrame.png</file>
-	<file alias="bitsendblack_walletFrame_bg">res/images/limecoinxblack_walletFrame_bg.png</file>
-        <file alias="bitsendblack_walletFrame">res/images/limecoinxblack_walletFrame.png</file>
+	<file alias="bitsendlila_walletFrame_bg">res/images/limxlila_walletFrame_bg.png</file>
+        <file alias="bitsendlila_walletFrame">res/images/limxlila_walletFrame.png</file>
+	<file alias="bitsendblack_walletFrame_bg">res/images/limxblack_walletFrame_bg.png</file>
+        <file alias="bitsendblack_walletFrame">res/images/limxblack_walletFrame.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="paper_wallet">res/images/paper_wallet.png</file>
