@@ -291,8 +291,8 @@ RES_IMAGES = \
   res/images/splash.png \
   res/images/splash_testnet.png \
   res/images/paper_wallet.png \
-  res/images/bitsend_logo_horizontal.png \
-  res/images/bitsend_logo_horizontal_white.png \
+  res/images/limecoinx_logo_horizontal.png \
+  res/images/limecoinx_logo_horizontal_white.png \
   res/images/drkblue_downArrow.png \
   res/images/drkblue_downArrow_small.png \
   res/images/drkblue_upArrow_small.png \
@@ -301,10 +301,10 @@ RES_IMAGES = \
   res/images/drkblue_qtreeview_selected.png \
   res/images/drkblue_walletFrame_bg.png \
   res/images/drkblue_walletFrame.png \
-  res/images/bitsendlila_walletFrame_bg.png \
-  res/images/bitsendlila_walletFrame.png \
-  res/images/bitsendblack_walletFrame_bg.png \
-  res/images/bitsendblack_walletFrame.png
+  res/images/limxlila_walletFrame_bg.png \
+  res/images/limxlila_walletFrame.png \
+  res/images/limxblack_walletFrame_bg.png \
+  res/images/limxblack_walletFrame.png
 
 RES_CSS = \
   res/css/drkblue.css \
