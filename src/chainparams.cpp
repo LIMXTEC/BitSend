@@ -49,7 +49,7 @@ public:
         nSubsidyHalvingInterval = 210000; //bitsenddev 04-2015   UNBEKANNT FUNKTION
 
         // Genesis block            Sprungmarke AAAAB
-        const char* pszTimestamp = "Bitsend ofrece amplia gama de servicios y mejoras para ti";
+        const char* pszTimestamp = "limecoinX ofrece amplia gama de servicios y mejoras para ti";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
