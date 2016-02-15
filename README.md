@@ -11,11 +11,11 @@ Copyright (c) 2016 BitSend Core Developers
 
 Release 14.02.2016
 ----------------
-The Version 1.0.0.1 add new function. 
-- BitSend Diffbreak - This function protect the chain for heavy miners. After 6 hours can every CPU create a new block.
-- KGW3 - The new KGW is smarter and has a hard retarget after 60 Blocks (Backup)
-- The new Version supports 4 MB block
-- We increase the TX fee's for more security (Blockspaming)
+The Version 1.0.0.1 adds new functions. 
+- BitSend Diffbreak - This function protects the chain against huge miners. After 6 hours every CPU-Miner is able to create new blocks.
+- KGW3 - The new KGW setup is now smarter and has a new hard retarget after 60 Blocks (Backup)
+- The new Version supports 4 MB blocks
+- We increased the TX fee's for more security (Blockspaming)
 
 Rebrand from LimecoinX to BitSend
 ----------------
@@ -26,12 +26,12 @@ Rebrand from LimecoinX to BitSend
 
 Release 21.04.2015
 ----------------
-The Version 0.11.X add new function. 
+The Version 0.11.X adds new functions. 
 
 - 0.11.2.17 Release notes
 - Bitsend Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. Please feel free and compare against forks https://github.com/dashpay
-- The old bitsend versions 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/Bitsend
-- The first limecoin currency is full implemnted in the BSD chain, done by iparn https://github.com/IParn/limecoin
+- The old bitsend version 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/Bitsend
+- The first limecoin currency is full implemented in the BSD chain, done by iparn https://github.com/IParn/limecoin
 - The following changes are introduced in this major release. 
 
 Bitsend Core:
