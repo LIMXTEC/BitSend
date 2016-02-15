@@ -1,5 +1,6 @@
 # BSD - Bitsend Core 1.0.0.1
-http://www.bitsend.eu
+----------------
+http://www.bitsend.info Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
 Copyright (c) 2014-2015 Dash Core Developers
@@ -9,6 +10,7 @@ Copyright (c) 2014-2015 LIMX Core Developers
 Copyright (c) 2016 BitSend Core Developers
 
 Release 14.02.2016
+----------------
 The Version 1.0.0.1 add new function. 
 - BitSend Diffbreak - This function protect the chain for heavy miners. After 6 hours can every CPU create a new block.
 - KGW3 - The new KGW is smarter and has a hard retarget after 60 Blocks (Backup)
@@ -16,6 +18,7 @@ The Version 1.0.0.1 add new function.
 - We increase the TX fee's for more security (Blockspaming)
 
 Rebrand from LimecoinX to BitSend
+----------------
 - New GFX and Name
 - Limecoinx ->BitSend
 - LIMX ->BSD
