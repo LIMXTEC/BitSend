@@ -1,17 +1,25 @@
-# BSD - Bitsend Core staging tree 0.11
-
+# BSD - Bitsend Core 1.0.0.1
 http://www.bitsend.eu
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
-
 Copyright (c) 2014-2015 Dash Core Developers
-
 Copyright (c) 2014 Doge Core Developers
-
 Copyright (c) 2013 Dr Kimoto Chan
+Copyright (c) 2014-2015 LIMX Core Developers
+Copyright (c) 2016 BitSend Core Developers
 
-Copyright (c) 2014-2015 BSD Core Developers
+Release 14.02.2016
+The Version 1.0.0.1 add new function. 
+- BitSend Diffbreak - This function protect the chain for heavy miners. After 6 hours can every CPU create a new block.
+- KGW3 - The new KGW is smarter and has a hard retarget after 60 Blocks (Backup)
+- The new Version supports 4 MB block
+- We increase the TX fee's for more security (Blockspaming)
 
+Rebrand from LimecoinX to BitSend
+- New GFX and Name
+- Limecoinx ->BitSend
+- LIMX ->BSD
+- new protocol 70077
 
 Release 21.04.2015
 ----------------
