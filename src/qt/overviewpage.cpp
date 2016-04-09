@@ -146,6 +146,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
         ui->darksendAuto->setText("(" + tr("Disabled") + ")");
         ui->darksendReset->setText("(" + tr("Disabled") + ")");
         ui->frameDarksend->setEnabled(false);
+        ui->frameDarksend->setVisible(false);
     }else if(!fEnableDarksend){
         ui->toggleDarksend->setText(tr("Start Darksend Mixing"));
     } else {
