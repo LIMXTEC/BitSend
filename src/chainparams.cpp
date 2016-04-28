@@ -141,7 +141,7 @@ public:
         /*vSeeds.push_back(CDNSSeedData("5.56.209.255", "5.56.209.255"));   //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015 vSeeds.push_back(CDNSSeedData("bitsend.qa", "testnet-seed.bitsend.qa"));
         *///legacy seeders
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));      //bitsenddev 04-2015
+        vSeeds.push_back(CDNSSeedData("Clusterserver1", "37.120.190.76"));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015
 
