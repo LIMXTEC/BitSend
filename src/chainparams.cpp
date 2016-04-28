@@ -73,10 +73,6 @@ public:
         vSeeds.push_back(CDNSSeedData("bitnodes.net", "0.bsd.bitnodes.net"));
         vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
         vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
-    //    vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
-    //    vSeeds.push_back(CDNSSeedData("27.192.144.58", "27.192.144.58"));
-    //    vSeeds.push_back(CDNSSeedData("212.227.91.190", "212.227.91.190"));  //p2pool.palim.eu
-    //    vSeeds.push_back(CDNSSeedData("5.9.39.9", "5.9.39.9"));       //Bchain
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
         base58Prefixes[SCRIPT_ADDRESS] = list_of( 5);                    //bitsenddev 04-2015   script addresses start with '7'
