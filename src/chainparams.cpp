@@ -70,7 +70,7 @@ public:
 
      //   vSeeds.push_back(CDNSSeedData("", ""));  //Bitsendian
      //   vSeeds.push_back(CDNSSeedData("", "")); //coinwall
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));
+        vSeeds.push_back(CDNSSeedData("bitnodes.net", "0.bsd.bitnodes.net"));
         vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
         vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
     //    vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
