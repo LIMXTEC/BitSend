@@ -27,7 +27,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
     if(IsInitialBlockDownload()) return;
 
     if (strCommand == "mnget") { //Masternode Payments Request Sync
-        if(fLiteMode) return; //disable all Darksend/Masternode related functionality
+        if(fProUserModeDarksendInstantX2) return; //disable all Darksend/Masternode related functionality
 
         if(pfrom->HasFulfilledRequest("mnget")) {
             LogPrintf("mnget - peer already asked me for the list\n");

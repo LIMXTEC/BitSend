@@ -50,8 +50,8 @@
     </qresource>
     <qresource prefix="/css">
         <file alias="drkblue">res/css/drkblue.css</file>
-	<file alias="bitsendlila">res/css/bitsendlila.css</file>
-	<file alias="bitsendblack">res/css/bitsendblack.css</file>
+	<file alias="bitsendlila">res/css/drkblue.css</file>
+	<file alias="bitsendblack">res/css/drkblue.css</file>
     </qresource>	    
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

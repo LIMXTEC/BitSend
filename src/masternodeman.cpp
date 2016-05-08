@@ -543,7 +543,7 @@ void CMasternodeMan::ProcessMasternodeConnections()
 void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
 
-    if(fLiteMode) return; //disable all Darksend/Masternode related functionality
+    if(fProUserModeDarksendInstantX2) return; //disable all Darksend/Masternode related functionality
     if(IsInitialBlockDownload()) return;
 
     LOCK(cs_process_message);

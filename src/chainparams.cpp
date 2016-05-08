@@ -70,14 +70,10 @@ public:
 
      //   vSeeds.push_back(CDNSSeedData("", ""));  //Bitsendian
      //   vSeeds.push_back(CDNSSeedData("", "")); //coinwall
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));
+        vSeeds.push_back(CDNSSeedData("212.24.111.56", "0.bsd.bitnodes.net"));
         vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
         vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
-    //    vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
-    //    vSeeds.push_back(CDNSSeedData("27.192.144.58", "27.192.144.58"));
-    //    vSeeds.push_back(CDNSSeedData("212.227.91.190", "212.227.91.190"));  //p2pool.palim.eu
-    //    vSeeds.push_back(CDNSSeedData("5.9.39.9", "5.9.39.9"));       //Bchain
-
+    
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
         base58Prefixes[SCRIPT_ADDRESS] = list_of( 5);                    //bitsenddev 04-2015   script addresses start with '7'
         base58Prefixes[SECRET_KEY] =     list_of(204);                    //bitsenddev 04-2015  Pubkey +128 bitsenddev
@@ -145,7 +141,7 @@ public:
         /*vSeeds.push_back(CDNSSeedData("5.56.209.255", "5.56.209.255"));   //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015 vSeeds.push_back(CDNSSeedData("bitsend.qa", "testnet-seed.bitsend.qa"));
         *///legacy seeders
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));      //bitsenddev 04-2015
+        vSeeds.push_back(CDNSSeedData("Clusterserver1", "37.120.190.76"));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015
 

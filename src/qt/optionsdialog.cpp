@@ -72,8 +72,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     
     /* Theme selector */
     ui->theme->addItem(QString("BSD-blue"), QVariant("drkblue"));
-    ui->theme->addItem(QString("BSD-LILA"), QVariant("bitsendlila"));
-    ui->theme->addItem(QString("BSD-BLACK"), QVariant("bitsendblack"));
+    ui->theme->addItem(QString("BSD-purpel"), QVariant("bitsendlila"));
+    ui->theme->addItem(QString("BSD-grey"), QVariant("bitsendblack"));
     ui->theme->addItem(QString("BSD-traditional"), QVariant("trad"));
 
     

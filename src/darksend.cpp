@@ -46,7 +46,7 @@ int RequestedMasterNodeList = 0;
 
 void CDarksendPool::ProcessMessageDarksend(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if(fLiteMode) return; //disable all Darksend/Masternode related functionality
+    if(fProUserModeDarksendInstantX2) return; //disable all Darksend/Masternode related functionality
     if(IsInitialBlockDownload()) return;
 
     if (strCommand == "dsa") { //Darksend Accept Into Pool
@@ -1471,7 +1471,7 @@ bool CDarksendPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     std::vector<CTxOut> vOut;
 
     // initial phase, find a Masternode
-    if(!sessionFoundMasternode){
+ if(!sessionFoundMasternode){
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
 
@@ -1514,19 +1514,23 @@ LogPrintf("DoAutomaticDenominating -- Invalid collateral, resetting.\n");
                 //non-denom's are incompatible
                 if((dsq.nDenom & (1 << 4))) continue;
 
+				bool fUsed = false;
                 //don't reuse Masternodes
                 BOOST_FOREACH(CTxIn usedVin, vecMasternodesUsed){
                     if(dsq.vin == usedVin) {
-                        continue;
+                        fUsed = true; // BitSendDev 08.05.2015 master (#559)
+                        break;
                     }
                 }
+				if(fUsed) continue;
+				
                 std::vector<CTxIn> vTempCoins;
                 std::vector<COutput> vTempCoins2;
 
                 // Try to match their denominations if possible
                 if (!pwalletMain->SelectCoinsByDenominations(dsq.nDenom, nValueMin, nBalanceNeedsAnonymized, vTempCoins, vTempCoins2, nValueIn, 0, nDarksendRounds)){
                     LogPrintf("DoAutomaticDenominating - Couldn't match denominations %d\n", dsq.nDenom);
-                    continue;
+                    continue; 
                 }
 
                 // connect to Masternode and submit the queue request
@@ -1562,12 +1566,14 @@ LogPrintf("DoAutomaticDenominating -- Invalid collateral, resetting.\n");
                     LogPrintf("DoAutomaticDenominating --- error connecting \n");
                     strAutoDenomResult = _("Error connecting to Masternode.");
                     dsq.time = 0; //remove node
-                    return DoAutomaticDenominating();
+                    continue; // BitSendDev 08.05.2015 master (#559)
                 }
             }
         }
-
+		// do not initiate queue if we are a liquidity proveder to avoid useless inter-mixing
+		if(nLiquidityProvider) return false;
         int i = 0;
+		// BitSendDev 08-05-2016 master (#623) 
 
         // otherwise, try one randomly
         while(i < 10)
@@ -1646,11 +1652,23 @@ LogPrintf("DoAutomaticDenominating -- Invalid collateral, resetting.\n");
 
 bool CDarksendPool::PrepareDarksendDenominate()
 {
-    // Submit transaction to the pool if we get here, use sessionDenom so we use the same amount of money
-    std::string strError = pwalletMain->PrepareDarksendDenominate(0, nDarksendRounds);
-    LogPrintf("DoAutomaticDenominating : Running Darksend denominate. Return '%s'\n", strError.c_str());
+    std::string strError = "";
+	//BitSendDev 08-05-2016      master (#607) 
+	// Submit transaction to the pool if we get here
+	// Try to use only inputs with the same number of rounds starting from lowest number of rounds possible
+	for(int i = 0; i < nDarksendRounds; i++) {
+		strError = pwalletMain->PrepareDarksendDenominate(i, i+1);
+		LogPrintf("DoAutomaticDenominating : Running Darksend denominate for %d rounds. Return '%s'\n", i, strError);
+        if(strError == "") return true;
+    }
+
+    // We failed? That's strange but let's just make final attempt and try to mix everything
+    strError = pwalletMain->PrepareDarksendDenominate(0, nDarksendRounds);
+    LogPrintf("DoAutomaticDenominating : Running Darksend denominate for all rounds. Return '%s'\n", strError);
 
     if(strError == "") return true;
+	
+	// Should never actually get here but just in case
 
     strAutoDenomResult = strError;
     LogPrintf("DoAutomaticDenominating : Error running denominate, %s\n", strError.c_str());
@@ -2189,7 +2207,7 @@ void CDarksendPool::RelayCompletedTransaction(const int sessionID, const bool er
 //TODO: Rename/move to core
 void ThreadCheckDarkSendPool()
 {
-    if(fLiteMode) return; //disable all Darksend/Masternode related functionality
+    if(fProUserModeDarksendInstantX2) return; //disable all Darksend/Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
     RenameThread("bitsend-darksend");

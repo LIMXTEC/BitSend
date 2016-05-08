@@ -95,7 +95,8 @@ inline void MilliSleep(int64_t n)
 //Bitsend only features
 
 extern bool fMasterNode;
-extern bool fLiteMode;
+extern bool fProUserModeDarksendInstantX;
+extern bool fProUserModeDarksendInstantX2;
 extern int nInstantXDepth;
 extern int nDarksendRounds;
 extern int nAnonymizeDarkcoinAmount;

@@ -307,9 +307,7 @@ RES_IMAGES = \
   res/images/limxblack_walletFrame.png
 
 RES_CSS = \
-  res/css/drkblue.css \
-  res/css/bitsendlila.css \
-  res/css/bitsendlila.css
+  res/css/drkblue.css 
   
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 

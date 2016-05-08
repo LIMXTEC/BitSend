@@ -3237,7 +3237,7 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
         mapOrphanBlocksByPrev.erase(hashPrev);
     }
 
-    if(!fLiteMode){
+    if(!fProUserModeDarksendInstantX2){
         if (!fImporting && !fReindex && chainActive.Height() > Checkpoints::GetTotalBlocksEstimate()){
             darkSendPool.NewBlock();
             masternodePayments.ProcessBlock(GetHeight()+10);
