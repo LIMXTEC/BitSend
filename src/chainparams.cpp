@@ -70,10 +70,17 @@ public:
 
      //   vSeeds.push_back(CDNSSeedData("", ""));  //Bitsendian
      //   vSeeds.push_back(CDNSSeedData("", "")); //coinwall
+<<<<<<< HEAD
         vSeeds.push_back(CDNSSeedData("212.24.111.56", "0.bsd.bitnodes.net"));
         vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
         vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
     
+=======
+        vSeeds.push_back(CDNSSeedData("bitnodes.net", "0.bsd.bitnodes.net"));
+        vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
+        vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
+
+>>>>>>> origin/DEV
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
         base58Prefixes[SCRIPT_ADDRESS] = list_of( 5);                    //bitsenddev 04-2015   script addresses start with '7'
         base58Prefixes[SECRET_KEY] =     list_of(204);                    //bitsenddev 04-2015  Pubkey +128 bitsenddev
