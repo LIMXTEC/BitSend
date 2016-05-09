@@ -336,9 +336,10 @@ std::string HelpMessage(HelpMessageMode hmm)
         strUsage += "                         " + _("This is intended for regression testing tools and app development.") + "\n";
         strUsage += "                         " + _("In this mode -genproclimit controls how many blocks are generated immediately.") + "\n";
     }
-    strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
-    strUsage += "  -testnet               " + _("Use the test network") + "\n";
-    strUsage += "  -promode=<n>          " + _("Disable all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
+    strUsage += "  -shrinkdebugfile         " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
+    strUsage += "  -testnet                 " + _("Use the test network") + "\n";
+    strUsage += "  -promode=<n>             " + _("Activate all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
+	strUsage += "  -disable_DS_InstantX=<n> " + _("Disable all Masternode and Darksend related functionality in Core (0-1, default: 0)") + "\n";
 
     strUsage += "\n" + _("Masternode options:") + "\n";
     strUsage += "  -masternode=<n>            " + _("Enable the client to act as a masternode (0-1, default: 0)") + "\n";
@@ -1309,9 +1310,9 @@ if(nWalletBackups > 0)
         nInstantXDepth = 0;
     }
 
-    //lite mode disables all Masternode and Darksend related functionality
-    fProUserModeDarksendInstantX = GetBoolArg("-promode", true); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
-	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_Darksend_InstantX_on_Core", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+    //-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
+    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
     if(fMasterNode && !fProUserModeDarksendInstantX && fProUserModeDarksendInstantX2){
         return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
     }
