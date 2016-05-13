@@ -1285,6 +1285,10 @@ if(nWalletBackups > 0)
     }
 
     fEnableDarksend = GetBoolArg("-enabledarksend", false);
+     if((fEnableDarksend && !fProUserModeDarksendInstantX) || (fEnableDarksend && fProUserModeDarksendInstantX2)){
+        return InitError("You can not start Darksend without -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+    }
+    //BitSenddev 13-05-2016
 
     nDarksendRounds = GetArg("-darksendrounds", 2);
     if(nDarksendRounds > 16) nDarksendRounds = 16;
@@ -1313,9 +1317,9 @@ if(nWalletBackups > 0)
     //-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
     fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
 	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
-    if(fMasterNode && !fProUserModeDarksendInstantX && fProUserModeDarksendInstantX2){
+    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
         return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
-    }
+    } //BitSenddev 13-05-2016
 
     LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
 	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
