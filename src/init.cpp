@@ -1295,7 +1295,7 @@ if(nWalletBackups > 0)
     if(nDarksendRounds < 1) nDarksendRounds = 1;
 
     nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
-    if(((nLiquidityProvider != 0 && !fProUserModeDarksendInstantX) || ((nLiquidityProvider != 0 && fProUserModeDarksendInstantX2)){
+    if((nLiquidityProvider != 0 && !fProUserModeDarksendInstantX) || (nLiquidityProvider != 0 && fProUserModeDarksendInstantX2)){
         return InitError("You can only start the LiquidityProvider with -promode=1 and -disable_Darksend_InstantX_on_Core=0");
     }
     if(nLiquidityProvider != 0) {

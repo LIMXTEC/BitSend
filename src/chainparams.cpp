@@ -79,12 +79,18 @@ public:
 		vSeeds.push_back(CDNSSeedData("212.101.16.116", "212.101.16.116"));
 		vSeeds.push_back(CDNSSeedData("2.25.181.53", "2.25.181.53"));
 		vSeeds.push_back(CDNSSeedData("37.2.133.145", "37.2.133.145"));
-		vSeeds.push_back(CDNSSeedData("85.214.44.16", "85.214.44.16"));
-		vSeeds.push_back(CDNSSeedData(198.44.190.37", "198.44.190.37"));
+		vSeeds.push_back(CDNSSeedData("198.44.190.37", "198.44.190.37"));
 		vSeeds.push_back(CDNSSeedData("70.27.93.7", "70.27.93.7"));
 		vSeeds.push_back(CDNSSeedData("64.231.105.21", "64.231.105.21"));
 		vSeeds.push_back(CDNSSeedData("5.231.235.53", "5.231.235.53"));
-		
+		vSeeds.push_back(CDNSSeedData("137.135.57.119", " 137.135.57.119"));
+		vSeeds.push_back(CDNSSeedData(" 104.207.131.249", " 104.207.131.249"));
+		vSeeds.push_back(CDNSSeedData("185.5.53.176", "185.5.53.176"));
+		vSeeds.push_back(CDNSSeedData("5.230.193.239", "5.230.193.239"));
+		vSeeds.push_back(CDNSSeedData("37.120.190.76", "37.120.190.76"));
+		vSeeds.push_back(CDNSSeedData("45.58.51.22", "45.58.51.22"));
+		vSeeds.push_back(CDNSSeedData("113.183.0.159", "113.183.0.159"));
+		 
 		
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
