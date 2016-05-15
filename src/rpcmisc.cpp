@@ -69,7 +69,7 @@ Value getinfo(const Array& params, bool fHelp)
     if (pwalletMain) {
         obj.push_back(Pair("walletversion", pwalletMain->GetVersion()));
         obj.push_back(Pair("balance",       ValueFromAmount(pwalletMain->GetBalance())));
-        if(!fLiteMode)
+        if(fProUserModeDarksendInstantX)
             obj.push_back(Pair("darksend_balance",       ValueFromAmount(pwalletMain->GetAnonymizedBalance())));
     }
 #endif

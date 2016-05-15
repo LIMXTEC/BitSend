@@ -133,7 +133,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     darksendActionCheck = 0;
     lastNewBlock = 0;
 
-    if(fLiteMode){
+    if(!fProUserModeDarksendInstantX){
         ui->frameDarksend->setVisible(false);
     } else if(!fMasterNode) {
         timer = new QTimer(this);
@@ -165,7 +165,7 @@ void OverviewPage::handleTransactionClicked(const QModelIndex &index)
 
 OverviewPage::~OverviewPage()
 {
-    if(!fLiteMode && !fMasterNode) disconnect(timer, SIGNAL(timeout()), this, SLOT(darkSendStatus()));
+    if(fProUserModeDarksendInstantX && !fMasterNode) disconnect(timer, SIGNAL(timeout()), this, SLOT(darkSendStatus()));
     delete ui;
 }
 

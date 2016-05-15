@@ -35,7 +35,7 @@ int nCompleteTXLocks;
 
 void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if(fLiteMode) return; //disable all darksend/masternode related functionality
+    if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
     if(!IsSporkActive(SPORK_2_INSTANTX)) return;
     if(IsInitialBlockDownload()) return;
 

@@ -27,7 +27,7 @@ std::map<int, CSporkMessage> mapSporksActive;
 
 void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if(fLiteMode) return; //disable all darksend/masternode related functionality
+    if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
 
     if (strCommand == "spork")
     {

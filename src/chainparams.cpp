@@ -21,10 +21,7 @@ using namespace boost::assign;
 
 unsigned int pnSeed[] =
 {
-  0x2E659772, 0x6C3DB332, 0x68CF9F6E, 0x2D3F011B,
-  0x0538D1FF, 0x95ACA665, 0x1BC0903A, 0xC6C766A5, 0xB924485A, 0x7526EDE1, 0xB924485A, 0x5519C5BA, 0x3EDD537F, 0x6C3DB332,
-  0x904CEF42, 0x0587BF16, 0xA2F3CEE2, 0xCDD18F2A, 0x2F115487, 0xD4E35BBE, 0x5D989674, 0xBCA61AD1, 0x94FB46C2, 0x904CEF42,
-  0x2E69D968, 0x05092709,
+0x05C4BE52, 0x68EEBC2C, 0x55D6444B, 0x5B996D95, 0x9B5E9244, 0x4FACD744, 0x2D20B813, 0x5D9ED890, 0x6DF82145, 0xD4186F38, 0xD4651074, 0x0219B535, 0x25028591, 0x55D62C10, 0xC62CBE25, 0x461B5D07,0x40E76915, 0x05E7EB35,
 };
 // //bitsenddev 04-2015   New Seeds
 
@@ -68,15 +65,33 @@ public:
         assert(hashGenesisBlock == uint256("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a"));   //bitsend   
         assert(genesis.hashMerkleRoot == uint256("0xc0c4f68994b78c31b6c7d7a8a895b5a085857adfbb73699bcfe5a247a357df57"));   //checkpoint 38
 
-     //   vSeeds.push_back(CDNSSeedData("", ""));  //Bitsendian
-     //   vSeeds.push_back(CDNSSeedData("", "")); //coinwall
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));
-        vSeeds.push_back(CDNSSeedData("37.120.190.76 ", "37.120.190.76 "));
-        vSeeds.push_back(CDNSSeedData("108.61.179.50", "108.61.179.50")); // Aika
-    //    vSeeds.push_back(CDNSSeedData("104.207.159.110", "104.207.159.110"));  // Rapta Coingahter
-    //    vSeeds.push_back(CDNSSeedData("27.192.144.58", "27.192.144.58"));
-    //    vSeeds.push_back(CDNSSeedData("212.227.91.190", "212.227.91.190"));  //p2pool.palim.eu
-    //    vSeeds.push_back(CDNSSeedData("5.9.39.9", "5.9.39.9"));       //Bchain
+
+   
+        vSeeds.push_back(CDNSSeedData("5.196.190.82", "5.196.190.82"));
+		vSeeds.push_back(CDNSSeedData("104.238.188.44", "104.238.188.44"));
+		vSeeds.push_back(CDNSSeedData("91.153.109.149", "91.153.109.149"));
+		vSeeds.push_back(CDNSSeedData("155.94.146.68", "155.94.146.68"));
+		vSeeds.push_back(CDNSSeedData("79.172.215.68", "79.172.215.68"));
+		vSeeds.push_back(CDNSSeedData("45.32.184.19", "45.32.184.19"));
+		vSeeds.push_back(CDNSSeedData("93.158.216.144", "93.158.216.144"));
+		vSeeds.push_back(CDNSSeedData("109.248.33.69", "109.248.33.69"));
+		vSeeds.push_back(CDNSSeedData("212.24.111.56", "212.24.111.56"));
+		vSeeds.push_back(CDNSSeedData("212.101.16.116", "212.101.16.116"));
+		vSeeds.push_back(CDNSSeedData("2.25.181.53", "2.25.181.53"));
+		vSeeds.push_back(CDNSSeedData("37.2.133.145", "37.2.133.145"));
+		vSeeds.push_back(CDNSSeedData("198.44.190.37", "198.44.190.37"));
+		vSeeds.push_back(CDNSSeedData("70.27.93.7", "70.27.93.7"));
+		vSeeds.push_back(CDNSSeedData("64.231.105.21", "64.231.105.21"));
+		vSeeds.push_back(CDNSSeedData("5.231.235.53", "5.231.235.53"));
+		vSeeds.push_back(CDNSSeedData("137.135.57.119", " 137.135.57.119"));
+		vSeeds.push_back(CDNSSeedData(" 104.207.131.249", " 104.207.131.249"));
+		vSeeds.push_back(CDNSSeedData("185.5.53.176", "185.5.53.176"));
+		vSeeds.push_back(CDNSSeedData("5.230.193.239", "5.230.193.239"));
+		vSeeds.push_back(CDNSSeedData("37.120.190.76", "37.120.190.76"));
+		vSeeds.push_back(CDNSSeedData("45.58.51.22", "45.58.51.22"));
+		vSeeds.push_back(CDNSSeedData("113.183.0.159", "113.183.0.159"));
+		 
+		
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
         base58Prefixes[SCRIPT_ADDRESS] = list_of( 5);                    //bitsenddev 04-2015   script addresses start with '7'
@@ -145,7 +160,7 @@ public:
         /*vSeeds.push_back(CDNSSeedData("5.56.209.255", "5.56.209.255"));   //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015 vSeeds.push_back(CDNSSeedData("bitsend.qa", "testnet-seed.bitsend.qa"));
         *///legacy seeders
-        vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));      //bitsenddev 04-2015
+        vSeeds.push_back(CDNSSeedData("Clusterserver1", "37.120.190.76"));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));      //bitsenddev 04-2015
         vSeeds.push_back(CDNSSeedData("", ""));       //bitsenddev 04-2015
 

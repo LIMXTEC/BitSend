@@ -97,11 +97,12 @@ using namespace std;
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
 string strMasterNodeAddr = "";
-bool fLiteMode = false;
-int nInstantXDepth = 1;
+bool fProUserModeDarksendInstantX = false;
+bool fProUserModeDarksendInstantX2 = false;
+int nInstantXDepth = 5;
 int nDarksendRounds = 2;
-int nAnonymizeDarkcoinAmount = 1000;
-int nLiquidityProvider = 0;
+int nAnonymizeDarkcoinAmount = 2500;
+int nLiquidityProvider = 1;
 /** Spork enforcement enabled time */
 int64_t enforceMasternodePaymentsTime = 4085657524;
 int nMasternodeMinProtocol = 0;

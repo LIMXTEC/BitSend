@@ -1,5 +1,5 @@
 WalletFrame {
-border-image: url(':/images/bitsendlila_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/bitsend_main_hg') 0 0 0 0 stretch stretch;
 border-top:0px solid #000;
 margin:0;
 padding:0;
@@ -11,7 +11,7 @@ background-color:#ffffff;
 
 .QFrame {
 background-color:transparent;
-border:0px solid #000;
+border:0px solid #fff;
 }
 
 QMenuBar {
@@ -40,24 +40,24 @@ color:#333;
 }
 
 QToolBar {
-background-color:#fff;
+background-color:#000;
 border:0px solid #000;
 padding:0;
 margin:0;
 }
 
 QToolBar > QToolButton {
-background-color:#fff;
+background-color:#000;
 border:0px solid #333;
 min-height:2.5em;
 padding: 0em 1em;
 font-weight:bold;
-color:#333;
+color:#fff;
 }
 
 QToolBar > QToolButton:checked {
-background-color:#42cd42;
-color:#fff;
+background-color:#fff;
+color:#333;
 font-weight:bold;
 }
 
@@ -73,7 +73,7 @@ color:#333333;
 }
 
 .QCheckBox { /* Checkbox Labels */
-color:#333;
+color:#333333;
 background-color:transparent;
 }
 
@@ -101,10 +101,10 @@ background-color:#f2f2f2;
 /*******************************************************/
 
 QPushButton { /* Global Button Style */
-background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #fff, stop: .1 #fff, stop: .95 #fff, stop: 1 #fff);
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #000, stop: .1 #000, stop: .95 #000, stop: 1 #000);
 border:0;
 border-radius:3px;
-color:#000;
+color:#ffffff;
 font-size:12px;
 font-weight:bold;
 padding-left:25px;
@@ -138,7 +138,7 @@ QComboBox:checked {
 background:#f2f2f2;
 }
 
-QComboBox:editable { 
+QComboBox:editable {
 background: #000;
 color:#616161;
 border:0px solid transparent;
@@ -154,7 +154,7 @@ border-image: url(':/images/drkblue_downArrow') 0 0 0 0 stretch stretch;
 }
 
 QComboBox QListView {
-background:#ffffff;
+background:#fff;
 border:1px solid #333;
 padding-right:1px;
 padding-left:1px;
@@ -414,13 +414,13 @@ min-height:15px;
 
 QDialog QWidget { /* Remove Annoying Focus Rectangle */
 outline: 0;
-} 
+}
 
 /*******************************************************/
 /* FILE MENU */
 
 /* Dialog: Open URI */
-QDialog#OpenURIDialog { 
+QDialog#OpenURIDialog {
 background-color:#f3f3f3;
 }
 
@@ -446,7 +446,7 @@ border:1px solid #9e9e9e;
 }
 
 /* Dialog: Sign / Verify Message */
-QDialog#SignVerifyMessageDialog { 
+QDialog#SignVerifyMessageDialog {
 background-color:#f3f3f3;
 }
 
@@ -486,7 +486,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QDialog#SignVerifyMessageDialog QPushButton#clearButton_SM:hover { 
+QDialog#SignVerifyMessageDialog QPushButton#clearButton_SM:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -510,7 +510,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QDialog#SignVerifyMessageDialog QPushButton#clearButton_VM:hover { 
+QDialog#SignVerifyMessageDialog QPushButton#clearButton_VM:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -520,7 +520,7 @@ border:1px solid #9e9e9e;
 }
 
 /* Dialog: Send and Receive */
-QWidget#AddressBookPage { 
+QWidget#AddressBookPage {
 background-color:#f3f3f3;
 }
 
@@ -654,7 +654,7 @@ min-width:180px;
 }
 
 QDialog#RPCConsole QPushButton#openDebugLogfileButton {
-max-width:90px;
+max-width:60px;
 }
 
 QDialog#RPCConsole QTextEdit#messagesWidget { /* Console Messages Window */
@@ -681,7 +681,7 @@ background:#ff0000;
 
 /* HELP MENU */
 
-/* Command Line Options Dialog */ 
+/* Command Line Options Dialog */
 QDialog#HelpMessageDialog {
 background-color:#f3f3f3;
 }
@@ -694,21 +694,21 @@ QDialog#HelpMessageDialog QScrollBar:vertical, QDialog#HelpMessageDialog QScroll
 border:0;
 }
 
-/* About bitsend Dialog */
+/* About Dash Dialog */
 QDialog#AboutDialog {
 background-color:#f3f3f3;
 }
 
-QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About bitsend Contents */
+QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Dash Contents */
 margin-left:10px;
 }
 
-QDialog#AboutDialog QLabel#label_2 { /* Margin for About bitsend text */
+QDialog#AboutDialog QLabel#label_2 { /* Margin for About Dash text */
 margin-right:10px;
 }
 
 /* Edit Address Dialog */
-QDialog#EditAddressDialog { 
+QDialog#EditAddressDialog {
 background-color:#f3f3f3;
 }
 
@@ -748,7 +748,7 @@ margin-left:20px;
 QWidget .QFrame#frame .QLabel#label { /* Available Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#000000;
 color:#ffffff;
 margin-right:5px;
 padding-right:5px;
@@ -757,57 +757,51 @@ font-size:16px;
 min-height:35px;
 }
 
-QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance - was 16px Bitsenddev */
+QWidget .QFrame#frame .QLabel#labelBalance { /* Available Balance wahr 16px Bitsenddev */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:14px;
 font-weight:bold;
-color:#fff;
+color:#000000;
 margin-left:14px;
 }
 
 QWidget .QFrame#frame .QLabel#label_3 { /* Pending Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frame .QLabel#labelUnconfirmed { /* Pending Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 margin-left:16px;
-color:#fff;
 }
 
 QWidget .QFrame#frame .QLabel#labelImmatureText { /* Immature Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frame .QLabel#labelImmature { /* Immature Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 margin-left:16px;
-color:#fff;
 }
 
 QWidget .QFrame#frame .QLabel#labelTotalText { /* Total Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frame .QLabel#labelTotal { /* Total Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 margin-left:16px;
-color:#fff;
 }
 
 /* DARKSEND WIDGET */
@@ -824,7 +818,7 @@ qproperty-geometry: rect(10 0 431 35);
 QWidget .QFrame#frameDarksend .QLabel#label_2 { /* Darksend Header */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#000000;
 color:#fff;
 margin-right:5px;
 padding-right:5px;
@@ -836,7 +830,6 @@ min-height:35px;
 QWidget .QFrame#frameDarksend .QLabel#labelDarksendSyncStatus { /* Darksend Sync Status */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 margin-left:20px;
-color:#fff;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget {
@@ -853,23 +846,22 @@ min-height:25px;
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#label_6 { /* Darksend Status Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#darksendEnabled { /* Darksend Status */
-color:#fff;
-} 
+
+}
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#label_7 { /* Darksend Completion Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
+
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QProgressBar#darksendProgress { /* Darksend Completion */
@@ -877,58 +869,55 @@ border: 1px solid #818181;
 border-radius: 1px;
 margin-right:35px;
 text-align: right;
-color:#fff;
+color:#818181;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QProgressBar#darksendProgress::chunk {
-background-color: #42cd42;
+background-color: #000;
 width:10px;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#labelAnonymizedText { /* Darksend Balance Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#labelAnonymized { /* Darksend Balance */
-color:#fff;
+
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#label_8 { /* Darksend Amount and Rounds Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#labelAmountRounds { /* Darksend Amount and Rounds */
-color:#fff;
+
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#label_9 { /* Darksend Submitted Denom Label */
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:230px;
-background-color:transparent;
+background-color:#f3f3f3;
 margin-right:5px;
 padding-right:5px;
-color:#fff;
 }
 
 QWidget .QFrame#frameDarksend #formLayoutWidget .QLabel#labelSubmittedDenom { /* Darksend Submitted Denom */
-color:#fff;
+
 }
 
 QWidget .QFrame#frameDarksend .QLabel#darksendStatus { /* Darksend Status Notifications */
 qproperty-alignment: 'AlignVCenter | AlignCenter';
 qproperty-geometry: rect(70 226 395 34);
 font-size:11px;
-color:#fff;
+color:#818181;
 }
 
 /* DARKSEND BUTTONS */
@@ -950,7 +939,7 @@ QWidget .QFrame#frameDarksend .QPushButton#toggleDarksend { /* Start Darksend Mi
 qproperty-geometry: rect(115 268 295 40);
 font-size:17px;
 font-weight:bold;
-color:#000;
+color:#ffffff;
 padding-left:10px;
 padding-right:10px;
 padding-top:5px;
@@ -958,7 +947,7 @@ padding-bottom:6px;
 }
 
 QWidget .QFrame#frameDarksend .QPushButton#toggleDarksend:hover {
-color:#fff;
+
 }
 
 QWidget .QFrame#frameDarksend .QPushButton#darksendAuto { /* Try Mix Button */
@@ -1005,14 +994,14 @@ QWidget .QFrame#frame_2 { /* Transactions Widget */
 min-width:410px;
 margin-right:20px;
 margin-left:0;
-background-image: url(':/images/bitsend_logo_horizontal_white');
+background-image: url(':/images/bitsend_logo_horizontal');
 background-repeat:none;
 }
 
 QWidget .QFrame#frame_2 .QLabel#label_4 { /* Recent Transactions Label */
 min-width:200px;
-color:#fff;
-margin-left:50px; /* 67px */
+color:#000;
+margin-left:67px;
 margin-top:123px;
 margin-right:5px;
 padding-right:5px;
@@ -1032,7 +1021,6 @@ QWidget .QFrame#frame_2 QListView { /* Transaction List */
 font-weight:normal;
 font-size:12px;
 max-width:369px;
-color:#fff;
 margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons */
 }
 
@@ -1044,7 +1032,6 @@ QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl > .QLabel { /* Default Font Color and  Size */
 font-weight:normal;
-color:#fff;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QPushButton#pushButtonCoinControl { /* Coin Control Inputs Button */
@@ -1054,7 +1041,7 @@ min-height:25px;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlFeatures { /* Coin Control Header */
-color:#fff;
+color:#000;
 font-weight:bold;
 font-size:14px;
 }
@@ -1064,15 +1051,12 @@ QDialog#SendCoinsDialog .QFrame#frameCoinControl .QWidget#widgetCoinControl { /*
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QWidget#widgetCoinControl > .QLabel { /* Coin Control Inputs Labels */
 padding:2px;
-color:#fff;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QCheckBox#checkBoxCoinControlChange { /* Custom Change Label */
-color:#fff;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QValidatedLineEdit#lineEditCoinControlChange { /* Custom Change Address */
-
 }
 
 QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlChangeLabel { /* Custom Change Address Validation Label */
@@ -1099,7 +1083,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QDialog#SendCoinsDialog .QPushButton#clearButton:hover { 
+QDialog#SendCoinsDialog .QPushButton#clearButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -1116,7 +1100,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QDialog#SendCoinsDialog .QPushButton#addButton:hover { 
+QDialog#SendCoinsDialog .QPushButton#addButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -1126,18 +1110,18 @@ border:1px solid #9e9e9e;
 }
 
 QDialog#SendCoinsDialog .QCheckBox#checkUseDarksend { /* Darksend Checkbox */
-color:#fff;
+color:#616161;
 font-weight:bold;
-/*background: qradialgradient(cx:0.5, cy:0.5, radius: 0.5, fx:0.5, fy:0.5, stop:0 rgba(248, 246, 246, 128), stop: 1 rgba(0, 0, 0, 0));*/
+background: qradialgradient(cx:0.5, cy:0.5, radius: 0.5, fx:0.5, fy:0.5, stop:0 rgba(248, 246, 246, 128), stop: 1 rgba(0, 0, 0, 0));
 border-radius:5px;
 padding-top:20px;
 padding-bottom:18px;
 }
 
 QDialog#SendCoinsDialog .QCheckBox#checkInstantX { /* InstantX Checkbox */
-color:#fff;
+color:#616161;
 font-weight:bold;
-/*background: qradialgradient(cx:0.5, cy:0.5, radius: 0.5, fx:0.5, fy:0.5, stop:0 rgba(248, 246, 246, 128), stop: 1 rgba(0, 0, 0, 0));*/
+background: qradialgradient(cx:0.5, cy:0.5, radius: 0.5, fx:0.5, fy:0.5, stop:0 rgba(248, 246, 246, 128), stop: 1 rgba(0, 0, 0, 0));
 border-radius:5px;
 padding-top:20px;
 padding-bottom:18px;
@@ -1148,7 +1132,7 @@ margin-right:20px;
 /* This QLabel uses name = "label" which conflicts with Address Book -> New Address */
 /* To maximize backwards compatibility this formatting has been removed */
 
-QDialog#SendCoinsDialog QLabel#label { 
+QDialog#SendCoinsDialog QLabel#label {
 /*margin-left:20px;
 margin-right:-2px;
 padding-right:-2px;
@@ -1159,13 +1143,12 @@ border-radius:5px;
 padding-top:20px;
 padding-bottom:20px;*/
 min-height:27px;
-color:#fff;
 }
 
 QDialog#SendCoinsDialog QLabel#labelBalance {
 margin-left:0px;
 padding-left:0px;
-color:#fff;
+color:#333333;
 /* font-weight:bold;
 border-radius:5px;
 padding-top:20px;
@@ -1177,18 +1160,18 @@ min-height:27px;
 /* SEND COINS ENTRY */
 
 QStackedWidget#SendCoinsEntry .QFrame#SendCoins > .QLabel { /* Send Coin Entry Labels */
-background-color:#fff;
+background-color:#000000;
 min-width:102px;
 font-weight:bold;
 font-size:11px;
-color:#000;
+color:#ffffff;
 min-height:25px;
 margin-right:5px;
 padding-right:5px;
 }
 
 QStackedWidget#SendCoinsEntry .QFrame#SendCoins .QLabel#amountLabel {
-background-color:#42cd42; 
+background-color:#42cd42;
 }
 
 QStackedWidget#SendCoinsEntry .QValidatedLineEdit#payTo { /* Pay To Input Field */
@@ -1358,9 +1341,9 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 /* RECEIVE COINS */
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
-background-color:#fff;
+background-color:#000000;
 min-width:102px;
-color:#000;
+color:#ffffff;
 font-weight:bold;
 font-size:11px;
 padding-right:5px;
@@ -1376,9 +1359,9 @@ padding-right:5px;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_3 { /* Message Label */
-background-color:#fff;
+background-color:#000000;
 min-width:102px;
-color:#000;
+color:#ffffff;
 font-weight:bold;
 font-size:11px;
 padding-right:5px;
@@ -1392,7 +1375,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QWidget#ReceiveCoinsDialog .QFrame#frame2 QPushButton#clearButton:hover { 
+QWidget#ReceiveCoinsDialog .QFrame#frame2 QPushButton#clearButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -1409,7 +1392,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QWidget#ReceiveCoinsDialog .QFrame#frame QPushButton#showRequestButton:hover { 
+QWidget#ReceiveCoinsDialog .QFrame#frame QPushButton#showRequestButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -1426,7 +1409,7 @@ padding-left:10px;
 padding-right:10px;
 }
 
-QWidget#ReceiveCoinsDialog .QFrame#frame QPushButton#removeRequestButton:hover { 
+QWidget#ReceiveCoinsDialog .QFrame#frame QPushButton#removeRequestButton:hover {
 background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: .01 #f6f6f6, stop: .1 rgba(240, 240, 240, 255), stop: .95 rgba(240, 240, 240, 255), stop: 1 #ebebeb);
 color:#333;
 }
@@ -1436,7 +1419,7 @@ border:1px solid #9e9e9e;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame .QLabel#label_6 { /* Requested Payments History Label */
-color:#fff;
+color:#000;
 font-weight:bold;
 font-size:14px;
 }
@@ -1474,5 +1457,3 @@ background-color:#f3f3f3;
 QDialog#TransactionDescDialog QTextEdit { /* Contents of Receive Coin Dialog */
 border:1px solid #d7d7d7;
 }
-
-

@@ -48,7 +48,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
 
     // Bitsend specific
-    if(fLiteMode) {
+    if(!fProUserModeDarksendInstantX) {
         ui->checkUseDarksend->setChecked(false);
         ui->checkUseDarksend->setVisible(false);
         ui->checkInstantX->setVisible(false);

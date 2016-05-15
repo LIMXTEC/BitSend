@@ -336,9 +336,10 @@ std::string HelpMessage(HelpMessageMode hmm)
         strUsage += "                         " + _("This is intended for regression testing tools and app development.") + "\n";
         strUsage += "                         " + _("In this mode -genproclimit controls how many blocks are generated immediately.") + "\n";
     }
-    strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
-    strUsage += "  -testnet               " + _("Use the test network") + "\n";
-    strUsage += "  -litemode=<n>          " + _("Disable all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
+    strUsage += "  -shrinkdebugfile         " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
+    strUsage += "  -testnet                 " + _("Use the test network") + "\n";
+    strUsage += "  -promode=<n>             " + _("Activate all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
+	strUsage += "  -disable_DS_InstantX=<n> " + _("Disable all Masternode and Darksend related functionality in Core (0-1, default: 0)") + "\n";
 
     strUsage += "\n" + _("Masternode options:") + "\n";
     strUsage += "  -masternode=<n>            " + _("Enable the client to act as a masternode (0-1, default: 0)") + "\n";
@@ -1284,12 +1285,19 @@ if(nWalletBackups > 0)
     }
 
     fEnableDarksend = GetBoolArg("-enabledarksend", false);
+     if((fEnableDarksend && !fProUserModeDarksendInstantX) || (fEnableDarksend && fProUserModeDarksendInstantX2)){
+        return InitError("You can not start Darksend without -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+    }
+    //BitSenddev 13-05-2016
 
     nDarksendRounds = GetArg("-darksendrounds", 2);
     if(nDarksendRounds > 16) nDarksendRounds = 16;
     if(nDarksendRounds < 1) nDarksendRounds = 1;
 
     nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
+    if((nLiquidityProvider != 0 && !fProUserModeDarksendInstantX) || (nLiquidityProvider != 0 && fProUserModeDarksendInstantX2)){
+        return InitError("You can only start the LiquidityProvider with -promode=1 and -disable_Darksend_InstantX_on_Core=0");
+    }
     if(nLiquidityProvider != 0) {
         darkSendPool.SetMinBlockSpacing(std::min(nLiquidityProvider,100)*15);
         fEnableDarksend = true;
@@ -1309,15 +1317,17 @@ if(nWalletBackups > 0)
         nInstantXDepth = 0;
     }
 
-    //lite mode disables all Masternode and Darksend related functionality
-    fLiteMode = GetBoolArg("-litemode", false);
-    if(fMasterNode && fLiteMode){
-        return InitError("You can not start a masternode in litemode");
-    }
+    //-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
+    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
+        return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+    } //BitSenddev 13-05-2016
 
-    LogPrintf("fLiteMode %d\n", fLiteMode);
-    LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
-    LogPrintf("Darksend rounds %d\n", nDarksendRounds);
+    LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
+	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
+    LogPrintf("nInstantXDepth %d  #", nInstantXDepth);
+    LogPrintf("Darksend rounds %d  #", nDarksendRounds);
     LogPrintf("Anonymize Bitsend Amount %d\n", nAnonymizeDarkcoinAmount);
 
     /* Denominations
@@ -1329,11 +1339,12 @@ if(nWalletBackups > 0)
        1DRK+1000 == (.1DRK+100)*10
        10DRK+10000 == (1DRK+1000)*10
     */
-    darkSendDenominations.push_back( (100      * COIN)+100000 );
+    darkSendDenominations.push_back( (100      * COIN)+100000 );  //BitSenddev for a quick sync 08-05-2016
     darkSendDenominations.push_back( (10       * COIN)+10000 );
     darkSendDenominations.push_back( (1        * COIN)+1000 );
     darkSendDenominations.push_back( (.1       * COIN)+100 );
-    /* Disabled till we need them
+	/*
+	Ursprünglich
     darkSendDenominations.push_back( (.01      * COIN)+10 );
     darkSendDenominations.push_back( (.001     * COIN)+1 );
     */

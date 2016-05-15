@@ -291,25 +291,23 @@ RES_IMAGES = \
   res/images/splash.png \
   res/images/splash_testnet.png \
   res/images/paper_wallet.png \
-  res/images/limecoinx_logo_horizontal.png \
-  res/images/limecoinx_logo_horizontal_white.png \
+  res/images/bitsend_logo_horizontal.png \
   res/images/drkblue_downArrow.png \
   res/images/drkblue_downArrow_small.png \
   res/images/drkblue_upArrow_small.png \
   res/images/drkblue_leftArrow_small.png \
   res/images/drkblue_rightArrow_small.png \
   res/images/drkblue_qtreeview_selected.png \
-  res/images/drkblue_walletFrame_bg.png \
-  res/images/drkblue_walletFrame.png \
-  res/images/limxlila_walletFrame_bg.png \
-  res/images/limxlila_walletFrame.png \
-  res/images/limxblack_walletFrame_bg.png \
-  res/images/limxblack_walletFrame.png
+  res/images/bitsend_main_hg.png \
+  res/images/bitsend_theme1_hg.png \
+  res/images/bitsend_theme2_hg.png \
+  res/images/bitsend_theme3_hg.png
 
 RES_CSS = \
-  res/css/drkblue.css \
-  res/css/bitsendlila.css \
-  res/css/bitsendlila.css
+  res/css/bitsend_main.css \
+  res/css/bitsend_theme1.css \
+  res/css/bitsend_theme2.css \
+  res/css/bitsend_theme3.css 
   
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 

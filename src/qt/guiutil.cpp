@@ -785,8 +785,8 @@ QString loadStyleSheet()
         cssName = QString(":/css/") + theme; 
     }
     else {
-        cssName = QString(":/css/drkblue");  
-        settings.setValue("theme", "drkblue");
+        cssName = QString(":/css/bitsend_main");  
+        settings.setValue("theme", "bitsend_main");
     }
     
     QFile qFile(cssName);      
