@@ -4,7 +4,7 @@
 
 #include "addrman.h"
 
-#include "hash.h"
+#include "hash/hash.h"
 #include "serialize.h"
 
 using namespace std;

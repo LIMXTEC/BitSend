@@ -7,7 +7,7 @@
 #include "script.h"
 
 #include "core.h"
-#include "hash.h"
+#include "hash/hash.h"
 #include "key.h"
 #include "keystore.h"
 #include "sync.h"
