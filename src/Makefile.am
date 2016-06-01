@@ -43,7 +43,8 @@ BITCOIN_CORE_H = \
   darksend.h \
   darksend-relay.h \
   db.h \
-  hash/hash.h \
+  hash/bitsend11hash.h \
+  hash/bitsend17hash.h \
   init.h \
   instantx.h \
   key.h \
@@ -79,7 +80,13 @@ BITCOIN_CORE_H = \
   hash/sph_simd.h \
   hash/sph_skein.h \
   hash/sph_types.h \
-  spork.h \
+  hash/sph_fugue.h \
+  hash/sph_hamsi.h \
+  hash/sph_haval.h \
+  hash/sph_shabal.h \
+  hash/sph_sha2.h \
+  hash/sph_whirlpool.h \
+  hash/spork.h \
   sync.h \
   threadsafety.h \
   tinyformat.h \
@@ -176,6 +183,12 @@ libbitsend_common_a_SOURCES = \
   hash/shavite.c \
   hash/keccak.c \
   hash/skein.c \
+  hash/fugue.c \
+  hash/hamsi.c \
+  hash/haval.c \
+  hash/sha2.c \
+  hash/shabal.c \
+  hash/whirlpool.c \
   spork.cpp \
   hash/bmw.c \
   hash/simd.c \

@@ -20,7 +20,8 @@ HEADERS += \
     ../src/crypter.h \
     ../src/darksend.h \
     ../src/db.h \
-    ../src/hash.h \
+    ../src/bitsend11hash.h \
+	../src/bitsend17hash.h \
     ../src/init.h \
     ../src/instantx.h \
     ../src/keepass.h \
@@ -42,18 +43,25 @@ HEADERS += \
     ../src/rpcserver.h \
     ../src/script.h \
     ../src/serialize.h \
-    ../src/sph_blake.h \
-    ../src/sph_bmw.h \
-    ../src/sph_cubehash.h \
-    ../src/sph_echo.h \
-    ../src/sph_groestl.h \
-    ../src/sph_jh.h \
-    ../src/sph_keccak.h \
-    ../src/sph_luffa.h \
-    ../src/sph_shavite.h \
-    ../src/sph_simd.h \
-    ../src/sph_skein.h \
-    ../src/sph_types.h \
+    ../src/hash/sph_blake.h \
+    ../src/hash/sph_bmw.h \
+    ../src/hash/sph_cubehash.h \
+    ../src/hash/sph_echo.h \
+    ../src/hash/sph_groestl.h \
+    ../src/hash/sph_jh.h \
+    ../src/hash/sph_keccak.h \
+    ../src/hash/sph_luffa.h \
+    ../src/hash/sph_shavite.h \
+    ../src/hash/sph_simd.h \
+    ../src/hash/sph_skein.h \
+    ../src/hash/sph_types.h \
+	../src/hash/sph_cubehash.h \ ff
+    ../src/hash/sph_hamsi.h \
+    ../src/hash/sph_fugue.h \
+    ../src/hash/sph_shabal.h \
+    ../src/hash/sph_whirlpool.h \
+    ../src/hash/sph_sha2.h \
+    ../src/hash/sph_haval.h \
     ../src/sync.h \
     ../src/threadsafety.h \
     ../src/tinyformat.h \
@@ -122,35 +130,25 @@ HEADERS += \
 SOURCES += \
     ../src/activemasternode.cpp \
     ../src/addrman.cpp \
-    ../src/aes_helper.c \
     ../src/alert.cpp \
     ../src/allocators.cpp \
     ../src/base58.cpp \
-    ../src/blake.c \
     ../src/bloom.cpp \
-    ../src/bmw.c \
     ../src/chainparams.cpp \
     ../src/checkpoints.cpp \
     ../src/coins.cpp \
     ../src/core.cpp \
     ../src/crypter.cpp \
-    ../src/cubehash.c \
     ../src/bitsend-cli.cpp \
     ../src/bitsendd.cpp \
     ../src/darksend.cpp \
     ../src/db.cpp \
-    ../src/echo.c \
-    ../src/groestl.c \
-    ../src/hash.cpp \
     ../src/init.cpp \
     ../src/instantx.cpp \
-    ../src/jh.c \
-    ../src/keccak.c \
     ../src/keepass.cpp \
     ../src/key.cpp \
     ../src/keystore.cpp \
     ../src/leveldbwrapper.cpp \
-    ../src/luffa.c \
     ../src/main.cpp \
     ../src/masternode.cpp \
     ../src/masternodeconfig.cpp \
@@ -171,9 +169,27 @@ SOURCES += \
     ../src/rpcserver.cpp \
     ../src/rpcwallet.cpp \
     ../src/script.cpp \
-    ../src/shavite.c \
-    ../src/simd.c \
-    ../src/skein.c \
+	../src/hash/aes_helper.c \
+	../src/hash/blake.c \
+	../src/hash/bmw.c \
+	../src/hash/cubehash.c \
+	../src/hash/luffa.c \
+	../src/hash/hash.cpp \ 
+    ../src/hash/jh.c \
+    ../src/hash/keccak.c \
+	../src/hash/echo.c \
+    ../src/hash/groestl.c \
+    ../src/hash/shavite.c \
+    ../src/hash/simd.c \
+    ../src/hash/fugue.c \
+	../src/hash/hamsi.c \
+	../src/hash/hamsi_helper.c\
+	../src/hash/haval.c \
+	../src/hash/haval_helper.c \
+	../src/hash/md_helper.c \
+	../src/hash/sha2.c \
+	../src/hash/skein.c \
+	../src/hash/whirlpool.c \
     ../src/sync.cpp \
     ../src/txdb.cpp \
     ../src/txmempool.cpp \
