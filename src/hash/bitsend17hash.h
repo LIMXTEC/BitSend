@@ -2,7 +2,7 @@
 #define HASHX17_H
 
 #include "uint256.h"
-#include "chainparams.h" // for LogPrintf BitSendDev
+//#include "chainparams.h" // for LogPrintf BitSendDev
 
 
 #include "sph_blake.h"
@@ -87,7 +87,7 @@ GLOBAL sph_haval256_5_context   z_haval;
 template<typename T1>
 inline uint256 HashX17(const T1 pbegin, const T1 pend)
 {
-    LogPrintf("X11 Hash \n");
+    //LogPrintf("X11 Hash \n");
 	sph_blake512_context      ctx_blake;
     sph_bmw512_context        ctx_bmw;
     sph_groestl512_context    ctx_groestl;

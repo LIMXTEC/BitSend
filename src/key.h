@@ -7,8 +7,8 @@
 #define BITCOIN_KEY_H
 
 #include "allocators.h"
-#include "hash/bitsend11hash"
-#include "hash/bitsend17hash"
+#include "hash/bitsend11hash.h"
+#include "hash/bitsend17hash.h"
 #include "serialize.h"
 #include "uint256.h"
 

@@ -71,11 +71,11 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     /* Display elements init */
     
     /* Theme selector */
-    ui->theme->addItem(QString("BitSend-main"), QVariant("bitsend_main"));
-    ui->theme->addItem(QString("BitSend-manga"), QVariant("bitsend_theme1"));
-    ui->theme->addItem(QString("BitSend-shanghai"), QVariant("bitsend_theme2"));
-	ui->theme->addItem(QString("BitSend-spring"), QVariant("bitsend_theme3"));
-    ui->theme->addItem(QString("BitSend-traditional"), QVariant("trad"));
+    ui->theme->addItem(QString("Blue arrow"), QVariant("bitsend_main"));
+    ui->theme->addItem(QString("Linux red"), QVariant("bitsend_theme1"));
+    ui->theme->addItem(QString("Blue City Sky"), QVariant("bitsend_theme2"));
+	ui->theme->addItem(QString("Lambo Car"), QVariant("bitsend_theme3"));
+    ui->theme->addItem(QString("Bitcoin Classic"), QVariant("trad"));
 
     
     /* Language selector */
