@@ -189,6 +189,7 @@ libbitsend_common_a_SOURCES = \
   hash/sha2.c \
   hash/shabal.c \
   hash/whirlpool.c \
+  hash/sph_sha2big.c \
   spork.cpp \
   hash/bmw.c \
   hash/simd.c \

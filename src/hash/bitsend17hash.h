@@ -1,7 +1,9 @@
 #ifndef HASHX17_H
 #define HASHX17_H
 
-#include "uint256.h"
+#include "../serialize.h" 
+#include "../uint256.h"  //Stock
+#include "../version.h"
 //#include "chainparams.h" // for LogPrintf BitSendDev
 
 
@@ -26,6 +28,10 @@
 #ifndef QT_NO_DEBUG
 #include <string>
 #endif
+
+#include <vector>  //??
+#include <openssl/ripemd.h> //??
+#include <openssl/sha.h> //??
 
 #ifdef GLOBALDEFINED
 #define GLOBAL
@@ -84,6 +90,9 @@ GLOBAL sph_haval256_5_context   z_haval;
 #define ZWHIRLPOOL (memcpy(&ctx_whirlpool, &z_whirlpool, sizeof(z_whirlpool)))
 #define ZSHA2 (memcpy(&ctx_sha2, &z_sha2, sizeof(z_sha2)))
 #define ZHAVAL (memcpy(&ctx_haval, &z_haval, sizeof(z_haval)))
+
+
+
 template<typename T1>
 inline uint256 HashX17(const T1 pbegin, const T1 pend)
 {
