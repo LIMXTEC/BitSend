@@ -14,6 +14,10 @@ Bakc to KGW @ Block 95000 22-05-2015
 
 ################################
 
+Fees Main 61 TX 500 
+
+################################
+
 const int64_t nLongTimeLimit   = 12 * 60 * 60; 
 if (BlockReading->nHeight > 139950){
  if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
