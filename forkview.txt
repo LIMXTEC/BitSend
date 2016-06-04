@@ -16,6 +16,30 @@ Bakc to KGW @ Block 95000 22-05-2015
 
 Fees Main 61 TX 500 
 
+TESTNETFORKBLOCK=10
+MAINNETFORKBLOCK=210000
+
+if(!TestNet) {
+
+   nheight =chainActive.Height();
+   if(nheight >=TESTNETFORKBLOCK){
+		  return HashX17(BEGIN(nVersion), END(nNonce));
+         }
+		 else
+		 {
+		 return HashX11(BEGIN(nVersion), END(nNonce));
+		 }
+		 }
+		 else{
+	if(nheight >=MAINNETFORKBLOCK){
+		  return HashX17(BEGIN(nVersion), END(nNonce));
+         }
+		 else
+		 {
+		 return HashX11(BEGIN(nVersion), END(nNonce));
+		 }
+		  }
+
 ################################
 
 const int64_t nLongTimeLimit   = 12 * 60 * 60; 
