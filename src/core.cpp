@@ -6,6 +6,8 @@
 
 #include "core.h"
 #include "util.h"
+#include "main.h"
+#include "uint256.h"
 
 std::string COutPoint::ToString() const
 {
