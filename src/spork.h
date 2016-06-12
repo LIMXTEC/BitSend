@@ -69,9 +69,8 @@ public:
     int64_t nValue;
     int64_t nTimeSigned;
 
-     uint256 GetHash(){ uint256 n;
-	    int nHeight =chainActive.Height();
-	    if (nHeight <=210000){
+     uint256 GetHash(){ uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
+	    if (pindexPrev->nHeight <=210000){
      n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
 	}
     else {
