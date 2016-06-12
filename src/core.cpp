@@ -217,14 +217,16 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
 
 uint256 CBlockHeader::GetHash() const
 {
-	int nHeight =chainActive.Height();
-	if (nHeight <=210000){
+	CBlockIndex* pindexPrev = chainActive.Tip();
+	//pblock->LastHeight = pindexPrev->nHeight;
+	if (pindexPrev->nHeight <=210000){
     return HashX11(BEGIN(nVersion), END(nNonce));
 	}
     else {
 	   return HashX17(BEGIN(nVersion), END(nNonce));
 	}
 	
+
 }
 uint256 CBlock::BuildMerkleTree() const
 {
