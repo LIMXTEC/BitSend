@@ -318,10 +318,10 @@ bool CMasternodePayments::Sign(CMasternodePaymentWinner& winner)
 }
 
 uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
-{int nHeight =chainActive.Height();
-    uint256 n1 = blockHash; uint256 n2,n3,n4;
-    if (nHeight <=210000){
-    n2 = HashX11(BEGIN(n1), END(n1));
+{
+    uint256 n1 = blockHash; uint256 n2, n3; CBlockIndex* pindexPrev = chainActive.Tip();
+    if (pindexPrev->nHeight <=210000){ 
+     n2 = HashX11(BEGIN(n1), END(n1));
       n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
 	}
     else {
@@ -329,7 +329,7 @@ uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
       n3 = HashX17(BEGIN(vin.prevout.hash), END(vin.prevout.hash));}
     //uint256 n2 = HashX11(BEGIN(n1), END(n1));
    // uint256 n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-     n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
+    uint256 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
 
     //printf(" -- CMasternodePayments CalculateScore() n2 = %d \n", n2.Get64());
     //printf(" -- CMasternodePayments CalculateScore() n3 = %d \n", n3.Get64());
