@@ -1426,6 +1426,18 @@ double ConvertBitsToDouble(unsigned int nBits)
 
     return dDiff;
 }
+uint256 CBlockHeader::GetHash() const
+{
+	
+    int nHeight = GetHeight();
+	//pblock->LastHeight = pindexPrev->nHeight;
+	if (nHeight <=210000){
+    return HashX11(BEGIN(nVersion), END(nNonce));
+	}
+    else {
+	   return HashX17(BEGIN(nVersion), END(nNonce));
+	}
+}
 
 int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 {
