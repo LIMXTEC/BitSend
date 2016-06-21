@@ -59,9 +59,9 @@ bool fLargeWorkInvalidChainFound = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64_t CTransaction::nMinTxFee = 5000;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000
+int64_t CTransaction::nMinTxFee = 50000;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000 dash 
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
-int64_t CTransaction::nMinRelayTxFee = 500; // 12-05-2015 old 1000
+int64_t CTransaction::nMinRelayTxFee = 5000; // 12-05-2015 old 1000 dash
 
 struct COrphanBlock {
     uint256 hashBlock;
