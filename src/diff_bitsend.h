@@ -144,6 +144,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 bnNew /= PastRateTargetSeconds;
         }
 	/*
+	// KGW4 increased rapidly the Diff if Blocktime to last block under 20 sec.
     const int nShortTimeLimit = 20;
 	int64_t nActualTimespanshort = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
 	LogPrintf(" %d nActualTimespanshort", nActualTimespanshort );
