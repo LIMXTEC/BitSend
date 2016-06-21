@@ -77,6 +77,8 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
         const CBlockIndex *BlockLastSolved = pindexLast;
         const CBlockIndex *BlockReading = pindexLast;
+		/// Shortbeak
+		// const CBlockIndex* pindexFirst = pindexLast;
         const CBlockHeader *BlockCreating = pblock;// Bitsenddev add from old KGW
         BlockCreating = BlockCreating; //Bitsenddev add from old KGW
         uint64_t PastBlocksMass = 0;
@@ -141,8 +143,23 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 bnNew *= PastRateActualSeconds;
                 bnNew /= PastRateTargetSeconds;
         }
-        
-        ///////////////////////
+	/*
+    const int nShortTimeLimit = 20;
+	int64_t nActualTimespanshort = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
+	LogPrintf(" %d nActualTimespanshort", nActualTimespanshort );
+	if (BlockReading->nHeight > 220000){
+	if(nActualTimespanshort < nActualTimespanshort )
+		{
+		LogPrintf(" %d bnNew first 154", bnNew );
+		const int nLongShortNew1   = 85;
+		const int nLongShortNew2   = 100;
+		bnNew = bnNew * nLongShortNew1;	
+		bnNew = bnNew / nLongShortNew2;	
+		LogPrintf(" %d bnNew second 159", bnNew );
+		}
+	}
+	*/
+    /////////////////////// BitBreak
 	// LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
 	const int nLongTimeLimit   = 6 * 60 * 60; 
@@ -151,9 +168,22 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 	if (BlockReading->nHeight > 139800){ 
 	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
 	{
-	// Bitsenddev for 11.1.34 BSD Diffbreak function
+		if (BlockReading->nHeight > 220000)
+		{
+		//Hier löschen !! 22-06-2016
+		const int nLongTimebnNew   = 3500;
+		bnNew = bnNew * nLongTimebnNew;
+		/* New Setting inactive 
+		const int nLongTimebnNew   = 1000;
+		bnNew = bnNew * nLongTimebnNew;
+		*/
+		}
+		else
+		{
+	// Bitsenddev for 11.1.34 BSD BitBreak function
 	const int nLongTimebnNew   = 3500;
 	bnNew = bnNew * nLongTimebnNew;
+		}
        	//LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
 	}
 	}
