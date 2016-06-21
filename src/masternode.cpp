@@ -319,14 +319,20 @@ bool CMasternodePayments::Sign(CMasternodePaymentWinner& winner)
 
 uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
 {
-    uint256 n1 = blockHash; uint256 n2, n3; CBlockIndex* pindexPrev = chainActive.Tip();
-    if (pindexPrev->nHeight <=210000){ 
-     n2 = HashX11(BEGIN(n1), END(n1));
-      n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-	}
-    else {
-	    n2 = HashX17(BEGIN(n1), END(n1));
-      n3 = HashX17(BEGIN(vin.prevout.hash), END(vin.prevout.hash));}
+    uint256 n1 = blockHash; 
+    uint256 n2, n3; 
+    CBlockIndex* pindexPrev = chainActive.Tip();
+    if (pindexPrev->nHeight <= FORKX17_Main_Net)
+    { 
+	n2 = HashX11(BEGIN(n1), END(n1));
+	n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
+    	
+    }
+    else 
+    {
+	n2 = HashX17(BEGIN(n1), END(n1));
+	n3 = HashX17(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
+    }
     //uint256 n2 = HashX11(BEGIN(n1), END(n1));
    // uint256 n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
     uint256 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
