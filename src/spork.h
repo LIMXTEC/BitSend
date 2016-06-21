@@ -69,12 +69,16 @@ public:
     int64_t nValue;
     int64_t nTimeSigned;
 
-     uint256 GetHash(){ uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
-	    if (pindexPrev->nHeight <=210000){
-     n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
+     uint256 GetHash(){ 
+     	uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
+	if (pindexPrev->nHeight <= FORKX17_Main_Net)
+	{
+        	n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
 	}
-    else {
-	   n = HashX17(BEGIN(nSporkID), END(nTimeSigned));}
+	 else 
+	{
+		n = HashX17(BEGIN(nSporkID), END(nTimeSigned));
+	}
         //uint256 n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
         return n;
     }
