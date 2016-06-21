@@ -1493,6 +1493,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
 	//  244180
+	/* For later Stop by 20% /80%
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
 	// 252820
@@ -1509,7 +1510,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
 	// 287380 
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
-	/* For later ?
+	
 	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
 	// 296020
 	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
