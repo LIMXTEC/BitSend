@@ -1428,10 +1428,10 @@ double ConvertBitsToDouble(unsigned int nBits)
 }
 uint256 CBlockHeader::GetHash() const
 {
-	
+
     int nHeight = GetHeight();
 	//pblock->LastHeight = pindexPrev->nHeight;
-	if (nHeight <=210000){
+	if (nHeight <= FORKX17_Main_Net){
     return HashX11(BEGIN(nVersion), END(nNonce));
 	}
     else {
