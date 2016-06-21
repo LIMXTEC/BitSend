@@ -46,6 +46,8 @@ class CBlockIndex;
 class CBloomFilter;
 class CInv;
 
+static const int FORKX17_Main_Net = 200000;
+
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 4000000; //bsddev 04.02.2016 Old 1 MB
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
