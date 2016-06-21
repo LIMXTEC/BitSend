@@ -1924,11 +1924,22 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, CCoinsViewCach
             const CCoins &coins = inputs.GetCoins(prevout.hash);
 
             // If prev is coinbase, check that it's matured
+			// Update to 120 !!! 
             if (coins.IsCoinBase()) {
+				if(pindexPrev->nHeight < FORKX17_Main_Net)
+				{
                 if (nSpendHeight - coins.nHeight < COINBASE_MATURITY)
                     return state.Invalid(
                         error("CheckInputs() : tried to spend coinbase at depth %d", nSpendHeight - coins.nHeight),
                         REJECT_INVALID, "bad-txns-premature-spend-of-coinbase");
+				}
+				else
+				{
+					if (nSpendHeight - coins.nHeight < COINBASE_MATURITY2)
+						return state.Invalid(
+                        error("CheckInputs() : tried to spend coinbase at depth %d", nSpendHeight - coins.nHeight),
+                        REJECT_INVALID, "bad-txns-premature-spend-of-coinbase");
+				}
             }
 
             // Check for negative or overflow input values
