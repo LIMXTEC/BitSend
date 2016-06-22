@@ -183,6 +183,7 @@ public:
     }
 
     uint256 GetHash() const;
+	uint256 GetHash2() const;
 
     bool IsDust(int64_t nMinRelayTxFee) const
     {

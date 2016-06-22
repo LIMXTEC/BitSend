@@ -215,6 +215,11 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     return n;
 }
 
+uint256 CBlockHeader::GetHash2() const 
+{
+    return HashX11(BEGIN(nVersion), END(nNonce));
+}
+
 uint256 CBlock::BuildMerkleTree() const
 {
     vMerkleTree.clear();
@@ -267,8 +272,8 @@ uint256 CBlock::CheckMerkleBranch(uint256 hash, const std::vector<uint256>& vMer
 
 void CBlock::print() const
 {
-    LogPrintf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
-        GetHash().ToString(),
+	//GetHash2().ToString(),
+    LogPrintf("CBlock(hash=disable, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
         nVersion,
         hashPrevBlock.ToString(),
         hashMerkleRoot.ToString(),
