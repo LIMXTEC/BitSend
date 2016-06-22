@@ -214,6 +214,18 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     }
     return n;
 }
+/*uint256 CBlockHeader::GetHash() const
+{
+	CChain a1;
+	int nHeight= a1.Height();
+	//pblock->LastHeight = pindexPrev->nHeight;
+	if (nHeight <=10){
+    return HashX11(BEGIN(nVersion), END(nNonce));
+	}
+    else {
+	   return HashX17(BEGIN(nVersion), END(nNonce));
+	}
+}*/
 
 uint256 CBlockHeader::GetHash2() const 
 {
