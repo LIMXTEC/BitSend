@@ -1349,11 +1349,18 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
     catch (std::exception &e) {
         return error("%s : Deserialize or I/O error - %s", __func__, e.what());
     }
-	// We need her a Switch for X11 and X17
+
     // Check the header
+	// Disable this, HashX17 can't have X11 Header to nbits BitSenddev
+	/*
     if (!CheckProofOfWork(block.GetHash(), block.nBits))
         return error("ReadBlockFromDisk : Errors in block header");
-
+	
+	Possible Solution - compiling error  ...gethash2 must be have target to X11
+	if ((!CheckProofOfWork(block.GetHash(), block.nBits))&&(!CheckProofOfWork(block.GetHash2(), block.nBits)))
+		return error("ReadBlockFromDisk : Errors in block header");
+	*/
+	
     return true;
 }
 
@@ -1432,6 +1439,7 @@ uint256 CBlockHeader::GetHash() const
 
     int nHeight = GetHeight();
 	//pblock->LastHeight = pindexPrev->nHeight;
+	
 	if (nHeight <= FORKX17_Main_Net){
     return HashX11(BEGIN(nVersion), END(nNonce));
 	}
