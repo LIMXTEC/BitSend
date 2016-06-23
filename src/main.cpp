@@ -1349,7 +1349,7 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
     catch (std::exception &e) {
         return error("%s : Deserialize or I/O error - %s", __func__, e.what());
     }
-
+	// We need her a Switch for X11 and X17
     // Check the header
     if (!CheckProofOfWork(block.GetHash(), block.nBits))
         return error("ReadBlockFromDisk : Errors in block header");
@@ -1359,6 +1359,7 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
 
 bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 {
+	// We need her a Switch for X11 and X17
     if (!ReadBlockFromDisk(block, pindex->GetBlockPos()))
         return false;
     if (block.GetHash() != pindex->GetBlockHash())
