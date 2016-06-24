@@ -1711,7 +1711,7 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     // Check proof of work matches claimed amount
 	// Fix for X17 
 	// old if (hash > bnTarget.getuint256())
-    if (hash > bnTarget.getuint256() && hash != hashGenesisBlock)
+    if (hash > bnTarget.getuint256() && hash != hashGenesisBlockOfficial)
         return error("CheckProofOfWork() : hash doesn't match nBits");
 
     return true;
