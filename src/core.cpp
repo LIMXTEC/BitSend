@@ -233,6 +233,7 @@ uint256 CBlockHeader::GetHash() const
 	
 	}
 }
+/*
 uint256 CBlockHeader::GetHash() const 
 {
     return HashX11(BEGIN(nVersion), END(nNonce));
