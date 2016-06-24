@@ -1352,10 +1352,10 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
 
     // Check the header
 	// Disable this, HashX17 can't have X11 Header to nbits BitSenddev
-	/*
+	
     if (!CheckProofOfWork(block.GetHash(), block.nBits))
         return error("ReadBlockFromDisk : Errors in block header");
-	
+	/*
 	Possible Solution - compiling error  ...gethash2 must be have target to X11
 	if ((!CheckProofOfWork(block.GetHash(), block.nBits))&&(!CheckProofOfWork(block.GetHash2(), block.nBits)))
 		return error("ReadBlockFromDisk : Errors in block header");
@@ -1433,19 +1433,6 @@ double ConvertBitsToDouble(unsigned int nBits)
     }
 
     return dDiff;
-}
-uint256 CBlockHeader::GetHash() const
-{
-
-    int nHeight = GetHeight();
-	//pblock->LastHeight = pindexPrev->nHeight;
-	
-	if (nHeight <= FORKX17_Main_Net){
-    return HashX11(BEGIN(nVersion), END(nNonce));
-	}
-    else {
-	   return HashX17(BEGIN(nVersion), END(nNonce));
-	}
 }
 
 int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
@@ -1710,8 +1697,9 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 
     // Check proof of work matches claimed amount
 	// Fix for X17 
-	// old if (hash > bnTarget.getuint256())
-    if (hash > bnTarget.getuint256() && hash != hashGenesisBlockOfficial)
+	// old if 
+	//if (hash > bnTarget.getuint256() && hash != hashGenesisBlockOfficial)
+    if (hash > bnTarget.getuint256())
         return error("CheckProofOfWork() : hash doesn't match nBits");
 
     return true;

@@ -48,7 +48,6 @@ class CInv;
 
 static const int FORKX17_Main_Net = 200000;
 // Only for bool CheckProofOfWork(uint256 hash, unsigned int nBits) 1740 main.cpp
-static const uint256 hashGenesisBlockOfficial("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a");
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 20000000; //bsddev 04.02.2016 Old 1 MB

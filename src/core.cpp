@@ -214,23 +214,30 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     }
     return n;
 }
-/*uint256 CBlockHeader::GetHash() const
+
+//BitSend Algoswitch 1 
+uint256 CBlockHeader::GetHash() const
 {
-	CChain a1;
-	int nHeight= a1.Height();
-	//pblock->LastHeight = pindexPrev->nHeight;
-	if (nHeight <=10){
+
+	CChain var1;
+	int nHeight= var1.Height();
+	
+	if (nHeight <= FORKX17_Main_Net){
+	//Debugline BitSendDev
+	if(nHeight > 0)	LogPrintf("%d nHeigt We use X11\n", nHeight);
     return HashX11(BEGIN(nVersion), END(nNonce));
 	}
     else {
+	if(nHeight > 0 )	LogPrintf("%d nHeigt We use X17\n", nHeight);
 	   return HashX17(BEGIN(nVersion), END(nNonce));
+	
 	}
-}*/
-
-uint256 CBlockHeader::GetHash2() const 
+}
+uint256 CBlockHeader::GetHash() const 
 {
     return HashX11(BEGIN(nVersion), END(nNonce));
 }
+*/
 
 uint256 CBlock::BuildMerkleTree() const
 {
