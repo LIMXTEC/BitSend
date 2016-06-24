@@ -10,7 +10,6 @@
 #include "core.h"
 #include "protocol.h"
 #include "util.h"
-#include "main.h"
 
 #include <boost/assign/list_of.hpp>
 
