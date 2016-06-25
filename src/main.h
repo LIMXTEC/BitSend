@@ -888,6 +888,11 @@ public:
             hashMerkleRoot.ToString().c_str(),
             GetBlockHash().ToString().c_str());
     }
+    int GetH(){
+	    
+	    return nHeight;
+    }
+
 
     void print() const
     {
