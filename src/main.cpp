@@ -1350,16 +1350,10 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
         return error("%s : Deserialize or I/O error - %s", __func__, e.what());
     }
 
-    // Check the header
-	// Disable this, HashX17 can't have X11 Header to nbits BitSenddev
-	/*
-    if (!CheckProofOfWork(block.GetHash(), block.nBits))
+	// BitSendDev 26-006-2016 Vergleiche mit beiden Hashs
+    if (!CheckProofOfWork(block.GetHash(), block.nBits)&&(!CheckProofOfWork(block.GetHashX11(), block.nBits)))
         return error("ReadBlockFromDisk : Errors in block header");
-	
-	Possible Solution - compiling error  ...gethash2 must be have target to X11
-	if ((!CheckProofOfWork(block.GetHash(), block.nBits))&&(!CheckProofOfWork(block.GetHash2(), block.nBits)))
-		return error("ReadBlockFromDisk : Errors in block header");
-	*/
+
 	
     return true;
 }
@@ -1709,9 +1703,9 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
         return error("CheckProofOfWork() : nBits below minimum work");
 
     // Check proof of work matches claimed amount
-	// Fix for X17 
-	// old if (hash > bnTarget.getuint256())
-    if (hash > bnTarget.getuint256() && hash != hashGenesisBlockOfficial)
+	// BitSenddev 26-06-2016
+	//if (hash > bnTarget.getuint256() && hash > hashGenesisBlockOfficial)
+    if (hash > bnTarget.getuint256())
         return error("CheckProofOfWork() : hash doesn't match nBits");
 
     return true;
@@ -1938,7 +1932,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, CCoinsViewCach
             // If prev is coinbase, check that it's matured
 			// Update to 120 !!! 
             if (coins.IsCoinBase()) {
-				if(pindexPrev->nHeight < FORKX17_Main_Net)
+				if(pindexPrev->nHeight < COINBASE_MATURITYFROKK)
 				{
                 if (nSpendHeight - coins.nHeight < COINBASE_MATURITY)
                     return state.Invalid(

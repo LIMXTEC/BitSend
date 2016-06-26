@@ -183,6 +183,7 @@ public:
     }
 
     uint256 GetHash() const;
+	uint256 GetHashX11() const;
 
     bool IsDust(int64_t nMinRelayTxFee) const
     {
@@ -256,6 +257,7 @@ public:
     }
 
     uint256 GetHash() const;
+	uint256 GetHashX11() const;
     bool IsNewerThan(const CTransaction& old) const;
 
     // Return sum of txouts.
@@ -422,7 +424,7 @@ public:
     }
 
     uint256 GetHash() const;
-	uint256 GetHash2() const;
+	uint256 GetHashX11() const;
 
     int64_t GetBlockTime() const
     {

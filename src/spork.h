@@ -69,36 +69,29 @@ public:
     int64_t nValue;
     int64_t nTimeSigned;
     
-   /* uint256 GetHash(){ uint256 n;CChain a1;
-	int a= a1.Height();
-	    if (a <=10){
-     n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
-	}
-    else {
-	   n = HashX17(BEGIN(nSporkID), END(nTimeSigned));}
-        //uint256 n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
-        return n;
-    }*/
 
-     uint256 GetHash(){ 
-     	uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
+     uint256 GetHash()
+	 { 
+     uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
 	if (pindexPrev->nHeight <= FORKX17_Main_Net)
 	{
         	n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
+			return n;
 	}
 	 else 
 	{
 		n = HashX17(BEGIN(nSporkID), END(nTimeSigned));
+		return n;
 	}
         //uint256 n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
-        return n;
+        
     }
 
     IMPLEMENT_SERIALIZE(
-        READWRITE(nSporkID);
-        READWRITE(nValue);
-        READWRITE(nTimeSigned);
-        READWRITE(vchSig);
+    READWRITE(nSporkID);
+    READWRITE(nValue);
+    READWRITE(nTimeSigned);
+    READWRITE(vchSig);
     )
 };
 

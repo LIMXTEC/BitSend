@@ -270,24 +270,12 @@ public:
         vin = CTxIn();
         payee = CScript();
     }
-   /* CChain a1;
-	int nHeight= a1.Height();
-    uint256 GetHash(){ uint256 n2, n3; ;
-	    if (nHeight <=10){ 
-    n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));
-         n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
-	}
-    else {
-	    n2 = HashX17(BEGIN(nBlockHeight), END(nBlockHeight));
-         n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);}
-	    
-       // uint256 n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));
-       // uint256 n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
 
-        return n3;
-    }*/
 
-    uint256 GetHash(){ uint256 n2, n3; CBlockIndex* pindexPrev = chainActive.Tip();
+    uint256 GetHash()
+	{ 
+	uint256 n2, n3; 
+	CBlockIndex* pindexPrev = chainActive.Tip();
 	    if (pindexPrev->nHeight <= FORKX17_Main_Net)
 	{ 
     		n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));

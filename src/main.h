@@ -47,6 +47,7 @@ class CBloomFilter;
 class CInv;
 
 static const int FORKX17_Main_Net = 200000;
+static const int COINBASE_MATURITYFROKK = 205000;
 // Only for bool CheckProofOfWork(uint256 hash, unsigned int nBits) 1740 main.cpp
 static const uint256 hashGenesisBlockOfficial("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a");
 
