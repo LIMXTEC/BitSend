@@ -386,7 +386,6 @@ public:
     // header
     static const int CURRENT_VERSION=3;
     int nVersion;
-    int LastHeight;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
     unsigned int nTime;
