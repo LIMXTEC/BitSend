@@ -151,12 +151,12 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 	if (BlockReading->nHeight > 220000){
 	if(nActualTimespanshort < nActualTimespanshort )
 		{
-		LogPrintf(" %d bnNew first 154", bnNew );
+		LogPrintf(" %08x %s bnNew first 154", bnNew.GetCompact(), bnNew.ToString().c_str() );
 		const int nLongShortNew1   = 85;
 		const int nLongShortNew2   = 100;
 		bnNew = bnNew * nLongShortNew1;	
 		bnNew = bnNew / nLongShortNew2;	
-		LogPrintf(" %d bnNew second 159", bnNew );
+		LogPrintf(" %08x %s bnNew second 159", bnNew.GetCompact(), bnNew.ToString().c_str() );
 		}
 	}
 	*/
