@@ -1361,7 +1361,6 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
 bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 {
 	// We need her a Switch for X11 and X17
-//	CBlock a3; a3.LastHeight = pindex->nHeight - 1;
     if (!ReadBlockFromDisk(block, pindex->GetBlockPos()))
         return false;
     if (block.GetHash() != pindex->GetBlockHash())
@@ -1870,8 +1869,7 @@ void static InvalidBlockFound(CBlockIndex *pindex, const CValidationState &state
 void UpdateTime(CBlockHeader& block, const CBlockIndex* pindexPrev)
 {
     block.nTime = max(pindexPrev->GetMedianTimePast()+1, GetAdjustedTime());
-     //   CBlock a3; 
-//	a3.LastHeight = pindexPrev->nHeight;
+
     // Updating time can change work required on testnet:
     if (TestNet())
         block.nBits = GetNextWorkRequired(pindexPrev, &block);
@@ -2129,8 +2127,6 @@ void ThreadScriptCheck() {
 
 bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& view, bool fJustCheck)
 {
-	CBlock a3; 
-	a3.LastHeight = pindex->nHeight-1;
     AssertLockHeld(cs_main);
     // Check it again in case a previous version let a bad block in
     if (!CheckBlock(block, state, !fJustCheck, !fJustCheck))
@@ -3015,8 +3011,6 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
             return state.DoS(10, error("AcceptBlock() : prev block not found"), 0, "bad-prevblk");
         pindexPrev = (*mi).second;
         nHeight = pindexPrev->nHeight+1;
-      //  CBlock a3; 
-  //	a3.LastHeight = pindexPrev->nHeight;
 
         if(TestNet()) {
             if (block.nBits != GetNextWorkRequired(pindexPrev, &block))
