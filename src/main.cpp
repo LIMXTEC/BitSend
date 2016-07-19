@@ -1365,7 +1365,7 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
      		   return error("ReadBlockFromDisk : Errors in block header");
 	        }
         }*/ // It is also equvalent but not working ....(by passing chainActive.Height in it)
-        if(H <= 21)
+        if(H <= FORKX17_Main_Net) // it should be FORKX17_Main_Net + 1; // the last hash will crash wallet as it will be orphan
 	        {
    		 if (!CheckProofOfWork(block.GetHashX11(), block.nBits)&&(!CheckProofOfWork(block.GetHashX11(), block.nBits)))
      		   return error("ReadBlockFromDisk : Errors in block header");
@@ -1387,7 +1387,7 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
         return false;
     /*if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");*/
-    if(H <= 21)
+    if(H <= FORKX17_Main_Net) // here
 	        {
    		 if (block.GetHashX11() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");
