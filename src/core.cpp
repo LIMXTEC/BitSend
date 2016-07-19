@@ -231,7 +231,10 @@ uint256 CBlockHeader::GetHashX11() const
 {
     return HashX11(BEGIN(nVersion), END(nNonce));
 }
-
+uint256 CBlockHeader::GetHashX17(int nHeight ) const
+{
+   	return HashX17(BEGIN(nVersion), END(nNonce));
+}
 uint256 CBlock::BuildMerkleTree() const
 {
     vMerkleTree.clear();
