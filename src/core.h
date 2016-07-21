@@ -424,8 +424,9 @@ public:
         return (nBits == 0);
     }
 
-    uint256 GetHash() const;
-	uint256 GetHashX11() const;
+    uint256 GetHash(int nHeight = NULL) const;
+    uint256 GetHashX11(int nHeight = NULL) const;
+    uint256 GetHashX17(int nHeight = NULL) const;
 
     int64_t GetBlockTime() const
     {
