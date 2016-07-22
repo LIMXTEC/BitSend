@@ -1306,7 +1306,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
 //
 // CBlock and CBlockIndex
 //
-
+int H;
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 {
     // Open history file to append
@@ -1460,7 +1460,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 
     return dDiff;
 }
-int H;
+//int H;
 uint256 CBlockHeader::GetHash(int nHeight) const
 {
 
