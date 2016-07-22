@@ -2834,14 +2834,14 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                          REJECT_INVALID, "bad-blk-length");
 
     // Check proof of work matches claimed amount
-     if(chainActive.Height() <= FORKX17_Main_Net || mapBlockIndex.size() == 0 ) // you can add here the mapBlockIndex.size()-1; 
-	    {if (fCheckPOW && !CheckProofOfWork(block.GetHash2(), block.nBits))
+     if(chainActive.Height() <=20 ) // you can add here the mapBlockIndex.size()-1; 
+	    if (fCheckPOW && !CheckProofOfWork(block.GetHash2(), block.nBits))
 	        return state.DoS(50, error("CheckBlock() : proof of work failed"),
-	                         REJECT_INVALID, "high-hash");}
+	                         REJECT_INVALID, "high-hash");
 	else
-	       { if (fCheckPOW && !CheckProofOfWork(block.GetHash3(), block.nBits))
+	        if (fCheckPOW && !CheckProofOfWork(block.GetHash3(), block.nBits))
         return state.DoS(50, error("CheckBlock() : proof of work failed"),
-                         REJECT_INVALID, "high-hash");  }                      
+                         REJECT_INVALID, "high-hash");                        
 	                         // they both result in acceptance of blocks but ....orphan if algo is not switching..
    /* uint256 hash = block.GetHash(); 
     CBlockIndex* pindexPrev = NULL;
