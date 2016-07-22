@@ -256,9 +256,9 @@ public:
         return (vin.empty() && vout.empty());
     }
 
-    uint256 GetHash() const;
-    uint256 GetHashX11() const;
-    uint256 GetHashX17() const;
+    uint256 GetHash(int nHeight = NULL) const;
+    uint256 GetHashX11(int nHeight = NULL) const;
+    uint256 GetHashX17(int nHeight = NULL) const;
     bool IsNewerThan(const CTransaction& old) const;
 
     // Return sum of txouts.
