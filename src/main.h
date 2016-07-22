@@ -855,8 +855,7 @@ public:
 
     bool CheckIndex() const
     {
-        /*It is additional security, but can be full fill by genesis and checkpoints*/
-        return true;  //return CheckProofOfWork(GetBlockHash(), nBits);
+        return CheckProofOfWork(GetBlockHash(), nBits);
     }
 
     enum { nMedianTimeSpan=11 };
