@@ -1306,7 +1306,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
 //
 // CBlock and CBlockIndex
 //
-
+int H;
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 {
     // Open history file to append
@@ -1350,31 +1350,12 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
         return error("%s : Deserialize or I/O error - %s", __func__, e.what());
     }
 
-	// BitSendDev 26-006-2016 Vergleiche mit beiden Hashs
-   // if (!CheckProofOfWork(block.GetHash(), block.nBits)&&(!CheckProofOfWork(block.GetHashX11(), block.nBits)))
-      //  return error("ReadBlockFromDisk : Errors in block header");
-      /* CBlockIndex* pindexPrev = NULL;
-    int nHet = 0;
-    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-        if (mi == mapBlockIndex.end())
-        {
-	        if(pindexPrev != NULL && block.hashPrevBlock != NULL)
-	        {
-		        nHet = pindexPrev->nHeight +1;
-   		 if (!CheckProofOfWork(block.GetHash(nHet), block.nBits))
-     		   return error("ReadBlockFromDisk : Errors in block header");
-	        }
-        }*/ // It is also equvalent but not working ....(by passing chainActive.Height in it)
-        if(H <= 21)
-	        {
-   		 if (!CheckProofOfWork(block.GetHashX11(), block.nBits)&&(!CheckProofOfWork(block.GetHashX11(), block.nBits)))
-     		   return error("ReadBlockFromDisk : Errors in block header");
-	        }
-	    else 
-	        {
-   		 if (!CheckProofOfWork(block.GetHashX17(), block.nBits)&&(!CheckProofOfWork(block.GetHashX11(), block.nBits)))
-     		   return error("ReadBlockFromDisk : Errors in block header");
-	        }    
+    // Check the header
+    if (!CheckProofOfWork(block.GetHash(), block.nBits))
+        return error("ReadBlockFromDisk : Errors in block header");
+
+	return true;
+
 
 	
     return true;
@@ -1385,18 +1366,9 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 	// We need her a Switch for X11 and X17
     if (!ReadBlockFromDisk(block, pindex->GetBlockPos()))
         return false;
-    /*if (block.GetHash() != pindex->GetBlockHash())
-        return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");*/
-    if(H <= 21)
-	        {
-   		 if (block.GetHashX11() != pindex->GetBlockHash())
+    if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");
-	        }
-	else 
-	        {
-   		 if (block.GetHashX17() != pindex->GetBlockHash())
-        return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");
-	        }   
+    
     return true;
 }
 
@@ -1460,12 +1432,10 @@ double ConvertBitsToDouble(unsigned int nBits)
 
     return dDiff;
 }
-int H;
-uint256 CBlockHeader::GetHash(int nHeight) const
-{
 
-    if(nHeight == NULL){
-		nHeight = GetHeight();}
+uint256 CBlockHeader::GetHash() const
+{
+	int nHeight = GetHeight();
 	//pblock->LastHeight = pindexPrev->nHeight;
 	
 	if (nHeight <= FORKX17_Main_Net){
@@ -2833,32 +2803,11 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         return state.DoS(100, error("CheckBlock() : size limits failed"),
                          REJECT_INVALID, "bad-blk-length");
 
+
     // Check proof of work matches claimed amount
-     if(chainActive.Height() <=20 ) // you can add here the mapBlockIndex.size()-1; 
-	    if (fCheckPOW && !CheckProofOfWork(block.GetHash2(), block.nBits))
-	        return state.DoS(50, error("CheckBlock() : proof of work failed"),
-	                         REJECT_INVALID, "high-hash");
-	else
-	        if (fCheckPOW && !CheckProofOfWork(block.GetHash3(), block.nBits))
+    if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits))
         return state.DoS(50, error("CheckBlock() : proof of work failed"),
-                         REJECT_INVALID, "high-hash");                        
-	                         // they both result in acceptance of blocks but ....orphan if algo is not switching..
-   /* uint256 hash = block.GetHash(); 
-    CBlockIndex* pindexPrev = NULL;
-    int nHeight = 0;
-    if (hash != Params().HashGenesisBlock()) {
-        map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-        if (mi == mapBlockIndex.end())
-        {
-	        if(pindexPrev != NULL)
-	        {
-		        nHeight = pindexPrev->nHeight +1;
-		        if (fCheckPOW && !CheckProofOfWork(block.GetHash(nHeight), block.nBits))
-        return state.DoS(50, error("CheckBlock() : proof of work failed"),
-                         REJECT_INVALID, "high-hash");
-        }
-    }
-    }   */     
+	REJECT_INVALID, "high-hash");
 
     // Bitsenddev: limit timestamp window 
 	if (block.GetBlockTime() > GetAdjustedTime() + 15 * 60)
