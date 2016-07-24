@@ -1433,16 +1433,19 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-uint256 CBlockHeader::GetHash() const
+uint256 CBlockHeader::GetHash(int nHeight) const
 {
-	int nHeight = GetHeight();
+	if(nHeight == NULL){
+		return HashX11(BEGIN(nVersion), END(nNonce));
+	}
 	//pblock->LastHeight = pindexPrev->nHeight;
-	
+	else{	
 	if (nHeight <= FORKX17_Main_Net){
     return HashX11(BEGIN(nVersion), END(nNonce));
 	}
     else {
 	   return HashX17(BEGIN(nVersion), END(nNonce));
+	}
 	}
 }
 
