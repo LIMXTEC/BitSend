@@ -39,6 +39,7 @@ enum DiffMode {
     DIFF_DGW     = 4,
     DIFF_DELTA   = 5,
     DIFF_KGW3    = 6,
+	DIFF_DKGW3    = 7,
     DIFF_NULL    = 0,// Retarget using Dark Gravity Wave v3
 };
 
@@ -46,17 +47,21 @@ class CBlockIndex;
 class CBloomFilter;
 class CInv;
 
-static const int FORKX17_Main_Net = 200000;
+
+static const int FORKX17_Main_Net = 240000;
+static const int COINBASE_MATURITYFROKK = 240000;
+// Only for bool CheckProofOfWork(uint256 hash, unsigned int nBits) 1740 main.cpp
+
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
-static const unsigned int MAX_BLOCK_SIZE = 4000000; //bsddev 04.02.2016 Old 1 MB
+static const unsigned int MAX_BLOCK_SIZE = 10000000; //bsddev 04.02.2016 Old 1 MB
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = MAX_BLOCK_SIZE*3/4; // bsddev 04.02.2016 Old 750 KB
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 50000;
 /** The maximum size for transactions we're willing to relay/mine */
-static const unsigned int MAX_STANDARD_TX_SIZE = 100000;
+static const unsigned int MAX_STANDARD_TX_SIZE = 250000;  //Douple (~1300 TX)
 /** The maximum allowed number of signature check operations in a block (network rule) */
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 /** Default for -maxorphantx, maximum number of orphan transactions kept in memory */
@@ -70,7 +75,8 @@ static const unsigned int BLOCKFILE_CHUNK_SIZE = 0x1000000; // 16 MiB
 /** The pre-allocation chunk size for rev?????.dat files (since 0.8) */
 static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-static const int COINBASE_MATURITY = 25; //bsddev 13-04-2015
+static const int COINBASE_MATURITY = 25; 
+static const int COINBASE_MATURITY2 = 288;//bsddev 13-04-2015
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 /** Maximum number of script-checking threads allowed */
@@ -604,8 +610,8 @@ public:
 
 /** Functions for disk access for blocks */
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
-bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight = NULL);
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, int pIndexHeight = NULL);
 
 
 /** Functions for validating blocks and updating the block tree */
@@ -629,7 +635,7 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
 bool AddToBlockIndex(CBlock& block, CValidationState& state, const CDiskBlockPos& pos);
 
 // Context-independent validity checks
-bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true);
+bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true, int pIndexHeight = NULL);
 
 // Store block on disk
 // if dbp is provided, the file is known to already reside on disk
@@ -851,7 +857,7 @@ public:
 
     bool CheckIndex() const
     {
-        return CheckProofOfWork(GetBlockHash(), nBits);
+        return true; //CheckProofOfWork(GetBlockHash(), nBits);
     }
 
     enum { nMedianTimeSpan=11 };
