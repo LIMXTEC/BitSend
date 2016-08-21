@@ -14,10 +14,125 @@
 
 #define PERCENT_FACTOR 100
 
-//////////////////////////////////////////////////////////////////////////////
-//
-//  Bitsenddev DGW/KGW/Delta
-//
+
+unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader *pblock) {
+	// current difficulty formula, ERC3 - DUAL_KGW3, written by Christian Knoepke - apfelbaum@email.de
+	// BitSend and Eropecoin Developer
+    const CBlockIndex *BlockLastSolved = pindexLast;
+    const CBlockIndex *BlockReading = pindexLast;
+	bool kgwdebug=false;
+    uint64_t PastBlocksMass = 0;
+    int64_t PastRateActualSeconds = 0;
+    int64_t PastRateTargetSeconds = 0;
+    double PastRateAdjustmentRatio = double(1);
+    CBigNum PastDifficultyAverage;
+    CBigNum PastDifficultyAveragePrev;
+    double EventHorizonDeviation;
+    double EventHorizonDeviationFast;
+    double EventHorizonDeviationSlow;
+	//DUAL_KGW3 SETUP
+	static const uint64_t Blocktime = 3 * 60; 
+	static const unsigned int timeDaySeconds = 60 * 60 * 24;
+    uint64_t pastSecondsMin = timeDaySeconds * 0.025;
+    uint64_t pastSecondsMax = timeDaySeconds * 7;
+    uint64_t PastBlocksMin = pastSecondsMin / Blocktime;
+    uint64_t PastBlocksMax = pastSecondsMax / Blocktime;
+	
+	 
+	
+    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || (uint64_t)BlockLastSolved->nHeight < PastBlocksMin) {  Params().ProofOfWorkLimit().GetCompact(); }
+
+    for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
+        if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
+        PastBlocksMass++;
+        PastDifficultyAverage.SetCompact(BlockReading->nBits);
+        if (i > 1) {
+            if(PastDifficultyAverage >= PastDifficultyAveragePrev)
+                PastDifficultyAverage = ((PastDifficultyAverage - PastDifficultyAveragePrev) / i) + PastDifficultyAveragePrev;
+            else
+                PastDifficultyAverage = PastDifficultyAveragePrev - ((PastDifficultyAveragePrev - PastDifficultyAverage) / i);
+        }
+        PastDifficultyAveragePrev = PastDifficultyAverage;
+        PastRateActualSeconds = BlockLastSolved->GetBlockTime() - BlockReading->GetBlockTime();
+        PastRateTargetSeconds = Blocktime * PastBlocksMass;
+        PastRateAdjustmentRatio = double(1);
+        if (PastRateActualSeconds < 0) { PastRateActualSeconds = 0; }
+        if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
+            PastRateAdjustmentRatio = double(PastRateTargetSeconds) / double(PastRateActualSeconds);
+        }
+        EventHorizonDeviation = 1 + (0.7084 * pow((double(PastBlocksMass)/double(28.2)), -1.228));  //28.2 and 144 possible
+        EventHorizonDeviationFast = EventHorizonDeviation;
+        EventHorizonDeviationSlow = 1 / EventHorizonDeviation;
+
+        if (PastBlocksMass >= PastBlocksMin) {
+                if ((PastRateAdjustmentRatio <= EventHorizonDeviationSlow) || (PastRateAdjustmentRatio >= EventHorizonDeviationFast))
+                { assert(BlockReading); break; }
+        }
+        if (BlockReading->pprev == NULL) { assert(BlockReading); break; }
+        BlockReading = BlockReading->pprev;
+    }
+	// arith_uint256
+	//KGW Original
+    CBigNum kgw_dual1(PastDifficultyAverage);
+	CBigNum kgw_dual2;
+	kgw_dual2.SetCompact(pindexLast->nBits);
+    if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
+         kgw_dual1 *= PastRateActualSeconds;
+         kgw_dual1 /= PastRateTargetSeconds;
+    }
+	
+	int64_t nActualTime1 = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
+	int64_t nActualTimespanshort = nActualTime1;	
+	
+	// Retarget BTC Original ...not exactly
+
+    if (nActualTime1 < Blocktime / 3)
+        nActualTime1 = Blocktime / 3;
+    if (nActualTime1 > Blocktime * 3)
+        nActualTime1 = Blocktime * 3;
+		
+    kgw_dual2 *= nActualTime1;
+    kgw_dual2 /= Blocktime;
+	
+	//Fusion from Retarget and Classic KGW3 (BitSend=)
+	
+	CBigNum bnNew;
+	bnNew = ((kgw_dual2 + kgw_dual1)/2);
+	// DUAL KGW3 increased rapidly the Diff if Blocktime to last block under Blocktime/6 sec.
+	
+	if(kgwdebug)LogPrintf("nActualTimespanshort = %d \n", nActualTimespanshort );
+	if( nActualTimespanshort < Blocktime/6 )
+		{
+		if(kgwdebug)LogPrintf("Vordiff:%08x %s bnNew first  \n", bnNew.GetCompact(), bnNew.ToString().c_str());
+		const int nLongShortNew1   = 85; const int nLongShortNew2   = 100;
+		bnNew = bnNew * nLongShortNew1;	bnNew = bnNew / nLongShortNew2;	
+		if(kgwdebug)LogPrintf("Erhöhte Diff:\n %08x %s bnNew second \n", bnNew.GetCompact(), bnNew.ToString().c_str() );
+		}
+
+	
+	//BitBreak BitSend
+	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
+	const int nLongTimeLimit   = 6 * 60 * 60; 
+    if(kgwdebug)
+	{		
+	LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
+	LogPrintf("Vordiff %d \n", nLongTimeLimit);
+	LogPrintf(" %d Block", BlockReading->nHeight );
+	}
+	
+	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+	{
+		bnNew = Params().ProofOfWorkLimit()/5;
+       	if(kgwdebug)LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
+	}
+
+    if (bnNew > Params().ProofOfWorkLimit()) {
+        bnNew = Params().ProofOfWorkLimit();
+    }
+    return bnNew.GetCompact();
+}
+
+
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockHeader *pblock) {
     /* current difficulty formula, Dash - DarkGravity v3, written by Evan Duffield - evan@bitsendpay.io */
     const CBlockIndex *BlockLastSolved = pindexLast;
@@ -77,6 +192,8 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
         const CBlockIndex *BlockLastSolved = pindexLast;
         const CBlockIndex *BlockReading = pindexLast;
+		/// Shortbeak
+		// const CBlockIndex* pindexFirst = pindexLast;
         const CBlockHeader *BlockCreating = pblock;// Bitsenddev add from old KGW
         BlockCreating = BlockCreating; //Bitsenddev add from old KGW
         uint64_t PastBlocksMass = 0;
@@ -141,8 +258,24 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 bnNew *= PastRateActualSeconds;
                 bnNew /= PastRateTargetSeconds;
         }
-        
-        ///////////////////////
+	/*
+	// KGW4 increased rapidly the Diff if Blocktime to last block under 20 sec.
+    const int nShortTimeLimit = 60;
+	int64_t nActualTimespanshort = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
+	LogPrintf(" %d nActualTimespanshort", nActualTimespanshort );
+	if (BlockReading->nHeight > 220000){
+	if(nActualTimespanshort < nActualTimespanshort )
+		{
+		LogPrintf(" %08x %s bnNew first 154", bnNew.GetCompact(), bnNew.ToString().c_str() );
+		const int nLongShortNew1   = 85;
+		const int nLongShortNew2   = 100;
+		bnNew = bnNew * nLongShortNew1;	
+		bnNew = bnNew / nLongShortNew2;	
+		LogPrintf(" %08x %s bnNew second 159", bnNew.GetCompact(), bnNew.ToString().c_str() );
+		}
+	}
+	*/
+    /////////////////////// BitBreak
 	// LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
 	const int nLongTimeLimit   = 6 * 60 * 60; 
@@ -151,9 +284,22 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 	if (BlockReading->nHeight > 139800){ 
 	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
 	{
-	// Bitsenddev for 11.1.34 BSD Diffbreak function
+		if (BlockReading->nHeight > 220000)
+		{
+		//Hier löschen !! 22-06-2016
+		const int nLongTimebnNew   = 3500;
+		bnNew = bnNew * nLongTimebnNew;
+		/* New Setting inactive 
+		const int nLongTimebnNew   = 1000;
+		bnNew = bnNew * nLongTimebnNew;
+		*/
+		}
+		else
+		{
+	// Bitsenddev for 11.1.34 BSD BitBreak function
 	const int nLongTimebnNew   = 3500;
 	bnNew = bnNew * nLongTimebnNew;
+		}
        	//LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
 	}
 	}

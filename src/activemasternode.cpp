@@ -403,7 +403,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 5000*COIN) { //exactly        bitsenddev   04-2015
+        if(out.tx->vout[out.i].nValue == 25000*COIN) { //exactly        bitsenddev   04-2015
             filteredCoins.push_back(out);
         }
     }

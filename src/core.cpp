@@ -6,6 +6,8 @@
 
 #include "core.h"
 #include "util.h"
+#include "main.h"
+#include "uint256.h"
 
 std::string COutPoint::ToString() const
 {
@@ -212,12 +214,27 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     }
     return n;
 }
+/*uint256 CBlockHeader::GetHash() const
+{
+	CChain a1;
+	int nHeight= a1.Height();
+	//pblock->LastHeight = pindexPrev->nHeight;
+	if (nHeight <=10){
+    return HashX11(BEGIN(nVersion), END(nNonce));
+	}
+    else {
+	   return HashX17(BEGIN(nVersion), END(nNonce));
+	}
+}*/
 
-uint256 CBlockHeader::GetHash() const
+uint256 CBlockHeader::GetHashX11(int nHeight) const
 {
     return HashX11(BEGIN(nVersion), END(nNonce));
 }
-
+uint256 CBlockHeader::GetHashX17(int nHeight) const
+{
+   	return HashX17(BEGIN(nVersion), END(nNonce));
+}
 uint256 CBlock::BuildMerkleTree() const
 {
     vMerkleTree.clear();
@@ -270,8 +287,8 @@ uint256 CBlock::CheckMerkleBranch(uint256 hash, const std::vector<uint256>& vMer
 
 void CBlock::print() const
 {
-    LogPrintf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
-        GetHash().ToString(),
+	//GetHashX11().ToString(),
+    LogPrintf("CBlock(hash=disable, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
         nVersion,
         hashPrevBlock.ToString(),
         hashMerkleRoot.ToString(),

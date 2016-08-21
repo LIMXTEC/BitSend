@@ -61,13 +61,13 @@ public:
         genesis.nBits    = 0x1e0ffff0;  //bitsenddev 04-2015
         genesis.nNonce   = 34784351;  //bitsenddev 04-2015
 
-        hashGenesisBlock = genesis.GetHash();
+        hashGenesisBlock = genesis.GetHashX11();
         assert(hashGenesisBlock == uint256("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a"));   //bitsend   
         assert(genesis.hashMerkleRoot == uint256("0xc0c4f68994b78c31b6c7d7a8a895b5a085857adfbb73699bcfe5a247a357df57"));   //checkpoint 38
 
 
    
-        vSeeds.push_back(CDNSSeedData("5.196.190.82", "5.196.190.82"));
+        vSeeds.push_back(CDNSSeedData("bitsend.blockexplorers.net", "bitsend.blockexplorers.net")); //Kees de wit
 		vSeeds.push_back(CDNSSeedData("104.238.188.44", "104.238.188.44"));
 		vSeeds.push_back(CDNSSeedData("91.153.109.149", "91.153.109.149"));
 		vSeeds.push_back(CDNSSeedData("155.94.146.68", "155.94.146.68"));
@@ -152,7 +152,7 @@ public:
         genesis.nTime = 1402095180;   //bitsenddev 04-2015 main.cpp 3127
         genesis.nNonce = 386986707;   //bitsenddev 04-2015 main.cpp 3128
 
-        hashGenesisBlock = genesis.GetHash();
+        hashGenesisBlock = genesis.GetHashX11();
         assert(hashGenesisBlock == uint256("0x000008030a1e9a647ecc6119e0782166552e49dadfa8353afa26f3a6c2179845"));  //bitsenddev 04-2015  Fehler
 
         vFixedSeeds.clear();
@@ -195,7 +195,7 @@ public:
         nDefaultPort = 19994;             // Bitsenddev 04-2015 old   19994
         strDataDir = "regtest";
 
-        hashGenesisBlock = genesis.GetHash();
+        hashGenesisBlock = genesis.GetHashX11();
         assert(hashGenesisBlock == uint256("0x000008030a1e9a647ecc6119e0782166552e49dadfa8353afa26f3a6c2179845"));   // Bitsenddev 04-2015 old      0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.

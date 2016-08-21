@@ -43,7 +43,8 @@ BITCOIN_CORE_H = \
   darksend.h \
   darksend-relay.h \
   db.h \
-  hash.h \
+  hash/bitsend11hash.h \
+  hash/bitsend17hash.h \
   init.h \
   instantx.h \
   key.h \
@@ -67,19 +68,25 @@ BITCOIN_CORE_H = \
   rpcserver.h \
   script.h \
   serialize.h \
-  sph_blake.h \
-  sph_bmw.h \
-  sph_cubehash.h \
-  sph_echo.h \
-  sph_groestl.h \
-  sph_jh.h \
-  sph_keccak.h \
-  sph_luffa.h \
-  sph_shavite.h \
-  sph_simd.h \
-  sph_skein.h \
-  sph_types.h \
-  spork.h \
+  hash/sph_blake.h \
+  hash/sph_bmw.h \
+  hash/sph_cubehash.h \
+  hash/sph_echo.h \
+  hash/sph_groestl.h \
+  hash/sph_jh.h \
+  hash/sph_keccak.h \
+  hash/sph_luffa.h \
+  hash/sph_shavite.h \
+  hash/sph_simd.h \
+  hash/sph_skein.h \
+  hash/sph_types.h \
+  hash/sph_fugue.h \
+  hash/sph_hamsi.h \
+  hash/sph_haval.h \
+  hash/sph_shabal.h \
+  hash/sph_sha2.h \
+  hash/sph_whirlpool.h \
+  hash/spork.h \
   sync.h \
   threadsafety.h \
   tinyformat.h \
@@ -159,7 +166,7 @@ libbitsend_common_a_SOURCES = \
   masternodeman.cpp \
   masternodeconfig.cpp \
   instantx.cpp \
-  hash.cpp \
+  hash/hash.cpp \
   key.cpp \
   netbase.cpp \
   protocol.cpp \
@@ -168,19 +175,26 @@ libbitsend_common_a_SOURCES = \
   sync.cpp \
   util.cpp \
   version.cpp \
-  aes_helper.c \
-  luffa.c \
-  groestl.c \
-  jh.c \
-  echo.c \
-  shavite.c \
-  keccak.c \
-  skein.c \
+  hash/aes_helper.c \
+  hash/luffa.c \
+  hash/groestl.c \
+  hash/jh.c \
+  hash/echo.c \
+  hash/shavite.c \
+  hash/keccak.c \
+  hash/skein.c \
+  hash/fugue.c \
+  hash/hamsi.c \
+  hash/haval.c \
+  hash/sha2.c \
+  hash/shabal.c \
+  hash/whirlpool.c \
+  hash/sph_sha2big.c \
   spork.cpp \
-  bmw.c \
-  simd.c \
-  cubehash.c \
-  blake.c \
+  hash/bmw.c \
+  hash/simd.c \
+  hash/cubehash.c \
+  hash/blake.c \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT

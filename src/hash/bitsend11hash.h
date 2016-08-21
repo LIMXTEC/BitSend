@@ -7,9 +7,11 @@
 #ifndef BITCOIN_HASH_H
 #define BITCOIN_HASH_H
 
-#include "serialize.h"
-#include "uint256.h"
-#include "version.h"
+#include "../serialize.h"
+#include "../uint256.h"
+#include "../version.h"
+//#include "../chainparams.h" // for LogPrintf BitSendDev
+
 
 #include "sph_blake.h"
 #include "sph_bmw.h"
@@ -189,11 +191,12 @@ int HMAC_SHA512_Init(HMAC_SHA512_CTX *pctx, const void *pkey, size_t len);
 int HMAC_SHA512_Update(HMAC_SHA512_CTX *pctx, const void *pdata, size_t len);
 int HMAC_SHA512_Final(unsigned char *pmd, HMAC_SHA512_CTX *pctx);
 
-/* ----------- Bitsend Hash ------------------------------------------------ */
+/* ----------- Bitsend Hash X11 ------------------------------------------------ */
 template<typename T1>
 inline uint256 HashX11(const T1 pbegin, const T1 pend)
 
 {
+	//LogPrintf("X11 Hash \n");
     sph_blake512_context     ctx_blake;
     sph_bmw512_context       ctx_bmw;
     sph_groestl512_context   ctx_groestl;

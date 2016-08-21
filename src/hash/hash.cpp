@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "bitsend11hash.h"
 
 inline uint32_t ROTL32 ( uint32_t x, int8_t r )
 {
