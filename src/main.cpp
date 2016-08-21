@@ -1332,11 +1332,14 @@ bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 
     return true;
 }
-
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
+int Height;
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight )
 {
     block.SetNull();
-
+    if(pIndexHeight == NULL){
+	    pIndexHeight = chainActive.Height();
+    }
+	
     // Open history file to read
     CAutoFile filein = CAutoFile(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
     if (!filein)
@@ -1351,20 +1354,17 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
     }
 
     // Check the header
-    if (!CheckProofOfWork(block.GetHash(), block.nBits))
-        return error("ReadBlockFromDisk : Errors in block header");
+    if (!CheckProofOfWork(block.GetHash(pIndexHeight), block.nBits) && chainActive.Height() <= FORKX17_Main_Net)
+        return error("ReadBlockFromDisk : Errors in block header, %d", chainActive.Height());
 
 	return true;
 
-
-	
-    return true;
 }
 
-bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, int pIndexHeight )
 {
 	// We need her a Switch for X11 and X17
-    if (!ReadBlockFromDisk(block, pindex->GetBlockPos()))
+    if (!ReadBlockFromDisk(block, pindex->GetBlockPos(), pIndexHeight))
         return false;
     if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");
@@ -1433,16 +1433,19 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-uint256 CBlockHeader::GetHash() const
+uint256 CBlockHeader::GetHash(int nHeight) const
 {
-	int nHeight = GetHeight();
+	if(nHeight == NULL){
+		 return HashX11(BEGIN(nVersion), END(nNonce));
+	}
 	//pblock->LastHeight = pindexPrev->nHeight;
-		
-	if (nHeight <= FORKX17_Main_Net){
-    return HashX11(BEGIN(nVersion), END(nNonce));
+	else {	
+	if (nHeight >= FORKX17_Main_Net){
+    return HashX17(BEGIN(nVersion), END(nNonce));
 	}
     else {
-	   return HashX17(BEGIN(nVersion), END(nNonce));
+	   return HashX11(BEGIN(nVersion), END(nNonce));
+	}
 	}
 	
 }
@@ -1458,7 +1461,7 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 		// Old Thread https://bitcointalk.org/index.php?topic=637366.0
 		// New Thread https://bitcointalk.org/index.php?topic=895425.0
 		// Bitsenddev and Bitsend Support have no Premine Coins
-
+	if (nHeight >= (FORKX17_Main_Net-1000))int64_t nSubsidy = 25 * COIN;
     return nSubsidy + nFees;
 }
 
@@ -1573,9 +1576,12 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 {
 	unsigned int retarget = DIFF_NULL;
         static int nDeltaSwitchover = TestNet ? 90 : 100000;
+		
+		//new KGW DIFF_DKGW3    = 7,
 
         if (!TestNet()) {
-        	if (pindexLast->nHeight + 1 >= 139975) { retarget = DIFF_KGW3; if (pindexLast->nHeight < 141000) LogPrintf("KGW3"); }
+			if (pindexLast->nHeight + 1 >= (FORKX17_Main_Net -1000)) { retarget = DIFF_DKGW3; if (pindexLast->nHeight < 141000) LogPrintf("KGW3"); }
+        	else if (pindexLast->nHeight + 1 >= 139975) { retarget = DIFF_KGW3; if (pindexLast->nHeight < 141000) LogPrintf("KGW3"); }
         	else if (pindexLast->nHeight + 1 >= 102000) { retarget = DIFF_KGW2; if (pindexLast->nHeight < 102000) LogPrintf("KGW2N"); }
         	else if (pindexLast->nHeight + 1 >= 101000) { retarget = DIFF_DELTA; if (pindexLast->nHeight < 109999) LogPrintf("Delta Diff"); }
 		else if (pindexLast->nHeight + 1 >= 99500) { retarget = DIFF_KGW2; if (pindexLast->nHeight < 99999) LogPrintf("KGW2");}
@@ -1685,6 +1691,11 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             uint64_t pastBlocksMin = pastSecondsMin / blocksTargetSpacing;
             uint64_t pastBlocksMax = pastSecondsMax / blocksTargetSpacing;
             return KimotoGravityWell(pindexLast, pblock, blocksTargetSpacing, pastBlocksMin, pastBlocksMax);
+        }
+		else if (retarget == DIFF_DKGW3)
+        {	
+            //Dual KGW3 
+            return DUAL_KGW3(pindexLast, pblock);
         }
         // Retarget using Dark Gravity Wave 3
         else if (retarget == DIFF_DGW)
@@ -2794,11 +2805,13 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 }
 
 
-bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot)
+bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot, int pIndexHeight)
 {
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
-
+	if(pIndexHeight == NULL){
+		pIndexHeight = chainActive.Height();
+	}
     // Size limits
     if (block.vtx.empty() || block.vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CheckBlock() : size limits failed"),
@@ -2806,8 +2819,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
 
     // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits))
-        return state.DoS(50, error("CheckBlock() : proof of work failed"),
+    if (fCheckPOW && !CheckProofOfWork(block.GetHash(pIndexHeight), block.nBits))
+        return state.DoS(50, error("CheckBlock() : proof of work failed, h=%d", pIndexHeight),
 	REJECT_INVALID, "high-hash");
 
     // Bitsenddev: limit timestamp window 
@@ -3588,18 +3601,20 @@ bool VerifyDB(int nCheckLevel, int nCheckDepth)
     CBlockIndex* pindexFailure = NULL;
     int nGoodTransactions = 0;
     CValidationState state;
+   // Height = pindex->nHeight;
     for (CBlockIndex* pindex = chainActive.Tip(); pindex && pindex->pprev; pindex = pindex->pprev)
     {
         boost::this_thread::interruption_point();
         if (pindex->nHeight < chainActive.Height()-nCheckDepth)
             break;
         CBlock block;
+        int Het = pindex->nHeight;
         // check level 0: read from disk
-        if (!ReadBlockFromDisk(block, pindex))
-            return error("VerifyDB() : *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
+        if (!ReadBlockFromDisk(block, pindex, Het) && pindex->nHeight != FORKX17_Main_Net)
+            return error("VerifyDB() : *** ReadBlockFromDisk failed at %d, chain=%d, hash=%s", pindex->nHeight, chainActive.Height(), pindex->GetBlockHash().ToString());
         // check level 1: verify block validity
-        if (nCheckLevel >= 1 && !CheckBlock(block, state))
-            return error("VerifyDB() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString());
+        if (nCheckLevel >= 1 && (!CheckBlock(block, state, NULL ,NULL ,Het) && pindex->nHeight != FORKX17_Main_Net) )
+            return error("VerifyDB() : *** found bad block at %d, Het=%d hash=%s\n", pindex->nHeight, Het, pindex->GetBlockHash().ToString());
         // check level 2: verify undo validity
         if (nCheckLevel >= 2 && pindex) {
             CBlockUndo undo;

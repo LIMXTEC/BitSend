@@ -227,11 +227,11 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
 	}
 }*/
 
-uint256 CBlockHeader::GetHashX11() const 
+uint256 CBlockHeader::GetHashX11(int nHeight) const
 {
     return HashX11(BEGIN(nVersion), END(nNonce));
 }
-uint256 CBlockHeader::GetHashX17() const
+uint256 CBlockHeader::GetHashX17(int nHeight) const
 {
    	return HashX17(BEGIN(nVersion), END(nNonce));
 }

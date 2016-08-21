@@ -483,7 +483,7 @@ CBlockTemplate* CreateNewBlockWithKey(CReserveKey& reservekey)
 
 bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
 {
-    uint256 hash = pblock->GetHash();
+    uint256 hash = pblock->GetHash(chainActive.Height());
     uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
 
     if (hash > hashTarget)
@@ -491,7 +491,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
 
     //// debug print
     LogPrintf("DarkcoinMiner:\n");
-    LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex(), hashTarget.GetHex());
+    LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n nHeight=%d", hash.GetHex(), hashTarget.GetHex(), chainActive.Height());
     pblock->print();
     LogPrintf("generated %s\n", FormatMoney(pblock->vtx[0].vout[0].nValue));
 
@@ -578,7 +578,7 @@ void static BitcoinMiner(CWallet *pwallet)
             uint256 hash;
             while (true)
             {
-                hash = pblock->GetHash();
+                hash = pblock->GetHash(chainActive.Height());
                 if (hash <= hashTarget)
                 {
                     // Found a solution

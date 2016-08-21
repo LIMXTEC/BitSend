@@ -39,6 +39,7 @@ enum DiffMode {
     DIFF_DGW     = 4,
     DIFF_DELTA   = 5,
     DIFF_KGW3    = 6,
+	DIFF_DKGW3    = 7,
     DIFF_NULL    = 0,// Retarget using Dark Gravity Wave v3
 };
 
@@ -46,8 +47,8 @@ class CBlockIndex;
 class CBloomFilter;
 class CInv;
 
-static const int FORKX17_Main_Net = 200000;
-static const int COINBASE_MATURITYFROKK = 205000;
+static const int FORKX17_Main_Net = 240000;
+static const int COINBASE_MATURITYFROKK = 240000;
 // Only for bool CheckProofOfWork(uint256 hash, unsigned int nBits) 1740 main.cpp
 static const uint256 hashGenesisBlockOfficial("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a");
 
@@ -608,8 +609,8 @@ public:
 
 /** Functions for disk access for blocks */
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
-bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight = NULL);
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, int pIndexHeight = NULL);
 
 
 /** Functions for validating blocks and updating the block tree */
@@ -633,7 +634,7 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
 bool AddToBlockIndex(CBlock& block, CValidationState& state, const CDiskBlockPos& pos);
 
 // Context-independent validity checks
-bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true);
+bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true, int pIndexHeight = NULL);
 
 // Store block on disk
 // if dbp is provided, the file is known to already reside on disk
@@ -855,7 +856,7 @@ public:
 
     bool CheckIndex() const
     {
-        return CheckProofOfWork(GetBlockHash(), nBits);
+        return true; //CheckProofOfWork(GetBlockHash(), nBits);
     }
 
     enum { nMedianTimeSpan=11 };
