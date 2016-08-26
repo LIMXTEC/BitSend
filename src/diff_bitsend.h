@@ -31,7 +31,7 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
     double EventHorizonDeviationFast;
     double EventHorizonDeviationSlow;
 	//DUAL_KGW3 SETUP
-	static const uint64_t Blocktime = 3 * 60; 
+	static const int64_t Blocktime = 3 * 60; 
 	static const unsigned int timeDaySeconds = 60 * 60 * 24;
     uint64_t pastSecondsMin = timeDaySeconds * 0.025;
     uint64_t pastSecondsMax = timeDaySeconds * 7;
@@ -85,6 +85,7 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
 	int64_t nActualTimespanshort = nActualTime1;	
 	
 	// Retarget BTC Original ...not exactly
+	if(nActualTime1 < 0) nActualTime1 = Blocktime
 
     if (nActualTime1 < Blocktime / 3)
         nActualTime1 = Blocktime / 3;
