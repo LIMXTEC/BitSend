@@ -1,4 +1,4 @@
-# BSD - Bitsend Core 1.0.0.1
+# BSD - Bitsend Core 1.1.0.2
 ----------------
 http://www.bitsend.info Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
 
