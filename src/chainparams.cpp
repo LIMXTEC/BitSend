@@ -67,8 +67,7 @@ public:
 
 
    
-        vSeeds.push_back(CDNSSeedData("bitsend.blockexplorers.net", "bitsend.blockexplorers.net")); //Kees de wit
-		vSeeds.push_back(CDNSSeedData("104.238.188.44", "104.238.188.44"));
+		vSeeds.push_back(CDNSSeedData("85.214.68.75", "85.214.68.75"));;
 		vSeeds.push_back(CDNSSeedData("91.153.109.149", "91.153.109.149"));
 		vSeeds.push_back(CDNSSeedData("155.94.146.68", "155.94.146.68"));
 		vSeeds.push_back(CDNSSeedData("79.172.215.68", "79.172.215.68"));
