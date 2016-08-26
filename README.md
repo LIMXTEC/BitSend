@@ -24,8 +24,11 @@ Block 239.000
 - Change Blocktime to 3 min (6min)
 - Change Reward to 25 BSD(50 BSD)
 - change COINBASE_MATURITY to 288 (25)
+- new protocol version
 Block 240.000
 - Change Algo Hash to X17+ (not compatible to X17)
+
+Note: The Algoswitch reduce the difficult after 6 hours. This rewuid a wallet restart. Then enter setgenerate true.
 
 Release 14.02.2016
 ----------------
