@@ -11,6 +11,12 @@ Copyright (c) 2016 BitSend Core Developers
 
 Release 26.08.2016
 ----------------
+Update BitSend 1.1.0.3
+Softfork
+- X17+ Settings
+
+Release 26.08.2016
+----------------
 Update BitSend 1.1.0.2
 
 Hardfork
