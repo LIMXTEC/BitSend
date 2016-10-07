@@ -21,7 +21,7 @@ HEADERS += \
     ../src/darksend.h \
     ../src/db.h \
     ../src/bitsend11hash.h \
-	../src/bitsend17hash.h \
+	../src/xevan.h \
     ../src/init.h \
     ../src/instantx.h \
     ../src/keepass.h \

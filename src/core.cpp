@@ -214,27 +214,20 @@ uint64_t CTxOutCompressor::DecompressAmount(uint64_t x)
     }
     return n;
 }
-/*uint256 CBlockHeader::GetHash() const
+uint256 CBlockHeader::GetHash() const
 {
-	CChain a1;
-	int nHeight= a1.Height();
-	//pblock->LastHeight = pindexPrev->nHeight;
-	if (nHeight <=10){
-    return HashX11(BEGIN(nVersion), END(nNonce));
+	
+	if(GetBlockTime() >= FORKX17_Main_Net2) // BitSend PoW Hardfork, Friday, 09-Sep-16 18:00:00 UTC
+	{
+		return XEVAN(BEGIN(nVersion), END(nNonce));
 	}
-    else {
-	   return HashX17(BEGIN(nVersion), END(nNonce));
+    else
+	{
+	 return HashX11(BEGIN(nVersion), END(nNonce));
 	}
-}*/
+}
 
-uint256 CBlockHeader::GetHashX11(int nHeight) const
-{
-    return HashX11(BEGIN(nVersion), END(nNonce));
-}
-uint256 CBlockHeader::GetHashX17(int nHeight) const
-{
-   	return HashX17(BEGIN(nVersion), END(nNonce));
-}
+
 uint256 CBlock::BuildMerkleTree() const
 {
     vMerkleTree.clear();
@@ -287,8 +280,7 @@ uint256 CBlock::CheckMerkleBranch(uint256 hash, const std::vector<uint256>& vMer
 
 void CBlock::print() const
 {
-	//GetHashX11().ToString(),
-    LogPrintf("CBlock(hash=disable, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
+	    LogPrintf("CBlock(hash=disable, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
         nVersion,
         hashPrevBlock.ToString(),
         hashMerkleRoot.ToString(),

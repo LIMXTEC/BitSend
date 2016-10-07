@@ -44,7 +44,7 @@ BITCOIN_CORE_H = \
   darksend-relay.h \
   db.h \
   hash/bitsend11hash.h \
-  hash/bitsend17hash.h \
+  hash/xevan.h \
   init.h \
   instantx.h \
   key.h \

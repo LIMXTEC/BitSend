@@ -5,7 +5,7 @@
 
 #include "netbase.h"
 
-#include "hash/bitsend17hash.h"
+#include "hash/xevan.h"
 #include "hash/bitsend11hash.h"
 #include "sync.h"
 #include "uint256.h"

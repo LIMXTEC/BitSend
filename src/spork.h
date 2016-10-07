@@ -71,20 +71,20 @@ public:
     
 
      uint256 GetHash()
-	 { 
-     uint256 n;CBlockIndex* pindexPrev = chainActive.Tip();
-	if (pindexPrev->nHeight <= FORKX17_Main_Net)
+	{ 
+    uint256 n;
+	int nBlockTime = chainActive.Tip()->GetBlockTime();
+	    if (nBlockTime >= FORKX17_Main_Net2)
 	{
-        	n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
+        	n = XEVAN(BEGIN(nSporkID), END(nTimeSigned));
 			return n;
 	}
 	 else 
 	{
-		n = HashX17(BEGIN(nSporkID), END(nTimeSigned));
+		n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
 		return n;
 	}
-        //uint256 n = HashX11(BEGIN(nSporkID), END(nTimeSigned));
-        
+      
     }
 
     IMPLEMENT_SERIALIZE(

@@ -7,7 +7,7 @@
 #include "script.h"
 
 #include "core.h"
-#include "hash/bitsend17hash.h"
+#include "hash/xevan.h"
 #include "hash/bitsend11hash.h"
 #include "key.h"
 #include "keystore.h"

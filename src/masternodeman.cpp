@@ -7,6 +7,7 @@
 #include "activemasternode.h"
 #include "darksend.h"
 #include "core.h"
+#include "main.h"
 #include "util.h"
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>

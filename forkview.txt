@@ -23,7 +23,7 @@ if(!TestNet) {
 
    nheight =chainActive.Height();
    if(nheight >=TESTNETFORKBLOCK){
-		  return HashX17(BEGIN(nVersion), END(nNonce));
+		  return XEVAN(BEGIN(nVersion), END(nNonce));
          }
 		 else
 		 {
@@ -32,7 +32,7 @@ if(!TestNet) {
 		 }
 		 else{
 	if(nheight >=MAINNETFORKBLOCK){
-		  return HashX17(BEGIN(nVersion), END(nNonce));
+		  return XEVAN(BEGIN(nVersion), END(nNonce));
          }
 		 else
 		 {

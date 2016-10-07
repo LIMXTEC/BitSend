@@ -59,9 +59,9 @@ bool fLargeWorkInvalidChainFound = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64_t CTransaction::nMinTxFee = 50000;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000 dash 
+int64_t CTransaction::nMinTxFee = NMINTXFEE;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000 dash 
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
-int64_t CTransaction::nMinRelayTxFee = 5000; // 12-05-2015 old 1000 dash
+int64_t CTransaction::nMinRelayTxFee = NMINRELAYTXFEE; // 12-05-2015 old 1000 dash
 
 struct COrphanBlock {
     uint256 hashBlock;
@@ -1306,7 +1306,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &txOut, uint256 &hashBlock
 //
 // CBlock and CBlockIndex
 //
-int H;
+
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 {
     // Open history file to append
@@ -1332,14 +1332,11 @@ bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 
     return true;
 }
-int Height;
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight )
+
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos)
 {
     block.SetNull();
-    if(pIndexHeight == NULL){
-	    pIndexHeight = chainActive.Height();
-    }
-	
+ 	
     // Open history file to read
     CAutoFile filein = CAutoFile(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION);
     if (!filein)
@@ -1354,17 +1351,16 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight
     }
 
     // Check the header
-    if (!CheckProofOfWork(block.GetHash(pIndexHeight), block.nBits) && chainActive.Height() <= FORKX17_Main_Net)
-        return error("ReadBlockFromDisk : Errors in block header, %d", chainActive.Height());
+    if (!CheckProofOfWork(block.GetHash(), block.nBits))
+        return error("ReadBlockFromDisk : Errors in block header");
 
 	return true;
 
 }
 
-bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, int pIndexHeight )
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 {
-	// We need her a Switch for X11 and X17
-    if (!ReadBlockFromDisk(block, pindex->GetBlockPos(), pIndexHeight))
+    if (!ReadBlockFromDisk(block, pindex->GetBlockPos()))
         return false;
     if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*) : GetHash() doesn't match index");
@@ -1433,22 +1429,6 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-uint256 CBlockHeader::GetHash(int nHeight) const
-{
-	if(nHeight == NULL){
-		 return HashX11(BEGIN(nVersion), END(nNonce));
-	}
-	//pblock->LastHeight = pindexPrev->nHeight;
-	else {	
-	if (nHeight >= FORKX17_Main_Net){
-    return HashX17(BEGIN(nVersion), END(nNonce));
-	}
-    else {
-	   return HashX11(BEGIN(nVersion), END(nNonce));
-	}
-	}
-	
-}
 
 int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 {
@@ -1469,73 +1449,49 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
     	int64_t ret = blockValue / 5; // start at 20% BSD Target is in future 50% by over 2000 Masternodes
 	if(nHeight > 140500) ret += blockValue / 20; 
-	// Add this Lines... Steps by Steps
 	// 140500  
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20; 
 	// 144532  
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20;
 	// 148564 
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20; 
 	// 152596 
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20; 
 	// 156628
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20; 
 	// 160660
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20; 
 	// 192340
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20; 
 	// 200980
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20; 
 	// 218260
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20; 
 	// 226900
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20;
 	// 235540
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
 	//  244180
 	/* For later Stop by 20% /80%
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/20)
 	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
 	// 252820
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50; 
 	// 261460
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50; 
 	// 270100
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50; 
 	// 278740
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
 	// 287380 
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
-	
 	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
 	// 296020
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50; 
 	// 304660
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50; 
 	// 313300
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50; 
 	//  321940
-	// payee_amount +=data.get('payee_amount', data['coinbasevalue']/50)
 	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
-	//  payee_amount +=data.get('payee_amount', data['coinbasevalue']/100)
 	*/
   //  LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
     return ret;
@@ -1590,11 +1546,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 		 else if (pindexLast->nHeight + 1 >= 15200) { retarget = DIFF_KGW; }
 		else retarget = DIFF_BTC;
         } 
-        if (TestNet()){
-        	if (pindexLast->nHeight + 1 >= 500) { retarget = DIFF_KGW2; } 
-		else if (pindexLast->nHeight + 1 >= 100) { retarget = DIFF_DELTA; } 
-		else if (pindexLast->nHeight + 1 >= 20) { retarget = DIFF_KGW; LogPrintf("KGW Testnet"); } 
-        else if (pindexLast->nHeight + 1 >= 10) { retarget = DIFF_DGW; LogPrintf("DGW Testnet"); }
+		if (TestNet()){
+        	if (pindexLast->nHeight + 1 >= 3) { retarget = DIFF_DKGW3; } 
         else{ retarget = DIFF_BTC;}
         }
         
@@ -2805,13 +2758,10 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 }
 
 
-bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot, int pIndexHeight)
+bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot)
 {
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
-	if(pIndexHeight == NULL){
-		pIndexHeight = chainActive.Height();
-	}
     // Size limits
     if (block.vtx.empty() || block.vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CheckBlock() : size limits failed"),
@@ -2819,9 +2769,9 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
 
     // Check proof of work matches claimed amount
-    if (fCheckPOW && !CheckProofOfWork(block.GetHash(pIndexHeight), block.nBits))
-        return state.DoS(50, error("CheckBlock() : proof of work failed, h=%d", pIndexHeight),
-	REJECT_INVALID, "high-hash");
+     if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits))
+     return state.DoS(50, error("CheckBlock() : proof of work failed"),
+                         REJECT_INVALID, "high-hash");
 
     // Bitsenddev: limit timestamp window 
 	if (block.GetBlockTime() > GetAdjustedTime() + 15 * 60)
@@ -2910,7 +2860,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 					//return state.DoS(10, error("AcceptBlock() : prev block not found"), 0, "bad-prevblk");
 					pindexPrev = (*mi).second;
 					nHeight = pindexPrev->nHeight+1;
-					H = pindexPrev->nHeight+1; // just to get value safer ....you can move it where you want
+
 
 					////////////////////////// nheight Funktion Ende
                         foundPayee = true; //doesn't require a specific payee
@@ -2948,8 +2898,9 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     {
                     foundPaymentAndPayee = true;
                     }
-                    else {foundPaymentAndPayee = false; LogPrintf("## Bitsend proof of payment Error2"); }
-                                  
+                    else {foundPaymentAndPayee = true;}
+					// Not more used
+                    //else {foundPaymentAndPayee = false; LogPrintf("## Bitsend proof of payment Error2"); }      
                                 
         					  /////////////////
 
@@ -2959,7 +2910,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     CBitcoinAddress address2(address1);
 
                     if(!foundPaymentAndPayee) {
-                        LogPrintf("CheckBlock() : Regards Bitsenddev !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                        LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
                         if(!RegTest()) return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));
                     } else {
                         LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
@@ -3601,7 +3552,7 @@ bool VerifyDB(int nCheckLevel, int nCheckDepth)
     CBlockIndex* pindexFailure = NULL;
     int nGoodTransactions = 0;
     CValidationState state;
-   // Height = pindex->nHeight;
+
     for (CBlockIndex* pindex = chainActive.Tip(); pindex && pindex->pprev; pindex = pindex->pprev)
     {
         boost::this_thread::interruption_point();
@@ -3610,11 +3561,11 @@ bool VerifyDB(int nCheckLevel, int nCheckDepth)
         CBlock block;
         int Het = pindex->nHeight;
         // check level 0: read from disk
-        if (!ReadBlockFromDisk(block, pindex, Het) && pindex->nHeight != FORKX17_Main_Net)
-            return error("VerifyDB() : *** ReadBlockFromDisk failed at %d, chain=%d, hash=%s", pindex->nHeight, chainActive.Height(), pindex->GetBlockHash().ToString());
+        if (!ReadBlockFromDisk(block, pindex))
+            return error("VerifyDB() : *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
         // check level 1: verify block validity
-        if (nCheckLevel >= 1 && (!CheckBlock(block, state, NULL ,NULL ,Het) && pindex->nHeight != FORKX17_Main_Net) )
-            return error("VerifyDB() : *** found bad block at %d, Het=%d hash=%s\n", pindex->nHeight, Het, pindex->GetBlockHash().ToString());
+        if (nCheckLevel >= 1 && !CheckBlock(block, state))
+            return error("VerifyDB() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString());
         // check level 2: verify undo validity
         if (nCheckLevel >= 2 && pindex) {
             CBlockUndo undo;

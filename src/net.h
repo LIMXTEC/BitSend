@@ -8,7 +8,7 @@
 
 #include "bloom.h"
 #include "compat.h"
-#include "hash/bitsend17hash.h"
+#include "hash/xevan.h"
 #include "hash/bitsend11hash.h"
 #include "limitedmap.h"
 #include "mruset.h"

@@ -3,6 +3,7 @@
 #include "protocol.h"
 #include "activemasternode.h"
 #include "masternodeman.h"
+#include "main.h"
 #include <boost/lexical_cast.hpp>
 
 //
@@ -403,7 +404,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 25000*COIN) { //exactly        bitsenddev   04-2015
+        if(out.tx->vout[out.i].nValue == MASTERNODEAMOUNT*COIN) { //exactly        bitsenddev   04-2015
             filteredCoins.push_back(out);
         }
     }

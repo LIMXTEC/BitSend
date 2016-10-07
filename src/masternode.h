@@ -170,6 +170,7 @@ public:
         }
     )
 
+
     void UpdateLastSeen(int64_t override=0)
     {
         if(override == 0){
@@ -255,6 +256,9 @@ public:
 };
 
 // for storing the winning payments
+
+
+
 class CMasternodePaymentWinner
 {
 public:
@@ -263,28 +267,31 @@ public:
     CScript payee;
     std::vector<unsigned char> vchSig;
     uint64_t score;
-
+	
+		
     CMasternodePaymentWinner() {
         nBlockHeight = 0;
         score = 0;
         vin = CTxIn();
         payee = CScript();
     }
+	
 
 
     uint256 GetHash()
 	{ 
 	uint256 n2, n3; 
-	CBlockIndex* pindexPrev = chainActive.Tip();
-	    if (pindexPrev->nHeight <= FORKX17_Main_Net)
+	
+	 int nBlockTime = chainActive.Tip()->GetBlockTime();
+	    if (nBlockTime >= FORKX17_Main_Net2)
 	{ 
-    		n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));
-        	n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
-        	return n3;
+    	n2 = XEVAN(BEGIN(nBlockHeight), END(nBlockHeight));
+        n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
+        return n3;
 	}
     else 
     {
-		n2 = HashX17(BEGIN(nBlockHeight), END(nBlockHeight));
+		n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));
 		n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
 		return n3;
     }

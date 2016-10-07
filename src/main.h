@@ -47,9 +47,12 @@ class CBlockIndex;
 class CBloomFilter;
 class CInv;
 
-
 static const int FORKX17_Main_Net = 240000;
+static const int FORKX17_Main_Net2 = 1477958400; //Timestamp 1472688000 09/01/2016 (Testnet) @ 12:00am (UTC) 1452384000  11/01/2016 @ 12:00am (UTC)
 static const int COINBASE_MATURITYFROKK = 240000;
+static const int MASTERNODEAMOUNT = 25000;
+static const int NMINTXFEE = 50000;
+static const int NMINRELAYTXFEE = 5000;
 // Only for bool CheckProofOfWork(uint256 hash, unsigned int nBits) 1740 main.cpp
 
 
@@ -86,7 +89,7 @@ static const int DEFAULT_SCRIPTCHECK_THREADS = 0;
 /** Number of blocks that can be requested at any given time from a single peer. */
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 /** Timeout in seconds before considering a block download peer unresponsive. */
-static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
+static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 200;
 
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
@@ -610,8 +613,8 @@ public:
 
 /** Functions for disk access for blocks */
 bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, int pIndexHeight = NULL);
-bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, int pIndexHeight = NULL);
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
 
 
 /** Functions for validating blocks and updating the block tree */
@@ -635,7 +638,7 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
 bool AddToBlockIndex(CBlock& block, CValidationState& state, const CDiskBlockPos& pos);
 
 // Context-independent validity checks
-bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true, int pIndexHeight = NULL);
+bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW = true, bool fCheckMerkleRoot = true);
 
 // Store block on disk
 // if dbp is provided, the file is known to already reside on disk
@@ -857,7 +860,7 @@ public:
 
     bool CheckIndex() const
     {
-        return true; //CheckProofOfWork(GetBlockHash(), nBits);
+        return CheckProofOfWork(GetBlockHash(), nBits);
     }
 
     enum { nMedianTimeSpan=11 };

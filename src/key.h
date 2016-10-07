@@ -8,7 +8,7 @@
 
 #include "allocators.h"
 #include "hash/bitsend11hash.h"
-#include "hash/bitsend17hash.h"
+#include "hash/xevan.h"
 #include "serialize.h"
 #include "uint256.h"
 
