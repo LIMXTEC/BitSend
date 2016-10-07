@@ -12,6 +12,7 @@ Bakc to KGW @ Block 95000 22-05-2015
 - Funktion Bitsend Proof Payment
 - Funktion Delta 101000 
 
+
 ################################
 
 Fees Main 61 TX 500 
