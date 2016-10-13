@@ -191,9 +191,9 @@ static unsigned char pblank[1];
     sph_haval256_5 (&ctx_haval, static_cast<const void*>(&hash[15]), worknumber);
     sph_haval256_5_close(&ctx_haval, static_cast<void*>(&hash[16]));
 	
-	///  Part2
-	sph_blake512_init(&ctx_blake);
-    sph_bmw512 (&ctx_blake, static_cast<const void*>(&hash[16]), worknumber);
+    ///  Part2
+    sph_blake512_init(&ctx_blake);
+    sph_blake512 (&ctx_blake, static_cast<const void*>(&hash[16]), worknumber);
     sph_blake512_close(&ctx_blake, static_cast<void*>(&hash[17]));
     
     sph_bmw512_init(&ctx_bmw);
