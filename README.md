@@ -9,6 +9,18 @@ Copyright (c) 2013 Dr Kimoto Chan
 Copyright (c) 2014-2015 LIMX Core Developers
 Copyright (c) 2016 BitSend Core Developers
 
+
+Release 15.10.2016
+----------------
+Update BitSend 1.2.0.0
+- Algos switch improvment
+- new protocol version
+- added Xevan Algo -Xevan is ultra asic resistant
+- -New Switchtime is 11/01/2016 @ 12:00am (UTC) 
+- New default maintheme
+
+
+
 Release 26.08.2016
 ----------------
 Update BitSend 1.1.0.3
