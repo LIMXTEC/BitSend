@@ -1,8 +1,9 @@
-# BSD - Bitsend Core 1.2.0.0
+## BSD - Bitsend Core 1.2.0.0
 ----------------
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
-http://www.bitsend.info Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
+# http://www.bitsend.info 
+# Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
 
 Copyright (c) 2009-2015 Bitcoin Core Developers
 Copyright (c) 2014-2015 Dash Core Developers
