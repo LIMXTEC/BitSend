@@ -2894,23 +2894,23 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                             foundPaymentAmount = true;
                         if(block.vtx[0].vout[i].scriptPubKey == payee )
                             foundPayee = true;
-					if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
+			if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
                             foundPaymentAndPayee = true;
                     }
                     ////////////////
                     
         	//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
+		if (nHeight <= 235000)
+		{
         	int sizesum2 = block.vtx[0].vout.size();
                  	if(sizesum2 > 1 && foundPaymentAndPayee == true) 
                     {
                     foundPaymentAndPayee = true;
                     }
                     else {foundPaymentAndPayee = true;}
-					// Not more used
-                    //else {foundPaymentAndPayee = false; LogPrintf("## Bitsend proof of payment Error2"); }      
-                                
+		}
+                               
         					  /////////////////
-
 
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
