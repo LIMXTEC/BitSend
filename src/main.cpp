@@ -2852,66 +2852,31 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     bool foundPaymentAndPayee = false;
 					CScript payee;
                     if(!masternodePayments.GetBlockPayee(chainActive.Tip()->nHeight+1, payee) || payee == CScript()){
-					//////////////////////  Bitsenddev 02.06.2015
-										 AssertLockHeld(cs_main);
-					// Check for duplicate
-					uint256 hash = block.GetHash();
-					//if (mapBlockIndex.count(hash))
-					//return state.Invalid(error("AcceptBlock() : block already in mapBlockIndex"), 0, "duplicate");
-					// Get prev block index
-					CBlockIndex* pindexPrev = NULL;
-					int nHeight = 0;
-					if (hash != Params().HashGenesisBlock()) {
-					map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-					//if (mi == mapBlockIndex.end())
-					//return state.DoS(10, error("AcceptBlock() : prev block not found"), 0, "bad-prevblk");
-					pindexPrev = (*mi).second;
-					nHeight = pindexPrev->nHeight+1;
-
-
-					////////////////////////// nheight Funktion Ende
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
-                      //  foundPaymentAndPayee = true;
-			LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-						if (nHeight >= 134000){
-						//Bitsenddev 31-05-2015 Bitsend proof of payment
-						int sizesum1 = block.vtx[0].vout.size();
-						if(sizesum1 > 1){ //write by Bitsenddev 18-10-2015
-                            foundPaymentAndPayee = true;
-
-                        LogPrintf("## Bitsend proof of payment ## CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-						                      }
-							
-						} 
-            }
-					}
+                        foundPaymentAndPayee = true;
+						LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
+				}
 					
-					// nheight Funktion Ende zweite Spannge
-          // Funtion no Intitial Download
-                    for (unsigned int i = 0; i < block.vtx[0].vout.size(); i++) {
-                        if(block.vtx[0].vout[i].nValue == masternodePaymentAmount )
+				// Funtion no Intitial Download
+				for (unsigned int i = 0; i < block.vtx[0].vout.size(); i++) {
+				if(block.vtx[0].vout[i].nValue == masternodePaymentAmount )
                             foundPaymentAmount = true;
-                        if(block.vtx[0].vout[i].scriptPubKey == payee )
+				if(block.vtx[0].vout[i].scriptPubKey == payee )
                             foundPayee = true;
-			if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
+				if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
                             foundPaymentAndPayee = true;
                     }
-                    ////////////////
-                    
-        	//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
-		if (nHeight <= 232500)
-		{
-        	int sizesum2 = block.vtx[0].vout.size();
-                 	if(sizesum2 > 1 && foundPaymentAndPayee == true) 
-                    {
-                    foundPaymentAndPayee = true;
-                    }
-                    else {foundPaymentAndPayee = true;}
-		}
-                               
-        					  /////////////////
-
+				//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
+				if (chainActive.Tip()->nHeight <= 232500)
+				{
+				int sizesum2 = block.vtx[0].vout.size();
+				if(sizesum2 > 1 && foundPaymentAndPayee == true) 
+				{
+				foundPaymentAndPayee = true;
+				}
+				else {foundPaymentAndPayee = true;}
+				}
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
                     CBitcoinAddress address2(address1);
