@@ -2900,7 +2900,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     ////////////////
                     
         	//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
-		if (nHeight <= 235000)
+		if (nHeight <= 232500)
 		{
         	int sizesum2 = block.vtx[0].vout.size();
                  	if(sizesum2 > 1 && foundPaymentAndPayee == true) 
