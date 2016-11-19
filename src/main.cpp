@@ -1440,7 +1440,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 {
    /*double dDiff = (double)0x0000ffff / (double)(nBits & 0x00ffffff);*/
-	    int64_t nSubsidy = 50 * COIN;
+	    int64_t nSubsidy = 50;
 	
 	if (nHeight == 1)
 		nSubsidy = 1306400 * COIN;  
@@ -1448,7 +1448,8 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 		// Old Thread https://bitcointalk.org/index.php?topic=637366.0
 		// New Thread https://bitcointalk.org/index.php?topic=895425.0
 		// Bitsenddev and Bitsend Support have no Premine Coins
-	if (nHeight >= (FORKX17_Main_Net-1000))int64_t nSubsidy = 25 * COIN;
+	if (nHeight >= (FORKX17_Main_Net-1000))
+		nSubsidy = 25 * COIN;
     return nSubsidy + nFees;
 }
 
