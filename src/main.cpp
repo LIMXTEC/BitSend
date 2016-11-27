@@ -1440,7 +1440,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 {
    /*double dDiff = (double)0x0000ffff / (double)(nBits & 0x00ffffff);*/
-	    int64_t nSubsidy = 50;
+	    int64_t nSubsidy = 50 * COIN;
 	
 	if (nHeight == 1)
 		nSubsidy = 1306400 * COIN;  
