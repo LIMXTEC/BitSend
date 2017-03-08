@@ -70,6 +70,11 @@ public:
 		vSeeds.push_back(CDNSSeedData("188.68.52.172", "188.68.52.172"));
 		vSeeds.push_back(CDNSSeedData("37.120.186.85", "37.120.186.85"));
 		vSeeds.push_back(CDNSSeedData("37.120.190.76", "37.120.190.76"));
+		vSeeds.push_back(CDNSSeedData("213.136.80.93", "213.136.80.93"));
+		vSeeds.push_back(CDNSSeedData("213.136.86.202", "213.136.86.202"));
+		vSeeds.push_back(CDNSSeedData("213.136.86.205", "213.136.86.205"));
+		vSeeds.push_back(CDNSSeedData("213.136.86.207", "213.136.86.207"));
+		
 
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of( 102);                    //bitsenddev 04-2015   addresses start with 'i'
