@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
@@ -1449,6 +1449,12 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 		// New Thread https://bitcointalk.org/index.php?topic=895425.0
 		// Bitsenddev and Bitsend Support have no Premine Coins
 	if (nHeight >= (FORKX17_Main_Net-1000))int64_t nSubsidy = 25 * COIN;
+	if (nHeight >= ((FORKX17_Main_Net*33)-52256))int64_t nSubsidy = 1/10 * COIN;
+	// Premine 1306400
+	// 240K x 50 BSD = 12 MIO
+	// 7920 x 24 BSD = 196 MIO
+	// Total 210 MIO Coins
+	// We need a limit for security ~33 years
     return nSubsidy + nFees;
 }
 

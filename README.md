@@ -5,12 +5,12 @@
  http://www.bitsend.info 
  Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
 
-Copyright (c) 2009-2015 Bitcoin Core Developers
+Copyright (c) 2009-2017 Bitcoin Core Developers
 Copyright (c) 2014-2015 Dash Core Developers
 Copyright (c) 2014 Doge Core Developers
 Copyright (c) 2013 Dr Kimoto Chan
 Copyright (c) 2014-2015 LIMX Core Developers
-Copyright (c) 2016 BitSend Core Developers
+Copyright (c) 2017 BitSend Core Developers
 
 
 Release 15.10.2016

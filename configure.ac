@@ -2,7 +2,7 @@ dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
 define(_CLIENT_VERSION_MAJOR, 1)
 define(_CLIENT_VERSION_MINOR, 2)
-define(_CLIENT_VERSION_REVISION, 5)
+define(_CLIENT_VERSION_REVISION, 7)
 define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2016)
@@ -62,7 +62,7 @@ AC_ARG_ENABLE([upnp-default],
   [use_upnp_default=$enableval],
   [use_upnp_default=yes])
 
-# BitSenddev Enable test 15-06-2015
+# BitSenddev Enable test 15-06-2017
 # AC_ARG_ENABLE(tests,
 #    AS_HELP_STRING([--enable-tests],[compile tests (default is no)]),
 #    [use_tests=$enableval],

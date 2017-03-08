@@ -11,7 +11,7 @@
 // These need to be macros, as version.cpp's and bitsend-qt.rc's voodoo requires it
 #define CLIENT_VERSION_MAJOR       1
 #define CLIENT_VERSION_MINOR       2
-#define CLIENT_VERSION_REVISION    5
+#define CLIENT_VERSION_REVISION    7
 #define CLIENT_VERSION_BUILD       0
 // bsdfork darkcoin 11.2.17
 
@@ -22,7 +22,7 @@
 
 // Copyright year (2009-this)
 // Todo: update this when changing our copyright comments in the source
-#define COPYRIGHT_YEAR 2016
+#define COPYRIGHT_YEAR 2017
 
 #endif //HAVE_CONFIG_H
 

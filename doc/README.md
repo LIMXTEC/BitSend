@@ -1,9 +1,10 @@
 Bitsend 0.11.x BETA
 ====================
 
-Copyright (c) 2009-2015 Bitcoin Developers
+Copyright (c) 2009-2017 Bitcoin Developers
 
-Copyright (c) 2014-2015 Bitsend Developers
+Copyright (c) 2014-2015 Dash Developers
+Copyright (c) 2014-2017 Bitsend Developers
 
 
 Setup
