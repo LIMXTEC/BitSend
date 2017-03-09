@@ -14,6 +14,7 @@
 #include "net.h"
 #include "ui_interface.h"
 #include "masternodeman.h"
+#include "peertablemodel.h"
 
 #include <stdint.h>
 
@@ -24,12 +25,13 @@
 static const int64_t nClientStartupTime = GetTime();
 
 ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
-    QObject(parent), optionsModel(optionsModel),
+    QObject(parent), optionsModel(optionsModel), peerTableModel(0),
     cachedNumBlocks(0), cachedMasternodeCountString(""),
     cachedReindexing(0), cachedImporting(0),
     numBlocksAtStartup(-1), pollTimer(0)
 {
-    pollTimer = new QTimer(this);
+    peerTableModel = new PeerTableModel(this);
+	pollTimer = new QTimer(this);
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
     pollTimer->start(MODEL_UPDATE_DELAY);
 
@@ -202,6 +204,12 @@ OptionsModel *ClientModel::getOptionsModel()
 {
     return optionsModel;
 }
+
+PeerTableModel *ClientModel::getPeerTableModel()
+{
+    return peerTableModel;
+}
+
 
 QString ClientModel::formatFullVersion() const
 {
