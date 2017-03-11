@@ -5,6 +5,8 @@
 #include "peertablemodel.h"
 
 #include "clientmodel.h"
+#include "guiconstants.h"
+#include "guiutil.h"
 
 #include "net.h"
 #include "sync.h"
@@ -20,7 +22,7 @@ bool NodeLessThan::operator()(const CNodeCombinedStats &left, const CNodeCombine
 
     if (order == Qt::DescendingOrder)
         std::swap(pLeft, pRight);
-
+	//Formatierung
     switch(column)
     {
     case PeerTableModel::Address:
@@ -28,7 +30,11 @@ bool NodeLessThan::operator()(const CNodeCombinedStats &left, const CNodeCombine
     case PeerTableModel::Subversion:
         return pLeft->cleanSubVer.compare(pRight->cleanSubVer) < 0;
     case PeerTableModel::Height:
-        return pLeft->nStartingHeight < pRight->nStartingHeight;
+		return pLeft->nStartingHeight < pRight->nStartingHeight;
+	case PeerTableModel::Ping:
+        return pLeft->dPingTime < pRight->dPingTime;
+	case PeerTableModel::Version:
+	    return pLeft->addrName.compare(pRight->addrName) < 0;
     }
 
     return false;
@@ -63,12 +69,14 @@ public:
             BOOST_FOREACH(CNode* pnode, vNodes)
             {
                 CNodeCombinedStats stats;
-                stats.statestats.nMisbehavior = -1;
+				stats.statestats.nMisbehavior = 0;
+                //stats.statestats.nSyncHeight = -1;
+				stats.fNodeStateStatsAvailable = false;
                 pnode->copyStats(stats.nodestats);
                 cachedNodeStats.append(stats);
             }
         }
-
+/*
         // if we can, retrieve the CNodeStateStats for each node.
         TRY_LOCK(cs_main, lockMain);
         {
@@ -80,6 +88,10 @@ public:
                 }
             }
         }
+*/
+        // Try to retrieve the CNodeStateStats for each node.
+        BOOST_FOREACH(CNodeCombinedStats &stats, cachedNodeStats)
+            stats.fNodeStateStatsAvailable = GetNodeStateStats(stats.nodestats.nodeid, stats.statestats);
 
 
         if (sortColumn >= 0)
@@ -116,7 +128,8 @@ public:
 PeerTableModel::PeerTableModel(ClientModel *parent) :
     QAbstractTableModel(parent),clientModel(parent),timer(0)
 {
-    columns << tr("Address") << tr("User Agent") << tr("Start Height");
+    columns << tr("Server") << tr("User Agent") << tr("Start Height") << tr("Ping") << tr("Version");
+	//columns << tr("Server") << tr("User Agent") << tr("Start Height");
     priv = new PeerTablePriv();
     // default to unsorted
     priv->sortColumn = -1;
@@ -124,15 +137,14 @@ PeerTableModel::PeerTableModel(ClientModel *parent) :
     // set up timer for auto refresh
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), SLOT(refresh()));
-
+	timer->setInterval(MODEL_UPDATE_DELAY);
     // load initial data
     refresh();
 }
 
-void PeerTableModel::startAutoRefresh(int msecs)
+void PeerTableModel::startAutoRefresh()
 {
-    timer->setInterval(1000);
-    timer->start();
+timer->start();
 }
 
 void PeerTableModel::stopAutoRefresh()
@@ -149,7 +161,7 @@ int PeerTableModel::rowCount(const QModelIndex &parent) const
 int PeerTableModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 3;
+	return columns.length();;
 }
 
 QVariant PeerTableModel::data(const QModelIndex &index, int role) const
@@ -168,9 +180,20 @@ QVariant PeerTableModel::data(const QModelIndex &index, int role) const
         case Subversion:
             return QVariant(rec->nodestats.cleanSubVer.c_str());
         case Height:
-            return rec->nodestats.nStartingHeight;
-        }
+		    return rec->nodestats.nStartingHeight;
+       	case Ping:
+		     return GUIUtil::formatPingTime(rec->nodestats.dPingTime);
+		case Version:
+		     return QVariant(rec->nodestats.nVersion);
+		//ui->peerVersion->setText(QString("%1").arg(stats->nodestats.nVersion));
+		//BB	return GUIUtil::formatPingTime(rec->nodestats.dPingTime);
+		 }
     }
+	else if (role == Qt::TextAlignmentRole) {
+	if (index.column() == Height)  //Späterhier Ping
+	return (int)(Qt::AlignRight | Qt::AlignVCenter);
+	}
+	
     return QVariant();
 }
 
