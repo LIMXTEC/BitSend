@@ -40,23 +40,19 @@ public:
 
 protected:
     virtual bool eventFilter(QObject* obj, QEvent *event);
-/*
+
 private:
-    // show detailed information on ui about selected node 
+    /** show detailed information on ui about selected node */
     void updateNodeDetail(const CNodeCombinedStats *combinedStats);
 
     enum ColumnWidths
     {
-        ADDRESS_COLUMN_WIDTH = 150,
-        SUBVERSION_COLUMN_WIDTH = 120,
-		HIGHT_COLUMN_WIDTH = 80,
-		PING_COLUMN_WIDTH = 100
+        ADDRESS_COLUMN_WIDTH = 250,
+        MINIMUM_COLUMN_WIDTH = 120
     };
 
-    //track the node that we are currently viewing detail on in the peers tab 
+    /** track the node that we are currently viewing detail on in the peers tab */
     CNodeCombinedStats detailNodeStats;
-
-*/
 
 private slots:
     void on_lineEdit_returnPressed();
@@ -108,25 +104,14 @@ signals:
 private:
     static QString FormatBytes(quint64 bytes);
     void setTrafficGraphRange(int mins);
-	void startExecutor();
-	void updateNodeDetail(const CNodeCombinedStats *combinedStats);
-	
-	enum ColumnWidths
-    {
-        ADDRESS_COLUMN_WIDTH = 200,
-        SUBVERSION_COLUMN_WIDTH = 100,
-		HIGHT_COLUMN_WIDTH = 90,
-		PING_COLUMN_WIDTH = 60,
-		VERSION_COLUMN_WIDTH = 50
-    };
 
     Ui::RPCConsole *ui;
     ClientModel *clientModel;
     QStringList history;
-	//GUIUtil::TableViewLastColumnResizingFixer *columnResizingFixer;
+	GUIUtil::TableViewLastColumnResizingFixer *columnResizingFixer;
     int historyPtr;
-	NodeId cachedNodeid;
 
+    void startExecutor();
 };
 
 #endif // RPCCONSOLE_H
