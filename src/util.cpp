@@ -1295,6 +1295,13 @@ void ShrinkDebugFile()
         fclose(file);
 }
 
+void ShrinkDebugFileInterval(int interval) {
+    while (1) {
+        boost::this_thread::sleep( boost::posix_time::hours(interval) );
+        ShrinkDebugFile();
+    }
+}
+
 //
 // "Never go to sea with two chronometers; take one or three."
 // Our three time sources are:
