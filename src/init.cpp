@@ -337,7 +337,7 @@ std::string HelpMessage(HelpMessageMode hmm)
         strUsage += "                         " + _("In this mode -genproclimit controls how many blocks are generated immediately.") + "\n";
     }
     strUsage += "  -shrinkdebugfile         " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
-    strUsage += "  -shrinkdebuginterval=<n> " + _("Shrink debug.log file on each n hours (default: 0)") + "\n";
+    strUsage += "  -shrinkdebuginterval=<n> " + _("Shrink debug.log file on each n hours (0-100000, default: 24)") + "\n";
     strUsage += "  -testnet                 " + _("Use the test network") + "\n";
     strUsage += "  -promode=<n>             " + _("Activate all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
 	strUsage += "  -disable_DS_InstantX=<n> " + _("Disable all Masternode and Darksend related functionality in Core (0-1, default: 0)") + "\n";
@@ -686,7 +686,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
 
-    int nShrinkDebugInterval = GetArg("-shrinkdebuginterval", 0);
+    int nShrinkDebugInterval = GetArg("-shrinkdebuginterval", 24);
     if (0 < nShrinkDebugInterval && nShrinkDebugInterval < 100000) {
         // Run a thread to shrink debug file periodically
         threadGroup.create_thread(boost::bind(&ShrinkDebugFileInterval, nShrinkDebugInterval));
