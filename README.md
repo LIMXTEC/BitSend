@@ -1,4 +1,4 @@
-## BSD - Bitsend Core 1.2.0.0
+## BSD - Bitsend Core 1.2.7.0
 ----------------
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
@@ -13,6 +13,16 @@ Copyright (c) 2014-2015 LIMX Core Developers
 Copyright (c) 2017 BitSend Core Developers
 
 
+Release 13.03.2017
+----------------
+Update BitSend 1.2.7.0
+- Add Peerlist Tab (Debug console)
+- Small changes Bitsend splash and paperwallet
+- Add new Nodes & Checkpoints
+- Copyright 2017
+
+
+
 Release 15.10.2016
 ----------------
 Update BitSend 1.2.0.0
@@ -21,8 +31,6 @@ Update BitSend 1.2.0.0
 - added Xevan Algo -Xevan is ultra asic resistant
 - -New Switchtime is 11/01/2016 @ 12:00am (UTC) 
 - New default maintheme
-
-
 
 Release 26.08.2016
 ----------------
