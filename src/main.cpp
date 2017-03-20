@@ -1448,8 +1448,8 @@ int64_t GetBlockValue(int nBits, int nHeight, int64_t nFees)
 		// Old Thread https://bitcointalk.org/index.php?topic=637366.0
 		// New Thread https://bitcointalk.org/index.php?topic=895425.0
 		// Bitsenddev and Bitsend Support have no Premine Coins
-	if (nHeight >= (FORKX17_Main_Net-1000))int64_t nSubsidy = 25 * COIN;
-	if (nHeight >= ((FORKX17_Main_Net*33)-50256))int64_t nSubsidy = 1/10 * COIN;
+	if (nHeight >= (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
+	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
 	// Premine 1306400
 	// 240K x 50 BSD = 12 MIO
 	// 7920 x 24 BSD = 196 MIO

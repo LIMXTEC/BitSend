@@ -12,7 +12,7 @@
 #define CLIENT_VERSION_MAJOR       1
 #define CLIENT_VERSION_MINOR       2
 #define CLIENT_VERSION_REVISION    7
-#define CLIENT_VERSION_BUILD       0
+#define CLIENT_VERSION_BUILD       1
 // bsdfork darkcoin 11.2.17
 
 
