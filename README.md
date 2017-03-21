@@ -13,6 +13,14 @@ Copyright (c) 2014-2015 LIMX Core Developers
 Copyright (c) 2017 BitSend Core Developers
 
 
+Release 21.03.2017
+----------------
+Update BitSend 1.2.7.1
+- -add the command shrinkdebuginterval (new feature allows to shrink debug file periodically)
+- getblocktemplate fix
+- add new Help File "Create build-ubuntu-1404.md"
+
+
 Release 13.03.2017
 ----------------
 Update BitSend 1.2.7.0
@@ -20,8 +28,6 @@ Update BitSend 1.2.7.0
 - Small changes Bitsend splash and paperwallet
 - Add new Nodes & Checkpoints
 - Copyright 2017
-
-
 
 Release 15.10.2016
 ----------------
