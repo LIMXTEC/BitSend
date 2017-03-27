@@ -16,7 +16,7 @@ Copyright (c) 2017 BitSend Core Developers
 Release 21.03.2017
 ----------------
 Update BitSend 1.2.7.1
-- -add the command shrinkdebuginterval (new feature allows to shrink debug file periodically)
+- add the command `shrinkdebuginterval` (new feature which allows shrinking the debug file periodically)
 - getblocktemplate fix
 - add new Help File "Create build-ubuntu-1404.md"
 
@@ -29,64 +29,13 @@ Update BitSend 1.2.7.0
 - Add new Nodes & Checkpoints
 - Copyright 2017
 
-Release 15.10.2016
-----------------
-Update BitSend 1.2.0.0
-- Algos switch improvment
-- new protocol version
-- added Xevan Algo -Xevan is ultra asic resistant
-- -New Switchtime is 11/01/2016 @ 12:00am (UTC) 
-- New default maintheme
-
-Release 26.08.2016
-----------------
-Update BitSend 1.1.0.3
-Softfork
-- X17+ Settings
-
-Release 26.08.2016
-----------------
-Update BitSend 1.1.0.2
-
-Hardfork
-- Change Masternodes from 5000 BSD to 25.000 BSD
-- Change Block size up to 10 MB KB (4 MB)
-- Change TX size up to 250 KB (100 KB) + 1800 TXs
-
-Softfork
-Block 239.000
-- Add the new Dual KGW3 with Diffbreak
-- Change Blocktime to 3 min (6min)
-- Change Reward to 25 BSD(50 BSD)
-- change COINBASE_MATURITY to 288 (25)
-- new protocol version
-Block 240.000
-- Change Algo Hash to X17+ (not compatible to X17)
-
-Note: The Algoswitch reduce the difficult after 6 hours. This rewuid a wallet restart. Then enter setgenerate true.
-
-Release 14.02.2016
-----------------
-The Version 1.0.0.1 adds new functions. 
-- BitSend Diffbreak - This function protects the chain against huge miners. After 6 hours every CPU-Miner is able to create new blocks.
-- KGW3 - The new KGW setup is now smarter and has a new hard retarget after 60 Blocks (Backup)
-- The new Version supports 4 MB blocks
-- We increased the TX fee's for more security (Blockspaming)
-
-Rebrand from LimecoinX to BitSend
-----------------
-- New GFX and Name
-- Limecoinx ->BitSend
-- LIMX ->BSD
-- new protocol 70077
-
 
 What is Bitsend?
 ----------------
 
-Bitsend is an experimental new digital currency that enables anonymous, instant
+Bitsend is an experimental and new digital currency that enables anonymous, instant
 payments to anyone, anywhere in the world. Bitsend uses peer-to-peer technology
-to operate with no central authority: managing transactions and issuing money
+to operate without a central authority: transaction management and money subsidy
 are carried out collectively by the network. Bitsend Core is the name of open
 source software which enables the use of this currency.
 
