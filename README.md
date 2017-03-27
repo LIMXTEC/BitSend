@@ -21,15 +21,6 @@ Update BitSend 1.2.7.1
 - add new Help File "Create build-ubuntu-1404.md"
 
 
-Release 13.03.2017
-----------------
-Update BitSend 1.2.7.0
-- Add Peerlist Tab (Debug console)
-- Small changes Bitsend splash and paperwallet
-- Add new Nodes & Checkpoints
-- Copyright 2017
-
-
 What is Bitsend?
 ----------------
 
