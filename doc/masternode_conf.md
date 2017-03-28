@@ -1,7 +1,7 @@
 Multi masternode config
 =======================
 
-The multi masternode config allows to control multiple masternodes from a single wallet. The wallet needs to have a valid collaral output of 5000 coins for each masternode. To use this, place a file named masternode.conf in the data directory of your install:
+The multi masternode config allows to control multiple masternodes from a single wallet. The wallet needs to have a valid collaral output of 25000 coins for each masternode. To use this, place a file named masternode.conf in the data directory of your install:
  * Windows: %APPDATA%\Bitsend\
  * Mac OS: ~/Library/Application Support/Bitsend/
  * Unix/Linux: ~/.bitsend/
@@ -16,7 +16,7 @@ mn3 127.0.0.4:18886 92Da1aYg6sbenP6uwskJgEY2XWB5LwJ7bXRqc3UPeShtHWJDjDv db478e78
 ```
 
 In the example above:
-* the collateral for mn1 output index 0 has amount 5000
+* the collateral for mn1 output index 0 has amount 25000
 * masternode 2 will donate 33% of its income
 * masternode 3 will donate 100% of its income
 
