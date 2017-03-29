@@ -1292,6 +1292,19 @@ if(nWalletBackups > 0)
         }
     }
 
+	//-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
+    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
+        return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+    } //BitSenddev 13-05-2016
+
+    LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
+	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
+    LogPrintf("nInstantXDepth %d  #", nInstantXDepth);
+    LogPrintf("Darksend rounds %d  #", nDarksendRounds);
+    LogPrintf("Anonymize Bitsend Amount %d\n", nAnonymizeDarkcoinAmount);
+	
     fEnableDarksend = GetBoolArg("-enabledarksend", false);
      if((fEnableDarksend && !fProUserModeDarksendInstantX) || (fEnableDarksend && fProUserModeDarksendInstantX2)){
         return InitError("You can not start Darksend without -promode=0 or -disable_Darksend_InstantX_on_Core=1");
@@ -1303,10 +1316,12 @@ if(nWalletBackups > 0)
     if(nDarksendRounds < 1) nDarksendRounds = 1;
 
     nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
+	//if(nLiquidityProvider != 0 && !fProUserModeDarksendInstantX){
     if((nLiquidityProvider != 0 && !fProUserModeDarksendInstantX) || (nLiquidityProvider != 0 && fProUserModeDarksendInstantX2)){
-        return InitError("You can only start the LiquidityProvider with -promode=1 and -disable_Darksend_InstantX_on_Core=0");
+	        return InitError("You can only start the LiquidityProvider with -promode=1 and -disable_Darksend_InstantX_on_Core=0");
     }
     if(nLiquidityProvider != 0) {
+		LogPrintf("LiquidityProvider online with: %d\n", nLiquidityProvider);
         darkSendPool.SetMinBlockSpacing(std::min(nLiquidityProvider,100)*15);
         fEnableDarksend = true;
         nDarksendRounds = 99999;
@@ -1325,18 +1340,7 @@ if(nWalletBackups > 0)
         nInstantXDepth = 0;
     }
 
-    //-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
-    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
-	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
-    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
-        return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
-    } //BitSenddev 13-05-2016
-
-    LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
-	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
-    LogPrintf("nInstantXDepth %d  #", nInstantXDepth);
-    LogPrintf("Darksend rounds %d  #", nDarksendRounds);
-    LogPrintf("Anonymize Bitsend Amount %d\n", nAnonymizeDarkcoinAmount);
+    
 
     /* Denominations
 
@@ -1350,10 +1354,10 @@ if(nWalletBackups > 0)
     darkSendDenominations.push_back( (100      * COIN)+100000 );  //BitSenddev for a quick sync 08-05-2016
     darkSendDenominations.push_back( (10       * COIN)+10000 );
     darkSendDenominations.push_back( (1        * COIN)+1000 );
-    darkSendDenominations.push_back( (.1       * COIN)+100 );
-	/*
+    /*
 	Ursprünglich
-    darkSendDenominations.push_back( (.01      * COIN)+10 );
+	darkSendDenominations.push_back( (.1       * COIN)+100 );
+	    darkSendDenominations.push_back( (.01      * COIN)+10 );
     darkSendDenominations.push_back( (.001     * COIN)+1 );
     */
 
