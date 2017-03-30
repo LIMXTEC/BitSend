@@ -55,7 +55,7 @@ HEADERS += \
     ../src/hash/sph_simd.h \
     ../src/hash/sph_skein.h \
     ../src/hash/sph_types.h \
-	../src/hash/sph_cubehash.h \ ff
+    ../src/hash/sph_cubehash.h \
     ../src/hash/sph_hamsi.h \
     ../src/hash/sph_fugue.h \
     ../src/hash/sph_shabal.h \
