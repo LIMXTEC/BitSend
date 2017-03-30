@@ -11,10 +11,10 @@ of memory and 15GB space available when running a Masternode.
 
 Notes
 -----
-You need exactly 5000 BSD to run a Masternode. Masternode input must have at least 15 confirmations.
-Building a new wallet.dat is also recommended (a seperate .conf is needed). Masternode earnings 
-going to this wallet.dat and address. Send only new earned coins away and pay attention for transaction fees.
-To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self tx of 5000 BSD.
+You need exactly 25000 BSD to run a Masternode. Masternode input must have at least 15 confirmations.
+Building a new wallet.dat is also recommended (a seperate .conf is needed). Masternode earnings are
+going to this wallet.dat and address. Send only newly earned coins away and pay attention for transaction fees.
+To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self TX of 25000 BSD.
 
 
 Start
@@ -28,7 +28,7 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	copy the generated address to a text file
 	---
 	encryptwallet "strong password"
-	Send 5000 BSD to "address 0"
+	Send 25000 BSD to "address 0"
 	
 	
 	Rent a Vultr Ubuntu 14.10 64bit server
