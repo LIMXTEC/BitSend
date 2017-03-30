@@ -2,11 +2,10 @@
 Encoding=UTF-8
 Name=Bitsend
 Comment=Bitsend P2P Cryptocurrency
-Comment[fr]=Bitsend, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Bitsend, eşten eşe kriptografik sanal para birimi
 Exec=bitsend-qt %u
 Terminal=false
 Type=Application
 Icon=bitsend128
 MimeType=x-scheme-handler/bitsend;
 Categories=Office;Finance;
+Name[en_US]=bitsend-qt.desktop
