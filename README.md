@@ -4,14 +4,7 @@
 
  http://www.bitsend.info 
  Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
-
-Copyright (c) 2009-2017 Bitcoin Core Developers
-Copyright (c) 2014-2015 Dash Core Developers
-Copyright (c) 2014 Doge Core Developers
-Copyright (c) 2013 Dr Kimoto Chan
-Copyright (c) 2014-2015 LIMX Core Developers
-Copyright (c) 2017 BitSend Core Developers
-
+ 
 
 Release 21.03.2017
 ----------------
@@ -33,6 +26,20 @@ source software which enables the use of this currency.
 For more information, as well as an immediately useable, binary version of
 the Bitsend Core software, see http://www.bitsend.info
 
+License
+-------
+
+Bitsend Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+information or see https://opensource.org/licenses/MIT.
+
+Development Process
+-------------------
+
+The `master` branch is meant to be stable. Development is normally done in separate branches.
+[Tags](https://github.com/LIMXTEC/BitSend/tags) are created to indicate new official,
+stable release versions of BitSend Core.
+
+The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 
 Building process
@@ -48,7 +55,7 @@ Use the autogen script to prepare the build environment.
 
 **precompiled binaries**
 
-Precompiled binaries are available at github, see
+Precompiled binaries are available at GitHub, see
 http://sourceforge.net/projects/bitsend/files/?source=navbar
 
 Always verify the signatures and checksums.
