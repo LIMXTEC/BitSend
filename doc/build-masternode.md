@@ -14,7 +14,7 @@ Notes
 You need exactly 25000 BSD to run a Masternode. Masternode input must have at least 15 confirmations.
 Building a new wallet.dat is also recommended (a seperate .conf is needed). Masternode earnings are
 going to this wallet.dat and address. Send only newly earned coins away and pay attention for transaction fees.
-To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self TX of 5000 BSD.
+To fix a broken accountaddress 0 (possible when sending huge amounts of coins away), do a self TX of 25000 BSD.
 
 
 Start
