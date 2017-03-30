@@ -3,7 +3,7 @@
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
  http://www.bitsend.info 
- Bitcointalk https://bitcointalk.org/index.php?topic=895425.msg13884353#msg13884353
+ Bitcointalk https://bitcointalk.org/index.php?topic=1370307
  
 
 Release 21.03.2017
