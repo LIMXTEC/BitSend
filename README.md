@@ -1,17 +1,11 @@
-## BSD - Bitsend Core 1.2.7.0
+## BSD - Bitsend Core 1.2.7.1
 ----------------
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
  http://www.bitsend.info 
  Bitcointalk https://bitcointalk.org/index.php?topic=1370307
  
-
-Release 21.03.2017
-----------------
-Update BitSend 1.2.7.1
-- add the command `shrinkdebuginterval` (new feature which allows shrinking the debug file periodically)
-- getblocktemplate fix
-- add new Help File "Create build-ubuntu-1404.md"
+ 
 
 
 What is Bitsend?
