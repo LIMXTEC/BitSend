@@ -148,8 +148,8 @@ Build Instructions: Ubuntu & Debian
 	
 	Start Mining
 	----------------------
-	./bitsend.cli setgenerate true
-	./bitsend.cli gethashespersec
+	./bitsendd setgenerate true
+	./bitsendd gethashespersec
 	
 
 Windows Bitsend-Qt Client configuration 
