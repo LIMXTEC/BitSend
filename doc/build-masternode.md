@@ -1,4 +1,4 @@
-MASTERNODE BUILD NOTES [written by MangledBlue & BSDSUPPORT]
+MASTERNODE BUILD NOTES [written by MangledBlue & LIMXSUPPORT]
 ======================
 Some notes on how to build a Bitsend Masternode in Ubuntu server. Using Windows Qt Client to configure.
 
@@ -48,7 +48,7 @@ Build Instructions: Ubuntu & Debian
 	---
 	$ sudo apt-get install build-essential
 	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev
-	$ sudo apt-get install libboost1.54-all-dev
+	$ sudo apt-get install libboost1.58-all-dev
 	$ sudo add-apt-repository ppa:bitcoin/bitcoin
 	$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 	$ sudo apt-get install miniupnpc*-dev
@@ -62,7 +62,7 @@ Build Instructions: Ubuntu & Debian
 	optional, if problems with boost version: 
 	$ sudo apt-get remove libboost*
 	$ sudo apt-get purge libboost*
-	$ sudo apt-get install libboost1.54-all-dev
+	$ sudo apt-get install libboost1.58-all-dev
 
 
 	Swapfile:
