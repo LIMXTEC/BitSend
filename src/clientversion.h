@@ -17,7 +17,7 @@
 
 
 // Set to true for release, false for prerelease or test build
-#define CLIENT_VERSION_IS_RELEASE  true
+#define CLIENT_VERSION_IS_RELEASE  false
 // true ist Releas
 
 // Copyright year (2009-this)

@@ -547,7 +547,7 @@
               <item>
                <widget class="QLabel" name="label_16">
                 <property name="text">
-                 <string>In:</string>
+                 <string>Received</string>
                 </property>
                </widget>
               </item>

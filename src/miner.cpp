@@ -19,7 +19,7 @@
 // DarkcoinMiner
 //
 
-int static FormatHashBlocks(void* pbuffer, unsigned int len)
+/*int static FormatHashBlocks(void* pbuffer, unsigned int len)
 {
     unsigned char* pdata = (unsigned char*)pbuffer;
     unsigned int blocks = 1 + ((len + 8) / 64);
@@ -54,7 +54,7 @@ void SHA256Transform(void* pstate, void* pinput, const void* pinit)
     for (int i = 0; i < 8; i++)
         ((uint32_t*)pstate)[i] = ctx.h[i];
 }
-
+*/
 // Some explaining would be appreciated
 class COrphan
 {
@@ -117,7 +117,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
 
     int payments = 1;
     // Create coinbase tx
-    CTransaction txNew;
+    CMutableTransaction txNew;
     txNew.vin.resize(1);
     txNew.vin[0].prevout.SetNull();
     txNew.vout.resize(1);
@@ -188,7 +188,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         }
 
         // Add our coinbase tx as first transaction
-        pblock->vtx.push_back(txNew);
+        pblock->vtx.push_back(CTransaction());
         pblocktemplate->vTxFees.push_back(-1); // updated at end
         pblocktemplate->vTxSigOps.push_back(-1); // updated at end
 
@@ -327,8 +327,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
                 continue;
 
             CTxUndo txundo;
-            uint256 hash = tx.GetHash();
-            UpdateCoins(tx, state, view, txundo, pindexPrev->nHeight+1, hash);
+            const uint256& hash = tx.GetHash();
+            UpdateCoins(tx, state, view, txundo, pindexPrev->nHeight+1);
 
             // Added
             pblock->vtx.push_back(tx);
@@ -376,7 +376,11 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
          //   LogPrintf("Zugriff miner.cpp 375 blockValue %u\n", blockValue);
          //   LogPrintf("Zugriff main.cpp 375 masternodePayment %u\n", masternodePayment); // bitsenddev
         }
-        pblock->vtx[0].vout[0].nValue = blockValue;
+        //pblock->vtx[0].vout[0].nValue = blockValue;
+		// Compute final coinbase transaction.
+        txNew.vout[0].nValue = GetBlockValue(pindexPrev->nHeight+1, nFees);
+        txNew.vin[0].scriptSig = CScript() << OP_0 << OP_0;
+        pblock->vtx[0] = txNew;
 
         pblocktemplate->vTxFees[0] = -nFees;
 
@@ -385,7 +389,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         UpdateTime(*pblock, pindexPrev);
         pblock->nBits          = GetNextWorkRequired(pindexPrev, pblock);
         pblock->nNonce         = 0;
-        pblock->vtx[0].vin[0].scriptSig = CScript() << OP_0 << OP_0;
+        //pblock->vtx[0].vin[0].scriptSig = CScript() << OP_0 << OP_0;
         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);
 
         CBlockIndex indexDummy(*pblock);
@@ -411,8 +415,11 @@ void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& 
     }
     ++nExtraNonce;
     unsigned int nHeight = pindexPrev->nHeight+1; // Height first in coinbase required for block.version=2
-    pblock->vtx[0].vin[0].scriptSig = (CScript() << nHeight << CScriptNum(nExtraNonce)) + COINBASE_FLAGS;
-    assert(pblock->vtx[0].vin[0].scriptSig.size() <= 100);
+    CMutableTransaction txCoinbase(pblock->vtx[0]);
+    txCoinbase.vin[0].scriptSig = (CScript() << nHeight << CScriptNum(nExtraNonce)) + COINBASE_FLAGS;
+    assert(txCoinbase.vin[0].scriptSig.size() <= 100);
+
+    pblock->vtx[0] = txCoinbase;
 
     pblock->hashMerkleRoot = pblock->BuildMerkleTree();
 }

@@ -763,7 +763,7 @@ public:
     void Subscribe(unsigned int nChannel, unsigned int nHops=0);
     void CancelSubscribe(unsigned int nChannel);
     void CloseSocketDisconnect();
-    void Cleanup();
+   // void Cleanup();
 
 
     // Denial-of-service detection/prevention
