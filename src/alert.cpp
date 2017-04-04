@@ -18,6 +18,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/foreach.hpp>
 
+
 using namespace std;
 
 map<uint256, CAlert> mapAlerts;
