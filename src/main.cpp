@@ -1857,7 +1857,7 @@ void UpdateTime(CBlockHeader& block, const CBlockIndex* pindexPrev)
         block.nBits = GetNextWorkRequired(pindexPrev, &block);
 }
 
-void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCache &inputs, CTxUndo &txundo, int nHeight, const uint256 &txhash)
+void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCache &inputs, CTxUndo &txundo, int nHeight)
 {
     bool ret;
     // mark inputs spent
@@ -1872,7 +1872,7 @@ void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCach
     }
 
     // add outputs
-    ret = inputs.SetCoins(txhash, CCoins(tx, nHeight));
+    ret = inputs.SetCoins(tx.GetHash(), CCoins(tx, nHeight));
     assert(ret);
 }
 
@@ -2155,8 +2155,8 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
 
    bool fEnforceBIP30 = (!pindex->phashBlock);
    if (fEnforceBIP30) {
-        for (unsigned int i = 0; i < block.vtx.size(); i++) {
-            uint256 hash = block.GetTxHash(i);
+        BOOST_FOREACH(const CTransaction& tx, block.vtx) {
+            const uint256& hash = tx.GetHash();
             if (view.HaveCoins(hash) && !view.GetCoins(hash).IsPruned())
                 return state.DoS(100, error("ConnectBlock() : tried to overwrite transaction"),
                                  REJECT_INVALID, "bad-txns-BIP30");
@@ -2222,11 +2222,11 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
         }
 
         CTxUndo txundo;
-        UpdateCoins(tx, state, view, txundo, pindex->nHeight, block.GetTxHash(i));
+        UpdateCoins(tx, state, view, txundo, pindex->nHeight);
         if (!tx.IsCoinBase())
             blockundo.vtxundo.push_back(txundo);
 
-        vPos.push_back(std::make_pair(block.GetTxHash(i), pos));
+        vPos.push_back(std::make_pair(tx.GetHash(), pos));
         pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
     }
     int64_t nTime = GetTimeMicros() - nStart;
@@ -2280,8 +2280,8 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
     assert(ret);
 
     // Watch for transactions paying to me
-    for (unsigned int i = 0; i < block.vtx.size(); i++)
-        g_signals.SyncTransaction(block.GetTxHash(i), block.vtx[i], &block);
+     BOOST_FOREACH(const CTransaction& tx, block.vtx)
+        g_signals.SyncTransaction(tx, &block);
 
     return true;
 }
@@ -2423,11 +2423,11 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew) {
     // Tell wallet about transactions that went from mempool
     // to conflicted:
     BOOST_FOREACH(const CTransaction &tx, txConflicted) {
-        SyncWithWallets(tx.GetHash(), tx, NULL);
+        SyncWithWallets(tx, NULL);
     }
     // ... and about transactions that got confirmed:
-    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
-        SyncWithWallets(tx.GetHash(), tx, &block);
+     BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+        SyncWithWallets(tx, NULL);
     }
     return true;
 }
@@ -2914,13 +2914,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     // Build the merkle tree already. We need it anyway later, and it makes the
     // block cache the transaction hashes, which means they don't need to be
     // recalculated many times during this block's validation.
-    block.BuildMerkleTree();
+   // block.BuildMerkleTree();
 
     // Check for duplicate txids. This is caught by ConnectInputs(),
     // but catching it earlier avoids a potential DoS attack:
     set<uint256> uniqueTx;
-    for (unsigned int i = 0; i < block.vtx.size(); i++) {
-        uniqueTx.insert(block.GetTxHash(i));
+     BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+        uniqueTx.insert(tx.GetHash());
     }
     if (uniqueTx.size() != block.vtx.size())
         return state.DoS(100, error("CheckBlock() : duplicate transaction"),
@@ -2936,7 +2936,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                          REJECT_INVALID, "bad-blk-sigops", true);
 
     // Check merkle root
-    if (fCheckMerkleRoot && block.hashMerkleRoot != block.vMerkleTree.back())
+    if (fCheckMerkleRoot && block.hashMerkleRoot != block.BuildMerkleTree())
         return state.DoS(100, error("CheckBlock() : hashMerkleRoot mismatch"),
                          REJECT_INVALID, "bad-txnmrklroot", true);
 
@@ -2950,7 +2950,30 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
     uint256 hash = block.GetHash();
     if (mapBlockIndex.count(hash))
         return state.Invalid(error("AcceptBlock() : block already in mapBlockIndex"), 0, "duplicate");
-
+	
+	CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(mapBlockIndex);
+    if (pcheckpoint && block.hashPrevBlock != (chainActive.Tip() ? chainActive.Tip()->GetBlockHash() : uint256(0)))
+    {
+        // Extra checks to prevent "fill up memory by spamming with bogus blocks"
+        int64_t deltaTime = block.GetBlockTime() - pcheckpoint->nTime;
+        if (deltaTime < 0)
+        {
+            return state.DoS(100, error("CheckBlockHeader() : block with timestamp before last checkpoint"),
+                             REJECT_CHECKPOINT, "time-too-old");
+        }
+        bool fOverflow = false;
+        uint256 bnNewBlock;
+        bnNewBlock.SetCompact(block.nBits, NULL, &fOverflow);
+        uint256 bnRequired;
+        bnRequired.SetCompact(ComputeMinWork(pcheckpoint->nBits, deltaTime));
+        if (fOverflow || bnNewBlock > bnRequired)
+        {
+            return state.DoS(100, error("CheckBlockHeader() : block with too little proof-of-work"),
+                             REJECT_INVALID, "bad-diffbits");
+        }
+    }
+	
+	
     // Get prev block index
     CBlockIndex* pindexPrev = NULL;
     int nHeight = 0;
@@ -3136,7 +3159,7 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
     if (!CheckBlock(*pblock, state))
         return error("ProcessBlock() : CheckBlock FAILED");
 
-    CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(mapBlockIndex);
+   /* CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(mapBlockIndex);
     if (pcheckpoint && pblock->hashPrevBlock != (chainActive.Tip() ? chainActive.Tip()->GetBlockHash() : uint256(0)))
     {
         // Extra checks to prevent "fill up memory by spamming with bogus blocks"
@@ -3156,8 +3179,8 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
             return state.DoS(100, error("ProcessBlock() : block with too little proof-of-work"),
                              REJECT_INVALID, "bad-diffbits");
         }
-        */
-    }
+        
+    }*/
 
 
     // If we don't already have its previous block, shunt it off to holding area until we get it
@@ -3246,8 +3269,8 @@ CMerkleBlock::CMerkleBlock(const CBlock& block, CBloomFilter& filter)
 
     for (unsigned int i = 0; i < block.vtx.size(); i++)
     {
-        uint256 hash = block.vtx[i].GetHash();
-        if (filter.IsRelevantAndUpdate(block.vtx[i], hash))
+        const uint256& hash = block.vtx[i].GetHash();
+        if (filter.IsRelevantAndUpdate(block.vtx[i]))
         {
             vMatch.push_back(true);
             vMatchedTxn.push_back(make_pair(i, hash));
@@ -4488,7 +4511,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         if (AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs, allowFree))
         {
             mempool.check(pcoinsTip);
-            RelayTransaction(tx, inv.hash);
+            RelayTransaction(tx);
             mapAlreadyAskedFor.erase(inv);
             vWorkQueue.push_back(inv.hash);
             vEraseQueue.push_back(inv.hash);
@@ -4526,7 +4549,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                     if (AcceptToMemoryPool(mempool, stateDummy, orphanTx, true, &fMissingInputs2))
                     {
                         LogPrint("mempool", "   accepted orphan tx %s\n", orphanHash.ToString());
-                        RelayTransaction(orphanTx, orphanHash);
+                        RelayTransaction(orphanTx);
                         mapAlreadyAskedFor.erase(CInv(MSG_TX, orphanHash));
                         vWorkQueue.push_back(orphanHash);
                     }
@@ -4617,7 +4640,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             CTransaction tx;
             bool fInMemPool = mempool.lookup(hash, tx);
             if (!fInMemPool) continue; // another thread removed since queryHashes, maybe...
-            if ((pfrom->pfilter && pfrom->pfilter->IsRelevantAndUpdate(tx, hash)) ||
+            if ((pfrom->pfilter && pfrom->pfilter->IsRelevantAndUpdate(tx)) ||
                (!pfrom->pfilter))
                 vInv.push_back(inv);
             if (vInv.size() == MAX_INV_SZ) {
