@@ -1,4 +1,5 @@
 ## BSD - Bitsend Core 1.2.7.0
+#---WARNING----This Branch is under development----
 ----------------
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
