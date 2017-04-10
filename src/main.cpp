@@ -59,9 +59,9 @@ bool fLargeWorkInvalidChainFound = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64_t CTransaction::nMinTxFee = NMINTXFEE;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000 dash 
+CFeeRate CTransaction::minTxFee = CFeeRate(NMINTXFEE);//int64_t CTransaction::nMinTxFee = NMINTXFEE;  // Override with -mintxfee // 12-05-2015 bitsenddev old 10000 dash 
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
-int64_t CTransaction::nMinRelayTxFee = NMINRELAYTXFEE; // 12-05-2015 old 1000 dash
+CFeeRate CTransaction::minRelayTxFee = CFeeRate(NMINRELAYTXFEE);//int64_t CTransaction::nMinRelayTxFee = NMINRELAYTXFEE; // 12-05-2015 old 1000 dash
 
 struct COrphanBlock {
     uint256 hashBlock;
@@ -579,7 +579,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         }
         if (whichType == TX_NULL_DATA)
             nDataOut++;
-        else if (txout.IsDust(CTransaction::nMinRelayTxFee)) {
+        else if (txout.IsDust(CTransaction::minRelayTxFee)) {
             reason = "dust";
             return false;
         }
@@ -838,10 +838,20 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state)
 
 int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode)
 {
-    // Base fee is either nMinTxFee or nMinRelayTxFee
-    int64_t nBaseFee = (mode == GMF_RELAY) ? tx.nMinRelayTxFee : tx.nMinTxFee;
+	{
+        LOCK(mempool.cs);
+        uint256 hash = tx.GetHash();
+        double dPriorityDelta = 0;
+        int64_t nFeeDelta = 0;
+        mempool.ApplyDeltas(hash, dPriorityDelta, nFeeDelta);
+        if (dPriorityDelta > 0 || nFeeDelta > 0)
+            return 0;
+    }
+	
+     // Base fee is either minTxFee or minRelayTxFee
+    CFeeRate baseFeeRate = (mode == GMF_RELAY) ? tx.minRelayTxFee : tx.minTxFee;
 
-    int64_t nMinFee = (1 + (int64_t)nBytes / 1000) * nBaseFee;
+    int64_t nMinFee = baseFeeRate.GetFee(nBytes);
 
     if (fAllowFree)
     {
@@ -858,12 +868,12 @@ int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, 
     // This code can be removed after enough miners have upgraded to version 0.9.
     // Until then, be safe when sending and require a fee if any output
     // is less than CENT:
-    if (nMinFee < nBaseFee && mode == GMF_SEND)
+   /* if (nMinFee < nBaseFee && mode == GMF_SEND)
     {
         BOOST_FOREACH(const CTxOut& txout, tx.vout)
             if (txout.nValue < CENT)
                 nMinFee = nBaseFee;
-    }
+    }*/
 
     if (!MoneyRange(nMinFee))
         nMinFee = MAX_MONEY;
@@ -929,6 +939,8 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
     {
         CCoinsView dummy;
         CCoinsViewCache view(dummy);
+		
+		int64_t nValueIn = 0;
 
         {
         LOCK(pool.cs);
@@ -957,6 +969,8 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
 
         // Bring the best block into scope
         view.GetBestBlock();
+		
+		nValueIn = view.GetValueIn(tx);
 
         // we have all inputs cached now, so switch back to dummy, so we don't need to keep lock on mempool
         view.SetBackend(dummy);
@@ -970,7 +984,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
         // you should add code here to check that the transaction does a
         // reasonable number of ECDSA signature verifications.
 
-        int64_t nValueIn = view.GetValueIn(tx);
+        //int64_t nValueIn = view.GetValueIn(tx);
         int64_t nValueOut = tx.GetValueOut();
         int64_t nFees = nValueIn-nValueOut;
         double dPriority = view.GetPriority(tx, chainActive.Height());
@@ -989,7 +1003,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
             // Continuously rate-limit free transactions
             // This mitigates 'penny-flooding' -- sending thousands of free transactions just to
             // be annoying or make others' transactions take longer to confirm.
-            if (fLimitFree && nFees < CTransaction::nMinRelayTxFee)
+            if (fLimitFree && nFees < CTransaction::minRelayTxFee)
             {
                 static CCriticalSection csFreeLimiter;
                 static double dFreeCount;
@@ -1011,10 +1025,10 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
             }
         }
 
-        if (fRejectInsaneFee && nFees > CTransaction::nMinRelayTxFee * 10000)
+        if (fRejectInsaneFee && nFees > CTransaction::minRelayTxFee.GetFee(nSize) * 10000)
             return error("AcceptToMemoryPool: : insane fees %s, %d > %d",
                          hash.ToString(),
-                         nFees, CTransaction::nMinRelayTxFee * 10000);
+                         nFees, CTransaction::minRelayTxFee.GetFee(nSize) * 10000);
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
@@ -2413,11 +2427,12 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew) {
         return false;
     // Remove conflicting transactions from the mempool.
     list<CTransaction> txConflicted;
-    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+	mempool.removeForBlock(block.vtx, pindexNew->nHeight, txConflicted);
+    /*BOOST_FOREACH(const CTransaction &tx, block.vtx) {
         list<CTransaction> unused;
         mempool.remove(tx, unused);
         mempool.removeConflicts(tx, txConflicted);
-    }
+    }*/
     mempool.check(pcoinsTip);
     // Update chainActive & related variables.
     UpdateTip(pindexNew);
@@ -3513,6 +3528,25 @@ bool static LoadBlockIndexDB()
     LogPrintf("LoadBlockIndexDB(): last block file = %i\n", nLastBlockFile);
     if (pblocktree->ReadBlockFileInfo(nLastBlockFile, infoLastBlockFile))
         LogPrintf("LoadBlockIndexDB(): last block file info: %s\n", infoLastBlockFile.ToString());
+	
+	// Check presence of blk files
+    LogPrintf("Checking all blk files are present...\n");
+    set<int> setBlkDataFiles;
+    BOOST_FOREACH(const PAIRTYPE(uint256, CBlockIndex*)& item, mapBlockIndex)
+    {
+        CBlockIndex* pindex = item.second;
+        if (pindex->nStatus & BLOCK_HAVE_DATA) {
+            setBlkDataFiles.insert(pindex->nFile);
+        }
+    }
+    for (std::set<int>::iterator it = setBlkDataFiles.begin(); it != setBlkDataFiles.end(); it++)
+    {
+        CDiskBlockPos pos(*it, 0);
+        if (!CAutoFile(OpenBlockFile(pos, true), SER_DISK, CLIENT_VERSION)) {
+            return false;
+        }
+    }
+
 
     // Check whether we need to continue reindexing
     bool fReindexing = false;

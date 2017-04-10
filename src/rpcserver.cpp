@@ -255,6 +255,7 @@ static const CRPCCommand vRPCCommands[] =
     { "getblocktemplate",       &getblocktemplate,       true,      false,      false },
     { "getmininginfo",          &getmininginfo,          true,      false,      false },
     { "getnetworkhashps",       &getnetworkhashps,       true,      false,      false },
+	{ "prioritisetransaction",  &prioritisetransaction,  true,      false,      false },
     { "submitblock",            &submitblock,            false,     false,      false },
 
     /* Raw transactions */
@@ -269,6 +270,8 @@ static const CRPCCommand vRPCCommands[] =
     { "createmultisig",         &createmultisig,         true,      true ,      false },
     { "validateaddress",        &validateaddress,        true,      false,      false }, /* uses wallet if enabled */
     { "verifymessage",          &verifymessage,          false,     false,      false },
+	{ "estimatefee",            &estimatefee,            true,      true,       false },
+    { "estimatepriority",       &estimatepriority,       true,      true,       false },
 
     /* Bitsend features */
     { "spork",                  &spork,                  true,      false,      false },
@@ -392,7 +395,7 @@ bool ClientAllowed(const boost::asio::ip::address& address)
     return false;
 }
 
-class AcceptedConnection
+/*class AcceptedConnection
 {
 public:
     virtual ~AcceptedConnection() {}
@@ -400,7 +403,7 @@ public:
     virtual std::iostream& stream() = 0;
     virtual std::string peer_address_to_string() const = 0;
     virtual void close() = 0;
-};
+};*/
 
 template <typename Protocol>
 class AcceptedConnectionImpl : public AcceptedConnection
@@ -509,6 +512,15 @@ static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, 
     }
 }
 
+static ip::tcp::endpoint ParseEndpoint(const std::string &strEndpoint, int defaultPort)
+{
+    std::string addr;
+    int port = defaultPort;
+    SplitHostPort(strEndpoint, port, addr);
+    return ip::tcp::endpoint(asio::ip::address::from_string(addr), port);
+}
+
+
 void StartRPCThreads()
 {
     strRPCUserColonPass = mapArgs["-rpcuser"] + ":" + mapArgs["-rpcpassword"];
@@ -566,21 +578,60 @@ void StartRPCThreads()
     }
 
     // Try a dual IPv6/IPv4 socket, falling back to separate IPv4 and IPv6 sockets
-    const bool loopback = !mapArgs.count("-rpcallowip");
+    /*const bool loopback = !mapArgs.count("-rpcallowip");
     asio::ip::address bindAddress = loopback ? asio::ip::address_v6::loopback() : asio::ip::address_v6::any();
     ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport", Params().RPCPort()));
-    boost::system::error_code v6_only_error;
+    boost::system::error_code v6_only_error;*/
+	
+	std::vector<ip::tcp::endpoint> vEndpoints;
+    bool bBindAny = false;
+    int defaultPort = GetArg("-rpcport", Params().RPCPort());
+    if (!mapArgs.count("-rpcallowip")) // Default to loopback if not allowing external IPs
+    {
+        vEndpoints.push_back(ip::tcp::endpoint(asio::ip::address_v6::loopback(), defaultPort));
+        vEndpoints.push_back(ip::tcp::endpoint(asio::ip::address_v4::loopback(), defaultPort));
+        if (mapArgs.count("-rpcbind"))
+        {
+            LogPrintf("WARNING: option -rpcbind was ignored because -rpcallowip was not specified, refusing to allow everyone to connect\n");
+        }
+    } else if (mapArgs.count("-rpcbind")) // Specific bind address
+    {
+        BOOST_FOREACH(const std::string &addr, mapMultiArgs["-rpcbind"])
+        {
+            try {
+                vEndpoints.push_back(ParseEndpoint(addr, defaultPort));
+            }
+            catch(boost::system::system_error &e)
+            {
+                uiInterface.ThreadSafeMessageBox(
+                    strprintf(_("Could not parse -rpcbind value %s as network address"), addr),
+                    "", CClientUIInterface::MSG_ERROR);
+                StartShutdown();
+                return;
+            }
+        }
+    } else { // No specific bind address specified, bind to any
+        vEndpoints.push_back(ip::tcp::endpoint(asio::ip::address_v6::any(), defaultPort));
+        vEndpoints.push_back(ip::tcp::endpoint(asio::ip::address_v4::any(), defaultPort));
+        // Prefer making the socket dual IPv6/IPv4 instead of binding
+        // to both addresses seperately.
+        bBindAny = true;
+    }
 
     bool fListening = false;
     std::string strerr;
-    try
+   /* BOOST_FOREACH(const ip::tcp::endpoint &endpoint, vEndpoints)
     {
+		asio::ip::address bindAddress = endpoint.address();
+        LogPrintf("Binding RPC on address %s port %i (IPv4+IPv6 bind any: %i)\n", bindAddress.to_string(), endpoint.port(), bBindAny);
+        boost::system::error_code v6_only_error;
         boost::shared_ptr<ip::tcp::acceptor> acceptor(new ip::tcp::acceptor(*rpc_io_service));
-        acceptor->open(endpoint.protocol());
-        acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+		rpc_acceptors.push_back(acceptor);
+        //acceptor->open(endpoint.protocol());
+        //acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
 
         // Try making the socket dual IPv6/IPv4 (if listening on the "any" address)
-        acceptor->set_option(boost::asio::ip::v6_only(loopback), v6_only_error);
+        /*acceptor->set_option(boost::asio::ip::v6_only(loopback), v6_only_error);
 
         acceptor->bind(endpoint);
         acceptor->listen(socket_base::max_connections);
@@ -611,12 +662,52 @@ void StartRPCThreads()
 
             rpc_acceptors.push_back(acceptor);
             fListening = true;
+			// If dual IPv6/IPv4 bind succesful, skip binding to IPv4 separately
+            if(bBindAny && bindAddress == asio::ip::address_v6::any() && !v6_only_error)
+                break;
+        }
+		catch(boost::system::system_error &e)
+        {
+            LogPrintf("ERROR: Binding RPC on address %s port %i failed: %s\n", bindAddress.to_string(), endpoint.port(), e.what());
+            strerr = strprintf(_("An error occurred while setting up the RPC address %s port %u for listening: %s"), bindAddress.to_string(), endpoint.port(), e.what());
+        }
+    }*/
+	BOOST_FOREACH(const ip::tcp::endpoint &endpoint, vEndpoints)
+    {
+        asio::ip::address bindAddress = endpoint.address();
+        LogPrintf("Binding RPC on address %s port %i (IPv4+IPv6 bind any: %i)\n", bindAddress.to_string(), endpoint.port(), bBindAny);
+        boost::system::error_code v6_only_error;
+        boost::shared_ptr<ip::tcp::acceptor> acceptor(new ip::tcp::acceptor(*rpc_io_service));
+        rpc_acceptors.push_back(acceptor);
+
+        try {
+            acceptor->open(endpoint.protocol());
+            acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+
+            // Try making the socket dual IPv6/IPv4 when listening on the IPv6 "any" address
+            acceptor->set_option(boost::asio::ip::v6_only(
+                !bBindAny || bindAddress != asio::ip::address_v6::any()), v6_only_error);
+
+            acceptor->bind(endpoint);
+            acceptor->listen(socket_base::max_connections);
+
+            RPCListen(acceptor, *rpc_ssl_context, fUseSSL);
+
+            fListening = true;
+            // If dual IPv6/IPv4 bind succesful, skip binding to IPv4 separately
+            if(bBindAny && bindAddress == asio::ip::address_v6::any() && !v6_only_error)
+                break;
+        }
+        catch(boost::system::system_error &e)
+        {
+            LogPrintf("ERROR: Binding RPC on address %s port %i failed: %s\n", bindAddress.to_string(), endpoint.port(), e.what());
+            strerr = strprintf(_("An error occurred while setting up the RPC address %s port %u for listening: %s"), bindAddress.to_string(), endpoint.port(), e.what());
         }
     }
-    catch(boost::system::system_error &e)
+    /*catch(boost::system::system_error &e)
     {
         strerr = strprintf(_("An error occurred while setting up the RPC port %u for listening on IPv4: %s"), endpoint.port(), e.what());
-    }
+    }*/
 
     if (!fListening) {
         uiInterface.ThreadSafeMessageBox(strerr, "", CClientUIInterface::MSG_ERROR);

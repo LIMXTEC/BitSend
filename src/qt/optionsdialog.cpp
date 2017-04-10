@@ -112,7 +112,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 #endif
 
     ui->unit->setModel(new BitcoinUnits(this));
-    ui->transactionFee->setSingleStep(CTransaction::nMinTxFee);
+    ui->transactionFee->setSingleStep(CTransaction::minTxFee.GetFeePerK());
 
     /* Widget-to-option mapper */
     mapper = new MonitoredDataMapper(this);

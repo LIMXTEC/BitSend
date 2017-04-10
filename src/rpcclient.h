@@ -10,7 +10,7 @@
 #include "json/json_spirit_utils.h"
 #include "json/json_spirit_writer_template.h"
 
-int CommandLineRPC(int argc, char *argv[]);
+//int CommandLineRPC(int argc, char *argv[]);
 
 json_spirit::Array RPCConvertValues(const std::string &strMethod, const std::vector<std::string> &strParams);
 
@@ -20,6 +20,6 @@ json_spirit::Array RPCConvertValues(const std::string &strMethod, const std::vec
  *
  * @note the argument can be removed once bitsend-cli functionality is removed from bitsendd
  */
-std::string HelpMessageCli(bool mainProgram);
+//std::string HelpMessageCli(bool mainProgram);
 
 #endif

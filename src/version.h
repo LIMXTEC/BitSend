@@ -7,7 +7,7 @@
 
 #include "clientversion.h"
 
-#include <string>
+/*#include <string>
 
 //
 // client versioning
@@ -26,11 +26,14 @@ extern const std::string CLIENT_DATE;
 //
 // network protocol versioning
 //
-
+*/
 static const int PROTOCOL_VERSION = 70082;
 
 // intial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
+
+//! In this version, 'getheaders' was introduced.
+static const int GETHEADERS_VERSION = 31800;
 
 // disconnect from peers older than this proto version
 static const int MIN_PEER_PROTO_VERSION = 70082;

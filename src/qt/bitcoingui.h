@@ -16,6 +16,7 @@
 class ClientModel;
 class Notificator;
 class RPCConsole;
+class UnitDisplayStatusBarControl;
 class SendCoinsRecipient;
 class WalletFrame;
 class WalletModel;

@@ -4,19 +4,27 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#if defined(HAVE_CONFIG_H)
+#include "bitsend-config.h"
+#endif
+
+
 #include "util.h"
 
-#include "chainparams.h"
-#include "netbase.h"
+#include "chainparamsbase.h"
+#include "random.h"
+#include "serialize.h"
 #include "sync.h"
-#include "ui_interface.h"
-#include "uint256.h"
-#include "version.h"
+//#include "ui_interface.h"
+//#include "uint256.h"
+//#include "version.h"
+#include "utilstrencodings.h"
+#include "utiltime.h"
 #include "allocators.h"
 
 #include <stdarg.h>
 
-#include <boost/date_time/posix_time/posix_time.hpp>
+//#include <boost/date_time/posix_time/posix_time.hpp>
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <openssl/buffer.h>
@@ -25,16 +33,16 @@
 
 #ifndef WIN32
 // for posix_fallocate
-#ifdef __linux_
+#ifdef __linux__
 
 #ifdef _POSIX_C_SOURCE
 #undef _POSIX_C_SOURCE
 #endif
 
 #define _POSIX_C_SOURCE 200112L
-#include <sys/prctl.h>
+//#include <sys/prctl.h>
 
-#endif
+#endif // __linux__
 
 #include <algorithm>
 #include <fcntl.h>
@@ -69,6 +77,11 @@
 #include <shlobj.h>
 #endif
 
+#ifdef HAVE_SYS_PRCTL_H
+#include <sys/prctl.h>
+#endif
+
+
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
@@ -77,8 +90,10 @@
 #include <boost/foreach.hpp>
 #include <boost/program_options/detail/config_file.hpp>
 #include <boost/program_options/parsers.hpp>
+#include <boost/thread.hpp>
 #include <openssl/crypto.h>
 #include <openssl/rand.h>
+#include <openssl/conf.h>
 
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
@@ -119,10 +134,11 @@ bool fPrintToDebugLog = true;
 bool fDaemon = false;
 bool fServer = false;
 string strMiscWarning;
-bool fNoListen = false;
+//bool fNoListen = false;
 bool fLogTimestamps = false;
+bool fLogIPs = false;
 volatile bool fReopenDebugLog = false;
-CClientUIInterface uiInterface;
+//CClientUIInterface uiInterface;
 
 // Init OpenSSL library multithreading support
 static CCriticalSection** ppmutexOpenSSL;
@@ -157,6 +173,8 @@ public:
     }
     ~CInit()
     {
+		// Securely erase the memory used by the PRNG
+        RAND_cleanup();
         // Shutdown OpenSSL library multithreading support
         CRYPTO_set_locking_callback(NULL);
         for (int i = 0; i < CRYPTO_num_locks(); i++)
@@ -173,15 +191,15 @@ instance_of_cinit;
 
 
 
-void RandAddSeed()
+/*void RandAddSeed()
 {
     // Seed with CPU performance counter
     int64_t nCounter = GetPerformanceCounter();
     RAND_add(&nCounter, sizeof(nCounter), 1.5);
     memset(&nCounter, 0, sizeof(nCounter));
-}
+}*/
 
-void RandAddSeedPerfmon()
+/*void RandAddSeedPerfmon()
 {
     RandAddSeed();
 
@@ -194,21 +212,36 @@ void RandAddSeedPerfmon()
 #ifdef WIN32
     // Don't need this on Linux, OpenSSL automatically uses /dev/urandom
     // Seed with the entire set of perfmon data
-    unsigned char pdata[250000];
-    memset(pdata, 0, sizeof(pdata));
-    unsigned long nSize = sizeof(pdata);
-    long ret = RegQueryValueExA(HKEY_PERFORMANCE_DATA, "Global", NULL, NULL, pdata, &nSize);
+    std::vector <unsigned char> vData(250000,0);
+    long ret = 0;
+    unsigned long nSize = 0;
+    const size_t nMaxSize = 10000000; // Bail out at more than 10MB of performance data
+    while (true)
+    {
+        nSize = vData.size();
+        ret = RegQueryValueExA(HKEY_PERFORMANCE_DATA, "Global", NULL, NULL, begin_ptr(vData), &nSize);
+        if (ret != ERROR_MORE_DATA || vData.size() >= nMaxSize)
+            break;
+        vData.resize(std::max((vData.size()*3)/2, nMaxSize)); // Grow size of buffer exponentially
+    }
     RegCloseKey(HKEY_PERFORMANCE_DATA);
     if (ret == ERROR_SUCCESS)
     {
-        RAND_add(pdata, nSize, nSize/100.0);
-        OPENSSL_cleanse(pdata, nSize);
-        LogPrint("rand", "RandAddSeed() %lu bytes\n", nSize);
+        RAND_add(begin_ptr(vData), nSize, nSize/100.0);
+        OPENSSL_cleanse(begin_ptr(vData), nSize);
+        LogPrint("rand", "%s: %lu bytes\n", __func__, nSize);
+    } else {
+        static bool warned = false; // Warn only once
+        if (!warned)
+        {
+            LogPrintf("%s: Warning: RegQueryValueExA(HKEY_PERFORMANCE_DATA) failed with code %i\n", __func__, ret);
+            warned = true;
+        }
     }
 #endif
-}
+}*/
 
-uint64_t GetRand(uint64_t nMax)
+/*uint64_t GetRand(uint64_t nMax)
 {
     if (nMax == 0)
         return 0;
@@ -222,8 +255,8 @@ uint64_t GetRand(uint64_t nMax)
     while (nRand >= nRange);
     return (nRand % nMax);
 }
-
-int GetRandInt(int nMax)
+*/
+/*int GetRandInt(int nMax)
 {
     return GetRand(nMax);
 }
@@ -243,7 +276,7 @@ uint256 GetRandHash()
 // destroyed, and then some later destructor calls OutputDebugStringF,
 // maybe indirectly, and you get a core dump at shutdown trying to lock
 // the mutex).
-
+*/
 static boost::once_flag debugPrintInitFlag = BOOST_ONCE_INIT;
 // We use boost::call_once() to make sure these are initialized in
 // in a thread-safe manner the first time it is called:
@@ -296,9 +329,10 @@ int LogPrintStr(const std::string &str)
     if (fPrintToConsole)
     {
         // print to console
-        ret = fwrite(str.data(), 1, str.size(), stdout);
+		ret = fwrite(str.data(), 1, str.size(), stdout);
+        fflush(stdout);
     }
-    else if (fPrintToDebugLog)
+    else if (fPrintToDebugLog && AreBaseParamsConfigured())
     {
         static bool fStartedNewLine = true;
         boost::call_once(&DebugPrintInit, debugPrintInitFlag);
@@ -330,8 +364,8 @@ int LogPrintStr(const std::string &str)
     return ret;
 }
 
-string FormatMoney(int64_t n, bool fPlus)
-{
+/*string FormatMoney(int64_t n, bool fPlus)
+{*/
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
     int64_t n_abs = (n > 0 ? n : -n);
@@ -354,13 +388,13 @@ string FormatMoney(int64_t n, bool fPlus)
 }
 
 
-bool ParseMoney(const string& str, int64_t& nRet)
-{
+/*bool ParseMoney(const string& str, int64_t& nRet)
+{*/
     return ParseMoney(str.c_str(), nRet);
 }
 
-bool ParseMoney(const char* pszIn, int64_t& nRet)
-{
+/*bool ParseMoney(const char* pszIn, int64_t& nRet)
+{*/
     string strWhole;
     int64_t nUnits = 0;
     const char* p = pszIn;
@@ -401,9 +435,9 @@ bool ParseMoney(const char* pszIn, int64_t& nRet)
 
 // safeChars chosen to allow simple messages/URLs/email addresses, but avoid anything
 // even possibly remotely dangerous like & or >
-static string safeChars("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 .,;_/:?@");
-string SanitizeString(const string& str)
-{
+//static string safeChars("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890 .,;_/:?@");
+/*string SanitizeString(const string& str)
+{*/
     string strResult;
     for (std::string::size_type i = 0; i < str.size(); i++)
     {
@@ -413,8 +447,8 @@ string SanitizeString(const string& str)
     return strResult;
 }
 
-const signed char p_util_hexdigit[256] =
-{ -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+/*const signed char p_util_hexdigit[256] =
+{ -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,*/
   -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
   -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
   0,1,2,3,4,5,6,7,8,9,-1,-1,-1,-1,-1,-1,
@@ -431,8 +465,8 @@ const signed char p_util_hexdigit[256] =
   -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
   -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, };
 
-bool IsHex(const string& str)
-{
+/*bool IsHex(const string& str)
+{*/
     BOOST_FOREACH(char c, str)
     {
         if (HexDigit(c) < 0)
@@ -441,7 +475,7 @@ bool IsHex(const string& str)
     return (str.size() > 0) && (str.size()%2 == 0);
 }
 
-vector<unsigned char> ParseHex(const char* psz)
+/*vector<unsigned char> ParseHex(const char* psz)
 {
     // convert hex dump to vector
     vector<unsigned char> vch;
@@ -463,7 +497,7 @@ vector<unsigned char> ParseHex(const char* psz)
 }
 
 vector<unsigned char> ParseHex(const string& str)
-{
+{*/
     return ParseHex(str.c_str());
 }
 
@@ -503,6 +537,11 @@ void ParseParameters(int argc, const char* const argv[])
 #endif
         if (str[0] != '-')
             break;
+		// Interpret --foo as -foo.
+        // If both --foo and -foo are set, the last takes effect.
+        if (str.length() > 1 && str[1] == '-')
+            str = str.substr(1);
+
 
         mapArgs[str] = strValue;
         mapMultiArgs[str].push_back(strValue);
@@ -511,19 +550,10 @@ void ParseParameters(int argc, const char* const argv[])
     // New 0.6 features:
     BOOST_FOREACH(const PAIRTYPE(string,string)& entry, mapArgs)
     {
-        string name = entry.first;
-
-        //  interpret --foo as -foo (as long as both are not set)
-        if (name.find("--") == 0)
-        {
-            std::string singleBitsend(name.begin()+1, name.end());
-            if (mapArgs.count(singleBitsend) == 0)
-                mapArgs[singleBitsend] = entry.second;
-            name = singleBitsend;
-        }
+       
 
         // interpret -nofoo as -foo=0 (and -nofoo=0 as -foo=1) as long as -foo not set
-        InterpretNegativeSetting(name, mapArgs);
+        InterpretNegativeSetting(entry.first, mapArgs);
     }
 }
 
@@ -569,8 +599,8 @@ bool SoftSetBoolArg(const std::string& strArg, bool fValue)
 }
 
 
-string EncodeBase64(const unsigned char* pch, size_t len)
-{
+/*string EncodeBase64(const unsigned char* pch, size_t len)
+{*/
     static const char *pbase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
     string strRet="";
@@ -615,8 +645,8 @@ string EncodeBase64(const unsigned char* pch, size_t len)
     return strRet;
 }
 
-string EncodeBase64(const string& str)
-{
+/*string EncodeBase64(const string& str)
+{*/
     return EncodeBase64((const unsigned char*)str.c_str(), str.size());
 }
 
@@ -647,8 +677,8 @@ SecureString EncodeBase64Secure(const SecureString& input)
     return output;
 }
 
-vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)
-{
+/*vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)
+{*/
     static const int decode64_table[256] =
     {
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -730,8 +760,8 @@ vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid)
     return vchRet;
 }
 
-string DecodeBase64(const string& str)
-{
+/*string DecodeBase64(const string& str)
+{*/
     vector<unsigned char> vchRet = DecodeBase64(str.c_str());
     return string((const char*)&vchRet[0], vchRet.size());
 }
@@ -765,8 +795,8 @@ SecureString DecodeBase64Secure(const SecureString& input)
     return output;
 }
 
-string EncodeBase32(const unsigned char* pch, size_t len)
-{
+/*string EncodeBase32(const unsigned char* pch, size_t len)
+{*/
     static const char *pbase32 = "abcdefghijklmnopqrstuvwxyz234567";
 
     string strRet="";
@@ -824,13 +854,13 @@ string EncodeBase32(const unsigned char* pch, size_t len)
     return strRet;
 }
 
-string EncodeBase32(const string& str)
-{
+/*string EncodeBase32(const string& str)
+{*/
     return EncodeBase32((const unsigned char*)str.c_str(), str.size());
 }
 
-vector<unsigned char> DecodeBase32(const char* p, bool* pfInvalid)
-{
+/*vector<unsigned char> DecodeBase32(const char* p, bool* pfInvalid)
+{*/
     static const int decode32_table[256] =
     {
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -946,13 +976,13 @@ vector<unsigned char> DecodeBase32(const char* p, bool* pfInvalid)
     return vchRet;
 }
 
-string DecodeBase32(const string& str)
-{
+/*string DecodeBase32(const string& str)
+{*/
     vector<unsigned char> vchRet = DecodeBase32(str.c_str());
     return string((const char*)&vchRet[0], vchRet.size());
 }
 
-bool WildcardMatch(const char* psz, const char* mask)
+/*bool WildcardMatch(const char* psz, const char* mask)
 {
     while (true)
     {
@@ -977,7 +1007,7 @@ bool WildcardMatch(const char* psz, const char* mask)
 }
 
 bool WildcardMatch(const string& str, const string& mask)
-{
+{*/
     return WildcardMatch(str.c_str(), mask.c_str());
 }
 
@@ -1004,8 +1034,8 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
             "UNKNOWN EXCEPTION       \n%s in %s       \n", pszModule, pszThread);
 }
 
-void LogException(std::exception* pex, const char* pszThread)
-{
+/*void LogException(std::exception* pex, const char* pszThread)
+{*/
     std::string message = FormatException(pex, pszThread);
     LogPrintf("\n%s", message);
 }
@@ -1047,7 +1077,9 @@ boost::filesystem::path GetDefaultDataDir()
 #endif
 }
 
-static boost::filesystem::path pathCached[CChainParams::MAX_NETWORK_TYPES+1];
+static boost::filesystem::path pathCached;
+static boost::filesystem::path pathCachedNetSpecific;
+
 static CCriticalSection csPathCached;
 
 const boost::filesystem::path &GetDataDir(bool fNetSpecific)
@@ -1056,11 +1088,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
     LOCK(csPathCached);
 
-    int nNet = CChainParams::MAX_NETWORK_TYPES;
-    if (fNetSpecific) nNet = Params().NetworkID();
-
-    fs::path &path = pathCached[nNet];
-
+    fs::path &path = fNetSpecific ? pathCachedNetSpecific : pathCached;
     // This can be called during exceptions by LogPrintf(), so we cache the
     // value so we don't have to do memory allocations after that.
     if (!path.empty())
@@ -1076,7 +1104,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
         path = GetDefaultDataDir();
     }
     if (fNetSpecific)
-        path /= Params().DataDir();
+        path /= BaseParams().DataDir();
 
     fs::create_directories(path);
 
@@ -1085,14 +1113,16 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 void ClearDatadirCache()
 {
-    std::fill(&pathCached[0], &pathCached[CChainParams::MAX_NETWORK_TYPES+1],
-              boost::filesystem::path());
+    pathCached = boost::filesystem::path();
+    pathCachedNetSpecific = boost::filesystem::path();
 }
 
 boost::filesystem::path GetConfigFile()
 {
     boost::filesystem::path pathConfigFile(GetArg("-conf", "bitsend.conf"));
-    if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
+    if (!pathConfigFile.is_complete())
+        pathConfigFile = GetDataDir(false) / pathConfigFile;
+	
     return pathConfigFile;
 }
 
@@ -1134,6 +1164,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
     ClearDatadirCache();
 }
 
+#ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
     boost::filesystem::path pathPidFile(GetArg("-pid", "bitsendd.pid"));
@@ -1141,7 +1172,6 @@ boost::filesystem::path GetPidFile()
     return pathPidFile;
 }
 
-#ifndef WIN32
 void CreatePidFile(const boost::filesystem::path &path, pid_t pid)
 {
     FILE* file = fopen(path.string().c_str(), "w");
@@ -1157,7 +1187,7 @@ bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest)
 {
 #ifdef WIN32
     return MoveFileExA(src.string().c_str(), dest.string().c_str(),
-                      MOVEFILE_REPLACE_EXISTING);
+                       MOVEFILE_REPLACE_EXISTING) != 0;
 #else
     int rc = std::rename(src.string().c_str(), dest.string().c_str());
     return (rc == 0);
@@ -1279,22 +1309,22 @@ void ShrinkDebugFile()
     if (file && boost::filesystem::file_size(pathLog) > 10 * 1000000)
     {
         // Restart the file with some of the end
-        char pch[200000];
-        fseek(file, -sizeof(pch), SEEK_END);
-        int nBytes = fread(pch, 1, sizeof(pch), file);
+        std::vector <char> vch(200000,0);
+        fseek(file, -vch.size(), SEEK_END);
+        int nBytes = fread(begin_ptr(vch), 1, vch.size(), file);
         fclose(file);
 
         file = fopen(pathLog.string().c_str(), "w");
         if (file)
         {
-            fwrite(pch, 1, nBytes, file);
+            fwrite(begin_ptr(vch), 1, nBytes, file);
             fclose(file);
         }
     }
     else if (file != NULL)
         fclose(file);
 }
-
+// it's by Frank, can we remove it now?
 void ShrinkDebugFileInterval(int interval) {
     while (1) {
         boost::this_thread::sleep( boost::posix_time::hours(interval) );
@@ -1309,7 +1339,7 @@ void ShrinkDebugFileInterval(int interval) {
 //  - Median of other nodes clocks
 //  - The user (asking the user to fix the system clock if the first two disagree)
 //
-static int64_t nMockTime = 0;  // For unit testing
+/*static int64_t nMockTime = 0;  // For unit testing
 
 int64_t GetTime()
 {
@@ -1392,9 +1422,9 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
         }
         LogPrintf("nTimeOffset = %+d  (%+d minutes)\n", nTimeOffset, nTimeOffset/60);
     }
-}
+}*/
 
-uint32_t insecure_rand_Rz = 11;
+/*uint32_t insecure_rand_Rz = 11;
 uint32_t insecure_rand_Rw = 11;
 void seed_insecure_rand(bool fDeterministic)
 {
@@ -1438,7 +1468,7 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
         ss << "(" << boost::algorithm::join(comments, "; ") << ")";
     ss << "/";
     return ss.str();
-}
+}*/
 
 #ifdef WIN32
 boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate)
@@ -1512,27 +1542,32 @@ void RenameThread(const char* name)
 
 void SetupEnvironment()
 {
-    #ifndef WIN32
-    try
-    {
-	#if BOOST_FILESYSTEM_VERSION == 3
-            boost::filesystem::path::codecvt(); // Raises runtime error if current locale is invalid
-	#else				          // boost filesystem v2
-            std::locale();                      // Raises runtime error if current locale is invalid
-	#endif
-    } catch(std::runtime_error &e)
-    {
-        setenv("LC_ALL", "C", 1); // Force C locale
+    // On most POSIX systems (e.g. Linux, but not BSD) the environment's locale
+    // may be invalid, in which case the "C" locale is used as fallback.
+#if !defined(WIN32) && !defined(MAC_OSX) && !defined(__FreeBSD__) && !defined(__OpenBSD__)
+    try {
+        std::locale(""); // Raises a runtime error if current locale is invalid
+    } catch (const std::runtime_error&) {
+        setenv("LC_ALL", "C", 1);
     }
-    #endif
+#endif
+    // The path locale is lazy initialized and to avoid deinitialization errors
+    // in multithreading environments, it is set explicitly by the main thread.
+    // A dummy locale is used to extract the internal default locale, used by
+    // boost::filesystem::path, which is then used to explicitly imbue the path.
+    std::locale loc = boost::filesystem::path::imbue(std::locale::classic());
+    boost::filesystem::path::imbue(loc);
 }
 
-std::string DateTimeStrFormat(const char* pszFormat, int64_t nTime)
+void SetThreadPriority(int nPriority)
 {
-    // std::locale takes ownership of the pointer
-    std::locale loc(std::locale::classic(), new boost::posix_time::time_facet(pszFormat));
-    std::stringstream ss;
-    ss.imbue(loc);
-    ss << boost::posix_time::from_time_t(nTime);
-    return ss.str();
+#ifdef WIN32
+    SetThreadPriority(GetCurrentThread(), nPriority);
+#else // WIN32
+#ifdef PRIO_THREAD
+    setpriority(PRIO_THREAD, 0, nPriority);
+#else // PRIO_THREAD
+    setpriority(PRIO_PROCESS, 0, nPriority);
+#endif // PRIO_THREAD
+#endif // WIN32
 }

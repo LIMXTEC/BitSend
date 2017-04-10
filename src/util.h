@@ -12,28 +12,24 @@
 #endif
 
 #include "compat.h"
-#include "serialize.h"
+//#include "serialize.h"
 #include "tinyformat.h"
+#include "utiltime.h"
 
-#include <cstdio>
+//#include <cstdio>
 #include <exception>
 #include <map>
-#include <stdarg.h>
+//#include <stdarg.h>
 #include <stdint.h>
 #include <string>
-#include <utility>
+//#include <utility>
 #include <vector>
 
-#ifndef WIN32
-#include <sys/resource.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#endif
 
 #include <boost/filesystem/path.hpp>
-#include <boost/thread.hpp>
+#include <boost/thread/exceptions.hpp>
 
-class CNetAddr;
+/*class CNetAddr;
 class uint256;
 
 static const int64_t COIN = 100000000;
@@ -90,7 +86,7 @@ inline void MilliSleep(int64_t n)
 //should never get here
 #error missing boost sleep implementation
 #endif
-}
+}*/
 
 //Bitsend only features
 
@@ -116,12 +112,12 @@ extern bool fPrintToConsole;
 extern bool fPrintToDebugLog;
 extern bool fServer;
 extern std::string strMiscWarning;
-extern bool fNoListen;
+//extern bool fNoListen;
 extern bool fLogTimestamps;
 extern volatile bool fReopenDebugLog;
 
-void RandAddSeed();
-void RandAddSeedPerfmon();
+//void RandAddSeed();
+//void RandAddSeedPerfmon();
 void SetupEnvironment();
 
 /* Return true if log accepts specified category */
@@ -129,7 +125,7 @@ bool LogAcceptCategory(const char* category);
 /* Send a string to the log output */
 int LogPrintStr(const std::string &str);
 
-#define strprintf tfm::format
+//#define strprintf tfm::format
 #define LogPrintf(...) LogPrint(NULL, __VA_ARGS__)
 
 /* When we switch to C++11, this can be switched to variadic templates instead
@@ -168,9 +164,11 @@ static inline bool error(const char* format)
 }
 
 
-void LogException(std::exception* pex, const char* pszThread);
+//void LogException(std::exception* pex, const char* pszThread);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
-std::string FormatMoney(int64_t n, bool fPlus=false);
+
+
+/*std::string FormatMoney(int64_t n, bool fPlus=false);
 bool ParseMoney(const std::string& str, int64_t& nRet);
 bool ParseMoney(const char* pszIn, int64_t& nRet);
 std::string SanitizeString(const std::string& str);
@@ -186,10 +184,11 @@ SecureString EncodeBase64Secure(const SecureString& input);
 std::vector<unsigned char> DecodeBase32(const char* p, bool* pfInvalid = NULL);
 std::string DecodeBase32(const std::string& str);
 std::string EncodeBase32(const unsigned char* pch, size_t len);
-std::string EncodeBase32(const std::string& str);
+std::string EncodeBase32(const std::string& str);*/
+
 void ParseParameters(int argc, const char*const argv[]);
-bool WildcardMatch(const char* psz, const char* mask);
-bool WildcardMatch(const std::string& str, const std::string& mask);
+//bool WildcardMatch(const char* psz, const char* mask);
+//bool WildcardMatch(const std::string& str, const std::string& mask);
 void FileCommit(FILE *fileout);
 bool TruncateFile(FILE *file, unsigned int length);
 int RaiseFileDescriptorLimit(int nMinFD);
@@ -200,8 +199,9 @@ boost::filesystem::path GetDefaultDataDir();
 const boost::filesystem::path &GetDataDir(bool fNetSpecific = true);
 boost::filesystem::path GetConfigFile();
 boost::filesystem::path GetMasternodeConfigFile();
-boost::filesystem::path GetPidFile();
 #ifndef WIN32
+boost::filesystem::path GetPidFile();
+//
 void CreatePidFile(const boost::filesystem::path &path, pid_t pid);
 #endif
 void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet, std::map<std::string, std::vector<std::string> >& mapMultiSettingsRet);
@@ -210,8 +210,8 @@ boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
 #endif
 boost::filesystem::path GetTempPath();
 void ShrinkDebugFile();
-void ShrinkDebugFileInterval(int interval);
-int GetRandInt(int nMax);
+//void ShrinkDebugFileInterval(int interval);
+/*int GetRandInt(int nMax);
 uint64_t GetRand(uint64_t nMax);
 uint256 GetRandHash();
 int64_t GetTime();
@@ -220,7 +220,7 @@ int64_t GetAdjustedTime();
 int64_t GetTimeOffset();
 std::string FormatFullVersion();
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
-void AddTimeData(const CNetAddr& ip, int64_t nTime);
+void AddTimeData(const CNetAddr& ip, int64_t nTime);*/
 void runCommand(std::string strCommand);
 
 
@@ -229,7 +229,7 @@ void runCommand(std::string strCommand);
 
 
 
-
+/*
 
 inline std::string i64tostr(int64_t n)
 {
@@ -350,7 +350,7 @@ void skipspaces(T& it)
     while (isspace(*it))
         ++it;
 }
-
+*/
 inline bool IsSwitchChar(char c)
 {
 #ifdef WIN32
@@ -405,142 +405,20 @@ bool SoftSetArg(const std::string& strArg, const std::string& strValue);
  */
 bool SoftSetBoolArg(const std::string& strArg, bool fValue);
 
-/**
- * MWC RNG of George Marsaglia
- * This is intended to be fast. It has a period of 2^59.3, though the
- * least significant 16 bits only have a period of about 2^30.1.
- *
- * @return random value
- */
-extern uint32_t insecure_rand_Rz;
-extern uint32_t insecure_rand_Rw;
-static inline uint32_t insecure_rand(void)
-{
-    insecure_rand_Rz = 36969 * (insecure_rand_Rz & 65535) + (insecure_rand_Rz >> 16);
-    insecure_rand_Rw = 18000 * (insecure_rand_Rw & 65535) + (insecure_rand_Rw >> 16);
-    return (insecure_rand_Rw << 16) + insecure_rand_Rz;
-}
-
-/**
- * Seed insecure_rand using the random pool.
- * @param Deterministic Use a determinstic seed
- */
-void seed_insecure_rand(bool fDeterministic=false);
-
-/**
- * Timing-attack-resistant comparison.
- * Takes time proportional to length
- * of first argument.
- */
-template <typename T>
-bool TimingResistantEqual(const T& a, const T& b)
-{
-    if (b.size() == 0) return a.size() == 0;
-    size_t accumulator = a.size() ^ b.size();
-    for (size_t i = 0; i < a.size(); i++)
-        accumulator |= a[i] ^ b[i%b.size()];
-    return accumulator == 0;
-}
-
-/** Median filter over a stream of values.
- * Returns the median of the last N numbers
- */
-template <typename T> class CMedianFilter
-{
-private:
-    std::vector<T> vValues;
-    std::vector<T> vSorted;
-    unsigned int nSize;
-public:
-    CMedianFilter(unsigned int size, T initial_value):
-        nSize(size)
-    {
-        vValues.reserve(size);
-        vValues.push_back(initial_value);
-        vSorted = vValues;
-    }
-
-    void input(T value)
-    {
-        if(vValues.size() == nSize)
-        {
-            vValues.erase(vValues.begin());
-        }
-        vValues.push_back(value);
-
-        vSorted.resize(vValues.size());
-        std::copy(vValues.begin(), vValues.end(), vSorted.begin());
-        std::sort(vSorted.begin(), vSorted.end());
-    }
-
-    T median() const
-    {
-        int size = vSorted.size();
-        assert(size>0);
-        if(size & 1) // Odd number of elements
-        {
-            return vSorted[size/2];
-        }
-        else // Even number of elements
-        {
-            return (vSorted[size/2-1] + vSorted[size/2]) / 2;
-        }
-    }
-
-    int size() const
-    {
-        return vValues.size();
-    }
-
-    std::vector<T> sorted () const
-    {
-        return vSorted;
-    }
-};
-
-#ifdef WIN32
-inline void SetThreadPriority(int nPriority)
-{
-    SetThreadPriority(GetCurrentThread(), nPriority);
-}
-#else
-
-// PRIO_MAX is not defined on Solaris
-#ifndef PRIO_MAX
-#define PRIO_MAX 20
-#endif
-#define THREAD_PRIORITY_LOWEST          PRIO_MAX
-#define THREAD_PRIORITY_BELOW_NORMAL    2
-#define THREAD_PRIORITY_NORMAL          0
-#define THREAD_PRIORITY_ABOVE_NORMAL    (-2)
-
-inline void SetThreadPriority(int nPriority)
-{
-    // It's unclear if it's even possible to change thread priorities on Linux,
-    // but we really and truly need it for the generation threads.
-#ifdef PRIO_THREAD
-    setpriority(PRIO_THREAD, 0, nPriority);
-#else
-    setpriority(PRIO_PROCESS, 0, nPriority);
-#endif
-}
-#endif
-
+void SetThreadPriority(int nPriority);
 void RenameThread(const char* name);
 
-inline uint32_t ByteReverse(uint32_t value)
-{
-    value = ((value & 0xFF00FF00) >> 8) | ((value & 0x00FF00FF) << 8);
-    return (value<<16) | (value>>16);
-}
+/**
+ * Standard wrapper for do-something-forever thread functions.
+ * "Forever" really means until the thread is interrupted.
+ * Use it like:
+ *   new boost::thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, 900000));
+ * or maybe:
+ *    boost::function<void()> f = boost::bind(&FunctionWithArg, argument);
+ *    threadGroup.create_thread(boost::bind(&LoopForever<boost::function<void()> >, "nothing", f, milliseconds));
+ */
 
-// Standard wrapper for do-something-forever thread functions.
-// "Forever" really means until the thread is interrupted.
-// Use it like:
-//   new boost::thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, 900000));
-// or maybe:
-//    boost::function<void()> f = boost::bind(&FunctionWithArg, argument);
-//    threadGroup.create_thread(boost::bind(&LoopForever<boost::function<void()> >, "nothing", f, milliseconds));
+
 template <typename Callable> void LoopForever(const char* name,  Callable func, int64_t msecs)
 {
     std::string s = strprintf("bitsend-%s", name);

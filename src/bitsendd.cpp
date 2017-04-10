@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcserver.h"
-#include "rpcclient.h"
+//#include "rpcclient.h"
 #include "init.h"
 #include "main.h"
 #include "noui.h"
@@ -98,14 +98,14 @@ bool AppInit(int argc, char* argv[])
             // First part of help message is specific to bitsendd / RPC client
             std::string strUsage = _("Bitsend Core Daemon") + " " + _("version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  bitsendd [options]                     " + _("Start Bitsend Core Daemon") + "\n" +
-                _("Usage (deprecated, use bitsend-cli):") + "\n" +
+                  "  bitsendd [options]                     " + _("Start Bitsend Core Daemon") + "\n" ;
+               /* _("Usage (deprecated, use bitsend-cli):") + "\n" +
                   "  bitsendd [options] <command> [params]  " + _("Send command to Bitsend Core") + "\n" +
                   "  bitsendd [options] help                " + _("List commands") + "\n" +
-                  "  bitsendd [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  bitsendd [options] help <command>      " + _("Get help for a command") + "\n";*/
 
             strUsage += "\n" + HelpMessage(HMM_BITCOIND);
-            strUsage += "\n" + HelpMessageCli(false);
+            //strUsage += "\n" + HelpMessageCli(false);
 
             fprintf(stdout, "%s", strUsage.c_str());
             return false;
@@ -119,8 +119,8 @@ bool AppInit(int argc, char* argv[])
 
         if (fCommandLine)
         {
-            int ret = CommandLineRPC(argc, argv);
-            exit(ret);
+            fprintf(stderr, "Error: There is no RPC client functionality in bitcoind anymore. Use the bitcoin-cli utility instead.\n");
+            exit(1);
         }
 #ifndef WIN32
         fDaemon = GetBoolArg("-daemon", false);
@@ -184,15 +184,17 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    bool fRet = false;
+    //bool fRet = false;
 
     // Connect bitsendd signal handlers
     noui_connect();
 
-    fRet = AppInit(argc, argv);
+    /*fRet = AppInit(argc, argv);
 
     if (fRet && fDaemon)
         return 0;
 
-    return (fRet ? 0 : 1);
+    return (fRet ? 0 : 1);*/
+	
+	return (AppInit(argc, argv) ? 0 : 1);
 }

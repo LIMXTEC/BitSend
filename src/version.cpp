@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2014 The Bitcoin developers
+/*// Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -70,4 +70,4 @@ const std::string CLIENT_NAME("BSD Core");
 #endif
 
 const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSION_SUFFIX);
-const std::string CLIENT_DATE(BUILD_DATE);
+const std::string CLIENT_DATE(BUILD_DATE);*/

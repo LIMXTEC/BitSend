@@ -68,6 +68,8 @@ enum BindFlags {
     BF_REPORT_ERROR = (1U << 1)
 };
 
+static const char* FEE_ESTIMATES_FILENAME="fee_estimates.dat";
+
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -152,6 +154,14 @@ void Shutdown()
     StopNode();
     DumpMasternodes();
     UnregisterNodeSignals(GetNodeSignals());
+	
+	 boost::filesystem::path est_path = GetDataDir() / FEE_ESTIMATES_FILENAME;
+    CAutoFile est_fileout = CAutoFile(fopen(est_path.string().c_str(), "wb"), SER_DISK, CLIENT_VERSION);
+    if (est_fileout)
+        mempool.WriteFeeEstimates(est_fileout);
+    else
+        LogPrintf("failed to write fee estimates");
+
     {
         LOCK(cs_main);
 #ifdef ENABLE_WALLET
@@ -324,8 +334,8 @@ std::string HelpMessage(HelpMessageMode hmm)
         strUsage += "  -limitfreerelay=<n>    " + _("Continuously rate-limit free transactions to <n>*1000 bytes per minute (default:15)") + "\n";
         strUsage += "  -maxsigcachesize=<n>   " + _("Limit size of signature cache to <n> entries (default: 50000)") + "\n";
     }
-    strUsage += "  -mintxfee=<amt>        " + _("Fees smaller than this are considered zero fee (for transaction creation) (default:") + " " + FormatMoney(CTransaction::nMinTxFee) + ")" + "\n";
-    strUsage += "  -minrelaytxfee=<amt>   " + _("Fees smaller than this are considered zero fee (for relaying) (default:") + " " + FormatMoney(CTransaction::nMinRelayTxFee) + ")" + "\n";
+    strUsage += "  -mintxfee=<amt>        " + _("Fees smaller than this are considered zero fee (for transaction creation) (default:") + " " + FormatMoney(CTransaction::minTxFee.GetFeePerK()) + ")" + "\n";
+    strUsage += "  -minrelaytxfee=<amt>   " + _("Fees smaller than this are considered zero fee (for relaying) (default:") + " " + FormatMoney(CTransaction::minRelayTxFee.GetFeePerK()) + ")" + "\n";
     strUsage += "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n";
     if (GetBoolArg("-help-debug", false))
     {
@@ -340,6 +350,8 @@ std::string HelpMessage(HelpMessageMode hmm)
     strUsage += "  -shrinkdebugfile         " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
     strUsage += "  -shrinkdebuginterval=<n> " + _("Shrink debug.log file on each n hours (0-100000, default: 24)") + "\n";
     strUsage += "  -testnet                 " + _("Use the test network") + "\n";
+	strUsage += "\n" + _("Node relay options:") + "\n";
+    strUsage += "  -datacarrier           " + _("Relay and mine data carrier transactions (default: 1)") + "\n";
     strUsage += "  -promode=<n>             " + _("Activate all Masternode and Darksend related functionality (0-1, default: 0)") + "\n";
 	strUsage += "  -disable_DS_InstantX=<n> " + _("Disable all Masternode and Darksend related functionality in Core (0-1, default: 0)") + "\n";
 
@@ -368,10 +380,11 @@ std::string HelpMessage(HelpMessageMode hmm)
 
     strUsage += "\n" + _("RPC server options:") + "\n";
     strUsage += "  -server                " + _("Accept command line and JSON-RPC commands") + "\n";
+	strUsage += "  -rpcbind=<addr>        " + _("Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)") + "\n";
     strUsage += "  -rpcuser=<user>        " + _("Username for JSON-RPC connections") + "\n";
     strUsage += "  -rpcpassword=<pw>      " + _("Password for JSON-RPC connections") + "\n";
     strUsage += "  -rpcport=<port>        " + _("Listen for JSON-RPC connections on <port> (default: 8800 or testnet: 8884)") + "\n";
-    strUsage += "  -rpcallowip=<ip>       " + _("Allow JSON-RPC connections from specified IP address") + "\n";
+    strUsage += "  -rpcallowip=<ip>       " + _("Allow JSON-RPC connections from specified IP address This option can be specified multiple times") + "\n";
     strUsage += "  -rpcthreads=<n>        " + _("Set the number of threads to service RPC calls (default: 4)") + "\n";
 
     strUsage += "\n" + _("RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)") + "\n";
@@ -640,7 +653,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     {
         int64_t n = 0;
         if (ParseMoney(mapArgs["-mintxfee"], n) && n > 0)
-            CTransaction::nMinTxFee = n;
+            CTransaction::minTxFee = CFeeRate(n);
         else
             return InitError(strprintf(_("Invalid amount for -mintxfee=<amount>: '%s'"), mapArgs["-mintxfee"]));
     }
@@ -648,7 +661,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     {
         int64_t n = 0;
         if (ParseMoney(mapArgs["-minrelaytxfee"], n) && n > 0)
-            CTransaction::nMinRelayTxFee = n;
+            CTransaction::minRelayTxFee = CFeeRate(n);
         else
             return InitError(strprintf(_("Invalid amount for -minrelaytxfee=<amount>: '%s'"), mapArgs["-minrelaytxfee"]));
     }
@@ -656,10 +669,12 @@ bool AppInit2(boost::thread_group& threadGroup)
 #ifdef ENABLE_WALLET
     if (mapArgs.count("-paytxfee"))
     {
-        if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee))
+        int64_t nFeePerK = 0;
+        if (!ParseMoney(mapArgs["-paytxfee"], nFeePerK))
             return InitError(strprintf(_("Invalid amount for -paytxfee=<amount>: '%s'"), mapArgs["-paytxfee"]));
-        if (nTransactionFee > nHighTransactionFeeWarning)
+        if (nFeePerK > nHighTransactionFeeWarning)
             InitWarning(_("Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction."));
+        payTxFee = CFeeRate(nFeePerK, 1000);
     }
     bSpendZeroConfChange = GetArg("-spendzeroconfchange", true);
 
@@ -1103,6 +1118,10 @@ if(nWalletBackups > 0)
             LogPrintf("No blocks matching %s were found\n", strMatch);
         return false;
     }
+	boost::filesystem::path est_path = GetDataDir() / FEE_ESTIMATES_FILENAME;
+    CAutoFile est_filein = CAutoFile(fopen(est_path.string().c_str(), "rb"), SER_DISK, CLIENT_VERSION);
+    if (est_filein)
+        mempool.ReadFeeEstimates(est_filein);
 
     // ********************************************************* Step 8: load wallet
 #ifdef ENABLE_WALLET

@@ -81,12 +81,19 @@ string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
     else if (nStatus == HTTP_NOT_FOUND) cStatus = "Not Found";
     else if (nStatus == HTTP_INTERNAL_SERVER_ERROR) cStatus = "Internal Server Error";
     else cStatus = "";
+	
+	bool useInternalContent = false;
+    if (nStatus != HTTP_OK) {
+        contentType = "text/plain";
+        useInternalContent = true;
+    }
+
     return strprintf(
             "HTTP/1.1 %d %s\r\n"
             "Date: %s\r\n"
             "Connection: %s\r\n"
             "Content-Length: %u\r\n"
-            "Content-Type: application/json\r\n"
+            "Content-Type: %s\r\n"
             "Server: bitsend-json-rpc/%s\r\n"
             "\r\n"
             "%s",

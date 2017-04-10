@@ -29,7 +29,7 @@ BITCOIN_CORE_H = \
   addrman.h \
   alert.h \
   allocators.h \
-  base58.h bignum.h \
+  base58.h \
   bloom.h \
   chainparams.h \
   checkpoints.h \
@@ -212,7 +212,6 @@ nodist_libbitsend_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
 # bitsendd binary #
 bitsendd_LDADD = \
   libbitsend_server.a \
-  libbitsend_cli.a \
   libbitsend_common.a \
   $(LIBLEVELDB) \
   $(LIBMEMENV)

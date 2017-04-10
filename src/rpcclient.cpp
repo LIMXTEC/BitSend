@@ -12,7 +12,7 @@
 #include "chainparams.h" // for Params().RPCPort()
 
 #include <stdint.h>
-
+/*
 #include <boost/algorithm/string.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
@@ -22,14 +22,14 @@
 #include <boost/iostreams/concepts.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/shared_ptr.hpp>
-#include "json/json_spirit_writer_template.h"
+#include "json/json_spirit_writer_template.h"*/
 
 using namespace std;
-using namespace boost;
-using namespace boost::asio;
+//using namespace boost;
+//using namespace boost::asio;
 using namespace json_spirit;
 
-Object CallRPC(const string& strMethod, const Array& params)
+/*Object CallRPC(const string& strMethod, const Array& params)
 {
     if (mapArgs["-rpcuser"] == "" && mapArgs["-rpcpassword"] == "")
         throw runtime_error(strprintf(
@@ -91,7 +91,7 @@ Object CallRPC(const string& strMethod, const Array& params)
         throw runtime_error("expected reply to have result, error and id properties");
 
     return reply;
-}
+}*/
 
 template<typename T>
 void ConvertTo(Value& value, bool fAllowNull=false)
@@ -150,6 +150,8 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     if (strMethod == "listtransactions"       && n > 2) ConvertTo<int64_t>(params[2]);
     if (strMethod == "listaccounts"           && n > 0) ConvertTo<int64_t>(params[0]);
     if (strMethod == "walletpassphrase"       && n > 1) ConvertTo<int64_t>(params[1]);
+	if (strMethod == "prioritisetransaction"  && n > 1) ConvertTo<double>(params[1]);
+    if (strMethod == "prioritisetransaction"  && n > 2) ConvertTo<int64_t>(params[2]);
     if (strMethod == "walletpassphrase"       && n > 2) ConvertTo<bool>(params[2]);
     if (strMethod == "getblocktemplate"       && n > 0) ConvertTo<Object>(params[0]);
     if (strMethod == "listsinceblock"         && n > 1) ConvertTo<int64_t>(params[1]);
@@ -180,11 +182,13 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     if (strMethod == "keypoolrefill"          && n > 0) ConvertTo<int64_t>(params[0]);
     if (strMethod == "getrawmempool"          && n > 0) ConvertTo<bool>(params[0]);
     if (strMethod == "spork"                  && n > 1) ConvertTo<int64_t>(params[1]);
+	if (strMethod == "estimatefee"            && n > 0) ConvertTo<boost::int64_t>(params[0]);
+    if (strMethod == "estimatepriority"       && n > 0) ConvertTo<boost::int64_t>(params[0]);
 
     return params;
 }
 
-int CommandLineRPC(int argc, char *argv[])
+/*int CommandLineRPC(int argc, char *argv[])
 {
     string strPrint;
     int nRet = 0;
@@ -280,5 +284,5 @@ std::string HelpMessageCli(bool mainProgram)
     }
 
     return strUsage;
-}
+}*/
 

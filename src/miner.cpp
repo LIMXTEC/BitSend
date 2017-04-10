@@ -4,6 +4,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <inttypes.h>
+
+
 #include "miner.h"
 
 #include "core.h"
@@ -62,18 +65,16 @@ public:
     const CTransaction* ptx;
     set<uint256> setDependsOn;
     double dPriority;
-    double dFeePerKb;
+    CFeeRate feeRate;
 
-    COrphan(const CTransaction* ptxIn)
+    COrphan(const CTransaction* ptxIn) : ptx(ptxIn), feeRate(0), dPriority(0)
     {
-        ptx = ptxIn;
-        dPriority = dFeePerKb = 0;
     }
 
     void print() const
     {
-        LogPrintf("COrphan(hash=%s, dPriority=%.1f, dFeePerKb=%.1f)\n",
-               ptx->GetHash().ToString(), dPriority, dFeePerKb);
+        LogPrintf("COrphan(hash=%s, dPriority=%.1f, fee=%s)\n",
+                  ptx->GetHash().ToString(), dPriority, feeRate.ToString());
         BOOST_FOREACH(uint256 hash, setDependsOn)
             LogPrintf("   setDependsOn %s\n", hash.ToString());
     }
@@ -84,7 +85,7 @@ uint64_t nLastBlockTx = 0;
 uint64_t nLastBlockSize = 0;
 
 // We want to sort transactions by priority and fee, so:
-typedef boost::tuple<double, double, const CTransaction*> TxPriority;
+typedef boost::tuple<double, CFeeRate, const CTransaction*> TxPriority;
 class TxPriorityCompare
 {
     bool byFee;
@@ -254,20 +255,19 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
 
             // Priority is sum(valuein * age) / modified_txsize
             unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
-            dPriority = tx.ComputePriority(dPriority, nTxSize);
+			//missing something
+			uint256 hash = tx.GetHash();
+            mempool.ApplyDeltas(hash, dPriority, nTotalIn);
 
-            // This is a more accurate fee-per-kilobyte than is used by the client code, because the
-            // client code rounds up the size to the nearest 1K. That's good, because it gives an
-            // incentive to create smaller transactions.
-            double dFeePerKb =  double(nTotalIn-tx.GetValueOut()) / (double(nTxSize)/1000.0);
+            CFeeRate feeRate(nTotalIn-tx.GetValueOut(), nTxSize);
 
             if (porphan)
             {
                 porphan->dPriority = dPriority;
-                porphan->dFeePerKb = dFeePerKb;
+                porphan->feeRate = feeRate;
             }
             else
-                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &mi->second.GetTx()));
+                vecPriority.push_back(TxPriority(dPriority, feeRate, &mi->second.GetTx()));
         }
 
         // Collect transactions into block
@@ -283,7 +283,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         {
             // Take highest priority transaction off the priority queue:
             double dPriority = vecPriority.front().get<0>();
-            double dFeePerKb = vecPriority.front().get<1>();
+            CFeeRate feeRate = vecPriority.front().get<1>();
             const CTransaction& tx = *(vecPriority.front().get<2>());
 
             std::pop_heap(vecPriority.begin(), vecPriority.end(), comparer);
@@ -300,7 +300,11 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
                 continue;
 
             // Skip free transactions if we're past the minimum block size:
-            if (fSortedByFee && (dFeePerKb < CTransaction::nMinRelayTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
+            const uint256& hash = tx.GetHash();
+            double dPriorityDelta = 0;
+            int64_t nFeeDelta = 0;
+            mempool.ApplyDeltas(hash, dPriorityDelta, nFeeDelta);
+            if (fSortedByFee && (dPriorityDelta <= 0) && (nFeeDelta <= 0) && (feeRate < CTransaction::minRelayTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
                 continue;
 
             // Prioritize by fee once past the priority size or we run out of high-priority
@@ -327,7 +331,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
                 continue;
 
             CTxUndo txundo;
-            const uint256& hash = tx.GetHash();
+            //const uint256& hash = tx.GetHash();
             UpdateCoins(tx, state, view, txundo, pindexPrev->nHeight+1);
 
             // Added
@@ -341,8 +345,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
 
             if (fPrintPriority)
             {
-                LogPrintf("priority %.1f feeperkb %.1f txid %s\n",
-                       dPriority, dFeePerKb, tx.GetHash().ToString());
+                LogPrintf("priority %.1f fee %s txid %s\n",
+                          dPriority, feeRate.ToString(), tx.GetHash().ToString());
             }
 
             // Add transactions that depend on this one to the priority queue
@@ -355,7 +359,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
                         porphan->setDependsOn.erase(hash);
                         if (porphan->setDependsOn.empty())
                         {
-                            vecPriority.push_back(TxPriority(porphan->dPriority, porphan->dFeePerKb, porphan->ptx));
+                            vecPriority.push_back(TxPriority(porphan->dPriority, porphan->feeRate, porphan->ptx));
                             std::push_heap(vecPriority.begin(), vecPriority.end(), comparer);
                         }
                     }

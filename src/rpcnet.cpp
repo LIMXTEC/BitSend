@@ -167,7 +167,7 @@ Value addnode(const Array& params, bool fHelp)
     if (strCommand == "onetry")
     {
         CAddress addr;
-        ConnectNode(addr, strNode.c_str());
+         OpenNetworkConnection(addr, NULL, strNode.c_str());
         return Value::null;
     }
 
@@ -371,7 +371,7 @@ Value getnetworkinfo(const Array& params, bool fHelp)
     obj.push_back(Pair("timeoffset",    GetTimeOffset()));
     obj.push_back(Pair("connections",   (int)vNodes.size()));
     obj.push_back(Pair("proxy",         (proxy.first.IsValid() ? proxy.first.ToStringIPPort() : string())));
-    obj.push_back(Pair("relayfee",      ValueFromAmount(CTransaction::nMinRelayTxFee)));
+    obj.push_back(Pair("relayfee",      ValueFromAmount(CTransaction::minRelayTxFee.GetFeePerK())));
     Array localAddresses;
     {
         LOCK(cs_mapLocalHost);
