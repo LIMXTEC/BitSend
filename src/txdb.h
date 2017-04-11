@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TXDB_LEVELDB_H
-#define BITCOIN_TXDB_LEVELDB_H
+#ifndef BITCOIN_TXDB_H
+#define BITCOIN_TXDB_H
 
 #include "leveldbwrapper.h"
 #include "main.h"
@@ -14,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-class CBigNum;
+//class CBigNum;
 class CCoins;
 class uint256;
 
@@ -33,13 +33,11 @@ protected:
 public:
     CCoinsViewDB(size_t nCacheSize, bool fMemory = false, bool fWipe = false);
 
-    bool GetCoins(const uint256 &txid, CCoins &coins);
-    bool SetCoins(const uint256 &txid, const CCoins &coins);
-    bool HaveCoins(const uint256 &txid);
-    uint256 GetBestBlock();
-    bool SetBestBlock(const uint256 &hashBlock);
-    bool BatchWrite(const std::map<uint256, CCoins> &mapCoins, const uint256 &hashBlock);
-    bool GetStats(CCoinsStats &stats);
+    bool GetCoins(const uint256 &txid, CCoins &coins) const;
+    bool HaveCoins(const uint256 &txid) const;
+    uint256 GetBestBlock() const;
+    bool BatchWrite(CCoinsMap &mapCoins, const uint256 &hashBlock);
+    bool GetStats(CCoinsStats &stats) const;
 };
 
 /** Access to the block database (blocks/index/) */
@@ -51,7 +49,7 @@ private:
     CBlockTreeDB(const CBlockTreeDB&);
     void operator=(const CBlockTreeDB&);
 public:
-    //bool WriteBlockIndex(const CDiskBlockIndex& blockindex);
+    bool WriteBlockIndex(const CDiskBlockIndex& blockindex);
     //bool WriteBestInvalidWork(const CBigNum& bnBestInvalidWork);
 	bool WriteBatchSync(const std::vector<std::pair<int, const CBlockFileInfo*> >& fileInfo, int nLastFile, const std::vector<const CBlockIndex*>& blockinfo);
     bool ReadBlockFileInfo(int nFile, CBlockFileInfo &fileinfo);
@@ -67,4 +65,4 @@ public:
     bool LoadBlockIndexGuts();
 };
 
-#endif // BITCOIN_TXDB_LEVELDB_H
+#endif // BITCOIN_TXDB_H
