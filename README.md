@@ -1,5 +1,16 @@
 ## BSD - Bitsend Core 1.2.7.0
 #---WARNING----This Branch is under development----
+
+first Mile Stone 
+-libsecp256k1
+- pay to child
+- Segwit 
+
+Next Milestone 
+- masternode 
+- instant x
+- difficulty rtetarget
+
 ----------------
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
