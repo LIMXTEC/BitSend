@@ -14,9 +14,9 @@
 #include <vector>
 #include <map>
 
-#include "json/json_spirit_value.h"
+//#include "json/json_spirit_value.h"
 #include "crypter.h"
-#include "allocators.h"
+#include "support/allocators/secure.h"
 
 class CKeePassIntegrator {
 

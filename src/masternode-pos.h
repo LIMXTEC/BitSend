@@ -6,15 +6,15 @@
 #ifndef MASTERNODE_POS_H
 #define MASTERNODE_POS_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "util.h"
 #include "script.h"
 #include "base58.h"
-#include "main.h"
+#include "validation.h"
 
 using namespace std;
 using namespace boost;

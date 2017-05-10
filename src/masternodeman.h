@@ -5,15 +5,15 @@
 #ifndef MASTERNODEMAN_H
 #define MASTERNODEMAN_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+#include "validation.h"
 #include "masternode.h"
 
 #define MASTERNODES_DUMP_SECONDS               (15*60)

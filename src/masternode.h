@@ -5,15 +5,15 @@
 #ifndef MASTERNODE_H
 #define MASTERNODE_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+#include "validation.h"
 #include "masternode-pos.h"
 
 #define MASTERNODE_NOT_PROCESSED               0 // initial state
