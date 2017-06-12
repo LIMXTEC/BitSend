@@ -339,16 +339,18 @@ bool CConnman::CheckIncomingNonce(uint64_t nonce)
     return true;
 }
 
-CNode* CConnman::ConnectNode(CAddress addrConnect, const char *pszDest, bool fCountFailure)
+CNode* CConnman::ConnectNode(CAddress addrConnect, const char *pszDest, bool fCountFailure, bool darkSendMaster)//TODO--
 {
     if (pszDest == NULL) {
-        if (IsLocal(addrConnect))
+        if (IsLocal(addrConnect) && !darkSendMaster)//
             return NULL;
 
         // Look for an existing connection
         CNode* pnode = FindNode((CService)addrConnect);
         if (pnode)
         {
+			pnode->fDarkSendMaster = darkSendMaster;
+
             LogPrintf("Failed to open new connection, already connected\n");
             return NULL;
         }
@@ -2310,6 +2312,22 @@ public:
     }
 }
 instance_of_cnetcleanup;
+//TODO--START
+/*void RelayTransactionLockReq(const CTransaction& tx, const uint256& hash, bool relayToAll)
+{
+    CInv inv(MSG_TXLOCK_REQUEST, tx.GetHash());
+
+    //broadcast the new lock
+    LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes)
+    {
+        if(!relayToAll && !pnode->fRelayTxes)
+            continue;
+
+        pnode->PushMessage("txlreq", tx);
+    }
+
+}*///TODO--END
 
 void CConnman::Interrupt()
 {

@@ -28,7 +28,10 @@ protected:
     enum { WIDTH=BITS/32 };
     uint32_t pn[WIDTH];
 public:
-
+	uint64_t Get64(int n=0) const
+    {
+        return pn[2*n] | (uint64_t)pn[2*n+1] << 32;
+    }
     base_uint()
     {
         for (int i = 0; i < WIDTH; i++)

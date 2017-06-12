@@ -68,8 +68,10 @@ public:
     // keep track of dsq count to prevent masternodes from gaming darksend queue
     int64_t nDsqCount;
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+	{
         // serialized format:
         // * version byte (currently 0)
         // * masternodes vector
@@ -83,7 +85,7 @@ public:
                 READWRITE(mWeAskedForMasternodeListEntry);
                 READWRITE(nDsqCount);
         }
-    )
+    }
 
     CMasternodeMan();
     CMasternodeMan(CMasternodeMan& other);
@@ -127,7 +129,7 @@ public:
 
     void ProcessMasternodeConnections();
     
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+    void ProcessMessage(CNode* pfrom, const string& strCommand, CDataStream& vRecv); //todo++
 
     /// Return the number of (unique) Masternodes
     int size() { return vMasternodes.size(); }

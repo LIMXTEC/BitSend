@@ -4,8 +4,8 @@
 
 #include "masternode.h"
 #include "masternodeman.h"
-#include "darksend.h"
-#include "core.h"
+#include "signhelper_mn.h"//todo++
+//#include "core.h"
 #include "util.h"
 #include "sync.h"
 #include "addrman.h"
@@ -218,19 +218,21 @@ CMasternode::CMasternode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std:
 //
 uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
 {
-    if(chainActive.Tip() == NULL) return 0;
+    if(chainActive.Tip() == NULL) return ArithToUint256(0);
 
-    uint256 hash = 0;
-    uint256 aux = vin.prevout.hash + vin.prevout.n;
+    uint256 hash = ArithToUint256(0);
+    uint256 aux;
+	aux = ArithToUint256(UintToArith256(vin.prevout.hash) + vin.prevout.n);
 
-    if(!GetBlockHash(hash, nBlockHeight)) return 0;
+    if(!GetBlockHash(hash, nBlockHeight)) return ArithToUint256(0);
 
     uint256 hash2 = Hash(BEGIN(hash), END(hash));
     uint256 hash3 = Hash(BEGIN(hash), END(hash), BEGIN(aux), END(aux));
 
-    uint256 r = (hash3 > hash2 ? hash3 - hash2 : hash2 - hash3);
+    arith_uint256 r;
+	r = (UintToArith256(hash3) > UintToArith256(hash2) ? UintToArith256(hash3) - UintToArith256(hash2) : UintToArith256(hash2) - UintToArith256(hash3));
 
-    return r;
+    return ArithToUint256(r);
 }
 
 void CMasternode::Check()
@@ -262,7 +264,7 @@ void CMasternode::Check()
     if(!unitTest){
         CValidationState state;
         CTransaction tx = CTransaction();
-        CTxOut vout = CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);
+        CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
@@ -279,7 +281,7 @@ bool CMasternodePayments::CheckSignature(CMasternodePaymentWinner& winner)
 {
     //note: need to investigate why this is failing
     std::string strMessage = winner.vin.ToString().c_str() + boost::lexical_cast<std::string>(winner.nBlockHeight) + winner.payee.ToString();
-    std::string strPubKey = (Params().NetworkID() == CChainParams::MAIN) ? strMainPubKey : strTestPubKey;
+    std::string strPubKey = (Params().NetworkIDString() == "main") ? strMainPubKey : strTestPubKey;
     CPubKey pubkey(ParseHex(strPubKey));
 
     std::string errorMessage = "";
@@ -322,20 +324,20 @@ uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
 {
     //BitSendDev & Joshafest 26-06-2016
     uint256 n1 = blockHash; 
-	uint256 n2, n3, n4; 
+	uint256 n2, n3; arith_uint256 n4; 
     int nBlockTime = chainActive.Tip()->GetBlockTime();
 	    if (nBlockTime >= FORKX17_Main_Net2)
     { 
      n2 = XEVAN(BEGIN(n1), END(n1));
      n3 = XEVAN(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-	 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
+	 n4 = UintToArith256(n3) > UintToArith256(n2) ? (UintToArith256(n3) - UintToArith256(n2)) : (UintToArith256(n2) - UintToArith256(n3));
 	 return n4.Get64();
 	}
     else 
 	{
      n2 = HashX11(BEGIN(n1), END(n1));
      n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-	 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
+	 n4 = UintToArith256(n3) > UintToArith256(n2) ? (UintToArith256(n3) - UintToArith256(n2)) : (UintToArith256(n2) - UintToArith256(n3));
 	 return n4.Get64();
 	}
 
@@ -371,7 +373,8 @@ bool CMasternodePayments::GetWinningMasternode(int nBlockHeight, CTxIn& vinOut)
 
 bool CMasternodePayments::AddWinningMasternode(CMasternodePaymentWinner& winnerIn)
 {
-    uint256 blockHash = 0;
+    uint256 blockHash = uint256();
+	//UintToArith256(blockHash) = 0;
     if(!GetBlockHash(blockHash, winnerIn.nBlockHeight-576)) {
         return false;
     }
@@ -462,10 +465,10 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
         if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
             newWinner.payee = pmn->donationAddress;
         } else {
-            newWinner.payee.SetDestination(pmn->pubkey.GetID());
+            newWinner.payee=GetScriptForDestination(pmn->pubkey.GetID());
         }
         
-        payeeSource.SetDestination(pmn->pubkey.GetID());
+        payeeSource=GetScriptForDestination(pmn->pubkey.GetID());
     }
 
     //if we can't find new MN to get paid, pick first active MN counting back from the end of vecLastPayments list
@@ -487,9 +490,9 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
                 if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
                     newWinner.payee = pmn->donationAddress;
                 } else {
-                    newWinner.payee.SetDestination(pmn->pubkey.GetID());
+                    newWinner.payee=GetScriptForDestination(pmn->pubkey.GetID());
                 }
-                payeeSource.SetDestination(pmn->pubkey.GetID());
+                payeeSource=GetScriptForDestination(pmn->pubkey.GetID());
                 
                 break; // we found active MN
             }

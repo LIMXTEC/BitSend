@@ -15,9 +15,12 @@
 #include "hash.h"
 #include "init.h"
 /**TODO-- */
-/*#include "instantx.h"
-#include "darksend.h"
-#include "masternode-budget.h"
+//#include "instantx.h"
+//#include "darksend.h"
+#include "masternode-pos.h"
+#include "masternode.h"
+
+/*#include "masternode-budget.h"
 #include "masternode-payments.h"
 #include "masternode-sync.h"
 #include "masternodeman.h"*/
@@ -38,7 +41,7 @@
 #include "ui_interface.h"
 #include "undo.h"
 #include "util.h"
-//#include "spork.h"//TODO--
+#include "spork.h"//TODO--
 #include "utilmoneystr.h"
 #include "utilstrencodings.h"
 #include "validationinterface.h"
@@ -498,12 +501,12 @@ int64_t GetTransactionSigOpCost(const CTransaction& tx, const CCoinsViewCache& i
 
 
 /**TODO-- */
-/*int GetInputAge(CTxIn& vin)
+int GetInputAge(CTxIn& vin)
 {
     CCoinsView viewDummy;
     CCoinsViewCache view(&viewDummy);
     {
-        LOCK(mempool.cs);
+        LOCK(mempool.cs);//todo++
         CCoinsViewMemPool viewMempool(pcoinsTip, mempool);
         view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
 
@@ -518,7 +521,7 @@ int64_t GetTransactionSigOpCost(const CTransaction& tx, const CCoinsViewCache& i
     }
 }
 
-
+/*
 int GetInputAgeIX(uint256 nTXHash, CTxIn& vin)
 {    
     int sigs = 0;
@@ -638,7 +641,7 @@ static bool IsCurrentForFeeEstimation()
 
 bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const CTransactionRef& ptx, bool fLimitFree,
                               bool* pfMissingInputs, int64_t nAcceptTime, std::list<CTransactionRef>* plTxnReplaced,
-                              bool fOverrideMempoolLimit, const CAmount& nAbsurdFee, std::vector<uint256>& vHashTxnToUncache/*, bool fDryRun*/)//TODO--
+                              bool fOverrideMempoolLimit, const CAmount& nAbsurdFee, std::vector<uint256>& vHashTxnToUncache, bool fDryRun)//TODO--
 {
     const CTransaction& tx = *ptx;
     const uint256 hash = tx.GetHash();
@@ -675,8 +678,8 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         return state.Invalid(false, REJECT_ALREADY_KNOWN, "txn-already-in-mempool");
 
 	 // ----------- instantX transaction scanning ----------- TODO--
-
-    /*BOOST_FOREACH(const CTxIn& in, tx.vin){
+	/*
+    BOOST_FOREACH(const CTxIn& in, tx.vin){
         if(mapLockedInputs.count(in.prevout)){
             if(mapLockedInputs[in.prevout] != tx.GetHash()){
                 return state.DoS(0,
@@ -1056,7 +1059,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                 __func__, hash.ToString(), FormatStateMessage(state));
         }
 
-		//if(!fDryRun){//TODO--
+		if(!fDryRun){//TODO--
         // Remove conflicting transactions from the mempool
         BOOST_FOREACH(const CTxMemPool::txiter it, allConflicting)
         {
@@ -1085,21 +1088,21 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
             if (!pool.exists(hash))
                 return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "mempool full");
         }
-    //}
+    }
 	}
 
-    /*if(!fDryRun)*/ GetMainSignals().SyncTransaction(tx, NULL, CMainSignals::SYNC_TRANSACTION_NOT_IN_BLOCK);//TODO--
+    if(!fDryRun) GetMainSignals().SyncTransaction(tx, NULL, CMainSignals::SYNC_TRANSACTION_NOT_IN_BLOCK);//TODO--
 
     return true;
 }
 
 bool AcceptToMemoryPoolWithTime(CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx, bool fLimitFree,
                         bool* pfMissingInputs, int64_t nAcceptTime, std::list<CTransactionRef>* plTxnReplaced,
-                        bool fOverrideMempoolLimit, const CAmount nAbsurdFee)
+                        bool fOverrideMempoolLimit, const CAmount nAbsurdFee, bool fDryRun)
 {
     std::vector<uint256> vHashTxToUncache;
-    bool res = AcceptToMemoryPoolWorker(pool, state, tx, fLimitFree, pfMissingInputs, nAcceptTime, plTxnReplaced, fOverrideMempoolLimit, nAbsurdFee, vHashTxToUncache);
-    if (!res /*|| fDryRun*/) { /**TODO-- */
+    bool res = AcceptToMemoryPoolWorker(pool, state, tx, fLimitFree, pfMissingInputs, nAcceptTime, plTxnReplaced, fOverrideMempoolLimit, nAbsurdFee, vHashTxToUncache, fDryRun);
+    if (!res || fDryRun) { /**TODO-- */
         BOOST_FOREACH(const uint256& hashTx, vHashTxToUncache)
             pcoinsTip->Uncache(hashTx);
     }
@@ -1111,9 +1114,9 @@ bool AcceptToMemoryPoolWithTime(CTxMemPool& pool, CValidationState &state, const
 
 bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransactionRef &tx, bool fLimitFree,
                         bool* pfMissingInputs, std::list<CTransactionRef>* plTxnReplaced,
-                        bool fOverrideMempoolLimit, const CAmount nAbsurdFee)
+                        bool fOverrideMempoolLimit, const CAmount nAbsurdFee, bool fDryRun)
 {
-    return AcceptToMemoryPoolWithTime(pool, state, tx, fLimitFree, pfMissingInputs, GetTime(), plTxnReplaced, fOverrideMempoolLimit, nAbsurdFee);
+    return AcceptToMemoryPoolWithTime(pool, state, tx, fLimitFree, pfMissingInputs, GetTime(), plTxnReplaced, fOverrideMempoolLimit, nAbsurdFee, fDryRun);
 }
 
 /** Return transaction in txOut, and if it was found inside a block, its hash is placed in hashBlock */
@@ -1282,42 +1285,62 @@ CAmount GetBlockSubsidy(int nBits, int nHeight, const Consensus::Params& consens
 }
 
 /**TODO-- Masternode to old sysytem */
-/*CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
+CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue/5; // start at 20%
 
-    if(Params().NetworkIDString() == CBaseChainParams::TESTNET) {
-        if(nHeight > 46000)             ret += blockValue / 20; //25% - 2014-10-07
-        if(nHeight > 46000+((576*1)*1)) ret += blockValue / 20; //30% - 2014-10-08
-        if(nHeight > 46000+((576*1)*2)) ret += blockValue / 20; //35% - 2014-10-09
-        if(nHeight > 46000+((576*1)*3)) ret += blockValue / 20; //40% - 2014-10-10
-        if(nHeight > 46000+((576*1)*4)) ret += blockValue / 20; //45% - 2014-10-11
-        if(nHeight > 46000+((576*1)*5)) ret += blockValue / 20; //50% - 2014-10-12
-        if(nHeight > 46000+((576*1)*6)) ret += blockValue / 20; //55% - 2014-10-13
-        if(nHeight > 46000+((576*1)*7)) ret += blockValue / 20; //60% - 2014-10-14
-    }
+   
 
-    if(nHeight > 158000)               ret += blockValue / 20; // 158000 - 25.0% - 2014-10-24
-    if(nHeight > 158000+((576*30)* 1)) ret += blockValue / 20; // 175280 - 30.0% - 2014-11-25
-    if(nHeight > 158000+((576*30)* 2)) ret += blockValue / 20; // 192560 - 35.0% - 2014-12-26
-    if(nHeight > 158000+((576*30)* 3)) ret += blockValue / 40; // 209840 - 37.5% - 2015-01-26
-    if(nHeight > 158000+((576*30)* 4)) ret += blockValue / 40; // 227120 - 40.0% - 2015-02-27
-    if(nHeight > 158000+((576*30)* 5)) ret += blockValue / 40; // 244400 - 42.5% - 2015-03-30
-    if(nHeight > 158000+((576*30)* 6)) ret += blockValue / 40; // 261680 - 45.0% - 2015-05-01
-    if(nHeight > 158000+((576*30)* 7)) ret += blockValue / 40; // 278960 - 47.5% - 2015-06-01
-    if(nHeight > 158000+((576*30)* 9)) ret += blockValue / 40; // 313520 - 50.0% - 2015-08-03
+   if(nHeight > 140500) ret += blockValue / 20; 
+	// 140500  
+	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20; 
+	// 144532  
+	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20;
+	// 148564 
+	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20; 
+	// 152596 
+	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20; 
+	// 156628
+	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20; 
+	// 160660
+	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20; 
+	// 192340
+	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20; 
+	// 200980
+	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20; 
+	// 218260
+	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20; 
+	// 226900
+	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20;
+	// 235540
+	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
+	//  244180
+	/* For later Stop by 20% /80%
+	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
+	// 252820
+	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50; 
+	// 261460
+	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50; 
+	// 270100
+	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50; 
+	// 278740
+	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
+	// 287380 
+	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
+	// 296020
+	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50; 
+	// 304660
+	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50; 
+	// 313300
+	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50; 
+	//  321940
+	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
+	*/
+  //  LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
+    
 
-    /* 
-        Hard for will activate on block 348080 separating the two networks (v11 and earier and v12)
-
-        if(nHeight > 158000+((576*30)*11)) ret += blockValue / 40; // 348080 - 52.5% - 2015-10-05
-        if(nHeight > 158000+((576*30)*13)) ret += blockValue / 40; // 382640 - 55.0% - 2015-12-07
-        if(nHeight > 158000+((576*30)*15)) ret += blockValue / 40; // 417200 - 57.5% - 2016-02-08
-        if(nHeight > 158000+((576*30)*17)) ret += blockValue / 40; // 451760 - 60.0% - 2016-04-11
-    */
-
-   /* return ret;
-}*/
+    return ret;
+}
 
 
 bool IsInitialBlockDownload()
@@ -2443,7 +2466,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     return true;
 }
 /**TODO-- */
-/*bool DisconnectBlocksAndReprocess(int blocks)
+bool DisconnectBlocksAndReprocess(int blocks)
 {
     LOCK(cs_main);
 
@@ -2452,10 +2475,10 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
 
     LogPrintf("DisconnectBlocksAndReprocess: Got command to replay %d blocks\n", blocks);
     for(int i = 0; i <= blocks; i++)
-        DisconnectTip(state, chainparams.GetConsensus());
+        DisconnectTip(state, chainparams);//todo++
 
     return true;
-}*/
+}
 
 
 /**
@@ -3043,16 +3066,18 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
 	
 	/**TODO-- */
-	/*// ----------- instantX transaction scanning -----------
-
-    if(IsSporkActive(SPORK_3_INSTANTX_BLOCK_FILTERING)){
-        BOOST_FOREACH(const CTransaction& tx, block.vtx){
-            if (!tx.IsCoinBase()){
+	// ----------- instantX transaction scanning -----------
+/*
+    if(IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
+		//const CTransaction& tx;
+       for (const auto& it : block.vtx){//todo++ // BOOST_FOREACH(const CTransaction& tx, block.vtx)
+            const CTransaction& tx=*it;//todo++from#2368
+			if (!tx.IsCoinBase()){
                 //only reject blocks when it's based on complete consensus
-                BOOST_FOREACH(const CTxIn& in, tx.vin){
+                for (const auto& in : tx.vin){//BOOST_FOREACH(const CTxIn& in, tx.vin)
                     if(mapLockedInputs.count(in.prevout)){
-                        if(mapLockedInputs[in.prevout] != tx.GetHash()){
-                            mapRejectedBlocks.insert(make_pair(block.GetHash(), GetTime()));
+                        if(mapLockedInputs[in.prevout] != tx.GetHash()){//todo++ . to ->
+                            //mapRejectedBlocks.insert(make_pair(block.GetHash(), GetTime()));//Not in old
                             LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString(), tx.GetHash().ToString());
                             return state.DoS(0, error("CheckBlock() : found conflicting transaction with transaction lock"),
                                              REJECT_INVALID, "conflicting-tx-ix");
@@ -3064,34 +3089,91 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
     } else {
         LogPrintf("CheckBlock() : skipping transaction locking checks\n");
     }
-
+*/
 
     // ----------- masternode payments / budgets -----------
 
-    CBlockIndex* pindexPrev = chainActive.Tip();
-    if(pindexPrev != NULL)
-    {
-        int nHeight = 0;
-        if(pindexPrev->GetBlockHash() == block.hashPrevBlock)
-        {
-            nHeight = pindexPrev->nHeight+1;
-        } else { //out of order
-            BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-            if (mi != mapBlockIndex.end() && (*mi).second)
-                nHeight = (*mi).second->nHeight+1;
-        }
+    bool MasternodePayments = false;
 
-        if(nHeight != 0){
-            if(!IsBlockPayeeValid(block.vtx[0], nHeight))
-            {
-                mapRejectedBlocks.insert(make_pair(block.GetHash(), GetTime()));
-                return state.DoS(100, error("CheckBlock() : Couldn't find masternode/budget payment"));
+    /*if(TestNet()){
+        if(block.nTime > START_MASTERNODE_PAYMENTS_TESTNET) MasternodePayments = true;
+    } else {*/
+        //if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
+    //}
+
+    if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
+        MasternodePayments = true; // Bitsenddev
+        if(fDebug) LogPrintf("CheckBlock() : Masternode payment enforcement is off\n");
+    }
+
+    if(MasternodePayments)
+    {
+        LOCK2(cs_main, mempool.cs);
+
+        CBlockIndex *pindex = chainActive.Tip();
+        if(pindex != NULL){
+            if(pindex->GetBlockHash() == block.hashPrevBlock){
+                CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0]->GetValueOut());//todo++
+				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitsenddev 02-06-2015//todo++
+				LogPrintf("## Hardblockreward ## CheckBlock() : BSD masternode payments %d\n", hardblockpowreward);
+				bool fIsInitialDownload = IsInitialBlockDownload();
+
+                // If we don't already have its previous block, skip masternode payment step
+                if (!fIsInitialDownload && pindex != NULL)
+                {
+                    bool foundPaymentAmount = false;
+                    bool foundPayee = false;
+                    bool foundPaymentAndPayee = false;
+					CScript payee;
+                    if(!masternodePayments.GetBlockPayee(chainActive.Tip()->nHeight+1, payee) || payee == CScript()){
+                        foundPayee = true; //doesn't require a specific payee
+                        foundPaymentAmount = true;
+                        foundPaymentAndPayee = true;
+						LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
+				}
+					// todo-- must notice block.vtx[]. to block.vtx[]->
+				// Funtion no Intitial Download
+				for (unsigned int i = 0; i < block.vtx[0]->vout.size(); i++) {
+				if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount )
+                            foundPaymentAmount = true;
+				if(block.vtx[0]->vout[i].scriptPubKey == payee )
+                            foundPayee = true;
+				if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount && block.vtx[0]->vout[i].scriptPubKey == payee)
+                            foundPaymentAndPayee = true;
+                    }
+				//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
+				if (chainActive.Tip()->nHeight <= 232500)
+				{
+				int sizesum2 = block.vtx[0]->vout.size();
+				if(sizesum2 > 1 && foundPaymentAndPayee == true) 
+				{
+				foundPaymentAndPayee = true;
+				}
+				else {foundPaymentAndPayee = true;}
+				}
+                    CTxDestination address1;
+                    ExtractDestination(payee, address1);
+                    CBitcoinAddress address2(address1);
+
+                    if(!foundPaymentAndPayee) {
+                        LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                        //if(!RegTest()) return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
+                    } else {
+                        LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                    }
+                } else {
+                    LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", chainActive.Tip()->nHeight+1);
+                }
+            } else {
+                LogPrintf("CheckBlock() : Skipping masternode payment check - nHeight %d Hash %s\n", chainActive.Tip()->nHeight+1, block.GetHash().ToString().c_str());
             }
         } else {
-            LogPrintf("CheckBlock() : WARNING: Couldn't find previous block, skipping IsBlockPayeeValid()\n");
+            LogPrintf("CheckBlock() : pindex is null, skipping masternode payment check\n");
         }
+    } else {
+        LogPrintf("CheckBlock() : skipping masternode payment checks\n");
     }
-	*/
+	
 
     // -------------------------------------------
 
@@ -3499,7 +3581,14 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
             masternodePayments.ProcessBlock(GetHeight()+10);
             budget.NewBlock();
         }
-    }*/
+    }*///TODO--
+	/*if(!fProUserModeDarksendInstantX2){
+        if (!fImporting && !fReindex && chainActive.Height() > Checkpoints::GetTotalBlocksEstimate()){
+            darkSendPool.NewBlock();
+            masternodePayments.ProcessBlock(GetHeight()+10);
+            mnscan.DoMasternodePOSChecks();
+        }
+    }*///todo++ must be added
 
     LogPrintf("%s : ACCEPTED\n", __func__);
 	

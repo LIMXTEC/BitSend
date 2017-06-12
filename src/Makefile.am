@@ -76,6 +76,7 @@ endif
 .PHONY: FORCE check-symbols check-security
 # bitsend core #
 BITCOIN_CORE_H = \
+  activemasternode.h \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -103,9 +104,14 @@ BITCOIN_CORE_H = \
   indirectmap.h \
   init.h \
   key.h \
+  keepass.h \
   keystore.h \
   dbwrapper.h \
   limitedmap.h \
+  masternode.h \
+  masternode-pos.h \
+  masternodeman.h \
+  masternodeconfig.h \
   memusage.h \
   merkleblock.h \
   miner.h \
@@ -138,6 +144,7 @@ BITCOIN_CORE_H = \
   support/events.h \
   support/lockedpool.h \
   sync.h \
+  spork.h \
   threadsafety.h \
   threadinterrupt.h \
   timedata.h \
@@ -227,6 +234,7 @@ endif
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_wallet_a_SOURCES = \
+activemasternode.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/rpcdump.cpp \
@@ -331,6 +339,12 @@ libbitcoin_consensus_a_SOURCES = \
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
+  activemasternode.cpp \
+  masternode.cpp \
+  masternode-pos.cpp \
+  masternodeconfig.cpp \
+  masternodeman.cpp \
+  keepass.cpp \
   amount.cpp \
   base58.cpp \
   chainparams.cpp \
@@ -346,6 +360,7 @@ libbitcoin_common_a_SOURCES = \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
+  spork.cpp \
   warnings.cpp \
   $(BITCOIN_CORE_H)
 

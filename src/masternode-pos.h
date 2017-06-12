@@ -12,7 +12,7 @@
 #include "key.h"
 //#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
 #include "validation.h"
 
@@ -40,7 +40,7 @@ static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to lit
 #define SCANNING_ERROR_IX_NO_RESPONSE          3
 #define SCANNING_ERROR_MAX                     3
 
-void ProcessMessageMasternodePOS(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv);
 
 class CMasternodeScanning
 {
@@ -100,15 +100,17 @@ public:
     	return (nErrorType > 0 && nErrorType <= SCANNING_ERROR_MAX);
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+    {
         READWRITE(vinMasternodeA);
         READWRITE(vinMasternodeB);
         READWRITE(nErrorType);
         READWRITE(nExpiration);
         READWRITE(nBlockHeight);
         READWRITE(vchMasterNodeSignature);
-    )
+    }
 };
 
 

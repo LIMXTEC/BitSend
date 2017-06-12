@@ -8,11 +8,16 @@
 //#include "bignum.h"
 #include "sync.h"
 #include "net.h"
+#include "netbase.h"
 #include "key.h"
 //#include "core.h"
 #include "init.h"
 #include "wallet/wallet.h"
-#include "darksend.h"
+//#include "darksend.h"
+#include <vector> //
+#include "masternode.h"
+
+static const int MASTERNODEAMOUNT = 25000;
 
 // Responsible for activating the Masternode and pinging the network
 class CActiveMasternode
@@ -57,9 +62,9 @@ public:
     /// Get 5000DRK input that can be used for the Masternode
     bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
     bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);
-    vector<COutput> SelectCoinsMasternode();
+    //vector<COutput> SelectCoinsMasternode();
     bool GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
-
+	std::vector<COutput> SelectCoinsMasternode();//todo++
     /// Enable hot wallet mode (run a Masternode with no funds)
     bool EnableHotColdMasterNode(CTxIn& vin, CService& addr);
 };

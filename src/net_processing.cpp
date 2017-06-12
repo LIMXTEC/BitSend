@@ -10,9 +10,14 @@
 #include "blockencodings.h"
 #include "chainparams.h"
 #include "consensus/validation.h"
+//#include "darksend.h"
 #include "hash.h"
 #include "init.h"
+//#include "instantx.h"  //
+#include "signhelper_mn.h"
+#include "masternodeman.h"//
 #include "validation.h"
+#include "masternode.h"  //
 #include "merkleblock.h"
 #include "net.h"
 #include "netmessagemaker.h"
@@ -22,6 +27,7 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "random.h"
+#include "spork.h"
 #include "tinyformat.h"
 #include "txmempool.h"
 #include "ui_interface.h"
@@ -35,6 +41,8 @@
 #if defined(NDEBUG)
 # error "Bitcoin cannot be compiled without assertions."
 #endif
+
+CMNSignHelper darkSendSigner;//--test
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
 
@@ -917,23 +925,20 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
         //return mapDarksendBroadcastTxes.count(inv.hash);//
     case MSG_BLOCK:
     case MSG_WITNESS_BLOCK:
-        return mapBlockIndex.count(inv.hash);
+		return mapBlockIndex.count(inv.hash);
+				//mapOrphanBlocks.count(inv.hash);//todo++
 	
 	/**TODO-- */
 	/*case MSG_TXLOCK_REQUEST:
         return mapTxLockReq.count(inv.hash) ||
-               mapTxLockReqRejected.count(inv.hash);
-    case MSG_TXLOCK_VOTE:
-        return mapTxLockVote.count(inv.hash);
+               mapTxLockReqRejected.count(inv.hash);*///--test
+    /*case MSG_TXLOCK_VOTE:
+        return mapTxLockVote.count(inv.hash);*///--test
     case MSG_SPORK:
         return mapSporks.count(inv.hash);
     case MSG_MASTERNODE_WINNER:
-        if(masternodePayments.mapMasternodePayeeVotes.count(inv.hash)) {
-            masternodeSync.AddedMasternodeWinner(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_BUDGET_VOTE:
+        return mapSeenMasternodeVotes.count(inv.hash);
+   /* case MSG_BUDGET_VOTE:
         if(budget.mapSeenMasternodeBudgetVotes.count(inv.hash)) {
             masternodeSync.AddedBudgetItem(inv.hash);
             return true;
@@ -965,6 +970,8 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
         return false;
     case MSG_MASTERNODE_PING:
         return mnodeman.mapSeenMasternodePing.count(inv.hash);*/ //TODO-- ends
+	case MSG_MASTERNODE_SCANNING_ERROR:
+        return mapMasternodeScanningErrors.count(inv.hash);
     }
     // Don't know what it is, just say we already got one
     return true;
@@ -1147,7 +1154,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                 }
             }
-            else if (inv.type == MSG_TX || inv.type == MSG_WITNESS_TX)
+            else if (inv.type == MSG_TX || inv.type == MSG_WITNESS_TX || inv.type == MSG_TXLOCK_REQUEST || inv.type == MSG_MASTERNODE_SCANNING_ERROR || inv.type == MSG_MASTERNODE_WINNER || inv.type == MSG_SPORK || inv.type == MSG_TXLOCK_VOTE)
             {
                 // Send stream from relay memory
                 bool push = false;
@@ -1156,7 +1163,21 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                 if (mi != mapRelay.end()) {
                     connman.PushMessage(pfrom, msgMaker.Make(nSendFlags, NetMsgType::TX, *mi->second));
                     push = true;
-                } else if (pfrom->timeLastMempoolReq) {
+                }
+				if (!push && inv.type == MSG_TX) {
+				   /*if(mapDarksendBroadcastTxes.count(inv.hash)){
+					 connman.PushMessage(pfrom, msgMaker.Make(nSendFlags, "dstx", mapDarksendBroadcastTxes[inv.hash].tx, mapDarksendBroadcastTxes[inv.hash].vin, mapDarksendBroadcastTxes[inv.hash].vchSig, mapDarksendBroadcastTxes[inv.hash].sigTime));
+                       /* CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss <<
+                            mapDarksendBroadcastTxes[inv.hash].tx <<
+                            mapDarksendBroadcastTxes[inv.hash].vin <<
+                            mapDarksendBroadcastTxes[inv.hash].vchSig <<
+                            mapDarksendBroadcastTxes[inv.hash].sigTime;
+                        pfrom->PushMessage("dstx", ss);//comment it out
+                        push = true;
+				    }*///--test
+				  /*else*/ if (pfrom->timeLastMempoolReq) {
                     auto txinfo = mempool.info(inv.hash);
                     // To protect privacy, do not answer getdata using the mempool when
                     // that TX couldn't have been INVed in reply to a MEMPOOL request.
@@ -1164,119 +1185,40 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                         connman.PushMessage(pfrom, msgMaker.Make(nSendFlags, NetMsgType::TX, *txinfo.tx));
                         push = true;
                     }
-                }
-				/**TODO-- 
+                 }
+				}
 				// TODO: use NetMsgType::
-                if (!pushed && inv.type == MSG_TXLOCK_VOTE) {
+                /*if (!push && inv.type == MSG_TXLOCK_VOTE) {
                     if(mapTxLockVote.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << mapTxLockVote[inv.hash];
-                        pfrom->PushMessage("txlvote", ss);
-                        pushed = true;
+						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "tx1vote", mapTxLockVote[inv.hash]));
+                        push = true;
                     }
-                }
-                if (!pushed && inv.type == MSG_TXLOCK_REQUEST) {
+                }*///--test
+                /*if (!push && inv.type == MSG_TXLOCK_REQUEST) {
                     if(mapTxLockReq.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << mapTxLockReq[inv.hash];
-                        pfrom->PushMessage("ix", ss);
-                        pushed = true;
+						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "txlreq", mapTxLockReq[inv.hash]));
+                        push = true;
                     }
-                }
-                if (!pushed && inv.type == MSG_SPORK) {
+                }*/ //--test
+                if (!push && inv.type == MSG_SPORK) {
                     if(mapSporks.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << mapSporks[inv.hash];
-                        pfrom->PushMessage("spork", ss);
-                        pushed = true;
+						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", mapSporks[inv.hash]));
+                        push = true;
                     }
                 }
-                if (!pushed && inv.type == MSG_MASTERNODE_WINNER) {
-                    if(masternodePayments.mapMasternodePayeeVotes.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << masternodePayments.mapMasternodePayeeVotes[inv.hash];
-                        pfrom->PushMessage("mnw", ss);
-                        pushed = true;
+                if (!push && inv.type == MSG_MASTERNODE_WINNER) {
+                    if(mapSeenMasternodeVotes.count(inv.hash)){
+						//connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
+                        push = true;
                     }
                 }
-                if (!pushed && inv.type == MSG_BUDGET_VOTE) {
-                    if(budget.mapSeenMasternodeBudgetVotes.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << budget.mapSeenMasternodeBudgetVotes[inv.hash];
-                        pfrom->PushMessage("mvote", ss);
-                        pushed = true;
+                if (!push && inv.type == MSG_MASTERNODE_SCANNING_ERROR) {
+                    if(mapMasternodeScanningErrors.count(inv.hash)){
+						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnse", mapMasternodeScanningErrors[inv.hash]));
+                        push = true;
                     }
                 }
-
-                if (!pushed && inv.type == MSG_BUDGET_PROPOSAL) {
-                    if(budget.mapSeenMasternodeBudgetProposals.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << budget.mapSeenMasternodeBudgetProposals[inv.hash];
-                        pfrom->PushMessage("mprop", ss);
-                        pushed = true;
-                    }
-                }
-
-                if (!pushed && inv.type == MSG_BUDGET_FINALIZED_VOTE) {
-                    if(budget.mapSeenFinalizedBudgetVotes.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << budget.mapSeenFinalizedBudgetVotes[inv.hash];
-                        pfrom->PushMessage("fbvote", ss);
-                        pushed = true;
-                    }
-                }
-
-                if (!pushed && inv.type == MSG_BUDGET_FINALIZED) {
-                    if(budget.mapSeenFinalizedBudgets.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << budget.mapSeenFinalizedBudgets[inv.hash];
-                        pfrom->PushMessage("fbs", ss);
-                        pushed = true;
-                    }
-                }
-
-                if (!pushed && inv.type == MSG_MASTERNODE_ANNOUNCE) {
-                    if(mnodeman.mapSeenMasternodeBroadcast.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << mnodeman.mapSeenMasternodeBroadcast[inv.hash];
-                        pfrom->PushMessage("mnb", ss);
-                        pushed = true;
-                    }
-                }
-
-                if (!pushed && inv.type == MSG_MASTERNODE_PING) {
-                    if(mnodeman.mapSeenMasternodePing.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss << mnodeman.mapSeenMasternodePing[inv.hash];
-                        pfrom->PushMessage("mnp", ss);
-                        pushed = true;
-                    }
-                }
-
-                if (!pushed && inv.type == MSG_DSTX) {       
-                    if(mapDarksendBroadcastTxes.count(inv.hash)){
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss <<
-                            mapDarksendBroadcastTxes[inv.hash].tx <<
-                            mapDarksendBroadcastTxes[inv.hash].vin <<
-                            mapDarksendBroadcastTxes[inv.hash].vchSig <<
-                            mapDarksendBroadcastTxes[inv.hash].sigTime;
-
-                        pfrom->PushMessage("dstx", ss);
-                        pushed = true;
-                    }
-                } */
+                 
 
                 if (!push) {
                     vNotFound.push_back(inv);
@@ -1944,21 +1886,23 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         std::deque<COutPoint> vWorkQueue;
         std::vector<uint256> vEraseQueue;
         CTransactionRef ptx;
-        vRecv >> ptx;
+        //vRecv >> ptx;
         const CTransaction& tx = *ptx;
 		
 		/**TODO-- */
 		//masternode signed transaction
-        /*bool ignoreFees = false;
+        bool ignoreFees = false;
         CTxIn vin;
         vector<unsigned char> vchSig;
-        int64_t sigTime;
+        int64_t sigTime;//todo++
 
         if(strCommand == "tx") {
-            vRecv >> tx;
-        } else if (strCommand == "dstx") {
+            vRecv >> ptx;
+			//const CTransaction& tx = *ptx;
+        } 
+		else if (strCommand == "dstx") {
             //these allow masternodes to publish a limited amount of free transactions
-            vRecv >> tx >> vin >> vchSig >> sigTime;
+            vRecv >> ptx >> vin >> vchSig >> sigTime;//tx->ptx
 
             CMasternode* pmn = mnodeman.Find(vin);
             if(pmn != NULL)
@@ -1983,7 +1927,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                 ignoreFees = true;
                 pmn->allowFreeTx = false;
 
-                if(!mapDarksendBroadcastTxes.count(tx.GetHash())){
+                /*if(!mapDarksendBroadcastTxes.count(tx.GetHash())){
                     CDarksendBroadcastTx dstx;
                     dstx.tx = tx;
                     dstx.vin = vin;
@@ -1991,9 +1935,10 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                     dstx.sigTime = sigTime;
 
                     mapDarksendBroadcastTxes.insert(make_pair(tx.GetHash(), dstx));
-                }
+                }*/// --test
             }
-        }*/
+			//const CTransaction& tx = *ptx;
+        }
 		/**TODO-- ends */
 
 		
@@ -2821,13 +2766,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
     else {
 		/**TODO-- */
         //probably one the extensions
-        /*darkSendPool.ProcessMessageDarksend(pfrom, strCommand, vRecv);
+        //darkSendPool.ProcessMessageDarksend(pfrom, strCommand, vRecv);
         mnodeman.ProcessMessage(pfrom, strCommand, vRecv);
-        budget.ProcessMessage(pfrom, strCommand, vRecv);
-        masternodePayments.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
-        ProcessMessageInstantX(pfrom, strCommand, vRecv);
+        //budget.ProcessMessage(pfrom, strCommand, vRecv);
+        ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
+        //ProcessMessageInstantX(pfrom, strCommand, vRecv);//--test
         ProcessSpork(pfrom, strCommand, vRecv);
-        masternodeSync.ProcessMessage(pfrom, strCommand, vRecv);*/
+        ProcessMessageMasternodePOS(pfrom, strCommand, vRecv);
     }
 
 

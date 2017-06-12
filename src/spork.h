@@ -5,15 +5,16 @@
 #ifndef SPORK_H
 #define SPORK_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+#include "hash.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+//#include "main.h"
 
 using namespace std;
 using namespace boost;
@@ -36,12 +37,14 @@ using namespace boost;
 class CSporkMessage;
 class CSporkManager;
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
 #include "protocol.h"
-#include "darksend.h"
+#include "sync.h"
+#include "utilstrencodings.h"
+//#include "darksend.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -51,7 +54,7 @@ extern std::map<uint256, CSporkMessage> mapSporks;
 extern std::map<int, CSporkMessage> mapSporksActive;
 extern CSporkManager sporkManager;
 
-void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv);
 int GetSporkValue(int nSporkID);
 bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
@@ -87,12 +90,15 @@ public:
       
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+	{
     READWRITE(nSporkID);
     READWRITE(nValue);
     READWRITE(nTimeSigned);
     READWRITE(vchSig);
-    )
+    }
 };
 
 

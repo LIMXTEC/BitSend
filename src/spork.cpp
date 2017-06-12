@@ -1,16 +1,17 @@
 
 
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
 #include "protocol.h"
 #include "spork.h"
-#include "main.h"
+//#include "main.h"
+#include "net_processing.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -27,7 +28,7 @@ std::map<int, CSporkMessage> mapSporksActive;
 
 void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
+    //if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
 
     if (strCommand == "spork")
     {
@@ -68,7 +69,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
         std::map<int, CSporkMessage>::iterator it = mapSporksActive.begin();
 
         while(it != mapSporksActive.end()) {
-            pfrom->PushMessage("spork", it->second);
+            //pfrom->PushMessage("spork", it->second);//todo++
             it++;
         }
     }
@@ -125,13 +126,12 @@ bool CSporkManager::CheckSignature(CSporkMessage& spork)
 {
     //note: need to investigate why this is failing
     std::string strMessage = boost::lexical_cast<std::string>(spork.nSporkID) + boost::lexical_cast<std::string>(spork.nValue) + boost::lexical_cast<std::string>(spork.nTimeSigned);
-    std::string strPubKey = (Params().NetworkID() == CChainParams::MAIN) ? strMainPubKey : strTestPubKey;
-    CPubKey pubkey(ParseHex(strPubKey));
+    std::string strPubKey = (Params().NetworkIDString() == "main") ? strMainPubKey : strTestPubKey;//todo++netid
 
     std::string errorMessage = "";
-    if(!darkSendSigner.VerifyMessage(pubkey, spork.vchSig, strMessage, errorMessage)){
-        return false;
-    }
+    //if(!darkSendSigner.VerifyMessage(pubkey, spork.vchSig, strMessage, errorMessage)){
+    //    return false;
+    //}
 
     return true;
 }
@@ -183,14 +183,14 @@ bool CSporkManager::UpdateSpork(int nSporkID, int64_t nValue)
 
 void CSporkManager::Relay(CSporkMessage& msg)
 {
-    CInv inv(MSG_SPORK, msg.GetHash());
+    /*CInv inv(MSG_SPORK, msg.GetHash());
 
     vector<CInv> vInv;
     vInv.push_back(inv);
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
-    }
+    }*/
 }
 
 bool CSporkManager::SetPrivKey(std::string strPrivKey)
