@@ -490,7 +490,39 @@ bool CService::SetSockAddr(const struct sockaddr *paddr)
         return false;
     }
 }
+//TODO--++
+/*CService::CService(const char *pszIpPort)
+{
+    Init();
+    CService ip;
+    if (Lookup(pszIpPort, ip, 0, false))
+        *this = ip;
+}
 
+CService::CService(const char *pszIpPort, int portDefault)
+{
+    Init();
+    CService ip;
+    if (Lookup(pszIpPort, ip, portDefault, false))
+        *this = ip;
+}
+
+CService::CService(const std::string &strIpPort)
+{
+    Init();
+    CService ip;
+    if (Lookup(strIpPort.c_str(), ip, 0, false))
+        *this = ip;
+}
+
+CService::CService(const std::string &strIpPort, int portDefault)
+{
+    Init();
+    CService ip;
+    if (Lookup(strIpPort.c_str(), ip, portDefault, false))
+        *this = ip;
+}*/
+//TODO--ends
 unsigned short CService::GetPort() const
 {
     return port;

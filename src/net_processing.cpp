@@ -17,7 +17,10 @@
 #include "signhelper_mn.h"
 #include "masternodeman.h"//
 #include "validation.h"
-#include "masternode.h"  //
+#include "masternode.h" //
+#include "masternode-pos.h" //
+#include "spork.h"//
+#include "activemasternode.h"//
 #include "merkleblock.h"
 #include "net.h"
 #include "netmessagemaker.h"
@@ -42,6 +45,9 @@
 # error "Bitcoin cannot be compiled without assertions."
 #endif
 
+CMasternodeMessagePOS mnMessagePos;
+CMasternodePaymentsMessage mnPaymentMessage;
+CProcessSpork spMessage;
 CMNSignHelper darkSendSigner;//--test
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
@@ -1918,7 +1924,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                 std::string errorMessage = "";
                 if(!darkSendSigner.VerifyMessage(pmn->pubkey2, vchSig, strMessage, errorMessage)){
                     LogPrintf("dstx: Got bad masternode address signature %s \n", vin.ToString());
-                    //pfrom->Misbehaving(20);
+                    Misbehaving(pfrom->GetId(),20);
                     return false;
                 }
 
@@ -2767,12 +2773,12 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 		/**TODO-- */
         //probably one the extensions
         //darkSendPool.ProcessMessageDarksend(pfrom, strCommand, vRecv);
-        mnodeman.ProcessMessage(pfrom, strCommand, vRecv);
+        mnodeman.ProcessMessage(pfrom, strCommand, vRecv, connman);
         //budget.ProcessMessage(pfrom, strCommand, vRecv);
-        ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
+        mnPaymentMessage.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv, connman);
         //ProcessMessageInstantX(pfrom, strCommand, vRecv);//--test
-        ProcessSpork(pfrom, strCommand, vRecv);
-        ProcessMessageMasternodePOS(pfrom, strCommand, vRecv);
+        spMessage.ProcessSpork(pfrom, strCommand, vRecv, connman);
+        mnMessagePos.ProcessMessageMasternodePOS(pfrom, strCommand, vRecv, connman);
     }
 
 

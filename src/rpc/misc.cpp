@@ -10,6 +10,7 @@
 #include "net.h"
 #include "netbase.h"
 #include "rpc/server.h"
+#include "spork.h"//
 #include "timedata.h"
 #include "util.h"
 #include "utilstrencodings.h"
@@ -147,6 +148,52 @@ public:
     }
 };
 #endif
+/**TODO --begin
+/*
+    Used for updating/reading spork settings on the network
+*/
+/*UniValue spork(const JSONRPCRequest& request)
+{
+    if(request.params.size() == 1 && request.params[0].get_str() == "show"){
+        UniValue ret(UniValue::VOBJ);
+        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
+            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
+                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), GetSporkValue(nSporkID)));
+        }
+        return ret;
+    } else if(request.params.size() == 1 && request.params[0].get_str() == "active"){
+        UniValue ret(UniValue::VOBJ);
+        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
+            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
+                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), IsSporkActive(nSporkID)));
+        }
+        return ret;
+    } else if (request.params.size() == 2){
+        int nSporkID = sporkManager.GetSporkIDByName(request.params[0].get_str());
+        if(nSporkID == -1){
+            return "Invalid spork name";
+        }
+
+        // SPORK VALUE
+        int64_t nValue = request.params[1].get_int();
+
+        //broadcast new spork
+        if(sporkManager.UpdateSpork(nSporkID, nValue)){
+            ExecuteSpork(nSporkID, nValue);
+            return "success";
+        } else {
+            return "failure";
+        }
+
+    }
+
+    throw runtime_error(
+        "spork <name> [<value>]\n"
+        "<name> is the corresponding spork name, or 'show' to show all current spork settings, active to show which sporks are active"
+        "<value> is a epoch datetime to enable or disable spork"
+        + HelpRequiringPassphrase());
+}*///TODO-- ends
+
 
 UniValue validateaddress(const JSONRPCRequest& request)
 {

@@ -66,6 +66,8 @@
 /**
  * Global state
  */
+ 
+#define START_MASTERNODE_PAYMENTS 1430465291
 
 CCriticalSection cs_main;
 
@@ -3100,6 +3102,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
     } else {*/
         //if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
     //}
+	if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
 
     if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
         MasternodePayments = true; // Bitsenddev
@@ -3582,13 +3585,13 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
             budget.NewBlock();
         }
     }*///TODO--
-	/*if(!fProUserModeDarksendInstantX2){
-        if (!fImporting && !fReindex && chainActive.Height() > Checkpoints::GetTotalBlocksEstimate()){
-            darkSendPool.NewBlock();
-            masternodePayments.ProcessBlock(GetHeight()+10);
+	if(!fProUserModeDarksendInstantX2){
+        if (!fImporting && !fReindex && chainActive.Height() > 50000){//TODO-- last checkpointed height
+            //darkSendPool.NewBlock();//todo++ must add
+            masternodePayments.ProcessBlock(chainActive.Height()+10);
             mnscan.DoMasternodePOSChecks();
         }
-    }*///todo++ must be added
+    }///todo++ must be added
 
     LogPrintf("%s : ACCEPTED\n", __func__);
 	

@@ -344,7 +344,6 @@ libbitcoin_common_a_SOURCES = \
   masternode-pos.cpp \
   masternodeconfig.cpp \
   masternodeman.cpp \
-  keepass.cpp \
   amount.cpp \
   base58.cpp \
   chainparams.cpp \

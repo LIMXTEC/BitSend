@@ -356,6 +356,8 @@ public:
     /** Convert a CMutableTransaction into a CTransaction. */
     CTransaction(const CMutableTransaction &tx);
     CTransaction(CMutableTransaction &&tx);
+	
+	CTransaction& operator=(const CTransaction& tx);//TODO++
 
     template <typename Stream>
     inline void Serialize(Stream& s) const {

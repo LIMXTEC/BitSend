@@ -14,7 +14,7 @@
 #include "util.h"
 #include "script/script.h"
 #include "base58.h"
-//#include "main.h"
+#include "net_processing.h"
 
 using namespace std;
 using namespace boost;
@@ -36,6 +36,7 @@ using namespace boost;
 
 class CSporkMessage;
 class CSporkManager;
+class CProcessSpork;
 
 //#include "bignum.h"
 #include "net.h"
@@ -45,6 +46,7 @@ class CSporkManager;
 #include "sync.h"
 #include "utilstrencodings.h"
 //#include "darksend.h"
+#include "validation.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -53,12 +55,19 @@ using namespace boost;
 extern std::map<uint256, CSporkMessage> mapSporks;
 extern std::map<int, CSporkMessage> mapSporksActive;
 extern CSporkManager sporkManager;
+extern CProcessSpork spMessage;
 
-void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv);
+//void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 int GetSporkValue(int nSporkID);
 bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
 
+
+class CProcessSpork
+{
+public:
+    void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+};
 //
 // Spork Class
 // Keeps track of all of the network spork settings
@@ -126,7 +135,8 @@ public:
     bool SetPrivKey(std::string strPrivKey);
     bool CheckSignature(CSporkMessage& spork);
     bool Sign(CSporkMessage& spork);
-    void Relay(CSporkMessage& msg);
+    void Relay(CSporkMessage& msg, CConnman& connman);
+	void RelayUpdateSpork(CSporkMessage& msg);
 
 };
 

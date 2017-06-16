@@ -36,7 +36,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
             }
         } else {
             size_t pos = donation.find_first_of(":");
-            if(pos == string::npos) { // no ":" found
+            if(pos == std::string::npos) { // no ":" found
                 donationPercent = "100";
                 donationAddress = donation;
             } else {
@@ -51,17 +51,13 @@ bool CMasternodeConfig::read(std::string& strErr) {
             }
         }
 
-        if(Params().NetworkID() == CChainParams::MAIN){
+        
             if(CService(ip).GetPort() != 8886) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;
             }
-        } else if(CService(ip).GetPort() == 8886) {
-            strErr = "Invalid port detected in masternode.conf: " + line + " (8886 must be only on mainnet)";
-            streamConfig.close();
-            return false;
-        }
+        
 
 
         add(alias, ip, privKey, txHash, outputIndex, donationAddress, donationPercent);

@@ -44,6 +44,11 @@
 #include "masternodeconfig.h"
 #include "spork.h"*/
 
+#include "activemasternode.h"
+#include "masternodeman.h"
+#include "masternodeconfig.h"
+#include "spork.h"
+
 #include "utilmoneystr.h"
 #include "validationinterface.h"
 #ifdef ENABLE_WALLET
@@ -1306,6 +1311,17 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         if (!AppInitServers(threadGroup))
             return InitError(_("Unable to start HTTP server. See debug log for details."));
     }
+	
+	if (mapMultiArgs.count("-masternodepaymentskey")) // masternode payments priv key
+    {
+        if (!masternodePayments.SetPrivKey(GetArg("-masternodepaymentskey", "")))
+            return InitError(_("Unable to sign masternode payment winner, wrong key?"));
+        if (!sporkManager.SetPrivKey(GetArg("-masternodepaymentskey", "")))
+            return InitError(_("Unable to sign spork message, wrong key?"));
+    }
+
+    //ignore masternodes below protocol version
+    //nMasternodeMinProtocol = GetArg("-masternodeminprotocol", MIN_PEER_PROTO_VERSION);
 
     int64_t nStart;
 

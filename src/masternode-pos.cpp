@@ -6,20 +6,23 @@
 #include "net.h"
 #include "key.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
 #include "protocol.h"
 #include "activemasternode.h"
 #include "masternodeman.h"
 #include "spork.h"
+#include "signhelper_mn.h"
 #include <boost/lexical_cast.hpp>
-#include "masternodeman.h"
+
 
 using namespace std;
 using namespace boost;
 
 std::map<uint256, CMasternodeScanningError> mapMasternodeScanningErrors;
 CMasternodeScanning mnscan;
+//CMasternodeMessage mnMessage;
+CActiveMasternode activeMasternode;
 
 /* 
     Masternode - Proof of Service 
@@ -50,7 +53,7 @@ CMasternodeScanning mnscan;
 
 */
 
-void ProcessMessageMasternodePOS(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
+void CMasternodeMessagePOS::ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
     if(!IsSporkActive(SPORK_7_MASTERNODE_SCANNING)) return;
@@ -113,7 +116,7 @@ void ProcessMessageMasternodePOS(CNode* pfrom, std::string& strCommand, CDataStr
         if(fDebug) LogPrintf("ProcessMessageMasternodePOS::mnse - nHeight %d MasternodeA %s MasternodeB %s\n", mnse.nBlockHeight, pmnA->addr.ToString().c_str(), pmnB->addr.ToString().c_str());
 
         pmnB->ApplyScanningError(mnse);
-        mnse.Relay();
+        mnse.Relay(pfrom, connman);
     }
 }
 
@@ -164,19 +167,21 @@ void CMasternodeScanning::DoMasternodePOSChecks()
 
     // -- first check : Port is open
 
-    if(!ConnectNode((CAddress)pmn->addr, NULL, true)){
+	bool ConnectNodeCheck = g_connman->OpenNetworkConnection((CAddress)pmn->addr, false, NULL, NULL);
+    if(!ConnectNodeCheck){
         // we couldn't connect to the node, let's send a scanning error
+		LogPrintf("Not connected, either fail or offline");
         CMasternodeScanningError mnse(activeMasternode.vin, pmn->vin, SCANNING_ERROR_NO_RESPONSE, nBlockHeight);
         mnse.Sign();
         mapMasternodeScanningErrors.insert(make_pair(mnse.GetHash(), mnse));
-        mnse.Relay();
+        mnse.RelayProcessBlock();
     }
 
     // success
     CMasternodeScanningError mnse(activeMasternode.vin, pmn->vin, SCANNING_SUCCESS, nBlockHeight);
     mnse.Sign();
     mapMasternodeScanningErrors.insert(make_pair(mnse.GetHash(), mnse));
-    mnse.Relay();
+    mnse.RelayProcessBlock();
 }
 
 bool CMasternodeScanningError::SignatureValid()
@@ -194,7 +199,7 @@ bool CMasternodeScanningError::SignatureValid()
     }
 
     CScript pubkey;
-    pubkey.SetDestination(pmn->pubkey2.GetID());
+    pubkey = GetScriptForDestination(pmn->pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
     CBitcoinAddress address2(address1);
@@ -223,7 +228,7 @@ bool CMasternodeScanningError::Sign()
     }
 
     CScript pubkey;
-    pubkey.SetDestination(pubkey2.GetID());
+    pubkey = GetScriptForDestination(pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
     CBitcoinAddress address2(address1);
@@ -242,14 +247,34 @@ bool CMasternodeScanningError::Sign()
     return true;
 }
 
-void CMasternodeScanningError::Relay()
+void CMasternodeScanningError::RelayProcessBlock()
 {
     CInv inv(MSG_MASTERNODE_SCANNING_ERROR, GetHash());
 
     vector<CInv> vInv;
     vInv.push_back(inv);
-    LOCK(cs_vNodes);
+    /*LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
-    }
+    }*/
+	g_connman->ForEachNode([&vInv](CNode* pnode)
+    {
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
+}
+
+void CMasternodeScanningError::Relay(CNode* pnode, CConnman& connman)
+{
+    CInv inv(MSG_MASTERNODE_SCANNING_ERROR, GetHash());
+
+    vector<CInv> vInv;
+    vInv.push_back(inv);
+    /*LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes){
+        pnode->PushMessage("inv", vInv);
+    }*/
+	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+    {
+        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
 }

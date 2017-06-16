@@ -15,15 +15,19 @@
 #include "script/script.h"
 #include "base58.h"
 #include "validation.h"
+#include "net_processing.h"
 
 using namespace std;
 using namespace boost;
 
+class CMasternodeMessagePOS;
 class CMasternodeScanning;
 class CMasternodeScanningError;
 
+
 extern map<uint256, CMasternodeScanningError> mapMasternodeScanningErrors;
 extern CMasternodeScanning mnscan;
+extern CMasternodeMessagePOS mnMessagePos;
 
 static const int MIN_MASTERNODE_POS_PROTO_VERSION = 70075;
 
@@ -40,7 +44,13 @@ static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to lit
 #define SCANNING_ERROR_IX_NO_RESPONSE          3
 #define SCANNING_ERROR_MAX                     3
 
-void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv);
+//extern void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);//
+
+class CMasternodeMessagePOS
+{
+public:
+    void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+};
 
 class CMasternodeScanning
 {
@@ -95,7 +105,8 @@ public:
     bool SignatureValid();
     bool Sign();
     bool IsExpired() {return GetTime() > nExpiration;}
-    void Relay();
+    void Relay(CNode* pnode, CConnman& connman);//
+	void RelayProcessBlock();
     bool IsValid() {
     	return (nErrorType > 0 && nErrorType <= SCANNING_ERROR_MAX);
     }

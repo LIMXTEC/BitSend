@@ -36,6 +36,8 @@
 extern bool fMasterNode;
 extern bool fLiteMode;
 extern bool fEnableInstantX;
+extern bool fProUserModeDarksendInstantX;
+extern bool fProUserModeDarksendInstantX2;
 extern int nInstantXDepth;
 extern int nDarksendRounds;
 extern int nAnonymizeDashAmount;
@@ -44,6 +46,7 @@ extern bool fEnableDarksend;
 extern bool fDarksendMultiSession;
 extern int64_t enforceMasternodePaymentsTime;
 extern std::string strMasterNodeAddr;
+extern int nMasternodeMinProtocol;
 extern int keysLoaded;
 extern bool fSucessfullyLoaded;
 extern std::vector<CAmount> darkSendDenominations;

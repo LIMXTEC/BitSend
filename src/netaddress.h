@@ -12,6 +12,7 @@
 #include "compat.h"
 #include "serialize.h"
 
+
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -140,6 +141,11 @@ class CService : public CNetAddr
         CService(const CNetAddr& ip, unsigned short port);
         CService(const struct in_addr& ipv4Addr, unsigned short port);
         CService(const struct sockaddr_in& addr);
+		//TODO--
+		explicit CService(const char *pszIpPort, int portDefault);
+        explicit CService(const char *pszIpPort);
+        explicit CService(const std::string& strIpPort, int portDefault);
+        explicit CService(const std::string& strIpPort);//ends
         void Init();
         void SetPort(unsigned short portIn);
         unsigned short GetPort() const;

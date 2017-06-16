@@ -6,6 +6,7 @@
 #define MASTERNODE_H
 #include "utilstrencodings.h"//todo
 #include "arith_uint256.h"//todo
+#include "netmessagemaker.h"//todo
 #include "sync.h"
 #include "net.h"
 #include "key.h"
@@ -14,6 +15,7 @@
 #include "script/script.h"
 #include "base58.h"
 #include "validation.h"
+#include "net_processing.h"
 #include "masternode-pos.h"
 
 #define MASTERNODE_NOT_PROCESSED               0 // initial state
@@ -38,13 +40,23 @@ using namespace std;
 class CMasternode;
 class CMasternodePayments;
 class CMasternodePaymentWinner;
+class CMasternodePaymentsMessage;
+
+class CMasternodeScanning;
 
 extern CMasternodePayments masternodePayments;
+extern CMasternodePaymentsMessage mnPaymentMessage;
 extern map<uint256, CMasternodePaymentWinner> mapSeenMasternodeVotes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
-void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv);
+//void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 bool GetBlockHash(uint256& hash, int nBlockHeight);
+
+class CMasternodePaymentsMessage
+{
+public:
+    void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+};
 
 //
 // The Masternode Class. For managing the Darksend process. It contains the input of the 1000DRK, signature to prove
@@ -163,7 +175,7 @@ public:
                 READWRITE(allowFreeTx);
                 READWRITE(protocolVersion);
                 READWRITE(nLastDsq);
-                READWRITE(donationAddress);
+                READWRITE(*(CScriptBase*)(&donationAddress));
                 READWRITE(donationPercentage);
                 READWRITE(nVote);
                 READWRITE(lastVote);
@@ -304,7 +316,7 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action)
 	{
         READWRITE(nBlockHeight);
-        READWRITE(payee);
+        READWRITE(*(CScriptBase*)(&payee));//--todo test
         READWRITE(vin);
         READWRITE(score);
         READWRITE(vchSig);
@@ -351,7 +363,7 @@ public:
     bool AddWinningMasternode(CMasternodePaymentWinner& winner);
     bool ProcessBlock(int nBlockHeight);
     void Relay(CMasternodePaymentWinner& winner);
-    void Sync(CNode* node);
+    void Sync(CNode* node, CConnman& connman);
     void CleanPaymentList();
     int LastPayment(CMasternode& mn);
 

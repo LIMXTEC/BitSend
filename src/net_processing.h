@@ -8,6 +8,9 @@
 
 #include "net.h"
 #include "validationinterface.h"
+//#include "masternode.h"
+#include "masternode-pos.h"
+#include "spork.h"
 
 /** Default for -maxorphantx, maximum number of orphan transactions kept in memory */
 static const unsigned int DEFAULT_MAX_ORPHAN_TRANSACTIONS = 100;

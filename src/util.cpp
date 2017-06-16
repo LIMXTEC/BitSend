@@ -109,6 +109,8 @@ using namespace std;
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
 string strMasterNodeAddr = "";
+bool fProUserModeDarksendInstantX = false;
+bool fProUserModeDarksendInstantX2 = false;
 bool fLiteMode = false;
 bool fEnableInstantX = true;
 int nInstantXDepth = 5;
@@ -280,7 +282,7 @@ bool LogAcceptCategory(const char* category)
 					ptrCategory->insert(string("masternode"));
 					ptrCategory->insert(string("keepass"));
 					ptrCategory->insert(string("mnpayments"));
-					ptrCategory->insert(string("mnbudget"));//TODO-- ends
+					//ptrCategory->insert(string("mnbudget"));//TODO-- ends
 				}
             } else
                 ptrCategory.reset(new set<string>());
@@ -590,7 +592,7 @@ boost::filesystem::path GetConfigFile(const std::string& confPath)
     return pathConfigFile;
 }
 /**TODO-- improve code*/
-boost::filesystem::path GetMasternodeConfigFile()
+boost::filesystem::path GetMasternodeConfigFile(/*const std::string& confPath*/)
 {
     boost::filesystem::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
     if (!pathConfigFile.is_complete())

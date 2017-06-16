@@ -13,7 +13,7 @@
 //#include "core.h"
 #include "init.h"
 #include "wallet/wallet.h"
-//#include "darksend.h"
+#include "net_processing.h"
 #include <vector> //
 #include "masternode.h"
 
@@ -68,5 +68,7 @@ public:
     /// Enable hot wallet mode (run a Masternode with no funds)
     bool EnableHotColdMasterNode(CTxIn& vin, CService& addr);
 };
+
+extern CActiveMasternode activeMasternode;
 
 #endif

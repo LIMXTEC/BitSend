@@ -9,9 +9,13 @@
 #include "util.h"
 #include "sync.h"
 #include "addrman.h"
+#include "net.h"
+#include "net_processing.h"
+#include "consensus/validation.h"
 #include <boost/lexical_cast.hpp>
 
 CCriticalSection cs_masternodepayments;
+
 
 /** Object for who's going to get paid on which blocks */
 CMasternodePayments masternodePayments;
@@ -22,7 +26,23 @@ map<uint256, int> mapSeenMasternodeScanningErrors;
 // cache block hashes as we calculate them
 std::map<int64_t, uint256> mapCacheBlockHashes;
 
-void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
+static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CConnman &connman)
+{
+    CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
+
+    vector<CInv> vInv;
+    vInv.push_back(inv);
+    /*LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes){
+        pnode->PushMessage("inv", vInv);
+    }*/
+	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+    {
+        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
+}
+
+void CMasternodePaymentsMessage::ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(IsInitialBlockDownload()) return;
 
@@ -36,7 +56,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
         }
 
         pfrom->FulfilledRequest("mnget");
-        masternodePayments.Sync(pfrom);
+        masternodePayments.Sync(pfrom, connman);
         LogPrintf("mnget - Sent Masternode winners to %s\n", pfrom->addr.ToString().c_str());
     }
     else if (strCommand == "mnw") { //Masternode Payments Declare Winner
@@ -81,7 +101,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
         mapSeenMasternodeVotes.insert(make_pair(hash, winner));
 
         if(masternodePayments.AddWinningMasternode(winner)){
-            masternodePayments.Relay(winner);
+            RelayMNpayments(winner, pfrom, connman);
         }
     }
 }
@@ -263,12 +283,13 @@ void CMasternode::Check()
 
     if(!unitTest){
         CValidationState state;
-        CTransaction tx = CTransaction();
+        CTransactionRef tx = CTransactionRef();//todo++ for check t
+		CMutableTransaction tx2 = CMutableTransaction();
         CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
-        tx.vin.push_back(vin);
-        tx.vout.push_back(vout);
+        tx2.vin.push_back(vin);
+        tx2.vout.push_back(vout);
 
-        if(!AcceptableInputs(mempool, state, tx)){
+        if(!AcceptToMemoryPool(mempool, state, tx, false, NULL, false, true, true)){
             activeState = MASTERNODE_VIN_SPENT;
             return;
         }
@@ -507,6 +528,7 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 
 CTxDestination address3;
 
+
 ExtractDestination(payeeSource, address3);
 CBitcoinAddress address4(address3);
 LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
@@ -515,7 +537,7 @@ LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_
     {
         if(AddWinningMasternode(newWinner))
         {
-            Relay(newWinner);
+            Relay(newWinner);//todo ++ must add
             nLastBlockHeight = nBlockHeight;
             return true;
         }
@@ -524,26 +546,30 @@ LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_
     return false;
 }
 
-
 void CMasternodePayments::Relay(CMasternodePaymentWinner& winner)
 {
-        CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
+    CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
 
     vector<CInv> vInv;
     vInv.push_back(inv);
-    LOCK(cs_vNodes);
+    /*LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
-    }
+    }*/
+	g_connman->ForEachNode([&vInv](CNode* pnode)
+    {
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
 }
 
-void CMasternodePayments::Sync(CNode* node)
+void CMasternodePayments::Sync(CNode* node, CConnman& connman)
 {
     LOCK(cs_masternodepayments);
 
     BOOST_FOREACH(CMasternodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= chainActive.Tip()->nHeight-10 && winner.nBlockHeight <= chainActive.Tip()->nHeight + 20)
-            node->PushMessage("mnw", winner);
+            connman.PushMessage(node, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", winner));//node->PushMessage("mnw", winner);
+		
 }
 
 

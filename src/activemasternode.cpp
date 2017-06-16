@@ -3,7 +3,7 @@
 #include "protocol.h"
 #include "activemasternode.h"
 #include "masternodeman.h"
-//#include "main.h"
+#include "netaddress.h"
 #include <boost/lexical_cast.hpp>
 //CConnman connman1; // def as extern in header of same
 //
@@ -141,8 +141,9 @@ bool CActiveMasternode::StopMasterNode(std::string strService, std::string strKe
         LogPrintf("CActiveMasternode::StopMasterNode() - Error: %s\n", errorMessage.c_str());
         return false;
     }
+	CService service(LookupNumeric(strService.c_str(), 0));
 
-    return StopMasterNode(vin, CService(strService), keyMasternode, pubKeyMasternode, errorMessage);
+    return StopMasterNode(vin, service, keyMasternode, pubKeyMasternode, errorMessage);
 }
 
 // Send stop dseep to network for main Masternode
@@ -232,8 +233,8 @@ bool CActiveMasternode::Dseep(CTxIn vin, CService service, CKey keyMasternode, C
     }
 
     //send to all peers
-    LogPrintf("CActiveMasternode::Dseep() - RelayMasternodeEntryPing vin = %s\n", vin.ToString().c_str());
-    mnodeman.RelayMasternodeEntryPing(vin, vchMasterNodeSignature, masterNodeSignatureTime, stop);
+    LogPrintf("CActiveMasternode::Dseep() - RelayNormalMasternodeEntryPing vin = %s\n", vin.ToString().c_str());
+    mnodeman.RelayNormalMasternodeEntryPing(vin, vchMasterNodeSignature, masterNodeSignatureTime, stop);
 
     return true;
 }
@@ -282,8 +283,9 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
             return false;
         }
     }
+	CService service(LookupNumeric(strService.c_str(), 0));
 
-    return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyMasternode, pubKeyMasternode, donationAddress, donationPercentage, errorMessage);
+    return Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyMasternode, pubKeyMasternode, donationAddress, donationPercentage, errorMessage);
 }
 
 bool CActiveMasternode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyMasternode, CPubKey pubKeyMasternode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage) {
@@ -320,7 +322,7 @@ bool CActiveMasternode::Register(CTxIn vin, CService service, CKey keyCollateral
 
     //send to all peers
     LogPrintf("CActiveMasternode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
-    mnodeman.RelayMasternodeEntry(vin, service, vchMasterNodeSignature, masterNodeSignatureTime, pubKeyCollateralAddress, pubKeyMasternode, -1, -1, masterNodeSignatureTime, PROTOCOL_VERSION, donationAddress, donationPercentage);
+    mnodeman.RelayNormalMasternodeEntry(vin, service, vchMasterNodeSignature, masterNodeSignatureTime, pubKeyCollateralAddress, pubKeyMasternode, -1, -1, masterNodeSignatureTime, PROTOCOL_VERSION, donationAddress, donationPercentage);
 
     return true;
 }

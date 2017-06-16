@@ -11,8 +11,9 @@
 class CMNSignHelper{
 
 	public:
+	CScript collateralPubKey;
     /// Is the inputs associated with this public key? (and there is 14000 BSD - checking if valid masternode)
-    /*bool IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey){
+    bool IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey){
 		CScript payee2;
 		payee2=GetScriptForDestination(pubkey.GetID());
 
@@ -27,7 +28,7 @@ class CMNSignHelper{
 		}
 
 		return false;
-	}*/
+	}
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey){
 		CBitcoinSecret vchSecret;
@@ -76,6 +77,27 @@ class CMNSignHelper{
 
 		return (pubkey2.GetID() == pubkey.GetID());
 	}
+	
+	bool SetCollateralAddress(std::string strAddress){
+		CBitcoinAddress address;
+		if (!address.SetString(strAddress))
+		{
+			LogPrintf("CDarksendPool::SetCollateralAddress - Invalid Darksend collateral address\n");
+			return false;
+		}
+		collateralPubKey = GetScriptForDestination(address.Get());
+		return true;
+	}
+    void InitCollateralAddress(){
+        std::string strAddress = "";
+        
+            strAddress = "iFoxApoYXNgEsstxaaGtn1NnbvuSL34726";
+            //LogPrintf("Zugriff auf StrAdress 341 darksend.h\n");
+        
+        
+        SetCollateralAddress(strAddress);
+    }
+
 };
 
 
