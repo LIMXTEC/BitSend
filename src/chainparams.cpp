@@ -111,7 +111,7 @@ public:
         pchMessageStart[1] = 0xd5;    ///bitsenddev 04-2015
         pchMessageStart[2] = 0xc2;    //bitsenddev 04-2015
         pchMessageStart[3] = 0xf9;    //bitsenddev 04-2015
-        nDefaultPort = 8886;
+        nDefaultPort = 8888;
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1402097469, 34784351, 0x1e0ffff0, 1, 100 * COIN);//Time, Nonce,nBits, version, reward

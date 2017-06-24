@@ -184,6 +184,7 @@ libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
   addrdb.cpp \
+  bitpool.cpp \
   bloom.cpp \
   blockencodings.cpp \
   chain.cpp \

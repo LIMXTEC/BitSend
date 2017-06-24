@@ -48,6 +48,7 @@
 #include "masternodeman.h"
 #include "masternodeconfig.h"
 #include "spork.h"
+#include "signhelper_mn.h"
 
 #include "utilmoneystr.h"
 #include "validationinterface.h"
@@ -226,7 +227,7 @@ void PrepareShutdown() //TODO--
         pwalletMain->Flush(false);
 #endif
     MapPort(false);
-	//DumpMasternodes();// TODO--
+	DumpMasternodes();// TODO--
     //DumpBudgets();// TODO--
     //DumpMasternodePayments();// TODO--
     UnregisterValidationInterface(peerLogic.get());
@@ -1224,7 +1225,7 @@ static bool LockDataDirectory(bool probeOnly)
 		/**TODO-- */
        // Wait maximum 10 seconds if an old wallet is still running. Avoids lockup during restart
         if (!lock.timed_lock(boost::get_system_time() + boost::posix_time::seconds(10)))
-            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Dash Core is probably already running."), strDataDir));
+            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitsend is probably already running."), strDataDir));
         if (probeOnly) {
             lock.unlock();
         }
@@ -1831,7 +1832,11 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
 	
 	/**TODO-- */
-	/*// ********************************************************* Step 10: setup DarkSend
+	// ********************************************************* Step 10: setup Masternode
+
+    //string strNode = "23.23.186.131";
+    //CAddress addr;
+    //ConnectNode(addr, strNode.c_str(), true);
 
     uiInterface.InitMessage(_("Loading masternode cache..."));
 
@@ -1848,50 +1853,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
     }
 
-    uiInterface.InitMessage(_("Loading budget cache..."));
-
-    CBudgetDB budgetdb;
-    CBudgetDB::ReadResult readResult2 = budgetdb.Read(budget);
-    
-    if (readResult2 == CBudgetDB::FileError)
-        LogPrintf("Missing budget cache - budget.dat, will try to recreate\n");
-    else if (readResult2 != CBudgetDB::Ok)
-    {
-        LogPrintf("Error reading budget.dat: ");
-        if(readResult2 == CBudgetDB::IncorrectFormat)
-            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
-        else
-            LogPrintf("file format is unknown or invalid, please fix it manually\n");
-    }
-
-    //flag our cached items so we send them to our peers
-    budget.ResetSync();
-    budget.ClearSeen();
-
-
-    uiInterface.InitMessage(_("Loading masternode payment cache..."));
-
-    CMasternodePaymentDB mnpayments;
-    CMasternodePaymentDB::ReadResult readResult3 = mnpayments.Read(masternodePayments);
-    
-    if (readResult3 == CMasternodePaymentDB::FileError)
-        LogPrintf("Missing masternode payment cache - mnpayments.dat, will try to recreate\n");
-    else if (readResult3 != CMasternodePaymentDB::Ok)
-    {
-        LogPrintf("Error reading mnpayments.dat: ");
-        if(readResult3 == CMasternodePaymentDB::IncorrectFormat)
-            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
-        else
-            LogPrintf("file format is unknown or invalid, please fix it manually\n");
-    }
-
     fMasterNode = GetBoolArg("-masternode", false);
-
-    if((fMasterNode || masternodeConfig.getCount() > -1) && fTxIndex == false) {
-        return InitError("Enabling Masternode support requires turning on transaction indexing."
-                  "Please add txindex=1 to your configuration and start with -reindex");
-    }
-
     if(fMasterNode) {
         LogPrintf("IS DARKSEND MASTER NODE\n");
         strMasterNodeAddr = GetArg("-masternodeaddr", "");
@@ -1899,7 +1861,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         LogPrintf(" addr %s\n", strMasterNodeAddr.c_str());
 
         if(!strMasterNodeAddr.empty()){
-            CService addrTest = CService(strMasterNodeAddr);
+            CService addrTest;
+			CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
+			addrTest = service2;
             if (!addrTest.IsValid()) {
                 return InitError("Invalid -masternodeaddr address: " + strMasterNodeAddr);
             }
@@ -1923,12 +1887,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             return InitError(_("You must specify a masternodeprivkey in the configuration. Please see documentation for help."));
         }
     }
-    
-    //get the mode of budget voting for this masternode
-    strBudgetMode = GetArg("-budgetvotemode", "auto");
-
-    if(GetBoolArg("-mnconflock", true) && pwalletMain) {
-        LOCK(pwalletMain->cs_wallet);
+    if(GetBoolArg("-mnconflock", true)) {
         LogPrintf("Locking Masternodes:\n");
         uint256 mnTxHash;
         BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
@@ -1939,37 +1898,20 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
     }
 
-    nLiquidityProvider = GetArg("-liquidityprovider", nLiquidityProvider);
-    nLiquidityProvider = std::min(std::max(nLiquidityProvider, 0), 100);
-    darkSendPool.SetMinBlockSpacing(nLiquidityProvider * 15);
+	//-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
+    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
+        return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+    } //BitSenddev 13-05-2016
 
-    fEnableDarksend = GetBoolArg("-enabledarksend", fEnableDarksend);
-    fDarksendMultiSession = GetBoolArg("-darksendmultisession", fDarksendMultiSession);
-    nDarksendRounds = GetArg("-darksendrounds", nDarksendRounds);
-    nDarksendRounds = std::min(std::max(nDarksendRounds, 1), 99999);
-    nAnonymizeDashAmount = GetArg("-anonymizedashamount", nAnonymizeDashAmount);
-    nAnonymizeDashAmount = std::min(std::max(nAnonymizeDashAmount, 2), 999999);
+    LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
+	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
+    
 
-    fEnableInstantX = GetBoolArg("-enableinstantx", fEnableInstantX);
-    nInstantXDepth = GetArg("-instantxdepth", nInstantXDepth);
-    nInstantXDepth = std::min(std::max(nInstantXDepth, 0), 60);
+    darkSendSigner.InitCollateralAddress();
 
-    //lite mode disables all Masternode and Darksend related functionality
-    fLiteMode = GetBoolArg("-litemode", false);
-    if(fMasterNode && fLiteMode){
-        return InitError("You can not start a masternode in litemode");
-    }
-
-    LogPrintf("fLiteMode %d\n", fLiteMode);
-    LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
-    LogPrintf("Darksend rounds %d\n", nDarksendRounds);
-    LogPrintf("Anonymize Dash Amount %d\n", nAnonymizeDashAmount);
-    LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
-
-    darkSendPool.InitDenominations();
-    darkSendPool.InitCollateralAddress();
-
-    threadGroup.create_thread(boost::bind(&ThreadCheckDarkSendPool));*/ //TODO-- ends
+    threadGroup.create_thread(boost::bind(&ThreadBitPool)); //TODO-- ends
 	
     // ********************************************************* Step 11: start node
 

@@ -1347,7 +1347,7 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 
 bool IsInitialBlockDownload()
 {
-    const CChainParams& chainParams = Params();
+    /*const CChainParams& chainParams = Params();
 
     // Once this function has returned false, it must remain false.
     static std::atomic<bool> latchToFalse{false};
@@ -1367,7 +1367,8 @@ bool IsInitialBlockDownload()
     if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
         return true;
     latchToFalse.store(true, std::memory_order_relaxed);
-    return false;
+    return false;*/
+	return false;
 }
 
 CBlockIndex *pindexBestForkTip = NULL, *pindexBestForkBase = NULL;

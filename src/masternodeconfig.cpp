@@ -1,5 +1,6 @@
 
 #include "net.h"
+#include "netbase.h"
 #include "masternodeconfig.h"
 #include "util.h"
 #include <base58.h>
@@ -50,9 +51,13 @@ bool CMasternodeConfig::read(std::string& strErr) {
                 return false;
             }
         }
+		
+		int port = 0;
+        std::string hostname = "";
 
+		SplitHostPort(ip, port, hostname);
         
-            if(CService(ip).GetPort() != 8886) {
+            if(port != 8888) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;

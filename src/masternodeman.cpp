@@ -309,7 +309,7 @@ int CMasternodeMan::CountMasternodesAboveProtocol(int protocolVersion)
     return i;
 }
 
-/*void CMasternodeMan::DsegUpdate(CNode* pnode)
+void CMasternodeMan::DsegUpdate(CNode* pnode)
 {
     LOCK(cs);
 
@@ -321,10 +321,11 @@ int CMasternodeMan::CountMasternodesAboveProtocol(int protocolVersion)
             return;
         }
     }
-    pnode->PushMessage("dseg", CTxIn());
+    //pnode->PushMessage("dseg", CTxIn());
+	g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseg", CTxIn()));
     int64_t askAgain = GetTime() + MASTERNODES_DSEG_SECONDS;
     mWeAskedForMasternodeList[pnode->addr] = askAgain;
-}*/
+}
 
 CMasternode *CMasternodeMan::Find(const CTxIn &vin)
 {
