@@ -1,4 +1,5 @@
 # Copyright (c) 2014 The Bitcoin Core developers
+# Copyright (c) 2014-2017 The Bitsend developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -15,7 +16,6 @@ import json
 import shutil
 import subprocess
 import time
-import re
 
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 from util import *
@@ -54,7 +54,7 @@ def sync_mempools(rpc_connections):
         if num_match == len(rpc_connections):
             break
         time.sleep(1)
-        
+
 
 bitcoind_processes = []
 
@@ -62,26 +62,26 @@ def initialize_chain(test_dir):
     """
     Create (or copy from cache) a 200-block-long chain and
     4 wallets.
-    bitcoind and bitcoin-cli must be in search path.
+    bitsendd and bitsend-cli must be in search path.
     """
 
     if not os.path.isdir(os.path.join("cache", "node0")):
         devnull = open("/dev/null", "w+")
-        # Create cache directories, run bitcoinds:
+        # Create cache directories, run bitsendds:
         for i in range(4):
             datadir = os.path.join("cache", "node"+str(i))
             os.makedirs(datadir)
-            with open(os.path.join(datadir, "bitcoin.conf"), 'w') as f:
+            with open(os.path.join(datadir, "bitsend.conf"), 'w') as f:
                 f.write("regtest=1\n");
                 f.write("rpcuser=rt\n");
                 f.write("rpcpassword=rt\n");
                 f.write("port="+str(START_P2P_PORT+i)+"\n");
                 f.write("rpcport="+str(START_RPC_PORT+i)+"\n");
-            args = [ "bitcoind", "-keypool=1", "-datadir="+datadir ]
+            args = [ "bitsendd", "-keypool=1", "-datadir="+datadir ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(START_P2P_PORT))
             bitcoind_processes.append(subprocess.Popen(args))
-            subprocess.check_call([ "bitcoin-cli", "-datadir="+datadir,
+            subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
                                     "-rpcwait", "getblockcount"], stdout=devnull)
         devnull.close()
         rpcs = []
@@ -113,43 +113,20 @@ def initialize_chain(test_dir):
         to_dir = os.path.join(test_dir,  "node"+str(i))
         shutil.copytree(from_dir, to_dir)
 
-def _rpchost_to_args(rpchost):
-    '''Convert optional IP:port spec to rpcconnect/rpcport args'''
-    if rpchost is None:
-        return []
-
-    match = re.match('(\[[0-9a-fA-f:]+\]|[^:]+)(?::([0-9]+))?$', rpchost)
-    if not match:
-        raise ValueError('Invalid RPC host spec ' + rpchost)
-
-    rpcconnect = match.group(1)
-    rpcport = match.group(2)
-
-    if rpcconnect.startswith('['): # remove IPv6 [...] wrapping
-        rpcconnect = rpcconnect[1:-1]
-
-    rv = ['-rpcconnect=' + rpcconnect]
-    if rpcport:
-        rv += ['-rpcport=' + rpcport]
-    return rv
-
-def start_nodes(num_nodes, dir, extra_args=None, rpchost=None):
-    # Start bitcoinds, and wait for RPC interface to be up and running:
+def start_nodes(num_nodes, dir):
+    # Start bitsendds, and wait for RPC interface to be up and running:
     devnull = open("/dev/null", "w+")
     for i in range(num_nodes):
         datadir = os.path.join(dir, "node"+str(i))
-        args = [ "bitcoind", "-datadir="+datadir ]
-        if extra_args is not None:
-            args += extra_args[i]
+        args = [ "bitsendd", "-datadir="+datadir ]
         bitcoind_processes.append(subprocess.Popen(args))
-        subprocess.check_call([ "bitcoin-cli", "-datadir="+datadir] +
-                                  _rpchost_to_args(rpchost)  +
-                                  ["-rpcwait", "getblockcount"], stdout=devnull)
+        subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
+                                  "-rpcwait", "getblockcount"], stdout=devnull)
     devnull.close()
     # Create&return JSON-RPC connections
     rpc_connections = []
     for i in range(num_nodes):
-        url = "http://rt:rt@%s:%d" % (rpchost or '127.0.0.1', START_RPC_PORT+i,)
+        url = "http://rt:rt@127.0.0.1:%d"%(START_RPC_PORT+i,)
         rpc_connections.append(AuthServiceProxy(url))
     return rpc_connections
 
