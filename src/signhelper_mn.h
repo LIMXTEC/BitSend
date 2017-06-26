@@ -100,6 +100,8 @@ class CMNSignHelper{
 
 };
 
+void ThreadBitPool();
+
 
 
 extern CMNSignHelper darkSendSigner;
