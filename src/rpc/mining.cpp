@@ -22,6 +22,10 @@
 #include "utilstrencodings.h"
 #include "validationinterface.h"
 
+#include "activemasternode.h"
+#include "masternodeman.h"
+#include "masternodeconfig.h"
+
 #include <memory>
 #include <stdint.h>
 
@@ -921,6 +925,87 @@ UniValue estimatesmartpriority(const JSONRPCRequest& request)
     return result;
 }
 
+UniValue masternode(const JSONRPCRequest& request)
+{
+    string strCommand;
+    if (request.params.size() >= 1)
+        strCommand = request.params[0].get_str();
+	
+	if (request.fHelp  ||
+        (/*strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"*/
+			strCommand != "start" && strCommand != "genkey"))
+        throw runtime_error(
+                "masternode \"command\"... ( \"passphrase\" )\n"
+                "Set of commands to execute masternode related actions\n"
+                "\nArguments:\n"
+                "1. \"command\"        (string or set of strings, required) The command to execute\n"
+                "2. \"passphrase\"     (string, optional) The wallet passphrase\n"
+                "\nAvailable commands:\n"
+                "  count        - Print number of all known masternodes (optional: 'enabled', 'both')\n"
+                "  current      - Print info on current masternode winner\n"
+                "  debug        - Print masternode status\n"
+                "  genkey       - Generate new masternodeprivkey\n"
+                "  enforce      - Enforce masternode payments\n"
+                "  outputs      - Print masternode compatible outputs\n"
+                "  start        - Start masternode configured in bitsend.conf\n"
+                "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
+                "  start-many   - Start all masternodes configured in masternode.conf\n"
+                "  stop         - Stop masternode configured in bitsend.conf\n"
+                "  stop-alias   - Stop single masternode by assigned alias configured in masternode.conf\n"
+                "  stop-many    - Stop all masternodes configured in masternode.conf\n"
+                "  list         - Print list of all known masternodes (see masternodelist for more info)\n"
+                "  list-conf    - Print masternode.conf in JSON format\n"
+                "  winners      - Print list of masternode winners\n"
+                "  vote-many    - Vote on a Bitsend initiative\n"
+                "  vote         - Vote on a Bitsend initiative\n"
+                );
+	if (strCommand == "start")
+    {
+        if(!fMasterNode) return "you must set masternode=1 in the configuration";
+
+        if(pwalletMain->IsLocked()) {
+            SecureString strWalletPass;
+            strWalletPass.reserve(100);
+
+            if (request.params.size() == 2){
+                strWalletPass = request.params[1].get_str().c_str();
+            } else {
+                throw runtime_error(
+                    "Your wallet is locked, passphrase is required\n");
+            }
+
+            if(!pwalletMain->Unlock(strWalletPass)){
+                return "incorrect passphrase";
+            }
+        }
+
+        if(activeMasternode.status != MASTERNODE_REMOTELY_ENABLED && activeMasternode.status != MASTERNODE_IS_CAPABLE){
+            activeMasternode.status = MASTERNODE_NOT_PROCESSED; // TODO: consider better way
+            std::string errorMessage;
+            activeMasternode.ManageStatus();
+            pwalletMain->Lock();
+        }
+
+        if(activeMasternode.status == MASTERNODE_REMOTELY_ENABLED) return "masternode started remotely";
+        if(activeMasternode.status == MASTERNODE_INPUT_TOO_NEW) return "masternode input must have at least 15 confirmations";
+        if(activeMasternode.status == MASTERNODE_STOPPED) return "masternode is stopped";
+        if(activeMasternode.status == MASTERNODE_IS_CAPABLE) return "successfully started masternode";
+        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode: " + activeMasternode.notCapableReason;
+        if(activeMasternode.status == MASTERNODE_SYNC_IN_PROCESS) return "sync in process. Must wait until client is synced to start.";
+
+        return "unknown";
+    }
+	
+	if (strCommand == "genkey")
+    {
+        CKey secret;
+        secret.MakeNewKey(false);
+
+        return CBitcoinSecret(secret).ToString();
+    }
+}
+
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafeMode
   //  --------------------- ------------------------  -----------------------  ----------
@@ -933,6 +1018,8 @@ static const CRPCCommand commands[] =
     { "generating",         "generate",               &generate,               true,  {"nblocks","maxtries"} },
     { "generating",         "generatetoaddress",      &generatetoaddress,      true,  {"nblocks","address","maxtries"} },
 
+	{ "masternode",         "masternode",             &masternode,               true,  {"strCommand"} },
+	
     { "util",               "estimatefee",            &estimatefee,            true,  {"nblocks"} },
     { "util",               "estimatepriority",       &estimatepriority,       true,  {"nblocks"} },
     { "util",               "estimatesmartfee",       &estimatesmartfee,       true,  {"nblocks"} },
