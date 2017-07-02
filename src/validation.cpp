@@ -1276,7 +1276,7 @@ CAmount GetBlockSubsidy(int nBits, int nHeight, const Consensus::Params& consens
 
     CAmount nSubsidy = 50 * COIN;
 	
-	if (nHeight == 1)
+	if (nHeight <= 2)
 		nSubsidy = 1306400 * COIN; 
     
     if (nHeight >= (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
@@ -1347,7 +1347,7 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 
 bool IsInitialBlockDownload()
 {
-    /*const CChainParams& chainParams = Params();
+    const CChainParams& chainParams = Params();
 
     // Once this function has returned false, it must remain false.
     static std::atomic<bool> latchToFalse{false};
@@ -1367,8 +1367,7 @@ bool IsInitialBlockDownload()
     if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
         return true;
     latchToFalse.store(true, std::memory_order_relaxed);
-    return false;*/
-	return false;
+    return false;
 }
 
 CBlockIndex *pindexBestForkTip = NULL, *pindexBestForkBase = NULL;
