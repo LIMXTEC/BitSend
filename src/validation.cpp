@@ -1279,8 +1279,8 @@ CAmount GetBlockSubsidy(int nBits, int nHeight, const Consensus::Params& consens
 	if (nHeight <= 2)
 		nSubsidy = 1306400 * COIN; 
     
-    if (nHeight >= (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
-	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
+    if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
+	if (nHeight > ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
 	
 	
     return nSubsidy;
