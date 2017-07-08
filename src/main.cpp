@@ -3537,7 +3537,6 @@ bool VerifyDB(int nCheckLevel, int nCheckDepth)
         if (pindex->nHeight < chainActive.Height()-nCheckDepth)
             break;
         CBlock block;
-        int Het = pindex->nHeight;
         // check level 0: read from disk
         if (!ReadBlockFromDisk(block, pindex))
             return error("VerifyDB() : *** ReadBlockFromDisk failed at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
