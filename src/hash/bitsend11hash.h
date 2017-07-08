@@ -48,7 +48,7 @@ GLOBAL sph_shavite512_context   z_shavite;
 GLOBAL sph_simd512_context      z_simd;
 GLOBAL sph_echo512_context      z_echo;
 
-#define fillz() do { \
+#define fillz_old() do { \
     sph_blake512_init(&z_blake); \
     sph_bmw512_init(&z_bmw); \
     sph_groestl512_init(&z_groestl); \
