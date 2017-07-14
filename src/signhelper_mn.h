@@ -22,12 +22,14 @@ class CMNSignHelper{
 		if(GetTransaction(vin.prevout.hash, txVin, Params().GetConsensus(),hash, true)){
 			BOOST_FOREACH(CTxOut out, txVin->vout){
 				if(out.nValue == MASTERNODEAMOUNT*COIN){
-					if(out.scriptPubKey == payee2) return true;
+					if(out.scriptPubKey == payee2){
+						return true;
+					}
 				}
 			}
+		} else{
+			return false;
 		}
-
-		return false;
 	}
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey){

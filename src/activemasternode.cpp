@@ -60,8 +60,8 @@ void CActiveMasternode::ManageStatus()
             return;
         }
 		//CConnman CConnman1(NULL, NULL);//g_connman->OpenNetworkConnection(addr, false, NULL, strNode.c_str());
-		/*bool pnode1 = */g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
-        /*if(g_connman){//todo++ object added
+		bool pnode1 = g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
+        /*if(pnode1){//todo++ object added
             notCapableReason = "Could not connect to " + service.ToString();
             status = MASTERNODE_NOT_CAPABLE;
             LogPrintf("CActiveMasternode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());

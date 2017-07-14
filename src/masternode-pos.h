@@ -46,11 +46,7 @@ static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to lit
 
 //extern void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);//
 
-class CMasternodeMessagePOS
-{
-public:
-    void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
-};
+void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 
 class CMasternodeScanning
 {

@@ -1043,6 +1043,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                 // Only the witness is missing, so the transaction itself may be fine.
                 state.SetCorruptionPossible();
             }
+			LogPrintf("CheckInputs is still false\n");
             return false; // state filled in by CheckInputs
         }
 
@@ -1061,7 +1062,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
                 __func__, hash.ToString(), FormatStateMessage(state));
         }
 
-		if(!fDryRun){//TODO--
+		//TODO--
         // Remove conflicting transactions from the mempool
         BOOST_FOREACH(const CTxMemPool::txiter it, allConflicting)
         {
@@ -1090,10 +1091,9 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
             if (!pool.exists(hash))
                 return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "mempool full");
         }
-    }
 	}
 
-    if(!fDryRun) GetMainSignals().SyncTransaction(tx, NULL, CMainSignals::SYNC_TRANSACTION_NOT_IN_BLOCK);//TODO--
+    GetMainSignals().SyncTransaction(tx, NULL, CMainSignals::SYNC_TRANSACTION_NOT_IN_BLOCK);//TODO--
 
     return true;
 }
@@ -1280,7 +1280,7 @@ CAmount GetBlockSubsidy(int nBits, int nHeight, const Consensus::Params& consens
 		nSubsidy = 1306400 * COIN; 
     
     if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
-	if (nHeight > ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
+	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
 	
 	
     return nSubsidy;
@@ -1356,18 +1356,23 @@ bool IsInitialBlockDownload()
         return false;
 
     LOCK(cs_main);
-    if (latchToFalse.load(std::memory_order_relaxed))
+    if (latchToFalse.load(std::memory_order_relaxed)){
         return false;
-    if (fImporting || fReindex)
+	}
+    if (fImporting || fReindex){
         return true;
-    if (chainActive.Tip() == NULL)
+	}
+    if (chainActive.Tip() == NULL){
         return true;
-    if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork))
+	}
+    if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)){
         return true;
-    if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
+	}
+    if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge/24)){
         return true;
+	}
     latchToFalse.store(true, std::memory_order_relaxed);
-    return false;
+	return false;
 }
 
 CBlockIndex *pindexBestForkTip = NULL, *pindexBestForkBase = NULL;
@@ -3133,27 +3138,21 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
 						LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
-				}
+				    }
 					// todo-- must notice block.vtx[]. to block.vtx[]->
-				// Funtion no Intitial Download
-				for (unsigned int i = 0; i < block.vtx[0]->vout.size(); i++) {
-				if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount )
-                            foundPaymentAmount = true;
-				if(block.vtx[0]->vout[i].scriptPubKey == payee )
+					// Funtion no Intitial Download
+					for (unsigned int i = 0; i < block.vtx[0]->vout.size(); i++) {
+						if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount ){
+							foundPaymentAmount = true;
+						}
+						if(block.vtx[0]->vout[i].scriptPubKey == payee ){
                             foundPayee = true;
-				if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount && block.vtx[0]->vout[i].scriptPubKey == payee)
+						}
+						if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount && block.vtx[0]->vout[i].scriptPubKey == payee){
                             foundPaymentAndPayee = true;
+						}
                     }
-				//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
-				if (chainActive.Tip()->nHeight <= 232500)
-				{
-				int sizesum2 = block.vtx[0]->vout.size();
-				if(sizesum2 > 1 && foundPaymentAndPayee == true) 
-				{
-				foundPaymentAndPayee = true;
-				}
-				else {foundPaymentAndPayee = true;}
-				}
+				
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
                     CBitcoinAddress address2(address1);
@@ -3588,8 +3587,10 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
 	if(!fProUserModeDarksendInstantX2){
         if (!fImporting && !fReindex && chainActive.Height() > 50000){//TODO-- last checkpointed height
             //darkSendPool.NewBlock();//todo++ must add
-            masternodePayments.ProcessBlock(chainActive.Height()+10);
-            mnscan.DoMasternodePOSChecks();
+            if(masternodePayments.ProcessBlock(chainActive.Height()+10))
+				LogPrintf(" masternodePayments.ProcessBlock run success\n");
+            
+			mnscan.DoMasternodePOSChecks();
         }
     }///todo++ must be added
 

@@ -925,6 +925,141 @@ UniValue estimatesmartpriority(const JSONRPCRequest& request)
     return result;
 }
 
+UniValue masternodelist(const JSONRPCRequest& request)
+{
+	std::string strMode = "status";
+    std::string strFilter = "";
+
+    if (request.params.size() >= 1) strMode = request.params[0].get_str();
+    if (request.params.size() == 2) strFilter = request.params[1].get_str();
+
+    if (request.fHelp ||
+            (strMode != "status" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank"
+                && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
+    {
+        throw runtime_error(
+                "masternodelist ( \"mode\" \"filter\" )\n"
+                "Get a list of masternodes in different modes\n"
+                "\nArguments:\n"
+                "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
+                "2. \"filter\"    (string, optional) Filter results. Partial match by IP by default in all modes, additional matches in some modes\n"
+                "\nAvailable modes:\n"
+                "  activeseconds  - Print number of seconds masternode recognized by the network as enabled\n"
+                "  donation       - Show donation settings\n"
+                "  full           - Print info in format 'status protocol pubkey vin lastseen activeseconds' (can be additionally filtered, partial match)\n"
+                "  lastseen       - Print timestamp of when a masternode was last seen on the network\n"
+                "  pose           - Print Proof-of-Service score\n"
+                "  protocol       - Print protocol of a masternode (can be additionally filtered, exact match))\n"
+                "  pubkey         - Print public key associated with a masternode (can be additionally filtered, partial match)\n"
+                "  rank           - Print rank of a masternode based on current block\n"
+                "  status         - Print masternode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
+                "  vin            - Print vin associated with a masternode (can be additionally filtered, partial match)\n"
+                "  votes          - Print all masternode votes for a Bitsend initiative (can be additionally filtered, partial match)\n"
+                );
+    }
+
+    //Object obj;
+	UniValue obj(UniValue::VOBJ);
+    if (strMode == "rank") {
+        std::vector<pair<int, CMasternode> > vMasternodeRanks = mnodeman.GetMasternodeRanks(chainActive.Tip()->nHeight);
+        BOOST_FOREACH(PAIRTYPE(int, CMasternode)& s, vMasternodeRanks) {
+            std::string strAddr = s.second.addr.ToString();
+            if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+            obj.push_back(Pair(strAddr,       s.first));
+        }
+    } else {
+        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+        BOOST_FOREACH(CMasternode& mn, vMasternodes) {
+            std::string strAddr = mn.addr.ToString();
+            if (strMode == "activeseconds") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)(mn.lastTimeSeen - mn.sigTime)));
+            } else if (strMode == "donation") {
+                CTxDestination address1;
+                ExtractDestination(mn.donationAddress, address1);
+                CBitcoinAddress address2(address1);
+
+                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+
+                std::string strOut = "";
+
+                if(mn.donationPercentage != 0){
+                    strOut = address2.ToString().c_str();
+                    strOut += ":";
+                    strOut += boost::lexical_cast<std::string>(mn.donationPercentage);
+                }
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
+            } else if (strMode == "full") {
+                CScript pubkey;
+                pubkey = GetScriptForDestination(mn.pubkey.GetID());
+                CTxDestination address1;
+                ExtractDestination(pubkey, address1);
+                CBitcoinAddress address2(address1);
+
+                std::ostringstream addrStream;
+                addrStream << setw(21) << strAddr;
+
+                std::ostringstream stringStream;
+                stringStream << setw(10) <<
+                               mn.Status() << " " <<
+                               mn.protocolVersion << " " <<
+                               address2.ToString() << " " <<
+                               mn.vin.prevout.hash.ToString() << " " <<
+                               mn.lastTimeSeen << " " << setw(8) <<
+                               (mn.lastTimeSeen - mn.sigTime);
+                std::string output = stringStream.str();
+                stringStream << " " << strAddr;
+                if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
+                        strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(addrStream.str(), output));
+            } else if (strMode == "lastseen") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)mn.lastTimeSeen));
+            } else if (strMode == "protocol") {
+                if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(mn.protocolVersion) &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)mn.protocolVersion));
+            } else if (strMode == "pubkey") {
+                CScript pubkey;
+                pubkey = GetScriptForDestination(mn.pubkey.GetID());
+                CTxDestination address1;
+                ExtractDestination(pubkey, address1);
+                CBitcoinAddress address2(address1);
+
+                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
+            } else if (strMode == "pose") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                std::string strOut = boost::lexical_cast<std::string>(mn.nScanningErrorCount);
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
+            } else if(strMode == "status") {
+                std::string strStatus = mn.Status();
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       strStatus.c_str()));
+            } else if (strMode == "vin") {
+                if(strFilter !="" && mn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       mn.vin.prevout.hash.ToString().c_str()));
+            } else if(strMode == "votes"){
+                std::string strStatus = "ABSTAIN";
+
+                //voting lasts 7 days, ignore the last vote if it was older than that
+                if((GetAdjustedTime() - mn.lastVote) < (60*60*8))
+                {
+                    if(mn.nVote == -1) strStatus = "NAY";
+                    if(mn.nVote == 1) strStatus = "YEA";
+                }
+
+                if(strFilter !="" && (strAddr.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos)) continue;
+                obj.push_back(Pair(strAddr,       strStatus.c_str()));
+            }
+        }
+    }
+    return obj;
+}
+
 UniValue masternode(const JSONRPCRequest& request)
 {
     string strCommand;
@@ -934,7 +1069,7 @@ UniValue masternode(const JSONRPCRequest& request)
 	if (request.fHelp  ||
         (/*strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
             && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"*/
-			strCommand != "start" && strCommand != "genkey"))
+			strCommand != "start" && strCommand != "genkey" && strCommand != "list" && strCommand != "stop"))
         throw runtime_error(
                 "masternode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute masternode related actions\n"
@@ -1004,7 +1139,51 @@ UniValue masternode(const JSONRPCRequest& request)
 
         return CBitcoinSecret(secret).ToString();
     }
+	
+	if (strCommand == "stop")
+    {
+        if(!fMasterNode) return "you must set masternode=1 in the configuration";
+
+        if(pwalletMain->IsLocked()) {
+            SecureString strWalletPass;
+            strWalletPass.reserve(100);
+
+            if (request.params.size() == 2){
+                strWalletPass = request.params[1].get_str().c_str();
+            } else {
+                throw runtime_error(
+                    "Your wallet is locked, passphrase is required\n");
+            }
+
+            if(!pwalletMain->Unlock(strWalletPass)){
+                return "incorrect passphrase";
+            }
+        }
+
+        std::string errorMessage;
+        if(!activeMasternode.StopMasterNode(errorMessage)) {
+        	return "stop failed: " + errorMessage;
+        }
+        pwalletMain->Lock();
+
+        if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
+        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
+
+        return "unknown";
+    }
+	/*if (strCommand == "list")
+    {
+        UniValue newParams(UniValue::VARR);
+        
+        for (unsigned int i = 1; i < request.params.size(); i++) {
+            newParams.push_back(request.params[i]);
+        }
+        return masternodelist(newParams);
+    }*/
 }
+
+
+
 
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafeMode
@@ -1019,6 +1198,7 @@ static const CRPCCommand commands[] =
     { "generating",         "generatetoaddress",      &generatetoaddress,      true,  {"nblocks","address","maxtries"} },
 
 	{ "masternode",         "masternode",             &masternode,               true,  {"strCommand"} },
+	{ "masternode",         "masternodelist",         &masternodelist,           true,  {"strMode"} },
 	
     { "util",               "estimatefee",            &estimatefee,            true,  {"nblocks"} },
     { "util",               "estimatepriority",       &estimatepriority,       true,  {"nblocks"} },

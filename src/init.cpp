@@ -1315,10 +1315,20 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 	
 	if (mapMultiArgs.count("-masternodepaymentskey")) // masternode payments priv key
     {
-        if (!masternodePayments.SetPrivKey(GetArg("-masternodepaymentskey", "")))
+        if (!masternodePayments.SetPrivKey(GetArg("-masternodepaymentskey", ""))){
+			//CKey secret;
+			//secret.MakeNewKey(false);
+
+			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
             return InitError(_("Unable to sign masternode payment winner, wrong key?"));
-        if (!sporkManager.SetPrivKey(GetArg("-masternodepaymentskey", "")))
+		}
+        if (!sporkManager.SetPrivKey(GetArg("-masternodepaymentskey", ""))){
+			//CKey secret;
+			//secret.MakeNewKey(false);
+
+			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
             return InitError(_("Unable to sign spork message, wrong key?"));
+		}
     }
 
     //ignore masternodes below protocol version

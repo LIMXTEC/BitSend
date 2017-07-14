@@ -52,11 +52,7 @@ extern map<int64_t, uint256> mapCacheBlockHashes;
 //void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 bool GetBlockHash(uint256& hash, int nBlockHeight);
 
-class CMasternodePaymentsMessage
-{
-public:
-    void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
-};
+void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 
 //
 // The Masternode Class. For managing the Darksend process. It contains the input of the 1000DRK, signature to prove
@@ -294,21 +290,21 @@ public:
 
     uint256 GetHash()
 	{ 
-	uint256 n2, n3; 
+		arith_uint256 n2, n3; 
 	
-	 int nBlockTime = chainActive.Tip()->GetBlockTime();
+		int nBlockTime = chainActive.Tip()->GetBlockTime();
 	    if (nBlockTime >= FORKX17_Main_Net2)
-	{ 
-    	n2 = XEVAN(BEGIN(nBlockHeight), END(nBlockHeight));
-        UintToArith256(n3) = UintToArith256(vin.prevout.hash) > UintToArith256(n2) ? UintToArith256(vin.prevout.hash) - UintToArith256(n2) : UintToArith256(n2) - UintToArith256(vin.prevout.hash);
-        return n3;
-	}
-    else 
-    {
-		n2 = HashX11(BEGIN(nBlockHeight), END(nBlockHeight));
-		UintToArith256(n3) = UintToArith256(vin.prevout.hash) > UintToArith256(n2) ? UintToArith256(vin.prevout.hash) - UintToArith256(n2) : UintToArith256(n2) - UintToArith256(vin.prevout.hash);
-		return n3;
-    }
+		{ 
+			n2 = UintToArith256(XEVAN(BEGIN(nBlockHeight), END(nBlockHeight)));
+			n3 = UintToArith256(vin.prevout.hash) > n2 ? UintToArith256(vin.prevout.hash) - n2 : n2 - UintToArith256(vin.prevout.hash);
+			return ArithToUint256(n3);
+		}
+		else 
+		{
+			n2 = UintToArith256(HashX11(BEGIN(nBlockHeight), END(nBlockHeight)));
+			n3 = UintToArith256(vin.prevout.hash) > n2 ? UintToArith256(vin.prevout.hash) - n2 : n2 - UintToArith256(vin.prevout.hash);
+			return ArithToUint256(n3);
+		}
     }
 
     ADD_SERIALIZE_METHODS;

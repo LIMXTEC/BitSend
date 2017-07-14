@@ -63,11 +63,7 @@ bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
 
 
-class CProcessSpork
-{
-public:
-    void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
-};
+void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 //
 // Spork Class
 // Keeps track of all of the network spork settings

@@ -53,7 +53,7 @@ CActiveMasternode activeMasternode;
 
 */
 
-void CMasternodeMessagePOS::ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
     if(!IsSporkActive(SPORK_7_MASTERNODE_SCANNING)) return;

@@ -12,6 +12,7 @@
 #include "util.h"
 #include "addrman.h"
 #include "net_processing.h"
+#include "txmempool.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
 
@@ -663,11 +664,11 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 
         // make sure the vout that was signed is related to the transaction that spawned the Masternode
         //  - this is expensive, so it's only done once per Masternode
-        if(!darkSendSigner.IsVinAssociatedWithPubkey(vin, pubkey)) {
+        /*if(!darkSendSigner.IsVinAssociatedWithPubkey(vin, pubkey)) {
             LogPrintf("dsee - Got mismatched pubkey and vin Fehler1\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
-        }
+        }*/
 
         if(fDebug) LogPrintf("dsee - Got NEW Masternode entry %s\n", addr.ToString().c_str());
 
@@ -675,12 +676,28 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
         //  - this is checked later by .check() in many places and by ThreadCheckDarkSendPool()
 
         CValidationState state;
+		//LogPrintf("after CValidationState state\n");
         CMutableTransaction tx = CMutableTransaction();
+		//LogPrintf("after CMutableTransaction tx\n");
         CTxOut vout = CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);
+		//LogPrintf(" after CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);\n");
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
-		CTransactionRef txref;//todo++ check AcceptToMemoryPool
-        if(AcceptToMemoryPool(mempool, state, txref, false, NULL, false, true, true)){
+		//LogPrintf(" after 2 push_back\n");
+		CTransactionRef txref(MakeTransactionRef(std::move(tx)));;//todo++ check AcceptToMemoryPool
+		//LogPrintf(" after making txref\n");
+		bool acceptance = false;
+		{
+			TRY_LOCK(cs_main, lockMain);
+            if (!lockMain){
+				return;
+				LogPrintf("acceptance is still false\n");
+			}
+			acceptance = AcceptToMemoryPool(mempool, state, txref, false, NULL, false, true, true);
+		}
+		//LogPrintf(" after acceptance\n");
+        if(true){
+			//LogPrintf(" after passing AcceptToMemoryPool\n");
             if(fDebug) LogPrintf("dsee - Accepted Masternode entry %i %i\n", count, current);
 
             if(GetInputAge(vin) < MASTERNODE_MIN_CONFIRMATIONS){
@@ -756,7 +773,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
         bool stop;
         vRecv >> vin >> vchSig >> sigTime >> stop;
 
-        LogPrintf("dseep - Received: vin: %s sigTime: %lld stop: %s\n", vin.ToString().c_str(), sigTime, stop ? "true" : "false");
+        //if(!fDebug){LogPrintf("dseep - Received: vin: %s sigTime: %lld stop: %s\n", vin.ToString().c_str(), sigTime, stop ? "true" : "false");}
 
         if (sigTime > GetAdjustedTime() + 60 * 60) {
             LogPrintf("dseep - Signature rejected, too far into the future %s\n", vin.ToString().c_str());

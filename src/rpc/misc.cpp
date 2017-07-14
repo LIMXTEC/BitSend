@@ -152,20 +152,16 @@ public:
 /*
     Used for updating/reading spork settings on the network
 */
-/*UniValue spork(const JSONRPCRequest& request)
+UniValue spork(const JSONRPCRequest& request)
 {
     if(request.params.size() == 1 && request.params[0].get_str() == "show"){
-        UniValue ret(UniValue::VOBJ);
-        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
-            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
-                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), GetSporkValue(nSporkID)));
-        }
-        return ret;
-    } else if(request.params.size() == 1 && request.params[0].get_str() == "active"){
-        UniValue ret(UniValue::VOBJ);
-        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
-            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
-                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), IsSporkActive(nSporkID)));
+        std::map<int, CSporkMessage>::iterator it = mapSporksActive.begin();
+
+        //Object ret;
+		UniValue ret(UniValue::VOBJ);
+        while(it != mapSporksActive.end()) {
+            ret.push_back(Pair(sporkManager.GetSporkNameByID(it->second.nSporkID), it->second.nValue));
+            it++;
         }
         return ret;
     } else if (request.params.size() == 2){
@@ -179,20 +175,22 @@ public:
 
         //broadcast new spork
         if(sporkManager.UpdateSpork(nSporkID, nValue)){
-            ExecuteSpork(nSporkID, nValue);
             return "success";
         } else {
             return "failure";
+            LogPrintf("Zugriff NSporkID rpcmisc %u\n", nSporkID);
+            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Bitsenddev
         }
 
     }
 
     throw runtime_error(
         "spork <name> [<value>]\n"
-        "<name> is the corresponding spork name, or 'show' to show all current spork settings, active to show which sporks are active"
+        "<name> is the corresponding spork name, or 'show' to show all current spork settings"
         "<value> is a epoch datetime to enable or disable spork"
         + HelpRequiringPassphrase());
-}*///TODO-- ends
+}
+//TODO-- ends
 
 
 UniValue validateaddress(const JSONRPCRequest& request)
@@ -565,6 +563,8 @@ static const CRPCCommand commands[] =
     { "util",               "createmultisig",         &createmultisig,         true,  {"nrequired","keys"} },
     { "util",               "verifymessage",          &verifymessage,          true,  {"address","signature","message"} },
     { "util",               "signmessagewithprivkey", &signmessagewithprivkey, true,  {"privkey","message"} },
+	
+	{ "spork",              "spork",                  &spork,                  true,  {"show"} },
 
     /* Not shown in help */
     { "hidden",             "setmocktime",            &setmocktime,            true,  {"timestamp"}},

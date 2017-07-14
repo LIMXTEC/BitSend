@@ -45,9 +45,7 @@
 # error "Bitcoin cannot be compiled without assertions."
 #endif
 
-CMasternodeMessagePOS mnMessagePos;
-CMasternodePaymentsMessage mnPaymentMessage;
-CProcessSpork spMessage;
+
 CMNSignHelper darkSendSigner;//--test
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
@@ -1892,62 +1890,9 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         std::deque<COutPoint> vWorkQueue;
         std::vector<uint256> vEraseQueue;
         CTransactionRef ptx;
-        //vRecv >> ptx;
+        vRecv >> ptx;
         const CTransaction& tx = *ptx;
-		
-		/**TODO-- */
-		//masternode signed transaction
-        bool ignoreFees = false;
-        CTxIn vin;
-        vector<unsigned char> vchSig;
-        int64_t sigTime;//todo++
 
-        if(strCommand == "tx") {
-            vRecv >> ptx;
-			//const CTransaction& tx = *ptx;
-        } 
-		else if (strCommand == "dstx") {
-            //these allow masternodes to publish a limited amount of free transactions
-            vRecv >> ptx >> vin >> vchSig >> sigTime;//tx->ptx
-
-            CMasternode* pmn = mnodeman.Find(vin);
-            if(pmn != NULL)
-            {
-                if(!pmn->allowFreeTx){
-                    //multiple peers can send us a valid masternode transaction
-                    if(fDebug) LogPrintf("dstx: Masternode sending too many transactions %s\n", tx.GetHash().ToString());
-                    return true;
-                }
-
-                std::string strMessage = tx.GetHash().ToString() + boost::lexical_cast<std::string>(sigTime);
-
-                std::string errorMessage = "";
-                if(!darkSendSigner.VerifyMessage(pmn->pubkey2, vchSig, strMessage, errorMessage)){
-                    LogPrintf("dstx: Got bad masternode address signature %s \n", vin.ToString());
-                    Misbehaving(pfrom->GetId(),20);
-                    return false;
-                }
-
-                LogPrintf("dstx: Got Masternode transaction %s\n", tx.GetHash().ToString());
-
-                ignoreFees = true;
-                pmn->allowFreeTx = false;
-
-                /*if(!mapDarksendBroadcastTxes.count(tx.GetHash())){
-                    CDarksendBroadcastTx dstx;
-                    dstx.tx = tx;
-                    dstx.vin = vin;
-                    dstx.vchSig = vchSig;
-                    dstx.sigTime = sigTime;
-
-                    mapDarksendBroadcastTxes.insert(make_pair(tx.GetHash(), dstx));
-                }*/// --test
-            }
-			//const CTransaction& tx = *ptx;
-        }
-		/**TODO-- ends */
-
-		
         CInv inv(MSG_TX, tx.GetHash());
         pfrom->AddInventoryKnown(inv);
 
@@ -2101,13 +2046,6 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         for (const CTransactionRef& removedTx : lRemovedTxn)
             AddToCompactExtraTransactions(removedTx);
 
-		/**TODO-- */
-		/*if(strCommand == "dstx"){
-            CInv inv(MSG_DSTX, tx.GetHash());
-            RelayInv(inv);
-        }*/
-
-		
         int nDoS = 0;
         if (state.IsInvalid(nDoS))
         {
@@ -2770,15 +2708,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
     }
 
     else {
-		/**TODO-- */
-        //probably one the extensions
-        //darkSendPool.ProcessMessageDarksend(pfrom, strCommand, vRecv);
+		
         mnodeman.ProcessMessage(pfrom, strCommand, vRecv, connman);
-        //budget.ProcessMessage(pfrom, strCommand, vRecv);
-        mnPaymentMessage.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv, connman);
-        //ProcessMessageInstantX(pfrom, strCommand, vRecv);//--test
-        spMessage.ProcessSpork(pfrom, strCommand, vRecv, connman);
-        mnMessagePos.ProcessMessageMasternodePOS(pfrom, strCommand, vRecv, connman);
+        ProcessMessageMasternodePayments(pfrom, strCommand, vRecv, connman);
+        ProcessSpork(pfrom, strCommand, vRecv, connman);
+        ProcessMessageMasternodePOS(pfrom, strCommand, vRecv, connman);
     }
 
 
