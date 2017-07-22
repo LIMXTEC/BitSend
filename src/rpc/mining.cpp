@@ -617,6 +617,8 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     aMutable.push_back("time");
     aMutable.push_back("transactions");
     aMutable.push_back("prevblock");
+	
+	UniValue aVotes(UniValue::VARR);
 
     UniValue result(UniValue::VOBJ);
     result.push_back(Pair("capabilities", aCaps));
@@ -704,6 +706,22 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     if (!pblocktemplate->vchCoinbaseCommitment.empty() && fSupportsSegwit) {
         result.push_back(Pair("default_witness_commitment", HexStr(pblocktemplate->vchCoinbaseCommitment.begin(), pblocktemplate->vchCoinbaseCommitment.end())));
     }
+	result.push_back(Pair("votes", aVotes));
+	if(pblock->payee != CScript()){
+        CTxDestination address1;
+        ExtractDestination(pblock->payee, address1);
+        CBitcoinAddress address2(address1);
+        result.push_back(Pair("payee", address2.ToString().c_str()));
+        result.push_back(Pair("payee_amount", (int64_t)GetMasternodePayment(pindexPrev->nHeight+1, pblock->vtx[0]->GetValueOut())));
+    } else {
+        result.push_back(Pair("payee", ""));
+        result.push_back(Pair("payee_amount", ""));
+    }
+	bool MasternodePayments = false;
+	if(pblock->nTime > 1430465291) MasternodePayments = true;//1430465291 = START_MASTERNODE_PAYMENT
+	
+	result.push_back(Pair("masternode_payments", MasternodePayments));
+    result.push_back(Pair("enforce_masternode_payments", true));
 
     return result;
 }
