@@ -946,7 +946,7 @@ void CMasternodeMan::RelayMasternodeEntryPing(const CTxIn vin, const std::vector
         pnode->PushMessage("dseep", vin, vchSig, nNow, stop);*/
 	connman.ForEachNode([&connman, &vin, &vchSig, &nNow, &stop](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", vin, vchSig, nNow, stop));
+        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseep", vin, vchSig, nNow, stop));
     });
 }
 
@@ -970,7 +970,7 @@ void CMasternodeMan::RelayNormalMasternodeEntryPing(const CTxIn vin, const std::
         pnode->PushMessage("dseep", vin, vchSig, nNow, stop);*/
 	g_connman->ForEachNode([&vin, &vchSig, &nNow, &stop](CNode* pnode)
     {
-        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", vin, vchSig, nNow, stop));
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseep", vin, vchSig, nNow, stop));
     });
 }
 
@@ -986,6 +986,7 @@ void CMasternodeMan::Remove(CTxIn vin)
             vMasternodes.erase(it);
             break;
         }
+		++it;
     }
 }
 

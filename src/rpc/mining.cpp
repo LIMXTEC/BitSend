@@ -679,7 +679,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.push_back(Pair("previousblockhash", pblock->hashPrevBlock.GetHex()));
     result.push_back(Pair("transactions", transactions));
     result.push_back(Pair("coinbaseaux", aux));
-    result.push_back(Pair("coinbasevalue", (int64_t)pblock->vtx[0]->vout[0].nValue));
+    result.push_back(Pair("coinbasevalue", (int64_t)pblock->vtx[0]->GetValueOut()));//(int64_t)pblock->vtx[0]->vout[0].nValue
     result.push_back(Pair("longpollid", chainActive.Tip()->GetBlockHash().GetHex() + i64tostr(nTransactionsUpdatedLast)));
     result.push_back(Pair("target", hashTarget.GetHex()));
     result.push_back(Pair("mintime", (int64_t)pindexPrev->GetMedianTimePast()+1));
@@ -1067,9 +1067,8 @@ UniValue masternode(const JSONRPCRequest& request)
         strCommand = request.params[0].get_str();
 	
 	if (request.fHelp  ||
-        (/*strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"*/
-			strCommand != "start" && strCommand != "genkey" && strCommand != "list" && strCommand != "stop"))
+        (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"))
         throw runtime_error(
                 "masternode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute masternode related actions\n"
@@ -1095,6 +1094,172 @@ UniValue masternode(const JSONRPCRequest& request)
                 "  vote-many    - Vote on a Bitsend initiative\n"
                 "  vote         - Vote on a Bitsend initiative\n"
                 );
+				
+	if (strCommand == "stop")
+    {
+        if(!fMasterNode) return "you must set masternode=1 in the configuration";
+
+        if(pwalletMain->IsLocked()) {
+            SecureString strWalletPass;
+            strWalletPass.reserve(100);
+
+            if (request.params.size() == 2){
+                strWalletPass = request.params[1].get_str().c_str();
+            } else {
+                throw runtime_error(
+                    "Your wallet is locked, passphrase is required\n");
+            }
+
+            if(!pwalletMain->Unlock(strWalletPass)){
+                return "incorrect passphrase";
+            }
+        }
+
+        std::string errorMessage;
+        if(!activeMasternode.StopMasterNode(errorMessage)) {
+        	return "stop failed: " + errorMessage;
+        }
+        pwalletMain->Lock();
+
+        if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
+        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
+
+        return "unknown";
+    }
+	
+	if (strCommand == "stop-alias")
+    {
+	    if (request.params.size() < 2){
+			throw runtime_error(
+			"command needs at least 2 parameters\n");
+	    }
+
+	    std::string alias = request.params[1].get_str().c_str();
+
+    	if(pwalletMain->IsLocked()) {
+    		SecureString strWalletPass;
+    	    strWalletPass.reserve(100);
+
+			if (request.params.size() == 3){
+				strWalletPass = request.params[2].get_str().c_str();
+			} else {
+				throw runtime_error(
+				"Your wallet is locked, passphrase is required\n");
+			}
+
+			if(!pwalletMain->Unlock(strWalletPass)){
+				return "incorrect passphrase";
+			}
+        }
+
+    	bool found = false;
+
+		//Object statusObj;
+		UniValue statusObj(UniValue::VOBJ);
+		statusObj.push_back(Pair("alias", alias));
+
+    	BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+    		if(mne.getAlias() == alias) {
+    			found = true;
+    			std::string errorMessage;
+    			bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+				statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+    			if(!result) {
+   					statusObj.push_back(Pair("errorMessage", errorMessage));
+   				}
+    			break;
+    		}
+    	}
+
+    	if(!found) {
+    		statusObj.push_back(Pair("result", "failed"));
+    		statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+    	}
+
+    	pwalletMain->Lock();
+    	return statusObj;
+    }
+	
+	if (strCommand == "stop-many")
+    {
+    	if(pwalletMain->IsLocked()) {
+			SecureString strWalletPass;
+			strWalletPass.reserve(100);
+
+			if (request.params.size() == 2){
+				strWalletPass = request.params[1].get_str().c_str();
+			} else {
+				throw runtime_error(
+				"Your wallet is locked, passphrase is required\n");
+			}
+
+			if(!pwalletMain->Unlock(strWalletPass)){
+				return "incorrect passphrase";
+			}
+		}
+
+		int total = 0;
+		int successful = 0;
+		int fail = 0;
+
+
+		//Object resultsObj;
+		UniValue resultsObj(UniValue::VOBJ);
+
+		BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+			total++;
+
+			std::string errorMessage;
+			bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+			//Object statusObj;
+			UniValue statusObj(UniValue::VOBJ);
+			statusObj.push_back(Pair("alias", mne.getAlias()));
+			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+
+			if(result) {
+				successful++;
+			} else {
+				fail++;
+				statusObj.push_back(Pair("errorMessage", errorMessage));
+			}
+
+			resultsObj.push_back(Pair("status", statusObj));
+		}
+		pwalletMain->Lock();
+
+		//Object returnObj;
+		UniValue returnObj(UniValue::VOBJ);
+		returnObj.push_back(Pair("overall", "Successfully stopped " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to stop " +
+				boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
+		returnObj.push_back(Pair("detail", resultsObj));
+
+		return returnObj;
+
+    }
+	
+	if (strCommand == "count")
+    {
+        if (request.params.size() > 2){
+            throw runtime_error(
+            "too many parameters\n");
+        }
+		UniValue rtnStr(UniValue::VSTR);
+        if (request.params.size() == 2)
+        {
+            /*if(request.params[1] == "enabled"){
+				return mnodeman.CountEnabled();
+				//return rtnStr;
+			}*/
+            /* if(request.params[1] == "both"){
+				rtnStr = boost::lexical_cast<std::string>(mnodeman.CountEnabled()) + " / " + boost::lexical_cast<std::string>(mnodeman.size());
+				return rtnStr;
+			} */
+        }
+        return mnodeman.size();
+    }
+	
 	if (strCommand == "start")
     {
         if(!fMasterNode) return "you must set masternode=1 in the configuration";
@@ -1132,6 +1297,179 @@ UniValue masternode(const JSONRPCRequest& request)
         return "unknown";
     }
 	
+	if (strCommand == "start-alias")
+    {
+	    if (request.params.size() < 2){
+			throw runtime_error(
+			"command needs at least 2 parameters\n");
+	    }
+
+	    std::string alias = request.params[1].get_str().c_str();
+
+    	if(pwalletMain->IsLocked()) {
+    		SecureString strWalletPass;
+    	    strWalletPass.reserve(100);
+
+			if (request.params.size() == 3){
+				strWalletPass = request.params[2].get_str().c_str();
+			} else {
+				throw runtime_error(
+				"Your wallet is locked, passphrase is required\n");
+			}
+
+			if(!pwalletMain->Unlock(strWalletPass)){
+				return "incorrect passphrase";
+			}
+        }
+
+    	bool found = false;
+
+		//Object statusObj;
+		UniValue statusObj(UniValue::VOBJ);
+		statusObj.push_back(Pair("alias", alias));
+
+    	BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+    		if(mne.getAlias() == alias) {
+    			found = true;
+    			std::string errorMessage;
+
+                std::string strDonateAddress = mne.getDonationAddress();
+                std::string strDonationPercentage = mne.getDonationPercentage();
+
+    			bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+
+    			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+    			if(!result) {
+					statusObj.push_back(Pair("errorMessage", errorMessage));
+				}
+    			break;
+    		}
+    	}
+
+    	if(!found) {
+    		statusObj.push_back(Pair("result", "failed"));
+    		statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+    	}
+
+    	pwalletMain->Lock();
+    	return statusObj;
+
+    }
+	
+	if (strCommand == "start-many")
+    {
+    	if(pwalletMain->IsLocked()) {
+			SecureString strWalletPass;
+			strWalletPass.reserve(100);
+
+			if (request.params.size() == 2){
+				strWalletPass = request.params[1].get_str().c_str();
+			} else {
+				throw runtime_error(
+				"Your wallet is locked, passphrase is required\n");
+			}
+
+			if(!pwalletMain->Unlock(strWalletPass)){
+				return "incorrect passphrase";
+			}
+		}
+
+		std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
+		mnEntries = masternodeConfig.getEntries();
+
+		int total = 0;
+		int successful = 0;
+		int fail = 0;
+
+		//Object resultsObj;
+		UniValue resultsObj(UniValue::VOBJ);
+
+		BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+			total++;
+
+			std::string errorMessage;
+
+            std::string strDonateAddress = mne.getDonationAddress();
+            std::string strDonationPercentage = mne.getDonationPercentage();
+
+			bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+
+			//Object statusObj;
+			UniValue statusObj(UniValue::VOBJ);
+			statusObj.push_back(Pair("alias", mne.getAlias()));
+            statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+
+			if(result) {
+				successful++;
+			} else {
+				fail++;
+				statusObj.push_back(Pair("errorMessage", errorMessage));
+			}
+
+			resultsObj.push_back(Pair("status", statusObj));
+		}
+		pwalletMain->Lock();
+
+		//Object returnObj;
+		UniValue returnObj(UniValue::VOBJ);
+		returnObj.push_back(Pair("overall", "Successfully started " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to start " +
+				boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
+		returnObj.push_back(Pair("detail", resultsObj));
+
+		return returnObj;
+    }
+	
+	if (strCommand == "debug")
+    {
+        if(activeMasternode.status == MASTERNODE_REMOTELY_ENABLED) return "masternode started remotely";
+        if(activeMasternode.status == MASTERNODE_INPUT_TOO_NEW) return "masternode input must have at least 15 confirmations";
+        if(activeMasternode.status == MASTERNODE_IS_CAPABLE) return "successfully started masternode";
+        if(activeMasternode.status == MASTERNODE_STOPPED) return "masternode is stopped";
+        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode: " + activeMasternode.notCapableReason;
+        if(activeMasternode.status == MASTERNODE_SYNC_IN_PROCESS) return "sync in process. Must wait until client is synced to start.";
+
+        CTxIn vin = CTxIn();
+        //CPubKey pubkey = CScript();
+		CPubKey pubkey;
+        CKey key;
+        bool found = activeMasternode.GetMasterNodeVin(vin, pubkey, key);
+        if(!found){
+            return "Missing masternode input, please look at the documentation for instructions on masternode creation";
+        } else {
+            return "No problems were found";
+        }
+    }
+
+    if (strCommand == "create")
+    {
+
+        return "Not implemented yet, please look at the documentation for instructions on masternode creation";
+    }
+
+    if (strCommand == "current")
+    {
+        CMasternode* winner = mnodeman.GetCurrentMasterNode(1);
+        if(winner) {
+            //Object obj;
+			UniValue obj(UniValue::VOBJ);
+            CScript pubkey;
+            pubkey = GetScriptForDestination(winner->pubkey.GetID());
+            CTxDestination address1;
+            ExtractDestination(pubkey, address1);
+            CBitcoinAddress address2(address1);
+
+            obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
+            obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
+            obj.push_back(Pair("vin",           winner->vin.prevout.hash.ToString().c_str()));
+            obj.push_back(Pair("pubkey",        address2.ToString().c_str()));
+            obj.push_back(Pair("lastseen",      (int64_t)winner->lastTimeSeen));
+            obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->sigTime)));
+            return obj;
+        }
+
+        return "unknown";
+    }
+	
 	if (strCommand == "genkey")
     {
         CKey secret;
@@ -1140,37 +1478,162 @@ UniValue masternode(const JSONRPCRequest& request)
         return CBitcoinSecret(secret).ToString();
     }
 	
-	if (strCommand == "stop")
+	if (strCommand == "winners")
     {
-        if(!fMasterNode) return "you must set masternode=1 in the configuration";
+        //Object obj;
+		UniValue obj(UniValue::VOBJ);
 
-        if(pwalletMain->IsLocked()) {
-            SecureString strWalletPass;
-            strWalletPass.reserve(100);
-
-            if (request.params.size() == 2){
-                strWalletPass = request.params[1].get_str().c_str();
+        for(int nHeight = chainActive.Tip()->nHeight-10; nHeight < chainActive.Tip()->nHeight+20; nHeight++)
+        {
+            CScript payee;
+            if(masternodePayments.GetBlockPayee(nHeight, payee)){
+                CTxDestination address1;
+                ExtractDestination(payee, address1);
+                CBitcoinAddress address2(address1);
+                obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
             } else {
-                throw runtime_error(
-                    "Your wallet is locked, passphrase is required\n");
-            }
-
-            if(!pwalletMain->Unlock(strWalletPass)){
-                return "incorrect passphrase";
+                obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));
             }
         }
 
-        std::string errorMessage;
-        if(!activeMasternode.StopMasterNode(errorMessage)) {
-        	return "stop failed: " + errorMessage;
-        }
-        pwalletMain->Lock();
-
-        if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
-        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
-
-        return "unknown";
+        return obj;
     }
+	
+	if(strCommand == "enforce")
+    {
+        return (uint64_t)enforceMasternodePaymentsTime;
+    }
+	
+	if(strCommand == "connect")
+    {
+        std::string strAddress = "";
+        if (request.params.size() == 2){
+            strAddress = request.params[1].get_str().c_str();
+        } else {
+            throw runtime_error(
+                "Masternode address required\n");
+        }
+
+        CService addr;
+		CService service2(LookupNumeric(strAddress.c_str(), 0));
+		addr = service2;
+		
+		bool pnode1 = g_connman->OpenNetworkConnection((CAddress)addr, false, NULL, addr.ToString().c_str());
+
+        if(pnode1){
+            return "successfully connected";
+        } else {
+            return "error connecting";
+        }
+    }
+	
+	if(strCommand == "list-conf")
+    {
+    	std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
+    	mnEntries = masternodeConfig.getEntries();
+
+        //Object resultObj;
+		UniValue resultObj(UniValue::VOBJ);
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+            //Object mnObj;
+			UniValue mnObj(UniValue::VOBJ);
+            mnObj.push_back(Pair("alias", mne.getAlias()));
+            mnObj.push_back(Pair("address", mne.getIp()));
+            mnObj.push_back(Pair("privateKey", mne.getPrivKey()));
+            mnObj.push_back(Pair("txHash", mne.getTxHash()));
+            mnObj.push_back(Pair("outputIndex", mne.getOutputIndex()));
+            mnObj.push_back(Pair("donationAddress", mne.getDonationAddress()));
+            mnObj.push_back(Pair("donationPercent", mne.getDonationPercentage()));
+            resultObj.push_back(Pair("masternode", mnObj));
+        }
+
+        return resultObj;
+    }
+	
+	if (strCommand == "outputs"){
+        // Find possible candidates
+        vector<COutput> possibleCoins = activeMasternode.SelectCoinsMasternode();
+
+        //Object obj;
+		UniValue obj(UniValue::VOBJ);
+        BOOST_FOREACH(COutput& out, possibleCoins) {
+            obj.push_back(Pair(out.tx->GetHash().ToString().c_str(), boost::lexical_cast<std::string>(out.i)));
+        }
+
+        return obj;
+
+    }
+	
+	/*if(strCommand == "vote-many")
+    {
+        std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
+        mnEntries = masternodeConfig.getEntries();
+        
+        if (params.size() != 2)
+        throw runtime_error("You can only vote 'yea' or 'nay'");
+
+        std::string vote = params[1].get_str().c_str();
+        if(vote != "yea" && vote != "nay") return "You can only vote 'yea' or 'nay'";
+        int nVote = 0;
+        if(vote == "yea") nVote = 1;
+        if(vote == "nay") nVote = -1;
+
+
+		int success = 0;
+		int failed = 0;
+
+        Object resultObj;
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+            std::string errorMessage;
+            std::vector<unsigned char> vchMasterNodeSignature;
+            std::string strMasterNodeSignMessage;
+
+            CPubKey pubKeyCollateralAddress;
+            CKey keyCollateralAddress;
+            CPubKey pubKeyMasternode;
+            CKey keyMasternode;
+
+			if(!darkSendSigner.SetKey(mne.getPrivKey(), errorMessage, keyMasternode, pubKeyMasternode)){
+				printf(" Error upon calling SetKey for %s\n", mne.getAlias().c_str());
+				failed++;
+				continue;
+			}
+
+			CMasternode* pmn = mnodeman.Find(pubKeyMasternode);
+			if(pmn == NULL)
+			{
+				printf("Can't find masternode by pubkey for %s\n", mne.getAlias().c_str());
+				failed++;
+				continue;
+            }
+
+            std::string strMessage = pmn->vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+			if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
+				printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
+				failed++;
+				continue;
+			}
+
+			if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
+				printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
+				failed++;
+				continue;
+			}
+
+			success++;
+
+            //send to all peers
+            //LOCK(cs_vNodes);
+            //BOOST_FOREACH(CNode* pnode, vNodes)
+               // pnode->PushMessage("mvote", pmn->vin, vchMasterNodeSignature, nVote);
+
+        }
+		return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
+    }*/
+	
 	/*if (strCommand == "list")
     {
         UniValue newParams(UniValue::VARR);

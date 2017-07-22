@@ -1145,6 +1145,8 @@ bool AppInitParameterInteraction()
 #ifdef ENABLE_WALLET
     if (!CWallet::ParameterInteraction())
         return false;
+	
+	/* std::string strWalletFile = GetArg("-wallet", "wallet.dat"); */
 #endif
 
     fIsBareMultisigStd = GetBoolArg("-permitbaremultisig", DEFAULT_PERMIT_BAREMULTISIG);
@@ -1341,7 +1343,8 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
    //if (!fDisableWallet) {
     
 	/**TODO-- */
-        /*filesystem::path backupDir = GetDataDir() / "backups";
+	std::string strWalletFile = GetArg("-wallet", "wallet.dat");
+        filesystem::path backupDir = GetDataDir() / "backups";
         if (!filesystem::exists(backupDir))
         {
             // Always create backup folder to not confuse the operating system's file browser
@@ -1411,10 +1414,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             }
         }//TODO-- ends 
 
-        LogPrintf("Using wallet %s\n", strWalletFile);
-        uiInterface.InitMessage(_("Verifying wallet..."));
+        /* LogPrintf("Using wallet %s\n", strWalletFile);
+        uiInterface.InitMessage(_("Verifying wallet...")); */
 
-        std::string warningString;
+        /* std::string warningString;
         std::string errorString;
 
         if (!CWallet::Verify(strWalletFile, warningString, errorString))
@@ -1423,13 +1426,13 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         if (!warningString.empty())
             InitWarning(warningString);
         if (!errorString.empty())
-            return InitError(errorString);
+            return InitError(errorString); */
 
 
     // Initialize KeePass Integration
-    keePassInt.init();
+    //keePassInt.init();
 
-    } */// (!fDisableWallet)
+    //} /// (!fDisableWallet)
 	
 	//originally -- 
 	if (!CWallet::Verify())
