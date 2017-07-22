@@ -115,6 +115,13 @@ void WalletFrame::gotoOverviewPage()
         i.value()->gotoOverviewPage();
 }
 
+void WalletFrame::gotoMasternodePage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoMasternodePage();
+}
+
 void WalletFrame::gotoHistoryPage()
 {
     QMap<QString, WalletView*>::const_iterator i;
@@ -191,7 +198,12 @@ void WalletFrame::usedReceivingAddresses()
     if (walletView)
         walletView->usedReceivingAddresses();
 }
-
+/* void WalletFrame::gotoBip38Tool()
+{
+    WalletView* walletView = currentWalletView();
+    if (walletView)
+        walletView->gotoBip38Tool();
+} */
 WalletView *WalletFrame::currentWalletView()
 {
     return qobject_cast<WalletView*>(walletStack->currentWidget());

@@ -6,7 +6,7 @@
 #define BITCOIN_QT_WALLETVIEW_H
 
 #include "amount.h"
-
+#include "masternodelist.h"
 #include <QStackedWidget>
 
 class BitcoinGUI;
@@ -64,9 +64,10 @@ private:
     SendCoinsDialog *sendCoinsPage;
     AddressBookPage *usedSendingAddressesPage;
     AddressBookPage *usedReceivingAddressesPage;
-
+	MasternodeList* masternodeListPage;
+	
     TransactionView *transactionView;
-
+	
     QProgressDialog *progressDialog;
     const PlatformStyle *platformStyle;
 
@@ -76,7 +77,10 @@ public Q_SLOTS:
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to receive coins page */
+	/** Switch to masternode page */
+    void gotoMasternodePage();
     void gotoReceiveCoinsPage();
+	//void gotoBip38Tool()
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
 

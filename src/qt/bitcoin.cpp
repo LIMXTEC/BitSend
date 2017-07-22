@@ -13,6 +13,7 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
+#include "net.h"//
 #include "networkstyle.h"
 #include "optionsmodel.h"
 #include "platformstyle.h"
@@ -46,6 +47,7 @@
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QMessageBox>
+#include <QProcess>
 #include <QSettings>
 #include <QThread>
 #include <QTimer>
@@ -176,6 +178,7 @@ public:
 public Q_SLOTS:
     void initialize();
     void shutdown();
+	void restart(QStringList args);
 
 Q_SIGNALS:
     void initializeResult(int retval);
@@ -183,6 +186,7 @@ Q_SIGNALS:
     void runawayException(const QString &message);
 
 private:
+	bool execute_restart;
     boost::thread_group threadGroup;
     CScheduler scheduler;
 
@@ -229,6 +233,7 @@ public Q_SLOTS:
     void handleRunawayException(const QString &message);
 
 Q_SIGNALS:
+	void requestedRestart(QStringList args);
     void requestedInitialize();
     void requestedShutdown();
     void stopThread();
@@ -265,7 +270,7 @@ void BitcoinCore::handleRunawayException(const std::exception *e)
 }
 
 void BitcoinCore::initialize()
-{
+{	execute_restart = true;
     try
     {
         qDebug() << __func__ << ": Running AppInit2 in thread";
@@ -292,7 +297,28 @@ void BitcoinCore::initialize()
         handleRunawayException(NULL);
     }
 }
-
+void BitcoinCore::restart(QStringList args)
+{
+    if (execute_restart) { // Only restart 1x, no matter how often a user clicks on a restart-button
+        execute_restart = false;
+        try {
+            qDebug() << __func__ << ": Running Restart in thread";
+            Interrupt(threadGroup);
+            threadGroup.join_all();
+            PrepareShutdown();
+            qDebug() << __func__ << ": Shutdown finished";
+            Q_EMIT shutdownResult(1);
+            //CExplicitNetCleanup::callCleanup();
+            QProcess::startDetached(QApplication::applicationFilePath(), args);
+            qDebug() << __func__ << ": Restart initiated...";
+            QApplication::quit();
+        } catch (std::exception& e) {
+            handleRunawayException(&e);
+        } catch (...) {
+            handleRunawayException(NULL);
+        }
+    }
+}
 void BitcoinCore::shutdown()
 {
     try
@@ -402,6 +428,7 @@ void BitcoinApplication::startThread()
     connect(executor, SIGNAL(shutdownResult(int)), this, SLOT(shutdownResult(int)));
     connect(executor, SIGNAL(runawayException(QString)), this, SLOT(handleRunawayException(QString)));
     connect(this, SIGNAL(requestedInitialize()), executor, SLOT(initialize()));
+    connect(window, SIGNAL(requestedRestart(QStringList)), executor, SLOT(restart(QStringList)));
     connect(this, SIGNAL(requestedShutdown()), executor, SLOT(shutdown()));
     /*  make sure executor object is deleted in its own thread */
     connect(this, SIGNAL(stopThread()), executor, SLOT(deleteLater()));
