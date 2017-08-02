@@ -113,10 +113,9 @@ namespace GUIUtil
 
     // Open debug.log
     void openDebugLogfile();
-	
+
 	// Browse backup folder
 	void showBackups();
-
     // Replace invalid default fonts with known good ones
     void SubstituteFonts(const QString& language);
 
@@ -184,7 +183,8 @@ namespace GUIUtil
     void saveWindowGeometry(const QString& strSetting, QWidget *parent);
     /** Restore window size and position */
     void restoreWindowGeometry(const QString& strSetting, const QSize &defaultSizeIn, QWidget *parent);
-
+    /** Load global CSS theme */
+    QString loadStyleSheet();
     /* Convert QString to OS specific boost path through UTF-8 */
     boost::filesystem::path qstringToBoostPath(const QString &path);
 

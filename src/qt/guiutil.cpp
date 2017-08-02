@@ -429,7 +429,6 @@ void showBackups()
     if (boost::filesystem::exists(pathBackups))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
-
 void SubstituteFonts(const QString& language)
 {
 #if defined(Q_OS_MAC)
@@ -865,7 +864,29 @@ void restoreWindowGeometry(const QString& strSetting, const QSize& defaultSize, 
     parent->resize(size);
     parent->move(pos);
 }
+// Open CSS when configured
+QString loadStyleSheet()
+{
+    QString styleSheet;
+    QSettings settings;
+    QString cssName;
+    QString theme = settings.value("theme", "").toString();
 
+    if(!theme.isEmpty()){
+        cssName = QString(":/css/") + theme; 
+    }
+    else {
+        cssName = QString(":/css/bitsend_theme2");  
+        settings.setValue("theme", "bitsend_theme2");
+    }
+    
+    QFile qFile(cssName);      
+    if (qFile.open(QFile::ReadOnly)) {
+        styleSheet = QLatin1String(qFile.readAll());
+    }
+        
+    return styleSheet;
+}
 void setClipboard(const QString& str)
 {
     QApplication::clipboard()->setText(str, QClipboard::Clipboard);

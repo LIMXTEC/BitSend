@@ -1358,18 +1358,23 @@ bool IsInitialBlockDownload()
     LOCK(cs_main);
     if (latchToFalse.load(std::memory_order_relaxed)){
         return false;
+		LogPrintf("latchToFalse.load(std::memory_order_relaxed) is false");
 	}
     if (fImporting || fReindex){
         return true;
+		LogPrintf("fImporting || fReindex");
 	}
     if (chainActive.Tip() == NULL){
         return true;
+		LogPrintf("chainActive.Tip() == NULL");
 	}
     if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)){
         return true;
+		LogPrintf("chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)");
 	}
     if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge/24)){
         return true;
+		LogPrintf("chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)");
 	}
     latchToFalse.store(true, std::memory_order_relaxed);
 	return false;
@@ -3299,10 +3304,11 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         }
     }*/
 	//TODO-- ends
-	if(nHeight >= 240000){
+	if(nHeight >= 240000 - 1000){
 
-		if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
+		if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)){
             return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+		}
 	}
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())

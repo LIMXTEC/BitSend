@@ -78,6 +78,12 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
 
     /* Display elements init */
     QDir translations(":translations");
+	//themes kaali
+	ui->theme->addItem(QString("Blue arrow"), QVariant("bitsend_main"));
+    ui->theme->addItem(QString("Linux red"), QVariant("bitsend_theme1"));
+    ui->theme->addItem(QString("Blue City Sky"), QVariant("bitsend_theme2"));
+	ui->theme->addItem(QString("Lambo Car"), QVariant("bitsend_theme3"));
+    ui->theme->addItem(QString("Bitcoin Classic"), QVariant("trad"));
 
     ui->bitcoinAtStartup->setToolTip(ui->bitcoinAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
     ui->bitcoinAtStartup->setText(ui->bitcoinAtStartup->text().arg(tr(PACKAGE_NAME)));
@@ -169,6 +175,7 @@ void OptionsDialog::setModel(OptionsModel *_model)
     connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     connect(ui->connectSocksTor, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Display */
+	connect(ui->theme, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->lang, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
 }
@@ -204,6 +211,7 @@ void OptionsDialog::setMapper()
 #endif
 
     /* Display */
+	mapper->addMapping(ui->theme, OptionsModel::Theme);
     mapper->addMapping(ui->lang, OptionsModel::Language);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->thirdPartyTxUrls, OptionsModel::ThirdPartyTxUrls);
