@@ -100,6 +100,11 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Pa
 	bnNew = ((kgw_dual2 + kgw_dual1)/2);
 	// DUAL KGW3 increased rapidly the Diff if Blocktime to last block under Blocktime/6 sec.
 	
+	if(nActualTimespanshort < 0){
+		
+		//LogPrintf("nActualTimespanshort was = %d \n", nActualTimespanshort );
+		nActualTimespanshort = 0;
+	}
 	if(kgwdebug)LogPrintf("nActualTimespanshort = %d \n", nActualTimespanshort );
 	if( nActualTimespanshort < Blocktime/6 )
 		{
