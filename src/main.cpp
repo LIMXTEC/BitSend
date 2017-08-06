@@ -2870,19 +2870,10 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                             foundPaymentAmount = true;
 				if(block.vtx[0].vout[i].scriptPubKey == payee )
                             foundPayee = true;
-				if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee)
+				if(block.vtx[0].vout[i].nValue == masternodePaymentAmount && block.vtx[0].vout[i].scriptPubKey == payee && foundPaymentAmount )
                             foundPaymentAndPayee = true;
                     }
-				//Bitsenddev 18-10-2015 Bitsend proof of payment Number 2
-				if (chainActive.Tip()->nHeight <= 232500)
-				{
-				int sizesum2 = block.vtx[0].vout.size();
-				if(sizesum2 > 1 && foundPaymentAndPayee == true) 
-				{
-				foundPaymentAndPayee = true;
-				}
-				else {foundPaymentAndPayee = true;}
-				}
+
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
                     CBitcoinAddress address2(address1);
