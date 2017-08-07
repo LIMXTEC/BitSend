@@ -1212,7 +1212,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                 }
                 if (!push && inv.type == MSG_MASTERNODE_WINNER) {
                     if(mapSeenMasternodeVotes.count(inv.hash)){
-						//connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
+						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
                         push = true;
                     }
                 }
