@@ -213,7 +213,7 @@ public:
     /// Create main window
     void createWindow(const NetworkStyle *networkStyle);
     /// Create splash screen
-    void createSplashScreen(const NetworkStyle *networkStyle);
+    void createSplashScreen(/* const NetworkStyle *networkStyle */);
 
     /// Request core initialization
     void requestInitialize();
@@ -405,9 +405,9 @@ void BitcoinApplication::createWindow(const NetworkStyle *networkStyle)
     pollShutdownTimer->start(200);
 }
 
-void BitcoinApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void BitcoinApplication::createSplashScreen(/* const NetworkStyle *networkStyle */)
 {
-    SplashScreen *splash = new SplashScreen(0, networkStyle);
+    SplashScreen *splash = new SplashScreen(0, QPixmap());
     // We don't hold a direct pointer to the splash screen after creation, but the splash
     // screen will take care of deleting itself when slotFinish happens.
     splash->show();
@@ -707,7 +707,7 @@ int main(int argc, char *argv[])
     uiInterface.InitMessage.connect(InitMessage);
 
     if (GetBoolArg("-splash", DEFAULT_SPLASHSCREEN) && !GetBoolArg("-min", false))
-        app.createSplashScreen(networkStyle.data());
+        app.createSplashScreen(/* networkStyle.data() */);
 
     try
     {
