@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016 The Bitcoin Core developers
+# Copyright (c) 2016 The Bitsend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import BitcoinTestFramework
-from test_framework.util import (start_nodes, start_node, assert_equal, bitcoind_processes)
+from test_framework.test_framework import BitsendTestFramework
+from test_framework.util import (start_nodes, start_node, assert_equal, bitsendd_processes)
 
 
 def read_dump(file_name, addrs, hd_master_addr_old):
@@ -52,7 +52,7 @@ def read_dump(file_name, addrs, hd_master_addr_old):
         return found_addr, found_addr_chg, found_addr_rsv, hd_master_addr_ret
 
 
-class WalletDumpTest(BitcoinTestFramework):
+class WalletDumpTest(BitsendTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -91,7 +91,7 @@ class WalletDumpTest(BitcoinTestFramework):
 
         #encrypt wallet, restart, unlock and dump
         self.nodes[0].encryptwallet('test')
-        bitcoind_processes[0].wait()
+        bitsendd_processes[0].wait()
         self.nodes[0] = start_node(0, self.options.tmpdir, self.extra_args[0])
         self.nodes[0].walletpassphrase('test', 10)
         # Should be a no-op:

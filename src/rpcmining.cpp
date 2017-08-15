@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2014 The Bitsend developers
 // Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -226,7 +226,7 @@ Value setgenerate(const Array& params, bool fHelp)
     {
         mapArgs["-gen"] = (fGenerate ? "1" : "0");
         mapArgs ["-genproclimit"] = itostr(nGenProcLimit);
-        GenerateBitcoins(fGenerate, pwalletMain, nGenProcLimit);
+        GenerateBitsends(fGenerate, pwalletMain, nGenProcLimit);
     }
 
     return Value::null;
@@ -295,7 +295,7 @@ Value getmininginfo(const Array& params, bool fHelp)
 #endif
     return obj;
 }
-// NOTE: Unlike wallet RPC (which use BTC values), mining RPCs follow GBT (BIP 22) in using satoshi amounts
+// NOTE: Unlike wallet RPC (which use BSD values), mining RPCs follow GBT (BIP 22) in using satoshi amounts
 Value prioritisetransaction(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 3)
@@ -763,7 +763,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
     if(pblock->payee != CScript()){
         CTxDestination address1;
         ExtractDestination(pblock->payee, address1);
-        CBitcoinAddress address2(address1);
+        CBitsendAddress address2(address1);
         result.push_back(Pair("payee", address2.ToString().c_str()));
         result.push_back(Pair("payee_amount", (int64_t)GetMasternodePayment(pindexPrev->nHeight+1, pblock->vtx[0].GetValueOut())));
     } else {
@@ -812,7 +812,7 @@ Value submitblock(const Array& params, bool fHelp)
             "submitblock \"hexdata\" ( \"jsonparametersobject\" )\n"
             "\nAttempts to submit new block to network.\n"
             "The 'jsonparametersobject' parameter is currently ignored.\n"
-            "See https://en.bitcoin.it/wiki/BIP_0022 for full specification.\n"
+            "See https://en.bitsend.it/wiki/BIP_0022 for full specification.\n"
 
             "\nArguments\n"
             "1. \"hexdata\"    (string, required) the hex-encoded block data to submit\n"

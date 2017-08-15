@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2014 The Bitsend developers
 // Copyright (c) 2014-2015 The bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -51,7 +51,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out, bool fIncludeH
 
     Array a;
     BOOST_FOREACH(const CTxDestination& addr, addresses)
-        a.push_back(CBitcoinAddress(addr).ToString());
+        a.push_back(CBitsendAddress(addr).ToString());
     out.push_back(Pair("addresses", a));
 }
 
@@ -243,11 +243,11 @@ Value listunspent(const Array& params, bool fHelp)
     if (params.size() > 1)
         nMaxDepth = params[1].get_int();
 
-    set<CBitcoinAddress> setAddress;
+    set<CBitsendAddress> setAddress;
     if (params.size() > 2) {
         Array inputs = params[2].get_array();
         BOOST_FOREACH(Value& input, inputs) {
-            CBitcoinAddress address(input.get_str());
+            CBitsendAddress address(input.get_str());
             if (!address.IsValid())
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid bitsend address: ")+input.get_str());
             if (setAddress.count(address))
@@ -280,7 +280,7 @@ Value listunspent(const Array& params, bool fHelp)
         entry.push_back(Pair("vout", out.i));
         CTxDestination address;
         if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, address)) {
-            entry.push_back(Pair("address", CBitcoinAddress(address).ToString()));
+            entry.push_back(Pair("address", CBitsendAddress(address).ToString()));
             if (pwalletMain->mapAddressBook.count(address))
                 entry.push_back(Pair("account", pwalletMain->mapAddressBook[address].name));
         }
@@ -360,9 +360,9 @@ Value createrawtransaction(const Array& params, bool fHelp)
         rawTx.vin.push_back(in);
     }
 
-    set<CBitcoinAddress> setAddress;
+    set<CBitsendAddress> setAddress;
     BOOST_FOREACH(const Pair& s, sendTo) {
-        CBitcoinAddress address(s.name_);
+        CBitsendAddress address(s.name_);
         if (!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid bitsend address: ")+s.name_);
 
@@ -481,7 +481,7 @@ Value decodescript(const Array& params, bool fHelp)
     }
     ScriptPubKeyToJSON(script, r, false);
 
-    r.push_back(Pair("p2sh", CBitcoinAddress(CScriptID(script)).ToString()));
+    r.push_back(Pair("p2sh", CBitsendAddress(CScriptID(script)).ToString()));
     return r;
 }
 
@@ -583,7 +583,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
         fGivenKeys = true;
         Array keys = params[2].get_array();
         BOOST_FOREACH(Value k, keys) {
-            CBitcoinSecret vchSecret;
+            CBitsendSecret vchSecret;
             bool fGood = vchSecret.SetString(k.get_str());
             if (!fGood)
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");

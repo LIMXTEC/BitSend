@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CONSENSUS_CONSENSUS_H
-#define BITCOIN_CONSENSUS_CONSENSUS_H
+#ifndef BITSEND_CONSENSUS_CONSENSUS_H
+#define BITSEND_CONSENSUS_CONSENSUS_H
 
 #include <stdint.h>
 
@@ -15,7 +15,7 @@ static const unsigned int MAX_BLOCK_WEIGHT = 40000000;
 /** The maximum allowed size for a block excluding witness data, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_BASE_SIZE = 10000000;//new rule
 /** The maximum allowed number of signature check operations in a block (network rule) */
-static const int64_t MAX_BLOCK_SIGOPS_COST = 800000;//we should have low cost then bitcoin.//10MiB/50 old signature
+static const int64_t MAX_BLOCK_SIGOPS_COST = 800000;//we should have low cost then bitsend.//10MiB/50 old signature
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 100;
 
@@ -28,4 +28,4 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-#endif // BITCOIN_CONSENSUS_CONSENSUS_H
+#endif // BITSEND_CONSENSUS_CONSENSUS_H

@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -82,7 +82,7 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Pa
 	int64_t nActualTime1 = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
 	int64_t nActualTimespanshort = nActualTime1;	
 	
-	// Retarget BTC Original ...not exactly
+	// Retarget BSD Original ...not exactly
 	// Small Fix
 	if(nActualTime1 < 0) nActualTime1 = Blocktime;
 

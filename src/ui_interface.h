@@ -1,10 +1,10 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2012-2016 The Bitcoin Core developers
+// Copyright (c) 2012-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UI_INTERFACE_H
-#define BITCOIN_UI_INTERFACE_H
+#ifndef BITSEND_UI_INTERFACE_H
+#define BITSEND_UI_INTERFACE_H
 
 #include <stdint.h>
 #include <string>
@@ -121,4 +121,4 @@ std::string AmountErrMsg(const char* const optname, const std::string& strValue)
 
 extern CClientUIInterface uiInterface;
 
-#endif // BITCOIN_UI_INTERFACE_H
+#endif // BITSEND_UI_INTERFACE_H

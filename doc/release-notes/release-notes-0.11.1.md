@@ -2,7 +2,7 @@
 ====================
 
 Bitsend Core 0.11.1 supports a full implementation of InstantX, Darksend improvements
-and a new version of enforcement compatible with the newer Bitcoin architechure.
+and a new version of enforcement compatible with the newer Bitsend architechure.
 
 - Fully implemented IX
 - Added support for DSTX messages, as a result DS should be much faster
@@ -14,7 +14,7 @@ and a new version of enforcement compatible with the newer Bitcoin architechure.
 - New masternode payments enforcement implementation
 - Added support to ignore IX confirmations when needed
 - Added --instantxdepth, which will show X confirmations when a transaction lock is present
-- fix coin control crash https://github.com/bitcoin/bitcoin/pull/5700
+- fix coin control crash https://github.com/bitsend/bitsend/pull/5700
 - always get only confirmed coins by AvailableCoins for every DS relative action
 - New languages supported Portuguese, German, Russian, Polish, Spanish, Vietnamese, French,
 Italian, Catalan, Chinese, Danish, Finnish, Swedish, Czech, Turkish and Bavarian (and many more)

@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_COINCONTROL_H
-#define BITCOIN_WALLET_COINCONTROL_H
+#ifndef BITSEND_WALLET_COINCONTROL_H
+#define BITSEND_WALLET_COINCONTROL_H
 
 #include "primitives/transaction.h"
 
@@ -82,4 +82,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // BITCOIN_WALLET_COINCONTROL_H
+#endif // BITSEND_WALLET_COINCONTROL_H

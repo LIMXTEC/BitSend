@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/bitsend-config.h"
 #endif
 
 #include "splashscreen.h"
@@ -42,7 +42,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const QPixmap &pixmap) :
     // define text to place
     QString titleText       = tr("Bitsend Core");
     QString versionText     = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightTextBtc   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
+    QString copyrightTextBtc   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitsend Core developers"));
     QString copyrightTextDrk   = QChar(0xA9)+QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitsend Core developers"));
     QString testnetAddText  = QString(tr("[testnet]")); // define text to place as single text object
 

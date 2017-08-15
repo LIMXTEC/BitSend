@@ -84,7 +84,7 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
 	int64_t nActualTime1 = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
 	int64_t nActualTimespanshort = nActualTime1;	
 	
-	// Retarget BTC Original ...not exactly
+	// Retarget BSD Original ...not exactly
 	if(nActualTime1 < 0) nActualTime1 = Blocktime;
 
 	if (nActualTime1 < Blocktime / 3)

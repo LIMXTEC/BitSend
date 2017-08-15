@@ -260,7 +260,7 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         return false;
     }
 
-    CBitcoinAddress address;
+    CBitsendAddress address;
     if (strDonationAddress != "")
     {
         if(!address.SetString(strDonationAddress))
@@ -382,7 +382,7 @@ bool CActiveMasternode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubke
 
     CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    CBitcoinAddress address2(address1);
+    CBitsendAddress address2(address1);
 
     CKeyID keyID;
     if (!address2.GetKeyID(keyID)) {

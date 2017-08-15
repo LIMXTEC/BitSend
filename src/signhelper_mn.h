@@ -33,7 +33,7 @@ class CMNSignHelper{
 	}
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey){
-		CBitcoinSecret vchSecret;
+		CBitsendSecret vchSecret;
 		bool fGood = vchSecret.SetString(strSecret);
 
 		if (!fGood) {
@@ -81,7 +81,7 @@ class CMNSignHelper{
 	}
 	
 	bool SetCollateralAddress(std::string strAddress){
-		CBitcoinAddress address;
+		CBitsendAddress address;
 		if (!address.SetString(strAddress))
 		{
 			LogPrintf("CDarksendPool::SetCollateralAddress - Invalid Darksend collateral address\n");

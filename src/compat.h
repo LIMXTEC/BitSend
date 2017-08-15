@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_COMPAT_H
-#define BITCOIN_COMPAT_H
+#ifndef BITSEND_COMPAT_H
+#define BITSEND_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/bitsend-config.h"
@@ -93,4 +93,4 @@ bool static inline IsSelectableSocket(SOCKET s) {
 #endif
 }
 
-#endif // BITCOIN_COMPAT_H
+#endif // BITSEND_COMPAT_H

@@ -1,11 +1,11 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2014 The Bitsend developers
 // Copyright (c) 2014-2015 The Bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPCPROTOCOL_H
-#define BITCOIN_RPCPROTOCOL_H
+#ifndef BITSEND_RPCPROTOCOL_H
+#define BITSEND_RPCPROTOCOL_H
 
 #include <list>
 #include <map>

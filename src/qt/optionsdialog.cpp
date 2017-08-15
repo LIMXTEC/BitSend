@@ -1,15 +1,15 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/bitsend-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "bitcoinunits.h"
+#include "bitsendunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -83,10 +83,10 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->theme->addItem(QString("Linux red"), QVariant("bitsend_theme1"));
     ui->theme->addItem(QString("Blue City Sky"), QVariant("bitsend_theme2"));
 	ui->theme->addItem(QString("Lambo Car"), QVariant("bitsend_theme3"));
-    ui->theme->addItem(QString("Bitcoin Classic"), QVariant("trad"));
+    ui->theme->addItem(QString("Bitsend Classic"), QVariant("trad"));
 
-    ui->bitcoinAtStartup->setToolTip(ui->bitcoinAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
-    ui->bitcoinAtStartup->setText(ui->bitcoinAtStartup->text().arg(tr(PACKAGE_NAME)));
+    ui->bitsendAtStartup->setToolTip(ui->bitsendAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->bitsendAtStartup->setText(ui->bitsendAtStartup->text().arg(tr(PACKAGE_NAME)));
 
     ui->lang->setToolTip(ui->lang->toolTip().arg(tr(PACKAGE_NAME)));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -120,7 +120,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-    ui->unit->setModel(new BitcoinUnits(this));
+    ui->unit->setModel(new BitsendUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -183,7 +183,7 @@ void OptionsDialog::setModel(OptionsModel *_model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->bitsendAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 

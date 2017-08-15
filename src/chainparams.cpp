@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -120,11 +120,11 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xc0c4f68994b78c31b6c7d7a8a895b5a085857adfbb73699bcfe5a247a357df57"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        /*vSeeds.push_back(CDNSSeedData("bitcoin.sipa.be", "seed.bitcoin.sipa.be", true)); // Pieter Wuille, only supports x1, x5, x9, and xd
+        /*vSeeds.push_back(CDNSSeedData("bitsend.sipa.be", "seed.bitsend.sipa.be", true)); // Pieter Wuille, only supports x1, x5, x9, and xd
         vSeeds.push_back(CDNSSeedData("bluematt.me", "dnsseed.bluematt.me", true)); // Matt Corallo, only supports x9
-        vSeeds.push_back(CDNSSeedData("dashjr.org", "dnsseed.bitcoin.dashjr.org")); // Luke Dashjr
-        vSeeds.push_back(CDNSSeedData("bitcoinstats.com", "seed.bitcoinstats.com", true)); // Christian Decker, supports x1 - xf
-        vSeeds.push_back(CDNSSeedData("bitcoin.jonasschnelli.ch", "seed.bitcoin.jonasschnelli.ch", true)); // Jonas Schnelli, only supports x1, x5, x9, and xd
+        vSeeds.push_back(CDNSSeedData("dashjr.org", "dnsseed.bitsend.dashjr.org")); // Luke Dashjr
+        vSeeds.push_back(CDNSSeedData("bitsendstats.com", "seed.bitsendstats.com", true)); // Christian Decker, supports x1 - xf
+        vSeeds.push_back(CDNSSeedData("bitsend.jonasschnelli.ch", "seed.bitsend.jonasschnelli.ch", true)); // Jonas Schnelli, only supports x1, x5, x9, and xd
 */
 
         vSeeds.push_back(CDNSSeedData("188.68.52.172", "188.68.52.172"));
@@ -221,10 +221,10 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("testnetbitcoin.jonasschnelli.ch", "testnet-seed.bitcoin.jonasschnelli.ch", true));
+        vSeeds.push_back(CDNSSeedData("testnetbitsend.jonasschnelli.ch", "testnet-seed.bitsend.jonasschnelli.ch", true));
         vSeeds.push_back(CDNSSeedData("petertodd.org", "seed.tbtc.petertodd.org", true));
         vSeeds.push_back(CDNSSeedData("bluematt.me", "testnet-seed.bluematt.me"));
-        vSeeds.push_back(CDNSSeedData("bitcoin.schildbach.de", "testnet-seed.bitcoin.schildbach.de"));
+        vSeeds.push_back(CDNSSeedData("bitsend.schildbach.de", "testnet-seed.bitsend.schildbach.de"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2013 The Bitcoin Core developers
+# Copyright (c) 2013 The Bitsend Core developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
@@ -58,13 +58,13 @@ make -j$JOBS
 if [ -d "$OUT_DIR" -a -w "$OUT_DIR" ]; then
   set +e
   # Windows:
-  cp @abs_top_srcdir@/win32-build/src/bitcoind.exe $OUT_DIR/bitcoind.exe
+  cp @abs_top_srcdir@/win32-build/src/bitsendd.exe $OUT_DIR/bitsendd.exe
   cp @abs_top_srcdir@/win32-build/src/test/test_bitsend.exe $OUT_DIR/test_bitsend.exe
-  cp @abs_top_srcdir@/win32-build/src/qt/bitcoind-qt.exe $OUT_DIR/bitcoin-qt.exe
+  cp @abs_top_srcdir@/win32-build/src/qt/bitsendd-qt.exe $OUT_DIR/bitsend-qt.exe
   # Linux:
-  cp @abs_top_srcdir@/linux-build/src/bitcoind $OUT_DIR/bitcoind
+  cp @abs_top_srcdir@/linux-build/src/bitsendd $OUT_DIR/bitsendd
   cp @abs_top_srcdir@/linux-build/src/test/test_bitsend $OUT_DIR/test_bitsend
-  cp @abs_top_srcdir@/linux-build/src/qt/bitcoind-qt $OUT_DIR/bitcoin-qt
+  cp @abs_top_srcdir@/linux-build/src/qt/bitsendd-qt $OUT_DIR/bitsend-qt
   set -e
 fi
 

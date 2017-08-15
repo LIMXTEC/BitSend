@@ -190,7 +190,7 @@ void MasternodeList::updateMyMasternodeInfo(QString strAlias, QString strAddr, C
     pubkey = GetScriptForDestination(pmn->pubkey.GetID());
 	CTxDestination address1;
 	ExtractDestination(pubkey, address1);
-    CBitcoinAddress address2(address1);
+    CBitsendAddress address2(address1);
     QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
     QTableWidgetItem* addrItem = new QTableWidgetItem(pmn ? QString::fromStdString(pmn->addr.ToString()) : strAddr);
     QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(pmn ? pmn->protocolVersion : -1));
@@ -266,7 +266,7 @@ void MasternodeList::updateNodeList()
 		pubkey = GetScriptForDestination(mn.pubkey.GetID());
 		CTxDestination address1;
 		ExtractDestination(pubkey, address1);
-		CBitcoinAddress address2(address1);
+		CBitsendAddress address2(address1);
         // populate list
         // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
         QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));

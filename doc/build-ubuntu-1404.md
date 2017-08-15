@@ -24,7 +24,7 @@ apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl
 
 apt-get install libboost-all-dev git npm nodejs nodejs-legacy libminiupnpc-dev redis-server
 
-add-apt-repository ppa:bitcoin/bitcoin
+add-apt-repository ppa:bitsend/bitsend
 
 apt-get update
 

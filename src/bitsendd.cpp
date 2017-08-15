@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -32,7 +32,7 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called bitsend (https://www.bitcoin.org/),
+ * This is the developer documentation of the reference client for an experimental new digital currency called bitsend (https://www.bitsend.org/),
  * which enables instant payments to anyone, anywhere in the world. bitsend uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
@@ -89,7 +89,7 @@ bool AppInit(int argc, char* argv[])
             strUsage += "\n" + _("Usage:") + "\n" +
                   "  bitsendd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
+            strUsage += "\n" + HelpMessage(HMM_BITSENDD);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -105,7 +105,7 @@ bool AppInit(int argc, char* argv[])
         }
         try
         {
-            ReadConfigFile(GetArg("-conf", BITCOIN_CONF_FILENAME));
+            ReadConfigFile(GetArg("-conf", BITSEND_CONF_FILENAME));
         } catch (const std::exception& e) {
             fprintf(stderr,"Error reading configuration file: %s\n", e.what());
             return false;

@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -147,18 +147,18 @@ UniValue getnewaddress(const JSONRPCRequest& request)
 
     pwalletMain->SetAddressBook(keyID, strAccount, "receive");
 
-    return CBitcoinAddress(keyID).ToString();
+    return CBitsendAddress(keyID).ToString();
 }
 
 
-CBitcoinAddress GetAccountAddress(string strAccount, bool bForceNew=false)
+CBitsendAddress GetAccountAddress(string strAccount, bool bForceNew=false)
 {
     CPubKey pubKey;
     if (!pwalletMain->GetAccountPubkey(pubKey, strAccount, bForceNew)) {
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
     }
 
-    return CBitcoinAddress(pubKey.GetID());
+    return CBitsendAddress(pubKey.GetID());
 }
 
 UniValue getaccountaddress(const JSONRPCRequest& request)
@@ -224,7 +224,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest& request)
 
     CKeyID keyID = vchPubKey.GetID();
 
-    return CBitcoinAddress(keyID).ToString();
+    return CBitsendAddress(keyID).ToString();
 }
 
 
@@ -247,7 +247,7 @@ UniValue setaccount(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CBitcoinAddress address(request.params[0].get_str());
+    CBitsendAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
 
@@ -294,7 +294,7 @@ UniValue getaccount(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CBitcoinAddress address(request.params[0].get_str());
+    CBitsendAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
 
@@ -333,9 +333,9 @@ UniValue getaddressesbyaccount(const JSONRPCRequest& request)
 
     // Find all addresses that have the given account
     UniValue ret(UniValue::VARR);
-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CBitsendAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
     {
-        const CBitcoinAddress& address = item.first;
+        const CBitsendAddress& address = item.first;
         const string& strName = item.second.name;
         if (strName == strAccount)
             ret.push_back(address.ToString());
@@ -414,7 +414,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CBitcoinAddress address(request.params[0].get_str());
+    CBitsendAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
 
@@ -468,7 +468,7 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
             "5. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-            "                             The recipient will receive less bitcoins than you enter in the amount field.\n"
+            "                             The recipient will receive less bitsends than you enter in the amount field.\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
@@ -480,7 +480,7 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CBitcoinAddress address(params[0].get_str());
+    CBitsendAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Dash address");
 
@@ -546,11 +546,11 @@ UniValue listaddressgroupings(const JSONRPCRequest& request)
         BOOST_FOREACH(CTxDestination address, grouping)
         {
             UniValue addressInfo(UniValue::VARR);
-            addressInfo.push_back(CBitcoinAddress(address).ToString());
+            addressInfo.push_back(CBitsendAddress(address).ToString());
             addressInfo.push_back(ValueFromAmount(balances[address]));
             {
-                if (pwalletMain->mapAddressBook.find(CBitcoinAddress(address).Get()) != pwalletMain->mapAddressBook.end())
-                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CBitcoinAddress(address).Get())->second.name);
+                if (pwalletMain->mapAddressBook.find(CBitsendAddress(address).Get()) != pwalletMain->mapAddressBook.end())
+                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CBitsendAddress(address).Get())->second.name);
             }
             jsonGrouping.push_back(addressInfo);
         }
@@ -592,7 +592,7 @@ UniValue signmessage(const JSONRPCRequest& request)
     string strAddress = request.params[0].get_str();
     string strMessage = request.params[1].get_str();
 
-    CBitcoinAddress addr(strAddress);
+    CBitsendAddress addr(strAddress);
     if (!addr.IsValid())
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
@@ -643,7 +643,7 @@ UniValue getreceivedbyaddress(const JSONRPCRequest& request)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     // bitsend address
-    CBitcoinAddress address = CBitcoinAddress(request.params[0].get_str());
+    CBitsendAddress address = CBitsendAddress(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
     CScript scriptPubKey = GetScriptForDestination(address.Get());
@@ -921,7 +921,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     string strAccount = AccountFromValue(request.params[0]);
-    CBitcoinAddress address(request.params[1].get_str());
+    CBitsendAddress address(request.params[1].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
     CAmount nAmount = AmountFromValue(request.params[2]);
@@ -1012,14 +1012,14 @@ UniValue sendmany(const JSONRPCRequest& request)
     if (request.params.size() > 4)
         subtractFeeFromAmount = request.params[4].get_array();
 
-    set<CBitcoinAddress> setAddress;
+    set<CBitsendAddress> setAddress;
     vector<CRecipient> vecSend;
 
     CAmount totalAmount = 0;
     vector<string> keys = sendTo.getKeys();
     BOOST_FOREACH(const string& name_, keys)
     {
-        CBitcoinAddress address(name_);
+        CBitsendAddress address(name_);
         if (!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid bitsend address: ")+name_);
 
@@ -1125,7 +1125,7 @@ UniValue addmultisigaddress(const JSONRPCRequest& request)
     pwalletMain->AddCScript(inner);
 
     pwalletMain->SetAddressBook(innerID, strAccount, "send");
-    return CBitcoinAddress(innerID).ToString();
+    return CBitsendAddress(innerID).ToString();
 }
 
 class Witnessifier : public boost::static_visitor<bool>
@@ -1201,7 +1201,7 @@ UniValue addwitnessaddress(const JSONRPCRequest& request)
         }
     }
 
-    CBitcoinAddress address(request.params[0].get_str());
+    CBitsendAddress address(request.params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid bitsend address");
 
@@ -1214,7 +1214,7 @@ UniValue addwitnessaddress(const JSONRPCRequest& request)
 
     pwalletMain->SetAddressBook(w.result, "", "receive");
 
-    return CBitcoinAddress(w.result).ToString();
+    return CBitsendAddress(w.result).ToString();
 }
 
 struct tallyitem
@@ -1251,7 +1251,7 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
             filter = filter | ISMINE_WATCH_ONLY;
 
     // Tally
-    map<CBitcoinAddress, tallyitem> mapTally;
+    map<CBitsendAddress, tallyitem> mapTally;
     for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
     {
         const CWalletTx& wtx = (*it).second;
@@ -1287,11 +1287,11 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
     // Reply
     UniValue ret(UniValue::VARR);
     map<string, tallyitem> mapAccountTally;
-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CBitsendAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
     {
-        const CBitcoinAddress& address = item.first;
+        const CBitsendAddress& address = item.first;
         const string& strAccount = item.second.name;
-        map<CBitcoinAddress, tallyitem>::iterator it = mapTally.find(address);
+        map<CBitsendAddress, tallyitem>::iterator it = mapTally.find(address);
         if (it == mapTally.end() && !fIncludeEmpty)
             continue;
 
@@ -1444,7 +1444,7 @@ UniValue listreceivedbyaccount(const JSONRPCRequest& request)
 
 static void MaybePushAddress(UniValue & entry, const CTxDestination &dest)
 {
-    CBitcoinAddress addr;
+    CBitsendAddress addr;
     if (addr.Set(dest))
         entry.push_back(Pair("address", addr.ToString()));
 }
@@ -2611,13 +2611,13 @@ UniValue listunspent(const JSONRPCRequest& request)
         nMaxDepth = request.params[1].get_int();
     }
 
-    set<CBitcoinAddress> setAddress;
+    set<CBitsendAddress> setAddress;
     if (request.params.size() > 2 && !request.params[2].isNull()) {
         RPCTypeCheckArgument(request.params[2], UniValue::VARR);
         UniValue inputs = request.params[2].get_array();
         for (unsigned int idx = 0; idx < inputs.size(); idx++) {
             const UniValue& input = inputs[idx];
-            CBitcoinAddress address(input.get_str());
+            CBitsendAddress address(input.get_str());
             if (!address.IsValid())
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid bitsend address: ")+input.get_str());
             if (setAddress.count(address))
@@ -2653,7 +2653,7 @@ UniValue listunspent(const JSONRPCRequest& request)
         entry.push_back(Pair("vout", out.i));
 
         if (fValidAddress) {
-            entry.push_back(Pair("address", CBitcoinAddress(address).ToString()));
+            entry.push_back(Pair("address", CBitsendAddress(address).ToString()));
 
             if (pwalletMain->mapAddressBook.count(address))
                 entry.push_back(Pair("account", pwalletMain->mapAddressBook[address].name));
@@ -2765,7 +2765,7 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
             true, true);
 
         if (options.exists("changeAddress")) {
-            CBitcoinAddress address(options["changeAddress"].get_str());
+            CBitsendAddress address(options["changeAddress"].get_str());
 
             if (!address.IsValid())
                 throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid bitsend address");

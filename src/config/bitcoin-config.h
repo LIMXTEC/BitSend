@@ -1,9 +1,9 @@
-/* src/config/bitcoin-config.h.  Generated from bitcoin-config.h.in by configure.  */
-/* src/config/bitcoin-config.h.in.  Generated from configure.ac by autoheader.  */
+/* src/config/bitsend-config.h.  Generated from bitsend-config.h.in by configure.  */
+/* src/config/bitsend-config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef BITCOIN_CONFIG_H
+#ifndef BITSEND_CONFIG_H
 
-#define BITCOIN_CONFIG_H
+#define BITSEND_CONFIG_H
 
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
@@ -27,10 +27,10 @@
 #define COPYRIGHT_HOLDERS "The %s developers"
 
 /* Copyright holder(s) */
-#define COPYRIGHT_HOLDERS_FINAL "The Bitcoin Core developers"
+#define COPYRIGHT_HOLDERS_FINAL "The Bitsend Core developers"
 
 /* Replacement for %s in copyright holders string */
-#define COPYRIGHT_HOLDERS_SUBSTITUTION "Bitcoin Core"
+#define COPYRIGHT_HOLDERS_SUBSTITUTION "Bitsend Core"
 
 /* Copyright year */
 #define COPYRIGHT_YEAR 2017
@@ -314,19 +314,19 @@
 #define LT_OBJDIR ".libs/"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "https://github.com/bitcoin/bitcoin/issues"
+#define PACKAGE_BUGREPORT "https://github.com/bitsend/bitsend/issues"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "Bitcoin Core"
+#define PACKAGE_NAME "Bitsend Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Bitcoin Core 0.14.0"
+#define PACKAGE_STRING "Bitsend Core 0.14.0"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "bitcoin"
+#define PACKAGE_TARNAME "bitsend"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://bitcoincore.org/"
+#define PACKAGE_URL "https://bitsendcore.org/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "0.14.0"
@@ -381,4 +381,4 @@
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
 
-#endif //BITCOIN_CONFIG_H
+#endif //BITSEND_CONFIG_H

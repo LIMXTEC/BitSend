@@ -26,7 +26,7 @@ from jsonrpc import ServiceProxy, json
 BASE_FEE=Decimal("0.001")
 
 def check_json_precision():
-    """Make sure json library being used does not lose precision converting BTC values"""
+    """Make sure json library being used does not lose precision converting BSD values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:
@@ -40,7 +40,7 @@ def determine_db_dir():
         return os.path.join(os.environ['APPDATA'], "Bitsend")
     return os.path.expanduser("~/.bitsend")
 
-def read_bitcoin_config(dbdir):
+def read_bitsend_config(dbdir):
     """Read the bitsend.conf file from dbdir, returns dictionary of settings"""
     from ConfigParser import SafeConfigParser
 
@@ -152,7 +152,7 @@ def create_tx(bitsendd, fromaddresses, toaddress, amount, fee):
         total_available += all_coins[addr]["total"]
 
     if total_available < needed:
-        sys.stderr.write("Error, only %f BTC available, need %f\n"%(total_available, needed));
+        sys.stderr.write("Error, only %f BSD available, need %f\n"%(total_available, needed));
         sys.exit(1)
 
     #
@@ -238,7 +238,7 @@ def main():
     (options, args) = parser.parse_args()
 
     check_json_precision()
-    config = read_bitcoin_config(options.datadir)
+    config = read_bitsend_config(options.datadir)
     if options.testnet: config['testnet'] = True
     bitsendd = connect_JSON(config)
 

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MERKLEBLOCK_H
-#define BITCOIN_MERKLEBLOCK_H
+#ifndef BITSEND_MERKLEBLOCK_H
+#define BITSEND_MERKLEBLOCK_H
 
 #include "serialize.h"
 #include "uint256.h"
@@ -154,4 +154,4 @@ public:
     }
 };
 
-#endif // BITCOIN_MERKLEBLOCK_H
+#endif // BITSEND_MERKLEBLOCK_H

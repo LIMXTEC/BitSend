@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WARNINGS_H
-#define BITCOIN_WARNINGS_H
+#ifndef BITSEND_WARNINGS_H
+#define BITSEND_WARNINGS_H
 
 #include <stdlib.h>
 #include <string>
@@ -18,4 +18,4 @@ std::string GetWarnings(const std::string& strFor);
 
 static const bool DEFAULT_TESTSAFEMODE = false;
 
-#endif //  BITCOIN_WARNINGS_H
+#endif //  BITSEND_WARNINGS_H

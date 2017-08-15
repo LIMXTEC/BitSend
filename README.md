@@ -15,7 +15,7 @@ Next Milestone
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
  http://www.bitsend.info 
- Bitcointalk https://bitcointalk.org/index.php?topic=1370307
+ Bitsendtalk https://bitsendtalk.org/index.php?topic=1370307
  
 
 Release 21.03.2017

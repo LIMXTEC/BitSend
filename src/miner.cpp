@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -227,7 +227,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 
             CTxDestination address1;
             ExtractDestination(pblock->payee, address1);
-            CBitcoinAddress address2(address1);
+            CBitsendAddress address2(address1);
 
             LogPrintf("Masternode payment to %s\n", address2.ToString().c_str());
         }

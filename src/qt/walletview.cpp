@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
 //#include "bip38tooldialog.h"
-#include "bitcoingui.h"
+#include "bitsendgui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "masternodeconfig.h"//kaali
@@ -88,7 +88,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setBitcoinGUI(BitcoinGUI *gui)
+void WalletView::setBitsendGUI(BitsendGUI *gui)
 {
     if (gui)
     {

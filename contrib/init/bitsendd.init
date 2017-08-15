@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  bitsendd The bitsend core server.
+#
+#
+# chkconfig: 345 80 20
+# description: bitsendd
+# processname: bitsendd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/bitsendd, see below
+if [ -f /etc/sysconfig/bitsendd ]; then
+        . /etc/sysconfig/bitsendd
+fi
+
+RETVAL=0
+
+prog=bitsendd
+# you can override the lockfile via BITSENDD_LOCKFILE in /etc/sysconfig/bitsendd
+lockfile=${BITSENDD_LOCKFILE-/var/lock/subsys/bitsendd}
+
+# bitsendd defaults to /usr/bin/bitsendd, override with BITSENDD_BIN
+bitsendd=${BITSENDD_BIN-/usr/bin/bitsendd}
+
+# bitsendd opts default to -disablewallet, override with BITSENDD_OPTS
+bitsendd_opts=${BITSENDD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $bitsendd $bitsendd_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

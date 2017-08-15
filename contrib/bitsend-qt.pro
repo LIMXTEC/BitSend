@@ -76,10 +76,10 @@ HEADERS += \
     ../src/qt/addressbookpage.h \
     ../src/qt/addresstablemodel.h \
     ../src/qt/askpassphrasedialog.h \
-    ../src/qt/bitcoinaddressvalidator.h \
-    ../src/qt/bitcoinamountfield.h \
-    ../src/qt/bitcoingui.h \
-    ../src/qt/bitcoinunits.h \
+    ../src/qt/bitsendaddressvalidator.h \
+    ../src/qt/bitsendamountfield.h \
+    ../src/qt/bitsendgui.h \
+    ../src/qt/bitsendunits.h \
     ../src/qt/clientmodel.h \
     ../src/qt/coincontroldialog.h \
     ../src/qt/coincontroltreewidget.h \
@@ -237,11 +237,11 @@ SOURCES += \
     ../src/qt/addressbookpage.cpp \
     ../src/qt/addresstablemodel.cpp \
     ../src/qt/askpassphrasedialog.cpp \
-    ../src/qt/bitcoinaddressvalidator.cpp \
-    ../src/qt/bitcoinamountfield.cpp \
-    ../src/qt/bitcoingui.cpp \
+    ../src/qt/bitsendaddressvalidator.cpp \
+    ../src/qt/bitsendamountfield.cpp \
+    ../src/qt/bitsendgui.cpp \
     ../src/qt/bitsendstrings.cpp \
-    ../src/qt/bitcoinunits.cpp \
+    ../src/qt/bitsendunits.cpp \
     ../src/qt/clientmodel.cpp \
     ../src/qt/coincontroldialog.cpp \
     ../src/qt/coincontroltreewidget.cpp \
@@ -254,10 +254,10 @@ SOURCES += \
     ../src/qt/moc_addressbookpage.cpp \
     ../src/qt/moc_addresstablemodel.cpp \
     ../src/qt/moc_askpassphrasedialog.cpp \
-    ../src/qt/moc_bitcoinaddressvalidator.cpp \
-    ../src/qt/moc_bitcoinamountfield.cpp \
-    ../src/qt/moc_bitcoingui.cpp \
-    ../src/qt/moc_bitcoinunits.cpp \
+    ../src/qt/moc_bitsendaddressvalidator.cpp \
+    ../src/qt/moc_bitsendamountfield.cpp \
+    ../src/qt/moc_bitsendgui.cpp \
+    ../src/qt/moc_bitsendunits.cpp \
     ../src/qt/moc_clientmodel.cpp \
     ../src/qt/moc_coincontroldialog.cpp \
     ../src/qt/moc_coincontroltreewidget.cpp \

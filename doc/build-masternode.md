@@ -35,7 +35,7 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	--------------------------------------
 	http://www.vultr.com/?ref=6821776
 	
-	Vultr accepts Bitcoin payments.
+	Vultr accepts Bitsend payments.
 	
 
 
@@ -49,7 +49,7 @@ Build Instructions: Ubuntu & Debian
 	$ sudo apt-get install build-essential
 	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev
 	$ sudo apt-get install libboost1.54-all-dev
-	$ sudo add-apt-repository ppa:bitcoin/bitcoin
+	$ sudo add-apt-repository ppa:bitsend/bitsend
 	$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 	$ sudo apt-get install miniupnpc*-dev
 	$ sudo apt-get install git ntp make g++ gcc autoconf cpp ngrep iftop sysstat unzip
