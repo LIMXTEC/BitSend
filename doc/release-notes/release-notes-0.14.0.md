@@ -118,6 +118,12 @@ covered by the txid. This provides several immediate benefits:
   Other Bitcoin community members are studying several other improvements
   that can be made using script versioning.
   
+
+InstantTX and DarkSend Removal
+----------------------------
+Moving forward, we've dropped support for both InstantTX and DarkSend. With the SegWit upgrade these features are going to be superseeded by far superior technology. SegWit will enable the BitSend to adopt the Lightning Network (https://lightning.network/lightning-network-paper.pdf), cross-chain atomic swaps, advanced versions of TumbleBit (https://eprint.iacr.org/2016/575.pdf) and more.
+
+
 Performance Improvements
 --------------
 
