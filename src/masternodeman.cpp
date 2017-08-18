@@ -664,11 +664,11 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 
         // make sure the vout that was signed is related to the transaction that spawned the Masternode
         //  - this is expensive, so it's only done once per Masternode
-        /*if(!darkSendSigner.IsVinAssociatedWithPubkey(vin, pubkey)) {
+        if(!darkSendSigner.IsVinAssociatedWithPubkey(vin, pubkey)) {
             LogPrintf("dsee - Got mismatched pubkey and vin Fehler1\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
-        }*/
+        }
 
         if(fDebug) LogPrintf("dsee - Got NEW Masternode entry %s\n", addr.ToString().c_str());
 
@@ -677,15 +677,10 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 
         CValidationState state;
 		//LogPrintf("after CValidationState state\n");
-        CMutableTransaction tx = CMutableTransaction();
-		//LogPrintf("after CMutableTransaction tx\n");
-        CTxOut vout = CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);
-		//LogPrintf(" after CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);\n");
-        tx.vin.push_back(vin);
-        tx.vout.push_back(vout);
-		//LogPrintf(" after 2 push_back\n");
-		CTransactionRef txref(MakeTransactionRef(std::move(tx)));;//todo++ check AcceptToMemoryPool
-		//LogPrintf(" after making txref\n");
+        CMutableTransaction mtx;
+        CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
+        mtx.vin.push_back(vin);
+        mtx.vout.push_back(vout);
 		bool acceptance = false;
 		{
 			TRY_LOCK(cs_main, lockMain);
@@ -693,10 +688,10 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 				return;
 				LogPrintf("acceptance is still false\n");
 			}
-			acceptance = AcceptToMemoryPool(mempool, state, txref, false, NULL, false, true, true);
+			acceptance = AcceptableInputs(mempool, state, MakeTransactionRef(mtx));
 		}
 		//LogPrintf(" after acceptance\n");
-        if(true){
+        if(acceptance){
 			//LogPrintf(" after passing AcceptToMemoryPool\n");
             if(fDebug) LogPrintf("dsee - Accepted Masternode entry %i %i\n", count, current);
 
