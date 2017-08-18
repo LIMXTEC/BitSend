@@ -234,7 +234,7 @@ endif
 # wallet: shared between bitsendd and bitsend-qt, but only linked
 # when wallet enabled
 libbitsend_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
-libbitsend_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC
+libbitsend_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_wallet_a_SOURCES = \
   activemasternode.cpp \
   wallet/crypter.cpp \
@@ -248,7 +248,7 @@ libbitsend_wallet_a_SOURCES = \
 
 # crypto primitives library
 crypto_libbitsend_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_CONFIG_INCLUDES)
-crypto_libbitsend_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitsend_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC
 crypto_libbitsend_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
