@@ -77,13 +77,13 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
                 // We need to count
                 const CBlockIndex* pindexCount = pindexPrev;
                 int count = 0;
-                for (int i = 0; i < nPeriod; i++) {
+                /* for (int i = 0; i < nPeriod; i++) {
                     if (Condition(pindexCount, params)) {
                         count++;
                     }
                     pindexCount = pindexCount->pprev;
-                }
-                if (count >= nThreshold) {
+                } */
+                /* if (count >= nThreshold) */if (Condition(pindexCount, params)) {
                     stateNext = THRESHOLD_LOCKED_IN;
                 }
                 break;
@@ -152,7 +152,8 @@ protected:
 
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const
     {
-        return (((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) && (pindex->nVersion & Mask(params)) != 0);
+        //return (((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) && (pindex->nVersion & Mask(params)) != 0);
+		return (pindex->nHeight >= 354490);//current height
     }
 
 public:
