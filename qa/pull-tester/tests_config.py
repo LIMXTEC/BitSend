@@ -3,8 +3,8 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-SRCDIR="/c/development/Projects/bitsendupgrade"
-BUILDDIR="c:/development/Projects/bitsendupgrade"
+SRCDIR="/c/development/Projects/bitsend_original/bitsend_updated/bitsend"
+BUILDDIR="c:/development/Projects/bitsend_original/bitsend_updated/bitsend"
 EXEEXT=".exe"
 
 # These will turn into comments if they were disabled when configuring.
