@@ -693,6 +693,8 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 		//LogPrintf(" after acceptance\n");
         if(acceptance){
 			//LogPrintf(" after passing AcceptToMemoryPool\n");
+			CTransactionRef txref(MakeTransactionRef(std::move(mtx)));
+			
             if(fDebug) LogPrintf("dsee - Accepted Masternode entry %i %i\n", count, current);
 
             if(GetInputAge(vin) < MASTERNODE_MIN_CONFIRMATIONS){
@@ -752,7 +754,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
             int nDoS = 0;
             if (state.IsInvalid(nDoS))
             {
-                LogPrintf("dsee - %s from %s %s was not accepted into the memory pool\n", tx.GetHash().ToString().c_str(),
+                LogPrintf("dsee - %s from %s %s was not accepted into the memory pool\n", mtx.GetHash().ToString().c_str(),
                     pfrom->addr.ToString().c_str(), pfrom->cleanSubVer.c_str());
                 if (nDoS > 0)
                     Misbehaving(pfrom->GetId(), nDoS);
