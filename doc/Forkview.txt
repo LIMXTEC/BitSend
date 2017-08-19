@@ -1,0 +1,122 @@
+Bitcoin Fork Update
+last 05-05-2015 
+Dash Fork Update 
+last 26 May by Merge pull request #339 
+https://github.com/dashpay/dash/commits/master
+Doge Fork Update
+last QT Paperwallet 09-2014
+BSD Update
+Bakc to KGW @ Block 95000 22-05-2015
+- Funktion Diffbit 96000
+- Funktion little Hard KGW 99500
+- Funktion Bitsend Proof Payment
+- Funktion Delta 101000 
+
+
+################################
+
+Fees Main 61 TX 500 
+
+TESTNETFORKBLOCK=10
+MAINNETFORKBLOCK=210000
+
+if(!TestNet) {
+
+   nheight =chainActive.Height();
+   if(nheight >=TESTNETFORKBLOCK){
+		  return XEVAN(BEGIN(nVersion), END(nNonce));
+         }
+		 else
+		 {
+		 return HashX11(BEGIN(nVersion), END(nNonce));
+		 }
+		 }
+		 else{
+	if(nheight >=MAINNETFORKBLOCK){
+		  return XEVAN(BEGIN(nVersion), END(nNonce));
+         }
+		 else
+		 {
+		 return HashX11(BEGIN(nVersion), END(nNonce));
+		 }
+		  }
+
+################################
+
+const int64_t nLongTimeLimit   = 12 * 60 * 60; 
+if (BlockReading->nHeight > 139950){
+ if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+    {
+        // Bitsenddev for 11.1.34 BSD Diffbreak function
+            bnNew /=  bnNew;
+       	
+       /* LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); */
+    }
+ }
+
+###################################
+Update
+version.h    PROTOCOL_VERSION 70076
+              MIN_PEER_PROTO_VERSION 70070
+clientversion.h CLIENT_VERSION_BUILD 
+configure.ac CLIENT_VERSION_BUILD
+core.h MIN_POOL_PEER_PROTO_VERSION   70075 ( Für Darksend) 
+masternode-pos.h MIN_MASTERNODE_POS_PROTO_VERSION 70075 ( Für Masternodes)
+instantx.h  MIN_INSTANTX_PROTO_VERSION 70075
+
+####################################
+
+./autogen.sh
+
+CPPFLAGS="-I/c/deps/db-4.8.30.NC/build_unix \
+-I/c/deps/openssl-1.0.2/include \
+-I/c/deps \
+-I/c/deps/protobuf-2.5.0/src \
+-I/c/deps/libpng-1.6.14 \
+-I/c/deps/qrencode-3.4.4" \
+LDFLAGS="-L/c/deps/db-4.8.30.NC/build_unix \
+-L/c/deps/openssl-1.0.2 \
+-L/c/deps/miniupnpc \
+-L/c/deps/protobuf-2.5.0/src/.libs \
+-L/c/deps/libpng-1.6.14/.libs \
+-L/c/deps/qrencode-3.4.4/.libs" \
+BOOST_ROOT=/c/deps/boost_1_55_0 \
+./configure \
+--disable-upnp-default \
+--disable-tests \
+--with-qt-incdir=/c/Qt/5.3.2/include \
+--with-qt-libdir=/c/Qt/5.3.2/lib \
+--with-qt-plugindir=/c/Qt/5.3.2/plugins \
+--with-qt-bindir=/c/Qt/5.3.2/bin \
+--with-protoc-bindir=/c/deps/protobuf-2.5.0/src
+
+make
+
+./autogen.sh
+
+CPPFLAGS="-I/c/deps/db-4.8.30.NC/build_unix \
+-I/c/deps/openssl-1.0.2/include \
+-I/c/deps \
+-I/c/deps/protobuf-2.5.0/src \
+-I/c/deps/libpng-1.6.14 \
+-I/c/deps/qrencode-3.4.4" \
+LDFLAGS="-L/c/deps/db-4.8.30.NC/build_unix \
+-L/c/deps/openssl-1.0.2 \
+-L/c/deps/miniupnpc \
+-L/c/deps/protobuf-2.5.0/src/.libs \
+-L/c/deps/libpng-1.6.14/.libs \
+-L/c/deps/qrencode-3.4.4/.libs" \
+BOOST_ROOT=/c/deps/boost_1_55_0 \
+./configure \
+--enable-upnp-default \
+--with-qt-incdir=/c/Qt/5.3.2/include \
+--with-qt-libdir=/c/Qt/5.3.2/lib \
+--with-qt-plugindir=/c/Qt/5.3.2/plugins \
+--with-qt-bindir=/c/Qt/5.3.2/bin \
+--with-protoc-bindir=/c/deps/protobuf-2.5.0/src
+
+make
+
+strip src/bitsend-cli.exe
+strip src/bitsendd.exe
+strip src/qt/bitsend-qt.exe
