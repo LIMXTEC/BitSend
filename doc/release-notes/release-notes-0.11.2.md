@@ -46,9 +46,9 @@ Backward compatibility with current mining software is NOT provided, thus
 miners should read the first paragraph of "Mining and relay policy
 enhancements" above.
 
-Also compare with [upstream release notes](https://github.com/bitcoin/bitcoin/blob/0.10/doc/release-notes.md#mining-and-relay-policy-enhancements).
+Also compare with [upstream release notes](https://github.com/bitsend/bitsend/blob/0.10/doc/release-notes.md#mining-and-relay-policy-enhancements).
 
-More info on [BIP 66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki).
+More info on [BIP 66](https://github.com/bitsend/bips/blob/master/bip-0066.mediawiki).
 
 
 How to Upgrade

@@ -4,14 +4,18 @@
 
 #include "masternode.h"
 #include "masternodeman.h"
-#include "darksend.h"
-#include "core.h"
+#include "signhelper_mn.h"//todo++
+//#include "core.h"
 #include "util.h"
 #include "sync.h"
 #include "addrman.h"
+#include "net.h"
+#include "net_processing.h"
+#include "consensus/validation.h"
 #include <boost/lexical_cast.hpp>
 
 CCriticalSection cs_masternodepayments;
+
 
 /** Object for who's going to get paid on which blocks */
 CMasternodePayments masternodePayments;
@@ -22,7 +26,23 @@ map<uint256, int> mapSeenMasternodeScanningErrors;
 // cache block hashes as we calculate them
 std::map<int64_t, uint256> mapCacheBlockHashes;
 
-void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
+static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CConnman &connman)
+{
+    CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
+
+    vector<CInv> vInv;
+    vInv.push_back(inv);
+    /*LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes){
+        pnode->PushMessage("inv", vInv);
+    }*/
+	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+    {
+        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
+}
+
+void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if(IsInitialBlockDownload()) return;
 
@@ -36,7 +56,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
         }
 
         pfrom->FulfilledRequest("mnget");
-        masternodePayments.Sync(pfrom);
+        masternodePayments.Sync(pfrom, connman);
         LogPrintf("mnget - Sent Masternode winners to %s\n", pfrom->addr.ToString().c_str());
     }
     else if (strCommand == "mnw") { //Masternode Payments Declare Winner
@@ -51,10 +71,10 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
 
         CTxDestination address1;
         ExtractDestination(winner.payee, address1);
-        CBitcoinAddress address2(address1);
+        CBitsendAddress address2(address1);
 
-        uint256 hash = winner.GetHash();
-        if(mapSeenMasternodeVotes.count(hash)) {
+        arith_uint256 hash = UintToArith256(winner.GetHash());
+        if(mapSeenMasternodeVotes.count(ArithToUint256(hash))) {
             if(fDebug) LogPrintf("mnw - seen vote %s Addr %s Height %d bestHeight %d\n", hash.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, chainActive.Tip()->nHeight);
             return;
         }
@@ -78,10 +98,11 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
             return;
         }
 
-        mapSeenMasternodeVotes.insert(make_pair(hash, winner));
+        mapSeenMasternodeVotes.insert(make_pair(ArithToUint256(hash), winner));
 
         if(masternodePayments.AddWinningMasternode(winner)){
-            masternodePayments.Relay(winner);
+			LogPrintf("mnw - \n");
+            RelayMNpayments(winner, pfrom, connman);
         }
     }
 }
@@ -218,20 +239,32 @@ CMasternode::CMasternode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std:
 //
 uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
 {
-    if(chainActive.Tip() == NULL) return 0;
+    if(chainActive.Tip() == NULL) return ArithToUint256(0);
 
-    uint256 hash = 0;
-    uint256 aux = vin.prevout.hash + vin.prevout.n;
+    uint256 hash = ArithToUint256(0);
+    uint256 aux;
+	aux = ArithToUint256(UintToArith256(vin.prevout.hash) + vin.prevout.n);
 
-    if(!GetBlockHash(hash, nBlockHeight)) return 0;
+    if(!GetBlockHash(hash, nBlockHeight)) return ArithToUint256(0);
 
     uint256 hash2 = Hash(BEGIN(hash), END(hash));
     uint256 hash3 = Hash(BEGIN(hash), END(hash), BEGIN(aux), END(aux));
 
-    uint256 r = (hash3 > hash2 ? hash3 - hash2 : hash2 - hash3);
+    arith_uint256 r;
+	r = (UintToArith256(hash3) > UintToArith256(hash2) ? UintToArith256(hash3) - UintToArith256(hash2) : UintToArith256(hash2) - UintToArith256(hash3));
 
-    return r;
+    return ArithToUint256(r);
 }
+
+static bool
+ToMemPool(CMutableTransaction& tx)
+{
+    LOCK(cs_main);
+
+    CValidationState state;
+    return AcceptableInputs(mempool, state, MakeTransactionRef(tx));
+}
+
 
 void CMasternode::Check()
 {
@@ -261,16 +294,22 @@ void CMasternode::Check()
 
     if(!unitTest){
         CValidationState state;
-        CTransaction tx = CTransaction();
-        CTxOut vout = CTxOut(4999.99*COIN, darkSendPool.collateralPubKey);
-        tx.vin.push_back(vin);
-        tx.vout.push_back(vout);
+        //CTransactionRef tx = CTransactionRef();//todo++ for check t
+		//CMutableTransaction tx2 = CMutableTransaction();
+		CMutableTransaction mtx;
+        CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
+        mtx.vin.push_back(vin);
+        mtx.vout.push_back(vout);
+		
 
-        if(!AcceptableInputs(mempool, state, tx)){
+        if(!ToMemPool(mtx)){
             activeState = MASTERNODE_VIN_SPENT;
+			LogPrintf("tx failed to get accepted on mempool");
             return;
         }
+		
     }
+	return;
 
     activeState = MASTERNODE_ENABLED; // OK
 }
@@ -279,7 +318,7 @@ bool CMasternodePayments::CheckSignature(CMasternodePaymentWinner& winner)
 {
     //note: need to investigate why this is failing
     std::string strMessage = winner.vin.ToString().c_str() + boost::lexical_cast<std::string>(winner.nBlockHeight) + winner.payee.ToString();
-    std::string strPubKey = (Params().NetworkID() == CChainParams::MAIN) ? strMainPubKey : strTestPubKey;
+    std::string strPubKey = (Params().NetworkIDString() == "main") ? strMainPubKey : strTestPubKey;
     CPubKey pubkey(ParseHex(strPubKey));
 
     std::string errorMessage = "";
@@ -322,20 +361,20 @@ uint64_t CMasternodePayments::CalculateScore(uint256 blockHash, CTxIn& vin)
 {
     //BitSendDev & Joshafest 26-06-2016
     uint256 n1 = blockHash; 
-	uint256 n2, n3, n4; 
+	uint256 n2, n3; arith_uint256 n4; 
     int nBlockTime = chainActive.Tip()->GetBlockTime();
 	    if (nBlockTime >= FORKX17_Main_Net2)
     { 
      n2 = XEVAN(BEGIN(n1), END(n1));
      n3 = XEVAN(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-	 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
+	 n4 = UintToArith256(n3) > UintToArith256(n2) ? (UintToArith256(n3) - UintToArith256(n2)) : (UintToArith256(n2) - UintToArith256(n3));
 	 return n4.Get64();
 	}
     else 
 	{
      n2 = HashX11(BEGIN(n1), END(n1));
      n3 = HashX11(BEGIN(vin.prevout.hash), END(vin.prevout.hash));
-	 n4 = n3 > n2 ? (n3 - n2) : (n2 - n3);
+	 n4 = UintToArith256(n3) > UintToArith256(n2) ? (UintToArith256(n3) - UintToArith256(n2)) : (UintToArith256(n2) - UintToArith256(n3));
 	 return n4.Get64();
 	}
 
@@ -371,7 +410,8 @@ bool CMasternodePayments::GetWinningMasternode(int nBlockHeight, CTxIn& vinOut)
 
 bool CMasternodePayments::AddWinningMasternode(CMasternodePaymentWinner& winnerIn)
 {
-    uint256 blockHash = 0;
+    uint256 blockHash = uint256();
+	//UintToArith256(blockHash) = 0;
     if(!GetBlockHash(blockHash, winnerIn.nBlockHeight-576)) {
         return false;
     }
@@ -427,15 +467,23 @@ void CMasternodePayments::CleanPaymentList()
 bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 {
     LOCK(cs_masternodepayments);
+	
+	LogPrintf(" CMasternodePayments::ProcessBlock running \n");
 
-    if(nBlockHeight <= nLastBlockHeight) return false;
-    if(!enabled) return false;
+    if(nBlockHeight <= nLastBlockHeight){
+		LogPrintf(" error::nBlockHeight <= nLastBlockHeight %d. \n", nBlockHeight);
+		return false;}
+    if(!enabled){ LogPrintf(" error::notenabled");
+		return false;
+	}
     CMasternodePaymentWinner newWinner;
     int nMinimumAge = mnodeman.CountEnabled();
     CScript payeeSource;
 
     uint256 hash;
-    if(!GetBlockHash(hash, nBlockHeight-10)) return false;
+    if(!GetBlockHash(hash, nBlockHeight-10)){LogPrintf(" error::GetBlockHash(hash, nBlockHeight-10)");
+		return false;
+	}
     unsigned int nHash;
     memcpy(&nHash, &hash, 2);
 
@@ -462,10 +510,10 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
         if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
             newWinner.payee = pmn->donationAddress;
         } else {
-            newWinner.payee.SetDestination(pmn->pubkey.GetID());
+            newWinner.payee=GetScriptForDestination(pmn->pubkey.GetID());
         }
         
-        payeeSource.SetDestination(pmn->pubkey.GetID());
+        payeeSource=GetScriptForDestination(pmn->pubkey.GetID());
     }
 
     //if we can't find new MN to get paid, pick first active MN counting back from the end of vecLastPayments list
@@ -487,9 +535,9 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
                 if(pmn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)pmn->donationPercentage) {
                     newWinner.payee = pmn->donationAddress;
                 } else {
-                    newWinner.payee.SetDestination(pmn->pubkey.GetID());
+                    newWinner.payee=GetScriptForDestination(pmn->pubkey.GetID());
                 }
-                payeeSource.SetDestination(pmn->pubkey.GetID());
+                payeeSource=GetScriptForDestination(pmn->pubkey.GetID());
                 
                 break; // we found active MN
             }
@@ -500,19 +548,20 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 
     CTxDestination address1;
     ExtractDestination(newWinner.payee, address1);
-    CBitcoinAddress address2(address1);
+    CBitsendAddress address2(address1);
 
-CTxDestination address3;
+	CTxDestination address3;
 
-ExtractDestination(payeeSource, address3);
-CBitcoinAddress address4(address3);
-LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
+
+	ExtractDestination(payeeSource, address3);
+	CBitsendAddress address4(address3);
+	LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
 
     if(Sign(newWinner))
     {
         if(AddWinningMasternode(newWinner))
         {
-            Relay(newWinner);
+            Relay(newWinner);//todo ++ must add
             nLastBlockHeight = nBlockHeight;
             return true;
         }
@@ -521,26 +570,30 @@ LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_
     return false;
 }
 
-
 void CMasternodePayments::Relay(CMasternodePaymentWinner& winner)
 {
-        CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
+    CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
 
     vector<CInv> vInv;
     vInv.push_back(inv);
-    LOCK(cs_vNodes);
+    /*LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
-    }
+    }*/
+	g_connman->ForEachNode([&vInv](CNode* pnode)
+    {
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+    });
 }
 
-void CMasternodePayments::Sync(CNode* node)
+void CMasternodePayments::Sync(CNode* node, CConnman& connman)
 {
     LOCK(cs_masternodepayments);
 
     BOOST_FOREACH(CMasternodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= chainActive.Tip()->nHeight-10 && winner.nBlockHeight <= chainActive.Tip()->nHeight + 20)
-            node->PushMessage("mnw", winner);
+            connman.PushMessage(node, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", winner));//node->PushMessage("mnw", winner);
+		
 }
 
 

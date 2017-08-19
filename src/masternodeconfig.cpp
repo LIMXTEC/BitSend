@@ -1,5 +1,6 @@
 
 #include "net.h"
+#include "netbase.h"
 #include "masternodeconfig.h"
 #include "util.h"
 #include <base58.h>
@@ -36,32 +37,32 @@ bool CMasternodeConfig::read(std::string& strErr) {
             }
         } else {
             size_t pos = donation.find_first_of(":");
-            if(pos == string::npos) { // no ":" found
+            if(pos == std::string::npos) { // no ":" found
                 donationPercent = "100";
                 donationAddress = donation;
             } else {
                 donationPercent = donation.substr(pos + 1);
                 donationAddress = donation.substr(0, pos);
             }
-            CBitcoinAddress address(donationAddress);
+            CBitsendAddress address(donationAddress);
             if (!address.IsValid()) {
                 strErr = "Invalid Bitsend address in masternode.conf line: " + line;
                 streamConfig.close();
                 return false;
             }
         }
+		
+		int port = 0;
+        std::string hostname = "";
 
-        if(Params().NetworkID() == CChainParams::MAIN){
-            if(CService(ip).GetPort() != 8886) {
+		SplitHostPort(ip, port, hostname);
+        
+            if(port != 8888) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;
             }
-        } else if(CService(ip).GetPort() == 8886) {
-            strErr = "Invalid port detected in masternode.conf: " + line + " (8886 must be only on mainnet)";
-            streamConfig.close();
-            return false;
-        }
+        
 
 
         add(alias, ip, privKey, txHash, outputIndex, donationAddress, donationPercent);

@@ -13,7 +13,7 @@
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitcoin and Dash Core developers.
+        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and Dash Core developers.
 Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
         <translation type="unfinished"/>
     </message>
@@ -40,8 +40,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core 的开发者</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Bitsend Core 的开发者</translation>
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="31"/>
@@ -348,410 +348,410 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>BitsendGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="76"/>
+        <location filename="../bitsendgui.cpp" line="76"/>
         <source>Bitsend Core</source>
         <translation>暗黑币 内核</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="85"/>
+        <location filename="../bitsendgui.cpp" line="85"/>
         <source>Wallet</source>
         <translation>钱包</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="87"/>
+        <location filename="../bitsendgui.cpp" line="87"/>
         <source>Node</source>
         <translation>节点</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="101"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="101"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>[testnet]</source>
         <translation>[测试网络]</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="227"/>
+        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>概况(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="228"/>
+        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
         <translation>显示钱包概况</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="234"/>
+        <location filename="../bitsendgui.cpp" line="234"/>
         <source>&amp;Send</source>
         <translation>发送(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="235"/>
+        <location filename="../bitsendgui.cpp" line="235"/>
         <source>Send coins to a Bitsend address</source>
         <translation>向暗黑币地址发送</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="241"/>
+        <location filename="../bitsendgui.cpp" line="241"/>
         <source>&amp;Receive</source>
         <translation>接收(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="242"/>
+        <location filename="../bitsendgui.cpp" line="242"/>
         <source>Request payments (generates QR codes and bitsend: URIs)</source>
         <translation>请求付款(产生QR码以及暗黑币:URIs)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="248"/>
+        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>交易记录(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="249"/>
+        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
         <translation>查看交易历史</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="266"/>
+        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>退出(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="267"/>
+        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="271"/>
-        <location filename="../bitcoingui.cpp" line="273"/>
+        <location filename="../bitsendgui.cpp" line="271"/>
+        <location filename="../bitsendgui.cpp" line="273"/>
         <source>&amp;About Bitsend Core</source>
         <translation>关于暗黑币内核(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="274"/>
+        <location filename="../bitsendgui.cpp" line="274"/>
         <source>Show information about Bitsend</source>
         <translation>显示关于暗黑币的信息</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="277"/>
-        <location filename="../bitcoingui.cpp" line="279"/>
+        <location filename="../bitsendgui.cpp" line="277"/>
+        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>关于 &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="281"/>
+        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>显示 Qt 相关信息</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="283"/>
+        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>选项(&amp;O)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="284"/>
+        <location filename="../bitsendgui.cpp" line="284"/>
         <source>Modify configuration options for Bitsend</source>
         <translation>更改暗黑币设置</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="287"/>
-        <location filename="../bitcoingui.cpp" line="289"/>
+        <location filename="../bitsendgui.cpp" line="287"/>
+        <location filename="../bitsendgui.cpp" line="289"/>
         <source>&amp;Show / Hide</source>
         <translation>显示 / 隐藏(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="290"/>
+        <location filename="../bitsendgui.cpp" line="290"/>
         <source>Show or hide the main Window</source>
         <translation>显示或隐藏主窗口</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="292"/>
+        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>加密钱包(&amp;E)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="293"/>
+        <location filename="../bitsendgui.cpp" line="293"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>对钱包中的私钥加密</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="295"/>
+        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>备份钱包(&amp;B)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="296"/>
+        <location filename="../bitsendgui.cpp" line="296"/>
         <source>Backup wallet to another location</source>
         <translation>备份钱包到其他文件夹</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="297"/>
+        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>更改密码(&amp;C)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="298"/>
+        <location filename="../bitsendgui.cpp" line="298"/>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>更改钱包加密口令</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="299"/>
+        <location filename="../bitsendgui.cpp" line="299"/>
         <source>&amp;Unlock Wallet...</source>
         <translation>解锁钱包(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="300"/>
+        <location filename="../bitsendgui.cpp" line="300"/>
         <source>Unlock wallet</source>
         <translation>解锁钱包</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="301"/>
+        <location filename="../bitsendgui.cpp" line="301"/>
         <source>&amp;Lock Wallet</source>
         <translation>锁定钱包(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="302"/>
+        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>消息签名(&amp;M)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="303"/>
+        <location filename="../bitsendgui.cpp" line="303"/>
         <source>Sign messages with your Bitsend addresses to prove you own them</source>
         <translation>使用您的暗黑币地址进行消息签名以证明对此地址的所有权</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="304"/>
+        <location filename="../bitsendgui.cpp" line="304"/>
         <source>&amp;Verify message...</source>
         <translation>验证消息(&amp;V)...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="305"/>
+        <location filename="../bitsendgui.cpp" line="305"/>
         <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
         <translation>校验消息签名以证明此消息是由特定暗黑币地址所签发</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="307"/>
+        <location filename="../bitsendgui.cpp" line="307"/>
         <source>&amp;Information</source>
         <translation>信息(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="308"/>
+        <location filename="../bitsendgui.cpp" line="308"/>
         <source>Show diagnostic information</source>
         <translation>显示诊断信息</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="309"/>
+        <location filename="../bitsendgui.cpp" line="309"/>
         <source>&amp;Debug console</source>
         <translation>Debug控制台(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="310"/>
+        <location filename="../bitsendgui.cpp" line="310"/>
         <source>Open debugging console</source>
         <translation>打开调试控制台</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="311"/>
+        <location filename="../bitsendgui.cpp" line="311"/>
         <source>&amp;Network Monitor</source>
         <translation>网络流量监控(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="312"/>
+        <location filename="../bitsendgui.cpp" line="312"/>
         <source>Show network monitor</source>
         <translation>显示网络流量监控</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="313"/>
+        <location filename="../bitsendgui.cpp" line="313"/>
         <source>Open &amp;Configuration File</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="314"/>
+        <location filename="../bitsendgui.cpp" line="314"/>
         <source>Open configuration file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="316"/>
+        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
         <translation>&amp;付款地址 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="317"/>
+        <location filename="../bitsendgui.cpp" line="317"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation>显示用过的发送地址和标签的列表</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="318"/>
+        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>&amp;收款地址</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="319"/>
+        <location filename="../bitsendgui.cpp" line="319"/>
         <source>Show the list of used receiving addresses and labels</source>
         <translation>显示用过的接收地址和标签的列表</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="321"/>
+        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>打开 &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="322"/>
+        <location filename="../bitsendgui.cpp" line="322"/>
         <source>Open a bitsend: URI or payment request</source>
         <translation>打开一个暗黑币:URI或者付款请求</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="324"/>
+        <location filename="../bitsendgui.cpp" line="324"/>
         <source>&amp;Command-line options</source>
         <translation>&amp;命令行 选项</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="325"/>
+        <location filename="../bitsendgui.cpp" line="325"/>
         <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
         <translation>显示暗黑币内核帮助信息并以列表形式展示可用的暗黑币命令行选项</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="361"/>
+        <location filename="../bitsendgui.cpp" line="361"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="375"/>
+        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="388"/>
+        <location filename="../bitsendgui.cpp" line="388"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="395"/>
+        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="406"/>
+        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>分页工具栏</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="493"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="493"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>Bitsend client</source>
         <translation>暗黑币客户端</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="643"/>
+        <location filename="../bitsendgui.cpp" line="643"/>
         <source>%n active connection(s) to Bitsend network</source>
         <translation><numerusform>%n (个)至暗黑币网络的有效连接</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="655"/>
+        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>正在与网络同步...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="658"/>
+        <location filename="../bitsendgui.cpp" line="658"/>
         <source>Importing blocks from disk...</source>
         <translation>正在从磁盘导入数据块...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="661"/>
+        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>正在为数据块建立索引...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="665"/>
+        <location filename="../bitsendgui.cpp" line="665"/>
         <source>No block source available...</source>
         <translation>沒有可用的区块来源...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="675"/>
+        <location filename="../bitsendgui.cpp" line="675"/>
         <source>Processed %1 blocks of transaction history.</source>
         <translation>已处理 %1 个交易历史数据块。</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="680"/>
+        <location filename="../bitsendgui.cpp" line="680"/>
         <source>Up to date</source>
         <translation>已是最新</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="701"/>
+        <location filename="../bitsendgui.cpp" line="701"/>
         <source>%n hour(s)</source>
         <translation><numerusform>%n 小时</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="705"/>
+        <location filename="../bitsendgui.cpp" line="705"/>
         <source>%n day(s)</source>
         <translation><numerusform>%n 天</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="709"/>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="709"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n week(s)</source>
         <translation><numerusform>%n 周</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%1 and %2</source>
         <translation>%1 和 %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n year(s)</source>
         <translation><numerusform>%n 年</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="719"/>
+        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>落后 %1 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="724"/>
+        <location filename="../bitsendgui.cpp" line="724"/>
         <source>Catching up...</source>
         <translation>更新中...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="740"/>
+        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>最新收到的区块产生于 %1。</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="742"/>
+        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
         <translation>在此之后的交易尚未可见</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="755"/>
+        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation>暗黑币</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="769"/>
+        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="772"/>
+        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="775"/>
+        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Sent transaction</source>
         <translation>发送交易</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>流入交易</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="855"/>
+        <location filename="../bitsendgui.cpp" line="855"/>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -764,17 +764,17 @@ Address: %4
 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="926"/>
+        <location filename="../bitsendgui.cpp" line="926"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;解锁&lt;/b&gt;状态</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="936"/>
+        <location filename="../bitsendgui.cpp" line="936"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
         <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;并且目前处于&lt;b&gt;解锁&lt;/b&gt;状态以进行匿名处理</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="946"/>
+        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;锁定&lt;/b&gt;状态</translation>
     </message>
@@ -3226,8 +3226,8 @@ https://www.transifex.com/projects/p/bitsend/</source>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core 的开发者</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Bitsend Core 的开发者</translation>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="36"/>
@@ -4853,7 +4853,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4903,7 +4903,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>

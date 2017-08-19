@@ -6,24 +6,28 @@
 #ifndef MASTERNODE_POS_H
 #define MASTERNODE_POS_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+#include "validation.h"
+#include "net_processing.h"
 
 using namespace std;
 using namespace boost;
 
+class CMasternodeMessagePOS;
 class CMasternodeScanning;
 class CMasternodeScanningError;
 
+
 extern map<uint256, CMasternodeScanningError> mapMasternodeScanningErrors;
 extern CMasternodeScanning mnscan;
+extern CMasternodeMessagePOS mnMessagePos;
 
 static const int MIN_MASTERNODE_POS_PROTO_VERSION = 70075;
 
@@ -40,7 +44,9 @@ static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to lit
 #define SCANNING_ERROR_IX_NO_RESPONSE          3
 #define SCANNING_ERROR_MAX                     3
 
-void ProcessMessageMasternodePOS(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+//extern void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);//
+
+void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 
 class CMasternodeScanning
 {
@@ -95,20 +101,23 @@ public:
     bool SignatureValid();
     bool Sign();
     bool IsExpired() {return GetTime() > nExpiration;}
-    void Relay();
+    void Relay(CNode* pnode, CConnman& connman);//
+	void RelayProcessBlock();
     bool IsValid() {
     	return (nErrorType > 0 && nErrorType <= SCANNING_ERROR_MAX);
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+    {
         READWRITE(vinMasternodeA);
         READWRITE(vinMasternodeB);
         READWRITE(nErrorType);
         READWRITE(nExpiration);
         READWRITE(nBlockHeight);
         READWRITE(vchMasterNodeSignature);
-    )
+    }
 };
 
 

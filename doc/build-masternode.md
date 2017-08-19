@@ -1,4 +1,4 @@
-MASTERNODE BUILD NOTES [written by MangledBlue & LIMXSUPPORT]
+MASTERNODE BUILD NOTES [written by MangledBlue & BSDSUPPORT]
 ======================
 Some notes on how to build a Bitsend Masternode in Ubuntu server. Using Windows Qt Client to configure.
 
@@ -35,7 +35,7 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	--------------------------------------
 	http://www.vultr.com/?ref=6821776
 	
-	Vultr accepts Bitcoin payments.
+	Vultr accepts Bitsend payments.
 	
 
 
@@ -48,8 +48,8 @@ Build Instructions: Ubuntu & Debian
 	---
 	$ sudo apt-get install build-essential
 	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev
-	$ sudo apt-get install libboost1.58-all-dev
-	$ sudo add-apt-repository ppa:bitcoin/bitcoin
+	$ sudo apt-get install libboost1.54-all-dev
+	$ sudo add-apt-repository ppa:bitsend/bitsend
 	$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 	$ sudo apt-get install miniupnpc*-dev
 	$ sudo apt-get install git ntp make g++ gcc autoconf cpp ngrep iftop sysstat unzip
@@ -62,7 +62,7 @@ Build Instructions: Ubuntu & Debian
 	optional, if problems with boost version: 
 	$ sudo apt-get remove libboost*
 	$ sudo apt-get purge libboost*
-	$ sudo apt-get install libboost1.58-all-dev
+	$ sudo apt-get install libboost1.54-all-dev
 
 
 	Swapfile:
@@ -148,8 +148,8 @@ Build Instructions: Ubuntu & Debian
 	
 	Start Mining
 	----------------------
-	./bitsendd setgenerate true
-	./bitsendd gethashespersec
+	./bitsend.cli setgenerate true
+	./bitsend.cli gethashespersec
 	
 
 Windows Bitsend-Qt Client configuration 

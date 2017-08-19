@@ -5,15 +5,15 @@
 #ifndef MASTERNODEMAN_H
 #define MASTERNODEMAN_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+#include "validation.h"
 #include "masternode.h"
 
 #define MASTERNODES_DUMP_SECONDS               (15*60)
@@ -24,6 +24,7 @@ using namespace std;
 class CMasternodeMan;
 
 extern CMasternodeMan mnodeman;
+
 void DumpMasternodes();
 
 /** Access to the MN database (mncache.dat)
@@ -68,8 +69,10 @@ public:
     // keep track of dsq count to prevent masternodes from gaming darksend queue
     int64_t nDsqCount;
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+	{
         // serialized format:
         // * version byte (currently 0)
         // * masternodes vector
@@ -83,7 +86,7 @@ public:
                 READWRITE(mWeAskedForMasternodeListEntry);
                 READWRITE(nDsqCount);
         }
-    )
+    }
 
     CMasternodeMan();
     CMasternodeMan(CMasternodeMan& other);
@@ -127,7 +130,7 @@ public:
 
     void ProcessMasternodeConnections();
     
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+    void ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman); //todo++
 
     /// Return the number of (unique) Masternodes
     int size() { return vMasternodes.size(); }
@@ -138,8 +141,11 @@ public:
     // Relay Masternode Messages
     //
 
-    void RelayMasternodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage);
-    void RelayMasternodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop);
+    void RelayMasternodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage, CConnman& connman);
+    void RelayMasternodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop, CConnman& connman);
+	
+	void RelayNormalMasternodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage);
+    void RelayNormalMasternodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop);
 
     void Remove(CTxIn vin);
 };

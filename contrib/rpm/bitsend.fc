@@ -1,0 +1,8 @@
+/usr/bin/bitsend-cli		--	gen_context(system_u:object_r:bitsend_exec_t,s0)
+/usr/sbin/bitsendd		--	gen_context(system_u:object_r:bitsend_exec_t,s0)
+/usr/lib(64)?/bitsend/bitsendd		--	gen_context(system_u:object_r:bitsend_exec_t,s0)
+
+/etc/bitsend(/.*)?		gen_context(system_u:object_r:bitsend_conf_t,s0)
+/var/lib/bitsend(/.*)?		gen_context(system_u:object_r:bitsend_var_lib_t,s0)
+
+(/var)?/run/bitsendd(/.*)?   gen_context(system_u:object_r:bitsend_var_run_t,s0)

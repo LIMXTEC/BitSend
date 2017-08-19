@@ -1,4 +1,4 @@
-# Copyright (c) 2014 The Bitcoin Core developers
+# Copyright (c) 2014 The Bitsend Core developers
 # Copyright (c) 2014-2017 The Bitsend developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -6,10 +6,10 @@
 # Helpful routines for regression testing
 #
 
-# Add python-bitcoinrpc to module search path:
+# Add python-bitsendrpc to module search path:
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "python-bitcoinrpc"))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "python-bitsendrpc"))
 
 from decimal import Decimal
 import json
@@ -17,14 +17,14 @@ import shutil
 import subprocess
 import time
 
-from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
+from bitsendrpc.authproxy import AuthServiceProxy, JSONRPCException
 from util import *
 
 START_P2P_PORT=11000
 START_RPC_PORT=11100
 
 def check_json_precision():
-    """Make sure json library being used does not lose precision converting BTC values"""
+    """Make sure json library being used does not lose precision converting BSD values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:
@@ -56,7 +56,7 @@ def sync_mempools(rpc_connections):
         time.sleep(1)
 
 
-bitcoind_processes = []
+bitsendd_processes = []
 
 def initialize_chain(test_dir):
     """
@@ -80,7 +80,7 @@ def initialize_chain(test_dir):
             args = [ "bitsendd", "-keypool=1", "-datadir="+datadir ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(START_P2P_PORT))
-            bitcoind_processes.append(subprocess.Popen(args))
+            bitsendd_processes.append(subprocess.Popen(args))
             subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
                                     "-rpcwait", "getblockcount"], stdout=devnull)
         devnull.close()
@@ -104,7 +104,7 @@ def initialize_chain(test_dir):
 
         # Shut them down, and remove debug.logs:
         stop_nodes(rpcs)
-        wait_bitcoinds()
+        wait_bitsendds()
         for i in range(4):
             os.remove(debug_log("cache", i))
 
@@ -119,7 +119,7 @@ def start_nodes(num_nodes, dir):
     for i in range(num_nodes):
         datadir = os.path.join(dir, "node"+str(i))
         args = [ "bitsendd", "-datadir="+datadir ]
-        bitcoind_processes.append(subprocess.Popen(args))
+        bitsendd_processes.append(subprocess.Popen(args))
         subprocess.check_call([ "bitsend-cli", "-datadir="+datadir,
                                   "-rpcwait", "getblockcount"], stdout=devnull)
     devnull.close()
@@ -138,11 +138,11 @@ def stop_nodes(nodes):
         nodes[i].stop()
     del nodes[:] # Emptying array closes connections as a side effect
 
-def wait_bitcoinds():
-    # Wait for all bitcoinds to cleanly exit
-    for bitcoind in bitcoind_processes:
-        bitcoind.wait()
-    del bitcoind_processes[:]
+def wait_bitsendds():
+    # Wait for all bitsendds to cleanly exit
+    for bitsendd in bitsendd_processes:
+        bitsendd.wait()
+    del bitsendd_processes[:]
 
 def connect_nodes(from_connection, node_num):
     ip_port = "127.0.0.1:"+str(START_P2P_PORT+node_num)

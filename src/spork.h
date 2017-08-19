@@ -5,15 +5,16 @@
 #ifndef SPORK_H
 #define SPORK_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
+#include "hash.h"
+//#include "core.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
-#include "main.h"
+#include "net_processing.h"
 
 using namespace std;
 using namespace boost;
@@ -35,13 +36,17 @@ using namespace boost;
 
 class CSporkMessage;
 class CSporkManager;
+class CProcessSpork;
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
 #include "protocol.h"
-#include "darksend.h"
+#include "sync.h"
+#include "utilstrencodings.h"
+//#include "darksend.h"
+#include "validation.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -50,12 +55,15 @@ using namespace boost;
 extern std::map<uint256, CSporkMessage> mapSporks;
 extern std::map<int, CSporkMessage> mapSporksActive;
 extern CSporkManager sporkManager;
+extern CProcessSpork spMessage;
 
-void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+//void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 int GetSporkValue(int nSporkID);
 bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
 
+
+void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 //
 // Spork Class
 // Keeps track of all of the network spork settings
@@ -87,12 +95,15 @@ public:
       
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action)
+	{
     READWRITE(nSporkID);
     READWRITE(nValue);
     READWRITE(nTimeSigned);
     READWRITE(vchSig);
-    )
+    }
 };
 
 
@@ -120,7 +131,8 @@ public:
     bool SetPrivKey(std::string strPrivKey);
     bool CheckSignature(CSporkMessage& spork);
     bool Sign(CSporkMessage& spork);
-    void Relay(CSporkMessage& msg);
+    void Relay(CSporkMessage& msg, CConnman& connman);
+	void RelayUpdateSpork(CSporkMessage& msg);
 
 };
 

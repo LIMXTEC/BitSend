@@ -1,10 +1,10 @@
 0.11.0 Release notes
 ====================
 
-Bitsend Core 0.11.0 is forked off the Bitcoin Core 0.9.3. The old bitsend
+Bitsend Core 0.11.0 is forked off the Bitsend Core 0.9.3. The old bitsend
 versions 0.9.1.4 were forked from the Litecoin 0.9.1.x tree. The following changes
 are introduced in this major release. This list is compiled from the release
-notes of Bitcoin Core  0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
+notes of Bitsend Core  0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
 with the  introduced changes to the Bitsend Core 0.11.0.
 
 

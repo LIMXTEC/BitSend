@@ -5,8 +5,8 @@
 #ifndef DARKSEND_H
 #define DARKSEND_H
 
-#include "core.h"
-#include "main.h"
+//#include "core.h"
+#include "validation.h"
 #include "sync.h"
 #include "activemasternode.h"
 #include "masternodeman.h"
@@ -16,7 +16,7 @@ class CTxIn;
 class CDarksendPool;
 class CDarkSendSigner;
 class CMasterNodeVote;
-class CBitcoinAddress;
+class CBitsendAddress;
 class CDarksendQueue;
 class CDarksendBroadcastTx;
 class CActiveMasternode;

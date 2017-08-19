@@ -12,7 +12,7 @@ To Build
 	
 	strip bitsendd bitsend-cli bitsend-qt
 
-This will build bitcoin-qt as well if the dependencies are met.
+This will build bitsend-qt as well if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -47,7 +47,7 @@ System requirements
 --------------------
 
 C++ compilers are memory-hungry. It is recommended to have at least 1 GB of
-memory available when compiling Bitcoin Core. With 512MB of memory or less
+memory available when compiling Bitsend Core. With 512MB of memory or less
 compilation will take much longer due to swap thrashing.
 
 Dependency Build Instructions: Ubuntu & Debian
@@ -64,10 +64,10 @@ for Ubuntu 12.04 and later:
 	sudo apt-get install pkg-config 
 	( http://packages.ubuntu.com/de/source/trusty/pkg-config)
 
- db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
+ db4.8 packages are available [here](https://launchpad.net/~bitsend/+archive/bitsend).
  You can add the repository using the following command:
 
-        sudo add-apt-repository ppa:bitcoin/bitcoin
+        sudo add-apt-repository ppa:bitsend/bitsend
         sudo apt-get update
 
  Ubuntu 12.04 and later have packages for libdb5.1-dev and libdb5.1++-dev,
@@ -138,7 +138,7 @@ It is recommended to use Berkeley DB 4.8. If you have to build it yourself:
 ```bash
 BITSEND_ROOT=$(pwd)
 
-# Pick some path to install BDB to, here we create a directory within the bitcoin directory
+# Pick some path to install BDB to, here we create a directory within the bitsend directory
 BDB_PREFIX="${BITSEND_ROOT}/db4"
 mkdir -p $BDB_PREFIX
 
@@ -154,7 +154,7 @@ cd db-4.8.30.NC/build_unix/
 ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
 make install
 
-# Configure Bitcoin Core to use our own-built instance of BDB
+# Configure Bitsend Core to use our own-built instance of BDB
 cd $BITSEND_ROOT
 ./configure (other args...) LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/"
 ```

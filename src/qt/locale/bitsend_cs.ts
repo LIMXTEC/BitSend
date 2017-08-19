@@ -13,7 +13,7 @@
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitcoin and DASH Core developers.
+        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
 Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
         <translation type="unfinished"/>
     </message>
@@ -40,8 +40,8 @@ Tento produkt zahrnuje programy vyvinuté OpenSSL Projektem pro použití v Open
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Vývojáři Bitcoin Core</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Vývojáři Bitsend Core</translation>
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="31"/>
@@ -348,410 +348,410 @@ Tento produkt zahrnuje programy vyvinuté OpenSSL Projektem pro použití v Open
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>BitsendGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="76"/>
+        <location filename="../bitsendgui.cpp" line="76"/>
         <source>Bitsend Core</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="85"/>
+        <location filename="../bitsendgui.cpp" line="85"/>
         <source>Wallet</source>
         <translation>Peněženka</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="87"/>
+        <location filename="../bitsendgui.cpp" line="87"/>
         <source>Node</source>
         <translation>Uzel</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="101"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="101"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>[testnet]</source>
         <translation>[testnet]</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="227"/>
+        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>&amp;Přehled</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="228"/>
+        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
         <translation>Zobraz celkový přehled peněženky</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="234"/>
+        <location filename="../bitsendgui.cpp" line="234"/>
         <source>&amp;Send</source>
         <translation>&amp;Pošli</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="235"/>
+        <location filename="../bitsendgui.cpp" line="235"/>
         <source>Send coins to a Bitsend address</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="241"/>
+        <location filename="../bitsendgui.cpp" line="241"/>
         <source>&amp;Receive</source>
         <translation>Při&amp;jmi</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="242"/>
+        <location filename="../bitsendgui.cpp" line="242"/>
         <source>Request payments (generates QR codes and bitsend: URIs)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="248"/>
+        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Transakce</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="249"/>
+        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
         <translation>Procházej historii transakcí</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="266"/>
+        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>&amp;Konec</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="267"/>
+        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Ukonči aplikaci</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="271"/>
-        <location filename="../bitcoingui.cpp" line="273"/>
+        <location filename="../bitsendgui.cpp" line="271"/>
+        <location filename="../bitsendgui.cpp" line="273"/>
         <source>&amp;About Bitsend Core</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="274"/>
+        <location filename="../bitsendgui.cpp" line="274"/>
         <source>Show information about Bitsend</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="277"/>
-        <location filename="../bitcoingui.cpp" line="279"/>
+        <location filename="../bitsendgui.cpp" line="277"/>
+        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>O &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="281"/>
+        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>Zobraz informace o Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="283"/>
+        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>&amp;Možnosti...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="284"/>
+        <location filename="../bitsendgui.cpp" line="284"/>
         <source>Modify configuration options for Bitsend</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="287"/>
-        <location filename="../bitcoingui.cpp" line="289"/>
+        <location filename="../bitsendgui.cpp" line="287"/>
+        <location filename="../bitsendgui.cpp" line="289"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Zobraz/Skryj</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="290"/>
+        <location filename="../bitsendgui.cpp" line="290"/>
         <source>Show or hide the main Window</source>
         <translation>Zobraz nebo skryj hlavní okno</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="292"/>
+        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>Zaši&amp;fruj peněženku...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="293"/>
+        <location filename="../bitsendgui.cpp" line="293"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Zašifruj soukromé klíče ve své peněžence</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="295"/>
+        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>&amp;Zazálohuj peněženku...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="296"/>
+        <location filename="../bitsendgui.cpp" line="296"/>
         <source>Backup wallet to another location</source>
         <translation>Zazálohuj peněženku na jiné místo</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="297"/>
+        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>Změň &amp;heslo...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="298"/>
+        <location filename="../bitsendgui.cpp" line="298"/>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Změň heslo k šifrování peněženky</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="299"/>
+        <location filename="../bitsendgui.cpp" line="299"/>
         <source>&amp;Unlock Wallet...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="300"/>
+        <location filename="../bitsendgui.cpp" line="300"/>
         <source>Unlock wallet</source>
         <translation>Odemkni peněženku</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="301"/>
+        <location filename="../bitsendgui.cpp" line="301"/>
         <source>&amp;Lock Wallet</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="302"/>
+        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>Po&amp;depiš zprávu...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="303"/>
+        <location filename="../bitsendgui.cpp" line="303"/>
         <source>Sign messages with your Bitsend addresses to prove you own them</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="304"/>
+        <location filename="../bitsendgui.cpp" line="304"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Ověř zprávu...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="305"/>
+        <location filename="../bitsendgui.cpp" line="305"/>
         <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="307"/>
+        <location filename="../bitsendgui.cpp" line="307"/>
         <source>&amp;Information</source>
         <translation>&amp;Informace</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="308"/>
+        <location filename="../bitsendgui.cpp" line="308"/>
         <source>Show diagnostic information</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="309"/>
+        <location filename="../bitsendgui.cpp" line="309"/>
         <source>&amp;Debug console</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="310"/>
+        <location filename="../bitsendgui.cpp" line="310"/>
         <source>Open debugging console</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="311"/>
+        <location filename="../bitsendgui.cpp" line="311"/>
         <source>&amp;Network Monitor</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="312"/>
+        <location filename="../bitsendgui.cpp" line="312"/>
         <source>Show network monitor</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="313"/>
+        <location filename="../bitsendgui.cpp" line="313"/>
         <source>Open &amp;Configuration File</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="314"/>
+        <location filename="../bitsendgui.cpp" line="314"/>
         <source>Open configuration file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="316"/>
+        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
         <translation>Od&amp;esílací adresy...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="317"/>
+        <location filename="../bitsendgui.cpp" line="317"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation>Ukaž seznam použitých odesílacích adres a jejich označení</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="318"/>
+        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>Př&amp;ijímací adresy...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="319"/>
+        <location filename="../bitsendgui.cpp" line="319"/>
         <source>Show the list of used receiving addresses and labels</source>
         <translation>Ukaž seznam použitých přijímacích adres a jejich označení</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="321"/>
+        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>Načíst &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="322"/>
+        <location filename="../bitsendgui.cpp" line="322"/>
         <source>Open a bitsend: URI or payment request</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="324"/>
+        <location filename="../bitsendgui.cpp" line="324"/>
         <source>&amp;Command-line options</source>
         <translation>Ar&amp;gumenty z příkazové řádky</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="325"/>
+        <location filename="../bitsendgui.cpp" line="325"/>
         <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="361"/>
+        <location filename="../bitsendgui.cpp" line="361"/>
         <source>&amp;File</source>
         <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="375"/>
+        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nastavení</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="388"/>
+        <location filename="../bitsendgui.cpp" line="388"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="395"/>
+        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>Ná&amp;pověda</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="406"/>
+        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>Panel s listy</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="493"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="493"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>Bitsend client</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="643"/>
+        <location filename="../bitsendgui.cpp" line="643"/>
         <source>%n active connection(s) to Bitsend network</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="655"/>
+        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>Synchronizuji se se sítí...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="658"/>
+        <location filename="../bitsendgui.cpp" line="658"/>
         <source>Importing blocks from disk...</source>
         <translation>Importuji bloky z disku...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="661"/>
+        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>Vytvářím nový index bloků na disku...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="665"/>
+        <location filename="../bitsendgui.cpp" line="665"/>
         <source>No block source available...</source>
         <translation>Není dostupný žádný zdroj bloků...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="675"/>
+        <location filename="../bitsendgui.cpp" line="675"/>
         <source>Processed %1 blocks of transaction history.</source>
         <translation>Zpracováno %1 bloků transakční historie.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="680"/>
+        <location filename="../bitsendgui.cpp" line="680"/>
         <source>Up to date</source>
         <translation>Aktuální</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="701"/>
+        <location filename="../bitsendgui.cpp" line="701"/>
         <source>%n hour(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="705"/>
+        <location filename="../bitsendgui.cpp" line="705"/>
         <source>%n day(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="709"/>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="709"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n week(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%1 and %2</source>
         <translation>%1 a %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n year(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="719"/>
+        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>Stahuji ještě bloky transakcí za poslední %1</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="724"/>
+        <location filename="../bitsendgui.cpp" line="724"/>
         <source>Catching up...</source>
         <translation>Stahuji...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="740"/>
+        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Poslední stažený blok byl vygenerován %1 zpátky.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="742"/>
+        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Následné transakce ještě nebudou vidět.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="755"/>
+        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="769"/>
+        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="772"/>
+        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Upozornění</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="775"/>
+        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Informace</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Sent transaction</source>
         <translation>Odeslané transakce</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Příchozí transakce</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="855"/>
+        <location filename="../bitsendgui.cpp" line="855"/>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -764,17 +764,17 @@ Adresa: %4
 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="926"/>
+        <location filename="../bitsendgui.cpp" line="926"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Peněženka je &lt;b&gt;zašifrovaná&lt;/b&gt; a momentálně &lt;b&gt;odemčená&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="936"/>
+        <location filename="../bitsendgui.cpp" line="936"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="946"/>
+        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Peněženka je &lt;b&gt;zašifrovaná&lt;/b&gt; a momentálně &lt;b&gt;zamčená&lt;/b&gt;</translation>
     </message>
@@ -3224,8 +3224,8 @@ https://www.transifex.com/projects/p/bitsend/</source>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Vývojáři Bitcoin Core</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Vývojáři Bitsend Core</translation>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="36"/>
@@ -4853,8 +4853,8 @@ Pokud konfigurační soubor ještě neexistuje, vytvoř ho tak, aby ho mohl čí
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Možnosti SSL pro RPC: (viz instrukce nastavení SSL na Bitcoin Wiki)</translation>
+        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
+        <translation>Možnosti SSL pro RPC: (viz instrukce nastavení SSL na Bitsend Wiki)</translation>
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="307"/>
@@ -4903,8 +4903,8 @@ Pokud konfigurační soubor ještě neexistuje, vytvoř ho tak, aby ho mohl čí
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Možnosti SSL: (viz instrukce nastavení SSL na Bitcoin Wiki)</translation>
+        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
+        <translation>Možnosti SSL: (viz instrukce nastavení SSL na Bitsend Wiki)</translation>
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="317"/>

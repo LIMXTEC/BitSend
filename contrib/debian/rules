@@ -1,12 +1,9 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
 
-#DEB_MAKE_CHECK_TARGET = test_dash
-#build/bitcoind::
-#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_dash)
-
-DEB_INSTALL_EXAMPLES_bitcoind += debian/examples/*
-DEB_INSTALL_MANPAGES_bitcoind += debian/manpages/*
+#DEB_MAKE_CHECK_TARGET = test_bitsend
+#build/bitsendd::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_bitsend)
 
 %:
 	dh --with bash-completion $@
@@ -21,5 +18,4 @@ override_dh_auto_configure:
 	./configure
 
 override_dh_auto_test:
-	echo "skiping tests"
-
+	make check

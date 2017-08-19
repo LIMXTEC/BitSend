@@ -1,7 +1,7 @@
 #include "darksendconfig.h"
 #include "ui_darksendconfig.h"
 
-#include "bitcoinunits.h"
+#include "bitsendunits.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
@@ -38,7 +38,7 @@ void DarksendConfig::clickBasic()
 {
     configure(true, 1000, 2);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(BitsendUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Darksend Configuration"),
         tr(
@@ -53,7 +53,7 @@ void DarksendConfig::clickHigh()
 {
     configure(true, 1000, 8);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(BitsendUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Darksend Configuration"),
         tr(
@@ -68,7 +68,7 @@ void DarksendConfig::clickMax()
 {
     configure(true, 1000, 16);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(BitsendUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Darksend Configuration"),
         tr(

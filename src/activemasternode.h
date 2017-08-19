@@ -1,18 +1,23 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Bitsend developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef ACTIVEMASTERNODE_H
 #define ACTIVEMASTERNODE_H
 
-#include "bignum.h"
+//#include "bignum.h"
 #include "sync.h"
 #include "net.h"
+#include "netbase.h"
 #include "key.h"
-#include "core.h"
+//#include "core.h"
 #include "init.h"
-#include "wallet.h"
-#include "darksend.h"
+#include "wallet/wallet.h"
+#include "net_processing.h"
+#include <vector> //
+#include "masternode.h"
+
+static const int MASTERNODEAMOUNT = 25000;
 
 // Responsible for activating the Masternode and pinging the network
 class CActiveMasternode
@@ -57,11 +62,13 @@ public:
     /// Get 5000DRK input that can be used for the Masternode
     bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
     bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);
-    vector<COutput> SelectCoinsMasternode();
+    //vector<COutput> SelectCoinsMasternode();
     bool GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
-
+	std::vector<COutput> SelectCoinsMasternode();//todo++
     /// Enable hot wallet mode (run a Masternode with no funds)
     bool EnableHotColdMasterNode(CTxIn& vin, CService& addr);
 };
+
+extern CActiveMasternode activeMasternode;
 
 #endif

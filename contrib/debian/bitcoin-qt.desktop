@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Bitsend Core
+Comment=Connect to the Bitsend P2P Network
+Comment[de]=Verbinde mit dem Bitsend peer-to-peer Netzwerk
+Comment[fr]=Bitsend, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bitsend, eşten eşe kriptografik sanal para birimi
+Exec=bitsend-qt %u
+Terminal=false
+Type=Application
+Icon=bitsend128
+MimeType=x-scheme-handler/bitsend;
+Categories=Office;Finance;

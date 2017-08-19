@@ -1,30 +1,33 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2016 The Bitsend Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PEERTABLEMODEL_H
-#define PEERTABLEMODEL_H
+#ifndef BITSEND_QT_PEERTABLEMODEL_H
+#define BITSEND_QT_PEERTABLEMODEL_H
 
-#include "main.h"
+#include "net_processing.h" // For CNodeStateStats
 #include "net.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
 
-class PeerTablePriv;
 class ClientModel;
+class PeerTablePriv;
 
+QT_BEGIN_NAMESPACE
 class QTimer;
+QT_END_NAMESPACE
 
 struct CNodeCombinedStats {
-    CNodeStats nodestats;
-    CNodeStateStats statestats;
+    CNodeStats nodeStats;
+    CNodeStateStats nodeStateStats;
+    bool fNodeStateStatsAvailable;
 };
 
 class NodeLessThan
 {
 public:
-    NodeLessThan(int nColumn, Qt::SortOrder fOrder):
+    NodeLessThan(int nColumn, Qt::SortOrder fOrder) :
         column(nColumn), order(fOrder) {}
     bool operator()(const CNodeCombinedStats &left, const CNodeCombinedStats &right) const;
 
@@ -43,15 +46,17 @@ class PeerTableModel : public QAbstractTableModel
 
 public:
     explicit PeerTableModel(ClientModel *parent = 0);
+    ~PeerTableModel();
     const CNodeCombinedStats *getNodeStats(int idx);
     int getRowByNodeId(NodeId nodeid);
-    void startAutoRefresh(int msecs);
+    void startAutoRefresh();
     void stopAutoRefresh();
 
     enum ColumnIndex {
-        Address = 0,
-        Subversion = 1,
-        Height = 2
+        NetNodeId = 0,
+        Address = 1,
+        Subversion = 2,
+        Ping = 3
     };
 
     /** @name Methods overridden from QAbstractTableModel
@@ -65,15 +70,14 @@ public:
     void sort(int column, Qt::SortOrder order);
     /*@}*/
 
-public slots:
+public Q_SLOTS:
     void refresh();
 
 private:
     ClientModel *clientModel;
     QStringList columns;
-    PeerTablePriv *priv;
+    std::unique_ptr<PeerTablePriv> priv;
     QTimer *timer;
-
 };
 
-#endif // PEERTABLEMODEL_H
+#endif // BITSEND_QT_PEERTABLEMODEL_H

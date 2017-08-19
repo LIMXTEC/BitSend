@@ -13,7 +13,7 @@
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitcoin and DASH Core developers.
+        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
 Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
         <translation type="unfinished"/>
     </message>
@@ -47,8 +47,8 @@ Deshalb treffma uns imma Midwochs um zwangsg Ua (Wenn die Kirchnkoa-Probm rum is
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Di Bitcoin Coa Ma´ha</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Di Bitsend Coa Ma´ha</translation>
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="31"/>
@@ -360,411 +360,411 @@ Wenn´d jezzad anfängsch den noin Goidbaild zu nuzzn dann gehd da alde nimma. W
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>BitsendGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="76"/>
+        <location filename="../bitsendgui.cpp" line="76"/>
         <source>Bitsend Core</source>
         <translation>Bitsend Koa</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="85"/>
+        <location filename="../bitsendgui.cpp" line="85"/>
         <source>Wallet</source>
         <translation>Goidbaidl</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="87"/>
+        <location filename="../bitsendgui.cpp" line="87"/>
         <source>Node</source>
         <translation>Knotn </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="101"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="101"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>[testnet]</source>
         <translation>[kindazimma]</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="227"/>
+        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>&amp;Übasicht</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="228"/>
+        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
         <translation>Zaigma ois was zum Goidbaidl k´ört!</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="234"/>
+        <location filename="../bitsendgui.cpp" line="234"/>
         <source>&amp;Send</source>
         <translation>&amp;Übawaisn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="235"/>
+        <location filename="../bitsendgui.cpp" line="235"/>
         <source>Send coins to a Bitsend address</source>
         <translation>Di Bitsend losschicka (A Adressn braichtma)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="241"/>
+        <location filename="../bitsendgui.cpp" line="241"/>
         <source>&amp;Receive</source>
         <translation>&amp;Kriag´ng</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="242"/>
+        <location filename="../bitsendgui.cpp" line="242"/>
         <source>Request payments (generates QR codes and bitsend: URIs)</source>
         <translation>Schicktsma Goid! (däs machda an KUH ÄR KOD und a Uri wo da Anda s Goid hischicka koa)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="248"/>
+        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Übawaisung´n</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="249"/>
+        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
         <translation>In di oidn Übawaisung´n rumschbuin</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="266"/>
+        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>&amp;Zumaha</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="267"/>
+        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Zua Und Tschüss</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="271"/>
-        <location filename="../bitcoingui.cpp" line="273"/>
+        <location filename="../bitsendgui.cpp" line="271"/>
+        <location filename="../bitsendgui.cpp" line="273"/>
         <source>&amp;About Bitsend Core</source>
         <translation>Üba Bitsend Koa</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="274"/>
+        <location filename="../bitsendgui.cpp" line="274"/>
         <source>Show information about Bitsend</source>
         <translation>Zaigma wosd waischd üba den Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="277"/>
-        <location filename="../bitcoingui.cpp" line="279"/>
+        <location filename="../bitsendgui.cpp" line="277"/>
+        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>mea´ üba &amp;QT</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="281"/>
+        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>zaigma wasd haschd üba Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="283"/>
+        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>&amp;Opzionän</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="284"/>
+        <location filename="../bitsendgui.cpp" line="284"/>
         <source>Modify configuration options for Bitsend</source>
         <translation>Di Oischdellunga ändan</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="287"/>
-        <location filename="../bitcoingui.cpp" line="289"/>
+        <location filename="../bitsendgui.cpp" line="287"/>
+        <location filename="../bitsendgui.cpp" line="289"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Zaigsma/Dusweg</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="290"/>
+        <location filename="../bitsendgui.cpp" line="290"/>
         <source>Show or hide the main Window</source>
         <translation>Hauptfenschderl zaign / ned zeign</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="292"/>
+        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>Goidbaidl midam Zaubaschprücherl schützn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="293"/>
+        <location filename="../bitsendgui.cpp" line="293"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Ole Schlüssl von die Adressn a Kapuzzn aufsezzn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="295"/>
+        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>Goidbaidl sihahaitshoiba noamal hischbaichern</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="296"/>
+        <location filename="../bitsendgui.cpp" line="296"/>
         <source>Backup wallet to another location</source>
         <translation>Goidbaidl sihahaitshoiba noamal woandaschd hischbaichern</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="297"/>
+        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;S´ Zaubaschprücherl ändan</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="298"/>
+        <location filename="../bitsendgui.cpp" line="298"/>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Zaubaschprücherl wo zum Goidbaidl kört ändan</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="299"/>
+        <location filename="../bitsendgui.cpp" line="299"/>
         <source>&amp;Unlock Wallet...</source>
         <translation>&amp;Goidbaidl aufmaha</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="300"/>
+        <location filename="../bitsendgui.cpp" line="300"/>
         <source>Unlock wallet</source>
         <translation>Goidbaidl aufma´ha</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="301"/>
+        <location filename="../bitsendgui.cpp" line="301"/>
         <source>&amp;Lock Wallet</source>
         <translation>&amp;Goidbaidl zumaha</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="302"/>
+        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>An &amp;Servus drunta</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="303"/>
+        <location filename="../bitsendgui.cpp" line="303"/>
         <source>Sign messages with your Bitsend addresses to prove you own them</source>
         <translation>Dai Adressn konsch wie an Servus verwendn, dann wais da Andre, dos des DAI Adressn i´s. 
 (Muschd di Messidsch fürn Andan mid da Adressn umanandaduan)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="304"/>
+        <location filename="../bitsendgui.cpp" line="304"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Messidsch übaprüfn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="305"/>
+        <location filename="../bitsendgui.cpp" line="305"/>
         <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
         <translation>Du kansch schaun ob di Mesidsch vom Andan mid saina Adressn zambast (obs wirklich von iam is)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="307"/>
+        <location filename="../bitsendgui.cpp" line="307"/>
         <source>&amp;Information</source>
         <translation>&amp;Informäischn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="308"/>
+        <location filename="../bitsendgui.cpp" line="308"/>
         <source>Show diagnostic information</source>
         <translation>Zeigma olle &quot;Informaischn&quot; ob da Goidbaidl gsund is und so</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="309"/>
+        <location filename="../bitsendgui.cpp" line="309"/>
         <source>&amp;Debug console</source>
         <translation>&amp;Undad Haubm schaun</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="310"/>
+        <location filename="../bitsendgui.cpp" line="310"/>
         <source>Open debugging console</source>
         <translation>Zeigma wos unda da Haubm bassiad</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="311"/>
+        <location filename="../bitsendgui.cpp" line="311"/>
         <source>&amp;Network Monitor</source>
         <translation>&amp;königlich-bayrische Netz-Obachtgeba-Stelln</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="312"/>
+        <location filename="../bitsendgui.cpp" line="312"/>
         <source>Show network monitor</source>
         <translation>Zeigma wosd königlich-bayrische Netz-Obachtgeba-Stelln so sigd</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="313"/>
+        <location filename="../bitsendgui.cpp" line="313"/>
         <source>Open &amp;Configuration File</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="314"/>
+        <location filename="../bitsendgui.cpp" line="314"/>
         <source>Open configuration file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="316"/>
+        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
         <translation>&amp;Adressn wo was ausgebm woadn is</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="317"/>
+        <location filename="../bitsendgui.cpp" line="317"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation>Zeigma olle Adressn wo was ausgebm woadn is</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="318"/>
+        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>&amp;Adressn wo was naikomma is</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="319"/>
+        <location filename="../bitsendgui.cpp" line="319"/>
         <source>Show the list of used receiving addresses and labels</source>
         <translation>Zeigma olle Adressn wo was naikomma is</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="321"/>
+        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>&amp;Uri aufma´ha (ZEEEENS)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="322"/>
+        <location filename="../bitsendgui.cpp" line="322"/>
         <source>Open a bitsend: URI or payment request</source>
         <translation>So a Bitsend-Uri oda so aufmaha (damidsch zala kosch)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="324"/>
+        <location filename="../bitsendgui.cpp" line="324"/>
         <source>&amp;Command-line options</source>
         <translation>&amp;Huifä baim Zailn-Dingsn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="325"/>
+        <location filename="../bitsendgui.cpp" line="325"/>
         <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
         <translation>Zeigma des Gschraibsl wo ois drinnschded wos ma so baim Zailn-Dingsn ma´ha koa</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="361"/>
+        <location filename="../bitsendgui.cpp" line="361"/>
         <source>&amp;File</source>
         <translation>&amp;Datai</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="375"/>
+        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Aischdellunga</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="388"/>
+        <location filename="../bitsendgui.cpp" line="388"/>
         <source>&amp;Tools</source>
         <translation>&amp;S´ Werkzaigl</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="395"/>
+        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>&amp;Huifä (so huiftsma doch!)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="406"/>
+        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>Tabs Tuhlbaa</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="493"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="493"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>Bitsend client</source>
         <translation>Bitsend Klaiänd</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="643"/>
+        <location filename="../bitsendgui.cpp" line="643"/>
         <source>%n active connection(s) to Bitsend network</source>
         <translation><numerusform>%n (Oanen) sehma där au Bitsend machd</numerusform><numerusform>%n Laids sehma die au Bitsend ma´ha</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="655"/>
+        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>I schau grad wen i so seh...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="658"/>
+        <location filename="../bitsendgui.cpp" line="658"/>
         <source>Importing blocks from disk...</source>
         <translation>Überwaisungs-Kischdn von daina Blattn wean eingladn...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="661"/>
+        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>Di aldn Überwaisungs-Kischdn di auf deina Blattn gschbaichad san wern durchgschaud...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="665"/>
+        <location filename="../bitsendgui.cpp" line="665"/>
         <source>No block source available...</source>
         <translation>Koine alden Überwaisungs-Kischdn gfundn....</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="675"/>
+        <location filename="../bitsendgui.cpp" line="675"/>
         <source>Processed %1 blocks of transaction history.</source>
         <translation> %1 von di aldn Überwaisungs-Kischdn durchgschaud.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="680"/>
+        <location filename="../bitsendgui.cpp" line="680"/>
         <source>Up to date</source>
         <translation>Ois ub tu däid!</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="701"/>
+        <location filename="../bitsendgui.cpp" line="701"/>
         <source>%n hour(s)</source>
         <translation><numerusform>%n Schdunde</numerusform><numerusform>%n Schdundn</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="705"/>
+        <location filename="../bitsendgui.cpp" line="705"/>
         <source>%n day(s)</source>
         <translation><numerusform>%n Dog</numerusform><numerusform>%n Dog</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="709"/>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="709"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n week(s)</source>
         <translation><numerusform>%n Wochn</numerusform><numerusform>%n Wochn</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%1 and %2</source>
         <translation>%1 und %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n year(s)</source>
         <translation><numerusform>%n ja´r</numerusform><numerusform>%n ja´re</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="719"/>
+        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>%1 zrück</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="724"/>
+        <location filename="../bitsendgui.cpp" line="724"/>
         <source>Catching up...</source>
         <translation>i komschono</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="740"/>
+        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>da lezde Blogg deni sig is %1 gmachd woadn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="742"/>
+        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Überwaisungen danach sigschd ned.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="755"/>
+        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation>Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="769"/>
+        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Nix god. (Weil´d a Depp bischd)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="772"/>
+        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Obacht</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="775"/>
+        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Informäischn</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Sent transaction</source>
         <translation>Nausgsended(e)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Naikommen(de)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="855"/>
+        <location filename="../bitsendgui.cpp" line="855"/>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -777,17 +777,17 @@ Addressn: %4
 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="926"/>
+        <location filename="../bitsendgui.cpp" line="926"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>D´Goidbaidl hod sai &lt;b&gt;Schprücherl drauf&lt;/b&gt; und is &lt;b&gt;aufgschlossn&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="936"/>
+        <location filename="../bitsendgui.cpp" line="936"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
         <translation>D´Goidbaidl hod sai &lt;b&gt;Schprücherl drauf&lt;/b&gt; und is &lt;b&gt;aufgschlossn, aba nua zum Kapuzzngoid maha&lt;/b&gt; </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="946"/>
+        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>D´Goidbaidl hod sai &lt;b&gt;Schprücherl drauf&lt;/b&gt; und is &lt;b&gt;zuagschlossn&lt;/b&gt;</translation>
     </message>
@@ -3247,8 +3247,8 @@ Aba, wards ab, des wird. Brauchd bloss a Minudn bis der Darkcon Koa mid di andan
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>Di Bitcoin Coa Ma´ha</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>Di Bitsend Coa Ma´ha</translation>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="36"/>
@@ -4875,7 +4875,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4925,7 +4925,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>

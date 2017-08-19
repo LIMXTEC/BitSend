@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2014 The Bitsend Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CSVMODELWRITER_H
-#define CSVMODELWRITER_H
+#ifndef BITSEND_QT_CSVMODELWRITER_H
+#define BITSEND_QT_CSVMODELWRITER_H
 
 #include <QList>
 #include <QObject>
@@ -43,4 +43,4 @@ private:
     QList<Column> columns;
 };
 
-#endif // CSVMODELWRITER_H
+#endif // BITSEND_QT_CSVMODELWRITER_H

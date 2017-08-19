@@ -13,7 +13,7 @@
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitcoin and DASH Core developers.
+        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
 Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
         <translation type="unfinished"/>
     </message>
@@ -40,8 +40,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>De Bitcoin Core ontwikkelaars</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>De Bitsend Core ontwikkelaars</translation>
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="31"/>
@@ -348,411 +348,411 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>BitsendGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="76"/>
+        <location filename="../bitsendgui.cpp" line="76"/>
         <source>Bitsend Core</source>
         <translation>Bitsend Core</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="85"/>
+        <location filename="../bitsendgui.cpp" line="85"/>
         <source>Wallet</source>
         <translation>Portemonnee</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="87"/>
+        <location filename="../bitsendgui.cpp" line="87"/>
         <source>Node</source>
         <translation>Node</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="101"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="101"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>[testnet]</source>
         <translation>[testnetwerk]</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="227"/>
+        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overzicht</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="228"/>
+        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
         <translation>Toon algemeen overzicht van de portemonnee</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="234"/>
+        <location filename="../bitsendgui.cpp" line="234"/>
         <source>&amp;Send</source>
         <translation>&amp;Versturen</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="235"/>
+        <location filename="../bitsendgui.cpp" line="235"/>
         <source>Send coins to a Bitsend address</source>
         <translation>Verzend munten naar een Bitsend adres</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="241"/>
+        <location filename="../bitsendgui.cpp" line="241"/>
         <source>&amp;Receive</source>
         <translation>&amp;Ontvangen</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="242"/>
+        <location filename="../bitsendgui.cpp" line="242"/>
         <source>Request payments (generates QR codes and bitsend: URIs)</source>
         <translation>Vraag betaling (genereert QR codes en bitsend: URIs)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="248"/>
+        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Transacties</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="249"/>
+        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
         <translation>Blader door transactieverleden</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="266"/>
+        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>&amp;Afsluiten</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="267"/>
+        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Programma afsluiten</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="271"/>
-        <location filename="../bitcoingui.cpp" line="273"/>
+        <location filename="../bitsendgui.cpp" line="271"/>
+        <location filename="../bitsendgui.cpp" line="273"/>
         <source>&amp;About Bitsend Core</source>
         <translation>&amp;Over Bitsend Core</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="274"/>
+        <location filename="../bitsendgui.cpp" line="274"/>
         <source>Show information about Bitsend</source>
         <translation>Toon informatie over Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="277"/>
-        <location filename="../bitcoingui.cpp" line="279"/>
+        <location filename="../bitsendgui.cpp" line="277"/>
+        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>Over &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="281"/>
+        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>Toon informatie over Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="283"/>
+        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>O&amp;pties...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="284"/>
+        <location filename="../bitsendgui.cpp" line="284"/>
         <source>Modify configuration options for Bitsend</source>
         <translation>Aanpassen van configuratie opties voor Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="287"/>
-        <location filename="../bitcoingui.cpp" line="289"/>
+        <location filename="../bitsendgui.cpp" line="287"/>
+        <location filename="../bitsendgui.cpp" line="289"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Toon / Verberg</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="290"/>
+        <location filename="../bitsendgui.cpp" line="290"/>
         <source>Show or hide the main Window</source>
         <translation>Toon of verberg het hoofdvenster</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="292"/>
+        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>&amp;Versleutel Portemonnee...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="293"/>
+        <location filename="../bitsendgui.cpp" line="293"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Versleutel de geheime sleutels die bij uw portemonnee horen</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="295"/>
+        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>&amp;Backup Portemonnee...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="296"/>
+        <location filename="../bitsendgui.cpp" line="296"/>
         <source>Backup wallet to another location</source>
         <translation>Backup portemonnee naar een andere locatie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="297"/>
+        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;Wijzig Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="298"/>
+        <location filename="../bitsendgui.cpp" line="298"/>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Wijzig het wachtwoord voor uw portemonneversleuteling</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="299"/>
+        <location filename="../bitsendgui.cpp" line="299"/>
         <source>&amp;Unlock Wallet...</source>
         <translation>&amp;Ontgrendel portemonnee</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="300"/>
+        <location filename="../bitsendgui.cpp" line="300"/>
         <source>Unlock wallet</source>
         <translation>Open portemonnee</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="301"/>
+        <location filename="../bitsendgui.cpp" line="301"/>
         <source>&amp;Lock Wallet</source>
         <translation>&amp;Vergrendel portemonnee</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="302"/>
+        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>&amp;Onderteken bericht...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="303"/>
+        <location filename="../bitsendgui.cpp" line="303"/>
         <source>Sign messages with your Bitsend addresses to prove you own them</source>
         <translation>Onderteken berichten met uw Bitsend adres om te bewijzen dat u deze bezit</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="304"/>
+        <location filename="../bitsendgui.cpp" line="304"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Verifiëer bericht...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="305"/>
+        <location filename="../bitsendgui.cpp" line="305"/>
         <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
         <translation>Verifieer berichten om zeket te zijn dat deze werden ondertekend met het specifiek Bitsend adres</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="307"/>
+        <location filename="../bitsendgui.cpp" line="307"/>
         <source>&amp;Information</source>
         <translation>&amp;Informatie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="308"/>
+        <location filename="../bitsendgui.cpp" line="308"/>
         <source>Show diagnostic information</source>
         <translation>Toon diagnostische informatie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="309"/>
+        <location filename="../bitsendgui.cpp" line="309"/>
         <source>&amp;Debug console</source>
         <translation>&amp;Debug console</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="310"/>
+        <location filename="../bitsendgui.cpp" line="310"/>
         <source>Open debugging console</source>
         <translation>Open debugging console</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="311"/>
+        <location filename="../bitsendgui.cpp" line="311"/>
         <source>&amp;Network Monitor</source>
         <translation>&amp;Netwerk Monitor</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="312"/>
+        <location filename="../bitsendgui.cpp" line="312"/>
         <source>Show network monitor</source>
         <translation>Toon netwerk monitor</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="313"/>
+        <location filename="../bitsendgui.cpp" line="313"/>
         <source>Open &amp;Configuration File</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="314"/>
+        <location filename="../bitsendgui.cpp" line="314"/>
         <source>Open configuration file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="316"/>
+        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
         <translation>&amp;Adressen aan het versturen.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="317"/>
+        <location filename="../bitsendgui.cpp" line="317"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation>Toon de lijst met gebruikt verzend adressen en labels</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="318"/>
+        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>&amp;Adressen aan het ontvangen...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="319"/>
+        <location filename="../bitsendgui.cpp" line="319"/>
         <source>Show the list of used receiving addresses and labels</source>
         <translation>Toon de lijst met gebruikte ontvangst adressen en labels</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="321"/>
+        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>Open &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="322"/>
+        <location filename="../bitsendgui.cpp" line="322"/>
         <source>Open a bitsend: URI or payment request</source>
         <translation>Open een bitsend: URI of betalingsverzoek</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="324"/>
+        <location filename="../bitsendgui.cpp" line="324"/>
         <source>&amp;Command-line options</source>
         <translation>&amp;Commandoregel-opties</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="325"/>
+        <location filename="../bitsendgui.cpp" line="325"/>
         <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
         <translation>Geef het help bericht weer om een lijst te krijgen met alle Bitsend command-line opties</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="361"/>
+        <location filename="../bitsendgui.cpp" line="361"/>
         <source>&amp;File</source>
         <translation>&amp;Bestand</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="375"/>
+        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Instellingen</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="388"/>
+        <location filename="../bitsendgui.cpp" line="388"/>
         <source>&amp;Tools</source>
         <translation>&amp;Gereedschap</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="395"/>
+        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>&amp;Hulp</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="406"/>
+        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>Tab-werkbalk</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="493"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="493"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>Bitsend client</source>
         <translation>Bitsend cliënt </translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="643"/>
+        <location filename="../bitsendgui.cpp" line="643"/>
         <source>%n active connection(s) to Bitsend network</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="655"/>
+        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>Synchroniseren met netwerk...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="658"/>
+        <location filename="../bitsendgui.cpp" line="658"/>
         <source>Importing blocks from disk...</source>
         <translation>Blokken aan het importeren vanaf harde schijf...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="661"/>
+        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>Bezig met herindexeren van blokken op harde schijf...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="665"/>
+        <location filename="../bitsendgui.cpp" line="665"/>
         <source>No block source available...</source>
         <translation>Geen bron van blokken beschikbaar...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="675"/>
+        <location filename="../bitsendgui.cpp" line="675"/>
         <source>Processed %1 blocks of transaction history.</source>
         <translation>%1 blokken van transactiehistorie verwerkt.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="680"/>
+        <location filename="../bitsendgui.cpp" line="680"/>
         <source>Up to date</source>
         <translation>Bijgewerkt</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="701"/>
+        <location filename="../bitsendgui.cpp" line="701"/>
         <source>%n hour(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="705"/>
+        <location filename="../bitsendgui.cpp" line="705"/>
         <source>%n day(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="709"/>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="709"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n week(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%1 and %2</source>
         <translation>%1 en %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n year(s)</source>
         <translation><numerusform>%n jaren</numerusform><numerusform>
 </numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="719"/>
+        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>%1 achter</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="724"/>
+        <location filename="../bitsendgui.cpp" line="724"/>
         <source>Catching up...</source>
         <translation>Aan het bijwerken...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="740"/>
+        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Laatst ontvangen blok was %1 geleden gegenereerd.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="742"/>
+        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Transacties na dit moment zullen nu nog niet zichtbaar zijn.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="755"/>
+        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation>Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="769"/>
+        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="772"/>
+        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="775"/>
+        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Informatie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Sent transaction</source>
         <translation>Verzonden transactie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Binnenkomende transactie</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="855"/>
+        <location filename="../bitsendgui.cpp" line="855"/>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -765,17 +765,17 @@ Adres: %4
 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="926"/>
+        <location filename="../bitsendgui.cpp" line="926"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;geopend&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="936"/>
+        <location filename="../bitsendgui.cpp" line="936"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="946"/>
+        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;gesloten&lt;/b&gt;</translation>
     </message>
@@ -3226,8 +3226,8 @@ https://www.transifex.com/projects/p/bitsend/</source>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>De Bitcoin Core ontwikkelaars</translation>
+        <source>The Bitsend Core developers</source>
+        <translation>De Bitsend Core ontwikkelaars</translation>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="36"/>
@@ -4853,7 +4853,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4903,7 +4903,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
+        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
         <translation type="unfinished"/>
     </message>
     <message>

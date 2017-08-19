@@ -13,7 +13,7 @@
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitcoin and DASH Core developers.
+        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
 Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
         <translation type="unfinished"/>
     </message>
@@ -40,7 +40,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitcoin Core developers</source>
+        <source>The Bitsend Core developers</source>
         <translation>Водещи Биткойн разработчици</translation>
     </message>
     <message>
@@ -348,410 +348,410 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>BitsendGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="76"/>
+        <location filename="../bitsendgui.cpp" line="76"/>
         <source>Bitsend Core</source>
         <translation>Дарккойн Ядро</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="85"/>
+        <location filename="../bitsendgui.cpp" line="85"/>
         <source>Wallet</source>
         <translation>Портфейл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="87"/>
+        <location filename="../bitsendgui.cpp" line="87"/>
         <source>Node</source>
         <translation>Възел</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="101"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="101"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>[testnet]</source>
         <translation>[тестова мрежа]</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="227"/>
+        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>&amp;Баланс</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="228"/>
+        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
         <translation>Обобщена информация за портфейла</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="234"/>
+        <location filename="../bitsendgui.cpp" line="234"/>
         <source>&amp;Send</source>
         <translation>&amp;Изпращане</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="235"/>
+        <location filename="../bitsendgui.cpp" line="235"/>
         <source>Send coins to a Bitsend address</source>
         <translation>Изпращане на монети към Дарккойн адрес</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="241"/>
+        <location filename="../bitsendgui.cpp" line="241"/>
         <source>&amp;Receive</source>
         <translation>&amp;Получаване</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="242"/>
+        <location filename="../bitsendgui.cpp" line="242"/>
         <source>Request payments (generates QR codes and bitsend: URIs)</source>
         <translation>Заявка за плащане (генерира QR кодове и Дарккойн: URI)</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="248"/>
+        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Транзакции</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="249"/>
+        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
         <translation>История на транзакциите</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="266"/>
+        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>Из&amp;ход</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="267"/>
+        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Изход от приложението</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="271"/>
-        <location filename="../bitcoingui.cpp" line="273"/>
+        <location filename="../bitsendgui.cpp" line="271"/>
+        <location filename="../bitsendgui.cpp" line="273"/>
         <source>&amp;About Bitsend Core</source>
         <translation>&amp;За Дарккойн ядрото</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="274"/>
+        <location filename="../bitsendgui.cpp" line="274"/>
         <source>Show information about Bitsend</source>
         <translation>Информация за Дарккойн</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="277"/>
-        <location filename="../bitcoingui.cpp" line="279"/>
+        <location filename="../bitsendgui.cpp" line="277"/>
+        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>За &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="281"/>
+        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>Покажи информация за Qt</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="283"/>
+        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>&amp;Опции...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="284"/>
+        <location filename="../bitsendgui.cpp" line="284"/>
         <source>Modify configuration options for Bitsend</source>
         <translation>Промяна на опции за конфигуриране на Дарккойн</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="287"/>
-        <location filename="../bitcoingui.cpp" line="289"/>
+        <location filename="../bitsendgui.cpp" line="287"/>
+        <location filename="../bitsendgui.cpp" line="289"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Показване / Скриване</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="290"/>
+        <location filename="../bitsendgui.cpp" line="290"/>
         <source>Show or hide the main Window</source>
         <translation>Показване и скриване на основния прозорец</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="292"/>
+        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
         <translation>&amp;Шифриране на портфейла...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="293"/>
+        <location filename="../bitsendgui.cpp" line="293"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Криптирай частните ключове принадлежащи към твоя портфейл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="295"/>
+        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>&amp;Запазване на портфейла...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="296"/>
+        <location filename="../bitsendgui.cpp" line="296"/>
         <source>Backup wallet to another location</source>
         <translation>Запазване на портфейла на друго място</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="297"/>
+        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;Смяна на паролата...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="298"/>
+        <location filename="../bitsendgui.cpp" line="298"/>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Променя паролата за портфейла</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="299"/>
+        <location filename="../bitsendgui.cpp" line="299"/>
         <source>&amp;Unlock Wallet...</source>
         <translation>&amp;Отключи Портфейл...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="300"/>
+        <location filename="../bitsendgui.cpp" line="300"/>
         <source>Unlock wallet</source>
         <translation>Отключване на портфейла</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="301"/>
+        <location filename="../bitsendgui.cpp" line="301"/>
         <source>&amp;Lock Wallet</source>
         <translation>&amp;Заключи Портфейл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="302"/>
+        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>Подписване на &amp;съобщение...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="303"/>
+        <location filename="../bitsendgui.cpp" line="303"/>
         <source>Sign messages with your Bitsend addresses to prove you own them</source>
         <translation>Подпиши съобщения с твоите Дарккойн адреси за да докажеш че ги притежаваш</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="304"/>
+        <location filename="../bitsendgui.cpp" line="304"/>
         <source>&amp;Verify message...</source>
         <translation>&amp;Проверка на съобщение...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="305"/>
+        <location filename="../bitsendgui.cpp" line="305"/>
         <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
         <translation>Проверете съобщенията, за да сте сигурни че са подписани с определен Дарккойн адрес</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="307"/>
+        <location filename="../bitsendgui.cpp" line="307"/>
         <source>&amp;Information</source>
         <translation>Данни</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="308"/>
+        <location filename="../bitsendgui.cpp" line="308"/>
         <source>Show diagnostic information</source>
         <translation>Покажи диагностична информация</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="309"/>
+        <location filename="../bitsendgui.cpp" line="309"/>
         <source>&amp;Debug console</source>
         <translation>&amp;Конзола</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="310"/>
+        <location filename="../bitsendgui.cpp" line="310"/>
         <source>Open debugging console</source>
         <translation>Отваряне конзола за отстраняване на грешки</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="311"/>
+        <location filename="../bitsendgui.cpp" line="311"/>
         <source>&amp;Network Monitor</source>
         <translation>&amp;Диаграма на мрежата</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="312"/>
+        <location filename="../bitsendgui.cpp" line="312"/>
         <source>Show network monitor</source>
         <translation>Покажи наблюдение на мрежата</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="313"/>
+        <location filename="../bitsendgui.cpp" line="313"/>
         <source>Open &amp;Configuration File</source>
         <translation>Отвори &amp;Конфигурационен файл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="314"/>
+        <location filename="../bitsendgui.cpp" line="314"/>
         <source>Open configuration file</source>
         <translation>Отвори конфигурационния файл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="316"/>
+        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
         <translation>&amp;Адреси за изпращане...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="317"/>
+        <location filename="../bitsendgui.cpp" line="317"/>
         <source>Show the list of used sending addresses and labels</source>
         <translation>Покажи списъкът от използваните адреси за изпращане и наименования</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="318"/>
+        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>&amp;Адреси за получаване</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="319"/>
+        <location filename="../bitsendgui.cpp" line="319"/>
         <source>Show the list of used receiving addresses and labels</source>
         <translation>Покажи списъкът от използвани адреси за получаване и наименования</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="321"/>
+        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>Отвори &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="322"/>
+        <location filename="../bitsendgui.cpp" line="322"/>
         <source>Open a bitsend: URI or payment request</source>
         <translation>Отвори Bitsend: URI или заявка за плащане</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="324"/>
+        <location filename="../bitsendgui.cpp" line="324"/>
         <source>&amp;Command-line options</source>
         <translation>&amp;Опции на командния ред</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="325"/>
+        <location filename="../bitsendgui.cpp" line="325"/>
         <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
         <translation>Покажи съобщението за помощ на Bitsend ядрото за да получиш списък на възможните опции за командния ред</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="361"/>
+        <location filename="../bitsendgui.cpp" line="361"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="375"/>
+        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="388"/>
+        <location filename="../bitsendgui.cpp" line="388"/>
         <source>&amp;Tools</source>
         <translation>&amp;Инструменти</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="395"/>
+        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>&amp;Помощ</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="406"/>
+        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>Раздели</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="493"/>
-        <location filename="../bitcoingui.cpp" line="498"/>
+        <location filename="../bitsendgui.cpp" line="493"/>
+        <location filename="../bitsendgui.cpp" line="498"/>
         <source>Bitsend client</source>
         <translation>Дарккойн клиент</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="643"/>
+        <location filename="../bitsendgui.cpp" line="643"/>
         <source>%n active connection(s) to Bitsend network</source>
         <translation><numerusform>%n активни връзки с Дарккойн мрежата</numerusform><numerusform>%n активни връзки с Дарккойн мрежата</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="655"/>
+        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>Синхронизиране с мрежата...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="658"/>
+        <location filename="../bitsendgui.cpp" line="658"/>
         <source>Importing blocks from disk...</source>
         <translation>Въвеждат се блокове от диска...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="661"/>
+        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>Преиндексиране на блокове на диска...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="665"/>
+        <location filename="../bitsendgui.cpp" line="665"/>
         <source>No block source available...</source>
         <translation>Няма източник на блокове...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="675"/>
+        <location filename="../bitsendgui.cpp" line="675"/>
         <source>Processed %1 blocks of transaction history.</source>
         <translation>Обработени %1 блока от историята с транзакции.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="680"/>
+        <location filename="../bitsendgui.cpp" line="680"/>
         <source>Up to date</source>
         <translation>Синхронизиран</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="701"/>
+        <location filename="../bitsendgui.cpp" line="701"/>
         <source>%n hour(s)</source>
         <translation><numerusform>%n час(а)</numerusform><numerusform>%n час(а)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="705"/>
+        <location filename="../bitsendgui.cpp" line="705"/>
         <source>%n day(s)</source>
         <translation><numerusform>%n ден(а)</numerusform><numerusform>%n ден(а)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="709"/>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="709"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n week(s)</source>
         <translation><numerusform>%n седмица(и)</numerusform><numerusform>%n седмица(и)</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%1 and %2</source>
         <translation>%1 и %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../bitcoingui.cpp" line="715"/>
+        <location filename="../bitsendgui.cpp" line="715"/>
         <source>%n year(s)</source>
         <translation><numerusform>%n година(и)</numerusform><numerusform>%n година(и)</numerusform></translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="719"/>
+        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>%1 назад</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="724"/>
+        <location filename="../bitsendgui.cpp" line="724"/>
         <source>Catching up...</source>
         <translation>Зарежда блокове...</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="740"/>
+        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Последният получен блок беше генериран преди %1.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="742"/>
+        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Транзакции след това, все още няма да се виждат.</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="755"/>
+        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation>Дарккойн</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="769"/>
+        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="772"/>
+        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="775"/>
+        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Sent transaction</source>
         <translation>Изходяща транзакция</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="854"/>
+        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Входяща транзакция</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="855"/>
+        <location filename="../bitsendgui.cpp" line="855"/>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -764,17 +764,17 @@ Address: %4
 </translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="926"/>
+        <location filename="../bitsendgui.cpp" line="926"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Портфейлът е &lt;b&gt;криптиран&lt;/b&gt; и &lt;b&gt;отключен&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="936"/>
+        <location filename="../bitsendgui.cpp" line="936"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
         <translation>Портфейлът е &lt;b&gt;шифриран&lt;/b&gt; и в момента &lt;b&gt;отключен&lt;/b&gt; само за анонимизиране</translation>
     </message>
     <message>
-        <location filename="../bitcoingui.cpp" line="946"/>
+        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Портфейлът е &lt;b&gt;криптиран&lt;/b&gt; и &lt;b&gt;заключен&lt;/b&gt;</translation>
     </message>
@@ -3226,7 +3226,7 @@ https://www.transifex.com/projects/p/bitsend/</translation>
     </message>
     <message>
         <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitcoin Core developers</source>
+        <source>The Bitsend Core developers</source>
         <translation>Водещи Биткойн разработчици</translation>
     </message>
     <message>
@@ -4866,8 +4866,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>RPC SSL опции: (виж Bitcoin Wiki за  SSL инструкции за настройка)</translation>
+        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
+        <translation>RPC SSL опции: (виж Bitsend Wiki за  SSL инструкции за настройка)</translation>
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="307"/>
@@ -4916,8 +4916,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>SSL опции: (виж Bitcoin Wiki за  SSL инструкции за настройка)</translation>
+        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
+        <translation>SSL опции: (виж Bitsend Wiki за  SSL инструкции за настройка)</translation>
     </message>
     <message>
         <location filename="../bitsendstrings.cpp" line="317"/>
