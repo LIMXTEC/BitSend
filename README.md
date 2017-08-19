@@ -1,6 +1,6 @@
 ## BSD - Bitsend Core 1.4.0
-#---WARNING----This Branch is under development----#
-If you want to build or use source, please relay on release tags. This branch is highly experimental.
+##---WARNING----This Branch is under development----
+##If you want to build or use source, please relay on release tags, or branches. This branch is highly experimental.
 
 first Mile Stone 
 -libsecp256k1
