@@ -31,10 +31,10 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
 		state = THRESHOLD_ACTIVE;
 	}
 	//check 
-	if(pindexPrev->nHeight >= nHeightPrev && state != THRESHOLD_ACTIVE){
+	/* if(pindexPrev->nHeight >= nHeightPrev && state != THRESHOLD_ACTIVE){
 		//Bug , Please report
 		LogPrintf("Bug Warning");
-	}
+	} */
 	
     return state; 
 }
