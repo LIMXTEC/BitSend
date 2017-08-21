@@ -248,7 +248,7 @@ libbitsend_wallet_a_SOURCES = \
 
 # crypto primitives library
 crypto_libbitsend_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_CONFIG_INCLUDES)
-crypto_libbitsend_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fPIC
+crypto_libbitsend_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libbitsend_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
