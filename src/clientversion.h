@@ -9,8 +9,6 @@
 #include "config/bitsend-config.h"
 #else
 
-	
-	/**TODO-- change accordingly
 /**
  * client versioning and copyright year
  */
@@ -19,10 +17,10 @@
 #define CLIENT_VERSION_MAJOR 0
 #define CLIENT_VERSION_MINOR 14
 #define CLIENT_VERSION_REVISION 0
-#define CLIENT_VERSION_BUILD 0
+#define CLIENT_VERSION_BUILD 1
 
 //! Set to true for release, false for prerelease or test build
-#define CLIENT_VERSION_IS_RELEASE true
+#define CLIENT_VERSION_IS_RELEASE false
 
 /**
  * Copyright year (2009-this)

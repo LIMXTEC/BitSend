@@ -71,33 +71,33 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 210000;
-        consensus.BIP34Height = 227931;
+        consensus.BIP34Height = 400000;
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
-        consensus.BIP65Height = 388381; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
-        consensus.BIP66Height = 363725; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
+        consensus.BIP65Height = 400000; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
+        consensus.BIP66Height = 400000; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");//"00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 6 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 5 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 2; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 10000; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 9999; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
-		consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nHeight = 400000;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1503255158; // 08/20/2017 @ 6:52pm (UTC)
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1509408000; // December 31, 2008
+	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nHeight = 400000;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800; // May 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
-		consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nHeight = 400000;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1503255158; // 08/20/2017 @ 6:52pm (UTC)
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1607990400; // 12/15/2020 @ 12:00am (UTC)
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nHeight = 400000;
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1506859200; // October 1st, 2017.
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1538395200; // October 1st, 2018.
-		consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nHeight = 400000;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1503255158; // 08/20/2017 @ 6:52pm (UTC)
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1607990400; // 12/15/2020 @ 12:00am (UTC)
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nHeight = 400000;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000006106bead2f4b73");//60988a35d4b6b2
@@ -121,22 +121,14 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a"));
         assert(genesis.hashMerkleRoot == uint256S("0xc0c4f68994b78c31b6c7d7a8a895b5a085857adfbb73699bcfe5a247a357df57"));
-
-        // Note that of those with the service bits flag, most only support a subset of possible options
-        /*vSeeds.push_back(CDNSSeedData("bitsend.sipa.be", "seed.bitsend.sipa.be", true)); // Pieter Wuille, only supports x1, x5, x9, and xd
-        vSeeds.push_back(CDNSSeedData("bluematt.me", "dnsseed.bluematt.me", true)); // Matt Corallo, only supports x9
-        vSeeds.push_back(CDNSSeedData("dashjr.org", "dnsseed.bitsend.dashjr.org")); // Luke Dashjr
-        vSeeds.push_back(CDNSSeedData("bitsendstats.com", "seed.bitsendstats.com", true)); // Christian Decker, supports x1 - xf
-        vSeeds.push_back(CDNSSeedData("bitsend.jonasschnelli.ch", "seed.bitsend.jonasschnelli.ch", true)); // Jonas Schnelli, only supports x1, x5, x9, and xd
-*/
-
+	    
         vSeeds.push_back(CDNSSeedData("188.68.52.172", "188.68.52.172"));
-		vSeeds.push_back(CDNSSeedData("37.120.186.85", "37.120.186.85"));
-		vSeeds.push_back(CDNSSeedData("37.120.190.76", "37.120.190.76"));
-		vSeeds.push_back(CDNSSeedData("213.136.80.93", "213.136.80.93"));
-		vSeeds.push_back(CDNSSeedData("213.136.86.202", "213.136.86.202"));
-		vSeeds.push_back(CDNSSeedData("213.136.86.205", "213.136.86.205"));
-		vSeeds.push_back(CDNSSeedData("213.136.86.207", "213.136.86.207"));
+        vSeeds.push_back(CDNSSeedData("37.120.186.85", "37.120.186.85"));
+        vSeeds.push_back(CDNSSeedData("37.120.190.76", "37.120.190.76"));
+        vSeeds.push_back(CDNSSeedData("213.136.80.93", "213.136.80.93"));
+        vSeeds.push_back(CDNSSeedData("213.136.86.202", "213.136.86.202"));
+        vSeeds.push_back(CDNSSeedData("213.136.86.205", "213.136.86.205"));
+        vSeeds.push_back(CDNSSeedData("213.136.86.207", "213.136.86.207"));
 		
 		
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,102);
