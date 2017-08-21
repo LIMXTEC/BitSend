@@ -25,6 +25,7 @@ private:
 public:
     int64_t BeginTime(const Consensus::Params& params) const { return TestTime(10000); }
     int64_t EndTime(const Consensus::Params& params) const { return TestTime(20000); }
+	int64_t Height(const Consensus::Params& params) const { return 400000; }
     int Period(const Consensus::Params& params) const { return 1000; }
     int Threshold(const Consensus::Params& params) const { return 900; }
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const { return (pindex->nVersion & 0x100); }
