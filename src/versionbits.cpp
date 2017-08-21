@@ -29,7 +29,7 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
     int64_t nTimeTimeout = EndTime(params);
 	int64_t nThresholdHeight = Height(params);
 	
-	int nHeight = pindexPrev->nHeight;
+	int64_t nHeight = pindexPrev->nHeight;
 
     // A block's state is always the same as that of the first of its period, so it is computed based on a pindexPrev whose height equals a multiple of nPeriod - 1.
     if (pindexPrev != NULL) {
@@ -86,7 +86,7 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
                     }
                     pindexCount = pindexCount->pprev;
                 }
-                if (count >= nThreshold && nHeight >= nThresholdHeight) {
+                if (count >= nThreshold ) {
                     stateNext = THRESHOLD_LOCKED_IN;
                 }
                 break;
