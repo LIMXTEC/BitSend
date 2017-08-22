@@ -43,7 +43,7 @@ The interface is defined in the C header `bitsendconsensus.h` located in  `src/s
 - `bitsendconsensus_ERR_AMOUNT_REQUIRED` - Input amount is required if WITNESS is used
 
 ### Example Implementations
-- [NBitsend](https://github.com/NicolasDorier/NBitsend/blob/master/NBitsend/Script.cs#L814) (.NET Bindings)
-- [node-libbitsendconsensus](https://github.com/bitpay/node-libbitsendconsensus) (Node.js Bindings)
-- [java-libbitsendconsensus](https://github.com/dexX7/java-libbitsendconsensus) (Java Bindings)
-- [bitsendconsensus-php](https://github.com/Bit-Wasp/bitsendconsensus-php) (PHP Bindings)
+- [NBitcoin](https://github.com/NicolasDorier/NBitsend/blob/master/NBitcoin/Script.cs#L814) (.NET Bindings)
+- [node-libbitcoinconsensus](https://github.com/bitpay/node-libbitcoinconsensus) (Node.js Bindings)
+- [java-libbitcoinconsensus](https://github.com/dexX7/java-libbitcoinconsensus) (Java Bindings)
+- [bitcoinconsensus-php](https://github.com/Bit-Wasp/bitcoinconsensus-php) (PHP Bindings)
