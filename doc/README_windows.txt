@@ -19,5 +19,5 @@ depending on the speed of your computer and network connection, the synchronizat
 process can take anywhere from a few hours to a day or more.
 
 See the bitsend wiki at:
-  https://en.bitsend.it/wiki/Main_Page
+  https://github.com/LIMXTEC/BitSend/wiki
 for more help and information.
