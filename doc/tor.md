@@ -102,7 +102,7 @@ for normal IPv4/IPv6 communication, use:
 3. List of known bitsend Tor relays
 ------------------------------------
 
-* [bitsendie7ghp67.onion](http://bitsendie7ghp67.onion/)
+* [bitcoinie7ghp67.onion](http://bitcoinie7ghp67.onion/)
 * [drktalkwaybgxnoq.onion](http://drktalkwaybgxnoq.onion/)
 * [drkcoinooditvool.onion](http://drkcoinooditvool.onion/)
 * [darkcoxbtzggpmcc.onion](http://darkcoxbtzggpmcc.onion/)
