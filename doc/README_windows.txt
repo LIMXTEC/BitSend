@@ -16,8 +16,8 @@ Unpack the files into a directory and run bitsend-qt.exe.
 Bitsend Core is the original Bitsend client and it builds the backbone of the network.
 However, it downloads and stores the entire history of Bitsend transactions;
 depending on the speed of your computer and network connection, the synchronization
-process can take anywhere from a few hours to a day or more.
+process should take only a few hours.
 
-See the bitsend wiki at:
-  https://github.com/LIMXTEC/BitSend/wiki
-for more help and information.
+See the official website:
+  http://www.bitsend.info/
+for more information and help.

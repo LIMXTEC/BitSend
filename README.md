@@ -16,7 +16,7 @@ Next Milestone
 ![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
  http://www.bitsend.info 
- Bitsendtalk https://bitsendtalk.org/index.php?topic=1370307
+ Bitcointalk https://bitcointalk.org/index.php?topic=1370307
  
 
 Release 21.03.2017
@@ -69,7 +69,7 @@ Use the autogen script to prepare the build environment.
 **precompiled binaries**
 
 Precompiled binaries are available at GitHub, see
-http://sourceforge.net/projects/bitsend/files/?source=navbar
+https://github.com/LIMXTEC/BitSend/releases
 
 Always verify the signatures and checksums.
 
