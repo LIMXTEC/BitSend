@@ -22,9 +22,9 @@ Install Addons :
 ----------------
 apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev
 
-apt-get install libboost-all-dev git npm nodejs nodejs-legacy libminiupnpc-dev redis-server libevent-dev
+apt-get install libboost-all-dev git npm nodejs nodejs-legacy libminiupnpc-dev redis-server
 
-add-apt-repository ppa:bitcoin/bitcoin
+add-apt-repository ppa:bitsend/bitsend
 
 apt-get update
 
@@ -76,6 +76,7 @@ server=1
 
 gen=0
 
+staking=0
 
 
 cd BitSend/src/
