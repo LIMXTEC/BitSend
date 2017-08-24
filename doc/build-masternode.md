@@ -33,7 +33,7 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	
 	Rent a Vultr Ubuntu 14.10 64bit server
 	--------------------------------------
-	http://www.vultr.com/?ref=6821776
+	http://www.vultr.com
 	
 	Vultr accepts Bitsend payments.
 	
