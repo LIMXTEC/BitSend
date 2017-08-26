@@ -64,10 +64,10 @@ for Ubuntu 12.04 and later:
 	sudo apt-get install pkg-config 
 	( http://packages.ubuntu.com/de/source/trusty/pkg-config)
 
- db4.8 packages are available [here](https://launchpad.net/~bitsend/+archive/bitsend).
+ db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
  You can add the repository using the following command:
 
-        sudo add-apt-repository ppa:bitsend/bitsend
+        sudo add-apt-repository ppa:bitcoin/bitcoin
         sudo apt-get update
 
  Ubuntu 12.04 and later have packages for libdb5.1-dev and libdb5.1++-dev,

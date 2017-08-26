@@ -2,7 +2,7 @@ Release Process
 ====================
 
 * update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/bitsend/bitsend/blob/master/doc/translation_process.md#syncing-with-transifex
+* see https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#syncing-with-transifex
 
 * * *
 
@@ -191,15 +191,15 @@ Hash: SHA256
 - Update bitsend.org version
 
   - Make a pull request to add a file named `YYYY-MM-DD-vX.Y.Z.md` with the release notes
-  to https://github.com/bitsend/bitsend.org/tree/master/_releases
-   ([Example for 0.9.2.1](https://raw.githubusercontent.com/bitsend/bitsend.org/master/_releases/2014-06-19-v0.9.2.1.md)).
+  to https://github.com/bitcoin/bitcoin.org/tree/master/_releases
+   ([Example for 0.9.2.1](https://raw.githubusercontent.com/bitcoin/bitcoin.org/master/_releases/2014-06-19-v0.9.2.1.md)).
 
   - After the pull request is merged, the website will automatically show the newest version, as well
     as update the OS download links. Ping Saivann in case anything goes wrong
 
 - Announce the release:
 
-  - Release sticky on bitsendtalk: https://bitsendtalk.org/index.php?board=1.0
+  - Release sticky on bitcointalk: https://bitcointalk.org/index.php?board=1.0
 
   - Bitsend-development mailing list
 
@@ -207,7 +207,7 @@ Hash: SHA256
 
   - Optionally reddit /r/Bitsend, ... but this will usually sort out itself
 
-- Notify BlueMatt so that he can start building [https://launchpad.net/~bitsend/+archive/ubuntu/bitsend](the PPAs)
+- Notify BlueMatt so that he can start building [https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin](the PPAs)
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 

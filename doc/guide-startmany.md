@@ -95,7 +95,7 @@ Issue the following:
 Make note of the hash (which is your collaterla_output) and index.
 
 ### Enter your MasterNode details into your masternode.conf file
-[From the bitsend github repo](https://github.com/BSD-SUPPORT/Bitsend/blob/master/doc/masternode_conf.md)
+[From the bitsend github repo](https://github.com/LIMXTEC/BitSend/blob/master/doc/masternode_conf.md)
 
 The new masternode.conf format consists of a space seperated text file. Each line consisting of an alias, IP address followed by port, masternode private key, collateral output transaction id and collateral output index, donation address and donation percentage (the latter two are optional and should be in format "address:percentage").
 
@@ -137,7 +137,7 @@ I usually confirm that remote is on the correct block by issuing:
 
 ```bitsendd getinfo```
 
-And compare with the a explorer at https://bchain.info/BSD/
+And compare with the a explorer at https://chainz.cryptoid.info/bsd
 
 ### Local
 

@@ -33,7 +33,7 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	
 	Rent a Vultr Ubuntu 14.10 64bit server
 	--------------------------------------
-	http://www.vultr.com/?ref=6821776
+	https://www.vultr.com
 	
 	Vultr accepts Bitsend payments.
 	
@@ -47,9 +47,9 @@ Build Instructions: Ubuntu & Debian
 	$ gpasswd -a <NEW USER> sudo
 	---
 	$ sudo apt-get install build-essential
-	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev
+	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev libevent-dev
 	$ sudo apt-get install libboost1.54-all-dev
-	$ sudo add-apt-repository ppa:bitsend/bitsend
+	$ sudo add-apt-repository ppa:bitcoin/bitcoin
 	$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 	$ sudo apt-get install miniupnpc*-dev
 	$ sudo apt-get install git ntp make g++ gcc autoconf cpp ngrep iftop sysstat unzip
@@ -67,7 +67,7 @@ Build Instructions: Ubuntu & Debian
 
 	Swapfile:
 	---------
-	$ sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+	$ sudo dd if=/dev/zero of=/swapfile bs=2M count=1024
 	$ sudo mkswap /swapfile
 	$ sudo swapon /swapfile
 
@@ -87,8 +87,8 @@ Build Instructions: Ubuntu & Debian
 	------------
 	mkdir .bitsend
 	cd .bitsend
-	wget http://sourceforge.net/projects/bitsend/files/bitsend-linux64.zip
-	unzip bitsend-linux64.zip
+	wget https://github.com/LIMXTEC/BitSend/releases/download/BSD1271/Linux.tar
+	tar -xvzf Linux.tar
 	
 	$ sudo cp bitsendd /usr/bin
 	$ sudo chmod 775 /usr/bin/bitsendd
@@ -208,4 +208,3 @@ Updating the Masternode & OpenSSL version
 	
 	./bitsend.cli setgenerate true
 	./bitsend.cli gethashespersec
-
