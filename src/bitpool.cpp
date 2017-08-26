@@ -54,7 +54,7 @@ void ThreadBitPool()
                 //BOOST_FOREACH(CNode* pnode, vNodes)
 				g_connman->ForEachNode([](CNode* pnode)
                 {
-                    if (pnode->nVersion >= MIN_POOL_PEER_PROTO_VERSION) {
+                    if (true/* pnode->nVersion >= MIN_POOL_PEER_PROTO_VERSION */) {
 
                         //keep track of who we've asked for the list
                         if(!pnode->HasFulfilledRequest("mnsync")){
