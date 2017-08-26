@@ -240,6 +240,11 @@ extern const char *GETBLOCKTXN;
  * @since protocol version 70014 as described by BIP 152
  */
 extern const char *BLOCKTXN;
+
+extern const char *MNWINNER;
+
+extern const char *SPORK;
+
 };
 
 /* Get a vector of all valid message types (see above) */
@@ -334,19 +339,9 @@ enum GetDataMsg
     MSG_FILTERED_WITNESS_BLOCK = MSG_FILTERED_BLOCK | MSG_WITNESS_FLAG,
 	
 	/**TODO-- */
-	MSG_TXLOCK_REQUEST,
-    MSG_TXLOCK_VOTE,
-    MSG_SPORK,
-    MSG_MASTERNODE_WINNER,
-    MSG_MASTERNODE_SCANNING_ERROR,
-    MSG_BUDGET_VOTE,
-    MSG_BUDGET_PROPOSAL,
-    MSG_BUDGET_FINALIZED,
-    MSG_BUDGET_FINALIZED_VOTE,
-    MSG_MASTERNODE_QUORUM,
-    MSG_MASTERNODE_ANNOUNCE,
-    MSG_MASTERNODE_PING,
-    MSG_DSTX
+    MSG_SPORK = 6,
+    MSG_MASTERNODE_WINNER = 7,
+    MSG_MASTERNODE_SCANNING_ERROR = 8,
 };
 
 /** inv message data */
