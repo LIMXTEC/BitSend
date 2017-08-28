@@ -1138,6 +1138,10 @@ UniValue masternode(const JSONRPCRequest& request)
         	return "stop failed: " + errorMessage;
         }
         pwalletMain->Lock();
+		CService service;
+		CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
+	    service = service2;
+		g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
 
         if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
         if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
