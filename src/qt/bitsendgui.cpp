@@ -22,6 +22,8 @@
 #include "rpcconsole.h"
 #include "utilitydialog.h"
 
+#include "activemasternode.h"
+
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
@@ -770,19 +772,35 @@ void BitsendGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
-    switch(count)
-    {
-    case 0: icon = ":/icons/connect_0"; break;
-    case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
-    case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
-    case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
-    default: icon = ":/icons/connect_4"; break;
-    }
+    bool IsMasternodeActive = activeMasternode.status == MASTERNODE_IS_CAPABLE || activeMasternode.status == MASTERNODE_REMOTELY_ENABLED;
+	if(IsMasternodeActive){
+		switch(count)
+		{
+		case 0: icon = ":/icons/connect_0_16"; break;
+		case 1: case 2: case 3: icon = ":/icons/connect_1_16"; break;
+		case 4: case 5: case 6: icon = ":/icons/connect_2_16"; break;
+		case 7: case 8: case 9: icon = ":/icons/connect_3_16"; break;
+		default: icon = ":/icons/connect_4_16"; break;
+		}
+	} else {
+		switch(count)
+		{
+		case 0: icon = ":/icons/connect_0"; break;
+		case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
+		case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
+		case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
+		default: icon = ":/icons/connect_4"; break;
+		}
+	}
 
     QString tooltip;
 
     if (clientModel->getNetworkActive()) {
-        tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+		if(IsMasternodeActive){
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Masternode is active ") + QString(".<br>") + tr("Click to disable network activity.");
+		}else {
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+		}
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
         icon = ":/icons/network_disabled";
