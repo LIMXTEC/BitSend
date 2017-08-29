@@ -925,55 +925,17 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
                    pcoinsTip->HaveCoinsInCache(inv.hash);
         }
 	/**TODO-- */
-	//case MSG_DSTX:
-        //return mapDarksendBroadcastTxes.count(inv.hash);//
     case MSG_BLOCK:
     case MSG_WITNESS_BLOCK:
 		return mapBlockIndex.count(inv.hash);
-				//mapOrphanBlocks.count(inv.hash);//todo++
+				
 	
 	/**TODO-- */
-	/*case MSG_TXLOCK_REQUEST:
-        return mapTxLockReq.count(inv.hash) ||
-               mapTxLockReqRejected.count(inv.hash);*///--test
-    /*case MSG_TXLOCK_VOTE:
-        return mapTxLockVote.count(inv.hash);*///--test
+	
     case MSG_SPORK:
         return mapSporks.count(inv.hash);
     case MSG_MASTERNODE_WINNER:
         return mapSeenMasternodeVotes.count(inv.hash);
-   /* case MSG_BUDGET_VOTE:
-        if(budget.mapSeenMasternodeBudgetVotes.count(inv.hash)) {
-            masternodeSync.AddedBudgetItem(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_BUDGET_PROPOSAL:
-        if(budget.mapSeenMasternodeBudgetProposals.count(inv.hash)) {
-            masternodeSync.AddedBudgetItem(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_BUDGET_FINALIZED_VOTE:
-        if(budget.mapSeenFinalizedBudgetVotes.count(inv.hash)) {
-            masternodeSync.AddedBudgetItem(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_BUDGET_FINALIZED:
-        if(budget.mapSeenFinalizedBudgets.count(inv.hash)) {
-            masternodeSync.AddedBudgetItem(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_MASTERNODE_ANNOUNCE:
-        if(mnodeman.mapSeenMasternodeBroadcast.count(inv.hash)) {
-            masternodeSync.AddedMasternodeList(inv.hash);
-            return true;
-        }
-        return false;
-    case MSG_MASTERNODE_PING:
-        return mnodeman.mapSeenMasternodePing.count(inv.hash);*/ //TODO-- ends
 	case MSG_MASTERNODE_SCANNING_ERROR:
         return mapMasternodeScanningErrors.count(inv.hash);
     }
@@ -1158,7 +1120,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                 }
             }
-            else if (inv.type == MSG_TX || inv.type == MSG_WITNESS_TX || inv.type == MSG_TXLOCK_REQUEST || inv.type == MSG_MASTERNODE_SCANNING_ERROR || inv.type == MSG_MASTERNODE_WINNER || inv.type == MSG_SPORK || inv.type == MSG_TXLOCK_VOTE)
+            else if (inv.type == MSG_TX || inv.type == MSG_WITNESS_TX || inv.type == MSG_MASTERNODE_SCANNING_ERROR || inv.type == MSG_MASTERNODE_WINNER || inv.type == MSG_SPORK)
             {
                 // Send stream from relay memory
                 bool push = false;
@@ -1169,19 +1131,7 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     push = true;
                 }
 				if (!push && inv.type == MSG_TX) {
-				   /*if(mapDarksendBroadcastTxes.count(inv.hash)){
-					 connman.PushMessage(pfrom, msgMaker.Make(nSendFlags, "dstx", mapDarksendBroadcastTxes[inv.hash].tx, mapDarksendBroadcastTxes[inv.hash].vin, mapDarksendBroadcastTxes[inv.hash].vchSig, mapDarksendBroadcastTxes[inv.hash].sigTime));
-                       /* CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        ss.reserve(1000);
-                        ss <<
-                            mapDarksendBroadcastTxes[inv.hash].tx <<
-                            mapDarksendBroadcastTxes[inv.hash].vin <<
-                            mapDarksendBroadcastTxes[inv.hash].vchSig <<
-                            mapDarksendBroadcastTxes[inv.hash].sigTime;
-                        pfrom->PushMessage("dstx", ss);//comment it out
-                        push = true;
-				    }*///--test
-				  /*else*/ if (pfrom->timeLastMempoolReq) {
+				    if (pfrom->timeLastMempoolReq) {
                     auto txinfo = mempool.info(inv.hash);
                     // To protect privacy, do not answer getdata using the mempool when
                     // that TX couldn't have been INVed in reply to a MEMPOOL request.
@@ -1191,19 +1141,6 @@ void static ProcessGetData(CNode* pfrom, const Consensus::Params& consensusParam
                     }
                  }
 				}
-				// TODO: use NetMsgType::
-                /*if (!push && inv.type == MSG_TXLOCK_VOTE) {
-                    if(mapTxLockVote.count(inv.hash)){
-						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "tx1vote", mapTxLockVote[inv.hash]));
-                        push = true;
-                    }
-                }*///--test
-                /*if (!push && inv.type == MSG_TXLOCK_REQUEST) {
-                    if(mapTxLockReq.count(inv.hash)){
-						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "txlreq", mapTxLockReq[inv.hash]));
-                        push = true;
-                    }
-                }*/ //--test
                 if (!push && inv.type == MSG_SPORK) {
                     if(mapSporks.count(inv.hash)){
 						connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", mapSporks[inv.hash]));

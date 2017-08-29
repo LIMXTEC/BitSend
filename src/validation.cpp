@@ -679,19 +679,6 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
     if (pool.exists(hash))
         return state.Invalid(false, REJECT_ALREADY_KNOWN, "txn-already-in-mempool");
 
-	 // ----------- instantX transaction scanning ----------- TODO--
-	/*
-    BOOST_FOREACH(const CTxIn& in, tx.vin){
-        if(mapLockedInputs.count(in.prevout)){
-            if(mapLockedInputs[in.prevout] != tx.GetHash()){
-                return state.DoS(0,
-                                 error("AcceptToMemoryPool : conflicts with existing transaction lock: %s", reason),
-                                 REJECT_INVALID, "tx-lock-conflict");
-            }
-        }
-    }*/
-	//TODO-- ends
-	
     // Check for conflicts with in-memory transactions
     std::set<uint256> setConflicts;
     {
@@ -1212,9 +1199,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
             if (!pcoinsTip->HaveCoinsInCache(txin.prevout.hash))
                 vHashTxnToUncache.push_back(txin.prevout.hash);
             if (!view.HaveCoins(txin.prevout.hash)) {
-                /* if (pfMissingInputs)
-                    *pfMissingInputs = true; */
-                return false; // fMissingInputs and !state.IsInvalid() is used to detect this condition, don't set state.Invalid()
+                return false; 
             }
         }
 
@@ -1230,46 +1215,16 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
         // we have all inputs cached now, so switch back to dummy, so we don't need to keep lock on mempool
         view.SetBackend(dummy);
 
-        /* // Only accept BIP68 sequence locked transactions that can be mined in the next
-        // block; we don't want our mempool filled up with transactions that can't
-        // be mined yet.
-        // Must keep pool.cs for this unless we change CheckSequenceLocks to take a
-        // CoinsViewCache instead of create its own
-        if (!CheckSequenceLocks(tx, STANDARD_LOCKTIME_VERIFY_FLAGS, &lp))
-            return state.DoS(0, false, REJECT_NONSTANDARD, "non-BIP68-final"); */
         }
 		
 		// Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
         PrecomputedTransactionData txdata(tx);
         if (!CheckInputs(tx, state, view, false, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, true, txdata)) {
-            // SCRIPT_VERIFY_CLEANSTACK requires SCRIPT_VERIFY_WITNESS, so we
-            // need to turn both off, and compare against just turning off CLEANSTACK
-            // to see if the failure is specifically due to witness validation.
-            /* CValidationState stateDummy; // Want reported failures to be from first CheckInputs
-            if (!tx.HasWitness() && CheckInputs(tx, stateDummy, view, true, scriptVerifyFlags & ~(SCRIPT_VERIFY_WITNESS | SCRIPT_VERIFY_CLEANSTACK), true, txdata) &&
-                !CheckInputs(tx, stateDummy, view, true, scriptVerifyFlags & ~SCRIPT_VERIFY_CLEANSTACK, true, txdata)) {
-                // Only the witness is missing, so the transaction itself may be fine.
-                state.SetCorruptionPossible();
-            } */
+           
 			LogPrintf("CheckInputs is still false\n");
             return false; // state filled in by CheckInputs
         }
-
-        // Check again against just the consensus-critical mandatory script
-        // verification flags, in case of bugs in the standard flags that cause
-        // transactions to pass as valid when they're actually invalid. For
-        // instance the STRICTENC flag was incorrectly allowing certain
-        // CHECKSIG NOT scripts to pass, even though they were invalid.
-        //
-        // There is a similar check in CreateNewBlock() to prevent creating
-        // invalid blocks, however allowing such transactions into the mempool
-        // can be exploited as a DoS attack.
-        /* if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true, txdata))
-        {
-            return error("%s: BUG! PLEASE REPORT THIS! ConnectInputs failed against MANDATORY but not STANDARD flags %s, %s",
-                __func__, hash.ToString(), FormatStateMessage(state));
-        } */
 	}
 	
 	return true;

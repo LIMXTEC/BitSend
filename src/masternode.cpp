@@ -256,16 +256,6 @@ uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
     return ArithToUint256(r);
 }
 
-static bool
-ToMemPool(CMutableTransaction& tx)
-{
-    LOCK(cs_main);
-
-    CValidationState state;
-    return AcceptableInputs(mempool, state, MakeTransactionRef(tx));
-}
-
-
 void CMasternode::Check()
 {
     //TODO: Random segfault with this line removed
@@ -294,19 +284,16 @@ void CMasternode::Check()
 
     if(!unitTest){
         CValidationState state;
-        //CTransactionRef tx = CTransactionRef();//todo++ for check t
-		//CMutableTransaction tx2 = CMutableTransaction();
 		CMutableTransaction mtx;
         CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
         mtx.vin.push_back(vin);
         mtx.vout.push_back(vout);
 		
-
-        if(!ToMemPool(mtx)){
+        if(!AcceptableInputs(mempool, state, MakeTransactionRef(mtx))){
             activeState = MASTERNODE_VIN_SPENT;
 			LogPrintf("tx failed to get accepted on mempool");
             return;
-        }
+        } 
 		
     }
 	return;

@@ -681,17 +681,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
         CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
         mtx.vin.push_back(vin);
         mtx.vout.push_back(vout);
-		bool acceptance = false;
-		{
-			TRY_LOCK(cs_main, lockMain);
-            if (!lockMain){
-				return;
-				LogPrintf("acceptance is still false\n");
-			}
-			acceptance = AcceptableInputs(mempool, state, MakeTransactionRef(mtx));
-		}
-		//LogPrintf(" after acceptance\n");
-        if(acceptance){
+        if(AcceptableInputs(mempool, state, MakeTransactionRef(mtx))){
 			//LogPrintf(" after passing AcceptToMemoryPool\n");
 			CTransactionRef txref(MakeTransactionRef(std::move(mtx)));
 			
