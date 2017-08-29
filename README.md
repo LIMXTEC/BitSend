@@ -1,19 +1,9 @@
-## BSD - Bitsend Core 1.4.0
+## BSD - Bitsend Core 0.14.02
+## The first Masternodecoinn with Core 0.14 and Segwit Support
 ##---WARNING----This Branch is under development----
 ##If you want to build or use source, please relay on release tags, or branches. This branch is highly experimental.
 
-first Mile Stone 
--libsecp256k1
-- pay to child
-- Segwit 
-
-Next Milestone 
-- masternode 
-- instant x
-- difficulty rtetarget
-
 ----------------
-![alt tag](https://dl.dropboxusercontent.com/u/21000833/Bitsend/Website/Splash.png)
 
  http://www.bitsend.info 
  Bitcointalk https://bitcointalk.org/index.php?topic=1370307
