@@ -3277,7 +3277,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
                     if(!foundPaymentAndPayee) {
                         LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
-                        //if(!RegTest()) return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
+                        return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
                     } else {
                         LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
                     }
