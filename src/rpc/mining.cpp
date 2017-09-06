@@ -1086,7 +1086,7 @@ UniValue masternode(const JSONRPCRequest& request)
 	
 	if (request.fHelp  ||
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"))
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" /* && strCommand != "vote-many" && strCommand != "vote" */))
         throw runtime_error(
                 "masternode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute masternode related actions\n"
@@ -1109,8 +1109,8 @@ UniValue masternode(const JSONRPCRequest& request)
                 "  list         - see masternodelist, This command has been removed.\n"
                 "  list-conf    - Print masternode.conf in JSON format\n"
                 "  winners      - Print list of masternode winners\n"
-                "  vote-many    - Vote on a Bitsend initiative\n"
-                "  vote         - Vote on a Bitsend initiative\n"
+                "  vote-many    - Not implemented\n"
+                "  vote         - Not implemented\n"
                 );
 				
 	if (strCommand == "stop")

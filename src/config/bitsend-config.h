@@ -9,10 +9,10 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Version Build */
-#define CLIENT_VERSION_BUILD 0
+#define CLIENT_VERSION_BUILD 2
 
 /* Version is release */
-#define CLIENT_VERSION_IS_RELEASE true
+#define CLIENT_VERSION_IS_RELEASE false
 
 /* Major version */
 #define CLIENT_VERSION_MAJOR 0
@@ -217,7 +217,7 @@
 #define HAVE_LIBSHLWAPI 1
 
 /* Define to 1 if you have the `ssp' library (-lssp). */
-#define HAVE_LIBSSP 1
+/* #undef HAVE_LIBSSP */
 
 /* Define to 1 if you have the `user32' library (-luser32). */
 #define HAVE_LIBUSER32 1
