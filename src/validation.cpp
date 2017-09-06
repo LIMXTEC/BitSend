@@ -14,17 +14,11 @@
 #include "consensus/validation.h"
 #include "hash.h"
 #include "init.h"
-/**TODO-- */
-//#include "instantx.h"
-//#include "darksend.h"
+
 #include "masternode-pos.h"
 #include "masternode.h"
 
-/*#include "masternode-budget.h"
-#include "masternode-payments.h"
-#include "masternode-sync.h"
-#include "masternodeman.h"*/
-/**TODO-- ends */
+
 #include "policy/fees.h"
 #include "policy/policy.h"
 #include "pow.h"
@@ -523,41 +517,7 @@ int GetInputAge(CTxIn& vin)
     }
 }
 
-/*
-int GetInputAgeIX(uint256 nTXHash, CTxIn& vin)
-{    
-    int sigs = 0;
-    int nResult = GetInputAge(vin);
-    if(nResult < 0) nResult = 0;
 
-    if (nResult < 6){
-        std::map<uint256, CTransactionLock>::iterator i = mapTxLocks.find(nTXHash);
-        if (i != mapTxLocks.end()){
-            sigs = (*i).second.CountSignatures();
-        }
-        if(sigs >= INSTANTX_SIGNATURES_REQUIRED){
-            return nInstantXDepth+nResult;
-        }
-    }
-
-    return -1;
-}
-
-
-int GetIXConfirmations(uint256 nTXHash)
-{    
-    int sigs = 0;
-
-    std::map<uint256, CTransactionLock>::iterator i = mapTxLocks.find(nTXHash);
-    if (i != mapTxLocks.end()){
-        sigs = (*i).second.CountSignatures();
-    }
-    if(sigs >= INSTANTX_SIGNATURES_REQUIRED){
-        return nInstantXDepth;
-    }
-
-    return 0;
-}*/
 /**TODO-- ends */
 
 bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fCheckDuplicateInputs)
@@ -3191,40 +3151,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
 	
 	/**TODO-- */
-	// ----------- instantX transaction scanning -----------
-/*
-    if(IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
-		//const CTransaction& tx;
-       for (const auto& it : block.vtx){//todo++ // BOOST_FOREACH(const CTransaction& tx, block.vtx)
-            const CTransaction& tx=*it;//todo++from#2368
-			if (!tx.IsCoinBase()){
-                //only reject blocks when it's based on complete consensus
-                for (const auto& in : tx.vin){//BOOST_FOREACH(const CTxIn& in, tx.vin)
-                    if(mapLockedInputs.count(in.prevout)){
-                        if(mapLockedInputs[in.prevout] != tx.GetHash()){//todo++ . to ->
-                            //mapRejectedBlocks.insert(make_pair(block.GetHash(), GetTime()));//Not in old
-                            LogPrintf("CheckBlock() : found conflicting transaction with transaction lock %s %s\n", mapLockedInputs[in.prevout].ToString(), tx.GetHash().ToString());
-                            return state.DoS(0, error("CheckBlock() : found conflicting transaction with transaction lock"),
-                                             REJECT_INVALID, "conflicting-tx-ix");
-                        }
-                    }
-                }
-            }
-        }
-    } else {
-        LogPrintf("CheckBlock() : skipping transaction locking checks\n");
-    }
-*/
+
 
     // ----------- masternode payments / budgets -----------
 
     bool MasternodePayments = false;
 
-    /*if(TestNet()){
-        if(block.nTime > START_MASTERNODE_PAYMENTS_TESTNET) MasternodePayments = true;
-    } else {*/
-        //if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
-    //}
+    
 	if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
 
     if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
@@ -3277,7 +3210,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
                     if(!foundPaymentAndPayee) {
                         LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
-                        //if(!RegTest()) return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
+                        return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
                     } else {
                         LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
                     }
