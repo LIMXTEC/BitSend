@@ -21,6 +21,8 @@
 #include "utilitydialog.h"
 #include "winshutdownmonitor.h"
 
+#include "masternodeconfig.h"
+
 #ifdef ENABLE_WALLET
 #include "paymentserver.h"
 #include "walletmodel.h"
@@ -671,7 +673,7 @@ int main(int argc, char *argv[])
 
 #ifdef ENABLE_WALLET
 	 /// 7a. parse masternode.conf
-    string strErr;
+    std::string strErr;
     if(!masternodeConfig.read(strErr)) {
         QMessageBox::critical(0, QObject::tr("Bitsend"),
                               QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
