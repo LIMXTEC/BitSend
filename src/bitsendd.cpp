@@ -15,7 +15,7 @@
 #include "noui.h"
 #include "scheduler.h"
 #include "util.h"
-//#include "masternodeconfig.h"//TODO--
+#include "masternodeconfig.h"//TODO--
 #include "httpserver.h"
 #include "httprpc.h"
 #include "utilstrencodings.h"
@@ -118,12 +118,12 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
 		/**TODO-- */
-		/*// parse masternode.conf
+		// parse masternode.conf
         std::string strErr;
         if(!masternodeConfig.read(strErr)) {
             fprintf(stderr,"Error reading masternode configuration file: %s\n", strErr.c_str());
             return false;
-        }*/
+        }
 
         // Command-line RPC
         bool fCommandLine = false;
