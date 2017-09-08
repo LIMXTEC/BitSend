@@ -349,6 +349,7 @@ QT_TRANSLATE_NOOP("bitsend-core", "Specify connection timeout in milliseconds (m
 QT_TRANSLATE_NOOP("bitsend-core", "Specify data directory"),
 QT_TRANSLATE_NOOP("bitsend-core", "Specify pid file (default: %s)"),
 QT_TRANSLATE_NOOP("bitsend-core", "Specify wallet file (within data directory)"),
+QT_TRANSLATE_NOOP("bitsend-core", "Specify masternode configuration file (default: masternode.conf)"),
 QT_TRANSLATE_NOOP("bitsend-core", "Specify your own public address"),
 QT_TRANSLATE_NOOP("bitsend-core", "Spend unconfirmed change when sending transactions (default: %u)"),
 QT_TRANSLATE_NOOP("bitsend-core", "Starting network threads..."),
