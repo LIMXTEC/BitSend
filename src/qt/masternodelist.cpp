@@ -347,8 +347,7 @@ void MasternodeList::on_startAllButton_clicked()
 {
     // Display message box
     QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm all masternodes start"),
-        tr("Are you sure you want to start ALL masternodes?"),
-		tr("Please make sure that wallet is unlocked"),
+        tr("Are you sure you want to start ALL masternodes? Please make sure that wallet is unlocked"),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Cancel);
 
