@@ -983,6 +983,11 @@ void RPCConsole::showBackups()
     GUIUtil::showBackups();
 }
 
+void RPCConsole::showConf()
+{
+    GUIUtil::showConf();
+}
+
 void RPCConsole::scrollToEnd()
 {
     QScrollBar *scrollbar = ui->messagesWidget->verticalScrollBar();

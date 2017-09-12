@@ -429,6 +429,16 @@ void showBackups()
     if (boost::filesystem::exists(pathBackups))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
+
+void showConf()
+{
+    boost::filesystem::path pathBackups = GetDataDir() / "masternode.conf";
+
+    /* Open folder with default browser */
+    if (boost::filesystem::exists(pathBackups))
+        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
+}
+
 void SubstituteFonts(const QString& language)
 {
 #if defined(Q_OS_MAC)

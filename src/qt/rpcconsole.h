@@ -127,6 +127,8 @@ public Q_SLOTS:
     void unbanSelectedNode();
 	/** Show folder with wallet backups in default browser */
     void showBackups();
+	
+	void showConf();
     /** set which tab has the focus (is visible) */
     void setTabFocus(enum TabTypes tabType);
 

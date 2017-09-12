@@ -110,6 +110,7 @@ private:
     QAction *optionsAction;
 	QAction* openRepairAction;
 	QAction* showBackupsAction;
+	QAction* showConfAction;
     QAction *toggleHideAction;
     QAction *encryptWalletAction;
     QAction *backupWalletAction;

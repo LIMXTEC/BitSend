@@ -249,6 +249,8 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
 	
 	connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
 	
+	connect(showConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showConf()));
+	
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
     this->installEventFilter(this);
 
@@ -393,6 +395,9 @@ void BitsendGUI::createActions()
 	
 	showBackupsAction = new QAction(QIcon(":/icons/filesave"), tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
+	
+	showConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Masternode Conf file"), this);
+    showConfAction->setStatusTip(tr("Show masternode configuration file"));
 
     openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -482,6 +487,7 @@ void BitsendGUI::createMenuBar()
 		help->addSeparator();
 		help->addAction(openRepairAction);
 		help->addAction(showBackupsAction);
+		help->addAction(showConfAction);
     }
     help->addAction(showHelpMessageAction);
     help->addSeparator();
@@ -658,6 +664,7 @@ void BitsendGUI::createTrayIconMenu()
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addAction(openRPCConsoleAction);
 	trayIconMenu->addAction(showBackupsAction);
+	trayIconMenu->addAction(showConfAction);
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
