@@ -439,6 +439,15 @@ void showConf()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
 
+void showBitsendConf()
+{
+    boost::filesystem::path pathBackups = GetDataDir() / "bitsend.conf";
+
+    /* Open folder with default browser */
+    if (boost::filesystem::exists(pathBackups))
+        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
+}
+
 void SubstituteFonts(const QString& language)
 {
 #if defined(Q_OS_MAC)

@@ -111,6 +111,7 @@ private:
 	QAction* openRepairAction;
 	QAction* showBackupsAction;
 	QAction* showConfAction;
+	QAction* showBitsendConfAction;
     QAction *toggleHideAction;
     QAction *encryptWalletAction;
     QAction *backupWalletAction;
