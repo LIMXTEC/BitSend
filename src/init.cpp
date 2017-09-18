@@ -589,7 +589,7 @@ std::string HelpMessage(HelpMessageMode mode)
 std::string LicenseInfo()
 {
     const std::string URL_SOURCE_CODE = "<https://github.com/bitsend/bitsend>";
-    const std::string URL_WEBSITE = "<https://bitsendcore.org>";
+    const std::string URL_WEBSITE = "<https://bitsend.info>";
 
 	//TODO-- add bitsend license
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
