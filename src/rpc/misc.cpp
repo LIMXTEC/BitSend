@@ -171,7 +171,8 @@ UniValue spork(const JSONRPCRequest& request)
         }
 
         // SPORK VALUE
-        int64_t nValue = request.params[1].get_int();
+        int64_t nValue = stoi(request.params[1].get_str());
+		//TODO: Add core method.
 
         //broadcast new spork
         if(sporkManager.UpdateSpork(nSporkID, nValue)){
