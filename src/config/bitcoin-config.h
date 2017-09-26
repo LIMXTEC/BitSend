@@ -326,7 +326,7 @@
 #define PACKAGE_TARNAME "bitsend"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://bitsendcore.org/"
+#define PACKAGE_URL "https://bitsend.info/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "0.14.0"

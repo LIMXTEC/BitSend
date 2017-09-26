@@ -88,7 +88,7 @@ Build Instructions: Ubuntu & Debian
 	mkdir .bitsend
 	cd .bitsend
 	wget https://github.com/LIMXTEC/BitSend/releases/download/BSD1271/Linux.tar
-	tar -xvzf Linux.tar
+	tar xvzf Linux.tar
 	
 	$ sudo cp bitsendd /usr/bin
 	$ sudo chmod 775 /usr/bin/bitsendd

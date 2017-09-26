@@ -119,6 +119,8 @@ namespace GUIUtil
 	
 	void showConf();
 	
+	void showBitsendConf();
+	
     // Replace invalid default fonts with known good ones
     void SubstituteFonts(const QString& language);
 
