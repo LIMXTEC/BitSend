@@ -1443,7 +1443,7 @@ bool IsInitialBlockDownload()
         return true;
 		LogPrintf("chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)");
 	}
-    if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge/24)){
+    if (chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)){
         return true;
 		LogPrintf("chainActive.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)");
 	}
