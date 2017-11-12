@@ -1,0 +1,33 @@
+# /etc/conf.d/bitsendd: config file for /etc/init.d/bitsendd
+
+# Config file location
+#BITSENDD_CONFIGFILE="/etc/bitsend/bitsend.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITSENDD_USER)
+#BITSENDD_PIDDIR="/var/run/bitsendd"
+
+# What filename to give the pidfile
+#BITSENDD_PIDFILE="${BITSENDD_PIDDIR}/bitsendd.pid"
+
+# Where to write bitsendd data (be mindful that the blockchain is large)
+#BITSENDD_DATADIR="/var/lib/bitsendd"
+
+# User and group to own bitsendd process
+#BITSENDD_USER="bitsend"
+#BITSENDD_GROUP="bitsend"
+
+# Path to bitsendd executable
+#BITSENDD_BIN="/usr/bin/bitsendd"
+
+# Nice value to run bitsendd under
+#BITSENDD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITSENDD_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for bitsendd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITSENDD_SIGTERM_TIMEOUT=60

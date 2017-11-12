@@ -1,18 +1,18 @@
 /* src/config/bitsend-config.h.  Generated from bitsend-config.h.in by configure.  */
 /* src/config/bitsend-config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef BITCOIN_CONFIG_H
+#ifndef BITSEND_CONFIG_H
 
-#define BITCOIN_CONFIG_H
+#define BITSEND_CONFIG_H
 
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Version Build */
-#define CLIENT_VERSION_BUILD 0
+#define CLIENT_VERSION_BUILD 2
 
 /* Version is release */
-#define CLIENT_VERSION_IS_RELEASE true
+#define CLIENT_VERSION_IS_RELEASE false
 
 /* Major version */
 #define CLIENT_VERSION_MAJOR 0
@@ -27,10 +27,10 @@
 #define COPYRIGHT_HOLDERS "The %s developers"
 
 /* Copyright holder(s) */
-#define COPYRIGHT_HOLDERS_FINAL "The bitcoin Core developers"
+#define COPYRIGHT_HOLDERS_FINAL "The bitsend Core developers"
 
 /* Replacement for %s in copyright holders string */
-#define COPYRIGHT_HOLDERS_SUBSTITUTION "bitcoin Core"
+#define COPYRIGHT_HOLDERS_SUBSTITUTION "bitsend Core"
 
 /* Copyright year */
 #define COPYRIGHT_YEAR 2017
@@ -217,7 +217,7 @@
 #define HAVE_LIBSHLWAPI 1
 
 /* Define to 1 if you have the `ssp' library (-lssp). */
-#define HAVE_LIBSSP 1
+/* #undef HAVE_LIBSSP */
 
 /* Define to 1 if you have the `user32' library (-luser32). */
 #define HAVE_LIBUSER32 1
@@ -314,19 +314,19 @@
 #define LT_OBJDIR ".libs/"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "https://github.com/bitcoin/bitcoin/issues"
+#define PACKAGE_BUGREPORT "https://github.com/bitsend/bitsend/issues"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "bitcoin Core"
+#define PACKAGE_NAME "bitsend Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "bitcoin Core 0.14.0"
+#define PACKAGE_STRING "bitsend Core 0.14.0"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "bitcoin"
+#define PACKAGE_TARNAME "bitsend"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://bitcoincore.org/"
+#define PACKAGE_URL "https://bitsend.info/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "0.14.0"
@@ -381,4 +381,4 @@
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
 
-#endif //BITCOIN_CONFIG_H
+#endif //BITSEND_CONFIG_H

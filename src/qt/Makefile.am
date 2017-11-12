@@ -67,10 +67,10 @@ QT_MOC_CPP = \
   moc_addressbookpage.cpp \
   moc_addresstablemodel.cpp \
   moc_askpassphrasedialog.cpp \
-  moc_bitcoinaddressvalidator.cpp \
-  moc_bitcoinamountfield.cpp \
-  moc_bitcoingui.cpp \
-  moc_bitcoinunits.cpp \
+  moc_bitsendaddressvalidator.cpp \
+  moc_bitsendamountfield.cpp \
+  moc_bitsendgui.cpp \
+  moc_bitsendunits.cpp \
   moc_clientmodel.cpp \
   moc_coincontroldialog.cpp \
   moc_coincontroltreewidget.cpp \
@@ -112,7 +112,7 @@ QT_MOC_CPP = \
   moc_walletview.cpp \
   moc_masternodelist.cpp
 
-BITCOIN_MM = \
+BITSEND_MM = \
   macdockiconhandler.mm \
   macnotificationhandler.mm
 
@@ -129,14 +129,14 @@ PROTOBUF_CC = paymentrequest.pb.cc
 PROTOBUF_H = paymentrequest.pb.h
 PROTOBUF_PROTO = paymentrequest.proto
 
-BITCOIN_QT_H = \
+BITSEND_QT_H = \
   addressbookpage.h \
   addresstablemodel.h \
   askpassphrasedialog.h \
-  bitcoinaddressvalidator.h \
-  bitcoinamountfield.h \
-  bitcoingui.h \
-  bitcoinunits.h \
+  bitsendaddressvalidator.h \
+  bitsendamountfield.h \
+  bitsendgui.h \
+  bitsendunits.h \
   clientmodel.h \
   coincontroldialog.h \
   coincontroltreewidget.h \
@@ -186,10 +186,10 @@ BITCOIN_QT_H = \
 RES_ICONS = \
   res/icons/add.png \
   res/icons/address-book.png \
-  res/icons/bitcoin.ico \
-  res/icons/bitcoin.png \
-  res/icons/bitcoin_testnet.ico \
-  res/icons/bitcoin_testnet.png \
+  res/icons/bitsend.ico \
+  res/icons/bitsend.png \
+  res/icons/bitsend_testnet.ico \
+  res/icons/bitsend_testnet.png \
   res/icons/clock1.png \
   res/icons/clock2.png \
   res/icons/clock3.png \
@@ -235,12 +235,12 @@ RES_ICONS = \
   res/icons/browse.png
 
 
-BITCOIN_QT_CPP = \
+BITSEND_QT_CPP = \
   bitsend.cpp \
-  bitcoinaddressvalidator.cpp \
-  bitcoinamountfield.cpp \
-  bitcoingui.cpp \
-  bitcoinunits.cpp \
+  bitsendaddressvalidator.cpp \
+  bitsendamountfield.cpp \
+  bitsendgui.cpp \
+  bitsendunits.cpp \
   clientmodel.cpp \
   csvmodelwriter.cpp \
   darksendconfig.cpp \
@@ -260,7 +260,7 @@ BITCOIN_QT_CPP = \
   winshutdownmonitor.cpp
 
 if ENABLE_WALLET
-BITCOIN_QT_CPP += \
+BITSEND_QT_CPP += \
   addressbookpage.cpp \
   addresstablemodel.cpp \
   askpassphrasedialog.cpp \
@@ -321,7 +321,7 @@ BSD_RC = res/bitsend-qt-res.rc
 
 libbitsendqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
-libbitsendqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+libbitsendqt_a_SOURCES = $(BITSEND_QT_CPP) $(BITSEND_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS)
 
 nodist_libbitsendqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
@@ -339,16 +339,16 @@ bitsend_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
 bitsend_qt_SOURCES = bitsend.cpp
 if TARGET_DARWIN
-  bitsend_qt_SOURCES += $(BITCOIN_MM)
+  bitsend_qt_SOURCES += $(BITSEND_MM)
 endif
 if TARGET_WINDOWS
   bitsend_qt_SOURCES += $(BSD_RC)
 endif
-bitsend_qt_LDADD = libbitsendqt.a $(LIBBITCOIN_SERVER)
+bitsend_qt_LDADD = libbitsendqt.a $(LIBBITSEND_SERVER)
 if ENABLE_WALLET
-bitsend_qt_LDADD += $(LIBBITCOIN_WALLET)
+bitsend_qt_LDADD += $(LIBBITSEND_WALLET)
 endif
-bitsend_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
+bitsend_qt_LDADD += $(LIBBITSEND_CLI) $(LIBBITSEND_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
 bitsend_qt_LDFLAGS = $(QT_LDFLAGS)
 
@@ -364,7 +364,7 @@ QT_QM=$(QT_TS:.ts=.qm)
 bitsendstrings.cpp: FORCE
 	$(MAKE) -C $(top_srcdir)/src qt/bitsendstrings.cpp
 
-translate: bitsendstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: bitsendstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITSEND_QT_CPP) $(BITSEND_QT_H) $(BITSEND_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
 	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitsend_en.ts
 

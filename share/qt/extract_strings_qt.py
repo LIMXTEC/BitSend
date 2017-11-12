@@ -58,7 +58,7 @@ messages = parse_po(out)
 
 f = open(OUT_CPP, 'w')
 f.write("""
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2009-2014 The Bitsend developers
 // Copyright (c) 2014-2015 The Dash developers
 //Copyright (c) 2014-2017 Bitsend Core Developers
 

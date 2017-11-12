@@ -1,4 +1,4 @@
-// Copyright (c) 2016 The Bitcoin Core developers
+// Copyright (c) 2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -23,13 +23,17 @@ const struct BIP9DeploymentInfo VersionBitsDeploymentInfo[Consensus::MAX_VERSION
 
 ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex* pindexPrev, const Consensus::Params& params, ThresholdConditionCache& cache) const
 {
-    int nPeriod = Period(params);
+	int nPeriod = Period(params);
     int nThreshold = Threshold(params);
     int64_t nTimeStart = BeginTime(params);
     int64_t nTimeTimeout = EndTime(params);
+	int64_t nThresholdHeight = Height(params);
+	
+	int64_t nHeight = 0;
 
     // A block's state is always the same as that of the first of its period, so it is computed based on a pindexPrev whose height equals a multiple of nPeriod - 1.
     if (pindexPrev != NULL) {
+		nHeight = pindexPrev->nHeight;
         pindexPrev = pindexPrev->GetAncestor(pindexPrev->nHeight - ((pindexPrev->nHeight + 1) % nPeriod));
     }
 
@@ -83,7 +87,7 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
                     }
                     pindexCount = pindexCount->pprev;
                 }
-                if (count >= nThreshold) {
+                if (count >= nThreshold && nHeight >= nThresholdHeight) {
                     stateNext = THRESHOLD_LOCKED_IN;
                 }
                 break;
@@ -103,6 +107,20 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
     }
 
     return state;
+	/* int64_t nHeightPrev = Height(params);
+	
+	ThresholdState state = THRESHOLD_DEFINED;
+	
+	if(pindexPrev->nHeight >= nHeightPrev){
+		state = THRESHOLD_ACTIVE;
+	}
+	//check 
+	/* if(pindexPrev->nHeight >= nHeightPrev && state != THRESHOLD_ACTIVE){
+		//Bug , Please report
+		LogPrintf("Bug Warning");
+	} *
+	
+    return state;  */
 }
 
 int AbstractThresholdConditionChecker::GetStateSinceHeightFor(const CBlockIndex* pindexPrev, const Consensus::Params& params, ThresholdConditionCache& cache) const
@@ -147,12 +165,14 @@ private:
 protected:
     int64_t BeginTime(const Consensus::Params& params) const { return params.vDeployments[id].nStartTime; }
     int64_t EndTime(const Consensus::Params& params) const { return params.vDeployments[id].nTimeout; }
+	int64_t Height(const Consensus::Params& params) const { return params.vDeployments[id].nHeight; }
     int Period(const Consensus::Params& params) const { return params.nMinerConfirmationWindow; }
     int Threshold(const Consensus::Params& params) const { return params.nRuleChangeActivationThreshold; }
 
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const
     {
         return (((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) && (pindex->nVersion & Mask(params)) != 0);
+		//return (pindex->nHeight >= 354490);//current height
     }
 
 public:

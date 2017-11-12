@@ -44,7 +44,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
                 donationPercent = donation.substr(pos + 1);
                 donationAddress = donation.substr(0, pos);
             }
-            CBitcoinAddress address(donationAddress);
+            CBitsendAddress address(donationAddress);
             if (!address.IsValid()) {
                 strErr = "Invalid Bitsend address in masternode.conf line: " + line;
                 streamConfig.close();
@@ -57,7 +57,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
 
 		SplitHostPort(ip, port, hostname);
         
-            if(port != 8888) {
+            if(port != 8886) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;

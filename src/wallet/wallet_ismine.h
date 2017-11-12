@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLET_ISMINE_H
-#define BITCOIN_WALLET_WALLET_ISMINE_H
+#ifndef BITSEND_WALLET_WALLET_ISMINE_H
+#define BITSEND_WALLET_WALLET_ISMINE_H
 
 #include "script/standard.h"
 
@@ -31,4 +31,4 @@ typedef uint8_t isminefilter;
 isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest);
 
-#endif // BITCOIN_WALLET_WALLET_ISMINE_H
+#endif // BITSEND_WALLET_WALLET_ISMINE_H

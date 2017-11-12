@@ -1,6 +1,6 @@
-usr/local/bin/bitcoin-qt usr/bin
-share/pixmaps/bitcoin32.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
-debian/bitcoin-qt.desktop usr/share/applications
-debian/bitcoin-qt.protocol usr/share/kde4/services/
+usr/local/bin/bitsend-qt usr/bin
+share/pixmaps/bitsend32.xpm usr/share/pixmaps
+share/pixmaps/bitsend16.xpm usr/share/pixmaps
+share/pixmaps/bitsend128.png usr/share/pixmaps
+debian/bitsend-qt.desktop usr/share/applications
+debian/bitsend-qt.protocol usr/share/kde4/services/

@@ -131,11 +131,12 @@ void MasternodeList::StartAll(std::string strCommand)
         std::string strError;
         //CMasternodeBroadcast mnb;
 
-        int nIndex;
-        //if(!mne.castOutputIndex(nIndex))
-            //continue;
+        int32_t nOutputIndex = 0;
+        if(!ParseInt32(mne.getOutputIndex(), &nOutputIndex)) {
+            continue;
+        }
 
-        CTxIn txin = CTxIn(uint256S(mne.getTxHash()), uint32_t(nIndex));
+        CTxIn txin = CTxIn(uint256S(mne.getTxHash()), nOutputIndex);
         CMasternode* pmn = mnodeman.Find(txin);
 
         if (strCommand == "start-missing" && pmn) continue;
@@ -190,7 +191,7 @@ void MasternodeList::updateMyMasternodeInfo(QString strAlias, QString strAddr, C
     pubkey = GetScriptForDestination(pmn->pubkey.GetID());
 	CTxDestination address1;
 	ExtractDestination(pubkey, address1);
-    CBitcoinAddress address2(address1);
+    CBitsendAddress address2(address1);
     QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
     QTableWidgetItem* addrItem = new QTableWidgetItem(pmn ? QString::fromStdString(pmn->addr.ToString()) : strAddr);
     QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(pmn ? pmn->protocolVersion : -1));
@@ -222,15 +223,16 @@ void MasternodeList::updateMyNodeList(bool fForce)
 
     ui->tableWidgetMasternodes->setSortingEnabled(false);
     BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-        int nIndex;
-        //if(!mne.castOutputIndex(nIndex))
-            //continue;
-
-        CTxIn txin = CTxIn(uint256S(mne.getTxHash()), uint32_t(nIndex));
+        int32_t nOutputIndex = 0;
+        if(!ParseInt32(mne.getOutputIndex(), &nOutputIndex)) {
+            continue;
+        }
+        CTxIn txin = CTxIn(uint256S(mne.getTxHash()), nOutputIndex);
         CMasternode* pmn = mnodeman.Find(txin);
-
-        updateMyMasternodeInfo(QString::fromStdString(mne.getAlias()), QString::fromStdString(mne.getIp()), pmn);
-    }
+		
+		if(pmn != NULL){
+        updateMyMasternodeInfo(QString::fromStdString(mne.getAlias()), QString::fromStdString(mne.getIp()), pmn);}
+    } 
     ui->tableWidgetMasternodes->setSortingEnabled(true);
 
     // reset "timer"
@@ -266,7 +268,7 @@ void MasternodeList::updateNodeList()
 		pubkey = GetScriptForDestination(mn.pubkey.GetID());
 		CTxDestination address1;
 		ExtractDestination(pubkey, address1);
-		CBitcoinAddress address2(address1);
+		CBitsendAddress address2(address1);
         // populate list
         // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
         QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
@@ -345,7 +347,7 @@ void MasternodeList::on_startAllButton_clicked()
 {
     // Display message box
     QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm all masternodes start"),
-        tr("Are you sure you want to start ALL masternodes?"),
+        tr("Are you sure you want to start ALL masternodes? Please make sure that wallet is unlocked"),
         QMessageBox::Yes | QMessageBox::Cancel,
         QMessageBox::Cancel);
 

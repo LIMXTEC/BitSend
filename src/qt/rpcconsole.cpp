@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/bitsend-config.h"
 #endif
 
 #include "rpcconsole.h"
@@ -730,7 +730,7 @@ void RPCConsole::buildParameterlist(QString arg)
     // Append repair parameter to command line.
     args.append(arg);
 
-    // Send command-line arguments to BitcoinGUI::handleRestart()
+    // Send command-line arguments to BitsendGUI::handleRestart()
     Q_EMIT handleRestart(args);
 }
 
@@ -981,6 +981,16 @@ void RPCConsole::on_openDebugLogfileButton_clicked()
 void RPCConsole::showBackups()
 {
     GUIUtil::showBackups();
+}
+
+void RPCConsole::showConf()
+{
+    GUIUtil::showConf();
+}
+
+void RPCConsole::showBitsendConf()
+{
+    GUIUtil::showBitsendConf();
 }
 
 void RPCConsole::scrollToEnd()

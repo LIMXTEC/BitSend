@@ -1,5 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers 
+// Copyright (c) 2015-2017 The Dash developers 
+// Copyright (c) 2015-2017 The Bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -127,8 +129,8 @@ std::vector<CAmount> darkSendDenominations;
 string strBudgetMode = "";
 //TODO-- ends
 
-const char * const BITCOIN_CONF_FILENAME = "bitsend.conf";
-const char * const BITCOIN_PID_FILENAME = "bitsend.pid";
+const char * const BITSEND_CONF_FILENAME = "bitsend.conf";
+const char * const BITSEND_PID_FILENAME = "bitsend.pid";
 
 
 CCriticalSection cs_args;
@@ -610,7 +612,7 @@ void ReadConfigFile(const std::string& confPath)
         //FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         //if (configFile != NULL)
             //fclose(configFile);
-        return; // Nothing to read, so just return //return; // No bitcoin.conf file is OK
+        return; // Nothing to read, so just return //return; // No bitsend.conf file is OK
     }
         
 
@@ -637,7 +639,7 @@ void ReadConfigFile(const std::string& confPath)
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", BITCOIN_PID_FILENAME));
+    boost::filesystem::path pathPidFile(GetArg("-pid", BITSEND_PID_FILENAME));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -900,8 +902,8 @@ std::string CopyrightHolders(const std::string& strPrefix)
     std::string strCopyrightHolders = strPrefix + strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));
 
     // Check for untranslated substitution to make sure bitsend Core copyright is not removed by accident
-    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("bitsend Core") == std::string::npos) {
-        strCopyrightHolders += "\n" + strPrefix + "The bitsend Core developers";
+    if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION).find("Bitsend Core") == std::string::npos) {
+        strCopyrightHolders += "\n" + strPrefix + "The Bitcoin Core developers";
     }
     return strCopyrightHolders;
 }

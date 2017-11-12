@@ -1,10 +1,10 @@
-// Copyright (c) 2014-2016 The Bitcoin Core developers
+// Copyright (c) 2014-2016 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chain.h"
 #include "versionbits.h"
-#include "test/test_bitcoin.h"
+#include "test/test_bitsend.h"
 #include "test/test_random.h"
 #include "chainparams.h"
 #include "validation.h"
@@ -25,6 +25,7 @@ private:
 public:
     int64_t BeginTime(const Consensus::Params& params) const { return TestTime(10000); }
     int64_t EndTime(const Consensus::Params& params) const { return TestTime(20000); }
+	int64_t Height(const Consensus::Params& params) const { return 400000; }
     int Period(const Consensus::Params& params) const { return 1000; }
     int Threshold(const Consensus::Params& params) const { return 900; }
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const { return (pindex->nVersion & 0x100); }

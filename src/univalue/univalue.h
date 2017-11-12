@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UNIVALUE_UNIVALUE_H
-#define BITCOIN_UNIVALUE_UNIVALUE_H
+#ifndef BITSEND_UNIVALUE_UNIVALUE_H
+#define BITSEND_UNIVALUE_UNIVALUE_H
 
 #include <stdint.h>
 #include <string>
@@ -152,4 +152,4 @@ extern enum jtokentype getJsonToken(std::string& tokenVal,
                                     unsigned int& consumed, const char *raw);
 extern const char *uvTypeName(UniValue::VType t);
 
-#endif // BITCOIN_UNIVALUE_UNIVALUE_H
+#endif // BITSEND_UNIVALUE_UNIVALUE_H

@@ -71,7 +71,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strComman
 
         CTxDestination address1;
         ExtractDestination(winner.payee, address1);
-        CBitcoinAddress address2(address1);
+        CBitsendAddress address2(address1);
 
         arith_uint256 hash = UintToArith256(winner.GetHash());
         if(mapSeenMasternodeVotes.count(ArithToUint256(hash))) {
@@ -284,16 +284,17 @@ void CMasternode::Check()
 
     if(!unitTest){
         CValidationState state;
-        CTransactionRef tx = CTransactionRef();//todo++ for check t
-		CMutableTransaction tx2 = CMutableTransaction();
+		CMutableTransaction mtx;
         CTxOut vout = CTxOut(4999.99*COIN, darkSendSigner.collateralPubKey);
-        tx2.vin.push_back(vin);
-        tx2.vout.push_back(vout);
-
-        /*if(!AcceptToMemoryPool(mempool, state, tx, false, NULL, false, true, true)){
+        mtx.vin.push_back(vin);
+        mtx.vout.push_back(vout);
+		
+        if(!AcceptableInputs(mempool, state, MakeTransactionRef(mtx))){
             activeState = MASTERNODE_VIN_SPENT;
+			LogPrintf("tx failed to get accepted on mempool");
             return;
-        }*/
+        } 
+		
     }
 	return;
 
@@ -534,13 +535,13 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 
     CTxDestination address1;
     ExtractDestination(newWinner.payee, address1);
-    CBitcoinAddress address2(address1);
+    CBitsendAddress address2(address1);
 
 	CTxDestination address3;
 
 
 	ExtractDestination(payeeSource, address3);
-	CBitcoinAddress address4(address3);
+	CBitsendAddress address4(address3);
 	LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
 
     if(Sign(newWinner))

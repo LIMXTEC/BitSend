@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=bitsend-qt '%u'
+protocol=bitsend
 input=none
 output=none
 helper=true

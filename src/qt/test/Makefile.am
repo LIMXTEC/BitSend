@@ -34,11 +34,11 @@ endif
 
 nodist_test_bitsend_qt_SOURCES = $(TEST_QT_MOC_CPP)
 
-test_bitsend_qt_LDADD = $(LIBBITCOINQT) $(LIBBITCOIN_SERVER)
+test_bitsend_qt_LDADD = $(LIBBITSENDQT) $(LIBBITSEND_SERVER)
 if ENABLE_WALLET
-test_bitsend_qt_LDADD += $(LIBBITCOIN_WALLET)
+test_bitsend_qt_LDADD += $(LIBBITSEND_WALLET)
 endif
-test_bitsend_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) \
+test_bitsend_qt_LDADD += $(LIBBITSEND_CLI) $(LIBBITSEND_COMMON) $(LIBLEVELDB) \
   $(LIBMEMENV) $(BOOST_LIBS) $(QT_DBUS_LIBS) $(QT_TEST_LIBS) $(QT_LIBS) \
   $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
 test_bitsend_qt_LDFLAGS = $(QT_LDFLAGS)
