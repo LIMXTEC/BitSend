@@ -762,14 +762,14 @@ Value masternodelist(const Array& params, bool fHelp)
                                mn.Status() << " " <<
                                mn.protocolVersion << " " <<
                                address2.ToString() << " " <<
-                               mn.vin.prevout.hash.ToString() << " " <<
+                               addrStream.str() << " " <<
                                mn.lastTimeSeen << " " << setw(8) <<
                                (mn.lastTimeSeen - mn.sigTime);
                 std::string output = stringStream.str();
                 stringStream << " " << strAddr;
                 if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
                         strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(addrStream.str(), output));
+                obj.push_back(Pair(mn.vin.prevout.hash.ToString(), output));
             } else if (strMode == "lastseen") {
                 if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strAddr,       (int64_t)mn.lastTimeSeen));
