@@ -1,5 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitsend Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers 
+// Copyright (c) 2015-2017 The Dash developers 
+// Copyright (c) 2015-2017 The Bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -588,12 +590,13 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/bitsend/bitsend>";
-    const std::string URL_WEBSITE = "<https://bitsendcore.org>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/Limxtec/bitsend>";
+    const std::string URL_WEBSITE = "<https://bitsend.info>";
 
 	//TODO-- add bitsend license
-    return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
-           "\n" +
+    return FormatParagraph(strprintf(_("Copyright (C) 2009 -%i The Bitcoin Core developers"), COPYRIGHT_YEAR)) + "\n" +
+		   FormatParagraph(strprintf(_("Copyright (C) 2014 -%i The Dash Developers"), COPYRIGHT_YEAR)) + "\n" +
+           FormatParagraph(strprintf(_("Copyright (C) 2015 -%i The Bitsend Core Developers"), COPYRIGHT_YEAR)) + "\n" + "\n" +
            strprintf(_("Please contribute if you find %s useful. "
                        "Visit %s for further information about the software."),
                PACKAGE_NAME, URL_WEBSITE) +

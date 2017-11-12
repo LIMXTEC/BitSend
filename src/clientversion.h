@@ -1,4 +1,6 @@
-// Copyright (c) 2009-2016 The Bitsend Core developers
+// Copyright (c) 2009-2017 The Bitcoin Core developers 
+// Copyright (c) 2015-2017 The Dash developers 
+// Copyright (c) 2015-2017 The Bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,10 +19,10 @@
 #define CLIENT_VERSION_MAJOR 0
 #define CLIENT_VERSION_MINOR 14
 #define CLIENT_VERSION_REVISION 0
-#define CLIENT_VERSION_BUILD 2
+#define CLIENT_VERSION_BUILD 4
 
 //! Set to true for release, false for prerelease or test build
-#define CLIENT_VERSION_IS_RELEASE false
+#define CLIENT_VERSION_IS_RELEASE true
 
 /**
  * Copyright year (2009-this)
