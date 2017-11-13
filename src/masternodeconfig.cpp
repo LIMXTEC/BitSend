@@ -57,7 +57,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
 
 		SplitHostPort(ip, port, hostname);
         
-            if(port != 8888) {
+            if(port != 8886) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;
