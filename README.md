@@ -1,7 +1,5 @@
 ## BSD - Bitsend Core 0.14.0.2
-## The first Masternodecoin with Core 0.14 and Segwit Support
----WARNING----This Branch is under development----
-If you want to build or use source, please relay on release tags, or branches. This branch is highly experimental.
+## The first Masternodecoin with Core 0.14 and Segwit Support.
 
 ----------------
 
