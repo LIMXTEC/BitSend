@@ -91,7 +91,7 @@ Then build using:
 
 ## Depends system
 
-For further documentation on the depends system see [README.md](../depends/README.md) in the depends directory.
+For further documentation on the depends system see [README](../depends/README) in the depends directory.
 
 Installation
 -------------
