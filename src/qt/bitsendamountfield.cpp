@@ -14,6 +14,10 @@
 #include <QKeyEvent>
 #include <QLineEdit>
 
+#ifdef BSD
+#undef BSD
+#endif
+
 /** QSpinBox that uses fixed-point numbers internally and uses our own
  * formatting/parsing functions.
  */

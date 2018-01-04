@@ -32,6 +32,10 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
+#ifdef BSD
+#undef BSD
+#endif
+
 QList<CAmount> CoinControlDialog::payAmounts;
 CCoinControl* CoinControlDialog::coinControl = new CCoinControl();
 bool CoinControlDialog::fSubtractFeeFromAmount = false;

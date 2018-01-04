@@ -8,6 +8,10 @@
 
 #include <QStringList>
 
+#ifdef BSD
+#undef BSD
+#endif
+
 BitsendUnits::BitsendUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
