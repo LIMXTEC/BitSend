@@ -81,10 +81,6 @@ extern double NSAppKitVersionNumber;
 #endif
 #endif
 
-#ifdef BSD
-#undef BSD
-#endif
-
 namespace GUIUtil {
 
 QString dateTimeStr(const QDateTime &date)
@@ -196,7 +192,7 @@ bool parseBitsendURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitsendUnits::parse(BitsendUnits::BSD, i->second, &rv.amount))
+                if(!BitsendUnits::parse(BitsendUnits::BsD, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -235,7 +231,7 @@ QString formatBitsendURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitsendUnits::format(BitsendUnits::BSD, info.amount, false, BitsendUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitsendUnits::format(BitsendUnits::BsD, info.amount, false, BitsendUnits::separatorNever));
         paramCount++;
     }
 

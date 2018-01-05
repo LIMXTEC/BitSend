@@ -8,10 +8,6 @@
 
 #include <QStringList>
 
-#ifdef BSD
-#undef BSD
-#endif
-
 BitsendUnits::BitsendUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
@@ -21,7 +17,7 @@ BitsendUnits::BitsendUnits(QObject *parent):
 QList<BitsendUnits::Unit> BitsendUnits::availableUnits()
 {
     QList<BitsendUnits::Unit> unitlist;
-    unitlist.append(BSD);
+    unitlist.append(BsD);
     unitlist.append(mBSD);
     unitlist.append(uBSD);
     return unitlist;
@@ -31,7 +27,7 @@ bool BitsendUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BSD:
+    case BsD:
     case mBSD:
     case uBSD:
         return true;
@@ -44,7 +40,7 @@ QString BitsendUnits::name(int unit)
 {
     switch(unit)
     {
-    case BSD: return QString("BSD");
+    case BsD: return QString("BSD");
     case mBSD: return QString("mBSD");
     case uBSD: return QString::fromUtf8("μBSD");
     default: return QString("???");
@@ -55,7 +51,7 @@ QString BitsendUnits::description(int unit)
 {
     switch(unit)
     {
-    case BSD: return QString("Bitsends");
+    case BsD: return QString("Bitsends");
     case mBSD: return QString("Milli-Bitsends (1 / 1" THIN_SP_UTF8 "000)");
     case uBSD: return QString("Micro-Bitsends (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
@@ -66,7 +62,7 @@ qint64 BitsendUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BSD:  return 100000000;
+    case BsD:  return 100000000;
     case mBSD: return 100000;
     case uBSD: return 100;
     default:   return 100000000;
@@ -77,7 +73,7 @@ int BitsendUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BSD: return 8;
+    case BsD: return 8;
     case mBSD: return 5;
     case uBSD: return 2;
     default: return 0;

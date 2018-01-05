@@ -32,10 +32,6 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
-#ifdef BSD
-#undef BSD
-#endif
-
 QList<CAmount> CoinControlDialog::payAmounts;
 CCoinControl* CoinControlDialog::coinControl = new CCoinControl();
 bool CoinControlDialog::fSubtractFeeFromAmount = false;
@@ -574,7 +570,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = BitsendUnits::BSD;
+    int nDisplayUnit = BitsendUnits::BsD;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
