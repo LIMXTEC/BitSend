@@ -56,7 +56,7 @@ public:
      */
     enum Unit
     {
-        BSD,
+        BsD,
         mBSD,
         uBSD
     };
