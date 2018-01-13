@@ -35,6 +35,7 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     QStackedWidget(parent),
     clientModel(0),
     walletModel(0),
+    unlockContext(0),
     platformStyle(_platformStyle)
 {
     // Create tabs
@@ -86,6 +87,8 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 
 WalletView::~WalletView()
 {
+    if(unlockContext)
+        delete (WalletModel::UnlockContext*)(unlockContext);
 }
 
 void WalletView::setBitsendGUI(BitsendGUI *gui)
@@ -294,6 +297,15 @@ void WalletView::unlockWallet()
         dlg.setModel(walletModel);
         dlg.exec();
     }
+}
+
+void WalletView::requestUnlockWallet()
+{
+    if(walletModel)
+    {
+        unlockContext = (void*)(new WalletModel::UnlockContext(walletModel->requestUnlock()));
+    }
+    unlockContext = 0;
 }
 
 void WalletView::usedSendingAddresses()
