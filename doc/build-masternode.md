@@ -1,12 +1,12 @@
-MASTERNODE BUILD NOTES [written by MangledBlue & BSDSUPPORT]
+MASTERNODE BUILD NOTES [written by MangledBlue & LIMXSUPPORT]
 ======================
 Some notes on how to build a Bitsend Masternode in Ubuntu server. Using Windows Qt Client to configure.
 
 
 System requirements
 --------------------
-An Ubuntu 14.10 64bit server is recommended with at least 768MB 
-of memory and 15GB space available when running a Masternode.
+An Ubuntu 16.04 64bit server is recommended with at least 1024MB 
+of memory and 25GB space available when running a Masternode.
 
 
 Notes
@@ -31,11 +31,11 @@ Open your Windows Bitsend-Qt Client and open the debug console.
 	Send 25000 BSD to "address 0"
 	
 	
-	Rent a Vultr Ubuntu 14.10 64bit server
+	Rent a Vultr Ubuntu 16.04 64bit server
 	--------------------------------------
 	https://www.vultr.com
 	
-	Vultr accepts Bitsend payments.
+	Vultr accepts Bitcoin payments.
 	
 
 
@@ -48,21 +48,22 @@ Build Instructions: Ubuntu & Debian
 	---
 	$ sudo apt-get install build-essential
 	$ sudo apt-get install libtool autotools-dev autoconf automake libssl-dev libevent-dev
-	$ sudo apt-get install libboost1.54-all-dev
+	$ sudo apt-get install libboost1.58-all-dev
 	$ sudo add-apt-repository ppa:bitcoin/bitcoin
+	$ sudo apt-get update
 	$ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 	$ sudo apt-get install miniupnpc*-dev
 	$ sudo apt-get install git ntp make g++ gcc autoconf cpp ngrep iftop sysstat unzip
 	$ sudo update-rc.d ntp enable
-	$ sudo apt-get update
 	$ sudo apt-get upgrade
 	---
-	optiopnal linux gui: $ sudo apt-get install lubuntu-desktop
+	optional linux gui: $ sudo apt-get install lubuntu-desktop
+	$ sudo reboot
 	---
 	optional, if problems with boost version: 
 	$ sudo apt-get remove libboost*
 	$ sudo apt-get purge libboost*
-	$ sudo apt-get install libboost1.54-all-dev
+	$ sudo apt-get install libboost1.58-all-dev
 
 
 	Swapfile:
@@ -83,30 +84,31 @@ Build Instructions: Ubuntu & Debian
 	$ sudo ufw status
 
 
-	Install BSD
-	------------
+	Install Bitsend
+	---------------
 	mkdir .bitsend
 	cd .bitsend
-	wget https://github.com/LIMXTEC/BitSend/releases/download/BSD1271/Linux.tar
-	tar xvzf Linux.tar
+	wget https://github.com/LIMXTEC/BitSend/releases/download/v0.14.0.5/4.Linux-bitsend.tar.gz
+	tar xvzf Linux.tar.gz
 	
 	$ sudo cp bitsendd /usr/bin
 	$ sudo chmod 775 /usr/bin/bitsendd
 
 	
 	Create a bitsend.conf in nano
-	-------------------------------
+	-----------------------------
 	cd .bitsend
 	nano
 	---
-	rpcuser=<anything>
-	rpcpassword=<anything>
+	rpcuser=user
+	rpcpassword=userpassword
 	rpcallowip=127.0.0.1
 	maxconnections=256
 	listen=1
 	server=1
 	daemon=1
 	masternode=1
+	promode=1
 	masternodeprivkey=XXXXXX
 	externalip=xxx.xxx.xxx.xxx:8886
 	---
@@ -131,25 +133,25 @@ Build Instructions: Ubuntu & Debian
 	cd
 	
 	
-	Manually start bitsendd
-	-------------------------
+	Manually start bitsend server
+	-----------------------------
 	cd .bitsend
 	./bitsendd	
 	
 	
-	limcoinxd commands
+	bitsend commands
 	------------------
-	./bitsendd getinfo
-	./bitsendd masternode list
-	./bitsendd masternode debug
-	./bitsendd masternode stop
-	./bitsendd help
+	./bitsend-cli getinfo
+	./bitsend-cli masternode list
+	./bitsend-cli masternode debug
+	./bitsend-cli masternode stop
+	./bitsend-cli help
 	
 	
-	Start Mining
+	Start mining - optional
 	----------------------
-	./bitsend.cli setgenerate true
-	./bitsend.cli gethashespersec
+	./bitsend-cli setgenerate true
+	./bitsend-cli gethashespersec
 	
 
 Windows Bitsend-Qt Client configuration 
@@ -160,10 +162,11 @@ Windows Bitsend-Qt Client configuration
 	go to bitsend.conf in %appdata%
 	
 	---
-	rpcuser=<anything>
-	rpcpassword=<anything>
+	rpcuser=user
+	rpcpassword=userpasword
 	maxconnections=256
 	masternode=1
+	promode=1
 	masternodeprivkey=XXXXXXXXXXXXXXXXXX
 	masternodeaddr=xxx.xxx.xxx.xxx:8886
 	---
@@ -186,8 +189,8 @@ Windows Bitsend-Qt Client configuration
 Updating the Masternode & OpenSSL version
 -----------------------------------------
 
-	./bitsend.cli setgenerate false
-	./bitsendd stop
+	./bitsend-cli setgenerate false
+	./bitsend-cli stop
 
 	$ sudo apt-get remove libssl1.0.0*
 	$ sudo apt-get install -f
@@ -204,7 +207,7 @@ Updating the Masternode & OpenSSL version
 	$ openssl version
 	
 	./bitsendd
-	./bitsendd getinfo
+	./bitsend-cli getinfo
 	
-	./bitsend.cli setgenerate true
-	./bitsend.cli gethashespersec
+	./bitsend-cli setgenerate true
+	./bitsend-cli gethashespersec
