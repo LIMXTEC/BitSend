@@ -35,7 +35,6 @@ src/qt/test/moc*.cpp
 *.orig
 *.o
 *.o-*
-*.patch
 .bitsend
 *.a
 *.pb.cc
