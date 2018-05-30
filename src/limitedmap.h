@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2016 The Bitsend Core developers
+// Copyright (c) 2012-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +27,7 @@ protected:
     size_type nMaxSize;
 
 public:
-    limitedmap(size_type nMaxSizeIn)
+    explicit limitedmap(size_type nMaxSizeIn)
     {
         assert(nMaxSizeIn > 0);
         nMaxSize = nMaxSizeIn;

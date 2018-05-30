@@ -1,21 +1,21 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "guiutil.h"
+#include <qt/guiutil.h>
 
-#include "bitsendaddressvalidator.h"
-#include "bitsendunits.h"
-#include "qvalidatedlineedit.h"
-#include "walletmodel.h"
+#include <qt/bitsendaddressvalidator.h>
+#include <qt/bitsendunits.h>
+#include <qt/qvalidatedlineedit.h>
+#include <qt/walletmodel.h>
 
-#include "primitives/transaction.h"
-#include "init.h"
-#include "policy/policy.h"
-#include "protocol.h"
-#include "script/script.h"
-#include "script/standard.h"
-#include "util.h"
+#include <primitives/transaction.h>
+#include <init.h>
+#include <policy/policy.h>
+#include <protocol.h>
+#include <script/script.h>
+#include <script/standard.h>
+#include <util.h>
 
 #ifdef WIN32
 #ifdef _WIN32_WINNT
@@ -30,16 +30,11 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-#include "shellapi.h"
-#include "shlobj.h"
-#include "shlwapi.h"
+#include <shellapi.h>
+#include <shlobj.h>
+#include <shlwapi.h>
 #endif
 
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#if BOOST_FILESYSTEM_VERSION >= 3
-#include <boost/filesystem/detail/utf8_codecvt_facet.hpp>
-#endif
 #include <boost/scoped_array.hpp>
 
 #include <QAbstractItemView>
@@ -67,11 +62,9 @@
 #include <QFontDatabase>
 #endif
 
-#if BOOST_FILESYSTEM_VERSION >= 3
-static boost::filesystem::detail::utf8_codecvt_facet utf8;
-#endif
+static fs::detail::utf8_codecvt_facet utf8;
 
-#if defined(Q_OS_MAC)
+#if defined(Q_OS_BSD)
 extern double NSAppKitVersionNumber;
 #if !defined(NSAppKitVersionNumber10_8)
 #define NSAppKitVersionNumber10_8 1187
@@ -118,8 +111,9 @@ static std::string DummyAddress(const CChainParams &params)
     sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));
     for(int i=0; i<256; ++i) { // Try every trailing byte
         std::string s = EncodeBase58(sourcedata.data(), sourcedata.data() + sourcedata.size());
-        if (!CBitsendAddress(s).IsValid())
+        if (!IsValidDestinationString(s)) {
             return s;
+        }
         sourcedata[sourcedata.size()-1] += 1;
     }
     return "";
@@ -192,7 +186,7 @@ bool parseBitsendURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitsendUnits::parse(BitsendUnits::BsD, i->second, &rv.amount))
+                if(!BitsendUnits::parse(BitsendUnits::BSD, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -218,7 +212,7 @@ bool parseBitsendURI(QString uri, SendCoinsRecipient *out)
     //    which will lower-case it (and thus invalidate the address).
     if(uri.startsWith("bitsend://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "bitsend:");
+        uri.replace(0, 14, "bitsend:");
     }
     QUrl uriInstance(uri);
     return parseBitsendURI(uriInstance, out);
@@ -231,7 +225,7 @@ QString formatBitsendURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitsendUnits::format(BitsendUnits::BsD, info.amount, false, BitsendUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitsendUnits::format(BitsendUnits::BSD, info.amount, false, BitsendUnits::separatorNever));
         paramCount++;
     }
 
@@ -254,10 +248,10 @@ QString formatBitsendURI(const SendCoinsRecipient &info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = CBitsendAddress(address.toStdString()).Get();
+    CTxDestination dest = DecodeDestination(address.toStdString());
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
-    return txOut.IsDust(dustRelayFee);
+    return IsDust(txOut, ::dustRelayFee);
 }
 
 QString HtmlEscape(const QString& str, bool fMultiLine)
@@ -414,43 +408,32 @@ bool isObscured(QWidget *w)
 
 void openDebugLogfile()
 {
-    boost::filesystem::path pathDebug = GetDataDir() / "debug.log";
+    fs::path pathDebug = GetDataDir() / "debug.log";
 
     /* Open debug.log with the associated application */
-    if (boost::filesystem::exists(pathDebug))
+    if (fs::exists(pathDebug))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
 }
 
-void showBackups()
+bool openBitsendConf()
 {
-    boost::filesystem::path pathBackups = GetDataDir() / "backups";
+    boost::filesystem::path pathConfig = GetConfigFile(BITSEND_CONF_FILENAME);
 
-    /* Open folder with default browser */
-    if (boost::filesystem::exists(pathBackups))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
-}
-
-void showConf()
-{
-    boost::filesystem::path pathBackups = GetDataDir() / "masternode.conf";
-
-    /* Open folder with default browser */
-    if (boost::filesystem::exists(pathBackups))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
-}
-
-void showBitsendConf()
-{
-    boost::filesystem::path pathBackups = GetDataDir() / "bitsend.conf";
-
-    /* Open folder with default browser */
-    if (boost::filesystem::exists(pathBackups))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
+    /* Create the file */
+    boost::filesystem::ofstream configFile(pathConfig, std::ios_base::app);
+    
+    if (!configFile.good())
+        return false;
+    
+    configFile.close();
+    
+    /* Open bitsend.conf with the associated application */
+    return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
 
 void SubstituteFonts(const QString& language)
 {
-#if defined(Q_OS_MAC)
+#if defined(Q_OS_BSD)
 // Background:
 // OSX's default font changed in 10.9 and Qt is unable to find it with its
 // usual fallback methods when building against the 10.7 sdk or lower.
@@ -463,7 +446,7 @@ void SubstituteFonts(const QString& language)
 // Solution: If building with the 10.7 SDK or lower and the user's platform
 // is 10.9 or higher at runtime, substitute the correct font. This needs to
 // happen before the QApplication is created.
-#if defined(MAC_OS_X_VERSION_MAX_ALLOWED) && MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_8
+#if defined(BSD_OS_X_VERSION_MAX_ALLOWED) && BSD_OS_X_VERSION_MAX_ALLOWED < BSD_OS_X_VERSION_10_8
     if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_8)
     {
         if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_9)
@@ -474,7 +457,7 @@ void SubstituteFonts(const QString& language)
             /* 10.10 or later system */
             if (language == "zh_CN" || language == "zh_TW" || language == "zh_HK") // traditional or simplified Chinese
               QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Heiti SC");
-            else if (language == "ja") // Japanesee
+            else if (language == "ja") // Japanese
               QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Songti SC");
             else
               QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Lucida Grande");
@@ -628,7 +611,7 @@ TableViewLastColumnResizingFixer::TableViewLastColumnResizingFixer(QTableView* t
 }
 
 #ifdef WIN32
-boost::filesystem::path static StartupShortcutPath()
+fs::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
@@ -641,21 +624,21 @@ boost::filesystem::path static StartupShortcutPath()
 bool GetStartOnSystemStartup()
 {
     // check for Bitsend*.lnk
-    return boost::filesystem::exists(StartupShortcutPath());
+    return fs::exists(StartupShortcutPath());
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
     // If the shortcut exists already, remove it for updating
-    boost::filesystem::remove(StartupShortcutPath());
+    fs::remove(StartupShortcutPath());
 
     if (fAutoStart)
     {
-        CoInitialize(NULL);
+        CoInitialize(nullptr);
 
         // Get a pointer to the IShellLink interface.
-        IShellLink* psl = NULL;
-        HRESULT hres = CoCreateInstance(CLSID_ShellLink, NULL,
+        IShellLink* psl = nullptr;
+        HRESULT hres = CoCreateInstance(CLSID_ShellLink, nullptr,
             CLSCTX_INPROC_SERVER, IID_IShellLink,
             reinterpret_cast<void**>(&psl));
 
@@ -663,12 +646,12 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         {
             // Get the current executable path
             TCHAR pszExePath[MAX_PATH];
-            GetModuleFileName(NULL, pszExePath, sizeof(pszExePath));
+            GetModuleFileName(nullptr, pszExePath, sizeof(pszExePath));
 
             // Start client minimized
             QString strArgs = "-min";
             // Set -testnet /-regtest options
-            strArgs += QString::fromStdString(strprintf(" -testnet=%d -regtest=%d", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false)));
+            strArgs += QString::fromStdString(strprintf(" -testnet=%d -regtest=%d", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false)));
 
 #ifdef UNICODE
             boost::scoped_array<TCHAR> args(new TCHAR[strArgs.length() + 1]);
@@ -691,7 +674,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 
             // Query IShellLink for the IPersistFile interface for
             // saving the shortcut in persistent storage.
-            IPersistFile* ppf = NULL;
+            IPersistFile* ppf = nullptr;
             hres = psl->QueryInterface(IID_IPersistFile, reinterpret_cast<void**>(&ppf));
             if (SUCCEEDED(hres))
             {
@@ -717,10 +700,8 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 // Follow the Desktop Application Autostart Spec:
 // http://standards.freedesktop.org/autostart-spec/autostart-spec-latest.html
 
-boost::filesystem::path static GetAutostartDir()
+fs::path static GetAutostartDir()
 {
-    namespace fs = boost::filesystem;
-
     char* pszConfigHome = getenv("XDG_CONFIG_HOME");
     if (pszConfigHome) return fs::path(pszConfigHome) / "autostart";
     char* pszHome = getenv("HOME");
@@ -728,7 +709,7 @@ boost::filesystem::path static GetAutostartDir()
     return fs::path();
 }
 
-boost::filesystem::path static GetAutostartFilePath()
+fs::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
@@ -738,7 +719,7 @@ boost::filesystem::path static GetAutostartFilePath()
 
 bool GetStartOnSystemStartup()
 {
-    boost::filesystem::ifstream optionFile(GetAutostartFilePath());
+    fs::ifstream optionFile(GetAutostartFilePath());
     if (!optionFile.good())
         return false;
     // Scan through file for "Hidden=true":
@@ -758,17 +739,18 @@ bool GetStartOnSystemStartup()
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
     if (!fAutoStart)
-        boost::filesystem::remove(GetAutostartFilePath());
+        fs::remove(GetAutostartFilePath());
     else
     {
         char pszExePath[MAX_PATH+1];
-        memset(pszExePath, 0, sizeof(pszExePath));
-        if (readlink("/proc/self/exe", pszExePath, sizeof(pszExePath)-1) == -1)
+        ssize_t r = readlink("/proc/self/exe", pszExePath, sizeof(pszExePath) - 1);
+        if (r == -1)
             return false;
+        pszExePath[r] = '\0';
 
-        boost::filesystem::create_directories(GetAutostartDir());
+        fs::create_directories(GetAutostartDir());
 
-        boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
+        fs::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
@@ -779,7 +761,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
             optionFile << "Name=Bitsend\n";
         else
             optionFile << strprintf("Name=Bitsend (%s)\n", chain);
-        optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
+        optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
         optionFile.close();
@@ -788,7 +770,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 }
 
 
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_BSD)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 // based on: https://github.com/Mozketo/LaunchAtLoginController/blob/master/LaunchAtLoginController.m
@@ -799,58 +781,77 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
+    CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, nullptr);
+    if (listSnapshot == nullptr) {
+        return nullptr;
+    }
+
     // loop through the list of startup items and try to find the bitsend app
-    CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
-        CFURLRef currentItemURL = NULL;
+        CFURLRef currentItemURL = nullptr;
 
-#if defined(MAC_OS_X_VERSION_MAX_ALLOWED) && MAC_OS_X_VERSION_MAX_ALLOWED >= 10100
-    if(&LSSharedFileListItemCopyResolvedURL)
-        currentItemURL = LSSharedFileListItemCopyResolvedURL(item, resolutionFlags, NULL);
-#if defined(MAC_OS_X_VERSION_MIN_REQUIRED) && MAC_OS_X_VERSION_MIN_REQUIRED < 10100
-    else
-        LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, NULL);
+#if defined(BSD_OS_X_VERSION_MAX_ALLOWED) && BSD_OS_X_VERSION_MAX_ALLOWED >= 10100
+        if(&LSSharedFileListItemCopyResolvedURL)
+            currentItemURL = LSSharedFileListItemCopyResolvedURL(item, resolutionFlags, nullptr);
+#if defined(BSD_OS_X_VERSION_MIN_REQUIRED) && BSD_OS_X_VERSION_MIN_REQUIRED < 10100
+        else
+            LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, nullptr);
 #endif
 #else
-    LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, NULL);
+        LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, nullptr);
 #endif
 
-        if(currentItemURL && CFEqual(currentItemURL, findUrl)) {
-            // found
-            CFRelease(currentItemURL);
-            return item;
-        }
         if(currentItemURL) {
+            if (CFEqual(currentItemURL, findUrl)) {
+                // found
+                CFRelease(listSnapshot);
+                CFRelease(currentItemURL);
+                return item;
+            }
             CFRelease(currentItemURL);
         }
     }
-    return NULL;
+
+    CFRelease(listSnapshot);
+    return nullptr;
 }
 
 bool GetStartOnSystemStartup()
 {
     CFURLRef bitsendAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (bitsendAppUrl == nullptr) {
+        return false;
+    }
+    
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitsendAppUrl);
+
+    CFRelease(bitsendAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
     CFURLRef bitsendAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (bitsendAppUrl == nullptr) {
+        return false;
+    }
+    
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitsendAppUrl);
 
     if(fAutoStart && !foundItem) {
         // add bitsend app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitsendAppUrl, NULL, NULL);
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, bitsendAppUrl, nullptr, nullptr);
     }
     else if(!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);
     }
+
+    CFRelease(bitsendAppUrl);
     return true;
 }
 #pragma GCC diagnostic pop
@@ -861,79 +862,21 @@ bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 
 #endif
 
-void saveWindowGeometry(const QString& strSetting, QWidget *parent)
-{
-    QSettings settings;
-    settings.setValue(strSetting + "Pos", parent->pos());
-    settings.setValue(strSetting + "Size", parent->size());
-}
-
-void restoreWindowGeometry(const QString& strSetting, const QSize& defaultSize, QWidget *parent)
-{
-    QSettings settings;
-    QPoint pos = settings.value(strSetting + "Pos").toPoint();
-    QSize size = settings.value(strSetting + "Size", defaultSize).toSize();
-
-    if (!pos.x() && !pos.y()) {
-        QRect screen = QApplication::desktop()->screenGeometry();
-        pos.setX((screen.width() - size.width()) / 2);
-        pos.setY((screen.height() - size.height()) / 2);
-    }
-
-    parent->resize(size);
-    parent->move(pos);
-}
-// Open CSS when configured
-QString loadStyleSheet()
-{
-    QString styleSheet;
-    QSettings settings;
-    QString cssName;
-    QString theme = settings.value("theme", "").toString();
-
-    if(!theme.isEmpty()){
-        cssName = QString(":/css/") + theme; 
-    }
-    else {
-        cssName = QString(":/css/bitsend_theme2");  
-        settings.setValue("theme", "bitsend_theme2");
-    }
-    
-    QFile qFile(cssName);      
-    if (qFile.open(QFile::ReadOnly)) {
-        styleSheet = QLatin1String(qFile.readAll());
-    }
-        
-    return styleSheet;
-}
 void setClipboard(const QString& str)
 {
     QApplication::clipboard()->setText(str, QClipboard::Clipboard);
     QApplication::clipboard()->setText(str, QClipboard::Selection);
 }
 
-#if BOOST_FILESYSTEM_VERSION >= 3
-boost::filesystem::path qstringToBoostPath(const QString &path)
+fs::path qstringToBoostPath(const QString &path)
 {
-    return boost::filesystem::path(path.toStdString(), utf8);
+    return fs::path(path.toStdString(), utf8);
 }
 
-QString boostPathToQString(const boost::filesystem::path &path)
+QString boostPathToQString(const fs::path &path)
 {
     return QString::fromStdString(path.string(utf8));
 }
-#else
-#warning Conversion between boost path and QString can use invalid character encoding with boost_filesystem v2 and older
-boost::filesystem::path qstringToBoostPath(const QString &path)
-{
-    return boost::filesystem::path(path.toStdString());
-}
-
-QString boostPathToQString(const boost::filesystem::path &path)
-{
-    return QString::fromStdString(path.string());
-}
-#endif
 
 QString formatDurationStr(int secs)
 {
@@ -1038,6 +981,30 @@ QString formatNiceTimeOffset(qint64 secs)
         timeBehindText = QObject::tr("%1 and %2").arg(QObject::tr("%n year(s)", "", years)).arg(QObject::tr("%n week(s)","", remainder/WEEK_IN_SECONDS));
     }
     return timeBehindText;
+}
+    
+QString formatBytes(uint64_t bytes)
+{
+    if(bytes < 1024)
+        return QString(QObject::tr("%1 B")).arg(bytes);
+    if(bytes < 1024 * 1024)
+        return QString(QObject::tr("%1 KB")).arg(bytes / 1024);
+    if(bytes < 1024 * 1024 * 1024)
+        return QString(QObject::tr("%1 MB")).arg(bytes / 1024 / 1024);
+
+    return QString(QObject::tr("%1 GB")).arg(bytes / 1024 / 1024 / 1024);
+}
+
+qreal calculateIdealFontSize(int width, const QString& text, QFont font, qreal minPointSize, qreal font_size) {
+    while(font_size >= minPointSize) {
+        font.setPointSizeF(font_size);
+        QFontMetrics fm(font);
+        if (fm.width(text) < width) {
+            break;
+        }
+        font_size -= 0.5;
+    }
+    return font_size;
 }
 
 void ClickableLabel::mouseReleaseEvent(QMouseEvent *event)

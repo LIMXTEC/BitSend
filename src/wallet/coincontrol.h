@@ -1,33 +1,39 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_WALLET_COINCONTROL_H
 #define BITSEND_WALLET_COINCONTROL_H
 
-#include "primitives/transaction.h"
+#include <policy/feerate.h>
+#include <policy/fees.h>
+#include <primitives/transaction.h>
+#include <wallet/wallet.h>
+
+#include <boost/optional.hpp>
 
 /** Coin Control Features. */
 class CCoinControl
 {
 public:
+    //! Custom change destination, if not set an address is generated
     CTxDestination destChange;
-	
-	bool useDarkSend;// TODO--
-    bool useInstantX;//TODO--
-	
+    //! Custom change type, ignored if destChange is set, defaults to g_change_type
+    OutputType change_type;
     //! If false, allows unselected inputs, but requires all selected inputs be used
     bool fAllowOtherInputs;
     //! Includes watch only addresses which match the ISMINE_WATCH_SOLVABLE criteria
     bool fAllowWatchOnly;
-    //! Minimum absolute fee (not per kilobyte)
-    CAmount nMinimumTotalFee;
-    //! Override estimated feerate
+    //! Override automatic min/max checks on fee, m_feerate must be set if true
     bool fOverrideFeeRate;
-    //! Feerate to use if overrideFeeRate is true
-    CFeeRate nFeeRate;
-    //! Override the default confirmation target, 0 = use default
-    int nConfirmTarget;
+    //! Override the default payTxFee if set
+    boost::optional<CFeeRate> m_feerate;
+    //! Override the default confirmation target if set
+    boost::optional<unsigned int> m_confirm_target;
+    //! Signal BIP-125 replace by fee.
+    bool signalRbf;
+    //! Fee estimation mode to control arguments to estimateSmartFee
+    FeeEstimateMode m_fee_mode;
 
     CCoinControl()
     {
@@ -37,15 +43,15 @@ public:
     void SetNull()
     {
         destChange = CNoDestination();
+        change_type = g_change_type;
         fAllowOtherInputs = false;
         fAllowWatchOnly = false;
         setSelected.clear();
-		useInstantX = false;//TODO--
-        useDarkSend = true;//TODO--
-        nMinimumTotalFee = 0;
-        nFeeRate = CFeeRate(0);
+        m_feerate.reset();
         fOverrideFeeRate = false;
-        nConfirmTarget = 0;
+        m_confirm_target.reset();
+        signalRbf = fWalletRbf;
+        m_fee_mode = FeeEstimateMode::UNSET;
     }
 
     bool HasSelected() const

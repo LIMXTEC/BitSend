@@ -1,21 +1,18 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_PRIMITIVES_TRANSACTION_H
 #define BITSEND_PRIMITIVES_TRANSACTION_H
 
-#include "amount.h"
-#include "script/script.h"
-#include "serialize.h"
-#include "uint256.h"
+#include <stdint.h>
+#include <amount.h>
+#include <script/script.h>
+#include <serialize.h>
+#include <uint256.h>
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
-
-static const int WITNESS_SCALE_FACTOR = 4;
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
 class COutPoint
@@ -24,8 +21,8 @@ public:
     uint256 hash;
     uint32_t n;
 
-    COutPoint() { SetNull(); }
-    COutPoint(uint256 hashIn, uint32_t nIn) { hash = hashIn; n = nIn; }
+    COutPoint(): n((uint32_t) -1) { }
+    COutPoint(const uint256& hashIn, uint32_t nIn): hash(hashIn), n(nIn) { }
 
     ADD_SERIALIZE_METHODS;
 
@@ -55,11 +52,7 @@ public:
     }
 
     std::string ToString() const;
-	
-	std::string ToStringShort() const; //TODO--
-
-    uint256 GetHash();//TODO--
-	
+    std::string ToStringShort() const;
 };
 
 /** An input of a transaction.  It contains the location of the previous
@@ -72,7 +65,6 @@ public:
     COutPoint prevout;
     CScript scriptSig;
     uint32_t nSequence;
-	CScript prevPubKey;//TODO--
     CScriptWitness scriptWitness; //! Only serialized through CTransaction
 
     /* Setting nSequence to this value for every input in a transaction
@@ -115,7 +107,7 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(prevout);
-        READWRITE(*(CScriptBase*)(&scriptSig));
+        READWRITE(scriptSig);
         READWRITE(nSequence);
     }
 
@@ -130,13 +122,11 @@ public:
     {
         return !(a == b);
     }
-	
-	/**TODO-- */
-	friend bool operator<(const CTxIn& a, const CTxIn& b)
+    
+    friend bool operator<(const CTxIn& a, const CTxIn& b)
     {
         return a.prevout<b.prevout;
     }
-
 
     std::string ToString() const;
 };
@@ -149,7 +139,6 @@ class CTxOut
 public:
     CAmount nValue;
     CScript scriptPubKey;
-	int nRounds;//TODO--
 
     CTxOut()
     {
@@ -163,15 +152,13 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(nValue);
-        READWRITE(*(CScriptBase*)(&scriptPubKey));
+        READWRITE(scriptPubKey);
     }
 
     void SetNull()
     {
         nValue = -1;
         scriptPubKey.clear();
-		/**TODO-- */
-		nRounds = -10; // an initial value, should be no way to get this by calculations
     }
 
     bool IsNull() const
@@ -179,58 +166,15 @@ public:
         return (nValue == -1);
     }
 
-    CAmount GetDustThreshold(const CFeeRate &minRelayTxFee) const
-    {
-        // "Dust" is defined in terms of CTransaction::minRelayTxFee,
-        // which has units satoshis-per-kilobyte.
-        // If you'd pay more than 1/3 in fees
-        // to spend something, then we consider it dust.
-        // A typical spendable non-segwit txout is 34 bytes big, and will
-        // need a CTxIn of at least 148 bytes to spend:
-        // so dust is a spendable txout less than
-        // 546*minRelayTxFee/1000 (in satoshis).
-        // A typical spendable segwit txout is 31 bytes big, and will
-        // need a CTxIn of at least 67 bytes to spend:
-        // so dust is a spendable txout less than
-        // 294*minRelayTxFee/1000 (in satoshis).
-        if (scriptPubKey.IsUnspendable())
-            return 0;
-
-        size_t nSize = GetSerializeSize(*this, SER_DISK, 0);
-        int witnessversion = 0;
-        std::vector<unsigned char> witnessprogram;
-
-        if (scriptPubKey.IsWitnessProgram(witnessversion, witnessprogram)) {
-            // sum the sizes of the parts of a transaction input
-            // with 75% segwit discount applied to the script size.
-            nSize += (32 + 4 + 1 + (107 / WITNESS_SCALE_FACTOR) + 4);
-        } else {
-            nSize += (32 + 4 + 1 + 107 + 4); // the 148 mentioned above
-        }
-
-        return 3 * minRelayTxFee.GetFee(nSize);
-    }
-
-    bool IsDust(const CFeeRate &minRelayTxFee) const
-    {
-        return (nValue < GetDustThreshold(minRelayTxFee));
-    }
-
     friend bool operator==(const CTxOut& a, const CTxOut& b)
     {
         return (a.nValue       == b.nValue &&
-                a.scriptPubKey == b.scriptPubKey && //TODO--
-				a.nRounds      == b.nRounds);
+                a.scriptPubKey == b.scriptPubKey);
     }
 
     friend bool operator!=(const CTxOut& a, const CTxOut& b)
     {
         return !(a == b);
-    }
-	/**TODO-- */
-	friend bool operator<(const CTxOut& a, const CTxOut& b)
-    {
-        return a.nValue < b.nValue || (a.nValue == b.nValue && a.scriptPubKey < b.scriptPubKey);
     }
 
     std::string ToString() const;
@@ -327,7 +271,7 @@ class CTransaction
 {
 public:
     // Default transaction version.
-    static const int32_t CURRENT_VERSION=1;
+    static const int32_t CURRENT_VERSION=2;
 
     // Changing the default transaction version requires a two step process: first
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
@@ -340,9 +284,9 @@ public:
     // actually immutable; deserialization and assignment are implemented,
     // and bypass the constness. This is safe, as they update the entire
     // structure, including the hash.
-    const int32_t nVersion;
     const std::vector<CTxIn> vin;
     const std::vector<CTxOut> vout;
+    const int32_t nVersion;
     const uint32_t nLockTime;
 
 private:
@@ -358,8 +302,6 @@ public:
     /** Convert a CMutableTransaction into a CTransaction. */
     CTransaction(const CMutableTransaction &tx);
     CTransaction(CMutableTransaction &&tx);
-	
-	CTransaction& operator=(const CTransaction& tx);//TODO++
 
     template <typename Stream>
     inline void Serialize(Stream& s) const {
@@ -386,12 +328,6 @@ public:
     CAmount GetValueOut() const;
     // GetValueIn() is a method on CCoinsViewCache, because
     // inputs must be known to compute value in.
-
-    // Compute priority, given priority of inputs and (optionally) tx size
-    double ComputePriority(double dPriorityInputs, unsigned int nTxSize=0) const;
-
-    // Compute modified tx size for priority calculation (optionally given tx size)
-    unsigned int CalculateModifiedSize(unsigned int nTxSize=0) const;
 
     /**
      * Get the total transaction size in bytes, including witness data.
@@ -431,9 +367,9 @@ public:
 /** A mutable version of CTransaction. */
 struct CMutableTransaction
 {
-    int32_t nVersion;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
+    int32_t nVersion;
     uint32_t nLockTime;
 
     CMutableTransaction();
@@ -459,25 +395,11 @@ struct CMutableTransaction
      * fly, as opposed to GetHash() in CTransaction, which uses a cached result.
      */
     uint256 GetHash() const;
-	
-	/**TODO-- */
-	std::string ToString() const;
 
     friend bool operator==(const CMutableTransaction& a, const CMutableTransaction& b)
     {
         return a.GetHash() == b.GetHash();
     }
-
-    friend bool operator!=(const CMutableTransaction& a, const CMutableTransaction& b)
-    {
-        return !(a == b);
-    }
-
-
-    /*friend bool operator==(const CMutableTransaction& a, const CMutableTransaction& b)
-    {
-        return a.GetHash() == b.GetHash();
-    }*/
 
     bool HasWitness() const
     {
@@ -493,8 +415,5 @@ struct CMutableTransaction
 typedef std::shared_ptr<const CTransaction> CTransactionRef;
 static inline CTransactionRef MakeTransactionRef() { return std::make_shared<const CTransaction>(); }
 template <typename Tx> static inline CTransactionRef MakeTransactionRef(Tx&& txIn) { return std::make_shared<const CTransaction>(std::forward<Tx>(txIn)); }
-
-/** Compute the weight of a transaction, as defined by BIP 141 */
-int64_t GetTransactionWeight(const CTransaction &tx);
 
 #endif // BITSEND_PRIMITIVES_TRANSACTION_H

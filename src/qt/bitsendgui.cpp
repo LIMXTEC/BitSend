@@ -1,42 +1,38 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#if defined(HAVE_CONFIG_H)
-#include "config/bitsend-config.h"
-#endif
+#include <qt/bitsendgui.h>
 
-#include "bitsendgui.h"
-#include "masternodelist.h"
-#include "bitsendunits.h"
-#include "clientmodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-#include "modaloverlay.h"
-#include "networkstyle.h"
-#include "notificator.h"
-#include "openuridialog.h"
-#include "optionsdialog.h"
-#include "optionsmodel.h"
-#include "platformstyle.h"
-#include "rpcconsole.h"
-#include "utilitydialog.h"
-
-#include "activemasternode.h"
+#include <qt/bitsendunits.h>
+#include <qt/clientmodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
+#include <qt/modaloverlay.h>
+#include <qt/networkstyle.h>
+#include <qt/notificator.h>
+#include <qt/openuridialog.h>
+#include <qt/optionsdialog.h>
+#include <qt/optionsmodel.h>
+#include <qt/platformstyle.h>
+#include <qt/rpcconsole.h>
+#include <qt/utilitydialog.h>
 
 #ifdef ENABLE_WALLET
-#include "walletframe.h"
-#include "walletmodel.h"
+#include <qt/walletframe.h>
+#include <qt/walletmodel.h>
 #endif // ENABLE_WALLET
 
-#ifdef Q_OS_MAC
-#include "macdockiconhandler.h"
+#ifdef Q_OS_BSD
+#include <qt/macdockiconhandler.h>
 #endif
 
-#include "chainparams.h"
-#include "init.h"
-#include "ui_interface.h"
-#include "util.h"
+#include <chainparams.h>
+#include <init.h>
+#include <ui_interface.h>
+#include <util.h>
+#include <masternode-sync.h>
+#include <qt/masternodelist.h>
 
 #include <iostream>
 
@@ -67,7 +63,7 @@
 #endif
 
 const std::string BitsendGUI::DEFAULT_UIPLATFORM =
-#if defined(Q_OS_MAC)
+#if defined(Q_OS_BSD)
         "macosx"
 #elif defined(Q_OS_WIN)
         "windows"
@@ -96,7 +92,7 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     appMenuBar(0),
     overviewAction(0),
     historyAction(0),
-	masternodeAction(0),
+    masternodeAction(0),
     quitAction(0),
     sendCoinsAction(0),
     sendCoinsMenuAction(0),
@@ -105,7 +101,6 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     signMessageAction(0),
     verifyMessageAction(0),
     aboutAction(0),
-	//bip38ToolAction(0),
     receiveCoinsAction(0),
     receiveCoinsMenuAction(0),
     optionsAction(0),
@@ -113,7 +108,6 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     encryptWalletAction(0),
     backupWalletAction(0),
     changePassphraseAction(0),
-    unlockWalletAction(0),
     aboutQtAction(0),
     openRPCConsoleAction(0),
     openAction(0),
@@ -128,10 +122,11 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     spinnerFrame(0),
     platformStyle(_platformStyle)
 {
-	
-	/* Open CSS when configured */
-    this->setStyleSheet(GUIUtil::loadStyleSheet());
-    GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
+    QSettings settings;
+    if (!restoreGeometry(settings.value("MainWindowGeometry").toByteArray())) {
+        // Restore failed (perhaps missing setting), center the window
+        move(QApplication::desktop()->availableGeometry().center() - frameGeometry().center());
+    }
 
     QString windowTitle = tr(PACKAGE_NAME) + " - ";
 #ifdef ENABLE_WALLET
@@ -144,7 +139,7 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
         windowTitle += tr("Node");
     }
     windowTitle += " " + networkStyle->getTitleAddText();
-#ifndef Q_OS_MAC
+#ifndef Q_OS_BSD
     QApplication::setWindowIcon(networkStyle->getTrayAndWindowIcon());
     setWindowIcon(networkStyle->getTrayAndWindowIcon());
 #else
@@ -152,7 +147,7 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
 #endif
     setWindowTitle(windowTitle);
 
-#if defined(Q_OS_MAC) && QT_VERSION < 0x050000
+#if defined(Q_OS_BSD) && QT_VERSION < 0x050000
     // This property is not implemented in Qt 5. Setting it has no effect.
     // A replacement API (QtMacUnifiedToolBar) is available in QtMacExtras.
     setUnifiedTitleAndToolBarOnMac(true);
@@ -242,19 +237,7 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-	
-    // Get restart command-line parameters and handle restart
-    connect(rpcConsole, SIGNAL(handleRestart(QStringList)), this, SLOT(handleRestart(QStringList)));
-	
-	connect(openRepairAction, SIGNAL(triggered()), rpcConsole, SLOT(showRepair()));
-	
-	connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
-	
-	connect(showConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showConf()));
-	
-	//AAAA
-	connect(showBitsendConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showBitsendConf()));
-	
+
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
     this->installEventFilter(this);
 
@@ -265,7 +248,6 @@ BitsendGUI::BitsendGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     subscribeToCoreSignals();
 
     connect(connectionsControl, SIGNAL(clicked(QPoint)), this, SLOT(toggleNetworkActive()));
-
 
     modalOverlay = new ModalOverlay(this->centralWidget());
 #ifdef ENABLE_WALLET
@@ -282,10 +264,11 @@ BitsendGUI::~BitsendGUI()
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
-    GUIUtil::saveWindowGeometry("nWindow", this);
+    QSettings settings;
+    settings.setValue("MainWindowGeometry", saveGeometry());
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
-#ifdef Q_OS_MAC
+#ifdef Q_OS_BSD
     delete appMenuBar;
     MacDockIconHandler::cleanup();
 #endif
@@ -332,17 +315,23 @@ void BitsendGUI::createActions()
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
-	
-	//kaali	
-	masternodeAction = new QAction(platformStyle->SingleColorIcon(":/icons/overview"), tr("&Masternodes"), this);
-    masternodeAction->setStatusTip(tr("Show information about Masternodes"));
-    masternodeAction->setToolTip(masternodeAction->statusTip());
-    masternodeAction->setCheckable(true);
-    masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
-    tabGroup->addAction(masternodeAction);
-
 
 #ifdef ENABLE_WALLET
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeAction = new QAction(platformStyle->SingleColorIcon(":/icons/masternodes"), tr("&Masternodes"), this);
+        masternodeAction->setStatusTip(tr("Browse masternodes"));
+        masternodeAction->setToolTip(masternodeAction->statusTip());
+        masternodeAction->setCheckable(true);
+#ifdef Q_OS_BSD
+        masternodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+#else
+        masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+#endif
+        tabGroup->addAction(masternodeAction);
+        connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+        connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
+    }
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -357,9 +346,6 @@ void BitsendGUI::createActions()
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
-	//kaali
-	connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(platformStyle->TextColorIcon(":/icons/quit"), tr("E&xit"), this);
@@ -387,26 +373,10 @@ void BitsendGUI::createActions()
     backupWalletAction->setStatusTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(platformStyle->TextColorIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
-    unlockWalletAction = new QAction(platformStyle->TextColorIcon(":/icons/lock_open"), tr("&Unlock Wallet..."), this);
-    unlockWalletAction->setStatusTip(tr("Unlock encrypted wallet for further transactions."));
     signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
     signMessageAction->setStatusTip(tr("Sign messages with your Bitsend addresses to prove you own them"));
     verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
     verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Bitsend addresses"));
-	//kaali
-	//bip38ToolAction = new QAction(QIcon(":/icons/verify"), tr("&BIP38 tool"), this);//change image
-    //bip38ToolAction->setToolTip(tr("Encrypt and decrypt private keys using a passphrase"));
-	openRepairAction = new QAction(QIcon(":/icons/verify"), tr("Wallet &Repair"), this);
-    openRepairAction->setStatusTip(tr("Show wallet repair options"));
-	
-	showBackupsAction = new QAction(QIcon(":/icons/filesave"), tr("Show Automatic &Backups"), this);
-    showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
-	//AAA
-	showBitsendConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Bitsend Conf file"), this);
-    showBitsendConfAction->setStatusTip(tr("Show bitsend configuration file"));
-	
-	showConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Masternode Conf file"), this);
-    showConfAction->setStatusTip(tr("Show masternode configuration file"));
 
     openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -421,7 +391,7 @@ void BitsendGUI::createActions()
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
     openAction->setStatusTip(tr("Open a bitsend: URI or payment request"));
 
-	showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
+    showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible Bitsend command-line options").arg(tr(PACKAGE_NAME)));
 
@@ -441,10 +411,8 @@ void BitsendGUI::createActions()
         connect(encryptWalletAction, SIGNAL(triggered(bool)), walletFrame, SLOT(encryptWallet(bool)));
         connect(backupWalletAction, SIGNAL(triggered()), walletFrame, SLOT(backupWallet()));
         connect(changePassphraseAction, SIGNAL(triggered()), walletFrame, SLOT(changePassphrase()));
-        connect(unlockWalletAction, SIGNAL(triggered()), walletFrame, SLOT(unlockWallet()));
         connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
         connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
-		//connect(bip38ToolAction, SIGNAL(triggered()), this, SLOT(gotoBip38Tool()));
         connect(usedSendingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedSendingAddresses()));
         connect(usedReceivingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedReceivingAddresses()));
         connect(openAction, SIGNAL(triggered()), this, SLOT(openClicked()));
@@ -457,7 +425,7 @@ void BitsendGUI::createActions()
 
 void BitsendGUI::createMenuBar()
 {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_BSD
     // Create a decoupled menu bar on Mac which stays even if the window is closed
     appMenuBar = new QMenuBar();
 #else
@@ -485,8 +453,6 @@ void BitsendGUI::createMenuBar()
     {
         settings->addAction(encryptWalletAction);
         settings->addAction(changePassphraseAction);
-        settings->addAction(unlockWalletAction);
-		//settings->addAction(bip38ToolAction);
         settings->addSeparator();
     }
     settings->addAction(optionsAction);
@@ -495,11 +461,6 @@ void BitsendGUI::createMenuBar()
     if(walletFrame)
     {
         help->addAction(openRPCConsoleAction);
-		help->addSeparator();
-		help->addAction(openRepairAction);
-		help->addAction(showBackupsAction);
-		help->addAction(showBitsendConfAction);
-		help->addAction(showConfAction);
     }
     help->addAction(showHelpMessageAction);
     help->addSeparator();
@@ -512,13 +473,18 @@ void BitsendGUI::createToolBars()
     if(walletFrame)
     {
         QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
+        toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
         toolbar->setMovable(false);
         toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
-		toolbar->addAction(masternodeAction);
+        QSettings settings;
+        if (settings.value("fShowMasternodesTab").toBool())
+        {
+            toolbar->addAction(masternodeAction);
+        }
         overviewAction->setChecked(true);
     }
 }
@@ -537,8 +503,11 @@ void BitsendGUI::setClientModel(ClientModel *_clientModel)
         connect(_clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
         connect(_clientModel, SIGNAL(networkActiveChanged(bool)), this, SLOT(setNetworkActive(bool)));
 
-        setNumBlocks(_clientModel->getNumBlocks(), _clientModel->getLastBlockDate(), _clientModel->getVerificationProgress(NULL), false);
+        modalOverlay->setKnownBestHeight(_clientModel->getHeaderTipHeight(), QDateTime::fromTime_t(_clientModel->getHeaderTipTime()));
+        setNumBlocks(_clientModel->getNumBlocks(), _clientModel->getLastBlockDate(), _clientModel->getVerificationProgress(nullptr), false);
         connect(_clientModel, SIGNAL(numBlocksChanged(int,QDateTime,double,bool)), this, SLOT(setNumBlocks(int,QDateTime,double,bool)));
+        
+        connect(_clientModel, SIGNAL(additionalDataSyncProgressChanged(double)), this, SLOT(setAdditionalDataSyncProgress(double)));
 
         // Receive and report messages from client model
         connect(_clientModel, SIGNAL(message(QString,QString,unsigned int)), this, SLOT(message(QString,QString,unsigned int)));
@@ -564,8 +533,6 @@ void BitsendGUI::setClientModel(ClientModel *_clientModel)
             // initialize the disable state of the tray icon with the current value in the model.
             setTrayIconVisible(optionsModel->getHideTrayIcon());
         }
-
-        modalOverlay->setKnownBestHeight(clientModel->getHeaderTipHeight(), QDateTime::fromTime_t(clientModel->getHeaderTipTime()));
     } else {
         // Disable possibility to show main window via action
         toggleHideAction->setEnabled(false);
@@ -619,13 +586,13 @@ void BitsendGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-	//kaali
-	masternodeAction->setEnabled(enabled);
-	//bip38ToolAction->setEnabled(enabled);
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool() && masternodeAction) {
+        masternodeAction->setEnabled(enabled);
+    }
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
     changePassphraseAction->setEnabled(enabled);
-    unlockWalletAction->setEnabled(enabled);
     signMessageAction->setEnabled(enabled);
     verifyMessageAction->setEnabled(enabled);
     usedSendingAddressesAction->setEnabled(enabled);
@@ -635,7 +602,7 @@ void BitsendGUI::setWalletActionsEnabled(bool enabled)
 
 void BitsendGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
-#ifndef Q_OS_MAC
+#ifndef Q_OS_BSD
     trayIcon = new QSystemTrayIcon(this);
     QString toolTip = tr("%1 client").arg(tr(PACKAGE_NAME)) + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
@@ -648,7 +615,7 @@ void BitsendGUI::createTrayIcon(const NetworkStyle *networkStyle)
 
 void BitsendGUI::createTrayIconMenu()
 {
-#ifndef Q_OS_MAC
+#ifndef Q_OS_BSD
     // return if trayIcon is unset (only on non-Mac OSes)
     if (!trayIcon)
         return;
@@ -676,16 +643,13 @@ void BitsendGUI::createTrayIconMenu()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addAction(openRPCConsoleAction);
-	trayIconMenu->addAction(showBackupsAction);
-	trayIconMenu->addAction(showBitsendConfAction);
-	trayIconMenu->addAction(showConfAction);
-#ifndef Q_OS_MAC // This is built-in on Mac
+#ifndef Q_OS_BSD // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif
 }
 
-#ifndef Q_OS_MAC
+#ifndef Q_OS_BSD
 void BitsendGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
@@ -714,10 +678,6 @@ void BitsendGUI::aboutClicked()
     HelpMessageDialog dlg(this, true);
     dlg.exec();
 }
-/*void BitsendGUI::gotoBip38Tool()
-{
-    if (walletFrame) walletFrame->gotoBip38Tool();
-}*/
 
 void BitsendGUI::showDebugWindow()
 {
@@ -759,11 +719,14 @@ void BitsendGUI::gotoHistoryPage()
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
-//kaali
+
 void BitsendGUI::gotoMasternodePage()
 {
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setChecked(true);
         if (walletFrame) walletFrame->gotoMasternodePage();
+    }
 }
 
 void BitsendGUI::gotoReceiveCoinsPage()
@@ -793,35 +756,19 @@ void BitsendGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
-    bool IsMasternodeActive = activeMasternode.status == MASTERNODE_IS_CAPABLE || activeMasternode.status == MASTERNODE_REMOTELY_ENABLED;
-	if(IsMasternodeActive){
-		switch(count)
-		{
-		case 0: icon = ":/icons/connect_0_16"; break;
-		case 1: case 2: case 3: icon = ":/icons/connect_1_16"; break;
-		case 4: case 5: case 6: icon = ":/icons/connect_2_16"; break;
-		case 7: case 8: case 9: icon = ":/icons/connect_3_16"; break;
-		default: icon = ":/icons/connect_4_16"; break;
-		}
-	} else {
-		switch(count)
-		{
-		case 0: icon = ":/icons/connect_0"; break;
-		case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
-		case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
-		case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
-		default: icon = ":/icons/connect_4"; break;
-		}
-	}
+    switch(count)
+    {
+    case 0: icon = ":/icons/connect_0"; break;
+    case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
+    case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
+    case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
+    default: icon = ":/icons/connect_4"; break;
+    }
 
     QString tooltip;
 
     if (clientModel->getNetworkActive()) {
-		if(IsMasternodeActive){
-			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Masternode is active ") + QString(".<br>") + tr("Click to disable network activity.");
-		}else {
-			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
-		}
+        tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
         icon = ":/icons/network_disabled";
@@ -838,12 +785,7 @@ void BitsendGUI::setNumConnections(int count)
 {
     updateNetworkState();
 }
-/** Get restart command-line parameters and request restart */
-void BitsendGUI::handleRestart(QStringList args)
-{
-    if (!ShutdownRequested())
-        Q_EMIT requestedRestart(args);
-}
+
 void BitsendGUI::setNetworkActive(bool networkActive)
 {
     updateNetworkState();
@@ -910,7 +852,7 @@ void BitsendGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
     tooltip = tr("Processed %n block(s) of transaction history.", "", count);
 
     // Set icon state: spinning if catching up, tick otherwise
-    if(secs < 360*60)
+    if(secs < 90*60)
     {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
         labelBlocksIcon->setPixmap(platformStyle->SingleColorIcon(":/icons/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -926,6 +868,8 @@ void BitsendGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
     }
+    // TODO check how to implement this
+    // if(!masternodeSync.IsBlockchainSynced())
     else
     {
         QString timeBehindText = GUIUtil::formatNiceTimeOffset(secs);
@@ -959,6 +903,53 @@ void BitsendGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
         tooltip += QString("<br>");
         tooltip += tr("Transactions after this will not yet be visible.");
     }
+
+    // Don't word-wrap this (fixed-width) tooltip
+    tooltip = QString("<nobr>") + tooltip + QString("</nobr>");
+
+    labelBlocksIcon->setToolTip(tooltip);
+    progressBarLabel->setToolTip(tooltip);
+    progressBar->setToolTip(tooltip);
+}
+
+void BitsendGUI::setAdditionalDataSyncProgress(double nSyncProgress)
+{
+    // No additional data sync should be happening while blockchain is not synced, nothing to update
+    if(!masternodeSync.IsBlockchainSynced())
+        return;
+
+    // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
+    statusBar()->clearMessage();
+
+    QString tooltip;
+
+    QString strSyncStatus;
+    tooltip = tr("Up to date") + QString(".<br>") + tooltip;
+
+    if(masternodeSync.IsSynced()) {
+        progressBarLabel->setVisible(false);
+        progressBar->setVisible(false);
+        labelBlocksIcon->setPixmap(platformStyle->SingleColorIcon(":/icons/synced").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+    } else {
+
+        labelBlocksIcon->setPixmap(platformStyle->SingleColorIcon(QString(
+            ":/movies/spinner-%1").arg(spinnerFrame, 3, 10, QChar('0')))
+            .pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        spinnerFrame = (spinnerFrame + 1) % SPINNER_FRAMES;
+
+#ifdef ENABLE_WALLET
+        if(walletFrame)
+            walletFrame->showOutOfSyncWarning(false);
+#endif // ENABLE_WALLET
+
+        progressBar->setFormat(tr("Synchronizing additional data: %p%"));
+        progressBar->setMaximum(1000000000);
+        progressBar->setValue(nSyncProgress * 1000000000.0 + 0.5);
+    }
+
+    strSyncStatus = QString(masternodeSync.GetSyncStatus().c_str());
+    progressBarLabel->setText(strSyncStatus);
+    tooltip = strSyncStatus + QString("<br>") + tooltip;
 
     // Don't word-wrap this (fixed-width) tooltip
     tooltip = QString("<nobr>") + tooltip + QString("</nobr>");
@@ -1020,7 +1011,7 @@ void BitsendGUI::message(const QString &title, const QString &message, unsigned 
         showNormalIfMinimized();
         QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons, this);
         int r = mBox.exec();
-        if (ret != NULL)
+        if (ret != nullptr)
             *ret = r == QMessageBox::Ok;
     }
     else
@@ -1030,7 +1021,7 @@ void BitsendGUI::message(const QString &title, const QString &message, unsigned 
 void BitsendGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
-#ifndef Q_OS_MAC // Ignored on Mac
+#ifndef Q_OS_BSD // Ignored on Mac
     if(e->type() == QEvent::WindowStateChange)
     {
         if(clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray())
@@ -1048,7 +1039,7 @@ void BitsendGUI::changeEvent(QEvent *e)
 
 void BitsendGUI::closeEvent(QCloseEvent *event)
 {
-#ifndef Q_OS_MAC // Ignored on Mac
+#ifndef Q_OS_BSD // Ignored on Mac
     if(clientModel && clientModel->getOptionsModel())
     {
         if(!clientModel->getOptionsModel()->getMinimizeOnClose())
@@ -1104,7 +1095,7 @@ void BitsendGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
-        Q_FOREACH(const QUrl &uri, event->mimeData()->urls())
+        for (const QUrl &uri : event->mimeData()->urls())
         {
             Q_EMIT receivedURI(uri.toString());
         }
@@ -1154,7 +1145,6 @@ void BitsendGUI::setEncryptionStatus(int status)
         labelWalletEncryptionIcon->hide();
         encryptWalletAction->setChecked(false);
         changePassphraseAction->setEnabled(false);
-        unlockWalletAction->setEnabled(false);
         encryptWalletAction->setEnabled(true);
         break;
     case WalletModel::Unlocked:
@@ -1163,7 +1153,6 @@ void BitsendGUI::setEncryptionStatus(int status)
         labelWalletEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
-        unlockWalletAction->setEnabled(false);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
         break;
     case WalletModel::Locked:
@@ -1172,7 +1161,6 @@ void BitsendGUI::setEncryptionStatus(int status)
         labelWalletEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
-        unlockWalletAction->setEnabled(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
         break;
     }
@@ -1303,9 +1291,9 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     QList<BitsendUnits::Unit> units = BitsendUnits::availableUnits();
     int max_width = 0;
     const QFontMetrics fm(font());
-    Q_FOREACH (const BitsendUnits::Unit unit, units)
+    for (const BitsendUnits::Unit unit : units)
     {
-        max_width = qMax(max_width, fm.width(BitsendUnits::name(unit)));
+        max_width = qMax(max_width, fm.width(BitsendUnits::longName(unit)));
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
@@ -1322,9 +1310,9 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 void UnitDisplayStatusBarControl::createContextMenu()
 {
     menu = new QMenu(this);
-    Q_FOREACH(BitsendUnits::Unit u, BitsendUnits::availableUnits())
+    for (BitsendUnits::Unit u : BitsendUnits::availableUnits())
     {
-        QAction *menuAction = new QAction(QString(BitsendUnits::name(u)), this);
+        QAction *menuAction = new QAction(QString(BitsendUnits::longName(u)), this);
         menuAction->setData(QVariant(u));
         menu->addAction(menuAction);
     }
@@ -1349,7 +1337,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *_optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setText(BitsendUnits::name(newUnits));
+    setText(BitsendUnits::longName(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */

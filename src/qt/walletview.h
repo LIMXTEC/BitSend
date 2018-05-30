@@ -1,12 +1,13 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_WALLETVIEW_H
 #define BITSEND_QT_WALLETVIEW_H
 
-#include "amount.h"
-#include "masternodelist.h"
+#include <amount.h>
+#include <qt/masternodelist.h>
+
 #include <QStackedWidget>
 
 class BitsendGUI;
@@ -57,7 +58,6 @@ public:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
-    void *unlockContext;
 
     OverviewPage *overviewPage;
     QWidget *transactionsPage;
@@ -65,24 +65,22 @@ private:
     SendCoinsDialog *sendCoinsPage;
     AddressBookPage *usedSendingAddressesPage;
     AddressBookPage *usedReceivingAddressesPage;
-	MasternodeList* masternodeListPage;
-	
+    MasternodeList *masternodeListPage;
+
     TransactionView *transactionView;
-	
+
     QProgressDialog *progressDialog;
     const PlatformStyle *platformStyle;
-
 
 public Q_SLOTS:
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to receive coins page */
-	/** Switch to masternode page */
+    /** Switch to masternode page */
     void gotoMasternodePage();
+    /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
-	//void gotoBip38Tool()
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
 
@@ -104,8 +102,6 @@ public Q_SLOTS:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
-    /** Ask for passphrase to unlock wallet and return context*/
-    void requestUnlockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();

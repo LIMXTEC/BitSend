@@ -1,11 +1,11 @@
-// Copyright (c) 2015 The Bitsend Core developers
+﻿// Copyright (c) 2015-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_ZMQ_ZMQABSTRACTNOTIFIER_H
 #define BITSEND_ZMQ_ZMQABSTRACTNOTIFIER_H
 
-#include "zmqconfig.h"
+#include <zmq/zmqconfig.h>
 
 class CBlockIndex;
 class CZMQAbstractNotifier;
@@ -15,7 +15,7 @@ typedef CZMQAbstractNotifier* (*CZMQNotifierFactory)();
 class CZMQAbstractNotifier
 {
 public:
-    CZMQAbstractNotifier() : psocket(0) { }
+    CZMQAbstractNotifier() : psocket(nullptr) { }
     virtual ~CZMQAbstractNotifier();
 
     template <typename T>

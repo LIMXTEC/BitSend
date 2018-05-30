@@ -210,7 +210,7 @@ inline uint256 HashX11(const T1 pbegin, const T1 pend)
     sph_echo512_context      ctx_echo;
     static unsigned char pblank[1];
 
-    uint512 hash[17]; /* @TODO uint512 not declared */
+    uint512 hash[11]; /* @TODO uint512 not declared */
 
     sph_blake512_init(&ctx_blake);
     sph_blake512 (&ctx_blake, (pbegin == pend ? pblank : static_cast<const void*>(&pbegin[0])), (pend - pbegin) * sizeof(pbegin[0]));

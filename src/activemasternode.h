@@ -1,74 +1,85 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitsend developers
+﻿// Copyright (c) 2014-2018 The Dash Core developers
+// Copyright (c) 2014-2018 The Bitsend Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef ACTIVEMASTERNODE_H
 #define ACTIVEMASTERNODE_H
 
-//#include "bignum.h"
-#include "sync.h"
-#include "net.h"
-#include "netbase.h"
-#include "key.h"
-//#include "core.h"
-#include "init.h"
-#include "wallet/wallet.h"
-#include "net_processing.h"
-#include <vector> //
-#include "masternode.h"
+#include <chainparams.h>
+#include <key.h>
+#include <net.h>
+#include <primitives/transaction.h>
 
-static const int MASTERNODEAMOUNT = 25000;
+class CActiveMasternode;
+
+static const int ACTIVE_MASTERNODE_INITIAL          = 0; // initial state
+static const int ACTIVE_MASTERNODE_SYNC_IN_PROCESS  = 1;
+static const int ACTIVE_MASTERNODE_INPUT_TOO_NEW    = 2;
+static const int ACTIVE_MASTERNODE_NOT_CAPABLE      = 3;
+static const int ACTIVE_MASTERNODE_STARTED          = 4;
+
+extern CActiveMasternode activeMasternode;
 
 // Responsible for activating the Masternode and pinging the network
 class CActiveMasternode
 {
 public:
-	// Initialized by init.cpp
-	// Keys for the main Masternode
-	CPubKey pubKeyMasternode;
+    enum masternode_type_enum_t {
+        MASTERNODE_UNKNOWN = 0,
+        MASTERNODE_REMOTE  = 1
+    };
 
-	// Initialized while registering Masternode
-	CTxIn vin;
+private:
+    // critical section to protect the inner data structures
+    mutable CCriticalSection cs;
+
+    masternode_type_enum_t eType;
+
+    bool fPingerEnabled;
+
+    /// Ping Masternode
+    bool SendMasternodePing(CConnman* connman);
+
+    //  sentinel ping data
+    int64_t nSentinelPingTime;
+    uint32_t nSentinelVersion;
+
+public:
+    // Keys for the active Masternode
+    CPubKey pubKeyMasternode;
+    CKey keyMasternode;
+
+    // Initialized while registering Masternode
+    COutPoint outpoint;
     CService service;
 
-    int status;
-    std::string notCapableReason;
+    int nState; // should be one of ACTIVE_MASTERNODE_XXXX
+    std::string strNotCapableReason;
+
 
     CActiveMasternode()
-    {        
-        status = MASTERNODE_NOT_PROCESSED;
-    }
+        : eType(MASTERNODE_UNKNOWN),
+          fPingerEnabled(false),
+          pubKeyMasternode(),
+          keyMasternode(),
+          outpoint(),
+          service(),
+          nState(ACTIVE_MASTERNODE_INITIAL)
+    {}
 
-    /// Manage status of main Masternode
-    void ManageStatus(); 
+    /// Manage state of active Masternode
+    void ManageState(CConnman* connman);
 
-    /// Ping for main Masternode
-    bool Dseep(std::string& errorMessage); 
-    /// Ping for any Masternode
-    bool Dseep(CTxIn vin, CService service, CKey key, CPubKey pubKey, std::string &retErrorMessage, bool stop); 
+    std::string GetStateString() const;
+    std::string GetStatus() const;
+    std::string GetTypeString() const;
 
-    /// Stop main Masternode
-    bool StopMasterNode(std::string& errorMessage); 
-    /// Stop remote Masternode
-    bool StopMasterNode(std::string strService, std::string strKeyMasternode, std::string& errorMessage); 
-    /// Stop any Masternode
-    bool StopMasterNode(CTxIn vin, CService service, CKey key, CPubKey pubKey, std::string& errorMessage); 
+    bool UpdateSentinelPing(int version);
 
-    /// Register remote Masternode
-    bool Register(std::string strService, std::string strKey, std::string txHash, std::string strOutputIndex, std::string strDonationAddress, std::string strDonationPercentage, std::string& errorMessage); 
-    /// Register any Masternode
-    bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyMasternode, CPubKey pubKeyMasternode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage); 
-
-    /// Get 5000DRK input that can be used for the Masternode
-    bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
-    bool GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);
-    //vector<COutput> SelectCoinsMasternode();
-    bool GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
-	std::vector<COutput> SelectCoinsMasternode();//todo++
-    /// Enable hot wallet mode (run a Masternode with no funds)
-    bool EnableHotColdMasterNode(CTxIn& vin, CService& addr);
+private:
+    void ManageStateInitial(CConnman* connman);
+    void ManageStateRemote();
 };
-
-extern CActiveMasternode activeMasternode;
 
 #endif

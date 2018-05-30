@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2017 The Bitcoin Core developers 
 // Copyright (c) 2015-2017 The Dash developers 
 // Copyright (c) 2015-2017 The Bitsend developers
@@ -297,6 +297,40 @@ public:
         return (*this);
     }
 };
+/** Reads data from an underlying stream, while hashing the read data. */
+template<typename Source>
+class CHashVerifier : public CHashWriter
+{
+private:
+    Source* source;
+
+public:
+    explicit CHashVerifier(Source* source_) : CHashWriter(source_->GetType(), source_->GetVersion()), source(source_) {}
+
+    void read(char* pch, size_t nSize)
+    {
+        source->read(pch, nSize);
+        this->write(pch, nSize);
+    }
+
+    void ignore(size_t nSize)
+    {
+        char data[1024];
+        while (nSize > 0) {
+            size_t now = std::min<size_t>(nSize, 1024);
+            read(data, now);
+            nSize -= now;
+        }
+    }
+
+    template<typename T>
+    CHashVerifier<Source>& operator>>(T& obj)
+    {
+        // Unserialize from this stream
+        ::Unserialize(*this, obj);
+        return (*this);
+    }
+};
 
 /** Compute the 256-bit hash of an object's serialization. */
 template<typename T>
@@ -344,7 +378,7 @@ public:
  *      .Finalize()
  */
 uint64_t SipHashUint256(uint64_t k0, uint64_t k1, const uint256& val);
-
+uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint32_t extra);
 /* ----------- X11 Hash ------------------------------------------------ */
 template<typename T1>
 inline uint256 HashX11(const T1 pbegin, const T1 pend)

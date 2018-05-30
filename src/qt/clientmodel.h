@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,13 +8,12 @@
 #include <QObject>
 #include <QDateTime>
 
-class AddressTableModel;
+#include <atomic>
+
 class BanTableModel;
 class OptionsModel;
 class PeerTableModel;
-class TransactionTableModel;
 
-class CWallet;
 class CBlockIndex;
 
 QT_BEGIN_NAMESPACE
@@ -51,7 +50,7 @@ public:
     //! Return number of connections, default is in- and outbound (total)
     int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
     QString getMasternodeCountString() const;
-	int getNumBlocks() const;
+    int getNumBlocks() const;
     int getHeaderTipHeight() const;
     int64_t getHeaderTipTime() const;
     //! Return number of transactions in the mempool
@@ -82,24 +81,32 @@ public:
     QString formatClientStartupTime() const;
     QString dataDir() const;
 
+    // caches for the best header
+    mutable std::atomic<int> cachedBestHeaderHeight;
+    mutable std::atomic<int64_t> cachedBestHeaderTime;
+
 private:
     OptionsModel *optionsModel;
     PeerTableModel *peerTableModel;
+    QString cachedMasternodeCountString;
     BanTableModel *banTableModel;
-	QString cachedMasternodeCountString;
+
     QTimer *pollTimer;
-	QTimer* pollMnTimer;
+    QTimer *pollMnTimer;
+
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
 
 Q_SIGNALS:
     void numConnectionsChanged(int count);
+    void strMasternodesChanged(const QString &strMasternodes);
     void numBlocksChanged(int count, const QDateTime& blockDate, double nVerificationProgress, bool header);
+    void additionalDataSyncProgressChanged(double nSyncProgress);
     void mempoolSizeChanged(long count, size_t mempoolSizeInBytes);
     void networkActiveChanged(bool networkActive);
     void alertsChanged(const QString &warnings);
     void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
-	void strMasternodesChanged(const QString& strMasternodes);
+
     //! Fired when a message should be reported to the user
     void message(const QString &title, const QString &message, unsigned int style);
 
@@ -108,7 +115,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void updateTimer();
-	void updateMnTimer();
+    void updateMnTimer();
     void updateNumConnections(int numConnections);
     void updateNetworkActive(bool networkActive);
     void updateAlert();

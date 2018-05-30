@@ -1,16 +1,14 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_PRIMITIVES_BLOCK_H
 #define BITSEND_PRIMITIVES_BLOCK_H
 
-#include "primitives/transaction.h"
-#include "serialize.h"
-#include "uint256.h"
+#include <primitives/transaction.h>
+#include <serialize.h>
+#include <uint256.h>
 
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
@@ -64,6 +62,8 @@ public:
 
     uint256 GetHash() const;
 
+    uint256 GetPoWHash() const;
+
     int64_t GetBlockTime() const
     {
         return (int64_t)nTime;
@@ -78,7 +78,8 @@ public:
     std::vector<CTransactionRef> vtx;
 
     // memory only
-	mutable CScript payee;//TODO--
+    mutable CTxOut txoutMasternode; // masternode payment
+    mutable std::vector<CTxOut> voutSuperblock; // superblock payment
     mutable bool fChecked;
 
     CBlock()
@@ -104,7 +105,8 @@ public:
     {
         CBlockHeader::SetNull();
         vtx.clear();
-		payee = CScript();//TODO--
+        txoutMasternode = CTxOut();
+        voutSuperblock.clear();
         fChecked = false;
     }
 
@@ -133,10 +135,7 @@ struct CBlockLocator
 
     CBlockLocator() {}
 
-    CBlockLocator(const std::vector<uint256>& vHaveIn)
-    {
-        vHave = vHaveIn;
-    }
+    explicit CBlockLocator(const std::vector<uint256>& vHaveIn) : vHave(vHaveIn) {}
 
     ADD_SERIALIZE_METHODS;
 
@@ -158,8 +157,5 @@ struct CBlockLocator
         return vHave.empty();
     }
 };
-
-/** Compute the consensus-critical block weight (see BIP 141). */
-int64_t GetBlockWeight(const CBlock& tx);
 
 #endif // BITSEND_PRIMITIVES_BLOCK_H

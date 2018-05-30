@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,10 +6,10 @@
 #define BITSEND_QT_BITSENDGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitsend-config.h"
+#include <config/bitsend-config.h>
 #endif
 
-#include "amount.h"
+#include <amount.h>
 
 #include <QLabel>
 #include <QMainWindow>
@@ -31,8 +31,6 @@ class WalletModel;
 class HelpMessageDialog;
 class ModalOverlay;
 class MasternodeList;
-
-class CWallet;
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -95,7 +93,7 @@ private:
     QMenuBar *appMenuBar;
     QAction *overviewAction;
     QAction *historyAction;
-	QAction *masternodeAction;
+    QAction *masternodeAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *sendCoinsMenuAction;
@@ -103,20 +101,14 @@ private:
     QAction *usedReceivingAddressesAction;
     QAction *signMessageAction;
     QAction *verifyMessageAction;
-	//QAction* bip38ToolAction;
     QAction *aboutAction;
     QAction *receiveCoinsAction;
     QAction *receiveCoinsMenuAction;
     QAction *optionsAction;
-	QAction* openRepairAction;
-	QAction* showBackupsAction;
-	QAction* showConfAction;
-	QAction* showBitsendConfAction;
     QAction *toggleHideAction;
     QAction *encryptWalletAction;
     QAction *backupWalletAction;
     QAction *changePassphraseAction;
-    QAction *unlockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
     QAction *openAction;
@@ -153,7 +145,7 @@ private:
     void subscribeToCoreSignals();
     /** Disconnect core signals from GUI client */
     void unsubscribeFromCoreSignals();
-	
+
     /** Update UI with latest network info from model. */
     void updateNetworkState();
 
@@ -162,8 +154,6 @@ private:
 Q_SIGNALS:
     /** Signal raised when a URI was entered or dragged to the GUI */
     void receivedURI(const QString &uri);
-	//handlerestart
-	void requestedRestart(QStringList args);
 
 public Q_SLOTS:
     /** Set number of connections shown in the UI */
@@ -172,8 +162,9 @@ public Q_SLOTS:
     void setNetworkActive(bool networkActive);
     /** Set number of blocks and last block date shown in the UI */
     void setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool headers);
-    /** Get restart command-line parameters and request restart */
-    void handleRestart(QStringList args);
+    /** Set additional data sync status shown in the UI */
+    void setAdditionalDataSyncProgress(double nSyncProgress);
+
     /** Notify the user of an event from the core network or transaction handling code.
        @param[in] title     the message box / notification title
        @param[in] message   the displayed text
@@ -181,7 +172,7 @@ public Q_SLOTS:
                             @see CClientUIInterface::MessageBoxFlags
        @param[in] ret       pointer to a bool that will be modified to whether Ok was clicked (modal only)
     */
-    void message(const QString &title, const QString &message, unsigned int style, bool *ret = NULL);
+    void message(const QString &title, const QString &message, unsigned int style, bool *ret = nullptr);
 
 #ifdef ENABLE_WALLET
     /** Set the encryption status as shown in the UI.
@@ -208,20 +199,18 @@ private Q_SLOTS:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
+    /** Switch to masternode page */
+    void gotoMasternodePage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-	
-	//kaali-goto masternode page
-	void gotoMasternodePage();
-	/** Show BIP 38 tool - default to Encryption tab */
-    //void gotoBip38Tool();
+
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
     void gotoVerifyMessageTab(QString addr = "");
-	
+
     /** Show open dialog */
     void openClicked();
 #endif // ENABLE_WALLET
@@ -235,7 +224,7 @@ private Q_SLOTS:
     void showDebugWindowActivateConsole();
     /** Show help message dialog */
     void showHelpMessageClicked();
-#ifndef Q_OS_MAC
+#ifndef Q_OS_BSD
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 #endif

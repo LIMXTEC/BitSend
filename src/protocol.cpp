@@ -1,40 +1,16 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "protocol.h"
+#include <protocol.h>
 
-#include "util.h"
-#include "utilstrencodings.h"
+#include <util.h>
+#include <utilstrencodings.h>
 
 #ifndef WIN32
 # include <arpa/inet.h>
 #endif
-
-/** // TODO-- : NetMsgType::, allNetMessageTypes[]
-static const char* ppszTypeName[] =
-{
-    "ERROR", // Should never occur
-    NetMsgType::TX,
-    NetMsgType::BLOCK,
-    "filtered block" // Should never occur
-    "tx lock request",
-    "tx lock vote",
-    "spork",
-    "mn winner",
-    "mn scan error",
-    "mn budget vote",
-    "mn budget proposal",
-    "mn budget finalized",
-    "mn budget finalized vote",
-    "mn quorum",
-    "mn announce",
-    "mn ping",
-    "dstx"
-};*/
 
 namespace NetMsgType {
 const char *VERSION="version";
@@ -63,8 +39,34 @@ const char *SENDCMPCT="sendcmpct";
 const char *CMPCTBLOCK="cmpctblock";
 const char *GETBLOCKTXN="getblocktxn";
 const char *BLOCKTXN="blocktxn";
-const char *MNWINNER="masternode winner";
-const char *SPORK="spork";
+// Bitsend message types
+const char *MASTERNODEPAYMENTVOTE="mnw";
+const char *MASTERNODEPAYMENTBLOCK="mnwb";
+const char *MASTERNODEPAYMENTSYNC="mnget";
+const char *MNQUORUM="mn quorum"; // not implemented
+const char *MNANNOUNCE="mnb";
+const char *MNPING="mnp";
+const char *DSEG="dseg";
+const char *SYNCSTATUSCOUNT="ssc";
+const char *MNGOVERNANCESYNC="govsync";
+const char *MNGOVERNANCEOBJECT="govobj";
+const char *MNGOVERNANCEOBJECTVOTE="govobjvote";
+const char *MNVERIFY="mnv";
+} // namespace NetMsgType
+
+const static std::string ppszTypeName[] =
+{
+    "ERROR", // Should never occur
+    // Bitsend message types
+    // NOTE: include non-implmented here, we must keep this list in sync with enum in protocol.h
+    NetMsgType::MASTERNODEPAYMENTVOTE,
+    NetMsgType::MASTERNODEPAYMENTBLOCK, // reusing, was MNSCANERROR previousely, was NOT used in 12.0, we need this for inv
+    NetMsgType::MNQUORUM, // not implemented
+    NetMsgType::MNANNOUNCE,
+    NetMsgType::MNPING,
+    NetMsgType::MNGOVERNANCEOBJECT,
+    NetMsgType::MNGOVERNANCEOBJECTVOTE,
+    NetMsgType::MNVERIFY,
 };
 
 /** All known message types. Keep this in the same order as the list of
@@ -97,8 +99,19 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::CMPCTBLOCK,
     NetMsgType::GETBLOCKTXN,
     NetMsgType::BLOCKTXN,
-	NetMsgType::MNWINNER,
-	NetMsgType::SPORK,
+    // Bitsend message types
+    // NOTE: do NOT include non-implmented here, we want them to be "Unknown command" in ProcessMessage()
+    NetMsgType::MASTERNODEPAYMENTVOTE,
+    // NetMsgType::MASTERNODEPAYMENTBLOCK, // there is no message for this, only inventory
+    NetMsgType::MASTERNODEPAYMENTSYNC,
+    NetMsgType::MNANNOUNCE,
+    NetMsgType::MNPING,
+    NetMsgType::DSEG,
+    NetMsgType::SYNCSTATUSCOUNT,
+    NetMsgType::MNGOVERNANCESYNC,
+    NetMsgType::MNGOVERNANCEOBJECT,
+    NetMsgType::MNGOVERNANCEOBJECTVOTE,
+    NetMsgType::MNVERIFY,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes+ARRAYLEN(allNetMessageTypes));
 
@@ -179,15 +192,16 @@ CInv::CInv()
     hash.SetNull();
 }
 
-CInv::CInv(int typeIn, const uint256& hashIn)
-{
-    type = typeIn;
-    hash = hashIn;
-}
+CInv::CInv(int typeIn, const uint256& hashIn) : type(typeIn), hash(hashIn) {}
 
 bool operator<(const CInv& a, const CInv& b)
 {
     return (a.type < b.type || (a.type == b.type && a.hash < b.hash));
+}
+
+bool IsKnownType(int typeIn)
+{
+    return (typeIn >= 1 && typeIn < (int)ARRAYLEN(ppszTypeName));
 }
 
 std::string CInv::GetCommand() const
@@ -202,10 +216,11 @@ std::string CInv::GetCommand() const
     case MSG_BLOCK:          return cmd.append(NetMsgType::BLOCK);
     case MSG_FILTERED_BLOCK: return cmd.append(NetMsgType::MERKLEBLOCK);
     case MSG_CMPCT_BLOCK:    return cmd.append(NetMsgType::CMPCTBLOCK);
-	case MSG_MASTERNODE_WINNER: return cmd.append(NetMsgType::MNWINNER);
-	case MSG_SPORK: return cmd.append(NetMsgType::SPORK);
     default:
-        throw std::out_of_range(strprintf("CInv::GetCommand(): type=%d unknown type", type));
+        if (!IsKnownType(type))
+            throw std::out_of_range(strprintf("CInv::GetCommand(): type=%d unknown type", type));
+        else
+            return ppszTypeName[type];
     }
 }
 
