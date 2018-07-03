@@ -1,27 +1,26 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "walletview.h"
+#include <qt/walletview.h>
 
-#include "addressbookpage.h"
-#include "askpassphrasedialog.h"
-//#include "bip38tooldialog.h"
-#include "bitsendgui.h"
-#include "clientmodel.h"
-#include "guiutil.h"
-#include "masternodeconfig.h"//kaali
-#include "optionsmodel.h"
-#include "overviewpage.h"
-#include "platformstyle.h"
-#include "receivecoinsdialog.h"
-#include "sendcoinsdialog.h"
-#include "signverifymessagedialog.h"
-#include "transactiontablemodel.h"
-#include "transactionview.h"
-#include "walletmodel.h"
+#include <qt/addressbookpage.h>
+#include <qt/askpassphrasedialog.h>
+#include <qt/bitsendgui.h>
+#include <qt/clientmodel.h>
+#include <qt/guiutil.h>
+#include <masternodeconfig.h>
+#include <qt/optionsmodel.h>
+#include <qt/overviewpage.h>
+#include <qt/platformstyle.h>
+#include <qt/receivecoinsdialog.h>
+#include <qt/sendcoinsdialog.h>
+#include <qt/signverifymessagedialog.h>
+#include <qt/transactiontablemodel.h>
+#include <qt/transactionview.h>
+#include <qt/walletmodel.h>
 
-#include "ui_interface.h"
+#include <ui_interface.h>
 
 #include <QAction>
 #include <QActionGroup>
@@ -29,13 +28,13 @@
 #include <QHBoxLayout>
 #include <QProgressDialog>
 #include <QPushButton>
+#include <QSettings>
 #include <QVBoxLayout>
 
 WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     QStackedWidget(parent),
     clientModel(0),
     walletModel(0),
-    unlockContext(0),
     platformStyle(_platformStyle)
 {
     // Create tabs
@@ -66,8 +65,13 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     addWidget(transactionsPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
-	masternodeListPage = new MasternodeList();//kaali
-	addWidget(masternodeListPage);
+
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage = new MasternodeList(platformStyle);
+        addWidget(masternodeListPage);
+    }
+    
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
@@ -87,8 +91,6 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 
 WalletView::~WalletView()
 {
-    if(unlockContext)
-        delete (WalletModel::UnlockContext*)(unlockContext);
 }
 
 void WalletView::setBitsendGUI(BitsendGUI *gui)
@@ -118,7 +120,10 @@ void WalletView::setClientModel(ClientModel *_clientModel)
 
     overviewPage->setClientModel(_clientModel);
     sendCoinsPage->setClientModel(_clientModel);
-	masternodeListPage->setClientModel(clientModel);
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage->setClientModel(_clientModel);
+    }
 }
 
 void WalletView::setWalletModel(WalletModel *_walletModel)
@@ -130,9 +135,15 @@ void WalletView::setWalletModel(WalletModel *_walletModel)
     overviewPage->setWalletModel(_walletModel);
     receiveCoinsPage->setModel(_walletModel);
     sendCoinsPage->setModel(_walletModel);
-	masternodeListPage->setWalletModel(walletModel);
-    usedReceivingAddressesPage->setModel(_walletModel->getAddressTableModel());
-    usedSendingAddressesPage->setModel(_walletModel->getAddressTableModel());
+    usedReceivingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);
+    usedSendingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);
+
+    //added wallet model to avoid crash when start is clicked at masternode tab
+    //note that at this time its not possible to run node via this tab because coins are pre-loced at start of BSD and start button trying to lock it again
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        masternodeListPage->setWalletModel(_walletModel);
+    }
 
     if (_walletModel)
     {
@@ -188,14 +199,19 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+void WalletView::gotoMasternodePage()
+{
+    QSettings settings;
+    if (settings.value("fShowMasternodesTab").toBool()) {
+        setCurrentWidget(masternodeListPage);
+    }
+}
+
 void WalletView::gotoReceiveCoinsPage()
 {
     setCurrentWidget(receiveCoinsPage);
 }
-void WalletView::gotoMasternodePage()
-{
-	setCurrentWidget(masternodeListPage);
-}
+
 void WalletView::gotoSendCoinsPage(QString addr)
 {
     setCurrentWidget(sendCoinsPage);
@@ -258,7 +274,7 @@ void WalletView::backupWallet()
 {
     QString filename = GUIUtil::getSaveFileName(this,
         tr("Backup Wallet"), QString(),
-        tr("Wallet Data (*.dat)"), NULL);
+        tr("Wallet Data (*.dat)"), nullptr);
 
     if (filename.isEmpty())
         return;
@@ -279,13 +295,7 @@ void WalletView::changePassphrase()
     dlg.setModel(walletModel);
     dlg.exec();
 }
-/* void WalletView::gotoBip38Tool()
-{
-    Bip38ToolDialog* bip38ToolDialog = new Bip38ToolDialog(this);
-    //bip38ToolDialog->setAttribute(Qt::WA_DeleteOnClose);
-    bip38ToolDialog->setModel(walletModel);
-    bip38ToolDialog->showTab_ENC(true);
-} */
+
 void WalletView::unlockWallet()
 {
     if(!walletModel)
@@ -297,15 +307,6 @@ void WalletView::unlockWallet()
         dlg.setModel(walletModel);
         dlg.exec();
     }
-}
-
-void WalletView::requestUnlockWallet()
-{
-    if(walletModel)
-    {
-        unlockContext = (void*)(new WalletModel::UnlockContext(walletModel->requestUnlock()));
-    }
-    unlockContext = 0;
 }
 
 void WalletView::usedSendingAddresses()

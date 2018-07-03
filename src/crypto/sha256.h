@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
-
+#include <string>
 /** A hasher class for SHA-256. */
 class CSHA256
 {
@@ -25,4 +25,8 @@ public:
     CSHA256& Reset();
 };
 
+/** Autodetect the best available SHA256 implementation.
+ *  Returns the name of the implementation.
+ */
+std::string SHA256AutoDetect();
 #endif // BITSEND_CRYPTO_SHA256_H

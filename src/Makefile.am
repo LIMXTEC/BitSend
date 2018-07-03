@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The Bitsend Core developers
+# Copyright (c) 2013-2018 The Bitsend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,8 +18,7 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BITSEND_CONFIG_INCLUDES=-I$(builddir)/config
-BITSEND_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+BITSEND_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
 BITSEND_INCLUDES += -I$(srcdir)/secp256k1/include
 BITSEND_INCLUDES += $(UNIVALUE_CFLAGS)
@@ -76,12 +75,15 @@ endif
 .PHONY: FORCE check-symbols check-security
 # bitsend core #
 BITSEND_CORE_H = \
-  activemasternode.h \
   addrdb.h \
+  activemasternode.h \
   addrman.h \
   base58.h \
+  bech32.h \
   bloom.h \
   blockencodings.h \
+  cachemap.h \
+  cachemultimap.h \
   chain.h \
   chainparams.h \
   chainparamsbase.h \
@@ -96,42 +98,61 @@ BITSEND_CORE_H = \
   compat/sanity.h \
   compressor.h \
   consensus/consensus.h \
+  consensus/tx_verify.h \
   core_io.h \
   core_memusage.h \
   cuckoocache.h \
+  fs.h \
+  dsnotificationinterface.h \
+  governance.h \
+  governance-classes.h \
+  governance-exceptions.h \
+  governance-object.h \
+  governance-validators.h \
+  governance-vote.h \
+  governance-votedb.h \
+  flat-database.h \
   httprpc.h \
   httpserver.h \
   indirectmap.h \
   init.h \
   key.h \
-  keepass.h \
   keystore.h \
   dbwrapper.h \
   limitedmap.h \
   masternode.h \
-  masternode-pos.h \
+  masternode-payments.h \
+  masternode-sync.h \
   masternodeman.h \
   masternodeconfig.h \
   memusage.h \
   merkleblock.h \
+  messagesigner.h \
   miner.h \
   net.h \
   net_processing.h \
   netaddress.h \
   netbase.h \
+  netfulfilledman.h \
   netmessagemaker.h \
   noui.h \
+  policy/feerate.h \
   policy/fees.h \
   policy/policy.h \
   policy/rbf.h \
   pow.h \
   protocol.h \
   random.h \
+  reverse_iterator.h \
   reverselock.h \
+  rpc/blockchain.h \
   rpc/client.h \
+  rpc/mining.h \
   rpc/protocol.h \
+  rpc/safemode.h \
   rpc/server.h \
   rpc/register.h \
+  rpc/util.h \
   scheduler.h \
   script/sigcache.h \
   script/sign.h \
@@ -144,7 +165,6 @@ BITSEND_CORE_H = \
   support/events.h \
   support/lockedpool.h \
   sync.h \
-  spork.h \
   threadsafety.h \
   threadinterrupt.h \
   timedata.h \
@@ -162,20 +182,26 @@ BITSEND_CORE_H = \
   wallet/coincontrol.h \
   wallet/crypter.h \
   wallet/db.h \
+  wallet/feebumper.h \
+  wallet/fees.h \
+  wallet/init.h \
   wallet/rpcwallet.h \
   wallet/wallet.h \
   wallet/walletdb.h \
+  wallet/walletutil.h \
   warnings.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
-  zmq/zmqpublishnotifier.h
+  zmq/zmqpublishnotifier.h \
+  crypto/scrypt.h \
+  $(BITSEND_TIMETRAVEL_H)
 
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
-	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
-	  $(abs_top_srcdir)
+	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
+	  "$(abs_top_srcdir)"
 libbitsend_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between bitsendd and bitsend-qt
@@ -183,31 +209,49 @@ libbitsend_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(MINIUPNPC_CP
 libbitsend_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_server_a_SOURCES = \
   activemasternode.cpp \
-  addrman.cpp \
   addrdb.cpp \
+  addrman.cpp \
   bloom.cpp \
   blockencodings.cpp \
-  bitpool.cpp \
   chain.cpp \
   checkpoints.cpp \
+  consensus/tx_verify.cpp \
+  dsnotificationinterface.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
   dbwrapper.cpp \
+  governance.cpp \
+  governance-classes.cpp \
+  governance-object.cpp \
+  governance-validators.cpp \
+  governance-vote.cpp \
+  governance-votedb.cpp \
+  masternode.cpp \
+  masternode-payments.cpp \
+  masternode-sync.cpp \
+  masternodeconfig.cpp \
+  masternodeman.cpp \
   merkleblock.cpp \
+  messagesigner.cpp \
   miner.cpp \
   net.cpp \
+  netfulfilledman.cpp \
   net_processing.cpp \
   noui.cpp \
   policy/fees.cpp \
   policy/policy.cpp \
+  policy/rbf.cpp \
   pow.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
+  rpc/masternode.cpp \
+  rpc/governance.cpp \
   rpc/mining.cpp \
   rpc/misc.cpp \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
+  rpc/safemode.cpp \
   rpc/server.cpp \
   script/sigcache.cpp \
   script/ismine.cpp \
@@ -236,22 +280,30 @@ endif
 libbitsend_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_wallet_a_SOURCES = \
-  activemasternode.cpp \
+  rpc/misc.cpp \
+  script/ismine.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
+  wallet/feebumper.cpp \
+  wallet/fees.cpp \
+  wallet/init.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
-  policy/rbf.cpp \
+  wallet/walletutil.cpp \
   $(BITSEND_CORE_H)
 
+
+
 # crypto primitives library
-crypto_libbitsend_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_CONFIG_INCLUDES)
+crypto_libbitsend_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(SSL_CFLAGS)
 crypto_libbitsend_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libbitsend_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
+  crypto/chacha20.h \
+  crypto/chacha20.cpp \
   crypto/common.h \
   crypto/hmac_sha256.cpp \
   crypto/hmac_sha256.h \
@@ -300,10 +352,14 @@ crypto_libbitsend_crypto_a_SOURCES = \
   crypto/sph_haval.h \
   crypto/sph_shabal.h \
   crypto/sph_sha2.h \
-  crypto/sph_whirlpool.h 
+  crypto/sph_whirlpool.h
+
+if USE_ASM
+crypto_libbitsend_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libbitsend_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
+libbitsend_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(BOOST_CPPFLAGS)
 libbitsend_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_consensus_a_SOURCES = \
   amount.h \
@@ -335,33 +391,33 @@ libbitsend_consensus_a_SOURCES = \
   uint256.h \
   utilstrencodings.cpp \
   utilstrencodings.h \
-  version.h
+  version.h \
+  crypto/scrypt.cpp \
+  crypto/scrypt-sse2.cpp \
+  crypto/scrypt.h
 
 # common: shared between bitsendd, and bitsend-qt and non-server tools
 libbitsend_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_common_a_SOURCES = \
-  activemasternode.cpp \
-  masternode.cpp \
-  masternode-pos.cpp \
-  masternodeconfig.cpp \
-  masternodeman.cpp \
-  amount.cpp \
   base58.cpp \
+  bech32.cpp \
   chainparams.cpp \
   coins.cpp \
   compressor.cpp \
   core_read.cpp \
   core_write.cpp \
+  crypto/scrypt.cpp \
+  $(BITSEND_TIMETRAVEL) \
   key.cpp \
   keystore.cpp \
   netaddress.cpp \
   netbase.cpp \
+  policy/feerate.cpp \
   protocol.cpp \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
-  spork.cpp \
   warnings.cpp \
   $(BITSEND_CORE_H)
 
@@ -377,8 +433,10 @@ libbitsend_util_a_SOURCES = \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
   compat/strnlen.cpp \
+  fs.cpp \
   random.cpp \
   rpc/protocol.cpp \
+  rpc/util.cpp \
   support/cleanse.cpp \
   sync.cpp \
   threadinterrupt.cpp \
@@ -422,6 +480,7 @@ bitsendd_LDADD = \
   $(LIBBITSEND_CONSENSUS) \
   $(LIBBITSEND_CRYPTO) \
   $(LIBLEVELDB) \
+  $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
@@ -462,6 +521,7 @@ bitsend_tx_LDADD = \
   $(LIBBITSEND_UTIL) \
   $(LIBBITSEND_CONSENSUS) \
   $(LIBBITSEND_CRYPTO) \
+  $(LIBBITSEND_TIMETRAVEL) \
   $(LIBSECP256K1)
 
 bitsend_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
@@ -477,8 +537,8 @@ if GLIBC_BACK_COMPAT
 endif
 
 libbitsendconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbitsendconsensus_la_LIBADD = $(LIBSECP256K1)
-libbitsendconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITSEND_INTERNAL
+libbitsendconsensus_la_LIBADD = $(LIBSECP256K1) $(CRYPTO_LIBS) $(BOOST_LIBS)
+libbitsendconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) $(BOOST_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITSEND_INTERNAL $(SSL_CFLAGS)
 libbitsendconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
@@ -504,10 +564,17 @@ CLEANFILES += univalue/*.gcda univalue/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
-
-DISTCLEANFILES = obj/build.h
+CLEANFILES += obj/build.h
 
 EXTRA_DIST = $(CTAES_DIST)
+
+
+config/bitsend-config.h: config/stamp-h1
+	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitsend-config.h.in $(top_builddir)/config.status
+	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
+$(top_srcdir)/$(subdir)/config/bitsend-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitsend-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean
@@ -520,10 +587,6 @@ clean-local:
 	@test -f $(WINDRES)
 	## FIXME: How to get the appropriate modulename_CPPFLAGS in here?
 	$(AM_V_GEN) $(WINDRES) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) -DWINDRES_PREPROC -i $< -o $@
-
-.mm.o:
-	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(AM_CXXFLAGS) $(PIE_FLAGS) $(CXXFLAGS) -c -o $@ $<
 
 check-symbols: $(bin_PROGRAMS)
 if GLIBC_BACK_COMPAT

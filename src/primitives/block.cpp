@@ -1,32 +1,43 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "primitives/block.h"
-
+#include <primitives/block.h>
 #include "chain.h"
-#include "hash.h"
-#include "tinyformat.h"
-#include "utilstrencodings.h"
-#include "crypto/common.h"
+#include <hash.h>
+#include <tinyformat.h>
+#include <utilstrencodings.h>
+#include <crypto/common.h>
+#include <crypto/scrypt.h> // Bitsend Scrypt
+#include <crypto/hashblock.h> // Bitsend TimeTravel
 
 uint256 CBlockHeader::GetHash() const
 {
-	const int FORKX17_Main_Net2 = 1477958400;
-	if(GetBlockTime() >= FORKX17_Main_Net2) // BitSend PoW Hardfork, Friday, 09-Sep-16 18:00:00 UTC
-	{
+    if(GetBlockTime() >= 1477958400) // Bitsend PoW Hardfork, Friday, 09-Sep-16 18:00:00 UTC
+		{
 		return XEVAN(BEGIN(nVersion), END(nNonce));
 		strprintf("XEVAN_Hash is on.");
-	}
-    else
-	{
-	 return HashX11(BEGIN(nVersion), END(nNonce));
-	 strprintf("X11_Hash is on.");
-	}
-    //return HashX11(BEGIN(nVersion), END(nNonce));//return SerializeHash(*this);//TODO-- algo xevan
+		}
+		else
+		{
+			return HashX11(BEGIN(nVersion), END(nNonce));
+			strprintf("X11_Hash is on.");
+		}
+}
+
+uint256 CBlockHeader::GetPoWHash() const
+{
+		if(GetBlockTime() >= 1477958400) // Bitsend PoW Hardfork, Friday, 09-Sep-16 18:00:00 UTC
+		{
+		return XEVAN(BEGIN(nVersion), END(nNonce));
+		strprintf("XEVAN_Hash is on.");
+		}
+		else
+		{
+			return HashX11(BEGIN(nVersion), END(nNonce));
+			strprintf("X11_Hash is on.");
+		}
 }
 
 std::string CBlock::ToString() const
@@ -39,18 +50,8 @@ std::string CBlock::ToString() const
         hashMerkleRoot.ToString(),
         nTime, nBits, nNonce,
         vtx.size());
-    for (unsigned int i = 0; i < vtx.size(); i++)
-    {
-        s << "  " << vtx[i]->ToString() << "\n";
+    for (const auto& tx : vtx) {
+        s << "  " << tx->ToString() << "\n";
     }
     return s.str();
-}
-
-int64_t GetBlockWeight(const CBlock& block)
-{
-    // This implements the weight = (stripped_size * 4) + witness_size formula,
-    // using only serialization with and without witness data. As witness_size
-    // is equal to total_size - stripped_size, this formula is identical to:
-    // weight = (stripped_size * 3) + total_size.
-    return ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * (WITNESS_SCALE_FACTOR - 1) + ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION);
 }

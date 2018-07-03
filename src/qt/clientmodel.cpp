@@ -1,23 +1,28 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+﻿// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "clientmodel.h"
+#include <qt/clientmodel.h>
 
-#include "bantablemodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-#include "peertablemodel.h"
+#include <qt/bantablemodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
+#include <qt/peertablemodel.h>
 
-#include "chainparams.h"
-#include "checkpoints.h"
-#include "clientversion.h"
-#include "validation.h"
-#include "net.h"
-#include "txmempool.h"
-#include "ui_interface.h"
-#include "util.h"
-#include "masternodeman.h"
+#include <chain.h>
+#include <chainparams.h>
+#include <checkpoints.h>
+#include <clientversion.h>
+#include <validation.h>
+#include <net.h>
+#include <txmempool.h>
+#include <ui_interface.h>
+#include <util.h>
+#include <warnings.h>
+
+#include <masternodeman.h>
+#include <masternode-sync.h>
+
 #include <stdint.h>
 
 #include <QDebug>
@@ -25,7 +30,6 @@
 
 class CBlockIndex;
 
-static const int64_t nClientStartupTime = GetTime();
 static int64_t nLastHeaderTipUpdateNotification = 0;
 static int64_t nLastBlockTipUpdateNotification = 0;
 
@@ -33,20 +37,22 @@ ClientModel::ClientModel(OptionsModel *_optionsModel, QObject *parent) :
     QObject(parent),
     optionsModel(_optionsModel),
     peerTableModel(0),
-	cachedMasternodeCountString(""),
+    cachedMasternodeCountString(""),
     banTableModel(0),
     pollTimer(0)
 {
+    cachedBestHeaderHeight = -1;
+    cachedBestHeaderTime = -1;
     peerTableModel = new PeerTableModel(this);
     banTableModel = new BanTableModel(this);
     pollTimer = new QTimer(this);
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
     pollTimer->start(MODEL_UPDATE_DELAY);
-	 pollMnTimer = new QTimer(this);
+      
+    pollMnTimer = new QTimer(this);
     connect(pollMnTimer, SIGNAL(timeout()), this, SLOT(updateMnTimer()));
     // no need to update as frequent as data for balances/txes/blocks
     pollMnTimer->start(MODEL_UPDATE_DELAY * 4);
-
 
     subscribeToCoreSignals();
 }
@@ -74,7 +80,14 @@ int ClientModel::getNumConnections(unsigned int flags) const
 
 QString ClientModel::getMasternodeCountString() const
 {
-   return QString::number((int)mnodeman.CountEnabled()) + " / " + QString::number((int)mnodeman.size());
+    // return tr("Total: %1 (PS compatible: %2 / Enabled: %3) (IPv4: %4, IPv6: %5, TOR: %6)").arg(QString::number((int)mnodeman.size()))
+    return tr("Total: %1 (PS compatible: %2 / Enabled: %3)")
+            .arg(QString::number((int)mnodeman.size()))
+            .arg(QString::number((int)mnodeman.CountEnabled())) // TODO recheck this because it contained privatesend reference
+            .arg(QString::number((int)mnodeman.CountEnabled()));
+            // .arg(QString::number((int)mnodeman.CountByIP(NET_IPV4)))
+            // .arg(QString::number((int)mnodeman.CountByIP(NET_IPV6)))
+            // .arg(QString::number((int)mnodeman.CountByIP(NET_TOR)));
 }
 
 int ClientModel::getNumBlocks() const
@@ -85,18 +98,28 @@ int ClientModel::getNumBlocks() const
 
 int ClientModel::getHeaderTipHeight() const
 {
-    LOCK(cs_main);
-    if (!pindexBestHeader)
-        return 0;
-    return pindexBestHeader->nHeight;
+    if (cachedBestHeaderHeight == -1) {
+        // make sure we initially populate the cache via a cs_main lock
+        // otherwise we need to wait for a tip update
+        LOCK(cs_main);
+        if (pindexBestHeader) {
+            cachedBestHeaderHeight = pindexBestHeader->nHeight;
+            cachedBestHeaderTime = pindexBestHeader->GetBlockTime();
+        }
+    }
+    return cachedBestHeaderHeight;
 }
 
 int64_t ClientModel::getHeaderTipTime() const
 {
-    LOCK(cs_main);
-    if (!pindexBestHeader)
-        return 0;
-    return pindexBestHeader->GetBlockTime();
+    if (cachedBestHeaderTime == -1) {
+        LOCK(cs_main);
+        if (pindexBestHeader) {
+            cachedBestHeaderHeight = pindexBestHeader->nHeight;
+            cachedBestHeaderTime = pindexBestHeader->GetBlockTime();
+        }
+    }
+    return cachedBestHeaderTime;
 }
 
 quint64 ClientModel::getTotalBytesRecv() const
@@ -151,17 +174,13 @@ void ClientModel::updateTimer()
     Q_EMIT mempoolSizeChanged(getMempoolSize(), getMempoolDynamicUsage());
     Q_EMIT bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
 }
+
 void ClientModel::updateMnTimer()
 {
-    // Get required lock upfront. This avoids the GUI from getting stuck on
-    // periodical polls if the core is holding the locks for a longer time -
-    // for example, during a wallet rescan.
-    TRY_LOCK(cs_main, lockMain);
-    if (!lockMain)
-        return;
     QString newMasternodeCountString = getMasternodeCountString();
 
-    if (cachedMasternodeCountString != newMasternodeCountString) {
+    if (cachedMasternodeCountString != newMasternodeCountString)
+    {
         cachedMasternodeCountString = newMasternodeCountString;
 
         Q_EMIT strMasternodesChanged(cachedMasternodeCountString);
@@ -252,7 +271,7 @@ bool ClientModel::isReleaseVersion() const
 
 QString ClientModel::formatClientStartupTime() const
 {
-    return QDateTime::fromTime_t(nClientStartupTime).toString();
+    return QDateTime::fromTime_t(GetStartupTime()).toString();
 }
 
 QString ClientModel::dataDir() const
@@ -310,9 +329,14 @@ static void BlockTipChanged(ClientModel *clientmodel, bool initialSync, const CB
 
     int64_t& nLastUpdateNotification = fHeader ? nLastHeaderTipUpdateNotification : nLastBlockTipUpdateNotification;
 
+    if (fHeader) {
+        // cache best headers time and height to reduce future cs_main locks
+        clientmodel->cachedBestHeaderHeight = pIndex->nHeight;
+        clientmodel->cachedBestHeaderTime = pIndex->GetBlockTime();
+    }
     // if we are in-sync, update the UI regardless of last update time
     if (!initialSync || now - nLastUpdateNotification > MODEL_UPDATE_DELAY) {
-        //pass a async signal to the UI thread
+        //pass an async signal to the UI thread
         QMetaObject::invokeMethod(clientmodel, "numBlocksChanged", Qt::QueuedConnection,
                                   Q_ARG(int, pIndex->nHeight),
                                   Q_ARG(QDateTime, QDateTime::fromTime_t(pIndex->GetBlockTime())),
@@ -320,6 +344,12 @@ static void BlockTipChanged(ClientModel *clientmodel, bool initialSync, const CB
                                   Q_ARG(bool, fHeader));
         nLastUpdateNotification = now;
     }
+}
+
+static void NotifyAdditionalDataSyncProgressChanged(ClientModel *clientmodel, double nSyncProgress)
+{
+    QMetaObject::invokeMethod(clientmodel, "additionalDataSyncProgressChanged", Qt::QueuedConnection,
+                              Q_ARG(double, nSyncProgress));
 }
 
 void ClientModel::subscribeToCoreSignals()
@@ -332,6 +362,7 @@ void ClientModel::subscribeToCoreSignals()
     uiInterface.BannedListChanged.connect(boost::bind(BannedListChanged, this));
     uiInterface.NotifyBlockTip.connect(boost::bind(BlockTipChanged, this, _1, _2, false));
     uiInterface.NotifyHeaderTip.connect(boost::bind(BlockTipChanged, this, _1, _2, true));
+    uiInterface.NotifyAdditionalDataSyncProgressChanged.connect(boost::bind(NotifyAdditionalDataSyncProgressChanged, this, _1));
 }
 
 void ClientModel::unsubscribeFromCoreSignals()
@@ -344,4 +375,5 @@ void ClientModel::unsubscribeFromCoreSignals()
     uiInterface.BannedListChanged.disconnect(boost::bind(BannedListChanged, this));
     uiInterface.NotifyBlockTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, false));
     uiInterface.NotifyHeaderTip.disconnect(boost::bind(BlockTipChanged, this, _1, _2, true));
+    uiInterface.NotifyAdditionalDataSyncProgressChanged.disconnect(boost::bind(NotifyAdditionalDataSyncProgressChanged, this, _1));
 }

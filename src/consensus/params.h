@@ -1,14 +1,13 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+﻿// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_CONSENSUS_PARAMS_H
 #define BITSEND_CONSENSUS_PARAMS_H
 
-#include "uint256.h"
+#include <uint256.h>
+#include <limits>
 #include <map>
 #include <string>
 
@@ -33,8 +32,15 @@ struct BIP9Deployment {
     int64_t nStartTime;
     /** Timeout/expiry MedianTime for the deployment attempt. */
     int64_t nTimeout;
-	
-	int64_t nHeight; //maybe "int"
+	int64_t nHeight;
+    /** Constant for nTimeout very far in the future. */
+    static constexpr int64_t NO_TIMEOUT = std::numeric_limits<int64_t>::max();
+
+    /** Special value for nStartTime indicating that the deployment is always active.
+     *  This is useful for testing, as it means tests don't need to deal with the activation
+     *  process (which takes at least 3 BIP9 intervals). Only tests that specifically test the
+     *  behaviour during activation cannot use this. */
+    static constexpr int64_t ALWAYS_ACTIVE = -1;
 };
 
 /**
@@ -43,6 +49,21 @@ struct BIP9Deployment {
 struct Params {
     uint256 hashGenesisBlock;
     int nSubsidyHalvingInterval;
+    /** Block height at which BIP16 becomes active
+     *  Not needed by Bitsend.
+     */
+    // int BIP16Height;
+    
+    // Masternodes
+    int nMasternodePaymentsStartBlock;
+    int nSuperblockStartBlock;
+    int nSuperblockCycle; // in blocks
+    int nGovernanceMinQuorum; // Min absolute vote count to trigger an action
+    int nGovernanceFilterElements;
+    int nMasternodeMinimumConfirmations;
+
+    /** Block height at which BIP16 becomes active */
+    int BIP16Height;
     /** Block height and hash at which BIP34 becomes active */
     int BIP34Height;
     uint256 BIP34Hash;
@@ -65,6 +86,13 @@ struct Params {
     int64_t nPowTargetSpacing;
     int64_t nPowTargetTimespan;
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
+		  // Bitsend TimeTravel
+		  int64_t nPowTargetSpacingV2;
+    int64_t nPowTargetTimespanV2;
+    int64_t DifficultyAdjustmentIntervalV2() const { return nPowTargetTimespanV2 / nPowTargetSpacingV2; }
+		  // int64_t nPowTargetSpacingV3;
+    // int64_t nPowTargetTimespanV3;
+    // int64_t DifficultyAdjustmentIntervalV3() const { return nPowTargetTimespanV3 / nPowTargetSpacingV3; }
     uint256 nMinimumChainWork;
     uint256 defaultAssumeValid;
 };

@@ -1,10 +1,10 @@
-// Copyright (c) 2011-2014 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bitsendaddressvalidator.h"
+#include <qt/bitsendaddressvalidator.h>
 
-#include "base58.h"
+#include <base58.h>
 
 /* Base58 characters are:
      "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
@@ -67,7 +67,7 @@ QValidator::State BitsendAddressEntryValidator::validate(QString &input, int &po
         if (((ch >= '0' && ch<='9') ||
             (ch >= 'a' && ch<='z') ||
             (ch >= 'A' && ch<='Z')) &&
-            ch != 'l' && ch != 'I' && ch != '0' && ch != 'O')
+            ch != 'I' && ch != 'O') // Characters invalid in both Base58 and Bech32
         {
             // Alphanumeric and not a 'forbidden' character
         }
@@ -89,9 +89,9 @@ QValidator::State BitsendAddressCheckValidator::validate(QString &input, int &po
 {
     Q_UNUSED(pos);
     // Validate the passed Bitsend address
-    CBitsendAddress addr(input.toStdString());
-    if (addr.IsValid())
+    if (IsValidDestinationString(input.toStdString())) {
         return QValidator::Acceptable;
+    }
 
     return QValidator::Invalid;
 }

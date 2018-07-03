@@ -1,5 +1,5 @@
-// Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2012-2016 The Bitsend Core developers
+﻿// Copyright (c) 2010 Satoshi Nakamoto
+// Copyright (c) 2012-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,9 +12,7 @@
 #include <boost/signals2/last_value.hpp>
 #include <boost/signals2/signal.hpp>
 
-class CBasicKeyStore;
 class CWallet;
-class uint256;
 class CBlockIndex;
 
 /** General change type (added, updated, removed). */
@@ -96,14 +94,20 @@ public:
     /** A wallet has been loaded. */
     boost::signals2::signal<void (CWallet* wallet)> LoadWallet;
 
-    /** Show progress e.g. for verifychain */
-    boost::signals2::signal<void (const std::string &title, int nProgress)> ShowProgress;
+    /**
+     * Show progress e.g. for verifychain.
+     * resume_possible indicates shutting down now will result in the current progress action resuming upon restart.
+     */
+    boost::signals2::signal<void (const std::string &title, int nProgress, bool resume_possible)> ShowProgress;
 
     /** New block has been accepted */
     boost::signals2::signal<void (bool, const CBlockIndex *)> NotifyBlockTip;
 
     /** Best header has changed */
     boost::signals2::signal<void (bool, const CBlockIndex *)> NotifyHeaderTip;
+    
+    /** Additional data sync progress changed */
+    boost::signals2::signal<void (double nSyncProgress)> NotifyAdditionalDataSyncProgressChanged;
 
     /** Banlist did change. */
     boost::signals2::signal<void (void)> BannedListChanged;

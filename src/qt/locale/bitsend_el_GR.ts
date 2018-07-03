@@ -41,10 +41,78 @@
         <source>&amp;Delete</source>
         <translation>&amp;Διαγραφή</translation>
     </message>
-    </context>
+    <message>
+        <source>Choose the address to send coins to</source>
+        <translation>Επιλέξτε διεύθυνση αποστολής των νομισμάτων σας</translation>
+    </message>
+    <message>
+        <source>Choose the address to receive coins with</source>
+        <translation>Επιλέξτε διεύθυνση παραλαβής νομισμάτων</translation>
+    </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>Ε&amp;πιλογή</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>Διευθύνσεις αποστολής</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>Διευθύνσεις λήψης</translation>
+    </message>
+    <message>
+        <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Αυτές είναι οι Bitsend διευθύνσεις σας για να στέλνετε πληρωμές. Να ελέγχετε πάντα το ποσό, καθώς και τη διεύθυνση παραλήπτη πριν στείλετε νομίσματα.</translation>
+    </message>
+    <message>
+        <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Αυτές είναι οι Bitsend διευθύνσεις σας για να λαμβάνετε πληρωμές. Προτείνετε να χρησιμοποιείτε μια νέα διεύθυνση παραλήπτη για κάθε συναλλαγή.</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Αντιγραφή Διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy &amp;Label</source>
+        <translation>Αντιγραφή&amp;Ετικέτα</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Διόρθωση</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Εξαγωγή Λίστας Διεύθυνσεων</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Αποτυχία Εξαγωγής</translation>
+    </message>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Σφάλμα κατά την προσπάθεια αποθήκευσης της λίστας διευθύνσεων στο %1. Παρακαλώ δοκιμάστε ξανά.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -62,6 +130,62 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>Επανέλαβε τον νέο κωδικό πρόσβασης</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Εισάγετε το νέο κωδικό πρόσβασης στο πορτοφόλι. &lt;br/&gt;Παρακαλώ χρησιμοποιείστε έναν κωδικό με &lt;b&gt;δέκα ή περισσότερους τυχαίους χαρακτήρες &lt;/b&gt;, ή &lt;b&gt;οχτώ ή παραπάνω λέξεις &lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>&amp;Κρυπτογράφηση πορτοφολιού</translation>
+    </message>
+    <message>
+        <source>This operation needs your wallet passphrase to unlock the wallet.</source>
+        <translation>Αυτη η ενεργεία χρειάζεται τον κωδικό του πορτοφολιού  για να ξεκλειδώσει το πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>Unlock wallet</source>
+        <translation>Ξεκλειδωσε το πορτοφολι</translation>
+    </message>
+    <message>
+        <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
+        <translation>Αυτη η ενεργεια χρειάζεται τον κωδικο του πορτοφολιου  για να αποκρυπτογραφησειι το πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>Decrypt wallet</source>
+        <translation>Αποκρυπτογράφησε το πορτοφόλι</translation>
+    </message>
+    <message>
+        <source>Change passphrase</source>
+        <translation>Αλλάξτε Φράση Πρόσβασης</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <translation>Εισάγετε την παλιά φράση κλειδί και την νέα φράση κλειδί στο πορτοφόλι.</translation>
+    </message>
+    <message>
+        <source>Confirm wallet encryption</source>
+        <translation>Επιβεβαίωσε κρυπτογράφηση πορτοφολιού</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to encrypt your wallet?</source>
+        <translation>Είστε σίγουρος/η ότι θέλετε να κρυπτογραφήσετε το πορτοφόλι σας;</translation>
+    </message>
+    <message>
+        <source>Wallet encrypted</source>
+        <translation>Πορτοφόλι κρυπτογραφήθηκε</translation>
+    </message>
+    <message>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>%1 θα κλείσει τώρα για να τελειώσει η διαδικασία κρυπτογράφησης. Να θυμάστε ότι κρυπρογραφόντας το πορτοφόλι σας δεν μπορείτε να προστατεύσετε πλήρως τα bitsend σας απο κλοπή μέσω malware που μπορεί να προσβάλει τον υπολογιστή σας.</translation>
+    </message>
+    <message>
+        <source>Wallet encryption failed</source>
+        <translation>Η κρυπτογράφηση του πορτοφολιού απέτυχε</translation>
+    </message>
+    <message>
+        <source>Wallet unlock failed</source>
+        <translation>Το Ξεκλείδωμα του Πορτοφολιού Απέτυχε</translation>
     </message>
     </context>
 <context>
@@ -394,6 +518,26 @@
         <source>Confirmed</source>
         <translation>Επικυρωμένες</translation>
     </message>
+    <message>
+        <source>Copy address</source>
+        <translation>Αντιγραφή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Αντιγραφή ταυτότητας συναλλαγής</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -416,6 +560,18 @@
     <message>
         <source>&amp;Address</source>
         <translation>&amp;Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>New receiving address</source>
+        <translation>Νέα Διεύθυνση Λήψης</translation>
+    </message>
+    <message>
+        <source>New sending address</source>
+        <translation>Νέα Διεύθυνση Αποστολής</translation>
+    </message>
+    <message>
+        <source>Edit receiving address</source>
+        <translation>Διόρθωση Διεύθυνσης Λήψης</translation>
     </message>
     </context>
 <context>
@@ -477,6 +633,10 @@
     <message>
         <source>Use a custom data directory:</source>
         <translation>Προσαρμογή του φακέλου δεδομένων: </translation>
+    </message>
+    <message>
+        <source>Bitsend</source>
+        <translation>Bitsend</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -552,14 +712,6 @@
         <translation>Αριθμός script και γραμμές επαλήθευσης </translation>
     </message>
     <message>
-        <source>Accept connections from outside</source>
-        <translation>Αποδοχή συνδέσεων απο έξω</translation>
-    </message>
-    <message>
-        <source>Allow incoming connections</source>
-        <translation>Αποδοχή εισερχόμενων συναλλαγών</translation>
-    </message>
-    <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>Διεύθυνση IP του διαμεσολαβητή (π.χ. 127.0.0.1  / IPv6: ::1)</translation>
     </message>
@@ -570,10 +722,6 @@
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>URLs από τρίτους (π.χ. ένας εξερευνητής μπλοκ) τα οποία εμφανίζονται στην καρτέλα συναλλαγών ως στοιχεία μενού. Το %s στα URL αντικαθιστάται από την τιμή της κατατεμαχισμένης συναλλαγής.</translation>
-    </message>
-    <message>
-        <source>Third party transaction URLs</source>
-        <translation>Διευθύνσεις τρίτων συναλλαγών.</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
@@ -705,6 +853,10 @@
         <translation>Χρειάζεται επανεκκίνηση του προγράμματος για να ενεργοποιηθούν οι αλλαγές.</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Σφάλμα</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
         <translation>Η αλλαγή αυτή θα χρειαστεί επανεκκίνηση του προγράμματος</translation>
     </message>
@@ -793,7 +945,15 @@
     </context>
 <context>
     <name>PeerTableModel</name>
-    </context>
+    <message>
+        <source>Sent</source>
+        <translation>Αποστολή</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Παραλήφθησαν</translation>
+    </message>
+</context>
 <context>
     <name>QObject</name>
     <message>
@@ -836,7 +996,27 @@
         <source>%1 and %2</source>
         <translation>%1 και %2</translation>
     </message>
-    </context>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 B</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 KB</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 MB</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 GB</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>Άγνωστο</translation>
+    </message>
+</context>
 <context>
     <name>QObject::QObject</name>
     </context>
@@ -954,10 +1134,6 @@
         <translation>&amp;Κίνηση δικτύου</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Εκκαθάριση</translation>
-    </message>
-    <message>
         <source>Totals</source>
         <translation>Σύνολα</translation>
     </message>
@@ -976,30 +1152,6 @@
     <message>
         <source>Clear console</source>
         <translation>Καθαρισμός κονσόλας</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Χρησιμοποιήστε το πάνω και κάτω βέλος για να περιηγηθείτε στο ιστορικο, και &lt;b&gt;Ctrl-L&lt;/b&gt; για εκκαθαριση οθονης.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Γράψτε &lt;b&gt;help&lt;/b&gt; για μια επισκόπηση των διαθέσιμων εντολών</translation>
-    </message>
-    <message>
-        <source>%1 B</source>
-        <translation>%1 B</translation>
-    </message>
-    <message>
-        <source>%1 KB</source>
-        <translation>%1 KB</translation>
-    </message>
-    <message>
-        <source>%1 MB</source>
-        <translation>%1 MB</translation>
-    </message>
-    <message>
-        <source>%1 GB</source>
-        <translation>%1 GB</translation>
     </message>
     <message>
         <source>via %1</source>
@@ -1037,10 +1189,6 @@
         <translation>&amp;Μήνυμα:</translation>
     </message>
     <message>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>Ε&amp;παναχρησιμοποίηση υπάρχουσας διεύθυνσης λήψης (δεν συνιστάται)</translation>
-    </message>
-    <message>
         <source>Clear all fields of the form.</source>
         <translation>Καθαρισμός όλων των πεδίων της φόρμας.</translation>
     </message>
@@ -1064,7 +1212,15 @@
         <source>Remove</source>
         <translation>Αφαίρεση</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -1083,9 +1239,29 @@
         <source>&amp;Save Image...</source>
         <translation>&amp;Αποθήκευση εικόνας...</translation>
     </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -1158,24 +1334,12 @@
         <translation>Απόκρυψη</translation>
     </message>
     <message>
-        <source>total at least</source>
-        <translation>συνολικά τουλάχιστον</translation>
-    </message>
-    <message>
         <source>Recommended:</source>
         <translation>Προτεινόμενο: </translation>
     </message>
     <message>
         <source>Custom:</source>
         <translation>Προσαρμογή:</translation>
-    </message>
-    <message>
-        <source>normal</source>
-        <translation>κανονικό</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>Γρήγορο</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
@@ -1209,7 +1373,15 @@
         <source>S&amp;end</source>
         <translation>Αποστολη</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -1374,6 +1546,70 @@
 </context>
 <context>
     <name>TransactionDesc</name>
+    <message>
+        <source>Open until %1</source>
+        <translation>Ανοιχτό μέχρι %1</translation>
+    </message>
+    <message>
+        <source>%1/offline</source>
+        <translation>%1/αποσυνδεδεμένο</translation>
+    </message>
+    <message>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/ανεπιβεβαίωτο, %1</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομηνία</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Πηγή</translation>
+    </message>
+    <message>
+        <source>Generated</source>
+        <translation>Παράχθηκε</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Από</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>Άγνωστο</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Προς</translation>
+    </message>
+    <message>
+        <source>own address</source>
+        <translation>δική σας διεύθυνση</translation>
+    </message>
+    <message>
+        <source>watch-only</source>
+        <translation>παρακολούθηση-μόνο</translation>
+    </message>
+    <message>
+        <source>label</source>
+        <translation>ετικέτα</translation>
+    </message>
+    <message>
+        <source>Credit</source>
+        <translation>Πίστωση</translation>
+    </message>
+    <message>
+        <source>not accepted</source>
+        <translation>μη έγκυρο</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Συνολική πίστωση</translation>
+    </message>
+    <message>
+        <source>Transaction fee</source>
+        <translation>Κόστος συναλλαγής</translation>
+    </message>
     </context>
 <context>
     <name>TransactionDescDialog</name>
@@ -1384,9 +1620,73 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Open until %1</source>
+        <translation>Ανοιχτό μέχρι %1</translation>
+    </message>
+    <message>
+        <source>watch-only</source>
+        <translation>παρακολούθηση-μόνο</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(χωρίς ετικέτα)</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>Copy address</source>
+        <translation>Αντιγραφή διεύθυνσης</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Αντιγραφή ετικέτας</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Αντιγραφή ποσού</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Αντιγραφή ταυτότητας συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Copy raw transaction</source>
+        <translation>Αντιγραφή ανεπεξέργαστης συναλλαγής</translation>
+    </message>
+    <message>
+        <source>Edit label</source>
+        <translation>Επεξεργασία ετικέτας</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομήνια</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Ετικέτα</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Διεύθυνση</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Αποτυχία Εξαγωγής</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -1443,6 +1743,10 @@
         <translation>Εκτέλεσε την εντολή όταν το καλύτερο μπλοκ αλλάξει(%s στην εντολή αντικαθίσταται από το hash του μπλοκ)</translation>
     </message>
     <message>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Να δέχεσαι συνδέσεις από έξω(προεπιλογή:1)</translation>
+    </message>
+    <message>
         <source>Block creation options:</source>
         <translation>Αποκλεισμός επιλογων δημιουργίας: </translation>
     </message>
@@ -1487,10 +1791,6 @@
         <translation>ΕΙσαγωγή...</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Άκυρη διεύθυνση -onion : '%s'</translation>
-    </message>
-    <message>
         <source>Not enough file descriptors available.</source>
         <translation>Δεν ειναι αρκετες περιγραφες αρχείων διαθέσιμες.</translation>
     </message>
@@ -1499,24 +1799,12 @@
         <translation>Μόνο σύνδεση σε κόμβους του δικτύου &lt;net&gt; (ipv4, ipv6 ή onion)</translation>
     </message>
     <message>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Ορίστε το μέγιστο μέγεθος block σε bytes (προεπιλογή: %d)</translation>
-    </message>
-    <message>
         <source>Specify wallet file (within data directory)</source>
         <translation>Επιλέξτε αρχείο πορτοφολιού (μέσα απο κατάλογο δεδομένων)</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
         <translation>Επαλήθευση των μπλοκ... </translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>Επαλήθευση πορτοφολιου... </translation>
-    </message>
-    <message>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>Το πορτοφόλι %s βρίσκεται έξω από το φάκελο δεδομένων %s</translation>
     </message>
     <message>
         <source>Wallet options:</source>
@@ -1595,10 +1883,6 @@
         <translation>Να επιτρέπονται οι έλεγχοι DNS για προσθήκη και σύνδεση κόμβων</translation>
     </message>
     <message>
-        <source>Loading addresses...</source>
-        <translation>Φόρτωση διευθύνσεων...</translation>
-    </message>
-    <message>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
         <translation>Πόσο εξονυχιστική να είναι η επιβεβαίωση του μπλοκ (0-4, προεπιλογή: %u)</translation>
     </message>
@@ -1617,10 +1901,6 @@
     <message>
         <source>Include IP addresses in debug output (default: %u)</source>
         <translation>Να συμπεριληφθεί η διεύθυνση IP στην αναφορά? (προεπιλογή: %u)</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Δεν είναι έγκυρη η διεύθυνση διαμεσολαβητή: '%s'</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
@@ -1655,20 +1935,12 @@
         <translation>Φόρτωση ευρετηρίου μπλοκ...</translation>
     </message>
     <message>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Προσέθεσε ένα κόμβο για σύνδεση και προσπάθησε να κρατήσεις την σύνδεση ανοιχτή</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Φόρτωση πορτοφολιού...</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
         <translation>Δεν μπορώ να υποβαθμίσω το πορτοφόλι</translation>
-    </message>
-    <message>
-        <source>Cannot write default address</source>
-        <translation>Δεν μπορώ να γράψω την προεπιλεγμένη διεύθυνση</translation>
     </message>
     <message>
         <source>Rescanning...</source>

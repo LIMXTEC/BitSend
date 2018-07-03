@@ -1,10 +1,11 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_SPLASHSCREEN_H
 #define BITSEND_QT_SPLASHSCREEN_H
 
+#include <functional>
 #include <QSplashScreen>
 
 class CWallet;
@@ -16,12 +17,12 @@ class NetworkStyle;
  * can take a long time, and in that case a progress window that cannot be
  * moved around and minimized has turned out to be frustrating to the user.
  */
-class SplashScreen : public QSplashScreen/* QWidget */
+class SplashScreen : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit SplashScreen(Qt::WindowFlags f, const QPixmap &pixmap);
+    explicit SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle);
     ~SplashScreen();
 
 protected:
@@ -34,6 +35,9 @@ public Q_SLOTS:
 
     /** Show message and progress */
     void showMessage(const QString &message, int alignment, const QColor &color);
+
+protected:
+    bool eventFilter(QObject * obj, QEvent * ev);
 
 private:
     /** Connect core signals to splash screen */

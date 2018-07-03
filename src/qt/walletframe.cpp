@@ -1,12 +1,13 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "walletframe.h"
+#include <qt/walletframe.h>
 
-#include "bitsendgui.h"
-#include "walletview.h"
+#include <qt/bitsendgui.h>
+#include <qt/walletview.h>
 
+#include <cassert>
 #include <cstdio>
 
 #include <QHBoxLayout>
@@ -69,6 +70,7 @@ bool WalletFrame::setCurrentWallet(const QString& name)
 
     WalletView *walletView = mapWalletViews.value(name);
     walletStack->setCurrentWidget(walletView);
+    assert(walletView);
     walletView->updateEncryptionStatus();
     return true;
 }
@@ -115,18 +117,18 @@ void WalletFrame::gotoOverviewPage()
         i.value()->gotoOverviewPage();
 }
 
-void WalletFrame::gotoMasternodePage()
-{
-    QMap<QString, WalletView*>::const_iterator i;
-    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoMasternodePage();
-}
-
 void WalletFrame::gotoHistoryPage()
 {
     QMap<QString, WalletView*>::const_iterator i;
     for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
         i.value()->gotoHistoryPage();
+}
+
+void WalletFrame::gotoMasternodePage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoMasternodePage();
 }
 
 void WalletFrame::gotoReceiveCoinsPage()
@@ -185,13 +187,6 @@ void WalletFrame::unlockWallet()
         walletView->unlockWallet();
 }
 
-void WalletFrame::unlockWalletAndKeepUnlocked()
-{
-    WalletView *walletView = currentWalletView();
-    if (walletView)
-        walletView->requestUnlockWallet();
-}
-
 void WalletFrame::usedSendingAddresses()
 {
     WalletView *walletView = currentWalletView();
@@ -205,12 +200,7 @@ void WalletFrame::usedReceivingAddresses()
     if (walletView)
         walletView->usedReceivingAddresses();
 }
-/* void WalletFrame::gotoBip38Tool()
-{
-    WalletView* walletView = currentWalletView();
-    if (walletView)
-        walletView->gotoBip38Tool();
-} */
+
 WalletView *WalletFrame::currentWalletView()
 {
     return qobject_cast<WalletView*>(walletStack->currentWidget());
