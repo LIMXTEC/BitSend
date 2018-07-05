@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: @PACKAGE_NAME@ consensus library
-Description: Library for the Bitsend consensus protocol.
+Description: Library for the bitsend consensus protocol.
 Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lbitsendconsensus
 Cflags: -I${includedir}

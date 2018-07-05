@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,10 +6,10 @@
 #define BITSEND_QT_BITSENDGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitsend-config.h"
+#include <config/bitsend-config.h>
 #endif
 
-#include "amount.h"
+#include <amount.h>
 
 #include <QLabel>
 #include <QMainWindow>
@@ -41,10 +41,10 @@ class QProgressDialog;
 QT_END_NAMESPACE
 
 /**
-  Bitsend GUI main class. This class represents the main window of the Bitsend UI. It communicates with both the client and
+  bitsend GUI main class. This class represents the main window of the bitsend UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class BitsendGUI : public QMainWindow
+class bitsendGUI : public QMainWindow
 {
     Q_OBJECT
 
@@ -52,8 +52,8 @@ public:
     static const QString DEFAULT_WALLET;
     static const std::string DEFAULT_UIPLATFORM;
 
-    explicit BitsendGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
-    ~BitsendGUI();
+    explicit bitsendGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
+    ~bitsendGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -116,7 +116,6 @@ private:
     QAction *encryptWalletAction;
     QAction *backupWalletAction;
     QAction *changePassphraseAction;
-    QAction *unlockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
     QAction *openAction;
@@ -153,7 +152,7 @@ private:
     void subscribeToCoreSignals();
     /** Disconnect core signals from GUI client */
     void unsubscribeFromCoreSignals();
-	
+
     /** Update UI with latest network info from model. */
     void updateNetworkState();
 
@@ -162,8 +161,6 @@ private:
 Q_SIGNALS:
     /** Signal raised when a URI was entered or dragged to the GUI */
     void receivedURI(const QString &uri);
-	//handlerestart
-	void requestedRestart(QStringList args);
 
 public Q_SLOTS:
     /** Set number of connections shown in the UI */
@@ -172,8 +169,7 @@ public Q_SLOTS:
     void setNetworkActive(bool networkActive);
     /** Set number of blocks and last block date shown in the UI */
     void setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool headers);
-    /** Get restart command-line parameters and request restart */
-    void handleRestart(QStringList args);
+
     /** Notify the user of an event from the core network or transaction handling code.
        @param[in] title     the message box / notification title
        @param[in] message   the displayed text
@@ -181,7 +177,7 @@ public Q_SLOTS:
                             @see CClientUIInterface::MessageBoxFlags
        @param[in] ret       pointer to a bool that will be modified to whether Ok was clicked (modal only)
     */
-    void message(const QString &title, const QString &message, unsigned int style, bool *ret = NULL);
+    void message(const QString &title, const QString &message, unsigned int style, bool *ret = nullptr);
 
 #ifdef ENABLE_WALLET
     /** Set the encryption status as shown in the UI.
@@ -212,16 +208,12 @@ private Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-	
-	//kaali-goto masternode page
-	void gotoMasternodePage();
-	/** Show BIP 38 tool - default to Encryption tab */
-    //void gotoBip38Tool();
+
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
     void gotoVerifyMessageTab(QString addr = "");
-	
+
     /** Show open dialog */
     void openClicked();
 #endif // ENABLE_WALLET

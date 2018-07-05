@@ -4,7 +4,7 @@
 #include "masternodeconfig.h"
 #include "util.h"
 #include <base58.h>
-
+#include <utilstrencodings.h>
 CMasternodeConfig masternodeConfig;
 
 void CMasternodeConfig::add(std::string alias, std::string ip, std::string privKey, std::string txHash, std::string outputIndex, std::string donationAddress, std::string donationPercent) {
@@ -44,12 +44,12 @@ bool CMasternodeConfig::read(std::string& strErr) {
                 donationPercent = donation.substr(pos + 1);
                 donationAddress = donation.substr(0, pos);
             }
-            CBitsendAddress address(donationAddress);
-            if (!address.IsValid()) {
+            /* EncodeDestination(donationAddress);//CbitsendAddress address(donationAddress);
+            if (!IsValidDestination(donationAddress)) {
                 strErr = "Invalid Bitsend address in masternode.conf line: " + line;
                 streamConfig.close();
                 return false;
-            }
+            } */
         }
 		
 		int port = 0;
@@ -57,7 +57,7 @@ bool CMasternodeConfig::read(std::string& strErr) {
 
 		SplitHostPort(ip, port, hostname);
         
-            if(port != 8886) {
+            if(port != 8888) {
                 strErr = "Invalid port detected in masternode.conf: " + line + " (must be 8886 for mainnet)";
                 streamConfig.close();
                 return false;

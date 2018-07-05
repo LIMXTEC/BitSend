@@ -1,11 +1,13 @@
-// Copyright (c) 2016 The Bitsend Core developers
+// Copyright (c) 2016-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_POLICY_RBF_H
 #define BITSEND_POLICY_RBF_H
 
-#include "txmempool.h"
+#include <txmempool.h>
+
+static const uint32_t MAX_BIP125_RBF_SEQUENCE = 0xfffffffd;
 
 enum RBFTransactionState {
     RBF_TRANSACTIONSTATE_UNKNOWN,

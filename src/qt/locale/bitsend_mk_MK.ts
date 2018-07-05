@@ -64,7 +64,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Потпиши &amp;порака...</translation>
@@ -138,7 +138,7 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
+        <source>Send coins to a bitsend address</source>
         <translation>Испрати биткоини на Биткоин адреса</translation>
     </message>
     <message>
@@ -146,7 +146,7 @@
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>Bitsend</source>
+        <source>bitsend</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -299,6 +299,10 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>bitsend</source>
+        <translation>Биткоин</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Грешка</translation>
     </message>
@@ -351,6 +355,10 @@
         <source>none</source>
         <translation>нема</translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation>Грешка</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -364,6 +372,10 @@
     </context>
 <context>
     <name>PeerTableModel</name>
+    <message>
+        <source>Sent</source>
+        <translation>Испратени</translation>
+    </message>
     </context>
 <context>
     <name>QObject</name>
@@ -394,6 +406,22 @@
     <message>
         <source>%1 and %2</source>
         <translation>%1 и %2</translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 Б</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 КБ</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 МБ</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 ГБ</translation>
     </message>
     </context>
 <context>
@@ -431,22 +459,6 @@
     <message>
         <source>&amp;Console</source>
         <translation>&amp;Конзола</translation>
-    </message>
-    <message>
-        <source>%1 B</source>
-        <translation>%1 Б</translation>
-    </message>
-    <message>
-        <source>%1 KB</source>
-        <translation>%1 КБ</translation>
-    </message>
-    <message>
-        <source>%1 MB</source>
-        <translation>%1 МБ</translation>
-    </message>
-    <message>
-        <source>%1 GB</source>
-        <translation>%1 ГБ</translation>
     </message>
     </context>
 <context>
@@ -578,7 +590,7 @@
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>Bitsend Core</source>
+        <source>bitsend Core</source>
         <translation>Биткоин Core</translation>
     </message>
     <message>

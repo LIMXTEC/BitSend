@@ -1,16 +1,17 @@
-// Copyright (c) 2014-2015 The Bitsend Core developers
+// Copyright (c) 2014-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_CHAINPARAMSBASE_H
 #define BITSEND_CHAINPARAMSBASE_H
 
+#include <memory>
 #include <string>
 #include <vector>
 
 /**
  * CBaseChainParams defines the base parameters (shared between bitsend-cli and bitsendd)
- * of a given instance of the Bitsend system.
+ * of a given instance of the bitsend system.
  */
 class CBaseChainParams
 {
@@ -31,6 +32,13 @@ protected:
 };
 
 /**
+ * Creates and returns a std::unique_ptr<CBaseChainParams> of the chosen chain.
+ * @returns a CBaseChainParams* of the chosen chain.
+ * @throws a std::runtime_error if the chain is not supported.
+ */
+std::unique_ptr<CBaseChainParams> CreateBaseChainParams(const std::string& chain);
+
+/**
  * Append the help messages for the chainparams options to the
  * parameter string.
  */
@@ -42,8 +50,6 @@ void AppendParamsHelpMessages(std::string& strUsage, bool debugHelp=true);
  */
 const CBaseChainParams& BaseParams();
 
-CBaseChainParams& BaseParams(const std::string& chain);
-
 /** Sets the params returned by Params() to those for the given network. */
 void SelectBaseParams(const std::string& chain);
 
@@ -52,11 +58,5 @@ void SelectBaseParams(const std::string& chain);
  * @return CBaseChainParams::MAX_NETWORK_TYPES if an invalid combination is given. CBaseChainParams::MAIN by default.
  */
 std::string ChainNameFromCommandLine();
-
-/**
- * Return true if SelectBaseParamsFromCommandLine() has been called to select
- * a network.
- */
-bool AreBaseParamsConfigured();
 
 #endif // BITSEND_CHAINPARAMSBASE_H

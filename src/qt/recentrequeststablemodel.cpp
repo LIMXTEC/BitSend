@@ -1,17 +1,16 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "recentrequeststablemodel.h"
+#include <qt/recentrequeststablemodel.h>
 
-#include "bitsendunits.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
+#include <qt/bitsendunits.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
 
-#include "clientversion.h"
-#include "streams.h"
+#include <clientversion.h>
+#include <streams.h>
 
-#include <boost/foreach.hpp>
 
 RecentRequestsTableModel::RecentRequestsTableModel(CWallet *wallet, WalletModel *parent) :
     QAbstractTableModel(parent), walletModel(parent)
@@ -22,7 +21,7 @@ RecentRequestsTableModel::RecentRequestsTableModel(CWallet *wallet, WalletModel 
     // Load entries from wallet
     std::vector<std::string> vReceiveRequests;
     parent->loadReceiveRequests(vReceiveRequests);
-    BOOST_FOREACH(const std::string& request, vReceiveRequests)
+    for (const std::string& request : vReceiveRequests)
         addNewRequest(request);
 
     /* These columns must match the indices in the ColumnIndex enumeration */
@@ -55,10 +54,9 @@ QVariant RecentRequestsTableModel::data(const QModelIndex &index, int role) cons
     if(!index.isValid() || index.row() >= list.length())
         return QVariant();
 
-    const RecentRequestEntry *rec = &list[index.row()];
-
     if(role == Qt::DisplayRole || role == Qt::EditRole)
     {
+        const RecentRequestEntry *rec = &list[index.row()];
         switch(index.column())
         {
         case Date:
@@ -85,9 +83,9 @@ QVariant RecentRequestsTableModel::data(const QModelIndex &index, int role) cons
             if (rec->recipient.amount == 0 && role == Qt::DisplayRole)
                 return tr("(no amount requested)");
             else if (role == Qt::EditRole)
-                return BitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, BitsendUnits::separatorNever);
+                return bitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, bitsendUnits::separatorNever);
             else
-                return BitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
+                return bitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
         }
     }
     else if (role == Qt::TextAlignmentRole)
@@ -125,7 +123,7 @@ void RecentRequestsTableModel::updateAmountColumnTitle()
 /** Gets title for amount column including current display unit if optionsModel reference available. */
 QString RecentRequestsTableModel::getAmountTitle()
 {
-    return (this->walletModel->getOptionsModel() != NULL) ? tr("Requested") + " ("+BitsendUnits::name(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")" : "";
+    return (this->walletModel->getOptionsModel() != nullptr) ? tr("Requested") + " ("+bitsendUnits::shortName(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")" : "";
 }
 
 QModelIndex RecentRequestsTableModel::index(int row, int column, const QModelIndex &parent) const

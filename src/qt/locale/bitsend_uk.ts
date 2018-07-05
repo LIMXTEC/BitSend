@@ -41,10 +41,78 @@
         <source>&amp;Delete</source>
         <translation>&amp;Видалити</translation>
     </message>
-    </context>
+    <message>
+        <source>Choose the address to send coins to</source>
+        <translation>Оберіть адресу для відправки монет</translation>
+    </message>
+    <message>
+        <source>Choose the address to receive coins with</source>
+        <translation>Оберіть адресу для отримання монет</translation>
+    </message>
+    <message>
+        <source>C&amp;hoose</source>
+        <translation>О&amp;брати</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>Адреса відправлення</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>Адреса отримання</translation>
+    </message>
+    <message>
+        <source>These are your bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Це ваші адреси bitsend для надсилання платежів. Завжди перевіряйте суму та адресу одержувача перед відправленням монет.</translation>
+    </message>
+    <message>
+        <source>These are your bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Це ваші адреси bitsend для отримання платежів. Для кожної транзакції рекомендується використовувати нову адресу одержувача.</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Скопіювати адресу гаманця</translation>
+    </message>
+    <message>
+        <source>Copy &amp;Label</source>
+        <translation>Зкопіювати&amp;Створити мітку</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Редагувати</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Експортувати список адрес</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Файли (*.csv) розділеі комами</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Експортування пройшло не успішно</translation>
+    </message>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Виникла помилка при спрбі збереження списку адрес %1. Будь-ласка, спробувати пізніше. </translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(немає мітки)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -63,7 +131,95 @@
         <source>Repeat new passphrase</source>
         <translation>Повторіть пароль</translation>
     </message>
-    </context>
+    <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Введіть нову кодову фразу для гаманця.&lt;br/&gt;Будь ласка, використовуйте кодові фрази що містять &lt;b&gt; щонайменше десять випадкових символів &lt;/b&gt; або &lt;b&gt; щонайменше вісім слів &lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>Encrypt wallet</source>
+        <translation>Зашифрувати гаманець</translation>
+    </message>
+    <message>
+        <source>This operation needs your wallet passphrase to unlock the wallet.</source>
+        <translation>Ця операція потребує пароль для розблокування гаманця.</translation>
+    </message>
+    <message>
+        <source>Unlock wallet</source>
+        <translation>Розблокувати гаманець</translation>
+    </message>
+    <message>
+        <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
+        <translation>Ця операція потребує пароль від гаманця для його розблокування.</translation>
+    </message>
+    <message>
+        <source>Decrypt wallet</source>
+        <translation>Дешифрувати гаманець</translation>
+    </message>
+    <message>
+        <source>Change passphrase</source>
+        <translation>Змінити пароль</translation>
+    </message>
+    <message>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <translation>Введіть старий пароль та новий пароль до гаманця.</translation>
+    </message>
+    <message>
+        <source>Confirm wallet encryption</source>
+        <translation>Підтвердіть шифрування гаманця</translation>
+    </message>
+    <message>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
+        <translation>УВАГА: Якщо ви зашифруєте гаманець і забудете пароль, ви &lt;b&gt;ВТРАТИТЕ ВСІ СВОЇ БІТКОІНИ&lt;/b&gt;!</translation>
+    </message>
+    <message>
+        <source>Are you sure you wish to encrypt your wallet?</source>
+        <translation>Ви дійсно хочете зашифрувати свій гаманець?</translation>
+    </message>
+    <message>
+        <source>Wallet encrypted</source>
+        <translation>Гаманець зашифровано</translation>
+    </message>
+    <message>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>%1 буде закрито зараз, щоб завершити процес шифрування. Пам'ятайте, що шифрування гаманця не може повністю захистити ваші біткойни від крадіжки шкідливими програмами, у випадку якщо ваш комп'ютер буде інфіковано.</translation>
+    </message>
+    <message>
+        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
+        <translation>ВАЖЛИВО: Всі попередні резервні копії, які ви зробили з вашого файлу гаманця повинні бути замінені новоствореним, зашифрованим файлом гаманця. З міркувань безпеки, попередні резервні копії незашифрованого файла гаманця стануть непридатними одразу ж, як тільки ви почнете використовувати новий, зашифрований гаманець.</translation>
+    </message>
+    <message>
+        <source>Wallet encryption failed</source>
+        <translation>Не вдалося зашифрувати гаманець</translation>
+    </message>
+    <message>
+        <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
+        <translation>Виникла помилка під час шифрування гаманця. Ваш гаманець не було зашифровано.</translation>
+    </message>
+    <message>
+        <source>The supplied passphrases do not match.</source>
+        <translation>Введені паролі не співпадають.</translation>
+    </message>
+    <message>
+        <source>Wallet unlock failed</source>
+        <translation>Не вдалося розблокувати гаманець</translation>
+    </message>
+    <message>
+        <source>The passphrase entered for the wallet decryption was incorrect.</source>
+        <translation>Введений пароль є невірним.</translation>
+    </message>
+    <message>
+        <source>Wallet decryption failed</source>
+        <translation>Не вдалося розшифрувати гаманець</translation>
+    </message>
+    <message>
+        <source>Wallet passphrase was successfully changed.</source>
+        <translation>Пароль було успішно змінено.</translation>
+    </message>
+    <message>
+        <source>Warning: The Caps Lock key is on!</source>
+        <translation>Увага: Ввімкнено Caps Lock!</translation>
+    </message>
+</context>
 <context>
     <name>BanTableModel</name>
     <message>
@@ -76,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Підписати повідомлення...</translation>
@@ -118,6 +274,10 @@
         <translation>П&amp;ро %1</translation>
     </message>
     <message>
+        <source>Show information about %1</source>
+        <translation>Показати інформацію про %1</translation>
+    </message>
+    <message>
         <source>About &amp;Qt</source>
         <translation>&amp;Про Qt</translation>
     </message>
@@ -128,6 +288,10 @@
     <message>
         <source>&amp;Options...</source>
         <translation>&amp;Параметри...</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for %1</source>
+        <translation>Редагувати параметри для %1</translation>
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
@@ -154,11 +318,27 @@
         <translation>Відкрити &amp;URI</translation>
     </message>
     <message>
+        <source>Click to disable network activity.</source>
+        <translation>Натисніть, щоб вимкнути активність мережі.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled.</source>
+        <translation>Мережева активність вимкнена.</translation>
+    </message>
+    <message>
+        <source>Click to enable network activity again.</source>
+        <translation>Натисніть, щоб знову активувати мережеву активність.</translation>
+    </message>
+    <message>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>Синхронізація заголовків (%1%)...</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Переіндексація блоків на диску ...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
+        <source>Send coins to a bitsend address</source>
         <translation>Відправити монети на вказану адресу</translation>
     </message>
     <message>
@@ -182,8 +362,8 @@
         <translation>П&amp;еревірити повідомлення...</translation>
     </message>
     <message>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -210,12 +390,12 @@
         <translation>Зашифрувати закриті ключі, що знаходяться у вашому гаманці</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою Bitsend-адресою </translation>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою bitsend-адресою </translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Bitsend-адресою</translation>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною bitsend-адресою</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -254,8 +434,16 @@
         <translation>П&amp;араметри командного рядка</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation><numerusform>%n активне з'єднання з мережею Bitsend</numerusform><numerusform>%n активні з'єднання з мережею Bitsend</numerusform><numerusform>%n активних з'єднань з мережею Bitsend</numerusform></translation>
+        <source>%n active connection(s) to bitsend network</source>
+        <translation><numerusform>%n активне з'єднання з мережею bitsend</numerusform><numerusform>%n активні з'єднання з мережею bitsend</numerusform><numerusform>%n активних з'єднань з мережею bitsend</numerusform></translation>
+    </message>
+    <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>Індексація блоків на диску ...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>Обробка блоків на диску...</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
@@ -288,6 +476,18 @@
     <message>
         <source>Up to date</source>
         <translation>Синхронізовано</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible bitsend command-line options</source>
+        <translation>Показати довідку %1 для отримання переліку можливих параметрів командного рядка.</translation>
+    </message>
+    <message>
+        <source>%1 client</source>
+        <translation>%1 клієнт</translation>
+    </message>
+    <message>
+        <source>Connecting to peers...</source>
+        <translation>Підключення до вузлів...</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -332,6 +532,14 @@
         <translation>Отримані транзакції</translation>
     </message>
     <message>
+        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
+        <translation>Генерація HD ключа &lt;b&gt;увімкнена&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation>Генерація HD ключа&lt;b&gt;вимкнена&lt;/b&gt;</translation>
+    </message>
+    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>&lt;b&gt;Зашифрований&lt;/b&gt; гаманець &lt;b&gt;розблоковано&lt;/b&gt;</translation>
     </message>
@@ -339,7 +547,11 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>&lt;b&gt;Зашифрований&lt;/b&gt; гаманець &lt;b&gt;заблоковано&lt;/b&gt;</translation>
     </message>
-    </context>
+    <message>
+        <source>A fatal error occurred. bitsend can no longer continue safely and will quit.</source>
+        <translation>Сталася фатальна помилка. Гаманець буде закрито.</translation>
+    </message>
+</context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -410,7 +622,83 @@
         <source>Confirmed</source>
         <translation>Підтверджені</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy address</source>
+        <translation>Копіювати адресу</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Копіювати мітку</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Копіювати суму</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Копіювати ID транзакції </translation>
+    </message>
+    <message>
+        <source>Lock unspent</source>
+        <translation>Заблокувати</translation>
+    </message>
+    <message>
+        <source>Unlock unspent</source>
+        <translation>Розблокувати</translation>
+    </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Скопіювати кількість</translation>
+    </message>
+    <message>
+        <source>Copy fee</source>
+        <translation>Скопіювати комісію</translation>
+    </message>
+    <message>
+        <source>Copy after fee</source>
+        <translation>Скопіювати після комісії</translation>
+    </message>
+    <message>
+        <source>Copy bytes</source>
+        <translation>Скопіювати байти</translation>
+    </message>
+    <message>
+        <source>Copy dust</source>
+        <translation>Скопіювати інше</translation>
+    </message>
+    <message>
+        <source>Copy change</source>
+        <translation>Скопіювати решту</translation>
+    </message>
+    <message>
+        <source>(%1 locked)</source>
+        <translation>(%1 заблоковано)</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>так</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>ні</translation>
+    </message>
+    <message>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation>Може відрізнятися на +/- %1 сатоші за введені</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>немає мітки</translation>
+    </message>
+    <message>
+        <source>change from %1 (%2)</source>
+        <translation>решта з %1 (%2)</translation>
+    </message>
+    <message>
+        <source>(change)</source>
+        <translation>(решта)</translation>
+    </message>
+</context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -433,7 +721,39 @@
         <source>&amp;Address</source>
         <translation>&amp;Адреса</translation>
     </message>
-    </context>
+    <message>
+        <source>New receiving address</source>
+        <translation>Нова адреса для отримання</translation>
+    </message>
+    <message>
+        <source>New sending address</source>
+        <translation>Нова адреса для відправлення</translation>
+    </message>
+    <message>
+        <source>Edit receiving address</source>
+        <translation>Редагувати адресу для отримання</translation>
+    </message>
+    <message>
+        <source>Edit sending address</source>
+        <translation>Редагувати адресу для відправлення</translation>
+    </message>
+    <message>
+        <source>The entered address "%1" is not a valid bitsend address.</source>
+        <translation>Введена адреса "%1" не є адресою в мережі bitsend.</translation>
+    </message>
+    <message>
+        <source>The entered address "%1" is already in the address book.</source>
+        <translation>Введена адреса "%1" вже присутня в адресній книзі.</translation>
+    </message>
+    <message>
+        <source>Could not unlock wallet.</source>
+        <translation>Неможливо розблокувати гаманець.</translation>
+    </message>
+    <message>
+        <source>New key generation failed.</source>
+        <translation>Не вдалося згенерувати нові ключі.</translation>
+    </message>
+</context>
 <context>
     <name>FreespaceChecker</name>
     <message>
@@ -466,6 +786,10 @@
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-бітний)</translation>
+    </message>
+    <message>
+        <source>About %1</source>
+        <translation>Про %1</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -503,12 +827,32 @@
         <source>Show splash screen on startup (default: %u)</source>
         <translation>Показувати заставку під час запуску (типово: %u)</translation>
     </message>
-    </context>
+    <message>
+        <source>Reset all settings changed in the GUI</source>
+        <translation>Скинути налаштування, які було змінено через графічний інтерфейс користувача</translation>
+    </message>
+</context>
 <context>
     <name>Intro</name>
     <message>
         <source>Welcome</source>
-        <translation>Вітання</translation>
+        <translation>Ласкаво просимо</translation>
+    </message>
+    <message>
+        <source>Welcome to %1.</source>
+        <translation>Ласкаво просимо до %1.</translation>
+    </message>
+    <message>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>Оскільки це перший запуск програми, ви можете обрати де %1 буде зберігати дані.</translation>
+    </message>
+    <message>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Після натискання кнопки «OK» %1 почне завантажувати та обробляти повний ланцюжок блоків %4 (%2 Гб), починаючи з найбільш ранніх транзакцій у %3, коли було запущено %4.</translation>
+    </message>
+    <message>
+        <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
+        <translation>Якщо ви вирішили обмежити збереження ланцюжка блоків (відсікання), історичні дані повинні бути завантажені та оброблені, але потім можуть бути видалені, щоб зберегти потрібний простір диска.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -517,6 +861,26 @@
     <message>
         <source>Use a custom data directory:</source>
         <translation>Використовувати свій каталог даних:</translation>
+    </message>
+    <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
+    </message>
+    <message>
+        <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
+        <translation>Принаймні, %1 ГБ даних буде збережено в цьому каталозі, і воно з часом зростатиме.</translation>
+    </message>
+    <message>
+        <source>Approximately %1 GB of data will be stored in this directory.</source>
+        <translation>Близько %1 Гб даних буде збережено в цьому каталозі.</translation>
+    </message>
+    <message>
+        <source>%1 will download and store a copy of the bitsend block chain.</source>
+        <translation>%1 буде завантажувати та зберігати копію ланцюжка блоків біткінів.</translation>
+    </message>
+    <message>
+        <source>The wallet will also be stored in this directory.</source>
+        <translation>Гаманець також зберігатиметься в цьому каталозі.</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -542,14 +906,50 @@
         <translation>Форма</translation>
     </message>
     <message>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitsend network, as detailed below.</source>
+        <translation>Нещодавні транзакції ще не відображаються, тому баланс вашого гаманця може бути неточним. Ця інформація буде вірною після того, як ваш гаманець завершить синхронізацію з мережею біткойн, врахровуйте показники нижче.</translation>
+    </message>
+    <message>
+        <source>Attempting to spend bitsends that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Спроба видправити біткойни, які ще не відображаються, не буде прийнята мережею.</translation>
+    </message>
+    <message>
+        <source>Number of blocks left</source>
+        <translation>Залишилося блоків</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>Невідомо...</translation>
+    </message>
+    <message>
         <source>Last block time</source>
         <translation>Час останнього блоку</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Прогрес</translation>
+    </message>
+    <message>
+        <source>Progress increase per hour</source>
+        <translation>Прогрес за годину</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>рахування...</translation>
+    </message>
+    <message>
+        <source>Estimated time left until synced</source>
+        <translation>Орієнтовний час до кінця синхронізації</translation>
     </message>
     <message>
         <source>Hide</source>
         <translation>Приховати</translation>
     </message>
-    </context>
+    <message>
+        <source>Unknown. Syncing Headers (%1)...</source>
+        <translation>Невідомо. Синхронізація заголовків (%1%)...</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -568,7 +968,11 @@
         <source>Select payment request file</source>
         <translation>Виберіть файл запиту платежу</translation>
     </message>
-    </context>
+    <message>
+        <source>Select payment request file to open</source>
+        <translation>Виберіть файл запиту платежу</translation>
+    </message>
+</context>
 <context>
     <name>OptionsDialog</name>
     <message>
@@ -592,16 +996,12 @@
         <translation>Кількість потоків &amp;сценарію перевірки</translation>
     </message>
     <message>
-        <source>Accept connections from outside</source>
-        <translation>Приймати підключення ззовні</translation>
-    </message>
-    <message>
-        <source>Allow incoming connections</source>
-        <translation>Дозволити вхідні з’єднання</translation>
-    </message>
-    <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>IP-адреса проксі-сервера (наприклад IPv4: 127.0.0.1 / IPv6: ::1)</translation>
+    </message>
+    <message>
+        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
+        <translation>Показує, чи типово використовується проксі SOCKS5 для досягнення рівної участі для цього типу мережі.</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
@@ -612,12 +1012,16 @@
         <translation>Сторонні URL (наприклад, block explorer), що з'являться на вкладці транзакцій у вигляді пункту контекстного меню. %s в URL буде замінено на хеш транзакції. Для відокремлення URLів використовуйте вертикальну риску |.</translation>
     </message>
     <message>
-        <source>Third party transaction URLs</source>
-        <translation>Сторонні URL транзакцій</translation>
-    </message>
-    <message>
         <source>Active command-line options that override above options:</source>
         <translation>Активовані параметри командного рядка, що перекривають вищевказані параметри:</translation>
+    </message>
+    <message>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation>Відкрийте %1 файл конфігурації з робочого каталогу.</translation>
+    </message>
+    <message>
+        <source>Open Configuration File</source>
+        <translation>Відкрити файл конфігурації</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
@@ -656,7 +1060,7 @@
         <translation>&amp;Витрачати непідтверджену решту</translation>
     </message>
     <message>
-        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Автоматично відкривати порт для клієнту біткоін на роутері. Працює лише якщо ваш роутер підтримує UPnP і ця функція увімкнена.</translation>
     </message>
     <message>
@@ -664,8 +1068,8 @@
         <translation>Відображення порту через &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Bitsend network through a SOCKS5 proxy.</source>
-        <translation>Підключення до мережі Bitsend через SOCKS5 проксі.</translation>
+        <source>Connect to the bitsend network through a SOCKS5 proxy.</source>
+        <translation>Підключення до мережі bitsend через SOCKS5 проксі.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -688,10 +1092,6 @@
         <translation>Приєднуватися до учасників через:</translation>
     </message>
     <message>
-        <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>Вказує на використання наявного типового проксі SOCKS5, що використувується задля встановлення зв'язку з пірами через мережу такого типу.</translation>
-    </message>
-    <message>
         <source>IPv4</source>
         <translation>IPv4</translation>
     </message>
@@ -704,12 +1104,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Підключатися до мережі Bitsend через окремий SOCKS5 проксі для прихованих сервісів Tor.</translation>
-    </message>
-    <message>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
-        <translation>Використовувати окремий SOCKS5-проксі для з'єднання з учасниками через приховані сервіси Tor:</translation>
+        <source>Connect to the bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Підключатися до мережі bitsend через окремий SOCKS5 проксі для прихованих сервісів Tor.</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -734,6 +1130,10 @@
     <message>
         <source>User Interface &amp;language:</source>
         <translation>Мов&amp;а інтерфейсу користувача:</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation>Встановлює мову інтерфейсу. Зміни набудуть чинності після перезапуску %1.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -776,6 +1176,18 @@
         <translation>Клієнт буде вимкнено. Продовжити?</translation>
     </message>
     <message>
+        <source>Configuration options</source>
+        <translation>Редагувати параметри</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Помилка</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation>Файл конфігурції не можливо відкрити</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
         <translation>Ця зміна вступить в силу після перезапуску клієнта</translation>
     </message>
@@ -791,8 +1203,8 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею Bitsend після встановлення підключення, але цей процес ще не завершено.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bitsend network after a connection is established, but this process has not completed yet.</source>
+        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею bitsend після встановлення підключення, але цей процес ще не завершено.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -861,7 +1273,83 @@
 </context>
 <context>
     <name>PaymentServer</name>
-    </context>
+    <message>
+        <source>Payment request error</source>
+        <translation>Помилка запиту платежу</translation>
+    </message>
+    <message>
+        <source>URI handling</source>
+        <translation>Обробка URI</translation>
+    </message>
+    <message>
+        <source>Payment request fetch URL is invalid: %1</source>
+        <translation>URL запиту платежу є некоректним: %1</translation>
+    </message>
+    <message>
+        <source>Invalid payment address %1</source>
+        <translation>Помилка в адресі платежу %1</translation>
+    </message>
+    <message>
+        <source>Payment request file handling</source>
+        <translation>Обробка файлу запиту платежу</translation>
+    </message>
+    <message>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Неможливо прочитати файл запиту платежу! Ймовірно, файл пошкоджено.</translation>
+    </message>
+    <message>
+        <source>Payment request rejected</source>
+        <translation>Запит платежу відхилено</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Мережа запиту платежу не є мережею клієнта.</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>Запит платежу прострочено.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>Запит платежу не ініціалізовано.</translation>
+    </message>
+    <message>
+        <source>Invalid payment request.</source>
+        <translation>Помилка в запиті платежу.</translation>
+    </message>
+    <message>
+        <source>Requested payment amount of %1 is too small (considered dust).</source>
+        <translation>Сума запиту платежу для %1 занадто мала (вважається пилом)</translation>
+    </message>
+    <message>
+        <source>Refund from %1</source>
+        <translation>Відшкодування з %1</translation>
+    </message>
+    <message>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>Запит платежу %1 занадто великий (%2 байт, дозволено %3 байт).</translation>
+    </message>
+    <message>
+        <source>Error communicating with %1: %2</source>
+        <translation>Помилка зв'язку з %1: %2</translation>
+    </message>
+    <message>
+        <source>Payment request cannot be parsed!</source>
+        <translation>Неможливо розпізнати запит платежу!</translation>
+    </message>
+    <message>
+        <source>Bad response from server %1</source>
+        <translation>Погана відповідь від сервера %1</translation>
+    </message>
+    <message>
+        <source>Network request error</source>
+        <translation>Помилка мережевого запиту</translation>
+    </message>
+    <message>
+        <source>Payment acknowledged</source>
+        <translation>Платіж підтверджено</translation>
+    </message>
+</context>
 <context>
     <name>PeerTableModel</name>
     <message>
@@ -872,7 +1360,19 @@
         <source>Node/Service</source>
         <translation>Вузол/Сервіс</translation>
     </message>
-    </context>
+    <message>
+        <source>Ping</source>
+        <translation>Затримка</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Відправлено</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Отримано</translation>
+    </message>
+</context>
 <context>
     <name>QObject</name>
     <message>
@@ -880,8 +1380,8 @@
         <translation>Кількість</translation>
     </message>
     <message>
-        <source>Enter a Bitsend address (e.g. %1)</source>
-        <translation>Введіть адресу Bitsend (наприклад %1)</translation>
+        <source>Enter a bitsend address (e.g. %1)</source>
+        <translation>Введіть адресу bitsend (наприклад %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -915,13 +1415,53 @@
         <source>%1 and %2</source>
         <translation>%1 та %2</translation>
     </message>
-    </context>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 Б</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 КБ</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 МБ</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 ГБ</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>невідомо</translation>
+    </message>
+</context>
 <context>
     <name>QObject::QObject</name>
-    </context>
+    <message>
+        <source>Error: %1</source>
+        <translation>Помилка: %1</translation>
+    </message>
+</context>
 <context>
     <name>QRImageWidget</name>
-    </context>
+    <message>
+        <source>&amp;Save Image...</source>
+        <translation>&amp;Зберегти зображення...</translation>
+    </message>
+    <message>
+        <source>&amp;Copy Image</source>
+        <translation>&amp;Копіювати зображення</translation>
+    </message>
+    <message>
+        <source>Save QR Code</source>
+        <translation>Зберегти QR-код</translation>
+    </message>
+    <message>
+        <source>PNG Image (*.png)</source>
+        <translation>Зображення PNG (*.png)</translation>
+    </message>
+</context>
 <context>
     <name>RPCConsole</name>
     <message>
@@ -1033,6 +1573,14 @@
         <translation>Клієнт користувача</translation>
     </message>
     <message>
+        <source>Decrease font size</source>
+        <translation>Зменшити розмір шрифту</translation>
+    </message>
+    <message>
+        <source>Increase font size</source>
+        <translation>Збільшити розмір шрифту</translation>
+    </message>
+    <message>
         <source>Services</source>
         <translation>Сервіси</translation>
     </message>
@@ -1085,10 +1633,6 @@
         <translation>&amp;Мережевий трафік</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Очистити</translation>
-    </message>
-    <message>
         <source>Totals</source>
         <translation>Всього</translation>
     </message>
@@ -1125,28 +1669,8 @@
         <translation>1 &amp;рік</translation>
     </message>
     <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Використовуйте стрілки вгору вниз для навігації по історії, і &lt;b&gt;Ctrl-L&lt;/b&gt; для очищення екрана.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Наберіть &lt;b&gt;help&lt;/b&gt; для перегляду доступних команд.</translation>
-    </message>
-    <message>
-        <source>%1 B</source>
-        <translation>%1 Б</translation>
-    </message>
-    <message>
-        <source>%1 KB</source>
-        <translation>%1 КБ</translation>
-    </message>
-    <message>
-        <source>%1 MB</source>
-        <translation>%1 МБ</translation>
-    </message>
-    <message>
-        <source>%1 GB</source>
-        <translation>%1 ГБ</translation>
+        <source>Network activity disabled</source>
+        <translation>Мережева активність вимкнена.</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
@@ -1196,16 +1720,8 @@
         <translation>&amp;Повідомлення:</translation>
     </message>
     <message>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Повторно використати одну з адрес. Повторне використання адрес створює ризики безпеки та конфіденційності. Не використовуйте її, окрім як для створення повторного запиту платежу.</translation>
-    </message>
-    <message>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>По&amp;вторно використати адресу для отримання (не рекомендується)</translation>
-    </message>
-    <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
-        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу Bitsend.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the bitsend network.</source>
+        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу bitsend.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1251,7 +1767,23 @@
         <source>Remove</source>
         <translation>Вилучити</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy URI</source>
+        <translation>Скопіювати адресу</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Скопіювати мітку</translation>
+    </message>
+    <message>
+        <source>Copy message</source>
+        <translation>Скопіювати повідомлення</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Копіювати суму</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
@@ -1270,10 +1802,58 @@
         <source>&amp;Save Image...</source>
         <translation>&amp;Зберегти зображення...</translation>
     </message>
+    <message>
+        <source>Payment information</source>
+        <translation>Інформація про платіж</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Сума</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Повідомлення</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
-    </context>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Повідомлення</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>немає мітки</translation>
+    </message>
+    <message>
+        <source>(no message)</source>
+        <translation>(без повідомлення)</translation>
+    </message>
+    <message>
+        <source>(no amount requested)</source>
+        <translation>(без суми)</translation>
+    </message>
+    <message>
+        <source>Requested</source>
+        <translation>Запрошено</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
@@ -1353,12 +1933,8 @@
         <translation>Приховати</translation>
     </message>
     <message>
-        <source>total at least</source>
-        <translation>всього щонайменше</translation>
-    </message>
-    <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for bitsend transactions than the network can process.</source>
-        <translation>Оплата тільки мінімальної комісії є прийнятною, допоки обсяг транзакцій є меншим простору в блоках. Але майте на увазі, що це може анулювати транзакцію, якщо попит на Bitsend транзакції стане більшим, ніж мережа зможе обробити.</translation>
+        <translation>Оплата тільки мінімальної комісії є прийнятною, допоки обсяг транзакцій є меншим простору в блоках. Але майте на увазі, що це може анулювати транзакцію, якщо попит на bitsend транзакції стане більшим, ніж мережа зможе обробити.</translation>
     </message>
     <message>
         <source>(read the tooltip)</source>
@@ -1377,14 +1953,6 @@
         <translation>(Розумну оплату ще не ініціалізовано. Це, зазвичай, триває кілька блоків...)</translation>
     </message>
     <message>
-        <source>normal</source>
-        <translation>звичайний</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>швидкий</translation>
-    </message>
-    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Відправити на декілька адрес</translation>
     </message>
@@ -1399,6 +1967,10 @@
     <message>
         <source>Dust:</source>
         <translation>Пил:</translation>
+    </message>
+    <message>
+        <source>Confirmation time target:</source>
+        <translation>Час підтвердження:</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -1416,7 +1988,43 @@
         <source>S&amp;end</source>
         <translation>&amp;Відправити</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Копіювати кількість</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Копіювати суму</translation>
+    </message>
+    <message>
+        <source>Copy fee</source>
+        <translation>Комісія</translation>
+    </message>
+    <message>
+        <source>Copy after fee</source>
+        <translation>Скопіювати після комісії</translation>
+    </message>
+    <message>
+        <source>Copy bytes</source>
+        <translation>Копіювати байти</translation>
+    </message>
+    <message>
+        <source>Copy dust</source>
+        <translation>Скопіювати інше</translation>
+    </message>
+    <message>
+        <source>Copy change</source>
+        <translation>Скопіювати решту</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>Запит платежу прострочено.</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>немає мітки</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -1440,8 +2048,8 @@
         <translation>Це звичайний платіж.</translation>
     </message>
     <message>
-        <source>The Bitsend address to send the payment to</source>
-        <translation>Адреса Bitsend для відправлення платежу</translation>
+        <source>The bitsend address to send the payment to</source>
+        <translation>Адреса bitsend для відправлення платежу</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1484,8 +2092,8 @@
         <translation>Введіть мітку для цієї адреси для додавання її в список використаних адрес</translation>
     </message>
     <message>
-        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</source>
-        <translation>Повідомлення, що було додане до bitsend:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу Bitsend.</translation>
+        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the bitsend network.</source>
+        <translation>Повідомлення, що було додане до bitsend:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу bitsend.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1495,10 +2103,18 @@
         <source>Memo:</source>
         <translation>Нотатка:</translation>
     </message>
-    </context>
+    <message>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Введіть мітку для цієї адреси для додавання її в адресну книгу</translation>
+    </message>
+</context>
 <context>
     <name>SendConfirmationDialog</name>
-    </context>
+    <message>
+        <source>Yes</source>
+        <translation>Так</translation>
+    </message>
+</context>
 <context>
     <name>ShutdownWindow</name>
     <message>
@@ -1521,8 +2137,8 @@
         <translation>Ви можете підписувати повідомлення/угоди своїми адресами, щоб довести можливість отримання біткоінів, що будуть надіслані на них. Остерігайтеся підписувати будь-що нечітке чи неочікуване, так як за допомогою фішинг-атаки вас можуть спробувати ввести в оману для отримання вашого підпису під чужими словами. Підписуйте лише чіткі твердження, з якими ви повністю згодні.</translation>
     </message>
     <message>
-        <source>The Bitsend address to sign the message with</source>
-        <translation>Адреса Bitsend для підпису цього повідомлення</translation>
+        <source>The bitsend address to sign the message with</source>
+        <translation>Адреса bitsend для підпису цього повідомлення</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1553,7 +2169,7 @@
         <translation>Копіювати поточну сигнатуру до системного буферу обміну</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bitsend address</source>
+        <source>Sign the message to prove you own this bitsend address</source>
         <translation>Підпишіть повідомлення щоб довести, що ви є власником цієї адреси</translation>
     </message>
     <message>
@@ -1577,12 +2193,12 @@
         <translation>Введіть нижче адресу отримувача, повідомлення (впевніться, що ви точно скопіювали символи завершення рядка, табуляцію, пробіли тощо) та підпис для перевірки повідомлення. Впевніться, що в підпис не було додано зайвих символів: це допоможе уникнути атак типу «людина посередині». Зауважте, що це лише засвідчує можливість отримання транзакцій підписувачем, але не в стані підтвердити джерело жодної транзакції!</translation>
     </message>
     <message>
-        <source>The Bitsend address the message was signed with</source>
-        <translation>Адреса Bitsend, якою було підписано це повідомлення</translation>
+        <source>The bitsend address the message was signed with</source>
+        <translation>Адреса bitsend, якою було підписано це повідомлення</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bitsend address</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Bitsend-адресою</translation>
+        <source>Verify the message to ensure it was signed with the specified bitsend address</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною bitsend-адресою</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1592,7 +2208,59 @@
         <source>Reset all verify message fields</source>
         <translation>Скинути всі поля перевірки повідомлення</translation>
     </message>
-    </context>
+    <message>
+        <source>Click "Sign Message" to generate signature</source>
+        <translation>Натисніть кнопку «Підписати повідомлення», для отримання підпису</translation>
+    </message>
+    <message>
+        <source>The entered address is invalid.</source>
+        <translation>Введена адреса не співпадає.</translation>
+    </message>
+    <message>
+        <source>Please check the address and try again.</source>
+        <translation>Будь ласка, перевірте адресу та спробуйте ще.</translation>
+    </message>
+    <message>
+        <source>The entered address does not refer to a key.</source>
+        <translation>Введена адреса не відноситься до ключа.</translation>
+    </message>
+    <message>
+        <source>Wallet unlock was cancelled.</source>
+        <translation>Розблокування гаманця було скасоване.</translation>
+    </message>
+    <message>
+        <source>Private key for the entered address is not available.</source>
+        <translation>Приватний ключ для введеної адреси недоступний. </translation>
+    </message>
+    <message>
+        <source>Message signing failed.</source>
+        <translation>Не вдалося підписати повідомлення.</translation>
+    </message>
+    <message>
+        <source>Message signed.</source>
+        <translation>Повідомлення підписано.</translation>
+    </message>
+    <message>
+        <source>The signature could not be decoded.</source>
+        <translation>Підпис не можливо декодувати.</translation>
+    </message>
+    <message>
+        <source>Please check the signature and try again.</source>
+        <translation>Будь ласка, перевірте підпис та спробуйте ще.</translation>
+    </message>
+    <message>
+        <source>The signature did not match the message digest.</source>
+        <translation>Підпис не збігається з хешем повідомлення.</translation>
+    </message>
+    <message>
+        <source>Message verification failed.</source>
+        <translation>Не вдалося перевірити повідомлення.</translation>
+    </message>
+    <message>
+        <source>Message verified.</source>
+        <translation>Повідомлення перевірено.</translation>
+    </message>
+</context>
 <context>
     <name>SplashScreen</name>
     <message>
@@ -1609,19 +2277,359 @@
 </context>
 <context>
     <name>TransactionDesc</name>
-    </context>
+    <message>
+        <source>Open until %1</source>
+        <translation>Відкрито до %1</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Статут</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation>Джерело</translation>
+    </message>
+    <message>
+        <source>Generated</source>
+        <translation>Згенеровано</translation>
+    </message>
+    <message>
+        <source>From</source>
+        <translation>Від</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>невідомо</translation>
+    </message>
+    <message>
+        <source>To</source>
+        <translation>Отримувач</translation>
+    </message>
+    <message>
+        <source>own address</source>
+        <translation>Власна адреса</translation>
+    </message>
+    <message>
+        <source>label</source>
+        <translation>мітка</translation>
+    </message>
+    <message>
+        <source>Credit</source>
+        <translation>Кредит</translation>
+    </message>
+    <message>
+        <source>not accepted</source>
+        <translation>не прийнято</translation>
+    </message>
+    <message>
+        <source>Debit</source>
+        <translation>Дебет</translation>
+    </message>
+    <message>
+        <source>Total debit</source>
+        <translation>Загальний дебет</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Загальний кредит</translation>
+    </message>
+    <message>
+        <source>Transaction fee</source>
+        <translation>Комісія за транзакцію</translation>
+    </message>
+    <message>
+        <source>Net amount</source>
+        <translation>Загальна сума</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Повідомлення</translation>
+    </message>
+    <message>
+        <source>Comment</source>
+        <translation>Коментар</translation>
+    </message>
+    <message>
+        <source>Transaction ID</source>
+        <translation>ID транзакції</translation>
+    </message>
+    <message>
+        <source>Transaction total size</source>
+        <translation>Розмір транзакції</translation>
+    </message>
+    <message>
+        <source>Merchant</source>
+        <translation>Продавець</translation>
+    </message>
+    <message>
+        <source>Transaction</source>
+        <translation>Транзакція</translation>
+    </message>
+    <message>
+        <source>Inputs</source>
+        <translation>Входи</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Кількість</translation>
+    </message>
+    <message>
+        <source>true</source>
+        <translation>вірний</translation>
+    </message>
+    <message>
+        <source>false</source>
+        <translation>хибний</translation>
+    </message>
+</context>
 <context>
     <name>TransactionDescDialog</name>
     <message>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>Даний діалог показує детальну статистику по вибраній транзакції</translation>
     </message>
-    </context>
+    <message>
+        <source>Details for %1</source>
+        <translation>Інформація по %1</translation>
+    </message>
+</context>
 <context>
     <name>TransactionTableModel</name>
-    </context>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Open until %1</source>
+        <translation>Відкрито до %1</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation>Поза мережею</translation>
+    </message>
+    <message>
+        <source>Unconfirmed</source>
+        <translation>Не підтверджено</translation>
+    </message>
+    <message>
+        <source>Abandoned</source>
+        <translation>Відкинуті</translation>
+    </message>
+    <message>
+        <source>Confirming (%1 of %2 recommended confirmations)</source>
+        <translation>Підтверджується (%1 з %2 рекомендованих підтверджень)</translation>
+    </message>
+    <message>
+        <source>Confirmed (%1 confirmations)</source>
+        <translation>Підтверджено (%1 підтверджень)</translation>
+    </message>
+    <message>
+        <source>Conflicted</source>
+        <translation>Суперечить</translation>
+    </message>
+    <message>
+        <source>Immature (%1 confirmations, will be available after %2)</source>
+        <translation>Повністтю не підтверджено (%1 підтверджень, будуть доступні після %2)</translation>
+    </message>
+    <message>
+        <source>This block was not received by any other nodes and will probably not be accepted!</source>
+        <translation>Цей блок не був отриманий жодними іншими вузлами і, ймовірно, не буде прийнятий!</translation>
+    </message>
+    <message>
+        <source>Generated but not accepted</source>
+        <translation>Згенеровано (не підтверджено)</translation>
+    </message>
+    <message>
+        <source>Received with</source>
+        <translation>Отримано з</translation>
+    </message>
+    <message>
+        <source>Received from</source>
+        <translation>Отримано від</translation>
+    </message>
+    <message>
+        <source>Sent to</source>
+        <translation>Відправлені на</translation>
+    </message>
+    <message>
+        <source>Payment to yourself</source>
+        <translation>Відправлено собі</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Добуто</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>немає мітки</translation>
+    </message>
+    <message>
+        <source>Transaction status. Hover over this field to show number of confirmations.</source>
+        <translation>Статус транзакції. Наведіть вказівник на це поле, щоб показати кількість підтверджень.</translation>
+    </message>
+    <message>
+        <source>Date and time that the transaction was received.</source>
+        <translation>Дата і час, коли транзакцію було отримано.</translation>
+    </message>
+    <message>
+        <source>Type of transaction.</source>
+        <translation>Тип транзакції.</translation>
+    </message>
+    <message>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>Визначений користувачем намір чи мета транзакції.</translation>
+    </message>
+    <message>
+        <source>Amount removed from or added to balance.</source>
+        <translation>Сума, додана чи знята з балансу.</translation>
+    </message>
+</context>
 <context>
     <name>TransactionView</name>
+    <message>
+        <source>All</source>
+        <translation>Всі</translation>
+    </message>
+    <message>
+        <source>Today</source>
+        <translation>Сьогодні</translation>
+    </message>
+    <message>
+        <source>This week</source>
+        <translation>На цьому тижні</translation>
+    </message>
+    <message>
+        <source>This month</source>
+        <translation>Цього місяця</translation>
+    </message>
+    <message>
+        <source>Last month</source>
+        <translation>Минулого місяця</translation>
+    </message>
+    <message>
+        <source>This year</source>
+        <translation>Цього року</translation>
+    </message>
+    <message>
+        <source>Range...</source>
+        <translation>Діапазон від:</translation>
+    </message>
+    <message>
+        <source>Received with</source>
+        <translation>Отримано з</translation>
+    </message>
+    <message>
+        <source>Sent to</source>
+        <translation>Відправлені на</translation>
+    </message>
+    <message>
+        <source>To yourself</source>
+        <translation>Відправлені собі</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Добуті</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Інше</translation>
+    </message>
+    <message>
+        <source>Min amount</source>
+        <translation>Мінімальна сума</translation>
+    </message>
+    <message>
+        <source>Abandon transaction</source>
+        <translation>Відмовитися від транзакції</translation>
+    </message>
+    <message>
+        <source>Increase transaction fee</source>
+        <translation>Збільшить плату за транзакцію</translation>
+    </message>
+    <message>
+        <source>Copy address</source>
+        <translation>Скопіювати адресу</translation>
+    </message>
+    <message>
+        <source>Copy label</source>
+        <translation>Скопіювати мітку</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Скопіювати суму</translation>
+    </message>
+    <message>
+        <source>Copy transaction ID</source>
+        <translation>Скопіювати ID транзакції </translation>
+    </message>
+    <message>
+        <source>Copy raw transaction</source>
+        <translation>Скопіювати RAW транзакцію</translation>
+    </message>
+    <message>
+        <source>Copy full transaction details</source>
+        <translation>Скопіювати повні деталі транзакції</translation>
+    </message>
+    <message>
+        <source>Edit label</source>
+        <translation>Редагувати мітку</translation>
+    </message>
+    <message>
+        <source>Show transaction details</source>
+        <translation>Показати деталі транзакції</translation>
+    </message>
+    <message>
+        <source>Export Transaction History</source>
+        <translation>Експортувати історію транзакцій</translation>
+    </message>
+    <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Файли (*.csv) розділеі комами</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Підтверджено</translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation>Тільки спостереження:</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>Ідентифікатор</translation>
+    </message>
+    <message>
+        <source>Exporting Failed</source>
+        <translation>Експортування пройшло не успішно</translation>
+    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -1635,10 +2643,46 @@
     </context>
 <context>
     <name>WalletModel</name>
+    <message>
+        <source>Current fee:</source>
+        <translation>Поточна комісія:</translation>
+    </message>
+    <message>
+        <source>New fee:</source>
+        <translation>Нова комісія:</translation>
+    </message>
     </context>
 <context>
     <name>WalletView</name>
-    </context>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Експорт</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Експортувати дані з поточної вкладки в файл</translation>
+    </message>
+    <message>
+        <source>Backup Wallet</source>
+        <translation>Зробити резервне копіювання гаманця</translation>
+    </message>
+    <message>
+        <source>Wallet Data (*.dat)</source>
+        <translation>Данi гаманця (*.dat)</translation>
+    </message>
+    <message>
+        <source>Backup Failed</source>
+        <translation>Помилка резервного копіювання</translation>
+    </message>
+    <message>
+        <source>Backup Successful</source>
+        <translation>Резервну копію створено успішно</translation>
+    </message>
+    <message>
+        <source>The wallet data was successfully saved to %1.</source>
+        <translation>Дані гаманця успішно збережено в %1.</translation>
+    </message>
+</context>
 <context>
     <name>bitsend-core</name>
     <message>
@@ -1698,8 +2742,8 @@
         <translation>Неможливо запустити HTTP-сервер. Детальніший опис наведено в журналі зневадження.</translation>
     </message>
     <message>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -1734,12 +2778,20 @@
         <translation>&lt;category&gt; може бути:</translation>
     </message>
     <message>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Приймати підключення ззовні (типово: 1 за відсутності -proxy чи -connect)</translation>
+    </message>
+    <message>
         <source>Block creation options:</source>
         <translation>Опції створення блоку:</translation>
     </message>
     <message>
         <source>Connection options:</source>
         <translation>Параметри з'єднання:</translation>
+    </message>
+    <message>
+        <source>Copyright (C) %i-%i</source>
+        <translation>Всі права збережено. %i-%i</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -1806,10 +2858,6 @@
         <translation>Початковий блок некоректний/відсутній. Чи правильно вказано каталог даних для обраної мережі?</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Помилка в адресі -onion: «%s»</translation>
-    </message>
-    <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
         <translation>Утримувати розмір пам'яті для пулу транзакцій меншим за &lt;n&gt; мегабайтів (типово: %u)</translation>
     </message>
@@ -1820,6 +2868,10 @@
     <message>
         <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
         <translation>Підключатися тільки до вузлів в мережі &lt;net&gt; (ipv4, ipv6 або onion)</translation>
+    </message>
+    <message>
+        <source>Print this help message and exit</source>
+        <translation>Надрукувати це довідкове повідомлення та вийти</translation>
     </message>
     <message>
         <source>Print version and exit</source>
@@ -1834,12 +2886,16 @@
         <translation>Використання скороченого ланцюжка блоків несумісне з параметром -txindex.</translation>
     </message>
     <message>
-        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Встановити розмір кешу бази даних в мегабайтах (від %d до %d, типово: %d)</translation>
+        <source>Replaying blocks...</source>
+        <translation>Відтворення блоків...</translation>
     </message>
     <message>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Встановити максимальний розмір блоку у байтах (типово: %d)</translation>
+        <source>Rewinding blocks...</source>
+        <translation>Перетворювання блоків...</translation>
+    </message>
+    <message>
+        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
+        <translation>Встановити розмір кешу бази даних в мегабайтах (від %d до %d, типово: %d)</translation>
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
@@ -1870,14 +2926,6 @@
         <translation>Перевірка блоків...</translation>
     </message>
     <message>
-        <source>Verifying wallet...</source>
-        <translation>Перевірка гаманця... </translation>
-    </message>
-    <message>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>Гаманець %s знаходиться поза каталогом даних %s</translation>
-    </message>
-    <message>
         <source>Wallet options:</source>
         <translation>Параметри гаманця:</translation>
     </message>
@@ -1888,10 +2936,6 @@
     <message>
         <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
         <translation>Прив'язатися до даної адреси та вносити до білого списку учасників, що під'єднуються до неї. Використовуйте запис виду [хост]:порт для IPv6</translation>
-    </message>
-    <message>
-        <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
-        <translation>Прив'язатися до даної адреси для прослуховування JSON-RPC підключень. Використовуйте запис виду [хост]:порт для IPv6. Цей параметр можна вказувати декілька разів (типово: прив'язуватися до всіх інтерфейсів)</translation>
     </message>
     <message>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
@@ -1928,10 +2972,6 @@
     <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
         <translation>Надавати випадкові дані доступу для кожного проксі-з'єднання. Це дозволяє ввімкнути ізоляцію потоків Tor'у (типово: %u)</translation>
-    </message>
-    <message>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Встановити максимальний розмір транзакцій з високим пріоритетом та низькою комісією (в байтах) (типово: %d)</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
@@ -2010,10 +3050,6 @@
         <translation>Відсилати налагоджувальну інформацію на консоль, а не у файл debug.log</translation>
     </message>
     <message>
-        <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
-        <translation>Не сплачувати комісію за надсилання транзакцій, якщо це можливо (типово: %u)</translation>
-    </message>
-    <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
         <translation>Показати всі налагоджувальні параметри (використання: --help -help-debug)</translation>
     </message>
@@ -2066,6 +3102,10 @@
         <translation>Ім'я користувача для JSON-RPC-з'єднань</translation>
     </message>
     <message>
+        <source>Verifying wallet(s)...</source>
+        <translation>Перевірка гаманця(ців)... </translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Попередження</translation>
     </message>
@@ -2092,10 +3132,6 @@
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
         <translation>Дозволити пошук в DNS для команд -addnode, -seednode та -connect</translation>
-    </message>
-    <message>
-        <source>Loading addresses...</source>
-        <translation>Завантаження адрес...</translation>
     </message>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
@@ -2158,16 +3194,16 @@
         <translation>Завжди дізнаватися адреси учасників через DNS (типово: %u)</translation>
     </message>
     <message>
+        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
+        <translation>Помилка завантаження гаманця %s. Недійсні символи в імені файлу -wallet.</translation>
+    </message>
+    <message>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
         <translation>Скільки блоків перевіряти під час запуску (типово: %u, 0 = всі)</translation>
     </message>
     <message>
         <source>Include IP addresses in debug output (default: %u)</source>
         <translation>Включити IP-адреси до налагоджувального виводу (типово: %u)</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Помилка в адресі проксі-сервера: «%s»</translation>
     </message>
     <message>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
@@ -2210,6 +3246,10 @@
         <translation>Встановити розмір пулу ключів &lt;n&gt; (типово: %u)</translation>
     </message>
     <message>
+        <source>Set maximum BIP141 block weight (default: %d)</source>
+        <translation>Встановити максимальний розмір блоку BIP141 (за замовчуванням: %d)</translation>
+    </message>
+    <message>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
         <translation>Встановити число потоків для обслуговування викликів RPC (типово: %d)</translation>
     </message>
@@ -2230,8 +3270,36 @@
         <translation>Витрачати непідтверджену решту при відправленні транзакцій (типово: %u)</translation>
     </message>
     <message>
+        <source>Starting network threads...</source>
+        <translation>Запуск мережевих потоків...</translation>
+    </message>
+    <message>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation>Гаманець не не переведе кошти якщо комісія менше мінімальної плати за транзакцію.</translation>
+    </message>
+    <message>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation>Це мінімальна плата за транзакцію, яку ви сплачуєте за кожну операцію.</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Це транзакційна комісія, яку ви сплатите, якщо будете надсилати транзакцію.</translation>
+    </message>
+    <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Поріг відключення учасників з поганою поведінкою (типово: %u)</translation>
+    </message>
+    <message>
+        <source>Transaction amounts must not be negative</source>
+        <translation>Сума транзакції занадто мала (зменьшіть комісію, якщо можливо)</translation>
+    </message>
+    <message>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation>У транзакції занадто довгий ланцюг</translation>
+    </message>
+    <message>
+        <source>Transaction must have at least one recipient</source>
+        <translation>У транзакції повинен бути щонайменше один одержувач</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
@@ -2246,20 +3314,12 @@
         <translation>Завантаження індексу блоків...</translation>
     </message>
     <message>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Додати вузол до підключення і лишити його відкритим</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Завантаження гаманця...</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
         <translation>Не вдається понизити версію гаманця</translation>
-    </message>
-    <message>
-        <source>Cannot write default address</source>
-        <translation>Неможливо записати типову адресу</translation>
     </message>
     <message>
         <source>Rescanning...</source>

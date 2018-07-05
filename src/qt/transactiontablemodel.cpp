@@ -1,32 +1,30 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "transactiontablemodel.h"
+#include <qt/transactiontablemodel.h>
 
-#include "addresstablemodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
-#include "platformstyle.h"
-#include "transactiondesc.h"
-#include "transactionrecord.h"
-#include "walletmodel.h"
+#include <qt/addresstablemodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
+#include <qt/platformstyle.h>
+#include <qt/transactiondesc.h>
+#include <qt/transactionrecord.h>
+#include <qt/walletmodel.h>
 
-#include "core_io.h"
-#include "validation.h"
-#include "sync.h"
-#include "uint256.h"
-#include "util.h"
-#include "wallet/wallet.h"
+#include <core_io.h>
+#include <validation.h>
+#include <sync.h>
+#include <uint256.h>
+#include <util.h>
+#include <wallet/wallet.h>
 
 #include <QColor>
 #include <QDateTime>
 #include <QDebug>
 #include <QIcon>
 #include <QList>
-
-#include <boost/foreach.hpp>
 
 // Amount column is right-aligned it contains numbers
 static int column_alignments[] = {
@@ -82,10 +80,10 @@ public:
         cachedWallet.clear();
         {
             LOCK2(cs_main, wallet->cs_wallet);
-            for(std::map<uint256, CWalletTx>::iterator it = wallet->mapWallet.begin(); it != wallet->mapWallet.end(); ++it)
+            for (const auto& entry : wallet->mapWallet)
             {
-                if(TransactionRecord::showTransaction(it->second))
-                    cachedWallet.append(TransactionRecord::decomposeTransaction(wallet, it->second));
+                if (TransactionRecord::showTransaction(entry.second))
+                    cachedWallet.append(TransactionRecord::decomposeTransaction(wallet, entry.second));
             }
         }
     }
@@ -145,7 +143,7 @@ public:
                 {
                     parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex+toInsert.size()-1);
                     int insert_idx = lowerIndex;
-                    Q_FOREACH(const TransactionRecord &rec, toInsert)
+                    for (const TransactionRecord &rec : toInsert)
                     {
                         cachedWallet.insert(insert_idx, rec);
                         insert_idx += 1;
@@ -168,6 +166,10 @@ public:
         case CT_UPDATED:
             // Miscellaneous updates -- nothing to do, status update will take care of this, and is only computed for
             // visible transactions.
+            for (int i = lowerIndex; i < upperIndex; i++) {
+                TransactionRecord *rec = &cachedWallet[i];
+                rec->status.needsUpdate = true;
+            }
             break;
         }
     }
@@ -228,7 +230,7 @@ public:
         std::map<uint256, CWalletTx>::iterator mi = wallet->mapWallet.find(rec->hash);
         if(mi != wallet->mapWallet.end())
         {
-            std::string strHex = EncodeHexTx(static_cast<CTransaction>(mi->second));
+            std::string strHex = EncodeHexTx(*mi->second.tx);
             return QString::fromStdString(strHex);
         }
         return QString();
@@ -243,7 +245,7 @@ TransactionTableModel::TransactionTableModel(const PlatformStyle *_platformStyle
         fProcessingQueuedTransactions(false),
         platformStyle(_platformStyle)
 {
-    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Label") << BitsendUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Label") << bitsendUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     priv->refreshWallet();
 
     connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
@@ -260,7 +262,7 @@ TransactionTableModel::~TransactionTableModel()
 /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
 void TransactionTableModel::updateAmountColumnTitle()
 {
-    columns[Amount] = BitsendUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+    columns[Amount] = bitsendUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     Q_EMIT headerDataChanged(Qt::Horizontal,Amount,Amount);
 }
 
@@ -447,9 +449,9 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord *wtx) const
     return QVariant();
 }
 
-QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, BitsendUnits::SeparatorStyle separators) const
+QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, bitsendUnits::SeparatorStyle separators) const
 {
-    QString str = BitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit, false, separators);
+    QString str = bitsendUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit, false, separators);
     if(showUnconfirmed)
     {
         if(!wtx->status.countsForBalance)
@@ -552,7 +554,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         case ToAddress:
             return formatTxToAddress(rec, false);
         case Amount:
-            return formatTxAmount(rec, true, BitsendUnits::separatorAlways);
+            return formatTxAmount(rec, true, bitsendUnits::separatorAlways);
         }
         break;
     case Qt::EditRole:
@@ -644,14 +646,14 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
                 details.append(QString::fromStdString(rec->address));
                 details.append(" ");
             }
-            details.append(formatTxAmount(rec, false, BitsendUnits::separatorNever));
+            details.append(formatTxAmount(rec, false, bitsendUnits::separatorNever));
             return details;
         }
     case ConfirmedRole:
         return rec->status.countsForBalance;
     case FormattedAmountRole:
         // Used for copy/export, so don't include separators
-        return formatTxAmount(rec, false, BitsendUnits::separatorNever);
+        return formatTxAmount(rec, false, bitsendUnits::separatorNever);
     case StatusRole:
         return rec->status.status;
     }

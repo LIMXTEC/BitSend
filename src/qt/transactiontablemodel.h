@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_TRANSACTIONTABLEMODEL_H
 #define BITSEND_QT_TRANSACTIONTABLEMODEL_H
 
-#include "bitsendunits.h"
+#include <qt/bitsendunits.h>
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -79,7 +79,7 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex & parent = QModelIndex()) const;
-    bool processingQueuedTransactions() { return fProcessingQueuedTransactions; }
+    bool processingQueuedTransactions() const { return fProcessingQueuedTransactions; }
 
 private:
     CWallet* wallet;
@@ -98,7 +98,7 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
-    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, BitsendUnits::SeparatorStyle separators=BitsendUnits::separatorStandard) const;
+    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, bitsendUnits::SeparatorStyle separators=bitsendUnits::separatorStandard) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;

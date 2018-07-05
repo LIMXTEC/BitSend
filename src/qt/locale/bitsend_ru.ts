@@ -1,197 +1,114 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Bitsend Core</source>
-        <translation>О Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Bitsend Core&lt;/b&gt; version</source>
-        <translation>Версия &lt;b&gt;Bitsend Core&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
-Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
- <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="111"/>
-        <source>
-This is experimental software.
-
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
-        <translation>
-Это экспериментальное ПО.
-
-Распространяется под лицензией MIT/X11, см. приложенный файл COPYING или http://www.opensource.org/licenses/mit-license.php.
-
-Этот продукт включает ПО, разработанное проектом OpenSSL Project для использования в OpenSSL Toolkit (http://www.openssl.org/), криптографическое ПО, написанное Eric Young (eay@cryptsoft.com) и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>Copyright</source>
-        <translation>Copyright</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Разработчики Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Разработчики Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="43"/>
-        <location filename="../utilitydialog.cpp" line="45"/>
-        <source>(%1-bit)</source>
-        <translation>(%1-бит)</translation>
-    </message>
-</context>
+<TS language="ru" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="30"/>
-        <source>Double-click to edit address or label</source>
-        <translation>Для того, чтобы изменить адрес или метку, дважды кликните по изменяемому объекту</translation>
+        <source>Right-click to edit address or label</source>
+        <translation>Клик правой кнопкой для редактирования адреса или метки</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="57"/>
         <source>Create a new address</source>
         <translation>Создать новый адрес</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="60"/>
         <source>&amp;New</source>
         <translation>&amp;Новый</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="71"/>
         <source>Copy the currently selected address to the system clipboard</source>
         <translation>Копировать текущий выделенный адрес в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="74"/>
         <source>&amp;Copy</source>
         <translation>&amp;Копировать</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="85"/>
-        <source>Delete the currently selected address from the list</source>
-        <translation>Удалить выбранный адрес из списка</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="88"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Удалить</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="112"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Экспортировать данные из вкладки в файл</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="115"/>
-        <source>&amp;Export</source>
-        <translation>&amp;Экспорт</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="132"/>
         <source>C&amp;lose</source>
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="45"/>
+        <source>Delete the currently selected address from the list</source>
+        <translation>Удалить выбранный адрес из списка</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Экспортировать данные из вкладки в файл</translation>
+    </message>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Экспорт</translation>
+    </message>
+    <message>
+        <source>&amp;Delete</source>
+        <translation>&amp;Удалить</translation>
+    </message>
+    <message>
         <source>Choose the address to send coins to</source>
-        <translation>Выберите адрес для отправки на него монет</translation>
+        <translation>Выберите адрес для отправки перевода</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="46"/>
         <source>Choose the address to receive coins with</source>
-        <translation>Выберите адрес для получения монет</translation>
+        <translation>Выберите адрес для получения перевода</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="51"/>
         <source>C&amp;hoose</source>
         <translation>&amp;Выбрать</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="57"/>
         <source>Sending addresses</source>
         <translation>Адреса отправки</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="58"/>
         <source>Receiving addresses</source>
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="65"/>
-        <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Это ваши адреса Bitsend для отправки платежей. Всегда проверяйте количество и адрес получателя перед отправкой перевода.</translation>
+        <source>These are your bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Это ваши адреса bitsend для отправки платежей. Всегда проверяйте сумму и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="69"/>
-        <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Это ваши адреса Bitsend для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
+        <source>These are your bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Это ваши адреса bitsend для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="75"/>
         <source>&amp;Copy Address</source>
-        <translation>&amp;Копировать адрес</translation>
+        <translation>Копировать &amp;адрес</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="76"/>
         <source>Copy &amp;Label</source>
         <translation>Копировать &amp;метку</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="77"/>
         <source>&amp;Edit</source>
         <translation>&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="271"/>
         <source>Export Address List</source>
         <translation>Экспортировать список адресов</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="272"/>
         <source>Comma separated file (*.csv)</source>
         <translation>Текст, разделённый запятыми (*.csv)</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="285"/>
         <source>Exporting Failed</source>
         <translation>Экспорт не удался</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="286"/>
-        <source>There was an error trying to save the address list to %1.</source>
-        <translation>Произошла ошибка при сохранении адресной книги в %1.</translation>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Произошла ошибка при сохранении списка адресов в %1. Пожалуйста, попробуйте еще раз.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="205"/>
         <source>(no label)</source>
         <translation>(нет метки)</translation>
     </message>
@@ -199,1062 +116,648 @@ This product includes software developed by the OpenSSL Project for use in the O
 <context>
     <name>AskPassphraseDialog</name>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="26"/>
         <source>Passphrase Dialog</source>
         <translation>Диалог ввода пароля</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="47"/>
         <source>Enter passphrase</source>
         <translation>Введите пароль</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="61"/>
         <source>New passphrase</source>
         <translation>Новый пароль</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="75"/>
         <source>Repeat new passphrase</source>
         <translation>Повторите новый пароль</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="108"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Служит для простейшего отключения функции sendmoney в случае компрометации аккаунта ОС. Не обеспечивает существенной безопасности.</translation>
+        <source>Show password</source>
+        <translation>Показать пароль</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="111"/>
-        <source>For anonymization only</source>
-        <translation>Только для анонимизации</translation>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Введите новый пароль бумажника.&lt;br/&gt;Используйте пароль, состоящий из &lt;b&gt;десяти или более случайных символов&lt;/b&gt;, или &lt;b&gt;восьми или более слов&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="41"/>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Введите новый пароль бумажника.&lt;br/&gt;Используйте пароль, состоящий из &lt;b&gt;10 или более случайных символов&lt;/b&gt; или &lt;b&gt;восьми или более слов&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="42"/>
         <source>Encrypt wallet</source>
         <translation>Зашифровать бумажник</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="48"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Для выполнения операции разблокирования требуется пароль вашего бумажника.</translation>
+        <translation>Для выполнения операции требуется пароль вашего бумажника.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="53"/>
         <source>Unlock wallet</source>
         <translation>Разблокировать бумажник</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="56"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Для выполнения операции расшифрования требуется пароль вашего бумажника.</translation>
+        <translation>Для выполнения операции требуется пароль вашего бумажника.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="61"/>
         <source>Decrypt wallet</source>
         <translation>Расшифровать бумажник</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="64"/>
         <source>Change passphrase</source>
         <translation>Сменить пароль</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="65"/>
-        <source>Enter the old and new passphrase to the wallet.</source>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
         <translation>Введите старый и новый пароль для бумажника.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="112"/>
         <source>Confirm wallet encryption</source>
         <translation>Подтвердите шифрование бумажника</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BSD&lt;/b&gt;!</source>
-        <translation>Внимание: если Вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ ДАШИ&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
+        <translation>Предупреждение: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ БИТКОИНЫ&lt;/b&gt;!</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Вы уверены, что хотите зашифровать ваш бумажник?</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="122"/>
-        <location filename="../askpassphrasedialog.cpp" line="181"/>
         <source>Wallet encrypted</source>
         <translation>Бумажник зашифрован</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="124"/>
-        <source>Bitsend will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
-        <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши даши от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>Сейчас %1 закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши биткоины от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="128"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>ВАЖНО: все предыдущие резервные копии вашего бумажника должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии незашифрованного бумажника станут бесполезны, как только вы начнёте использовать новый зашифрованный бумажник.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="137"/>
-        <location filename="../askpassphrasedialog.cpp" line="144"/>
-        <location filename="../askpassphrasedialog.cpp" line="187"/>
-        <location filename="../askpassphrasedialog.cpp" line="193"/>
         <source>Wallet encryption failed</source>
         <translation>Не удалось зашифровать бумажник</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="138"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Шифрование бумажника не удалось из-за внутренней ошибки. Ваш бумажник не был зашифрован.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="145"/>
-        <location filename="../askpassphrasedialog.cpp" line="194"/>
         <source>The supplied passphrases do not match.</source>
         <translation>Введённые пароли не совпадают.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="157"/>
         <source>Wallet unlock failed</source>
         <translation>Разблокировка бумажника не удалась</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="158"/>
-        <location filename="../askpassphrasedialog.cpp" line="169"/>
-        <location filename="../askpassphrasedialog.cpp" line="188"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Указанный пароль не подходит.</translation>
+        <translation>Неверный пароль для расшифровки бумажника.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="168"/>
         <source>Wallet decryption failed</source>
-        <translation>Расшифрование бумажника не удалось</translation>
+        <translation>Расшифровка бумажника не удалась</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="182"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Пароль бумажника успешно изменён.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="230"/>
-        <location filename="../askpassphrasedialog.cpp" line="254"/>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Внимание: включен Caps Lock!</translation>
+        <translation>Внимание: Caps Lock включен!</translation>
     </message>
 </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>BanTableModel</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="76"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>IP/Netmask</source>
+        <translation>IP/префикс</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="85"/>
-        <source>Wallet</source>
-        <translation>Бумажник</translation>
+        <source>Banned Until</source>
+        <translation>Заблокировано до</translation>
     </message>
+</context>
+<context>
+    <name>bitsendGUI</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="87"/>
-        <source>Node</source>
-        <translation>Узел</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="101"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>[testnet]</source>
-        <translation>[тестовая сеть]</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="227"/>
-        <source>&amp;Overview</source>
-        <translation>&amp;Обзор</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="228"/>
-        <source>Show general overview of wallet</source>
-        <translation>Показать общий обзор действий с бумажником</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="234"/>
-        <source>&amp;Send</source>
-        <translation>&amp;Отправить</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="235"/>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Отправить монеты на указанный адрес Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="241"/>
-        <source>&amp;Receive</source>
-        <translation>&amp;Получить</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="242"/>
-        <source>Request payments (generates QR codes and bitsend: URIs)</source>
-        <translation>Запросить платежи (создать QR-коды и bitsend: URI)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="248"/>
-        <source>&amp;Transactions</source>
-        <translation>&amp;Транзакции</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="249"/>
-        <source>Browse transaction history</source>
-        <translation>Показать историю транзакций</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="266"/>
-        <source>E&amp;xit</source>
-        <translation>В&amp;ыход</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="267"/>
-        <source>Quit application</source>
-        <translation>Закрыть приложение</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="271"/>
-        <location filename="../bitsendgui.cpp" line="273"/>
-        <source>&amp;About Bitsend Core</source>
-        <translation>О &amp;Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="274"/>
-        <source>Show information about Bitsend</source>
-        <translation>Показать информацию о Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="277"/>
-        <location filename="../bitsendgui.cpp" line="279"/>
-        <source>About &amp;Qt</source>
-        <translation>О &amp;Qt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="281"/>
-        <source>Show information about Qt</source>
-        <translation>Показать информацию о Qt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="283"/>
-        <source>&amp;Options...</source>
-        <translation>&amp;Настройки...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="284"/>
-        <source>Modify configuration options for Bitsend</source>
-        <translation>Изменить параметры конфигурации Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="287"/>
-        <location filename="../bitsendgui.cpp" line="289"/>
-        <source>&amp;Show / Hide</source>
-        <translation>&amp;Показать / Скрыть</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="290"/>
-        <source>Show or hide the main Window</source>
-        <translation>Показать или скрыть главное окно</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="292"/>
-        <source>&amp;Encrypt Wallet...</source>
-        <translation>За&amp;шифровать бумажник...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="293"/>
-        <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Зашифровать закрытые ключи, содержащиеся в вашем бумажнике</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="295"/>
-        <source>&amp;Backup Wallet...</source>
-        <translation>&amp;Сделать резервную копию бумажника...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="296"/>
-        <source>Backup wallet to another location</source>
-        <translation>Сделать резервную копию бумажника в другом месте</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="297"/>
-        <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Изменить пароль...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="298"/>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>Изменить пароль шифрования бумажника</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="299"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Разблокировать бумажник...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="300"/>
-        <source>Unlock wallet</source>
-        <translation>Разблокировать бумажник</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="301"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>За&amp;блокировать бумажник</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
-        <translation>П&amp;одписать сообщение...</translation>
+        <translation>&amp;Подписать сообщение...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="303"/>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Подписать сообщения вашими адресами Bitsend, чтобы доказать, что вы ими владеете</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="304"/>
-        <source>&amp;Verify message...</source>
-        <translation>П&amp;роверить сообщение...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="305"/>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определёнными адресами Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="307"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Информация</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="308"/>
-        <source>Show diagnostic information</source>
-        <translation>Показать диагностическую информацию</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="309"/>
-        <source>&amp;Debug console</source>
-        <translation>&amp;Консоль отладки</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="310"/>
-        <source>Open debugging console</source>
-        <translation>Открыть консоль отладки</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="311"/>
-        <source>&amp;Network Monitor</source>
-        <translation>&amp;Монитор сети</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="312"/>
-        <source>Show network monitor</source>
-        <translation>Показать монитор сети</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="313"/>
-        <source>Open &amp;Configuration File</source>
-        <translation>Открыть файл &amp;настроек</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="314"/>
-        <source>Open configuration file</source>
-        <translation>Открыть файл настроек</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="316"/>
-        <source>&amp;Sending addresses...</source>
-        <translation>Адреса &amp;отправки...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="317"/>
-        <source>Show the list of used sending addresses and labels</source>
-        <translation>Показать список использованных адресов отправки и их меток</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="318"/>
-        <source>&amp;Receiving addresses...</source>
-        <translation>Адреса &amp;получения...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="319"/>
-        <source>Show the list of used receiving addresses and labels</source>
-        <translation>Показать список использованных адресов получения и их меток</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="321"/>
-        <source>Open &amp;URI...</source>
-        <translation>Открыть &amp;URI...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="322"/>
-        <source>Open a bitsend: URI or payment request</source>
-        <translation>Открыть bitsend: URI или запрос платежа</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="324"/>
-        <source>&amp;Command-line options</source>
-        <translation>&amp;Параметры командной строки</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="325"/>
-        <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
-        <translation>Показать помощь о Bitsend Core со списком возможных параметров командной строки</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="361"/>
-        <source>&amp;File</source>
-        <translation>&amp;Файл</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="375"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="388"/>
-        <source>&amp;Tools</source>
-        <translation>&amp;Инструменты</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="395"/>
-        <source>&amp;Help</source>
-        <translation>&amp;Помощь</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="406"/>
-        <source>Tabs toolbar</source>
-        <translation>Панель вкладок</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="493"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>Bitsend client</source>
-        <translation>Клиент Bitsend</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="643"/>
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation><numerusform>%n активное соединение с сетью Bitsend</numerusform><numerusform>%n активных соединений с сетью Bitsend</numerusform><numerusform>%n активных соединений с сетью Bitsend</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="655"/>
         <source>Synchronizing with network...</source>
         <translation>Синхронизация с сетью...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="658"/>
-        <source>Importing blocks from disk...</source>
-        <translation>Выполняется импорт блоков с диска...</translation>
+        <source>&amp;Overview</source>
+        <translation>&amp;Обзор</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="661"/>
+        <source>Node</source>
+        <translation>Узел</translation>
+    </message>
+    <message>
+        <source>Show general overview of wallet</source>
+        <translation>Показать общий обзор действий с бумажником</translation>
+    </message>
+    <message>
+        <source>&amp;Transactions</source>
+        <translation>&amp;Транзакции</translation>
+    </message>
+    <message>
+        <source>Browse transaction history</source>
+        <translation>Показать историю транзакций</translation>
+    </message>
+    <message>
+        <source>E&amp;xit</source>
+        <translation>В&amp;ыход</translation>
+    </message>
+    <message>
+        <source>Quit application</source>
+        <translation>Закрыть приложение</translation>
+    </message>
+    <message>
+        <source>&amp;About %1</source>
+        <translation>&amp;О %1</translation>
+    </message>
+    <message>
+        <source>Show information about %1</source>
+        <translation>Показать информацию о %1</translation>
+    </message>
+    <message>
+        <source>About &amp;Qt</source>
+        <translation>О &amp;Qt</translation>
+    </message>
+    <message>
+        <source>Show information about Qt</source>
+        <translation>Показать информацию о Qt</translation>
+    </message>
+    <message>
+        <source>&amp;Options...</source>
+        <translation>&amp;Параметры</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for %1</source>
+        <translation>Изменить конфигурационные настройки для %1</translation>
+    </message>
+    <message>
+        <source>&amp;Encrypt Wallet...</source>
+        <translation>&amp;Зашифровать бумажник...</translation>
+    </message>
+    <message>
+        <source>&amp;Backup Wallet...</source>
+        <translation>&amp;Сделать резервную копию бумажника...</translation>
+    </message>
+    <message>
+        <source>&amp;Change Passphrase...</source>
+        <translation>&amp;Изменить пароль...</translation>
+    </message>
+    <message>
+        <source>&amp;Sending addresses...</source>
+        <translation>&amp;Адреса отправки...</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses...</source>
+        <translation>Адреса &amp;получения...</translation>
+    </message>
+    <message>
+        <source>Open &amp;URI...</source>
+        <translation>Открыть &amp;URI...</translation>
+    </message>
+    <message>
+        <source>Click to disable network activity.</source>
+        <translation>Кликните, чтобы запретить сетевую активность.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled.</source>
+        <translation>Сетевая активность запрещена.</translation>
+    </message>
+    <message>
+        <source>Click to enable network activity again.</source>
+        <translation>Кликните, чтобы снова разрешить сетевую активность.</translation>
+    </message>
+    <message>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>Синхронизация заголовков (%1%)...</translation>
+    </message>
+    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Идёт переиндексация блоков на диске...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="665"/>
-        <source>No block source available...</source>
-        <translation>Источник блоков недоступен...</translation>
+        <source>Send coins to a bitsend address</source>
+        <translation>Отправить монеты на указанный адрес bitsend</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="675"/>
-        <source>Processed %1 blocks of transaction history.</source>
-        <translation>Обработано %1 блоков из истории транзакций.</translation>
+        <source>Backup wallet to another location</source>
+        <translation>Сделать резервную копию бумажника в другом месте</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="680"/>
-        <source>Up to date</source>
-        <translation>Синхронизировано</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="701"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="705"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%n день</numerusform><numerusform>%n дня</numerusform><numerusform>%n дней</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="709"/>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n week(s)</source>
-        <translation><numerusform>%n неделя</numerusform><numerusform>%n недели</numerusform><numerusform>%n недель</numerusform></translation>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation>Изменить пароль шифрования бумажника</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%1 and %2</source>
-        <translation>%1 и %2</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n year(s)</source>
-        <translation><numerusform>%n год</numerusform><numerusform>%n лет</numerusform><numerusform>%n года</numerusform></translation>
+        <source>&amp;Debug window</source>
+        <translation>&amp;Окно отладки</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="719"/>
+        <source>Open debugging and diagnostic console</source>
+        <translation>Открыть консоль отладки и диагностики</translation>
+    </message>
+    <message>
+        <source>&amp;Verify message...</source>
+        <translation>&amp;Проверить сообщение...</translation>
+    </message>
+    <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Бумажник</translation>
+    </message>
+    <message>
+        <source>&amp;Send</source>
+        <translation>&amp;Отправить</translation>
+    </message>
+    <message>
+        <source>&amp;Receive</source>
+        <translation>&amp;Получить</translation>
+    </message>
+    <message>
+        <source>&amp;Show / Hide</source>
+        <translation>&amp;Показать / Скрыть</translation>
+    </message>
+    <message>
+        <source>Show or hide the main Window</source>
+        <translation>Показать или скрыть главное окно</translation>
+    </message>
+    <message>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Зашифровать приватные ключи, принадлежащие вашему бумажнику</translation>
+    </message>
+    <message>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>Подписать сообщения вашим адресом bitsend, чтобы доказать, что вы им владеете</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом bitsend</translation>
+    </message>
+    <message>
+        <source>&amp;File</source>
+        <translation>&amp;Файл</translation>
+    </message>
+    <message>
+        <source>&amp;Settings</source>
+        <translation>&amp;Настройки</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>&amp;Помощь</translation>
+    </message>
+    <message>
+        <source>Tabs toolbar</source>
+        <translation>Панель вкладок</translation>
+    </message>
+    <message>
+        <source>Request payments (generates QR codes and bitsend: URIs)</source>
+        <translation>Запросить платежи (создаёт QR-коды и bitsend: ссылки)</translation>
+    </message>
+    <message>
+        <source>Show the list of used sending addresses and labels</source>
+        <translation>Показать список использованных адресов и меток отправки</translation>
+    </message>
+    <message>
+        <source>Show the list of used receiving addresses and labels</source>
+        <translation>Показать список использованных адресов и меток получения</translation>
+    </message>
+    <message>
+        <source>Open a bitsend: URI or payment request</source>
+        <translation>Открыть bitsend: URI или запрос платежа</translation>
+    </message>
+    <message>
+        <source>&amp;Command-line options</source>
+        <translation>&amp;Параметры командной строки</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to bitsend network</source>
+        <translation><numerusform>%n активных соединений с сетью bitsend</numerusform><numerusform>%n активных соединений с сетью bitsend</numerusform><numerusform>%n активных соединений с сетью bitsend</numerusform><numerusform>%n активных соединений с сетью bitsend</numerusform></translation>
+    </message>
+    <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>Индексация блоков на диске...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>Обработка блоков на диске...</translation>
+    </message>
+    <message numerus="yes">
+        <source>Processed %n block(s) of transaction history.</source>
+        <translation><numerusform>Обработан %n блок истории транзакций.</numerusform><numerusform>Обработано %n блока истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform></translation>
+    </message>
+    <message>
         <source>%1 behind</source>
         <translation>%1 позади</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="724"/>
-        <source>Catching up...</source>
-        <translation>Синхронизируется...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Последний полученный блок был сгенерирован %1 назад.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Транзакции после этого времени пока видны не будут.</translation>
+        <translation>Транзакции после него пока не будут видны.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="755"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Внимание</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
+        <source>Up to date</source>
+        <translation>Синхронизировано</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible bitsend command-line options</source>
+        <translation>Показать помощь по %1, чтобы получить список доступных параметров командной строки</translation>
+    </message>
+    <message>
+        <source>%1 client</source>
+        <translation>%1 клиент</translation>
+    </message>
+    <message>
+        <source>Connecting to peers...</source>
+        <translation>Подключение к пирам...</translation>
+    </message>
+    <message>
+        <source>Catching up...</source>
+        <translation>Синхронизируется...</translation>
+    </message>
+    <message>
+        <source>Date: %1
+</source>
+        <translation>Дата: %1
+</translation>
+    </message>
+    <message>
+        <source>Amount: %1
+</source>
+        <translation>Количество: %1
+</translation>
+    </message>
+    <message>
+        <source>Type: %1
+</source>
+        <translation>Тип: %1
+</translation>
+    </message>
+    <message>
+        <source>Label: %1
+</source>
+        <translation>Метка: %1
+</translation>
+    </message>
+    <message>
+        <source>Address: %1
+</source>
+        <translation>Адрес: %1
+</translation>
+    </message>
+    <message>
         <source>Sent transaction</source>
         <translation>Исходящая транзакция</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Входящая транзакция</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="855"/>
-        <source>Date: %1
-Amount: %2
-Type: %3
-Address: %4
-</source>
-        <translation>Дата: %1
-Сумма: %2
-Тип: %3
-Адрес: %4
-</translation>
+        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
+        <translation>Генерация HD-ключей &lt;b&gt;разрешена&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="926"/>
+        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation>Генерация HD-ключей &lt;b&gt;запрещена&lt;/b&gt;</translation>
+    </message>
+    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;разблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="936"/>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в данный момент &lt;b&gt;разблокирован&lt;/b&gt; только для целей анонимизации</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="449"/>
-        <source>A fatal error occurred. Bitsend can no longer continue safely and will quit.</source>
-        <translation>Произошла критическая ошибка. Дальнейшая безопасная работа Bitsend невозможна, приложение будет закрыто.</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <location filename="../clientmodel.cpp" line="164"/>
-        <source>Network Alert</source>
-        <translation>Сетевая тревога</translation>
+        <source>A fatal error occurred. bitsend can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. bitsend не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="14"/>
-        <source>Coin Control Address Selection</source>
-        <translation>Выбор адресов с помощью функции контроля монет</translation>
+        <source>Coin Selection</source>
+        <translation>Выбор монет</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="48"/>
         <source>Quantity:</source>
         <translation>Количество:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="77"/>
         <source>Bytes:</source>
         <translation>Байт:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="122"/>
         <source>Amount:</source>
         <translation>Сумма:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="151"/>
-        <source>Priority:</source>
-        <translation>Приоритет:</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="196"/>
         <source>Fee:</source>
         <translation>Комиссия:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="228"/>
-        <source>Low Output:</source>
-        <translation>Малый выход:</translation>
+        <source>Dust:</source>
+        <translation>Пыль:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="276"/>
         <source>After Fee:</source>
         <translation>После комиссии:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="308"/>
         <source>Change:</source>
         <translation>Сдача:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="364"/>
         <source>(un)select all</source>
-        <translation>Выбрать все/ничего</translation>
+        <translation>Отменить выбор всего</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="377"/>
         <source>Tree mode</source>
         <translation>Режим дерева</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="393"/>
         <source>List mode</source>
         <translation>Режим списка</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="400"/>
-        <source>(1 locked)</source>
-        <translation>(1 заблокировано)</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="446"/>
         <source>Amount</source>
         <translation>Сумма</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="451"/>
-        <source>Label</source>
-        <translation>Метка</translation>
+        <source>Received with label</source>
+        <translation>Получено с пометкой</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="456"/>
-        <source>Address</source>
-        <translation>Адрес</translation>
+        <source>Received with address</source>
+        <translation>Получено с адреса</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="461"/>
-        <source>Darksend Rounds</source>
-        <translation>Раундов Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="466"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="471"/>
         <source>Confirmations</source>
         <translation>Подтверждений</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="474"/>
         <source>Confirmed</source>
         <translation>Подтверждено</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="479"/>
-        <source>Priority</source>
-        <translation>Приоритет</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="43"/>
         <source>Copy address</source>
         <translation>Копировать адрес</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="44"/>
         <source>Copy label</source>
         <translation>Копировать метку</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="45"/>
-        <location filename="../coincontroldialog.cpp" line="71"/>
         <source>Copy amount</source>
-        <translation>Скопировать сумму</translation>
+        <translation>Копировать сумму</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="46"/>
         <source>Copy transaction ID</source>
-        <translation>Скопировать ID транзакции</translation>
+        <translation>Копировать ID транзакции</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="47"/>
         <source>Lock unspent</source>
         <translation>Заблокировать непотраченное</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="48"/>
         <source>Unlock unspent</source>
         <translation>Разблокировать непотраченное</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="70"/>
         <source>Copy quantity</source>
         <translation>Копировать количество</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="72"/>
         <source>Copy fee</source>
         <translation>Копировать комиссию</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="73"/>
         <source>Copy after fee</source>
         <translation>Копировать после комиссии</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="74"/>
         <source>Copy bytes</source>
         <translation>Копировать байты</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="75"/>
-        <source>Copy priority</source>
-        <translation>Копировать приоритет</translation>
+        <source>Copy dust</source>
+        <translation>Копировать пыль</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="76"/>
-        <source>Copy low output</source>
-        <translation>Скопировать малый выход</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="77"/>
         <source>Copy change</source>
         <translation>Копировать сдачу</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="410"/>
-        <source>highest</source>
-        <translation>самый высокий</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="411"/>
-        <source>higher</source>
-        <translation>выше высокого</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="412"/>
-        <source>high</source>
-        <translation>высокий</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="413"/>
-        <source>medium-high</source>
-        <translation>выше среднего</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="759"/>
-        <source>n/a</source>
-        <translation>н/д</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="164"/>
-        <location filename="../coincontroldialog.cpp" line="414"/>
-        <source>medium</source>
-        <translation>средний</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="418"/>
-        <source>low-medium</source>
-        <translation>ниже среднего</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="419"/>
-        <source>low</source>
-        <translation>низкий</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="420"/>
-        <source>lower</source>
-        <translation>ниже низкого</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="421"/>
-        <source>lowest</source>
-        <translation>самый низкий</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="432"/>
         <source>(%1 locked)</source>
         <translation>(%1 заблокировано)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="464"/>
-        <source>none</source>
-        <translation>нет</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
-        <source>Dust</source>
-        <translation>Пыль</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>yes</source>
         <translation>да</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="244"/>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>no</source>
         <translation>нет</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="625"/>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Эта метка становится красной, если размер транзакции больше 1000 байт.</translation>
+        <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
+        <translation>Эта метка станет красной, если любой получатель получит сумму меньше, чем текущий порог пыли.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="626"/>
-        <location filename="../coincontroldialog.cpp" line="631"/>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Это значит, что требуется комиссия как минимум %1 на КБ.</translation>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation>Может отличаться на +/- %1 сатоши на вход.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="627"/>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Может отличаться на +/- 1 байт на каждый вход.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="629"/>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Транзакции с более высоким приоритетом имеют больше шансов на включение в блок.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="630"/>
-        <source>This label turns red, if the priority is smaller than &quot;medium&quot;.</source>
-        <translation>Эта метка становится красной, если приоритет ниже, чем &quot;средний&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="633"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Эта метка становится красной, если какой-либо из адресатов получает сумму менее %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="634"/>
-        <location filename="../coincontroldialog.cpp" line="638"/>
-        <source>This means a fee of at least %1 is required.</source>
-        <translation>Это означает, что требуется комиссия как минимум %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="635"/>
-        <source>Amounts below 0.546 times the minimum relay fee are shown as dust.</source>
-        <translation>Суммы меньшие, чем 0.546 умноженное на минимальную комиссию, показываются как &quot;Пыль&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="637"/>
-        <source>This label turns red, if the change is smaller than %1.</source>
-        <translation>Эта метка становиться красной в случае, если сдача меньше %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="680"/>
-        <location filename="../coincontroldialog.cpp" line="741"/>
         <source>(no label)</source>
         <translation>(нет метки)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="734"/>
         <source>change from %1 (%2)</source>
         <translation>сдача с %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="735"/>
         <source>(change)</source>
         <translation>(сдача)</translation>
     </message>
 </context>
 <context>
-    <name>DarksendConfig</name>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="14"/>
-        <source>Configure Darksend</source>
-        <translation>Настройте Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="26"/>
-        <source>Basic Privacy</source>
-        <translation>Обычная приватность</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="39"/>
-        <source>High Privacy</source>
-        <translation>Высокая приватность</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="52"/>
-        <source>Maximum Privacy</source>
-        <translation>Максимальная приватность</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="65"/>
-        <source>Please select a privacy level.</source>
-        <translation>Пожалуйста, выберите уровень приватности.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="78"/>
-        <source>Use 2 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Использовать 2 отдельные мастерноды для перемешивания до 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="91"/>
-        <source>Use 8 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Использовать 8 отдельных мастернод для перемешивания до 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="104"/>
-        <source>Use 16 separate Xnodes</source>
-        <translation>Использовать 16 отдельных мастернод</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="117"/>
-        <source>This option is the quickest and will cost about ~0.025 BSD to anonymize 1000 BSD</source>
-        <translation>Это самый быстрый вариант, анонимизация 1000 BSD будет стоить вам примерно 0.025 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="130"/>
-        <source>This option is moderately fast and will cost about 0.05 BSD to anonymize 1000 BSD</source>
-        <translation>Это относительно быстрый вариант, анонимизация 1000 BSD будет стоить вам примерно 0.05 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="156"/>
-        <source>0.1 BSD per 1000 BSD you anonymize.</source>
-        <translation>0.1 BSD за каждые анонимизированные 1000 BSD.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="143"/>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Этот самый медленный и безопасный вариант. Анонимизация будет стоить</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="43"/>
-        <location filename="../Darksendconfig.cpp" line="58"/>
-        <location filename="../Darksendconfig.cpp" line="73"/>
-        <source>Darksend Configuration</source>
-        <translation>Настройки Darksend</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="44"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend успешно установлен в режим обычной приватности (%1 и 2 раунда). Вы можете изменить это в любое время, используя окно настроек.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="59"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend успешно установлен в режим высокой приватности (%1 и 8 раундов). Вы можете изменить это в любое время, используя окно настроек.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="74"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend успешно установлен в режим максимально приватности (%1 и 16 раундов). Вы можете изменить это в любое время, используя окно настроек.</translation>
-    </message>
-</context>
-<context>
     <name>EditAddressDialog</name>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="14"/>
         <source>Edit Address</source>
         <translation>Изменить адрес</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="25"/>
         <source>&amp;Label</source>
         <translation>&amp;Метка</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="35"/>
         <source>The label associated with this address list entry</source>
         <translation>Метка, связанная с этой записью списка адресов</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="42"/>
-        <source>&amp;Address</source>
-        <translation>&amp;Адрес</translation>
-    </message>
-    <message>
-        <location filename="../forms/editaddressdialog.ui" line="52"/>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
         <translation>Адрес, связанный с этой записью списка адресов. Он может быть изменён только для адресов отправки.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="29"/>
+        <source>&amp;Address</source>
+        <translation>&amp;Адрес</translation>
+    </message>
+    <message>
         <source>New receiving address</source>
-        <translation>Новый адрес для получения</translation>
+        <translation>Новый адрес получения</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="33"/>
         <source>New sending address</source>
-        <translation>Новый адрес для отправки</translation>
+        <translation>Новый адрес отправки</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="36"/>
         <source>Edit receiving address</source>
-        <translation>Изменение адреса для получения</translation>
+        <translation>Изменить адрес получения</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="40"/>
         <source>Edit sending address</source>
-        <translation>Изменение адреса для отправки</translation>
+        <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="111"/>
-        <source>The entered address &quot;%1&quot; is not a valid Bitsend address.</source>
-        <translation>Введённый адрес &quot;%1&quot; не является правильным адресом Bitsend.</translation>
+        <source>The entered address "%1" is not a valid bitsend address.</source>
+        <translation>Введённый адрес "%1" не является правильным bitsend-адресом.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="116"/>
-        <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>Введённый адрес &quot;%1&quot; уже находится в адресной книге.</translation>
+        <source>The entered address "%1" is already in the address book.</source>
+        <translation>Введённый адрес "%1" уже находится в адресной книге.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="121"/>
         <source>Could not unlock wallet.</source>
         <translation>Не удается разблокировать бумажник.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="126"/>
         <source>New key generation failed.</source>
         <translation>Генерация нового ключа не удалась.</translation>
     </message>
@@ -1262,27 +765,22 @@ Address: %4
 <context>
     <name>FreespaceChecker</name>
     <message>
-        <location filename="../intro.cpp" line="69"/>
         <source>A new data directory will be created.</source>
         <translation>Будет создан новый каталог данных.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="91"/>
         <source>name</source>
         <translation>имя</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="93"/>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
         <translation>Каталог уже существует. Добавьте %1, если вы хотите создать здесь новый каталог.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="96"/>
         <source>Path already exists, and is not a directory.</source>
         <translation>Путь уже существует и не является каталогом.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="103"/>
         <source>Cannot create data directory here.</source>
         <translation>Не удаётся создать здесь каталог данных.</translation>
     </message>
@@ -1290,143 +788,195 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../forms/helpmessagedialog.ui" line="19"/>
-        <source>Bitsend Core - Command-line options</source>
-        <translation>Bitsend Core - параметры командной строки</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
         <source>version</source>
         <translation>версия</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="71"/>
+        <source>(%1-bit)</source>
+        <translation>(%1-бит)</translation>
+    </message>
+    <message>
+        <source>About %1</source>
+        <translation>О %1</translation>
+    </message>
+    <message>
+        <source>Command-line options</source>
+        <translation>Параметры командной строки</translation>
+    </message>
+    <message>
         <source>Usage:</source>
         <translation>Использование:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="72"/>
         <source>command-line options</source>
         <translation>параметры командной строки</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="76"/>
-        <source>UI options</source>
-        <translation>Настройки интерфейса</translation>
+        <source>UI Options:</source>
+        <translation>Настройки интерфейса:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="77"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Выбрать каталог данных при запуске (по умолчанию: 0)</translation>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation>Выбрать каталог данных при запуске (по умолчанию: %u)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="78"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Выберите язык, например &quot;de_DE&quot; (по умолчанию: как в системе)</translation>
+        <source>Set language, for example "de_DE" (default: system locale)</source>
+        <translation>Выберите язык, например "de_DE" (по умолчанию: как в системе)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="79"/>
         <source>Start minimized</source>
         <translation>Запускать свёрнутым</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="80"/>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
         <translation>Указать корневые SSL-сертификаты для запроса платежа (по умолчанию: -system-)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="81"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Показывать заставку при запуске (по умолчанию: 1)</translation>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Показывать экран-заставку при запуске (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Reset all settings changed in the GUI</source>
+        <translation>Сбросить все настройки, измененные в графическом интерфейсе</translation>
     </message>
 </context>
 <context>
     <name>Intro</name>
     <message>
-        <location filename="../forms/intro.ui" line="14"/>
         <source>Welcome</source>
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="23"/>
-        <source>Welcome to Bitsend Core.</source>
-        <translation>Добро пожаловать в Bitsend Core.</translation>
+        <source>Welcome to %1.</source>
+        <translation>Добро пожаловать в %1</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="49"/>
-        <source>As this is the first time the program is launched, you can choose where Bitsend Core will store its data.</source>
-        <translation>Так как вы впервые запустили программу, вы можете выбрать, где Bitsend Core будет хранить данные.</translation>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>При первом запуске программы вы можете выбрать где %1 будет хранить свои данные.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="59"/>
-        <source>Bitsend Core will download and store a copy of the Bitsend block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitsend Core скачает и сохранит копию цепочки блоков. Как минимум %1ГБ данных будет храниться в этом каталоге и размер данных будет со временем расти. В этом же каталоге будет сохранён бумажник.</translation>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Когда вы нажимаете ОК, %1  начнет загружать и обрабатывать полную цепочку блоков %4 (%2 ГБ), начиная с самых ранних транзакций в %3, когда первоначально запускался %4.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="69"/>
+        <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
+        <translation>©Если вы решили ограничить хранение цепочки блоков (обрезка), исторические данные должны быть загружены и обработаны, но впоследствии будут удалены, чтобы поддерживать низкий уровень использования вашего диска.</translation>
+    </message>
+    <message>
         <source>Use the default data directory</source>
         <translation>Использовать каталог данных по умолчанию</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="76"/>
         <source>Use a custom data directory:</source>
         <translation>Использовать другой каталог данных:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="185"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="186"/>
-        <source>Error: Specified data directory &quot;%1&quot; can not be created.</source>
-        <translation>Ошибка: не удалось создать указанный каталог данных &quot;%1&quot;.</translation>
+        <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
+        <translation>Минимум %1 Гб данных будет храниться в этом каталоге, и со временем объем данных будет увеличиваться.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="210"/>
+        <source>Approximately %1 GB of data will be stored in this directory.</source>
+        <translation>Приблизительно %1 Гб данных будет храниться в этом каталоге.</translation>
+    </message>
+    <message>
+        <source>%1 will download and store a copy of the bitsend block chain.</source>
+        <translation>%1 будет загружать и хранить копию цепочки блоков bitsend.</translation>
+    </message>
+    <message>
+        <source>The wallet will also be stored in this directory.</source>
+        <translation>Кошелек будет также храниться в этом каталоге.</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Ошибка: не удалось создать указанный каталог данных "%1".</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
+    <message numerus="yes">
+        <source>%n GB of free space available</source>
+        <translation><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ModalOverlay</name>
     <message>
-        <location filename="../intro.cpp" line="219"/>
-        <source>GB of free space available</source>
-        <translation>ГБ свободного места</translation>
+        <source>Form</source>
+        <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="222"/>
-        <source>(of %1GB needed)</source>
-        <translation>(из требующихся %1ГБ)</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitsend network, as detailed below.</source>
+        <translation>Недавние транзакции могут быть пока не видны, поэтому ваш баланс может отображаться некорректно. Эта информация станет корректной, как только ваш бумажник будет синхронизирован с сетью, см. подробности ниже.</translation>
+    </message>
+    <message>
+        <source>Attempting to spend bitsends that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Попытка потратить биткоины из ещё не отображённых транзакций будет отвергнута сетью.</translation>
+    </message>
+    <message>
+        <source>Number of blocks left</source>
+        <translation>Число оставшихся блоков</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>Неизвестно...</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Время последнего блока</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Прогресс</translation>
+    </message>
+    <message>
+        <source>Progress increase per hour</source>
+        <translation>Прогресс за час</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>расчёт...</translation>
+    </message>
+    <message>
+        <source>Estimated time left until synced</source>
+        <translation>Примерное время до завершения синхронизации</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Скрыть</translation>
+    </message>
+    <message>
+        <source>Unknown. Syncing Headers (%1)...</source>
+        <translation>Неизвестно. Синхронизация заголовков (%1)...</translation>
     </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
-        <location filename="../forms/openuridialog.ui" line="14"/>
         <source>Open URI</source>
         <translation>Открыть URI</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="20"/>
         <source>Open payment request from URI or file</source>
         <translation>Открыть запрос платежа из URI или файла</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="29"/>
         <source>URI:</source>
         <translation>URI:</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="40"/>
         <source>Select payment request file</source>
         <translation>Выбрать файл запроса платежа</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="48"/>
         <source>Select payment request file to open</source>
         <translation>Выберите файл запроса платежа</translation>
     </message>
@@ -1434,296 +984,258 @@ Address: %4
 <context>
     <name>OptionsDialog</name>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="14"/>
         <source>Options</source>
-        <translation>Настройки</translation>
+        <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="27"/>
         <source>&amp;Main</source>
         <translation>&amp;Главная</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="33"/>
-        <source>Automatically start Bitsend after logging in to the system.</source>
-        <translation>Автоматически запускать Bitsend после входа в систему.</translation>
+        <source>Automatically start %1 after logging in to the system.</source>
+        <translation>Автоматически запускать %1 после входа в систему.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="36"/>
-        <source>&amp;Start Bitsend on system login</source>
-        <translation>&amp;Запускать Bitsend при входе в систему</translation>
+        <source>&amp;Start %1 on system login</source>
+        <translation>&amp;Запускать %1 при входе в систему</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="45"/>
         <source>Size of &amp;database cache</source>
         <translation>Размер кэша &amp;БД</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="61"/>
         <source>MB</source>
         <translation>МБ</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="88"/>
         <source>Number of script &amp;verification threads</source>
         <translation>Число потоков проверки &amp;сценария</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="101"/>
-        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = автоматически, &lt;0 = оставить столько незагруженных ядер)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="138"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This setting determines the amount of individual Xnodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Эта настройка определяет количество отдельных мастернод, через которые пройдет анонимизация. Чем больше роундов, тем выше степень конфиденциальности, но также выше и суммарная стоимость комиссий&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="141"/>
-        <source>Darksend rounds to use</source>
-        <translation>Количество раундов Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="165"/>
-        <source>This amount acts as a threshold to turn off Darksend once it&apos;s reached.</source>
-        <translation>Это пороговое значение, при достижении которого автоматическое перемешивание отключается.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="180"/>
-        <source>Amount of Bitsend to keep anonymized</source>
-        <translation>Сумма постоянно анонимизированных Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="206"/>
-        <source>W&amp;allet</source>
-        <translation>Б&amp;умажник</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="212"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB.</source>
-        <translation>Необязательная комиссия за каждый КБ транзакции, которая ускоряет обработку Ваших транзакций.  Большинство транзакций занимают 1КБ.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="227"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Заплатить ко&amp;миссию</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="271"/>
-        <source>Expert</source>
-        <translation>Настройки для опытных пользователей</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="277"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Показывать ли функции контроля монет или нет.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="280"/>
-        <source>Enable coin &amp;control features</source>
-        <translation>Включить функции &amp;контроля монет</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="287"/>
-        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
-        <translation>При отключении траты неподтверждённой сдачи, сдача от транзакции не может быть использована до тех пор, пока у этой транзакции не будет хотя бы одно подтверждение. Это также влияет на то, как рассчитывается ваш баланс.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="290"/>
-        <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;Тратить неподтверждённую сдачу</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="301"/>
-        <source>&amp;Network</source>
-        <translation>&amp;Сеть</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="307"/>
-        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для клиента Bitsend на роутере. Работает только в том случае, если Ваш роутер поддерживает UPnP и данная функция включена.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="310"/>
-        <source>Map port using &amp;UPnP</source>
-        <translation>Пробросить порт через &amp;UPnP</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="317"/>
-        <source>Connect to the Bitsend network through a SOCKS proxy.</source>
-        <translation>Подключаться к сети Bitsend через прокси SOCKS5.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="320"/>
-        <source>&amp;Connect through SOCKS proxy (default proxy):</source>
-        <translation>&amp;Подключаться через прокси SOCKS5 (прокси по умолчанию):</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="329"/>
-        <source>Proxy &amp;IP:</source>
-        <translation>&amp;IP Прокси: </translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="354"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
-        <translation>IP-адрес прокси (например, IPv4: 127.0.0.1 / IPv6: ::1)</translation>
+        <translation>IP-адрес прокси (например IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="361"/>
-        <source>&amp;Port:</source>
-        <translation>По&amp;рт: </translation>
+        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
+        <translation>Показывает, используется ли SOCKS5 прокси по умолчанию для подключения к другим участникам по этому типу сети.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="386"/>
-        <source>Port of the proxy (e.g. 9050)</source>
-        <translation>Порт прокси-сервера (например, 9050)</translation>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor hidden services:</source>
+        <translation>Использовать отдельный прокси SOCKS&amp;5 для соединения с участниками через скрытые сервисы Tor:</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="393"/>
-        <source>SOCKS &amp;Version:</source>
-        <translation>&amp;Версия SOCKS:</translation>
+        <source>Hide the icon from the system tray.</source>
+        <translation>Скрыть иконку из системного трея.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="406"/>
-        <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation>Версия SOCKS-прокси (например, 5)</translation>
+        <source>&amp;Hide tray icon</source>
+        <translation>Скрыть иконку из трея</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="442"/>
-        <source>&amp;Window</source>
-        <translation>&amp;Окно</translation>
+        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
+        <translation>Сворачивать вместо закрытия. Если данная опция будет выбрана — приложение закроется только после выбора соответствующего пункта в меню.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="448"/>
-        <source>Show only a tray icon after minimizing the window.</source>
-        <translation>После сворачивания окна показывать только иконку в системном лотке.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="451"/>
-        <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>&amp;Cворачивать в системный лоток вместо панели задач</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="458"/>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Сворачивать вместо закрытия. Если данная настройка будет выбрана, то приложение закроется только после выбора пункта меню Завершить.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="461"/>
-        <source>M&amp;inimize on close</source>
-        <translation>С&amp;ворачивать при закрытии</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="482"/>
-        <source>&amp;Display</source>
-        <translation>О&amp;тображение</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="490"/>
-        <source>User Interface &amp;language:</source>
-        <translation>&amp;Язык интерфейса:</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="503"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitsend.</source>
-        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="524"/>
-        <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/bitsend/</source>
-        <translation>Нет Вашего языка или перевод неполон? Помогите нам сделать перевод лучше:
-https://www.transifex.com/projects/p/bitsend/</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="550"/>
-        <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;Отображать суммы в единицах: </translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="563"/>
-        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Выберите единицу измерения монет при отображении и отправке.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="572"/>
-        <source>Whether to show Bitsend addresses in the transaction list or not.</source>
-        <translation>Показывать ли адреса Bitsend в списке транзакций или нет.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="575"/>
-        <source>&amp;Display addresses in transaction list</source>
-        <translation>&amp;Показывать адреса в списке транзакций</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="584"/>
-        <location filename="../forms/optionsdialog.ui" line="597"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Сторонние URL (например, block explorer), которые отображаются на вкладке транзакций как пункты контекстного меню. %s в URL заменяется хэшем транзакции. URL отделяются друг от друга вертикальной чертой |.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="587"/>
-        <source>Third party transaction URLs</source>
-        <translation>Сторонние URL для транзакций</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="628"/>
         <source>Active command-line options that override above options:</source>
-        <translation>Активные параметры командной строки, которые перекрывают вышеуказанные настройки:</translation>
+        <translation>Активные опции командной строки, которые перекрывают вышеуказанные опции:</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="671"/>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation>Откройте файл конфигурации %1 из рабочего каталога.</translation>
+    </message>
+    <message>
+        <source>Open Configuration File</source>
+        <translation>Открыть конфигурационный файл</translation>
+    </message>
+    <message>
         <source>Reset all client options to default.</source>
         <translation>Сбросить все настройки клиента на значения по умолчанию.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="674"/>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Сбросить настройки</translation>
+        <translation>&amp;Сбросить параметры</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="735"/>
+        <source>&amp;Network</source>
+        <translation>&amp;Сеть</translation>
+    </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = автоматически, &lt;0 = оставить столько незагруженных ядер)</translation>
+    </message>
+    <message>
+        <source>W&amp;allet</source>
+        <translation>Б&amp;умажник</translation>
+    </message>
+    <message>
+        <source>Expert</source>
+        <translation>Эксперт</translation>
+    </message>
+    <message>
+        <source>Enable coin &amp;control features</source>
+        <translation>Включить управление входами</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation>При отключении траты неподтверждённой сдачи, сдача от транзакции не может быть использована до тех пор пока у этой транзакции не будет хотя бы одно подтверждение. Это также влияет как ваш баланс рассчитывается.</translation>
+    </message>
+    <message>
+        <source>&amp;Spend unconfirmed change</source>
+        <translation>&amp;Тратить неподтверждённую сдачу</translation>
+    </message>
+    <message>
+        <source>Automatically open the bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для bitsend-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+    </message>
+    <message>
+        <source>Map port using &amp;UPnP</source>
+        <translation>Пробросить порт через &amp;UPnP</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside.</source>
+        <translation>Разрешать соединения извне</translation>
+    </message>
+    <message>
+        <source>Allow incomin&amp;g connections</source>
+        <translation>Разрешить входящие подключения</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a SOCKS5 proxy.</source>
+        <translation>Подключаться к сети bitsend через прокси SOCKS5</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>&amp;Подключаться к сети bitsend через прокси SOCKS5 (прокси по умолчанию):</translation>
+    </message>
+    <message>
+        <source>Proxy &amp;IP:</source>
+        <translation>&amp;IP Прокси: </translation>
+    </message>
+    <message>
+        <source>&amp;Port:</source>
+        <translation>По&amp;рт: </translation>
+    </message>
+    <message>
+        <source>Port of the proxy (e.g. 9050)</source>
+        <translation>Порт прокси-сервера (например, 9050)</translation>
+    </message>
+    <message>
+        <source>Used for reaching peers via:</source>
+        <translation>Используется для достижения участников через:</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation>Tor</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Подключаться к сети bitsend через прокси SOCKS5 для скрытых сервисов Tor.</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Окно</translation>
+    </message>
+    <message>
+        <source>Show only a tray icon after minimizing the window.</source>
+        <translation>Показывать только иконку в системном лотке после сворачивания окна.</translation>
+    </message>
+    <message>
+        <source>&amp;Minimize to the tray instead of the taskbar</source>
+        <translation>&amp;Cворачивать в системный лоток вместо панели задач</translation>
+    </message>
+    <message>
+        <source>M&amp;inimize on close</source>
+        <translation>С&amp;ворачивать при закрытии</translation>
+    </message>
+    <message>
+        <source>&amp;Display</source>
+        <translation>О&amp;тображение</translation>
+    </message>
+    <message>
+        <source>User Interface &amp;language:</source>
+        <translation>&amp;Язык интерфейса:</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation>Здесь можно установить язык пользовательского интерфейса. Настройки вступят в силу после перезагрузки %1</translation>
+    </message>
+    <message>
+        <source>&amp;Unit to show amounts in:</source>
+        <translation>&amp;Отображать суммы в единицах: </translation>
+    </message>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Выберите единицу измерения монет при отображении и отправке.</translation>
+    </message>
+    <message>
+        <source>Whether to show coin control features or not.</source>
+        <translation>Показывать ли функции контроля монет или нет.</translation>
+    </message>
+    <message>
+        <source>&amp;Third party transaction URLs</source>
+        <translation>Сторонние URL адреса транзакций.</translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="742"/>
         <source>&amp;Cancel</source>
-        <translation>О&amp;тмена</translation>
+        <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="73"/>
         <source>default</source>
         <translation>по умолчанию</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="134"/>
         <source>none</source>
-        <translation>нет</translation>
+        <translation>ничего</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="222"/>
         <source>Confirm options reset</source>
-        <translation>Подтвердите сброс настроек</translation>
+        <translation>Подтвердите сброс параметров</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <location filename="../optionsdialog.cpp" line="253"/>
         <source>Client restart required to activate changes.</source>
         <translation>Для применения изменений требуется перезапуск клиента.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>Клиент будет выключен, хотите продолжить?</translation>
+        <source>Client will be shut down. Do you want to proceed?</source>
+        <translation>Клиент будет выключен. Желаете продолжить?</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="257"/>
+        <source>Configuration options</source>
+        <translation>Параметры конфигурации</translation>
+    </message>
+    <message>
+        <source>The configuration file is used to specify advanced user options which override GUI settings. Additionally, any command-line options will override this configuration file.</source>
+        <translation>Файл конфигурации используется для задания расширенных опций, которые имеют приоритет над настройками в GUI. Аналогично, опции командной строки будут иметь приоритет над этим файлом конфигурации.</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation>Не удалось открыть файл конфигурации.</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
         <translation>Это изменение потребует перезапуска клиента.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="291"/>
         <source>The supplied proxy address is invalid.</source>
         <translation>Адрес прокси неверен.</translation>
     </message>
@@ -1731,476 +1243,317 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../forms/overviewpage.ui" line="20"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="63"/>
-        <source>Wallet</source>
-        <translation>Бумажник</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bitsend network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью bitsend после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="70"/>
-        <location filename="../forms/overviewpage.ui" line="953"/>
-        <location filename="../forms/overviewpage.ui" line="1021"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью Bitsend после подключения, но этот процесс пока не завершён.</translation>
+        <source>Watch-only:</source>
+        <translation>Только наблюдение:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="114"/>
         <source>Available:</source>
         <translation>Доступно:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="130"/>
         <source>Your current spendable balance</source>
-        <translation>Ваш текущий баланс, доступный для расходования</translation>
+        <translation>Ваш текущий расходный баланс</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="146"/>
         <source>Pending:</source>
         <translation>В ожидании:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="162"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Общая сумма всех транзакций, которые до сих пор не подтверждены и еще не учитываются в балансе, доступном для расходования</translation>
+        <translation>Общая сумма всех транзакций, которые до сих пор не подтверждены, и до сих пор не учитываются в расходном балансе</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="178"/>
         <source>Immature:</source>
         <translation>Незрелые:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="191"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Баланс добытых монет, который ещё не созрел</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="207"/>
+        <source>Balances</source>
+        <translation>Балансы</translation>
+    </message>
+    <message>
         <source>Total:</source>
         <translation>Итого:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="223"/>
         <source>Your current total balance</source>
         <translation>Ваш текущий общий баланс</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="302"/>
-        <source>Status:</source>
-        <translation>Статус:</translation>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>Ваш текущий баланс в адресах наблюдения</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="309"/>
-        <source>Enabled/Disabled</source>
-        <translation>Включен/Выключен</translation>
+        <source>Spendable:</source>
+        <translation>Доступно:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="316"/>
-        <source>Completion:</source>
-        <translation>Завершение:</translation>
+        <source>Recent transactions</source>
+        <translation>Последние транзакции</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="336"/>
-        <source>Darksend Balance:</source>
-        <translation>Баланс Darksend:</translation>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Неподтверждённые транзакции на адреса наблюдения</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="349"/>
-        <source>0 BSD</source>
-        <translation>0 BSD</translation>
+        <source>Mined balance in watch-only addresses that has not yet matured</source>
+        <translation>Баланс добытых монет на адресах наблюдения, который ещё не созрел</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="356"/>
-        <source>Amount and Rounds:</source>
-        <translation>Сумма и раунды:</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="363"/>
-        <source>0 BSD / 0 Rounds</source>
-        <translation>0 BSD / 0 раундов</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="370"/>
-        <source>Submitted Denom:</source>
-        <translation>Отправленные номиналы:</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="377"/>
-        <source>The denominations you submitted to the Xnode. To mix, other users must submit the exact same denominations.</source>
-        <translation>Номиналы, предоставленные Вами мастерноде. Для перемешивания другие пользователи должны предоставить точно такой же набор номиналов.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="380"/>
-        <source>n/a</source>
-        <translation>н/д</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="946"/>
-        <location filename="../overviewpage.cpp" line="453"/>
-        <location filename="../overviewpage.cpp" line="467"/>
-        <location filename="../overviewpage.cpp" line="481"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="839"/>
-        <source>Start/Stop Mixing</source>
-        <translation>Начать/остановить автоматическое перемешивание</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="871"/>
-        <source>(Last Message)</source>
-        <translation>(Последнее сообщение)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="896"/>
-        <source>Try to manually submit a Darksend request.</source>
-        <translation>Попробовать отправить Darksend-запрос вручную.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="899"/>
-        <source>Try Mix</source>
-        <translation>Попробовать вручную</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="918"/>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it&apos;s in the process of Mixing, which can cost you money!)</source>
-        <translation>Сбросить текущий статус Darksend (можно прервать процесс перемешивания Darksend, но это может стоить Вам немного денег!)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="924"/>
-        <source>Reset</source>
-        <translation>Сбросить</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="1014"/>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Недавние транзакции&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="126"/>
-        <location filename="../overviewpage.cpp" line="127"/>
-        <location filename="../overviewpage.cpp" line="128"/>
-        <source>out of sync</source>
-        <translation>несинхронизировано</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="143"/>
-        <location filename="../overviewpage.cpp" line="350"/>
-        <source>Disabled</source>
-        <translation>Выключен</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="146"/>
-        <location filename="../overviewpage.cpp" line="352"/>
-        <location filename="../overviewpage.cpp" line="495"/>
-        <source>Start Darksend Mixing</source>
-        <translation>Начать автоперемешивание</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="148"/>
-        <location filename="../overviewpage.cpp" line="497"/>
-        <source>Stop Darksend Mixing</source>
-        <translation>Остановить перемешивание</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="270"/>
-        <source>No inputs detected</source>
-        <translation>Монеты не найдены</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="278"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to recalculate.</source>
-        <translation>Найдены неподтвержденные номиналы, пересчет будет выполнен после их подтверждения.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="335"/>
-        <source>Rounds</source>
-        <translation>Раундов</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="366"/>
-        <source>Enabled</source>
-        <translation>Включен</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="424"/>
-        <source>Last Darksend message:
-</source>
-        <translation>Последнее сообщение Darksend:
-</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="377"/>
-        <location filename="../overviewpage.cpp" line="406"/>
-        <source>Darksend is idle.</source>
-        <translation>Darksend в режиме ожидания.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="381"/>
-        <source>Mixing in progress...</source>
-        <translation>Выполняется перемешивание...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="387"/>
-        <source>Darksend request complete: Your transaction was accepted into the pool!</source>
-        <translation>Запрос Darksend завершен: Ваша транзакция принята в пул!</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="393"/>
-        <source>Submitted following entries to Xnode:</source>
-        <translation>Мастерноде отправлены следующие записи:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="394"/>
-        <location filename="../overviewpage.cpp" line="395"/>
-        <location filename="../overviewpage.cpp" line="396"/>
-        <source>Submitted to Xnode, Waiting for more entries</source>
-        <translation>Отправлено мастерноде, ожидаем больше записей</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="399"/>
-        <source>Found enough users, signing ...</source>
-        <translation>Найдено достаточное количество участников, подписываем ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="400"/>
-        <source>Found enough users, signing ( waiting. )</source>
-        <translation>Найдено достаточное количество участников, подписываем ( ожидание. )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="401"/>
-        <source>Found enough users, signing ( waiting.. )</source>
-        <translation>Найдено достаточное количество участников, подписываем ( ожидание.. )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="402"/>
-        <source>Found enough users, signing ( waiting... )</source>
-        <translation>Найдено достаточное количество участников, подписываем ( ожидание.. )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="404"/>
-        <source>Transmitting final transaction.</source>
-        <translation>Передаем итоговую транзакцию.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="408"/>
-        <source>Finalizing transaction.</source>
-        <translation>Завершаем транзакцию.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Darksend request incomplete:</source>
-        <translation>Запрос Darksend не завершен:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Will retry...</source>
-        <translation>Попробуем еще раз...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="412"/>
-        <source>Darksend request complete:</source>
-        <translation>Запрос Darksend завершен:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="414"/>
-        <source>Submitted to Xnode, waiting in queue .</source>
-        <translation>Отправлено на мастерноду, ожидаем в очереди .</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="415"/>
-        <source>Submitted to Xnode, waiting in queue ..</source>
-        <translation>Отправлено на мастерноду, ожидаем в очереди ..</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="416"/>
-        <source>Submitted to Xnode, waiting in queue ...</source>
-        <translation>Отправлено на мастерноду, ожидаем в очереди ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="418"/>
-        <source>Unknown state:</source>
-        <translation>Неизвестное состояние:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="432"/>
-        <source>N/A</source>
-        <translation>Н/Д</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="454"/>
-        <source>Darksend was successfully reset.</source>
-        <translation>Статус Darksend был успешно сброшен.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="468"/>
-        <source>Darksend requires at least %1 to use.</source>
-        <translation>Для работы Darksend требуется минимум %1.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="482"/>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation>Бумажник заблокирован и пользователь отказался его разблокировать. Darksend будет выключен.</translation>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Текущий общий баланс на адресах наблюдения</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="293"/>
-        <location filename="../paymentserver.cpp" line="505"/>
-        <location filename="../paymentserver.cpp" line="518"/>
-        <location filename="../paymentserver.cpp" line="613"/>
-        <location filename="../paymentserver.cpp" line="631"/>
-        <location filename="../paymentserver.cpp" line="647"/>
         <source>Payment request error</source>
         <translation>Ошибка запроса платежа</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="294"/>
         <source>Cannot start bitsend: click-to-pay handler</source>
-        <translation>Не удаётся запустить обработчик bitsend: click-to-pay</translation>
+        <translation>Не удаётся запустить bitsend: обработчик click-to-pay</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="352"/>
-        <source>Net manager warning</source>
-        <translation>Предупреждение менеджера сети</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="353"/>
-        <source>Your active proxy doesn&apos;t support SOCKS5, which is required for payment requests via proxy.</source>
-        <translation>Ваш активный прокси не поддерживает SOCKS5, требуемый для запросов платежа через прокси.</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="404"/>
-        <location filename="../paymentserver.cpp" line="417"/>
         <source>URI handling</source>
         <translation>Обработка URI</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="405"/>
         <source>Payment request fetch URL is invalid: %1</source>
         <translation>Неверный URL запроса платежа: %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="418"/>
-        <source>URI can not be parsed! This can be caused by an invalid Bitsend address or malformed URI parameters.</source>
-        <translation>Не удалось разобрать URI! Возможно указан некорректный адрес Bitsend либо параметры URI сформированы неверно.</translation>
+        <source>Invalid payment address %1</source>
+        <translation>Неверный адрес платежа %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="432"/>
+        <source>URI cannot be parsed! This can be caused by an invalid bitsend address or malformed URI parameters.</source>
+        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом bitsend или неправильными параметрами URI.</translation>
+    </message>
+    <message>
         <source>Payment request file handling</source>
         <translation>Обработка файла запроса платежа</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="433"/>
-        <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
-        <translation>Не удается прочесть файл запроса платежа! Возможно это некоректный файл.</translation>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Файл запроса платежа не может быть прочитан! Обычно это происходит из-за неверного файла запроса платежа.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="506"/>
+        <source>Payment request rejected</source>
+        <translation>Запрос платежа отклонён</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Сеть запроса платежа не совпадает с сетью клиента.</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>Запрос платежа просрочен.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>Запрос платежа не инициализирован.</translation>
+    </message>
+    <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
         <translation>Непроверенные запросы платежей с нестандартными платёжными сценариями не поддерживаются.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="514"/>
-        <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>Запрошенная сумма платежа %1 слишком мала (считается &quot;пылью&quot;).</translation>
+        <source>Invalid payment request.</source>
+        <translation>Неверный запрос платежа.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="565"/>
+        <source>Requested payment amount of %1 is too small (considered dust).</source>
+        <translation>Запрошенная сумма платежа %1 слишком мала (считается пылью).</translation>
+    </message>
+    <message>
         <source>Refund from %1</source>
         <translation>Возврат от %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="608"/>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>Запрос платежа %1 слишком большой (%2 байтов, разрешено %3 байтов).</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
         <translation>Ошибка связи с %1: %2</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="632"/>
-        <source>Payment request can not be parsed or processed!</source>
-        <translation>Не могу разобрать или обработать запрос платежа!</translation>
+        <source>Payment request cannot be parsed!</source>
+        <translation>Запрос платежа не может быть разобран!</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="643"/>
         <source>Bad response from server %1</source>
-        <translation>Плохой ответ от сервера %1</translation>
+        <translation>Плохой ответ сервера %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="665"/>
         <source>Network request error</source>
         <translation>Ошибка сетевого запроса</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="676"/>
         <source>Payment acknowledged</source>
         <translation>Платёж принят</translation>
     </message>
 </context>
 <context>
+    <name>PeerTableModel</name>
+    <message>
+        <source>User Agent</source>
+        <translation>Юзер-агент</translation>
+    </message>
+    <message>
+        <source>Node/Service</source>
+        <translation>Узел/сервис</translation>
+    </message>
+    <message>
+        <source>NodeId</source>
+        <translation>Id узла</translation>
+    </message>
+    <message>
+        <source>Ping</source>
+        <translation>Пинг</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Отправлено</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Получено</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../bitsend.cpp" line="525"/>
-        <location filename="../bitsend.cpp" line="532"/>
-        <location filename="../bitsend.cpp" line="539"/>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>Amount</source>
+        <translation>Сумма</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="526"/>
-        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
-        <translation>Ошибка: Указанная папка данных &quot;%1&quot; не существует.</translation>
+        <source>Enter a bitsend address (e.g. %1)</source>
+        <translation>Введите адрес bitsend (например, %1)</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="533"/>
+        <source>%1 d</source>
+        <translation>%1 д</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation>%1 ч</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation>%1 мин</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation>%1 с</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ничего</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>Н/Д</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 мс</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation><numerusform>%n секунда</numerusform><numerusform>%n секунды</numerusform><numerusform>%n секунд</numerusform><numerusform>%n секунд</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation><numerusform>%n минута</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform><numerusform>%n часов</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n день</numerusform><numerusform>%n дня</numerusform><numerusform>%n дней</numerusform><numerusform>%n дней</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n неделя</numerusform><numerusform>%n недели</numerusform><numerusform>%n недель</numerusform><numerusform>%n недель</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 и %2</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n год</numerusform><numerusform>%n года</numerusform><numerusform>%n лет</numerusform><numerusform>%n лет</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 Б</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 КБ</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 МБ</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 ГБ</translation>
+    </message>
+    <message>
+        <source>%1 didn't yet exit safely...</source>
+        <translation>%1 ещё не завершился безопасно...</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>неизвестно</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
+    <message>
+        <source>Error: Specified data directory "%1" does not exist.</source>
+        <translation>Ошибка: указанный каталог "%1" не существует.</translation>
+    </message>
+    <message>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>Ошибка: не могу прочитать файл настроек: %1. Используйте для настроек только строки ключ=значение.</translation>
+        <translation>Ошибка: не удалось разобрать конфигурационный файл: %1. Используйте синтаксис вида ключ=значение.</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="540"/>
-        <source>Error reading Xnode configuration file: %1</source>
-        <translation>Ошибка чтения файла конфигурации мастернод: %1</translation>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Error: Invalid combination of -regtest and -testnet.</source>
-        <translation>Ошибка: недопустимая комбинация опций -regtest и -testnet.</translation>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="612"/>
-        <source>Bitsend Core didn&apos;t yet exit safely...</source>
-        <translation>Bitsend Core еще не завершил работу...</translation>
-    </message>
-    <message>
-        <location filename="../guiutil.cpp" line="101"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Введите адрес Bitsend (например, iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>Error: %1</source>
+        <translation>Ошибка: %1</translation>
     </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="36"/>
         <source>&amp;Save Image...</source>
         <translation>&amp;Сохранить изображение...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="39"/>
         <source>&amp;Copy Image</source>
-        <translation>&amp;Копировать изображение</translation>
+        <translation>Копировать &amp;изображение</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>Save QR Code</source>
         <translation>Сохранить QR-код</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>PNG Image (*.png)</source>
         <translation>Изображение PNG (*.png)</translation>
     </message>
@@ -2208,707 +1561,742 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="14"/>
-        <source>Tools window</source>
-        <translation>Окно инструментов</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="24"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Информация</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="33"/>
-        <source>Xnode Count</source>
-        <translation>Количество мастернод</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="46"/>
-        <source>General</source>
-        <translation>Общие</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="53"/>
-        <source>Name</source>
-        <translation>Имя</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="60"/>
-        <source>Client name</source>
-        <translation>Имя клиента</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="70"/>
-        <location filename="../forms/rpcconsole.ui" line="139"/>
-        <location filename="../forms/rpcconsole.ui" line="192"/>
-        <location filename="../forms/rpcconsole.ui" line="215"/>
-        <location filename="../forms/rpcconsole.ui" line="231"/>
-        <location filename="../forms/rpcconsole.ui" line="247"/>
-        <location filename="../forms/rpcconsole.ui" line="276"/>
-        <location filename="../forms/rpcconsole.ui" line="292"/>
-        <location filename="../forms/rpcconsole.ui" line="315"/>
-        <location filename="../forms/rpcconsole.ui" line="341"/>
         <source>N/A</source>
         <translation>Н/Д</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="83"/>
-        <source>Number of connections</source>
-        <translation>Число подключений</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="90"/>
-        <source>Open the Bitsend debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл Bitsend из текущего каталога данных. Для больших лог-файлов эта операция может занять несколько секунд.</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="93"/>
-        <source>&amp;Open</source>
-        <translation>&amp;Открыть</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="116"/>
-        <source>Startup time</source>
-        <translation>Время запуска</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="129"/>
-        <source>Network</source>
-        <translation>Сеть</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="152"/>
-        <source>Last block time</source>
-        <translation>Время последнего блока</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="165"/>
-        <source>Debug log file</source>
-        <translation>Отладочный лог-файл</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="172"/>
-        <source>Using OpenSSL version</source>
-        <translation>Используется версия OpenSSL</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="182"/>
-        <source>Build date</source>
-        <translation>Дата сборки</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="205"/>
-        <source>Current number of blocks</source>
-        <translation>Текущее количество блоков</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="305"/>
         <source>Client version</source>
         <translation>Версия клиента</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="334"/>
+        <source>&amp;Information</source>
+        <translation>&amp;Информация</translation>
+    </message>
+    <message>
+        <source>Debug window</source>
+        <translation>Окно отладки</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>Общие</translation>
+    </message>
+    <message>
+        <source>Using BerkeleyDB version</source>
+        <translation>Используется версия BerkeleyDB</translation>
+    </message>
+    <message>
+        <source>Datadir</source>
+        <translation>Каталог для данных</translation>
+    </message>
+    <message>
+        <source>Startup time</source>
+        <translation>Время запуска</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>Сеть</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <source>Number of connections</source>
+        <translation>Число подключений</translation>
+    </message>
+    <message>
         <source>Block chain</source>
-        <translation>Цепочка блоков</translation>
+        <translation>Цепь блоков</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="349"/>
+        <source>Current number of blocks</source>
+        <translation>Текущее число блоков</translation>
+    </message>
+    <message>
+        <source>Memory Pool</source>
+        <translation>Пул памяти</translation>
+    </message>
+    <message>
+        <source>Current number of transactions</source>
+        <translation>Текущее число транзакций</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Использование памяти</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Сброс</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Получено</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Отправлено</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Участники</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Заблокированные участники</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Выберите участника для просмотра подробностей.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>Доверенный</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Направление</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Версия</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Начальный блок</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>Синхронизировано заголовков</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Синхронизировано блоков</translation>
+    </message>
+    <message>
+        <source>User Agent</source>
+        <translation>Юзер-агент</translation>
+    </message>
+    <message>
+        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл %1 из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
+    </message>
+    <message>
+        <source>Decrease font size</source>
+        <translation>Уменьшить размер текста</translation>
+    </message>
+    <message>
+        <source>Increase font size</source>
+        <translation>Увеличить размер текста</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Сервисы</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>Очков бана</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Время соединения</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Последняя отправка</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Последний раз получено</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Время задержки</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>Длительность текущего пинга.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Время задержки</translation>
+    </message>
+    <message>
+        <source>Min Ping</source>
+        <translation>Мин. пинг</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Смещение времени</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Время последнего блока</translation>
+    </message>
+    <message>
+        <source>&amp;Open</source>
+        <translation>&amp;Открыть</translation>
+    </message>
+    <message>
         <source>&amp;Console</source>
-        <translation>&amp;Консоль</translation>
+        <translation>Консоль</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="398"/>
-        <source>Clear console</source>
-        <translation>Очистить консоль</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="421"/>
         <source>&amp;Network Traffic</source>
         <translation>Сетевой &amp;трафик</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="473"/>
-        <source>&amp;Clear</source>
-        <translation>&amp;Очистить</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="486"/>
         <source>Totals</source>
         <translation>Всего</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="550"/>
-        <location filename="../rpcconsole.cpp" line="367"/>
         <source>In:</source>
         <translation>Вход:</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="630"/>
-        <location filename="../rpcconsole.cpp" line="368"/>
         <source>Out:</source>
         <translation>Выход:</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="333"/>
-        <source>Welcome to the Bitsend RPC console.</source>
-        <translation>Добро пожаловать в RPC-консоль Bitsend.</translation>
+        <source>Debug log file</source>
+        <translation>Отладочный лог-файл</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="334"/>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Используйте стрелки вверх и вниз для просмотра истории и &lt;b&gt;Ctrl-L&lt;/b&gt; для очистки экрана.</translation>
+        <source>Clear console</source>
+        <translation>Очистить консоль</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="335"/>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Напишите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;час</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="474"/>
-        <source>%1 B</source>
-        <translation>%1 Б</translation>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;день</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="476"/>
-        <source>%1 KB</source>
-        <translation>%1 КБ</translation>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;неделю</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="478"/>
-        <source>%1 MB</source>
-        <translation>%1 МБ</translation>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;год</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="480"/>
-        <source>%1 GB</source>
-        <translation>%1 ГБ</translation>
+        <source>&amp;Disconnect</source>
+        <translation>&amp;Отключиться</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="487"/>
-        <source>%1 m</source>
-        <translation>%1 мин</translation>
+        <source>Ban for</source>
+        <translation>Бан на</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="492"/>
-        <source>%1 h</source>
-        <translation>%1 ч</translation>
+        <source>&amp;Unban</source>
+        <translation>&amp;Разбанить</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="494"/>
-        <source>%1 h %2 m</source>
-        <translation>%1 ч %2 мин</translation>
+        <source>Welcome to the %1 RPC console.</source>
+        <translation>Добро пожаловать в консоль RPC %1.</translation>
+    </message>
+    <message>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation>Используйте стрелки вверх и вниз для просмотра истории и %1 для очистки экрана</translation>
+    </message>
+    <message>
+        <source>Type %1 for an overview of available commands.</source>
+        <translation>Напишите %1 help для просмотра доступных команд.</translation>
+    </message>
+    <message>
+        <source>For more information on using this console type %1.</source>
+        <translation>Для получения дополнительной информации по использованию этой консоли напишите %1.</translation>
+    </message>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>ПРЕДУПРЕЖДЕНИЕ: Были замечены мошенники,  предлагающие  пользователям вводить здесь команды, крадя содержимое их кошелька. Не используйте эту консоль, не понимая полностью последствия команды.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled</source>
+        <translation>Сетевая активность запрещена</translation>
+    </message>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(номер узла: %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>через %1</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>никогда</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Входящие</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Исходящие</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Да</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Нет</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Неизвестно</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="34"/>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Повторно использовать один из ранее использованных адресов. Повторное использование адресов несёт риски безопасности и приватности. Не используйте эту опцию, если вы не создаёте повторно ранее сделанный запрос платежа.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="37"/>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>&amp;Повторно использовать существующий адрес получения (не рекомендуется)</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="51"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="74"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
-        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Обратите внимание: сообщение не будет отправлено вместе с платежом через сеть Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="54"/>
-        <source>&amp;Message:</source>
-        <translation>&amp;Сообщение:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="67"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="88"/>
-        <source>An optional label to associate with the new receiving address.</source>
-        <translation>Необязательная метка для нового адреса получения.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="81"/>
-        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Заполните форму для запроса платежей. Все поля &lt;b&gt;необязательны&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="91"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Метка:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="104"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="126"/>
-        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>Необязательная сумма для запроса. Оставьте пустым или укажите ноль, чтобы запросить неопределённую сумму.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="107"/>
         <source>&amp;Amount:</source>
         <translation>&amp;Сумма:</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="141"/>
-        <source>&amp;Request payment</source>
-        <translation>&amp;Запросить платёж</translation>
+        <source>&amp;Label:</source>
+        <translation>&amp;Метка:</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="158"/>
+        <source>&amp;Message:</source>
+        <translation>&amp;Сообщение</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the bitsend network.</source>
+        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть bitsend.</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address.</source>
+        <translation>Необязательная метка для нового адреса получения.</translation>
+    </message>
+    <message>
+        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
+        <translation>Заполните форму для запроса платежей. Все поля &lt;b&gt;необязательны&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
+        <translation>Необязательная сумма для запроса. Оставьте пустым или укажите ноль, чтобы запросить неопределённую сумму.</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Очистить все поля формы.</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="161"/>
         <source>Clear</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="239"/>
         <source>Requested payments history</source>
         <translation>История запрошенных платежей</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="261"/>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Запросить платёж</translation>
+    </message>
+    <message>
+        <source>Bech32 addresses (BIP-173) are cheaper to spend from and offer better protection against typos. When unchecked a P2SH wrapped SegWit address will be created, compatible with older wallets.</source>
+        <translation>Bech32 адреса (BIP-173) дешевле в коммисиях и предлагают лучшую защиту от опечаток. Когда пункт P2SH не отмечен, будет создан связанный SegWit адрес, совместимый со старыми кошельками.</translation>
+    </message>
+    <message>
+        <source>Generate Bech32 address</source>
+        <translation>Создать Bech32 адрес</translation>
+    </message>
+    <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Показать выбранный запрос (то же самое, что и двойной клик по записи)</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="264"/>
         <source>Show</source>
         <translation>Показать</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="278"/>
         <source>Remove the selected entries from the list</source>
         <translation>Удалить выбранные записи из списка</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="281"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="39"/>
+        <source>Copy URI</source>
+        <translation>Копировать URI</translation>
+    </message>
+    <message>
         <source>Copy label</source>
         <translation>Копировать метку</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="40"/>
         <source>Copy message</source>
         <translation>Копировать сообщение</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="41"/>
         <source>Copy amount</source>
-        <translation>Скопировать сумму</translation>
+        <translation>Копировать сумму</translation>
     </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="29"/>
         <source>QR Code</source>
-        <translation>QR-код</translation>
+        <translation>QR код</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="75"/>
         <source>Copy &amp;URI</source>
         <translation>Копировать &amp;URI</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="82"/>
         <source>Copy &amp;Address</source>
         <translation>Копировать &amp;адрес</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="89"/>
         <source>&amp;Save Image...</source>
         <translation>&amp;Сохранить изображение...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="136"/>
         <source>Request payment to %1</source>
         <translation>Запросить платёж на %1</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="142"/>
         <source>Payment information</source>
         <translation>Информация платежа</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="143"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="145"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="147"/>
         <source>Amount</source>
         <translation>Сумма</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="149"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="151"/>
         <source>Message</source>
         <translation>Сообщение</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="161"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
         <translation>Получившийся URI слишком длинный, попробуйте сократить текст метки / сообщения.</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="166"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation>Ошибка кодирования URI в QR-код.</translation>
+        <translation>Ошибка кодирования URI в QR-код</translation>
     </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Message</source>
         <translation>Сообщение</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
-        <source>Amount</source>
-        <translation>Сумма</translation>
-    </message>
-    <message>
-        <location filename="../recentrequeststablemodel.cpp" line="62"/>
         <source>(no label)</source>
         <translation>(нет метки)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="71"/>
         <source>(no message)</source>
         <translation>(нет сообщения)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="79"/>
-        <source>(no amount)</source>
-        <translation>(нет суммы)</translation>
+        <source>(no amount requested)</source>
+        <translation>(нет запрошенной суммы)</translation>
+    </message>
+    <message>
+        <source>Requested</source>
+        <translation>Запрошено</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="14"/>
-        <location filename="../sendcoinsdialog.cpp" line="429"/>
-        <location filename="../sendcoinsdialog.cpp" line="521"/>
-        <location filename="../sendcoinsdialog.cpp" line="531"/>
         <source>Send Coins</source>
         <translation>Отправка</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="90"/>
         <source>Coin Control Features</source>
-        <translation>Функции контроля монет</translation>
+        <translation>Функции Контроля Монет</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="110"/>
         <source>Inputs...</source>
         <translation>Входы...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="117"/>
         <source>automatically selected</source>
-        <translation>выбраны автоматически</translation>
+        <translation>автоматически выбрано</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="136"/>
         <source>Insufficient funds!</source>
         <translation>Недостаточно средств!</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="225"/>
         <source>Quantity:</source>
         <translation>Количество:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="260"/>
         <source>Bytes:</source>
         <translation>Байт:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="308"/>
         <source>Amount:</source>
         <translation>Сумма:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="340"/>
-        <source>Priority:</source>
-        <translation>Приоритет:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="353"/>
-        <source>medium</source>
-        <translation>средний</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="388"/>
         <source>Fee:</source>
         <translation>Комиссия:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="420"/>
-        <source>Low Output:</source>
-        <translation>Малый выход:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="433"/>
-        <source>no</source>
-        <translation>нет</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="468"/>
         <source>After Fee:</source>
         <translation>После комиссии:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="500"/>
         <source>Change:</source>
-        <translation>Сдача:</translation>
+        <translation>Размен:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="544"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Если это выбрано, но адрес сдачи пустой или неверный, сдача будет отправлена на новый сгенерированный адрес.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="547"/>
         <source>Custom change address</source>
         <translation>Свой адрес для сдачи</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="668"/>
-        <source>Confirm the send action</source>
-        <translation>Подтвердить отправку</translation>
+        <source>Transaction Fee:</source>
+        <translation>Комиссия</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="671"/>
-        <source>S&amp;end</source>
-        <translation>&amp;Отправить</translation>
+        <source>Choose...</source>
+        <translation>Выберите...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="691"/>
-        <source>Clear all fields of the form.</source>
-        <translation>Очистить все поля формы.</translation>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>Использование резервной комиссии может привести к подтверждению транзакции в течение нескольких часов или дней (или она никогда не будет подтверждена). Советуем выбрать комиссию вручную или дождаться полной валидации цепи.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="694"/>
-        <source>Clear &amp;All</source>
-        <translation>Очистить &amp;всё</translation>
+        <source>Warning: Fee estimation is currently not possible.</source>
+        <translation>Внимание: оценка размера комиссии в настоящее время невозможна.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="711"/>
+        <source>collapse fee-settings</source>
+        <translation>Свернуть настройки комиссии</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>за килобайт</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then "per kilobyte" only pays 250 satoshis in fee, while "total at least" pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Если комиссия установлена в 1000 сатоши, а транзакция составляет лишь 250 байт, тогда комиссия "на килобайт" составит 250 сатоши, а "всего как минимум" — 1000 сатоши. Для транзакций крупнее килобайта в обоих случаях будет использоваться платёж "на килобайт".</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Скрыть</translation>
+    </message>
+    <message>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for bitsend transactions than the network can process.</source>
+        <translation>Уплата минимальной комиссии — не проблема, пока объём транзакций меньше, чем свободное место в блоках. Учтите, однако, что такая транзакция может никогда не подтвердиться, если спрос на транзакции превышает возможности сети по их обработке.</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(прочтите подсказку)</translation>
+    </message>
+    <message>
+        <source>Recommended:</source>
+        <translation>Рекомендовано:</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Выборочно:</translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(Умная комиссия пока не инициализирована. Обычно для этого требуется несколько блоков...)</translation>
+    </message>
+    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Отправить нескольким получателям одновременно</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="714"/>
         <source>Add &amp;Recipient</source>
         <translation>&amp;Добавить получателя</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="752"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
+        <source>Clear all fields of the form.</source>
+        <translation>Очистить все поля формы</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="771"/>
-        <source>InstantX</source>
-        <translation>InstantX</translation>
+        <source>Dust:</source>
+        <translation>Пыль:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="778"/>
+        <source>Confirmation time target:</source>
+        <translation>Время подтверждения:</translation>
+    </message>
+    <message>
+        <source>Enable Replace-By-Fee</source>
+        <translation>Включить Replace-By-Fee (возможность замены комиссии)</translation>
+    </message>
+    <message>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <translation>С опцией Replace-By-Fee (BIP-125) вы можете увеличить комиссию за транзакцию уже после отправки. Без этого, рекомендуем вам отправлять заведомо с более высокой комиссией, чтобы компенсировать риск задержки подтверждения.</translation>
+    </message>
+    <message>
+        <source>Clear &amp;All</source>
+        <translation>Очистить &amp;всё</translation>
+    </message>
+    <message>
         <source>Balance:</source>
         <translation>Баланс:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="53"/>
+        <source>Confirm the send action</source>
+        <translation>Подтвердить отправку</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation>&amp;Отправить</translation>
+    </message>
+    <message>
         <source>Copy quantity</source>
         <translation>Копировать количество</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="54"/>
         <source>Copy amount</source>
-        <translation>Скопировать сумму</translation>
+        <translation>Копировать сумму</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="55"/>
         <source>Copy fee</source>
         <translation>Копировать комиссию</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="56"/>
         <source>Copy after fee</source>
         <translation>Копировать после комиссии</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="57"/>
         <source>Copy bytes</source>
         <translation>Копировать байты</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="58"/>
-        <source>Copy priority</source>
-        <translation>Копировать приоритет</translation>
+        <source>Copy dust</source>
+        <translation>Копировать пыль</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="59"/>
-        <source>Copy low output</source>
-        <translation>Скопировать малый выход</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="60"/>
         <source>Copy change</source>
         <translation>Копировать сдачу</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>using</source>
-        <translation>, используя</translation>
+        <source>%1 (%2 blocks)</source>
+        <translation>%1 (%2 блоков)</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <source>anonymous funds</source>
-        <translation>анонимные средства</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="155"/>
-        <source>(Darksend requires this amount to be rounded up to the nearest %1).</source>
-        <translation>(для работы Darksend требуется принудительно округлить до ближайшего %1).</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>any available funds (not recommended)</source>
-        <translation>любые доступные средства (не рекомендуется)</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="166"/>
-        <source>and InstantX</source>
-        <translation>и InstantX</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="190"/>
-        <location filename="../sendcoinsdialog.cpp" line="195"/>
-        <location filename="../sendcoinsdialog.cpp" line="200"/>
-        <location filename="../sendcoinsdialog.cpp" line="204"/>
         <source>%1 to %2</source>
         <translation>С %1 на %2</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="253"/>
         <source>Are you sure you want to send?</source>
         <translation>Вы уверены, что хотите отправить?</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="262"/>
-        <source>are added as transaction fee</source>
-        <translation>добавлено в качестве комиссии</translation>
+        <source>added as transaction fee</source>
+        <translation>добавлено как комиссия</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="276"/>
-        <source>Total Amount %1 (= %2)</source>
-        <translation>Общая сумма %1 (= %2)</translation>
+        <source>Total Amount %1</source>
+        <translation>Общая сумма %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="278"/>
         <source>or</source>
         <translation>или</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="280"/>
+        <source>You can increase the fee later (signals Replace-By-Fee, BIP-125).</source>
+        <translation>Вы можете увеличить комиссию позже (опция Replace-By-Fee, BIP-125).</translation>
+    </message>
+    <message>
+        <source>Not signalling Replace-By-Fee, BIP-125.</source>
+        <translation>Не используется Replace-By-Fee, BIP-125.</translation>
+    </message>
+    <message>
         <source>Confirm send coins</source>
         <translation>Подтвердите отправку монет</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="435"/>
-        <source>Payment request expired</source>
-        <translation>Время этого запроса платежа истекло</translation>
+        <source>The recipient address is not valid. Please recheck.</source>
+        <translation>Адрес получателя неверный. Пожалуйста, перепроверьте.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="443"/>
-        <source>Invalid payment address %1</source>
-        <translation>Неверный адрес платежа %1</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="498"/>
-        <source>The recipient address is not valid, please recheck.</source>
-        <translation>Адрес получателя неверный, пожалуйста, перепроверьте.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="501"/>
         <source>The amount to pay must be larger than 0.</source>
         <translation>Сумма для отправки должна быть больше 0.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="504"/>
         <source>The amount exceeds your balance.</source>
-        <translation>Сумма превышает Ваш баланс.</translation>
+        <translation>Сумма превышает ваш баланс.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="507"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>Сумма превысит Ваш баланс, если комиссия в размере %1 будет добавлена к транзакции.</translation>
+        <translation>Сумма с учётом комиссии %1 превысит ваш баланс.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="510"/>
-        <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Обнаружен дублирующийся адрес. Отправка на один и тот же адрес возможна только один раз за одну операцию отправки.</translation>
+        <source>Duplicate address found: addresses should only be used once each.</source>
+        <translation>Обнаружен дублирующийся адрес: используйте каждый адрес только один раз.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="513"/>
         <source>Transaction creation failed!</source>
         <translation>Не удалось создать транзакцию!</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="517"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Транзакция была отклонена! Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation>Транзакция была отвергнута по следующей причине: %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="522"/>
-        <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>Ошибка: этот бумажник был разблокирован только для анонимизации монет.</translation>
+        <source>A fee higher than %1 is considered an absurdly high fee.</source>
+        <translation>Комиссия больше чем %1 считается невероятно большой.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="635"/>
-        <source>Warning: Invalid Bitsend address</source>
-        <translation>Внимание: неверный адрес Bitsend</translation>
+        <source>Payment request expired.</source>
+        <translation>Запрос платежа просрочен.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="644"/>
+        <source>Pay only the required fee of %1</source>
+        <translation>Заплатить только обязательную комиссию %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation><numerusform>Начало подтверждения ожидается через %n блок.</numerusform><numerusform>Начало подтверждения ожидается через %n блока.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform></translation>
+    </message>
+    <message>
+        <source>Warning: Invalid bitsend address</source>
+        <translation>Внимание: неверный адрес bitsend</translation>
+    </message>
+    <message>
         <source>Warning: Unknown change address</source>
         <translation>Внимание: неизвестный адрес для сдачи</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="655"/>
+        <source>Confirm custom change address</source>
+        <translation>Подтвердите свой адрес для сдачи</translation>
+    </message>
+    <message>
+        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
+        <translation>Выбранный вами адрес для сдачи не принадлежит этому кошельку. Часть или все средства могут быть отправлены на этот адрес. Вы уверены?</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(нет метки)</translation>
     </message>
@@ -2916,111 +2304,104 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="21"/>
-        <source>This is a normal payment.</source>
-        <translation>Это нормальный платёж.</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="36"/>
-        <source>Pay &amp;To:</source>
-        <translation>Полу&amp;чатель:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="54"/>
-        <source>The address to send the payment to (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Адрес, на который будет выслан платёж (например, iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="61"/>
-        <source>Choose previously used address</source>
-        <translation>Выбрать ранее использованный адрес</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="71"/>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="78"/>
-        <source>Paste address from clipboard</source>
-        <translation>Вставить адрес из буфера обмена</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="88"/>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="95"/>
-        <location filename="../forms/sendcoinsentry.ui" line="619"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1155"/>
-        <source>Remove this entry</source>
-        <translation>Удалить эту запись</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="111"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Метка:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="124"/>
-        <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Введите метку для этого адреса, чтобы добавить его в список использованных</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="131"/>
-        <location filename="../forms/sendcoinsentry.ui" line="652"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1188"/>
         <source>A&amp;mount:</source>
         <translation>Ко&amp;личество:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="147"/>
+        <source>Pay &amp;To:</source>
+        <translation>Полу&amp;чатель:</translation>
+    </message>
+    <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Метка:</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Выберите ранее использованный адрес</translation>
+    </message>
+    <message>
+        <source>This is a normal payment.</source>
+        <translation>Это нормальный платёж.</translation>
+    </message>
+    <message>
+        <source>The bitsend address to send the payment to</source>
+        <translation>Адрес bitsend, на который отправить платёж</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Вставить адрес из буфера обмена</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Remove this entry</source>
+        <translation>Удалить эту запись</translation>
+    </message>
+    <message>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bitsends than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>С отправляемой суммы будет удержана комиссия. Получателю придёт меньше биткоинов, чем вы вводите в поле количества. Если выбрано несколько получателей, комиссия распределяется поровну.</translation>
+    </message>
+    <message>
+        <source>S&amp;ubtract fee from amount</source>
+        <translation>Вычесть комиссию из суммы</translation>
+    </message>
+    <message>
+        <source>Use available balance</source>
+        <translation>Использовать весь баланс</translation>
+    </message>
+    <message>
         <source>Message:</source>
         <translation>Сообщение:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="157"/>
-        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</source>
-        <translation>К bitsend: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Обратите внимание: сообщение не будет отправлено через сеть Bitsend.</translation>
+        <source>This is an unauthenticated payment request.</source>
+        <translation>Это неавторизованный запрос платежа.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="583"/>
-        <source>This is an unverified payment request.</source>
-        <translation>Это непроверенный запрос платежа.</translation>
+        <source>This is an authenticated payment request.</source>
+        <translation>Это авторизованный запрос платежа.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="601"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1133"/>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>Введите метку для этого адреса, чтобы добавить его в список использованных</translation>
+    </message>
+    <message>
+        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the bitsend network.</source>
+        <translation>К bitsend: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Заметьте: сообщение не будет отправлено через сеть bitsend.</translation>
+    </message>
+    <message>
         <source>Pay To:</source>
         <translation>Получатель:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="635"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1171"/>
         <source>Memo:</source>
         <translation>Примечание:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="1115"/>
-        <source>This is a verified payment request.</source>
-        <translation>Это проверенный запрос платежа.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsentry.cpp" line="31"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Введите метку для данного адреса для добавления его в адресную книгу</translation>
+        <translation>Введите метку для данного адреса, чтобы добавить его в адресную книгу</translation>
+    </message>
+</context>
+<context>
+    <name>SendConfirmationDialog</name>
+    <message>
+        <source>Yes</source>
+        <translation>Да</translation>
     </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="129"/>
-        <source>Bitsend Core is shutting down...</source>
-        <translation>Bitsend Core выключается...</translation>
+        <source>%1 is shutting down...</source>
+        <translation>%1 выключается...</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="130"/>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>Не выключайте компьютер, пока это окно не исчезнет.</translation>
     </message>
@@ -3028,186 +2409,138 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="14"/>
         <source>Signatures - Sign / Verify a Message</source>
         <translation>Подписи - подписать/проверить сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="24"/>
         <source>&amp;Sign Message</source>
         <translation>&amp;Подписать сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="30"/>
-        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Вы можете подписывать сообщения своими адресами, чтобы доказать владение ими. Будьте осторожны, не подписывайте что-то неопределённое, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitsends sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Вы можете подписывать сообщения/соглашения своими адресами, чтобы доказать свою возможность получать биткоины на них. Будьте осторожны, не подписывайте что-то неопределённое или случайное, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="48"/>
-        <source>The address to sign the message with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Адрес, которым Вы хотите подписать сообщение (например, iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The bitsend address to sign the message with</source>
+        <translation>Адрес bitsend, которым подписать сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="55"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="265"/>
         <source>Choose previously used address</source>
-        <translation>Выбрать ранее использованный адрес</translation>
+        <translation>Выберите ранее использованный адрес</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="65"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="275"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="75"/>
         <source>Paste address from clipboard</source>
         <translation>Вставить адрес из буфера обмена</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="85"/>
         <source>Alt+P</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="97"/>
         <source>Enter the message you want to sign here</source>
         <translation>Введите сообщение для подписи</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="104"/>
         <source>Signature</source>
         <translation>Подпись</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="131"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Скопировать текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="152"/>
-        <source>Sign the message to prove you own this Bitsend address</source>
-        <translation>Подписать сообщение, чтобы доказать владение этим адресом Bitsend</translation>
+        <source>Sign the message to prove you own this bitsend address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом bitsend</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="155"/>
         <source>Sign &amp;Message</source>
-        <translation>Подписать &amp;сообщение</translation>
+        <translation>Подписать &amp;Сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="169"/>
         <source>Reset all sign message fields</source>
-        <translation>Сбросить значения всех полей формы подписывания сообщений</translation>
+        <translation>Сбросить значения всех полей подписывания сообщений</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="172"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="315"/>
         <source>Clear &amp;All</source>
         <translation>Очистить &amp;всё</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="231"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Проверить сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="237"/>
-        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Введите ниже адрес для подписи, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки &quot;man-in-the-middle&quot;.</translation>
+        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки "man-in-the-middle". Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="258"/>
-        <source>The address the message was signed with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Адрес, которым было подписано сообщение (например, iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The bitsend address the message was signed with</source>
+        <translation>Адрес bitsend, которым было подписано сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="295"/>
-        <source>Verify the message to ensure it was signed with the specified Bitsend address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Bitsend</translation>
+        <source>Verify the message to ensure it was signed with the specified bitsend address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом bitsend</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="298"/>
         <source>Verify &amp;Message</source>
-        <translation>Проверить &amp;сообщение</translation>
+        <translation>Проверить &amp;Сообщение</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="312"/>
         <source>Reset all verify message fields</source>
-        <translation>Сбросить все поля формы проверки сообщения</translation>
+        <translation>Сбросить все поля проверки сообщения</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="30"/>
-        <source>Click &quot;Sign Message&quot; to generate signature</source>
-        <translation>Нажмите &quot;Подписать сообщение&quot; для создания подписи</translation>
+        <source>Click "Sign Message" to generate signature</source>
+        <translation>Нажмите "Подписать сообщение" для создания подписи</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="31"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Введите адрес Bitsend (например, iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
-    </message>
-    <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
         <source>The entered address is invalid.</source>
         <translation>Введённый адрес неверен.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>Please check the address and try again.</source>
         <translation>Пожалуйста, проверьте адрес и попробуйте ещё раз.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>The entered address does not refer to a key.</source>
         <translation>Введённый адрес не связан с ключом.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="130"/>
         <source>Wallet unlock was cancelled.</source>
         <translation>Разблокировка бумажника была отменена.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="138"/>
         <source>Private key for the entered address is not available.</source>
-        <translation>Закрытый ключ для введённого адреса недоступен.</translation>
+        <translation>Недоступен секретный ключ для введённого адреса.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="150"/>
         <source>Message signing failed.</source>
         <translation>Не удалось подписать сообщение.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="155"/>
         <source>Message signed.</source>
         <translation>Сообщение подписано.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
         <source>The signature could not be decoded.</source>
         <translation>Подпись не может быть раскодирована.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>Please check the signature and try again.</source>
         <translation>Пожалуйста, проверьте подпись и попробуйте ещё раз.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>The signature did not match the message digest.</source>
         <translation>Подпись не соответствует отпечатку сообщения.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="233"/>
         <source>Message verification failed.</source>
-        <translation>Проверка сообщения не удалась.</translation>
+        <translation>Сообщение не прошло проверку.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="238"/>
         <source>Message verified.</source>
         <translation>Сообщение проверено.</translation>
     </message>
@@ -3215,27 +2548,6 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="33"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="34"/>
-        <source>Version %1</source>
-        <translation>Версия %1</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Разработчики Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="36"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Разработчики Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="37"/>
         <source>[testnet]</source>
         <translation>[тестовая сеть]</translation>
     </message>
@@ -3243,7 +2555,6 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
-        <location filename="../trafficgraphwidget.cpp" line="79"/>
         <source>KB/s</source>
         <translation>КБ/сек</translation>
     </message>
@@ -3251,228 +2562,174 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TransactionDesc</name>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="28"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Будет открыто ещё %n блок</numerusform><numerusform>Будет открыто ещё %n блока</numerusform><numerusform>Будет открыто ещё %n блоков</numerusform></translation>
+        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="30"/>
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="41"/>
-        <location filename="../transactiondesc.cpp" line="52"/>
-        <location filename="../transactiondesc.cpp" line="62"/>
-        <location filename="../transactiondesc.cpp" line="74"/>
-        <source>conflicted</source>
-        <translation>в противоречии</translation>
+        <source>conflicted with a transaction with %1 confirmations</source>
+        <translation>конфликт с транзакцией с %1 подтверждений</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="43"/>
-        <source>%1/offline (verified via instantx)</source>
-        <translation>%1/отключен (проверено через instantx)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="45"/>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation>%1/подтвержден (проверено через instantx)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="47"/>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation>%1 подтверждений (проверено через instantx)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="76"/>
         <source>%1/offline</source>
         <translation>%1/отключен</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="78"/>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/не подтверждено, %1</translation>
+    </message>
+    <message>
+        <source>in memory pool</source>
+        <translation>В памяти</translation>
+    </message>
+    <message>
+        <source>not in memory pool</source>
+        <translation>Не в памяти</translation>
+    </message>
+    <message>
+        <source>abandoned</source>
+        <translation>заброшено</translation>
+    </message>
+    <message>
         <source>%1/unconfirmed</source>
         <translation>%1/не подтверждено</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="68"/>
-        <location filename="../transactiondesc.cpp" line="80"/>
         <source>%1 confirmations</source>
         <translation>%1 подтверждений</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="54"/>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/отключен (верификация InstantX в процессе - %2 из %3 подписей)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="56"/>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/подтвержден (верификация InstantX в процессе - %2 из %3 подписей)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="58"/>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 подтверждений (верификация InstantX в процессе - %2 из %3 подписей)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="64"/>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/отключен (верификация InstantX завершилась неудачно)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="66"/>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/подтвержден (верификация InstantX завершилась неудачно)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="98"/>
         <source>Status</source>
         <translation>Статус</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="103"/>
         <source>, has not been successfully broadcast yet</source>
         <translation>, ещё не было успешно разослано</translation>
     </message>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="105"/>
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
+        <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="109"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Source</source>
         <translation>Источник</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Generated</source>
         <translation>Сгенерированно</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="121"/>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>From</source>
         <translation>От</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="139"/>
-        <location filename="../transactiondesc.cpp" line="161"/>
-        <location filename="../transactiondesc.cpp" line="219"/>
         <source>To</source>
         <translation>Для</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
-        <location filename="../transactiondesc.cpp" line="144"/>
         <source>own address</source>
         <translation>свой адрес</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
+        <source>watch-only</source>
+        <translation>только наблюдение</translation>
+    </message>
+    <message>
         <source>label</source>
         <translation>метка</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="179"/>
-        <location filename="../transactiondesc.cpp" line="191"/>
-        <location filename="../transactiondesc.cpp" line="236"/>
-        <location filename="../transactiondesc.cpp" line="253"/>
-        <location filename="../transactiondesc.cpp" line="306"/>
         <source>Credit</source>
         <translation>Кредит</translation>
     </message>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="181"/>
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>будет доступно через %n блок</numerusform><numerusform>будет доступно через %n блока</numerusform><numerusform>будет доступно через %n блоков</numerusform></translation>
+        <translation><numerusform>будет доступно через %n блок</numerusform><numerusform>будет доступно через %n блока</numerusform><numerusform>будет доступно через %n блоков</numerusform><numerusform>будет доступно через %n блоков</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="183"/>
         <source>not accepted</source>
         <translation>не принято</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="227"/>
-        <location filename="../transactiondesc.cpp" line="235"/>
-        <location filename="../transactiondesc.cpp" line="250"/>
-        <location filename="../transactiondesc.cpp" line="303"/>
         <source>Debit</source>
         <translation>Дебет</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="241"/>
+        <source>Total debit</source>
+        <translation>Всего дебет</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Всего кредит</translation>
+    </message>
+    <message>
         <source>Transaction fee</source>
         <translation>Комиссия</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="257"/>
         <source>Net amount</source>
         <translation>Чистая сумма</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="263"/>
-        <location filename="../transactiondesc.cpp" line="272"/>
         <source>Message</source>
         <translation>Сообщение</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="265"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="267"/>
         <source>Transaction ID</source>
         <translation>ID транзакции</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="285"/>
+        <source>Transaction total size</source>
+        <translation>Общий размер транзакции</translation>
+    </message>
+    <message>
+        <source>Output index</source>
+        <translation>Номер выхода</translation>
+    </message>
+    <message>
         <source>Merchant</source>
         <translation>Продавец</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="292"/>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Сгенерированные монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда Вы сгенерировали этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепочку, его статус изменится на &quot;не принят&quot;, и монеты будут недействительны. Это иногда происходит в случае, если другой узел сгенерирует блок на несколько секунд раньше вас.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Сгенерированные монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда вы сгенерировали этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепь, его статус изменится на "не принят", и монеты будут недействительны. Это иногда происходит в случае, если другой узел сгенерирует блок на несколько секунд раньше вас.</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="300"/>
         <source>Debug information</source>
         <translation>Отладочная информация</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="308"/>
         <source>Transaction</source>
         <translation>Транзакция</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="311"/>
         <source>Inputs</source>
         <translation>Входы</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="332"/>
         <source>Amount</source>
         <translation>Сумма</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>true</source>
         <translation>истина</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>false</source>
         <translation>ложь</translation>
     </message>
@@ -3480,382 +2737,298 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="14"/>
-        <source>Transaction details</source>
-        <translation>Детали транзакции</translation>
+        <source>This pane shows a detailed description of the transaction</source>
+        <translation>Эта панель отображает детальное описание транзакции.</translation>
     </message>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="20"/>
-        <source>This pane shows a detailed description of the transaction</source>
-        <translation>Эта панель отображает детальное описание транзакции</translation>
+        <source>Details for %1</source>
+        <translation>Подробности %1</translation>
     </message>
 </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Address</source>
-        <translation>Адрес</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Amount</source>
-        <translation>Сумма</translation>
+        <source>Label</source>
+        <translation>Метка</translation>
     </message>
     <message numerus="yes">
-        <location filename="../transactiontablemodel.cpp" line="285"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Будет открыто ещё %n блок</numerusform><numerusform>Будет открыто ещё %n блока</numerusform><numerusform>Будет открыто ещё %n блоков</numerusform></translation>
+        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="288"/>
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="291"/>
         <source>Offline</source>
-        <translation>Нет активных соединений с сетью</translation>
+        <translation>Отключен</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="294"/>
         <source>Unconfirmed</source>
-        <translation>Неподтверждено</translation>
+        <translation>Не подтверждено</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="297"/>
+        <source>Abandoned</source>
+        <translation>Заброшено</translation>
+    </message>
+    <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Подтверждается (%1 из %2 рекомендованных подтверждений)</translation>
+        <translation>Подтверждается (%1 из %2 рекомендуемых подтверждений)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="300"/>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Подтверждено (%1 подтверждений)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="303"/>
         <source>Conflicted</source>
         <translation>В противоречии</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="306"/>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Незрелый (%1 подтверждений, будет доступен после %2)</translation>
+        <translation>Незрелый (%1 подтверждений, будет доступно после %2)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="309"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
         <translation>Этот блок не был получен другими узлами и, возможно, не будет принят!</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="312"/>
         <source>Generated but not accepted</source>
-        <translation>Сгенерированно, но не подтверждено</translation>
+        <translation>Сгенерировано, но не принято</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="354"/>
         <source>Received with</source>
-        <translation>Получено</translation>
+        <translation>Получено на</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="356"/>
         <source>Received from</source>
         <translation>Получено от</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="358"/>
-        <source>Received via Darksend</source>
-        <translation>Получено через Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="361"/>
         <source>Sent to</source>
-        <translation>Отправлено</translation>
+        <translation>Отправлено на</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="363"/>
         <source>Payment to yourself</source>
         <translation>Отправлено себе</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="365"/>
         <source>Mined</source>
         <translation>Добыто</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="368"/>
-        <source>Darksend Denominate</source>
-        <translation>Перемешивание Darksend</translation>
+        <source>watch-only</source>
+        <translation>только наблюдение</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="370"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Обеспечительный платеж Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="372"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Создание обеспечительных монет для Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="374"/>
-        <source>Darksend Create Denominations</source>
-        <translation>Создание номиналов для Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="376"/>
-        <source>Darksent</source>
-        <translation>Отправлено через Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="418"/>
         <source>(n/a)</source>
-        <translation>(н/д)</translation>
+        <translation>(недоступно)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="610"/>
+        <source>(no label)</source>
+        <translation>(нет метки)</translation>
+    </message>
+    <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Статус транзакции. Подведите курсор к нужному полю для того, чтобы увидеть количество подтверждений.</translation>
+        <translation>Статус транзакции. Подведите курсор к этому полю, чтобы увидеть количество подтверждений.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="612"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>Дата и время, когда транзакция была получена.</translation>
+        <translation>Дата и время получения транзакции.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="614"/>
         <source>Type of transaction.</source>
         <translation>Тип транзакции.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="616"/>
-        <source>Destination address of transaction.</source>
-        <translation>Адрес назначения транзакции.</translation>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Использовался ли в транзакции адрес для наблюдения.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="618"/>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>Определяемое пользователем намерение/цель транзакции.</translation>
+    </message>
+    <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Сумма, снятая с баланса или добавленная на него.</translation>
+        <translation>Снятая или добавленная к балансу сумма.</translation>
     </message>
 </context>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="60"/>
-        <location filename="../transactionview.cpp" line="76"/>
         <source>All</source>
         <translation>Все</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="61"/>
         <source>Today</source>
         <translation>Сегодня</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="62"/>
         <source>This week</source>
         <translation>На этой неделе</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="63"/>
         <source>This month</source>
         <translation>В этом месяце</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="64"/>
         <source>Last month</source>
         <translation>В прошлом месяце</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="65"/>
         <source>This year</source>
         <translation>В этом году</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="66"/>
         <source>Range...</source>
-        <translation>Промежуток...</translation>
+        <translation>Диапазон...</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="77"/>
         <source>Received with</source>
         <translation>Получено на</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="79"/>
         <source>Sent to</source>
         <translation>Отправлено на</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="81"/>
-        <source>Darksent</source>
-        <translation>Отправлено через Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="82"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Создание обеспечительных монет для Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="83"/>
-        <source>Darksend Create Denominations</source>
-        <translation>Создание номиналов для Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="84"/>
-        <source>Darksend Denominate</source>
-        <translation>Перемешивание Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="85"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Обеспечительный платеж Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="86"/>
         <source>To yourself</source>
-        <translation>Отправленные себе</translation>
+        <translation>Себе</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="87"/>
         <source>Mined</source>
-        <translation>Добытые</translation>
+        <translation>Добыто</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="88"/>
         <source>Other</source>
         <translation>Другое</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="94"/>
-        <source>Enter address or label to search</source>
-        <translation>Введите адрес или метку для поиска</translation>
+        <source>Enter address, transaction id, or label to search</source>
+        <translation>Введите адрес, ID транзакции или метку для поиска</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="100"/>
         <source>Min amount</source>
         <translation>Мин. сумма</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="134"/>
+        <source>Abandon transaction</source>
+        <translation>Отказаться от транзакции</translation>
+    </message>
+    <message>
+        <source>Increase transaction fee</source>
+        <translation>Увеличить комиссию</translation>
+    </message>
+    <message>
         <source>Copy address</source>
         <translation>Копировать адрес</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="135"/>
         <source>Copy label</source>
         <translation>Копировать метку</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="136"/>
         <source>Copy amount</source>
-        <translation>Скопировать сумму</translation>
+        <translation>Копировать сумму</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="137"/>
         <source>Copy transaction ID</source>
-        <translation>Скопировать ID транзакции</translation>
+        <translation>Копировать ID транзакции</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="138"/>
+        <source>Copy raw transaction</source>
+        <translation>Копировать исходный код транзакции</translation>
+    </message>
+    <message>
+        <source>Copy full transaction details</source>
+        <translation>Копировать все подробности транзакции</translation>
+    </message>
+    <message>
         <source>Edit label</source>
         <translation>Изменить метку</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="139"/>
         <source>Show transaction details</source>
         <translation>Показать подробности транзакции</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="302"/>
         <source>Export Transaction History</source>
         <translation>Экспортировать историю транзакций</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="303"/>
         <source>Comma separated file (*.csv)</source>
         <translation>Текст, разделённый запятыми (*.csv)</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="312"/>
         <source>Confirmed</source>
         <translation>Подтверждено</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="313"/>
+        <source>Watch-only</source>
+        <translation>Для наблюдения</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="314"/>
         <source>Type</source>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="315"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="316"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="317"/>
-        <source>Amount</source>
-        <translation>Сумма</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="318"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>Exporting Failed</source>
         <translation>Экспорт не удался</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>There was an error trying to save the transaction history to %1.</source>
         <translation>Произошла ошибка при сохранении истории транзакций в %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>Exporting Successful</source>
         <translation>Экспорт успешно завершён</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>The transaction history was successfully saved to %1.</source>
         <translation>История транзакций была успешно сохранена в %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="434"/>
         <source>Range:</source>
-        <translation>Промежуток от:</translation>
+        <translation>Диапазон:</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="442"/>
         <source>to</source>
         <translation>до</translation>
     </message>
 </context>
 <context>
+    <name>UnitDisplayStatusBarControl</name>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Единица измерения количества монет. Щёлкните для выбора другой единицы.</translation>
+    </message>
+</context>
+<context>
     <name>WalletFrame</name>
     <message>
-        <location filename="../walletframe.cpp" line="26"/>
         <source>No wallet has been loaded.</source>
         <translation>Не был загружен ни один бумажник.</translation>
     </message>
@@ -3863,56 +3036,77 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="271"/>
-        <location filename="../walletmodel.cpp" line="285"/>
         <source>Send Coins</source>
         <translation>Отправка</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../walletmodel.cpp" line="271"/>
-        <source>InstantX doesn&apos;t support sending values that high yet. Transactions are currently limited to %n BSD.</source>
-        <translation><numerusform>InstantX пока что не поддерживает такие большие суммы. На данный момент транзакции ограничены суммами до %n BSD.</numerusform><numerusform>InstantX пока что не поддерживает такие большие суммы. На данный момент транзакции ограничены суммами до %n BSD.</numerusform><numerusform>InstantX пока что не поддерживает такие большие суммы. На данный момент транзакции ограничены суммами до %n BSD.</numerusform></translation>
+    <message>
+        <source>Fee bump error</source>
+        <translation>Ошибка повышения комиссии</translation>
+    </message>
+    <message>
+        <source>Increasing transaction fee failed</source>
+        <translation>Увеличение комиссии не удалось</translation>
+    </message>
+    <message>
+        <source>Do you want to increase the fee?</source>
+        <translation>Вы хотите увеличить комиссию?</translation>
+    </message>
+    <message>
+        <source>Current fee:</source>
+        <translation>Текущая комиссия</translation>
+    </message>
+    <message>
+        <source>Increase:</source>
+        <translation>Увеличение:</translation>
+    </message>
+    <message>
+        <source>New fee:</source>
+        <translation>Новая комиссия:</translation>
+    </message>
+    <message>
+        <source>Confirm fee bump</source>
+        <translation>Подтвердите увеличение комиссии</translation>
+    </message>
+    <message>
+        <source>Can't sign transaction.</source>
+        <translation>Невозможно подписать транзакцию.</translation>
+    </message>
+    <message>
+        <source>Could not commit transaction</source>
+        <translation>Не удалось совершить транзакцию</translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="44"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="45"/>
         <source>Export the data in the current tab to a file</source>
-        <translation>Экспортировать данные из вкладки в файл</translation>
+        <translation>Экспортировать данные текущей вкладки в файл</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="231"/>
         <source>Backup Wallet</source>
-        <translation>Сделать резервную копию бумажника</translation>
+        <translation>Резервная копия бумажника</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="232"/>
         <source>Wallet Data (*.dat)</source>
         <translation>Данные бумажника (*.dat)</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>Backup Failed</source>
         <translation>Резервное копирование не удалось</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>There was an error trying to save the wallet data to %1.</source>
         <translation>Произошла ошибка при сохранении данных бумажника в %1.</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>Backup Successful</source>
         <translation>Резервное копирование успешно завершено</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>Данные бумажника были успешно сохранены в %1.</translation>
     </message>
@@ -3920,1372 +3114,1008 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>bitsend-core</name>
     <message>
-        <location filename="../bitsendstrings.cpp" line="16"/>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Bitsend Alert&quot; admin@foo.com
-</source>
-        <translation>%s, вы должны установить опцию rpcpassword в конфигурационном файле:
-%s
-Рекомендуется использовать следующий случайный пароль:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(вам не нужно запоминать этот пароль)
-Имя и пароль ДОЛЖНЫ различаться.
-Если файл не существует, то создайте его и оставьте права на чтение только для владельца.
-Также рекомендуется включить alertnotify для оповещения о проблемах;
-Например: alertnotify=echo %%s | mail -s &quot;Bitsend Alert&quot; admin@foo.com
-</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="29"/>
-        <source>Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</source>
-        <translation>Допустимое шифрование (по умолчанию: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="32"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>Произошла ошибка при настройке прослушивания RPC порта %u на IPv4: %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="34"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
-        <translation>Произошла ошибка при настройке прослушивания RPC порта %u на IP6, откатываемся обратно на IPv4: %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="37"/>
-        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Привязаться к указанному адресу и всегда прослушивать только его. Используйте [хост]:порт для IPv6</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="40"/>
-        <source>Cannot obtain a lock on data directory %s. Bitsend Core is probably already running.</source>
-        <translation>Не удалось установить блокировку на каталог данных %s. Возможно, Bitsend Core уже запущен.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="43"/>
-        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:15)</source>
-        <translation>Постоянно ограничивать бесплатные транзакции до &lt;n&gt;*1000 байт в минуту (по умолчанию:15)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="46"/>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>При отправке Darksend использует только деноминированные средства, возможно, Вам просто нужно анонимизировать немного больше монет.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="49"/>
-        <source>Disable all Xnode and Darksend related functionality (0-1, default: 0)</source>
-        <translation>Отключить всю функциональность, связанную с мастернодами и Darksend (0-1, по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="51"/>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: true)</source>
-        <translation>Включить instantx, показывать подтверждения для заблокированных транзакций (булевое, по умолчанию: true)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="54"/>
-        <source>Enable use of automated Darksend for funds stored in this wallet (0-1, default: 0)</source>
-        <translation>Включить автоматическое перемешивание Darksend для средств, хранящихся в этом бумажнике (0-1, по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="57"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly. This is intended for regression testing tools and app development.</source>
-        <translation>Перейти в регрессионный тестовый режим, в котором используется специальная цепочка с мгновенным нахождением блоков. Этот режим предназначен для инструментов регрессионного тестирования и разработки приложения.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="61"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Войти в режим регрессионного тестирования, в котором используется специальная цепочка, где блоки находятся мгновенно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="64"/>
-        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>Ошибка: не удалось начать прослушивание входящих подключений (прослушивание вернуло ошибку %s)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="66"/>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Ошибка: транзакция была отклонена! Это могло произойти в случае, если некоторые монеты в вашем бумажнике уже были потрачены, например, если вы используете копию wallet.dat, и монеты были использованы в копии, но не отмечены как потраченные здесь.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="70"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Ошибка: эта транзакция требует комиссию как минимум %s из-за суммы, сложности или использования недавно полученных средств!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="73"/>
-        <source>Error: Wallet unlocked for anonymization only, unable to create transaction.</source>
-        <translation>Ошибка: Бумажник разблокирован только для анонимизации, создание транзакции невозможно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="75"/>
-        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Выполнить команду, когда приходит соответствующее сообщение о тревоге или наблюдается очень длинная альтернативная цепочка блоков (%s в команде заменяется на сообщение)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="78"/>
-        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Выполнить команду, когда меняется транзакция в бумажнике (%s в команде заменяется на TxID)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="81"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Выполнить команду при появлении нового блока (%s в команде заменяется на хэш блока)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="84"/>
-        <source>Fees smaller than this are considered zero fee (for transaction creation) (default:</source>
-        <translation>Комиссия меньше этого значения считается нулевой (для создания транзакции) (по умолчанию:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="87"/>
-        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: 100)</source>
-        <translation>Сохранять активность базы данных из пула памяти в лог на диске каждые &lt;n&gt; мегабайт (по умолчанию: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="90"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation>Найдены неподтверждённые номиналы, процесс продолжится после их подтверждения.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="93"/>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: 3)</source>
-        <translation>Насколько тщательна проверка контрольных блоков -checkblocks (0-4, по умолчанию: 3)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="95"/>
-        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>В этом режиме -genproclimit определяет, сколько блоков генерируется немедленно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="98"/>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX требует наличия средств с хотя бы 6 подтверждениями, возможно Вам нужно подождать пару минут и попробовать снова.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="101"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation>Слушать JSON-RPC соединения на порту &lt;port&gt; (по умолчанию: 8800 или testnet: 8884)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="103"/>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation>Имя для создания ссылки на запись KeePass, хранящую пароль к бумажнику</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="105"/>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Количество секунд, в течение которых запрещать переподключаться неправильно ведущим себя участникам (по умолчанию: 86400)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="108"/>
-        <source>Output debugging information (default: 0, supplying &lt;category&gt; is optional)</source>
-        <translation>Вывод отладочной информации (по умолчанию: 0, указание &lt;category&gt; необязательно)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="110"/>
-        <source>Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
-        <translation>Предоставлять ликвидность для Darksend путем редкого участия в перемешивании монет на постоянной основе (0-100, по умолчанию: 0, 1=очень часто, высокая комиссия, 100=очень редко, низкая комиссия)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="114"/>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>Запрашивать адреса участников с помощью DNS, если адресов мало (по умолчанию: 1, если не указан -connect)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="117"/>
-        <source>Set external address:port to get to this Xnode (example: address:port)</source>
-        <translation>Указать внешний адрес:порт для доступа к этой мастерноде (например: адрес:порт)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="119"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Задать максимальный размер высокоприоритетных/низкокомиссионных транзакций в байтах (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="121"/>
-        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>Задать число потоков проверки скрипта (от %u до %d, 0=авто, &lt;0 = оставить столько ядер свободными, по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="124"/>
-        <source>Set the processor limit for when generation is on (-1 = unlimited, default: -1)</source>
-        <translation>Установить лимит процессоров для генерации монет (-1 = неограничено, по умолчанию: -1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="127"/>
-        <source>Show N confirmations for a successfully locked transaction (0-9999, default: 1)</source>
-        <translation>Показывать N подтверждений для успешно заблокированной транзакции (0-9999, по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="130"/>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Это пре-релизная тестовая сборка - используйте на свой страх и риск - не используйте для добычи или торговых приложений</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="133"/>
-        <source>Unable to bind to %s on this computer. Bitsend Core is probably already running.</source>
-        <translation>Не удалось привязаться к %s на этом компьютере. Возможно, Bitsend Core уже запущен.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="136"/>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
-        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции номиналов Darksend.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="138"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 BSD.</source>
-        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции неденоминированных средств, отличающихся от 1000DRK.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="141"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction.</source>
-        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции неденоминированных средств.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="143"/>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: -proxy)</source>
-        <translation>Использовать отдельный SOCKS5 прокси для подключения к участникам через скрытые сервисы Tor (по умолчанию: -proxy)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="146"/>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Внимание: установлено очень большое значение -paytxfee. Это комиссия, которую Вы заплатите при проведении транзакции.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="149"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Bitsend will not work properly.</source>
-        <translation>Внимание: пожалуйста, убедитесь что дата и время на Вашем компьютере выставлены правильно! Bitsend не сможет работать корректно, если часы настроены неверно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="152"/>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Внимание: похоже, что в сети нет полного согласия! Некоторый майнеры, возможно, испытывают проблемы.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="155"/>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Внимание: обнаружено несогласие с подключенными участниками! Вам или другим участникам, возможно, следует обновиться.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="158"/>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Внимание: ошибка чтения wallet.dat! Все ключи прочитаны верно, но данные транзакций или записи адресной книги могут отсутствовать или быть неправильными.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="161"/>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Внимание: wallet.dat повреждён, данные спасены! Оригинальный wallet.dat сохранён как wallet.{timestamp}.bak в %s. Если Ваш баланс или транзакции некорректны, Вы должны восстановить файл из резервной копии.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="165"/>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Вы должны установить rpcpassword=&lt;password&gt; в конфигурационном файле:
-%s
-Если файл не существует, то создайте его с разрешением на чтение только для владельца файла.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="170"/>
-        <source>You must specify a Xnodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation>Необходимо указать Xnodeprivkey в файле конфигурации. Пожалуйста, ознакомьтесь с документацией.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="173"/>
-        <source>(default: 1)</source>
-        <translation>(по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="174"/>
-        <source>(default: wallet.dat)</source>
-        <translation>(по умолчанию: wallet.dat)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="175"/>
-        <source>&lt;category&gt; can be:</source>
-        <translation>&lt;category&gt; может быть:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="176"/>
-        <source>Accept command line and JSON-RPC commands</source>
-        <translation>Принимать командную строку и команды JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="177"/>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="178"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Добавить узел для подключения и пытаться поддерживать соединение открытым</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="179"/>
-        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Разрешить поиск в DNS для -addnode, -seednode и -connect</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="180"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Разрешить JSON-RPC соединения с указанного IP-адреса</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="181"/>
-        <source>Already have that input.</source>
-        <translation>Уже есть этот вход.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="182"/>
-        <source>Always query for peer addresses via DNS lookup (default: 0)</source>
-        <translation>Всегда запрашивать адреса участников через DNS (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="183"/>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Попытаться восстановить закрытые ключи из повреждённого wallet.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="184"/>
-        <source>Block creation options:</source>
-        <translation>Параметры создания блоков:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="185"/>
-        <source>Can&apos;t denominate: no compatible inputs left.</source>
-        <translation>Разбиение на номиналы невозможно: не осталось совместимых монет.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="186"/>
-        <source>Cannot downgrade wallet</source>
-        <translation>Не удаётся понизить версию бумажника</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="187"/>
-        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
-        <translation>Не удаётся разрешить адрес в параметре -bind: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="188"/>
-        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
-        <translation>Не удаётся разрешить адрес в параметре -externalip: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="189"/>
-        <source>Cannot write default address</source>
-        <translation>Не удаётся записать адрес по умолчанию</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="190"/>
-        <source>Clear list of wallet transactions (diagnostic tool; implies -rescan)</source>
-        <translation>Очистить список транзакций в бумажнике (диагностический инструмент; выполняет -rescan)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="191"/>
-        <source>Collateral is not valid.</source>
-        <translation>Обеспечительная транзакция некорректна.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="192"/>
-        <source>Collateral not valid.</source>
-        <translation>Обеспечительная транзакция некорректна.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="193"/>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Подключаться только к указанному узлу(ам)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="194"/>
-        <source>Connect through SOCKS proxy</source>
-        <translation>Соединяться через SOCKS прокси</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="195"/>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation>Соединяться к JSON-RPC по порту &lt;port&gt; (по умолчанию: 8800 или testnet: 8884)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="196"/>
-        <source>Connect to KeePassHttp on port &lt;port&gt; (default: 19455)</source>
-        <translation>Соединяться c KeePassHttp по порту &lt;port&gt; (по умолчанию: 19455)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="197"/>
-        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Подключиться к участнику, чтобы получить список адресов других участников, и отключиться</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="198"/>
-        <source>Connection options:</source>
-        <translation>Параметры подключения:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="199"/>
-        <source>Corrupted block database detected</source>
-        <translation>База данных блоков повреждена</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="200"/>
-        <source>Bitsend Core Daemon</source>
-        <translation>Демон Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="201"/>
-        <source>Bitsend Core RPC client version</source>
-        <translation>Версия RPC-клиента Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="202"/>
-        <source>Darksend is disabled.</source>
-        <translation>Darksend выключен.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="203"/>
-        <source>Darksend options:</source>
-        <translation>Параметры Darksend:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="204"/>
-        <source>Debugging/Testing options:</source>
-        <translation>Параметры отладки/тестирования:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="205"/>
-        <source>Disable safemode, override a real safe mode event (default: 0)</source>
-        <translation>Отменить безопасный режим, перекрывает реальные события о переходе в безопасный режим (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="206"/>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Определить свой IP (по умолчанию: 1 при прослушивании и если не используется -externalip)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="207"/>
-        <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>Не загружать бумажник и запретить обращения к нему через RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="208"/>
-        <source>Do you want to rebuild the block database now?</source>
-        <translation>Перестроить базу данных блоков прямо сейчас?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="209"/>
-        <source>Done loading</source>
-        <translation>Загрузка завершена</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="210"/>
-        <source>Downgrading and trying again.</source>
-        <translation>Откат к обычному перемешиванию и повторная попытка.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="211"/>
-        <source>Enable the client to act as a Xnode (0-1, default: 0)</source>
-        <translation>Разрешить этому клиенту работать в качестве мастерноды (0-1, по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="212"/>
-        <source>Entries are full.</source>
-        <translation>Очередь переполнена.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="213"/>
-        <source>Error connecting to Xnode.</source>
-        <translation>Ошибка соединения с мастернодой.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="214"/>
-        <source>Error initializing block database</source>
-        <translation>Ошибка инициализации базы данных блоков</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="215"/>
-        <source>Error initializing wallet database environment %s!</source>
-        <translation>Ошибка инициализации окружения БД бумажника %s!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="216"/>
-        <source>Error loading block database</source>
-        <translation>Ошибка загрузки базы данных блоков</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="217"/>
-        <source>Error loading wallet.dat</source>
-        <translation>Ошибка при загрузке wallet.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="218"/>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник поврежден</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="219"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitsend</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новой версии Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="220"/>
-        <source>Error opening block database</source>
-        <translation>Не удалось открыть базу данных блоков</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="221"/>
-        <source>Error reading from database, shutting down.</source>
-        <translation>Ошибка чтения базы данных, завершение работы.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="222"/>
-        <source>Error recovering public key.</source>
-        <translation>Ошибка восстановления открытого ключа.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="223"/>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="224"/>
-        <source>Error: Disk space is low!</source>
-        <translation>Ошибка: мало места на диске!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="225"/>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Ошибка: бумажник заблокирован, создание транзакции невозможно!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="226"/>
-        <source>Error: You already have pending entries in the Darksend pool</source>
-        <translation>Ошибка: у Вас уже есть ожидающие записи в пуле Darksend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="227"/>
-        <source>Error: system error: </source>
-        <translation>Ошибка: системная ошибка: </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="228"/>
-        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Не удалось начать прослушивание на порту. Используйте -listen=0, если вас это устраивает.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="229"/>
-        <source>Failed to read block info</source>
-        <translation>Ошибка чтения информации о блоке</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="230"/>
-        <source>Failed to read block</source>
-        <translation>Ошибка чтения блока</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="231"/>
-        <source>Failed to sync block index</source>
-        <translation>Ошибка синхронизации индекса блока</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="232"/>
-        <source>Failed to write block index</source>
-        <translation>Ошибка записи индекса блока</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="233"/>
-        <source>Failed to write block info</source>
-        <translation>Ошибка записи информации о блоке</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="234"/>
-        <source>Failed to write block</source>
-        <translation>Ошибка записи блока</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="235"/>
-        <source>Failed to write file info</source>
-        <translation>Ошибка записи информации о файле</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="236"/>
-        <source>Failed to write to coin database</source>
-        <translation>Ошибка записи в базу данных монет</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="237"/>
-        <source>Failed to write transaction index</source>
-        <translation>Ошибка записи индекса транзакции</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="238"/>
-        <source>Failed to write undo data</source>
-        <translation>Ошибка записи данных для отмены</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="239"/>
-        <source>Fee per kB to add to transactions you send</source>
-        <translation>Комиссия за кБ, добавляемая к отправляемым Вами транзакциями</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="240"/>
-        <source>Fees smaller than this are considered zero fee (for relaying) (default:</source>
-        <translation>Комиссия меньше этого значения считается нулевой (для создания транзакции) (по умолчанию:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="241"/>
-        <source>Force safe mode (default: 0)</source>
-        <translation>Принудительный безопасный режим (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="242"/>
-        <source>Generate coins (default: 0)</source>
-        <translation>Генерировать монеты (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="243"/>
-        <source>Get help for a command</source>
-        <translation>Получить помощь по команде</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="244"/>
-        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
-        <translation>Сколько блоков проверять на старте (по умолчанию: 288, 0 = все)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="245"/>
-        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Если &lt;category&gt; не предоставлена, выводить всю отладочную информацию.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="246"/>
-        <source>Ignore Xnodes less than version (example: 70050; default : 0)</source>
-        <translation>Игнорировать мастерноды, имеющие версию ниже указанной (например: 70050; по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="247"/>
-        <source>Importing...</source>
-        <translation>Импорт ...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="248"/>
-        <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Импортировать блоки из внешнего файла blk000??.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="249"/>
-        <source>Incompatible mode.</source>
-        <translation>Несовместимый режим.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="250"/>
-        <source>Incompatible version.</source>
-        <translation>Несовместимая версия.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="251"/>
-        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>Неверный или отсутствующий начальный блок. Неправильный каталог данных для сети?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="252"/>
-        <source>Information</source>
-        <translation>Информация</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="253"/>
-        <source>Initialization sanity check failed. Bitsend Core is shutting down.</source>
-        <translation>Проверка на непротиворечивость закончилась неудачно. Bitsend Core выключается.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="254"/>
-        <source>Input is not valid.</source>
-        <translation>Вход некорректен.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="255"/>
-        <source>InstantX options:</source>
-        <translation>Параметры InstantX:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="256"/>
-        <source>Insufficient funds</source>
-        <translation>Недостаточно средств</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="257"/>
-        <source>Insufficient funds.</source>
-        <translation>Недостаточно средств.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="258"/>
-        <source>Invalid -onion address: &apos;%s&apos;</source>
-        <translation>Неверный -onion адрес: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="259"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation>Неверный адрес -proxy: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="260"/>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Неверная сумма в параметре -minrelaytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="261"/>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Неверная сумма в параметре -mintxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="262"/>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Неверная сумма в параметре -paytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="263"/>
-        <source>Invalid amount</source>
-        <translation>Неверная сумма</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="264"/>
-        <source>Invalid Xnodeprivkey. Please see documenation.</source>
-        <translation>Неправильное значение Xnodeprivkey. Пожалуйста, ознакомьтесь с документацией.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="265"/>
-        <source>Invalid private key.</source>
-        <translation>Некорректный закрытый ключ.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="266"/>
-        <source>Invalid script detected.</source>
-        <translation>Обнаружен некорректный скрипт.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="267"/>
-        <source>KeePassHttp id for the established association</source>
-        <translation>Идентификатор KeePassHttp для установленной ассоциации</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="268"/>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation>Ключ KeePassHttp для зашифрованной коммуникации с KeePass</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="269"/>
-        <source>Keep N bitsend anonymized (default: 0)</source>
-        <translation>Держать N дашей анонимизированными (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="270"/>
-        <source>Keep at most &lt;n&gt; unconnectable blocks in memory (default: %u)</source>
-        <translation>Хранить максимум &lt;n&gt; несоединённых блоков в памяти (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="271"/>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Держать в памяти до &lt;n&gt; несвязных транзакций (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="272"/>
-        <source>Last Darksend was too recent.</source>
-        <translation>Последнее действие Darksend было слишком недавно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="273"/>
-        <source>Last successful Darksend action was too recent.</source>
-        <translation>Последнее успешное действие Darksend было слишком недавно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="274"/>
-        <source>Limit size of signature cache to &lt;n&gt; entries (default: 50000)</source>
-        <translation>Ограничить размер кэша подписей до &lt;n&gt; записей (по умолчанию: 50000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="275"/>
-        <source>List commands</source>
-        <translation>Вывести команды</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="276"/>
-        <source>Listen for connections on &lt;port&gt; (default: 8886 or testnet: 8885)</source>
-        <translation>Принимать входящие подключения на порт &lt;port&gt; (по умолчанию: 8886 или testnet:8885)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="277"/>
-        <source>Loading addresses...</source>
-        <translation>Загрузка адресов...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="278"/>
-        <source>Loading block index...</source>
-        <translation>Загрузка индекса блоков...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="279"/>
-        <source>Loading Xnode list...</source>
-        <translation>Загрузка списка мастернод...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="280"/>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Загрузка бумажника... (%3.2f %%)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="281"/>
-        <source>Loading wallet...</source>
-        <translation>Загрузка бумажника...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="282"/>
-        <source>Log transaction priority and fee per kB when mining blocks (default: 0)</source>
-        <translation>Записывать в лог приоритет транзакции и комиссию за килобайт во время добычи блоков (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="283"/>
-        <source>Maintain a full transaction index (default: 0)</source>
-        <translation>Держать полный индекс транзакций (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="284"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 125)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="285"/>
-        <source>Xnode options:</source>
-        <translation>Параметры мастерноды:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="286"/>
-        <source>Xnode queue is full.</source>
-        <translation>Очередь на мастерноде переполнена.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="287"/>
-        <source>Xnode:</source>
-        <translation>Мастернода:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="288"/>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Максимальный размер буфера приёма на одно соединение, &lt;n&gt;*1000 байт (по умолчанию: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="289"/>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Максимальный размер буфера отправки на соединение, &lt;n&gt;*1000 байт (по умолчанию: 1000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="290"/>
-        <source>Missing input transaction information.</source>
-        <translation>Отсутствует информация о входной транзакции.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="291"/>
-        <source>No compatible Xnode found.</source>
-        <translation>Отсутствуют совместимые мастерноды.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="292"/>
-        <source>No funds detected in need of denominating.</source>
-        <translation>Не обнаружено средств для дальнейшего разбиения на номиналы.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="293"/>
-        <source>No Xnodes detected.</source>
-        <translation>Ни одной мастерноды не найдено.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="294"/>
-        <source>No matching denominations found for mixing.</source>
-        <translation>Отсутствуют совпадающие для перемешивания номиналы.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="295"/>
-        <source>Non-standard public key detected.</source>
-        <translation>Обнаружен нестандартный открытый ключ.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="296"/>
-        <source>Not compatible with existing transactions.</source>
-        <translation>Не совместимо с существующими транзакциями.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="297"/>
-        <source>Not enough file descriptors available.</source>
-        <translation>Недостаточно файловых дескрипторов.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="298"/>
-        <source>Not in the Xnode list.</source>
-        <translation>Отсутствует в списке мастернод.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="299"/>
-        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
-        <translation>Принимать цепочку блоков только в том случае, если она соответствует встроенным контрольным точкам (по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="300"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Соединяться только по сети &lt;net&gt; (ipv4, ipv6 или Tor)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="301"/>
         <source>Options:</source>
         <translation>Параметры:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="302"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Пароль для подключений JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="303"/>
-        <source>Prepend debug output with timestamp (default: 1)</source>
-        <translation>Дописывать в начало отладочного вывода отметки времени (по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="304"/>
-        <source>Print block on startup, if found in block index</source>
-        <translation>Печатать блок при запуске, если он найден в индексе блоков</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="305"/>
-        <source>Print block tree on startup (default: 0)</source>
-        <translation>Печатать дерево блоков при запуске (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Параметры RPC SSL: (см. Bitsend вики для инструкций по настройке SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="307"/>
-        <source>RPC client options:</source>
-        <translation>Параметры RPC-клиента:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="308"/>
-        <source>RPC server options:</source>
-        <translation>Параметры сервера RPC:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="309"/>
-        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Случайно отбрасывать 1 из каждых &lt;n&gt; сетевых сообщений</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="310"/>
-        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Случайно разбрасывать 1 из каждых &lt;n&gt; сетевых сообщений</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="311"/>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Перестроить индекс цепочки блоков из текущих файлов blk000??.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="312"/>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Перепроверить цепочку блоков на предмет отсутствующих в бумажнике транзакций</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="313"/>
-        <source>Rescanning...</source>
-        <translation>Сканирование...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="314"/>
-        <source>Run a thread to flush wallet periodically (default: 1)</source>
-        <translation>Запустить поток для периодического сохранения бумажника (по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="315"/>
-        <source>Run in the background as a daemon and accept commands</source>
-        <translation>Запускаться в фоне как демон и принимать команды</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Параметры SSL: (см. Bitsend вики для инструкций по настройке SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="317"/>
-        <source>Select SOCKS version for -proxy (4 or 5, default: 5)</source>
-        <translation>Выбор версии SOCKS для прокси (4 или 5, по умолчанию: 5)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="318"/>
-        <source>Send command to Bitsend Core</source>
-        <translation>Отправить команду Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="319"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Отправляет команду ноде, работающей на IP-адресе &lt;ip&gt; (по умолчанию: 127.0.0.1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="320"/>
-        <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>Выводить информацию трассировки/отладки на консоль вместо файла debug.log</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="321"/>
-        <source>Server certificate file (default: server.cert)</source>
-        <translation>Файл сертификата сервера (по умолчанию: server.cert)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="322"/>
-        <source>Server private key (default: server.pem)</source>
-        <translation>Закрытый ключ сервера (по умолчанию: server.pem)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="323"/>
-        <source>Session not complete!</source>
-        <translation>Сессия не закончена!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="324"/>
-        <source>Session timed out (30 seconds), please resubmit.</source>
-        <translation>Сессия прекращена по тайм-ауту (30 секунд), пожалуйста, отправьте заново.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="325"/>
-        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Установить размер кэша БД в мегабайтах(от %d до %d, по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="326"/>
-        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Установить размер пула ключей в &lt;n&gt; (по умолчанию: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="327"/>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Установить максимальный размер блока в байтах (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="328"/>
-        <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Установить минимальный размер блока в байтах (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="329"/>
-        <source>Set the Xnode private key</source>
-        <translation>Установить закрытый ключ мастерноды</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="330"/>
-        <source>Set the number of threads to service RPC calls (default: 4)</source>
-        <translation>Задать число потоков выполнения запросов RPC (по умолчанию: 4)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="331"/>
-        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: 1)</source>
-        <translation>Установить флаг DB_PRIVATE в окружении базы данных бумажника (по умолчанию: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="332"/>
-        <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Показать все отладочные параметры (использование: --help -help-debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="333"/>
-        <source>Show benchmark information (default: 0)</source>
-        <translation>Показывать информацию бенчмарка (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="334"/>
-        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Сжимать файл debug.log при запуске клиента (по умолчанию: 1, если нет -debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="335"/>
-        <source>Signing failed.</source>
-        <translation>Подписание завершилось неудачно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="336"/>
-        <source>Signing timed out, please resubmit.</source>
-        <translation>Подписание прекращено по тайм-ауту, пожалуйста, отправьте заново.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="337"/>
-        <source>Signing transaction failed</source>
-        <translation>Подписание транзакции завершилось неудачно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="338"/>
-        <source>Specify configuration file (default: bitsend.conf)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: bitsend.conf)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="339"/>
-        <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Указать тайм-аут соединения в миллисекундах (по умолчанию: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="340"/>
         <source>Specify data directory</source>
         <translation>Задать каталог данных</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="341"/>
-        <source>Specify Xnode configuration file (default: Xnode.conf)</source>
-        <translation>Указать конфигурационный файл для мастернод (по умолчанию: Xnode.conf)</translation>
+        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
+        <translation>Подключиться к участнику, чтобы получить список адресов других участников и отключиться</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="342"/>
-        <source>Specify pid file (default: bitsendd.pid)</source>
-        <translation>Указать pid-файл (по умолчанию: bitsendd.pid)</translation>
+        <source>Specify your own public address</source>
+        <translation>Укажите ваш собственный публичный адрес</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="343"/>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation>Принимать командную строку и команды JSON-RPC</translation>
+    </message>
+    <message>
+        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
+        <translation>Распространяется под лицензией MIT, см. приложенный файл %s или %s</translation>
+    </message>
+    <message>
+        <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
+        <translation>Если &lt;category&gt; не предоставлена или равна 1, выводить всю отладочную информацию.</translation>
+    </message>
+    <message>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>Удаление блоков выставлено ниже, чем минимум в %d Мб. Пожалуйста, используйте большее значение.</translation>
+    </message>
+    <message>
+        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
+        <translation>Удаление: последняя синхронизация кошелька вышла за рамки удаленных данных. Вам нужен -reindex (скачать всю  цепь блоков в случае удаленного узла)</translation>
+    </message>
+    <message>
+        <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
+        <translation>Повторное сканирование не возможно в режиме удаления. Вам надо будет использовать -reindex, который загрузит заново всю цепь блоков.</translation>
+    </message>
+    <message>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Ошибка: произошла неустранимая ошибка, подробности в debug.log</translation>
+    </message>
+    <message>
+        <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
+        <translation>Комиссия (в %s/Кб) для добавления к вашим транзакциям (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Pruning blockstore...</source>
+        <translation>Очистка хранилища блоков...</translation>
+    </message>
+    <message>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation>Запускаться в фоне как демон и принимать команды</translation>
+    </message>
+    <message>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>Невозможно запустить HTTP сервер. Смотри debug лог для подробностей.</translation>
+    </message>
+    <message>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
+    </message>
+    <message>
+        <source>The %s developers</source>
+        <translation>Разработчики %s</translation>
+    </message>
+    <message>
+        <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
+        <translation>Принимать транзакции пересылаемые от узлов из белого списка даже если они не удовлетворяют требованиям ретрансляции (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info)</source>
+        <translation>Добавить узел сети для соединения и для возможности сохранять соединение открытым (см. команду RPC `addnode` в справочном разделе)</translation>
+    </message>
+    <message>
+        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
+        <translation>Привязаться к указанному адресу и всегда прослушивать только его. Используйте [хост]:порт для IPv6</translation>
+    </message>
+    <message>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>Невозможно заблокировать каталог данных %s. %s возможно уже работает.</translation>
+    </message>
+    <message>
+        <source>Cannot provide specific connections and have addrman find outgoing connections at the same.</source>
+        <translation>Не удалось предоставить определённые подключения, и в то же время найти исходящие подключения через addrman.</translation>
+    </message>
+    <message>
+        <source>Connect only to the specified node(s); -connect=0 disables automatic connections (the rules for this peer are the same as for -addnode)</source>
+        <translation>Подключаться только к указанному узлу(ам); -connect=0 отключает автоматические подключения (правила для этого участника такие же, как и для -addnode)</translation>
+    </message>
+    <message>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>Удалить все транзакции бумажника с возможностью восстановить эти части цепи блоков с помощью -rescan при запуске</translation>
+    </message>
+    <message>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>Ошибка чтения %s! Все ключи прочитаны верно, но данные транзакций или записи адресной книги могут отсутствовать или быть неправильными.</translation>
+    </message>
+    <message>
+        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
+        <translation>Исключить отладочную информацию для категории. Может быть использовано вместе с -debug=1 для вывода отладочных логов по всем категориям, кроме одной или более указанных категорий.</translation>
+    </message>
+    <message>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>Выполнить команду, когда меняется транзакция в бумажнике (%s в команде заменяется на TxID)</translation>
+    </message>
+    <message>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation>Хранить в памяти дополнительные транзакции для реконструкции компактных блоков (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
+        <translation>Если этот блок в цепи, считать его и последующие блоки верными и потенциально пропускать проверку их скриптов (0 для проверки всех, по умолчанию: %s, тестовая сеть: %s)</translation>
+    </message>
+    <message>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation>Максимально допустимое среднее отклонение времени участников. Локальное представление времени может меняться вперед или назад на это количество. (по умолчанию: %u секунд)</translation>
+    </message>
+    <message>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>Максимальная сумма комиссий (%s) для одной транзакции в бумажнике или сырой транзакции; слишком низкое значение может вызвать прерывание больших транзакций (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Пожалуйста убедитесь в корректности установки времени и даты на вашем компьютере! Если время установлено неверно, %s не будет работать правильно.</translation>
+    </message>
+    <message>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>Пожалуйста, внести свой вклад, если вы найдете %s полезными. Посетите  %s для получения дополнительной информации о программном обеспечении.</translation>
+    </message>
+    <message>
+        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
+        <translation>Запрашивать адреса участников с помощью DNS, если адресов мало (по умолчанию: 1, если не указан -connect)</translation>
+    </message>
+    <message>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation>Уменьшить размер хранилища за счёт обрезания (удаления) старых блоков. Будет разрешён вызов RPC метода pruneblockchain для удаления определённых блоков и разрешено автоматическое обрезание старых блоков, если указан целевой размер в Мб. Этот режим несовместим с -txindex и -rescan. Внимание: переключение этой опции обратно потребует полной загрузки цепи блоков. (по умолчанию: 0 = отключить обрезание блоков, 1 = разрешить ручное обрезание через RPC, &gt;%u = автоматически обрезать файлы блоков, чтобы они были меньше указанного размера в Мб)</translation>
+    </message>
+    <message>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation>Задать минимальный курс комиссии (в %s/Кб) для  транзакцийб включаемых в создаваемый блок. (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
+        <translation>Задать число потоков проверки скрипта (от %u до %d, 0=авто, &lt;0 = оставить столько ядер свободными, по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <translation>База данных блоков содержит блок, который появляется из будущего. Это может из-за некорректно установленных даты и времени на вашем компьютере. Остается только перестроивать базу блоков, если вы уверены, что дата и время корректны.</translation>
+    </message>
+    <message>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>Это пре-релизная тестовая сборка - используйте на свой страх и риск - не используйте для добычи или торговых приложений</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
+        <translation>Это комиссия, которую можно отбросить, если сдача окажется меньше пыли</translation>
+    </message>
+    <message>
+        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
+        <translation>Не удалось воспроизвести блоки. Вам необходимо пересобрать базу данных с помощью -reindex-chainstate.</translation>
+    </message>
+    <message>
+        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
+        <translation>Невозможно отмотать базу данных до пред-форкового состояния. Вам будет необходимо перекачать цепочку блоков.</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
+        <translation>Использовать UPnP для проброса порта (по умолчанию: 1, если используется прослушивание и нет -proxy)</translation>
+    </message>
+    <message>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation>Имя пользователя и хэш пароля для JSON-RPC соединений. Поле &lt;userpw&gt; использует формат: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Каноничный пример скрипта на питоне находится в share/rpcuser. Эта опция может быть указана несколько раз</translation>
+    </message>
+    <message>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation>Бумажник не будет создавать транзакции, которые нарушают лимиты цепочки пула в памяти (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
+        <translation>Внимание: похоже, в сети нет полного согласия! Некоторые майнеры, возможно, испытывают проблемы.</translation>
+    </message>
+    <message>
+        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>Внимание: мы не полностью согласны с подключенными участниками! Вам или другим участникам, возможно, следует обновиться.</translation>
+    </message>
+    <message>
+        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
+        <translation>Сохранять ли mempool при выключении и загружать ли его при запуске (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>%d of last 100 blocks have unexpected version</source>
+        <translation>%d из последних 100 блоков имеют непредвиденную версию</translation>
+    </message>
+    <message>
+        <source>%s corrupt, salvage failed</source>
+        <translation>%s поврежден, восстановить не удалось</translation>
+    </message>
+    <message>
+        <source>-maxmempool must be at least %d MB</source>
+        <translation>-maxmempool должен быть как минимум %d MB</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt; может быть:</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
+    </message>
+    <message>
+        <source>Append comment to the user agent string</source>
+        <translation>Добавить комментарий к строке пользовательского агента</translation>
+    </message>
+    <message>
+        <source>Attempt to recover private keys from a corrupt wallet on startup</source>
+        <translation>Попытаться восстановить приватные ключи из повреждённого бумажника при запуске</translation>
+    </message>
+    <message>
+        <source>Block creation options:</source>
+        <translation>Параметры создания блоков:</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>Не удаётся разрешить адрес в параметре -%s: '%s'</translation>
+    </message>
+    <message>
+        <source>Chain selection options:</source>
+        <translation>Параметры выбора цепочки:</translation>
+    </message>
+    <message>
+        <source>Change index out of range</source>
+        <translation>Изменение индекса вне диапазона</translation>
+    </message>
+    <message>
+        <source>Connection options:</source>
+        <translation>Параметры подключения:</translation>
+    </message>
+    <message>
+        <source>Copyright (C) %i-%i</source>
+        <translation>Copyright (C) %i-%i</translation>
+    </message>
+    <message>
+        <source>Corrupted block database detected</source>
+        <translation>БД блоков повреждена</translation>
+    </message>
+    <message>
+        <source>Debugging/Testing options:</source>
+        <translation>Параметры отладки/тестирования:</translation>
+    </message>
+    <message>
+        <source>Do not load the wallet and disable wallet RPC calls</source>
+        <translation>Не загружать бумажник и запретить обращения к нему через RPC</translation>
+    </message>
+    <message>
+        <source>Do you want to rebuild the block database now?</source>
+        <translation>Пересобрать БД блоков прямо сейчас?</translation>
+    </message>
+    <message>
+        <source>Enable publish hash block in &lt;address&gt;</source>
+        <translation>Включить публичный хеш блока в &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish hash transaction in &lt;address&gt;</source>
+        <translation>Включить публичный хеш транзакции в &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw block in &lt;address&gt;</source>
+        <translation>Включить публичный сырой блок в &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation>Включить публичную сырую транзакцию в &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable transaction replacement in the memory pool (default: %u)</source>
+        <translation>Включить замену транзакций в пуле памяти (по умолчанию:%u)</translation>
+    </message>
+    <message>
+        <source>Error creating %s: You can't create non-HD wallets with this version.</source>
+        <translation>Ошибка создания %s: Вы не можете создавать не-HD бумажники с помощью этой версии.</translation>
+    </message>
+    <message>
+        <source>Error initializing block database</source>
+        <translation>Ошибка инициализации БД блоков</translation>
+    </message>
+    <message>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>Ошибка инициализации окружения БД бумажника %s!</translation>
+    </message>
+    <message>
+        <source>Error loading %s</source>
+        <translation>Ошибка загрузки %s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet corrupted</source>
+        <translation>Ошибка загрузки %s: Бумажник поврежден</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet requires newer version of %s</source>
+        <translation>Ошибка загрузки %s: Для бумажника требуется более новая версия %s</translation>
+    </message>
+    <message>
+        <source>Error loading block database</source>
+        <translation>Ошибка чтения базы данных блоков</translation>
+    </message>
+    <message>
+        <source>Error opening block database</source>
+        <translation>Не удалось открыть БД блоков</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is low!</source>
+        <translation>Ошибка: мало места на диске!</translation>
+    </message>
+    <message>
+        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
+        <translation>Не удалось начать прослушивание на порту. Используйте -listen=0 если вас это устраивает.</translation>
+    </message>
+    <message>
+        <source>Failed to rescan the wallet during initialization</source>
+        <translation>Не удалось пересканировать бумажник во время инициализации</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>Импорт ...</translation>
+    </message>
+    <message>
+        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
+        <translation>Неверный или отсутствующий начальный блок. Неправильный каталог данных для сети?</translation>
+    </message>
+    <message>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>Начальная проверка исправности не удалась. %s завершает работу.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Неверная сумма для -%s=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
+        <translation>Неверная сумма для -discardfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
+        <translation>Недопустимая сумма для -fallbackfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
+        <translation>Сбрасывать транзакции из памяти на диск каждые &lt;n&gt; мегабайт (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Loading P2P addresses...</source>
+        <translation>Загрузка P2P адресов...</translation>
+    </message>
+    <message>
+        <source>Loading banlist...</source>
+        <translation>Загрузка банлиста...</translation>
+    </message>
+    <message>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation>Расположение куки входы(по умолчанию: data dir)</translation>
+    </message>
+    <message>
+        <source>Not enough file descriptors available.</source>
+        <translation>Недостаточно файловых дескрипторов.</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Соединяться только по сети &lt;net&gt; (ipv4, ipv6 или onion)</translation>
+    </message>
+    <message>
+        <source>Print this help message and exit</source>
+        <translation>Вывести эту справку и выйти</translation>
+    </message>
+    <message>
+        <source>Print version and exit</source>
+        <translation>Написать версию и выйти</translation>
+    </message>
+    <message>
+        <source>Prune cannot be configured with a negative value.</source>
+        <translation>Удаление блоков не может использовать отрицательное значение.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -txindex.</source>
+        <translation>Режим удаления блоков несовместим с -txindex.</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
+        <translation>Перестроить состояние цепи блоков и индекс блоков из blk*.dat файлов с диска</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state from the currently indexed blocks</source>
+        <translation>Перестроить индекс цепи из текущих индексированных блоков</translation>
+    </message>
+    <message>
+        <source>Replaying blocks...</source>
+        <translation>Воспроизведение блоков...</translation>
+    </message>
+    <message>
+        <source>Rewinding blocks...</source>
+        <translation>Перемотка блоков...</translation>
+    </message>
+    <message>
+        <source>Send transactions with full-RBF opt-in enabled (RPC only, default: %u)</source>
+        <translation>Отправлять транзакции с включенным full-RBF (только RPC, по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
+        <translation>Установить размер кэша БД в мегабайтах(от %d до %d, по умолчанию: %d)</translation>
+    </message>
+    <message>
         <source>Specify wallet file (within data directory)</source>
         <translation>Укажите файл бумажника (внутри каталога данных)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="344"/>
-        <source>Specify your own public address</source>
-        <translation>Укажите Ваш собственный публичный адрес</translation>
+        <source>The source code is available from %s.</source>
+        <translation>Исходный код доступен в %s.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="345"/>
-        <source>Spend unconfirmed change when sending transactions (default: 1)</source>
-        <translation>Тратить неподтвержденную сдачу при отправке транзакций (по умолчанию: 1)</translation>
+        <source>Transaction fee and change calculation failed</source>
+        <translation>Не удалось рассчитать комиссию и сдачу</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="346"/>
-        <source>Start Bitsend Core Daemon</source>
-        <translation>Запустить демона Bitsend Core</translation>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>Невозможно привязаться к %s на этом компьютере. Возможно, %s уже работает.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="347"/>
-        <source>System error: </source>
-        <translation>Системная ошибка: </translation>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>Неподдерживаемый аргумент -benchmark проигнорирован, используйте -debug=bench.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="348"/>
-        <source>This help message</source>
-        <translation>Эта справка</translation>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>Неподдерживаемый аргумент -debugnet проигнорирован, используйте -debug=net.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="349"/>
-        <source>This is intended for regression testing tools and app development.</source>
-        <translation>Это рассчитано на инструменты регрессионного тестирования и разработку приложений.</translation>
+        <source>Unsupported argument -tor found, use -onion.</source>
+        <translation>Обнаружен не поддерживаемый параметр -tor, используйте -onion.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="350"/>
-        <source>This is not a Xnode.</source>
-        <translation>Это не мастернода.</translation>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>Неподдерживаемая категория лога %s=%s.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="351"/>
-        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Порог для отключения неправильно ведущих себя участников (по умолчанию: 100)</translation>
+        <source>Upgrading UTXO database</source>
+        <translation>Модернизация базы данных UTXO</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="352"/>
-        <source>To use the %s option</source>
-        <translation>Чтобы использовать параметр %s</translation>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>Использовать UPnP для проброса порта (по умолчанию: %u)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="353"/>
-        <source>Transaction amount too small</source>
-        <translation>Сумма транзакции слишком мала</translation>
+        <source>Use the test chain</source>
+        <translation>Использовать тестовую цепочку</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="354"/>
-        <source>Transaction amounts must be positive</source>
-        <translation>Сумма транзакции должна быть положительна</translation>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>Комментарий пользователя (%s) содержит небезопасные символы.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="355"/>
-        <source>Transaction created successfully.</source>
-        <translation>Создание транзакции прошло успешно.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="356"/>
-        <source>Transaction fees are too high.</source>
-        <translation>Комиссия по транзакции слишком большая.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="357"/>
-        <source>Transaction not valid.</source>
-        <translation>Транзакция некорректна.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="358"/>
-        <source>Transaction too large</source>
-        <translation>Транзакция слишком большая</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="359"/>
-        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>Невозможно привязаться к %s на этом компьютере (привязка вернула ошибку %s)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="360"/>
-        <source>Unable to sign Xnode payment winner, wrong key?</source>
-        <translation>Невозможно подписать сообщение о мастерноде-победителе. Неправильный ключ?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="361"/>
-        <source>Unable to sign spork message, wrong key?</source>
-        <translation>Не удалось подписать spork-сообщение. Неправильный ключ?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="362"/>
-        <source>Unknown -socks proxy version requested: %i</source>
-        <translation>Запрошена неизвестная версия -socks прокси: %i</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="363"/>
-        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>В параметре -onlynet указана неизвестная сеть: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="364"/>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Обновить бумажник до последнего формата</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="365"/>
-        <source>Usage (deprecated, use bitsend-cli):</source>
-        <translation>Использование (устарело, используйте bitsend-cli):</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="366"/>
-        <source>Usage:</source>
-        <translation>Использование:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="367"/>
-        <source>Use KeePass 2 integration using KeePassHttp plugin (default: 0)</source>
-        <translation>Использовать интеграцию с KeePass 2 через плагин KeePassHttp (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="368"/>
-        <source>Use N separate Xnodes to anonymize funds  (2-8, default: 2)</source>
-        <translation>Использовать N отдельных мастернод для анонимизации средств (2-8, по умолчанию: 2)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="369"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Использовать OpenSSL (https) для подключений JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="370"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="371"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: 1, если используется прослушивание)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="372"/>
-        <source>Use the test network</source>
-        <translation>Использовать тестовую сеть</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="373"/>
-        <source>Username for JSON-RPC connections</source>
-        <translation>Имя для подключений JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="374"/>
-        <source>Value more than Darksend pool maximum allows.</source>
-        <translation>Превышено значение допустимой для пула Darksend суммы.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="375"/>
         <source>Verifying blocks...</source>
         <translation>Проверка блоков...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="376"/>
-        <source>Verifying wallet...</source>
-        <translation>Проверка бумажника...</translation>
+        <source>Wallet debugging/testing options:</source>
+        <translation>Параметры отладки/тестирования бумажника:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="377"/>
-        <source>Wait for RPC server to start</source>
-        <translation>Дождаться старта RPC сервера</translation>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите %s для завершения операции.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="378"/>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>Бумажник %s располагается вне каталога данных %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="379"/>
-        <source>Wallet is locked.</source>
-        <translation>Бумажник заблокирован.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="380"/>
-        <source>Wallet needed to be rewritten: restart Bitsend to complete</source>
-        <translation>Необходимо перезаписать бумажник: перезапустите Bitsend для завершения операции</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="381"/>
         <source>Wallet options:</source>
-        <translation>Параметры бумажника:</translation>
+        <translation>Настройки бумажника:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="382"/>
+        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
+        <translation>Разрешить подключения JSON-RPC с указанного источника. Разрешённые значения для &lt;ip&gt; — отдельный IP (например, 1.2.3.4), сеть/маска сети (например, 1.2.3.4/255.255.255.0) или сеть/CIDR (например, 1.2.3.4/24). Эту опцию можно использовать многократно</translation>
+    </message>
+    <message>
+        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
+        <translation>Привязаться к указанному адресу и внести в белый список подключающихся к нему участников. Используйте [хост]:порт для IPv6</translation>
+    </message>
+    <message>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Создавать новые файлы с системными правами по умолчанию вместо umask 077 (эффективно только при отключенном бумажнике)</translation>
+    </message>
+    <message>
+        <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
+        <translation>Обнаруживать собственный IP адрес (по умолчанию: 1 при прослушивании и без -externalip или -proxy)</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>Ошибка: не удалось начать прослушивание входящих подключений (прослушивание вернуло ошибку %s)</translation>
+    </message>
+    <message>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>Выполнить команду, когда приходит соответствующее сообщение о тревоге или наблюдается очень длинное расщепление цепи (%s в команде заменяется на сообщение)</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
+        <translation>Комиссии (в %s/Кб) меньшие этого значения считаются нулевыми для создания, ретрансляции, получения транзакции (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>Если paytxfee не задан, включить достаточную комиссию для подтверждения транзакции в среднем за n блоков (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Неверное значение для -maxtxfee=&lt;amount&gt;: '%s' (минимальная комиссия трансляции %s для предотвращения зависания транзакций)</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>Наибольший размер данных в носителе данных транзакций, которые мы передаем и генерируем (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>Использовать случайные учётные данные для каждого прокси-подключения. Эта функция позволяет изолировать потоки Tor (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to send after the fee has been deducted</source>
+        <translation>Сумма транзакции за вычетом комиссии слишком мала</translation>
+    </message>
+    <message>
+        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
+        <translation>Участники из белого списка не могуть быть забанены за DoS, и их транзакции всегда транслируются, даже если они уже содержатся в памяти. Полезно, например, для шлюза.</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation>Вам необходимо пересобрать базу данных с помощью -reindex, чтобы вернуться к полному режиму. Это приведёт к перезагрузке всей цепи блоков</translation>
+    </message>
+    <message>
+        <source>(default: %u)</source>
+        <translation>(по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>Принимать публичные REST-запросы (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>Автоматически создавать скрытый Tor сервис (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy</source>
+        <translation>Подключаться через SOCKS5 прокси</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
+        <translation>Ошибка загрузки %s: Вы не можете выключить HD в уже существующем HD кошельке</translation>
+    </message>
+    <message>
+        <source>Error reading from database, shutting down.</source>
+        <translation>Ошибка чтения базы данных, работа завершается.</translation>
+    </message>
+    <message>
+        <source>Error upgrading chainstate database</source>
+        <translation>Ошибка модернизации базы блокчейна</translation>
+    </message>
+    <message>
+        <source>Imports blocks from external blk000??.dat file on startup</source>
+        <translation>Импортировать блоки из внешнего файла blk000?.dat при запуске</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Информация</translation>
+    </message>
+    <message>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Неверный адрес или имя -onion: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid -proxy address or hostname: '%s'</source>
+        <translation>Неверный адрес или имя -proxy: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Неверное количество в параметре -paytxfee=&lt;кол-во&gt;: '%s' (должно быть как минимум %s)</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>Указана неверная сетевая маска в -whitelist: '%s'</translation>
+    </message>
+    <message>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>Держать в памяти до &lt;n&gt; несвязных транзакций (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Необходимо указать порт с помощью -whitebind: '%s'</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Параметры трансляции узла:</translation>
+    </message>
+    <message>
+        <source>RPC server options:</source>
+        <translation>Параметры сервера RPC:</translation>
+    </message>
+    <message>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>Уменьшите -maxconnections с %d до %d, из-за ограничений системы.</translation>
+    </message>
+    <message>
+        <source>Rescan the block chain for missing wallet transactions on startup</source>
+        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций при запуске</translation>
+    </message>
+    <message>
+        <source>Send trace/debug info to console instead of debug.log file</source>
+        <translation>Выводить информацию трассировки/отладки на консоль вместо файла debug.log</translation>
+    </message>
+    <message>
+        <source>Show all debugging options (usage: --help -help-debug)</source>
+        <translation>Показать все отладочные параметры (использование: --help -help-debug)</translation>
+    </message>
+    <message>
+        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
+        <translation>Сжимать файл debug.log при запуске клиента (по умолчанию: 1, если нет -debug)</translation>
+    </message>
+    <message>
+        <source>Signing transaction failed</source>
+        <translation>Не удалось подписать транзакцию</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir "%s" does not exist</source>
+        <translation>Указанный -walletdir "%s" не существует</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir "%s" is a relative path</source>
+        <translation>Указанный путь -walletdir "%s" является относительным</translation>
+    </message>
+    <message>
+        <source>Specified -walletdir "%s" is not a directory</source>
+        <translation>Указанный -walletdir "%s" не является директорией</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to pay the fee</source>
+        <translation>Сумма транзакции слишком мала для уплаты комиссии</translation>
+    </message>
+    <message>
+        <source>This is experimental software.</source>
+        <translation>Это экспериментальное ПО.</translation>
+    </message>
+    <message>
+        <source>Tor control port password (default: empty)</source>
+        <translation>Пароль от порта управления Tor (по умолчанию: пустой)</translation>
+    </message>
+    <message>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation>Порт управления Tor используется, если включено прослушивание onion (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Transaction amount too small</source>
+        <translation>Сумма транзакции слишком мала</translation>
+    </message>
+    <message>
+        <source>Transaction too large for fee policy</source>
+        <translation>Транзакция слишком большая для правил комиссии.</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>Транзакция слишком большая</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
+        <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %s)</translation>
+    </message>
+    <message>
+        <source>Unable to generate initial keys</source>
+        <translation>Невозможно создать ключи инициализации</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format on startup</source>
+        <translation>Обновить бумажник до последнего формата при запуске</translation>
+    </message>
+    <message>
+        <source>Username for JSON-RPC connections</source>
+        <translation>Имя для подключений JSON-RPC</translation>
+    </message>
+    <message>
+        <source>Verifying wallet(s)...</source>
+        <translation>Проверка кошелька(ов) ...</translation>
+    </message>
+    <message>
+        <source>Wallet %s resides outside wallet directory %s</source>
+        <translation>Кошелёк %s расположен за пределами директории кошелька %s</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Внимание</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="383"/>
-        <source>Warning: Deprecated argument -debugnet ignored, use -debug=net</source>
-        <translation>Внимание: опция -debugnet устарела и проигнорирована, используйте -debug=net</translation>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>Внимание: неизвестные правила вступили в силу(versionbit %i)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="384"/>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Внимание: эта версия устарела, требуется обновление!</translation>
+        <source>Whether to operate in a blocks only mode (default: %u)</source>
+        <translation>Будет работать в режиме только блоков (по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Wrong state.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="385"/>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
+        <translation>Вам необходимо пересобрать базу данных с помощью -reindex, чтобы изменить -txindex</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="386"/>
         <source>Zapping all transactions from wallet...</source>
-        <translation>Удаление всех транзакций из кошелька...</translation>
+        <translation>Стираем все транзакции из кошелька...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="387"/>
-        <source>on startup</source>
-        <translation>при запуске</translation>
+        <source>ZeroMQ notification options:</source>
+        <translation>ZeroMQ параметры оповещения:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="388"/>
-        <source>version</source>
-        <translation>версия</translation>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Пароль для подключений JSON-RPC</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="389"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat повреждён, спасение данных не удалось</translation>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Выполнить команду, когда появляется новый блок (%s в команде заменяется на хэш блока)</translation>
+    </message>
+    <message>
+        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
+        <translation>Разрешить поиск в DNS для -addnode, -seednode и -connect</translation>
+    </message>
+    <message>
+        <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
+        <translation>(1 = сохранять метаданные транзакции: например, владельца аккаунта и информацию запроса платежа; 2 = отбросить метаданные)</translation>
+    </message>
+    <message>
+        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>Установлено очень большое значение -maxtxfee. Такие большие комиссии могут быть уплачены в отдельной транзакции.</translation>
+    </message>
+    <message>
+        <source>Bind to given address to listen for JSON-RPC connections. This option is ignored unless -rpcallowip is also passed. Port is optional and overrides -rpcport. Use [host]:port notation for IPv6. This option can be specified multiple times (default: 127.0.0.1 and ::1 i.e., localhost, or if -rpcallowip has been specified, 0.0.0.0 and :: i.e., all addresses)</source>
+        <translation>Привязаться к указанному адресу для прослушивания JSON-RPC подключений. Этот параметр игнорируется, если не задан -rpcallowip. Порт необязателен и имеет приоритет над -rpcport. Используйте запись [хост]:порт для IPv6. Эту опцию можно использовать многократно (по умолчанию: 127.0.0.1 и ::1, т.е. localhost, или, если указан -rpcallowip, 0.0.0.0 и ::, т.е. все адреса)</translation>
+    </message>
+    <message>
+        <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
+        <translation>Не хранить транзакции в памяти дольше, чем &lt;n&gt; часов (по умолчанию %u)</translation>
+    </message>
+    <message>
+        <source>Equivalent bytes per sigop in transactions for relay and mining (default: %u)</source>
+        <translation>Эквивалентных байт на sigop в транзакциях для ретрансляции или добычи (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
+        <translation>Ошибка загрузки %s: Вы не можете включить HD в уже существующем не-HD кошельке</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
+        <translation>Ошибка загрузки бумажника %s. -wallet должен содержать лишь имя файла, а не путь.</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Комиссии (в %s/Кб) меньшие этого значения считаются нулевыми при создании транзакций (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
+        <translation>Всегда ретранслировать транзакции, полученные из белого списка участников, даже если они нарушают локальную политику ретрансляции (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
+        <translation>Насколько тщательна проверка контрольных блоков -checkblocks (0-4, по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
+        <translation>Держать полный индекс транзакций, используемый RPC-запросом getrawtransaction (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>Число секунд блокирования неправильно ведущих себя узлов (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>Выводить отладочную информацию (по умолчанию: %u, указание &lt;category&gt; необязательно)</translation>
+    </message>
+    <message>
+        <source>Set maximum BIP141 block weight to this * 4. Deprecated, use blockmaxweight</source>
+        <translation>Задать максимальный вес BIP141 блока как это * 4. Устарело, используйте blockmaxweight</translation>
+    </message>
+    <message>
+        <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
+        <translation>Задаёт сериализацию сырой транзакции или хекса блока, возвращённого в не подробном режиме, non-segwit(0) или segwit(1) (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Specify directory to hold wallets (default: &lt;datadir&gt;/wallets if it exists, otherwise &lt;datadir&gt;)</source>
+        <translation>Укажите папку для хранения бумажников (по умолчанию: &lt;datadir&gt;/wallets если она существует, иначе &lt;datadir&gt;)</translation>
+    </message>
+    <message>
+        <source>Specify location of debug log file: this can be an absolute path or a path relative to the data directory (default: %s)</source>
+        <translation>Укажите расположение файла журнала отладки: это может быть абсолютный путь или путь относительно папки данных (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation>Поддерживать фильтрацию блоков и транзакций с помощью фильтра Блума (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
+        <translation>Доля комиссии (в %s/Кб), которая означает допустимость отбрасывания сдачи путём добавления её к комиссии (по умолчанию: %s).</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may pay when fee estimates are not available.</source>
+        <translation>Это комиссия за транзакцию, которую вы можете заплатить, когда расчёт комиссии недоступен.</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit %s и криптографическое ПО, написанное Eric Young и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>Текущая длина строки версии сети (%i) превышает максимальную длину (%i). Увеливается количество или размер uacomments.</translation>
+    </message>
+    <message>
+        <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
+        <translation>Пытается ограничить исходящий трафик до (в МБ за 24ч), 0 = не ограничивать (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>Обнаружен не поддерживаемый аргумент -socks. Выбор версии SOCKS более невозможен, поддерживаются только прокси SOCKS5.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
+        <translation>Не поддерживаемый аргумент -whitelistalwaysrelay игнорируется, используйте -whitelistrelay и/или -whitelistforcerelay.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>Использовать отдельный прокси SOCKS5 для соединения с участниками через скрытые сервисы Tor (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
+        <translation>Внимание: Получена неизвестная версия блока! Возможно неизвестные правила вступили в силу.</translation>
+    </message>
+    <message>
+        <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>Внимание: Файл бумажника поврежден, данные восстановлены! Оригинальный %s сохранен как %s в %s; Если баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
+    </message>
+    <message>
+        <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
+        <translation>Вносить в белый список участников, подключающихся с указанного IP (напр. 1.2.3.4) или CIDR-адреса сети (напр. 1.2.3.0/24). Можно использовать многократно.</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>%s задан слишком высоким!</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>(по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>Всегда запрашивать адреса участников с помощью DNS (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
+        <translation>Ошибка загрузки бумажника %s. Имя в параметре -wallet должно быть именем обычного файла.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
+        <translation>Ошибка загрузки бумажника %s. В параметре -wallet указано повторяющееся имя файла.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
+        <translation>Ошибка загрузки бумажника %s. Неверные символы в параметре -wallet.</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>Сколько блоков проверять при запуске (по умолчанию: %u, 0 = все)</translation>
+    </message>
+    <message>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>Включить IP-адреса в отладочный вывод (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation>Пул ключей опустел, пожалуйста, выполните keypoolrefill</translation>
+    </message>
+    <message>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: %u или %u в тестовой сети)</translation>
+    </message>
+    <message>
+        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: %u или %u в тестовой сети)</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
+        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Make the wallet broadcast transactions</source>
+        <translation>Рассылать транзакции из бумажника</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Максимальный размер буфера приёма на соединение, &lt;n&gt;*1000 байт (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Максимальный размер буфера отправки на соединение, &lt;n&gt;*1000 байт (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Prepend debug output with timestamp (default: %u)</source>
+        <translation>Дописывать отметки времени к отладочному выводу (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>Транслировать и генерировать транзакции носителей данных (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Relay non-P2SH multisig (default: %u)</source>
+        <translation>Транслировать не-P2SH мультиподпись (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
+        <translation>Установить размер пула ключей в &lt;n&gt; (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Set maximum BIP141 block weight (default: %d)</source>
+        <translation>Задать максимальное BIP141 значение блока (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Set the number of threads to service RPC calls (default: %d)</source>
+        <translation>Задать число потоков выполнения запросов RPC (по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>Указать тайм-аут соединения в миллисекундах (минимум: 1, по умолчанию: %d)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>Указать pid-файл (по умолчанию: %s)</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>Тратить неподтвержденную сдачу при отправке транзакций (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Starting network threads...</source>
+        <translation>Запускаем сетевые потоки...</translation>
+    </message>
+    <message>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation>Бумажник постарается не платить меньше, чем минимальная комиссия передачи.</translation>
+    </message>
+    <message>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation>Это минимальная комиссия, которую вы платите с каждой транзакцией.</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Это комиссия, которую вы заплатите за эту транзакцию.</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>Порог для отключения неправильно ведущих себя узлов (по умолчанию: %u)</translation>
+    </message>
+    <message>
+        <source>Transaction amounts must not be negative</source>
+        <translation>Сумма транзакции не должна быть негативной</translation>
+    </message>
+    <message>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation>У транзакции слишком длинная цепочка в пуле в памяти.</translation>
+    </message>
+    <message>
+        <source>Transaction must have at least one recipient</source>
+        <translation>У транзакции должен быть как минимум один получатель</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: '%s'</source>
+        <translation>В параметре -onlynet указана неизвестная сеть: '%s'</translation>
+    </message>
+    <message>
+        <source>Insufficient funds</source>
+        <translation>Недостаточно монет</translation>
+    </message>
+    <message>
+        <source>Loading block index...</source>
+        <translation>Загрузка индекса блоков...</translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>Загрузка бумажника...</translation>
+    </message>
+    <message>
+        <source>Cannot downgrade wallet</source>
+        <translation>Не удаётся понизить версию бумажника</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>Сканирование...</translation>
+    </message>
+    <message>
+        <source>Done loading</source>
+        <translation>Загрузка завершена</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
 </context>
 </TS>

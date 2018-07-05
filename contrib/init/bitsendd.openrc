@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 # backward compatibility for existing gentoo layout 
 #
@@ -18,8 +18,8 @@ BITSENDD_BIN=${BITSENDD_BIN:-/usr/bin/bitsendd}
 BITSENDD_NICE=${BITSENDD_NICE:-${NICELEVEL:-0}}
 BITSENDD_OPTS="${BITSENDD_OPTS:-${BITSEND_OPTS}}"
 
-name="Bitsend Core Daemon"
-description="Bitsend cryptocurrency P2P network daemon"
+name="bitsend Core Daemon"
+description="bitsend cryptocurrency P2P network daemon"
 
 command="/usr/bin/bitsendd"
 command_args="-pid=\"${BITSENDD_PIDFILE}\" \
@@ -76,15 +76,15 @@ checkconfig()
 		eerror ""
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."
-		eerror "You can generate a suitable random password using the following"
+		eerror "You can generate a suitable random password using the following "
 		eerror "command from the shell:"
 		eerror ""
 		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
 		eerror ""
-		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Bitsend Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"bitsend Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

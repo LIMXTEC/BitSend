@@ -12,7 +12,7 @@ Gavin Andresen:
 * Clean shutdown on SIGTERM on Linux.
 
 Download:
-http://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.3.13/
+http://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.3.13/
 
 (Thanks Laszlo for the Mac OSX build!)
 

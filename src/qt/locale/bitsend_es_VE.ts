@@ -41,10 +41,38 @@
         <source>&amp;Delete</source>
         <translation>&amp;Borrar</translation>
     </message>
+    <message>
+        <source>Choose the address to receive coins with</source>
+        <translation>Elige la dirección para recibir monedas</translation>
+    </message>
+    <message>
+        <source>Sending addresses</source>
+        <translation>Envío de direcciones</translation>
+    </message>
+    <message>
+        <source>Receiving addresses</source>
+        <translation>Direcciones de recepción</translation>
+    </message>
+    <message>
+        <source>Copy &amp;Label</source>
+        <translation>Copiar &amp;Etiqueta</translation>
+    </message>
+    <message>
+        <source>&amp;Edit</source>
+        <translation>&amp;Editar</translation>
+    </message>
+    <message>
+        <source>Export Address List</source>
+        <translation>Exportar lista de direcciones</translation>
+    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
-    </context>
+    <message>
+        <source>(no label)</source>
+        <translation>(sin etiqueta)</translation>
+    </message>
+</context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -68,7 +96,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje...</translation>
@@ -114,8 +142,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Enviar monedas a una dirección Bitsend</translation>
+        <source>Send coins to a bitsend address</source>
+        <translation>Enviar monedas a una dirección bitsend</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -130,8 +158,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -158,12 +186,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones Bitsend para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones bitsend para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Bitsend especificas</translation>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones bitsend especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -292,6 +320,34 @@
         <source>Confirmed</source>
         <translation>Confirmado</translation>
     </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Copiar cantidad</translation>
+    </message>
+    <message>
+        <source>Copy fee</source>
+        <translation>Copiar comisión</translation>
+    </message>
+    <message>
+        <source>Copy bytes</source>
+        <translation>Copiar bytes</translation>
+    </message>
+    <message>
+        <source>Copy change</source>
+        <translation>Copiar cambio</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>si</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>no</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(sin etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>EditAddressDialog</name>
@@ -365,12 +421,24 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>Welcome</source>
+        <translation>Bienvenido</translation>
+    </message>
+    <message>
+        <source>Welcome to %1.</source>
+        <translation>Bienvenido a %1.</translation>
+    </message>
+    <message>
         <source>Use the default data directory</source>
         <translation>Usar el directorio de datos por defecto</translation>
     </message>
     <message>
         <source>Use a custom data directory:</source>
         <translation>Usa un directorio de datos personalizado:</translation>
+    </message>
+    <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -428,6 +496,10 @@
     <message>
         <source>none</source>
         <translation>ninguno</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Error</translation>
     </message>
     </context>
 <context>
@@ -503,6 +575,10 @@
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
+    <message>
+        <source>(no label)</source>
+        <translation>(sin etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -530,7 +606,27 @@
         <source>Dust:</source>
         <translation>Polvo:</translation>
     </message>
-    </context>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Copiar cantidad</translation>
+    </message>
+    <message>
+        <source>Copy fee</source>
+        <translation>Copiar comisión</translation>
+    </message>
+    <message>
+        <source>Copy bytes</source>
+        <translation>Copiar bytes</translation>
+    </message>
+    <message>
+        <source>Copy change</source>
+        <translation>Copiar cambio</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(sin etiqueta)</translation>
+    </message>
+</context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -565,6 +661,10 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
+    <message>
+        <source>(no label)</source>
+        <translation>(sin etiqueta)</translation>
+    </message>
     </context>
 <context>
     <name>TransactionView</name>
@@ -608,8 +708,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -630,6 +730,14 @@
     <message>
         <source>Information</source>
         <translation>Información</translation>
+    </message>
+    <message>
+        <source>Transaction amount too small</source>
+        <translation>Transacción muy pequeña</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>Transacción muy grande</translation>
     </message>
     <message>
         <source>Warning</source>

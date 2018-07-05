@@ -1,1263 +1,755 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi" version="2.0">
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Bitsend Core</source>
-        <translation>Tietoja Bitsend Core:sta</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Bitsend Core&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Bitsend Core&lt;/b&gt; versio</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
-Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
- <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="111"/>
-        <source>
-This is experimental software.
-
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
-        <translation>
-Tämä on kokeellinen ohjelmisto.
-
-Levitetään MIT/X11 ohjelmistolisenssin alaisuudessa. Tarkemmat tiedot löytyvät tiedostosta COPYING tai osoitteesta http://www.opensource.org/licenses/mit-license.php.
-
-Tämä ohjelma sisältää OpenSSL projektin OpenSSL työkalupakin (http://www.openssl.org/), Eric Youngin (eay@cryptsoft.com) kehittämän salausohjelmiston sekä Thomas Bernardin UPnP ohjelmiston.
-
-Käännös päivitetty: 29.3.2015 by AjM.</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>Copyright</source>
-        <translation>Tekijänoikeus</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Bitsend Core kehittäjät</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Bitsend Core kehittäjät</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="43"/>
-        <location filename="../utilitydialog.cpp" line="45"/>
-        <source>(%1-bit)</source>
-        <translation>(%1-bit)</translation>
-    </message>
-</context>
+<TS language="fi" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="30"/>
-        <source>Double-click to edit address or label</source>
-        <translation>Kaksoisklikkaa muokataksesi osoitetta tai nimeä</translation>
+        <source>Right-click to edit address or label</source>
+        <translation>Valitse hiiren oikealla painikkeella muokataksesi osoitetta tai nimikettä</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="57"/>
         <source>Create a new address</source>
         <translation>Luo uusi osoite</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="60"/>
         <source>&amp;New</source>
         <translation>&amp;Uusi</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="71"/>
         <source>Copy the currently selected address to the system clipboard</source>
         <translation>Kopioi valittu osoite leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="74"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopioi</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="85"/>
+        <source>C&amp;lose</source>
+        <translation>S&amp;ulje</translation>
+    </message>
+    <message>
         <source>Delete the currently selected address from the list</source>
         <translation>Poista valittu osoite listalta</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="88"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Poista</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="112"/>
         <source>Export the data in the current tab to a file</source>
         <translation>Vie auki olevan välilehden tiedot tiedostoon</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="115"/>
         <source>&amp;Export</source>
-        <translation>&amp;Vie...</translation>
+        <translation>&amp;Vie</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="132"/>
-        <source>C&amp;lose</source>
-        <translation>&amp;Sulje</translation>
+        <source>&amp;Delete</source>
+        <translation>&amp;Poista</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="45"/>
         <source>Choose the address to send coins to</source>
-        <translation>Valitse osoite johon varat lähetetään</translation>
+        <translation>Valitse osoite johon kolikot lähetetään</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="46"/>
         <source>Choose the address to receive coins with</source>
-        <translation>Valitse vastaanottava osoite</translation>
+        <translation>Valitse osoite kolikoiden vastaanottamiseen</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="51"/>
         <source>C&amp;hoose</source>
-        <translation>&amp;Valitse</translation>
+        <translation>V&amp;alitse</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="57"/>
         <source>Sending addresses</source>
-        <translation>Lähettävä osoite</translation>
+        <translation>Lähetysosoitteet</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="58"/>
         <source>Receiving addresses</source>
-        <translation>Vastaanottava osoite</translation>
+        <translation>Vastaanotto-osoitteet</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="65"/>
-        <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Nämä ovat sinun Bitsend osoitteesi maksujen lähetykseen. Tarkista aina lähetettävä määrä ja vastaanottajan osoite ennen kuin lähetät varoja.</translation>
+        <source>These are your bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Nämä ovat bitsend-osoitteesi maksujen lähettämistä varten. Tarkista aina määrä ja vastaanotto-osoite ennen kolikoiden lähettämistä.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="69"/>
-        <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Nämä ovat sinun Bitsend osoitteesi suoritusten vastaanottamiseen. Suositellaan että annat uuden osoitteen kullekin siirtotapahtumalle.</translation>
+        <source>These are your bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Tässä ovat bitsend vastaanotto-osoitteesi. On suositeltavaa käyttää uutta vastaanotto-osoitetta jokaista lähetystä varten.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="75"/>
         <source>&amp;Copy Address</source>
-        <translation>&amp;Kopioi Osoite</translation>
+        <translation>&amp;Kopioi osoite</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="76"/>
         <source>Copy &amp;Label</source>
-        <translation>Kopioi &amp;Nimi</translation>
+        <translation>Kopioi &amp;nimike</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="77"/>
         <source>&amp;Edit</source>
         <translation>&amp;Muokkaa</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="271"/>
         <source>Export Address List</source>
-        <translation>Vie osoitekirja</translation>
+        <translation>Vie osoitelista</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="272"/>
         <source>Comma separated file (*.csv)</source>
-        <translation>Pilkuilla eritelty tiedosto (*.csv)</translation>
+        <translation>Pilkuilla erotettu tiedosto (*.csv)</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="285"/>
         <source>Exporting Failed</source>
         <translation>Vienti epäonnistui</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="286"/>
-        <source>There was an error trying to save the address list to %1.</source>
-        <translation>Osoitelistan tallennuksessa tapahtui virhe tiedostoon %1.</translation>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Virhe tallentaessa osoitelistaa kohteeseen %1. Yritä uudelleen.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Label</source>
-        <translation>Nimi</translation>
+        <translation>Nimike</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Address</source>
         <translation>Osoite</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="205"/>
         <source>(no label)</source>
-        <translation>(ei nimeä)</translation>
+        <translation>(ei nimikettä)</translation>
     </message>
 </context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="26"/>
         <source>Passphrase Dialog</source>
-        <translation>Salasanan Dialogi</translation>
+        <translation>Tunnuslauseen tekstinsyöttökenttä</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="47"/>
         <source>Enter passphrase</source>
-        <translation>Kirjoita salasana</translation>
+        <translation>Kirjoita tunnuslause</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="61"/>
         <source>New passphrase</source>
-        <translation>Uusi salasana</translation>
+        <translation>Uusi tunnuslause</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="75"/>
         <source>Repeat new passphrase</source>
-        <translation>Uusi salasana uudelleen</translation>
+        <translation>Toista uusi tunnuslause</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="108"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Poistaa käytöstä rahojen lähetyksen kun käyttöjärjestelmän käyttäjätili on vaarantunut. Ei tarjoa oikeaa turvallisuutta.</translation>
+        <source>Show password</source>
+        <translation>Näytä salasana</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="111"/>
-        <source>For anonymization only</source>
-        <translation>Vain anonymisointia varten</translation>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Kirjoita uusi salauslause lompakolle.&lt;br/&gt;Käytä salauslausetta jossa on joko&lt;b&gt;kymmenen tai useampi satunnainen merkki&lt;/b&gt;, tai&lt;b&gt;vähintään kahdeksan sanaa&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="41"/>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Anna lompakolle uusi salasana.&lt;br/&gt;Käytä salasanaa jossa on ainakin  &lt;b&gt;10 satunnaista merkkiä&lt;/b&gt; tai &lt;b&gt;kahdeksan sanaa&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="42"/>
         <source>Encrypt wallet</source>
         <translation>Salaa lompakko</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="48"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Tätä toimintoa varten sinun täytyy antaa lompakon salasana sen avaamiseksi.</translation>
+        <translation>Tämä toiminto vaatii lompakkosi tunnuslauseen sen avaamiseksi</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="53"/>
         <source>Unlock wallet</source>
         <translation>Avaa lompakko</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="56"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Tätä toimintoa varten sinun täytyy antaa lompakon salasana salauksen purkuun.</translation>
+        <translation>Tämä toiminto vaatii lompakkosia tunnuslauseen salauksen purkuun</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="61"/>
         <source>Decrypt wallet</source>
         <translation>Pura lompakon salaus</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="64"/>
         <source>Change passphrase</source>
         <translation>Vaihda salasana</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="65"/>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Anna vanha ja uusi salasana.</translation>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <translation>Syötä vanha ja uusi tunnuslause lompakolle.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="112"/>
         <source>Confirm wallet encryption</source>
-        <translation>Vahvista lompakon salaus</translation>
+        <translation>Vahvista lompakon salaaminen</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BSD&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakon ja unohdat salasanan,
-&lt;b&gt;MENETÄT KAIKKI BSDISI&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
+        <translation>Varoitus: Jos salaat lompakkosi ja menetät tunnuslauseesi, &lt;b&gt;MENETÄT KAIKKI BITSENDISI&lt;/b&gt;!</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Haluatko varmasti salata lompakkosi?</translation>
+        <translation>Oletko varma että haluat salata lompakkosi?</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="122"/>
-        <location filename="../askpassphrasedialog.cpp" line="181"/>
         <source>Wallet encrypted</source>
-        <translation>Lompakko salattu</translation>
+        <translation>Lompakko salattiin</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="124"/>
-        <source>Bitsend will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
-        <translation>Bitsend sulkeutuu nyt salauksen viimeistelyä varten. Muista että salaus pelkästään ei voi estää bitsendiesi varastamista jos koneesi saastuu haittaohjelmilla tai viruksilla.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>%1 sulkeutuu lopettaakseen salausprosessin. Muista, että salattukaan lompakko ei täysin suojaa sitä haittaohjelmien aiheuttamilta varkauksilta.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="128"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>TÄRKEÄÄ: Kaikki vanhat lompakon varmuuskopiot pitäisi korvata uusilla salatuilla varmuuskopioilla. Turvallisuussyistä edelliset salaamattomat varmuuskopiot muuttuvat turhiksi kun aloitat uuden salatun lompakon käytön.</translation>
+        <translation>TÄRKEÄÄ: Kaikki tekemäsi vanhan lompakon varmuuskopiot pitäisi korvata uusilla suojatuilla varmuuskopioilla. Turvallisuussyistä edelliset varmuuskopiot muuttuvat turhiksi, kun aloitat uuden suojatun lompakon käytön.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="137"/>
-        <location filename="../askpassphrasedialog.cpp" line="144"/>
-        <location filename="../askpassphrasedialog.cpp" line="187"/>
-        <location filename="../askpassphrasedialog.cpp" line="193"/>
         <source>Wallet encryption failed</source>
-        <translation>Lompakon salaus epäonnistui</translation>
+        <translation>Lompakon salaaminen epäonnistui</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="138"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Lompakon salaaminen epäonnistui sisäisen virheen vuoksi. Lompakkoasi ei salattu.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="145"/>
-        <location filename="../askpassphrasedialog.cpp" line="194"/>
         <source>The supplied passphrases do not match.</source>
-        <translation>Annetut salasanat eivät täsmää.</translation>
+        <translation>Annetut salauslauseet eivät täsmää.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="157"/>
         <source>Wallet unlock failed</source>
-        <translation>Lompakon avaaminen epäonnistui.</translation>
+        <translation>Lompakon lukituksen avaaminen epäonnistui</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="158"/>
-        <location filename="../askpassphrasedialog.cpp" line="169"/>
-        <location filename="../askpassphrasedialog.cpp" line="188"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Annettu salasana oli väärä.</translation>
+        <translation>Annettu salauslause lompakon avaamiseksi oli väärä.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="168"/>
         <source>Wallet decryption failed</source>
-        <translation>Lompakon salauksen purku epäonnistui.</translation>
+        <translation>Lompakon salauksen purkaminen epäonnistui</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="182"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Lompakon salasana vaihdettiin onnistuneesti.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="230"/>
-        <location filename="../askpassphrasedialog.cpp" line="254"/>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Varoitus: Caps Lock on käytössä!</translation>
+        <translation>Varoitus: Caps Lock-painike on päällä!</translation>
     </message>
 </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>BanTableModel</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="76"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>IP/Netmask</source>
+        <translation>IP/Verkon peite</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="85"/>
-        <source>Wallet</source>
-        <translation>Lompakko</translation>
+        <source>Banned Until</source>
+        <translation>Estetty kunnes</translation>
+    </message>
+</context>
+<context>
+    <name>bitsendGUI</name>
+    <message>
+        <source>Sign &amp;message...</source>
+        <translation>&amp;Allekirjoita viesti...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="87"/>
-        <source>Node</source>
-        <translation>Solmu</translation>
+        <source>Synchronizing with network...</source>
+        <translation>Synkronoidaan verkon kanssa...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="101"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>[testnet]</source>
-        <translation>[testiverkko]</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="227"/>
         <source>&amp;Overview</source>
         <translation>&amp;Yleisnäkymä</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="228"/>
+        <source>Node</source>
+        <translation>Solmu</translation>
+    </message>
+    <message>
         <source>Show general overview of wallet</source>
-        <translation>Lompakon tilanteen yleisnäkymä</translation>
+        <translation>Lompakon tilanteen yleiskatsaus</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="234"/>
-        <source>&amp;Send</source>
-        <translation>&amp;Lähetä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="235"/>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Lähetä varoja Bitsend osoitteeseen</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="241"/>
-        <source>&amp;Receive</source>
-        <translation>&amp;Vastaanota</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="242"/>
-        <source>Request payments (generates QR codes and bitsend: URIs)</source>
-        <translation>Pyydä maksuja (Luo QR koodit ja Bitsend: URIt)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
-        <translation>&amp;Tapahtumat</translation>
+        <translation>&amp;Rahansiirrot</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
-        <translation>Selaa tapahtumahistoriaa</translation>
+        <translation>Selaa rahansiirtohistoriaa</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>L&amp;opeta</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Sulje ohjelma</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="271"/>
-        <location filename="../bitsendgui.cpp" line="273"/>
-        <source>&amp;About Bitsend Core</source>
-        <translation>&amp;Tietoja Bitsend Core:sta</translation>
+        <source>&amp;About %1</source>
+        <translation>&amp;Tietoja %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="274"/>
-        <source>Show information about Bitsend</source>
-        <translation>Näytä tietoja Bitsend Core:sta</translation>
+        <source>Show information about %1</source>
+        <translation>Näytä tietoa aiheesta %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="277"/>
-        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>Tietoja &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
-        <translation>Näytä tietoja QT:sta</translation>
+        <translation>Näytä tietoja Qt:ta</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>&amp;Asetukset...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="284"/>
-        <source>Modify configuration options for Bitsend</source>
-        <translation>Muuta Bitsend asetuksia</translation>
+        <source>Modify configuration options for %1</source>
+        <translation>Muuta kohteen %1 kokoonpanoasetuksia</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="287"/>
-        <location filename="../bitsendgui.cpp" line="289"/>
-        <source>&amp;Show / Hide</source>
-        <translation>&amp;Näytä / Piilota</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="290"/>
-        <source>Show or hide the main Window</source>
-        <translation>Näytä tai piilota Bitsend pääikkuna</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Salaa Lompakko...</translation>
+        <translation>&amp;Salaa lompakko...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="293"/>
-        <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Salaa yksityiset avaimet jotka kuuluvat lompakkoosi</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
         <translation>&amp;Varmuuskopioi Lompakko...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="296"/>
-        <source>Backup wallet to another location</source>
-        <translation>Varmuuskopioi lompakko toiseen sijaintiin</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Vaihda Salasana...</translation>
+        <translation>&amp;Vaihda Tunnuslause...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="298"/>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>Vaihda lompakon salaukseen käytettävä salasana</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="299"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Avaa Lompakko...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="300"/>
-        <source>Unlock wallet</source>
-        <translation>Avaa lompakko</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="301"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>&amp;Lukitse Lompakko</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="302"/>
-        <source>Sign &amp;message...</source>
-        <translation>&amp;Allekirjoita Viesti...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="303"/>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Allekirjoita viestit Bitsend osoitteillasi todistaaksesi että omistat ne</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="304"/>
-        <source>&amp;Verify message...</source>
-        <translation>Tarkista &amp;Viesti...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="305"/>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Tarkista viestit ollaksesi varma että ne on allekirjoitettu määritetyillä Bitsend osoitteilla</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="307"/>
-        <source>&amp;Information</source>
-        <translation>T&amp;ietoa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="308"/>
-        <source>Show diagnostic information</source>
-        <translation>Näytä diagnostiikka tietoja</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="309"/>
-        <source>&amp;Debug console</source>
-        <translation>&amp;Testausikkuna</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="310"/>
-        <source>Open debugging console</source>
-        <translation>Avaa testausikkuna</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="311"/>
-        <source>&amp;Network Monitor</source>
-        <translation>&amp;Verkkoliikenne</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="312"/>
-        <source>Show network monitor</source>
-        <translation>Näytä verkkoliikenne</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="313"/>
-        <source>Open &amp;Configuration File</source>
-        <translation>Avaa &amp;Asetustiedosto</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="314"/>
-        <source>Open configuration file</source>
-        <translation>Avaa asetustiedosto</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
-        <translation>&amp;Lähettävät Osoitteet...</translation>
+        <translation>&amp;Lähetysosoitteet...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="317"/>
-        <source>Show the list of used sending addresses and labels</source>
-        <translation>Näytä lähettämiseen käytettyjen osoitteiden ja nimien lista</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
-        <translation>&amp;Vastaanottavat Osoitteet...</translation>
+        <translation>&amp;Vastaanotto-osoitteet...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="319"/>
-        <source>Show the list of used receiving addresses and labels</source>
-        <translation>Näytä vastaanottamiseen käytettyjen osoitteiden ja nimien lista</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>Avaa &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="322"/>
-        <source>Open a bitsend: URI or payment request</source>
-        <translation>Avaa Bitsend: URI tai maksupyyntö</translation>
+        <source>Click to disable network activity.</source>
+        <translation>Paina poistaaksesi verkkoyhteysilmaisin käytöstä.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="324"/>
-        <source>&amp;Command-line options</source>
-        <translation>&amp;Komentorivin valinnat</translation>
+        <source>Network activity disabled.</source>
+        <translation>Verkkoyhteysmittari pois käytöstä</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="325"/>
-        <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
-        <translation>Näytä Bitsend Core ohjelista komentorivin valinnoista</translation>
+        <source>Click to enable network activity again.</source>
+        <translation>Paina ottaaksesi verkkoyhteysilmaisin uudelleen käyttöön.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="361"/>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>Synkronoidaan Tunnisteita (%1%)...</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk...</source>
+        <translation>Ladataan lohkoindeksiä...</translation>
+    </message>
+    <message>
+        <source>Send coins to a bitsend address</source>
+        <translation>Lähetä kolikoita bitsend-osoitteeseen</translation>
+    </message>
+    <message>
+        <source>Backup wallet to another location</source>
+        <translation>Varmuuskopioi lompakko toiseen sijaintiin</translation>
+    </message>
+    <message>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation>Vaihda lompakon salaukseen käytettävä tunnuslause</translation>
+    </message>
+    <message>
+        <source>&amp;Debug window</source>
+        <translation>&amp;Testausikkuna</translation>
+    </message>
+    <message>
+        <source>Open debugging and diagnostic console</source>
+        <translation>Avaa debuggaus- ja diagnostiikkakonsoli</translation>
+    </message>
+    <message>
+        <source>&amp;Verify message...</source>
+        <translation>Varmista &amp;viesti...</translation>
+    </message>
+    <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Lompakko</translation>
+    </message>
+    <message>
+        <source>&amp;Send</source>
+        <translation>&amp;Lähetä</translation>
+    </message>
+    <message>
+        <source>&amp;Receive</source>
+        <translation>&amp;Vastaanota</translation>
+    </message>
+    <message>
+        <source>&amp;Show / Hide</source>
+        <translation>&amp;Näytä / Piilota</translation>
+    </message>
+    <message>
+        <source>Show or hide the main Window</source>
+        <translation>Näytä tai piilota bitsend-ikkuna</translation>
+    </message>
+    <message>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Suojaa yksityiset avaimet, jotka kuuluvat lompakkoosi</translation>
+    </message>
+    <message>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>Allekirjoita viestisi omalla bitsend -osoitteellasi todistaaksesi, että omistat ne</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Varmista, että viestisi on allekirjoitettu määritetyllä bitsend -osoitteella</translation>
+    </message>
+    <message>
         <source>&amp;File</source>
         <translation>&amp;Tiedosto</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Asetukset</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="388"/>
-        <source>&amp;Tools</source>
-        <translation>&amp;Työkalut</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>&amp;Apua</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
         <translation>Välilehtipalkki</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="493"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>Bitsend client</source>
-        <translation>Bitsend asiakasohjelma</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="643"/>
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation><numerusform>%n aktiivista yhteyttä Bitsend verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Bitsend verkkoon</numerusform></translation>
+        <source>Request payments (generates QR codes and bitsend: URIs)</source>
+        <translation>Pyydä maksuja (Luo QR koodit ja bitsend: URIt)</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="655"/>
-        <source>Synchronizing with network...</source>
-        <translation>Synkronoidaan verkkoon...</translation>
+        <source>Show the list of used sending addresses and labels</source>
+        <translation>Näytä lähettämiseen käytettyjen osoitteiden ja nimien lista</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="658"/>
-        <source>Importing blocks from disk...</source>
-        <translation>Tuodaan lohkoja levyltä...</translation>
+        <source>Show the list of used receiving addresses and labels</source>
+        <translation>Näytä vastaanottamiseen käytettyjen osoitteiden ja nimien lista</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="661"/>
-        <source>Reindexing blocks on disk...</source>
-        <translation>Uudelleen indeksoidaan lohkoja...</translation>
+        <source>Open a bitsend: URI or payment request</source>
+        <translation>Avaa bitsend: URI tai maksupyyntö</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="665"/>
-        <source>No block source available...</source>
-        <translation>Lohkojen lähdettä ei saatavilla...</translation>
+        <source>&amp;Command-line options</source>
+        <translation>&amp;Komentorivin valinnat</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="675"/>
-        <source>Processed %1 blocks of transaction history.</source>
-        <translation>Käsitelty %1 lohkoa tapahtumahistoriasta.</translation>
+        <source>Indexing blocks on disk...</source>
+        <translation>Ladataan lohkoindeksiä...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="680"/>
-        <source>Up to date</source>
-        <translation>Tapahtumahistoria on ajan tasalla</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="701"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n tunti(a)</numerusform><numerusform>%n tunti(a)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="705"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%n päivä(ä)</numerusform><numerusform>%n päivä(ä)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="709"/>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n week(s)</source>
-        <translation><numerusform>%n viikko(a)</numerusform><numerusform>%n viikko(a)</numerusform></translation>
+        <source>Processing blocks on disk...</source>
+        <translation>Käsitellään lohkoja levyllä...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%1 and %2</source>
-        <translation>%1 ja %2</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n year(s)</source>
-        <translation><numerusform>%n vuosi(a)</numerusform><numerusform>%n vuosi(a)</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>%1 jäljessä</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="724"/>
-        <source>Catching up...</source>
-        <translation>Saavutetaan verkkoa...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
-        <translation>Viimeisin vastaanotettu lohko luotu %1 sitten.</translation>
+        <translation>Viimeisin vastaanotettu lohko tuotettu %1.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Tämän jälkeiset siirtotapahtumat eivät ole vielä näkyvissä.</translation>
+        <translation>Tämän jälkeiset rahansiirrot eivät ole vielä näkyvissä.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="755"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Varoitus</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Tietoa</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
-        <source>Sent transaction</source>
-        <translation>Lähetetty siirtotapahtuma</translation>
+        <source>Up to date</source>
+        <translation>Rahansiirtohistoria on ajan tasalla</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
-        <source>Incoming transaction</source>
-        <translation>Saapuva siirtotapahtuma</translation>
+        <source>Show the %1 help message to get a list with possible bitsend command-line options</source>
+        <translation>Näytä %1 ohjeet saadaksesi listan mahdollisista bitsendin komentorivivalinnoista</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="855"/>
+        <source>%1 client</source>
+        <translation>%1-asiakas</translation>
+    </message>
+    <message>
+        <source>Connecting to peers...</source>
+        <translation>Yhdistetään vertaisiin...</translation>
+    </message>
+    <message>
+        <source>Catching up...</source>
+        <translation>Saavutetaan verkkoa...</translation>
+    </message>
+    <message>
         <source>Date: %1
-Amount: %2
-Type: %3
-Address: %4
 </source>
-        <translation>Päiväys: %1
-Määrä: %2
-Tyyppi: %3
-Osoite: %4
+        <translation>Päivämäärä: %1
 </translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="926"/>
+        <source>Amount: %1
+</source>
+        <translation>Määrä: %1
+</translation>
+    </message>
+    <message>
+        <source>Type: %1
+</source>
+        <translation>Tyyppi: %1
+</translation>
+    </message>
+    <message>
+        <source>Label: %1
+</source>
+        <translation>Nimike: %1
+</translation>
+    </message>
+    <message>
+        <source>Address: %1
+</source>
+        <translation>Osoite: %1
+</translation>
+    </message>
+    <message>
+        <source>Sent transaction</source>
+        <translation>Lähetetyt rahansiirrot</translation>
+    </message>
+    <message>
+        <source>Incoming transaction</source>
+        <translation>Saapuva rahansiirto</translation>
+    </message>
+    <message>
+        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
+        <translation>HD avaimen generointi on &lt;b&gt;päällä&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation>HD avaimen generointi on &lt;/b&gt;pois päältä&lt;/b&gt;</translation>
+    </message>
+    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;avoinna&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="936"/>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;avoinna&lt;/b&gt; vain anonymisointia varten</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukittu&lt;/b&gt;</translation>
+        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukittuna&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="449"/>
-        <source>A fatal error occurred. Bitsend can no longer continue safely and will quit.</source>
-        <translation>Vakava virhe tapahtunut. Bitsend ei voi enää toimia turvallisesti ja sulkeutuu.</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <location filename="../clientmodel.cpp" line="164"/>
-        <source>Network Alert</source>
-        <translation>Verkkohälytys</translation>
+        <source>A fatal error occurred. bitsend can no longer continue safely and will quit.</source>
+        <translation>Peruuttamaton virhe on tapahtunut. bitsend ei voi enää jatkaa turvallisesti ja sammutetaan.</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="14"/>
-        <source>Coin Control Address Selection</source>
-        <translation>Kolikkokontrollin osoitteen valinta</translation>
+        <source>Coin Selection</source>
+        <translation>Kolikoiden valinta</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="48"/>
         <source>Quantity:</source>
         <translation>Määrä:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="77"/>
         <source>Bytes:</source>
         <translation>Tavuja:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="122"/>
         <source>Amount:</source>
         <translation>Määrä:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="151"/>
-        <source>Priority:</source>
-        <translation>Prioriteetti:</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="196"/>
         <source>Fee:</source>
         <translation>Palkkio:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="228"/>
-        <source>Low Output:</source>
-        <translation>Pieni Tuotos</translation>
+        <source>Dust:</source>
+        <translation>Tomu:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="276"/>
         <source>After Fee:</source>
         <translation>Palkkion jälkeen:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="308"/>
         <source>Change:</source>
         <translation>Vaihtoraha:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="364"/>
         <source>(un)select all</source>
-        <translation>Poista kaikki valinnat</translation>
+        <translation>(epä)valitse kaikki</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="377"/>
         <source>Tree mode</source>
         <translation>Puurakenne</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="393"/>
         <source>List mode</source>
         <translation>Listarakenne</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="400"/>
-        <source>(1 locked)</source>
-        <translation>(1 lukittu)</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="446"/>
         <source>Amount</source>
         <translation>Määrä</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="451"/>
-        <source>Label</source>
-        <translation>Nimi</translation>
+        <source>Received with label</source>
+        <translation>Vastaanotettu nimikkeellä</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="456"/>
-        <source>Address</source>
-        <translation>Osoite</translation>
+        <source>Received with address</source>
+        <translation>Vastaanotettu osoitteella</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="461"/>
-        <source>Darksend Rounds</source>
-        <translation>Darksend Kierrokset</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="466"/>
         <source>Date</source>
-        <translation>Päivämäärä</translation>
+        <translation>Aika</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="471"/>
         <source>Confirmations</source>
         <translation>Vahvistuksia</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="474"/>
         <source>Confirmed</source>
         <translation>Vahvistettu</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="479"/>
-        <source>Priority</source>
-        <translation>Prioriteetti</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="43"/>
         <source>Copy address</source>
         <translation>Kopioi osoite</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="44"/>
         <source>Copy label</source>
-        <translation>Kopioi nimi</translation>
+        <translation>Kopioi nimike</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="45"/>
-        <location filename="../coincontroldialog.cpp" line="71"/>
         <source>Copy amount</source>
         <translation>Kopioi määrä</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="46"/>
         <source>Copy transaction ID</source>
-        <translation>Kopioi siirtotunnus</translation>
+        <translation>Kopioi transaktion ID</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="47"/>
         <source>Lock unspent</source>
         <translation>Lukitse käyttämättömät</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="48"/>
         <source>Unlock unspent</source>
-        <translation>Avaa käyttämättömät</translation>
+        <translation>Avaa käyttämättömien lukitus</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="70"/>
         <source>Copy quantity</source>
-        <translation>Kopioi määrä</translation>
+        <translation>Kopioi lukumäärä</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="72"/>
         <source>Copy fee</source>
-        <translation>Kopioi palkkio</translation>
+        <translation>Kopioi rahansiirtokulu</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="73"/>
         <source>Copy after fee</source>
-        <translation>Kopioi palkkion jälkeen</translation>
+        <translation>Kopioi rahansiirtokulun jälkeen</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="74"/>
         <source>Copy bytes</source>
         <translation>Kopioi tavut</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="75"/>
-        <source>Copy priority</source>
-        <translation>Kopioi prioriteetti</translation>
+        <source>Copy dust</source>
+        <translation>Kopioi tomu</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="76"/>
-        <source>Copy low output</source>
-        <translation>Kopioi pieni tuotos</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="77"/>
         <source>Copy change</source>
-        <translation>Kopioi vaihtoraha</translation>
+        <translation>Kopioi vaihtorahat</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="410"/>
-        <source>highest</source>
-        <translation>korkein</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="411"/>
-        <source>higher</source>
-        <translation>korkeampi</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="412"/>
-        <source>high</source>
-        <translation>korkea</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="413"/>
-        <source>medium-high</source>
-        <translation>keski-korkea</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="759"/>
-        <source>n/a</source>
-        <translation>e/s</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="164"/>
-        <location filename="../coincontroldialog.cpp" line="414"/>
-        <source>medium</source>
-        <translation>keskisuuri</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="418"/>
-        <source>low-medium</source>
-        <translation>pieni-keskisuuri</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="419"/>
-        <source>low</source>
-        <translation>pieni</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="420"/>
-        <source>lower</source>
-        <translation>pienempi</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="421"/>
-        <source>lowest</source>
-        <translation>pienin</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="432"/>
         <source>(%1 locked)</source>
         <translation>(%1 lukittu)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="464"/>
-        <source>none</source>
-        <translation>ei mitään</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
-        <source>Dust</source>
-        <translation>Tomu</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>yes</source>
         <translation>kyllä</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="244"/>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>no</source>
         <translation>ei</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="625"/>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Tämä nimi muuttuu punaiseksi jos siirtotapahtuman koko on suurempi kuin 1000 tavua.</translation>
+        <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
+        <translation>Tämä nimike muuttuu punaiseksi, jos jokin vastaanottajista on saamassa tämänhetkistä tomun rajaa pienemmän summan.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="626"/>
-        <location filename="../coincontroldialog.cpp" line="631"/>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Tämä tarkoittaa että vähintään %1 per kB palkkio on pakollinen.</translation>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation>Saattaa vaihdella +/- %1 satoshia per syöte.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="627"/>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Voi vaihdella +/- 1 tavu per syöte</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="629"/>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Siirtotapahtumat korkeammalla prioriteetilla sisällytetään varmemmin lohkoon.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="630"/>
-        <source>This label turns red, if the priority is smaller than &quot;medium&quot;.</source>
-        <translation>Tämä nimi muuttuu punaiseksi jos prioriteetti on pienempi kuin &quot;keskisuuri&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="633"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Tämä nimi muuttuu punaiseksi jos vastaanottaja saa pienemmän määrän kuin %1</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="634"/>
-        <location filename="../coincontroldialog.cpp" line="638"/>
-        <source>This means a fee of at least %1 is required.</source>
-        <translation>Tämä tarkoittaa että vähintään %1 palkkio on pakollinen.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="635"/>
-        <source>Amounts below 0.546 times the minimum relay fee are shown as dust.</source>
-        <translation>Maksumäärät alle 0.546 kertaa vähimmäispalkkion näytetään tomuna.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="637"/>
-        <source>This label turns red, if the change is smaller than %1.</source>
-        <translation>Tämä nimi muuttuu punaiseksi jos vaihtoraha on alle %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="680"/>
-        <location filename="../coincontroldialog.cpp" line="741"/>
         <source>(no label)</source>
-        <translation>(ei nimeä)</translation>
+        <translation>(ei nimikettä)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="734"/>
         <source>change from %1 (%2)</source>
         <translation>Vaihda %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="735"/>
         <source>(change)</source>
         <translation>(vaihtoraha)</translation>
     </message>
 </context>
 <context>
-    <name>DarksendConfig</name>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="14"/>
-        <source>Configure Darksend</source>
-        <translation>Darksend Asetukset</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="26"/>
-        <source>Basic Privacy</source>
-        <translation>Perustason Yksityisyys</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="39"/>
-        <source>High Privacy</source>
-        <translation>Korkean tason Yksityisyys</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="52"/>
-        <source>Maximum Privacy</source>
-        <translation>Maksimaalinen Yksityisyys</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="65"/>
-        <source>Please select a privacy level.</source>
-        <translation>Valitse yksityisyyden taso.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="78"/>
-        <source>Use 2 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Käytä 2 erillistä Xnodea sekoittaaksesi varoja</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="91"/>
-        <source>Use 8 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Käytä 8 erillistä Xnodea sekoittaaksesi varoja</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="104"/>
-        <source>Use 16 separate Xnodes</source>
-        <translation>Käytä 16 erillistä Xnodea</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="117"/>
-        <source>This option is the quickest and will cost about ~0.025 BSD to anonymize 1000 BSD</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 BSD kun anonymisoidaan 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="130"/>
-        <source>This option is moderately fast and will cost about 0.05 BSD to anonymize 1000 BSD</source>
-        <translation>Tämä vaihtoehto on keskinopea ja maksaa noin ~0.05 BSD kun anonymisoidaan 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="156"/>
-        <source>0.1 BSD per 1000 BSD you anonymize.</source>
-        <translation>0.1 BSD maksu per 1000 BSD jonka anonymisoit.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="143"/>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Tämä vaihtoehto on hitain ja kaikkein anonyymi. Suurimman yksityisyyden käyttö maksaa</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="43"/>
-        <location filename="../Darksendconfig.cpp" line="58"/>
-        <location filename="../Darksendconfig.cpp" line="73"/>
-        <source>Darksend Configuration</source>
-        <translation>Darksend Asetukset</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="44"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend on asetettu perusasetuksiin (%1 and 2 kierrosta). Voit muuttaa asetuksia milloin vain Bitsend asetuksista.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="59"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend on asetettu keskitason asetuksiin (%1 and 8 kierrosta). Voit muuttaa asetuksia milloin vain Bitsend asetuksista.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="74"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend on asetettu maksimitason asetuksiin (%1 and 16 kierrosta). Voit muuttaa asetuksia milloin vain Bitsend asetuksista.</translation>
-    </message>
-</context>
-<context>
     <name>EditAddressDialog</name>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="14"/>
         <source>Edit Address</source>
         <translation>Muokkaa osoitetta</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="25"/>
         <source>&amp;Label</source>
         <translation>&amp;Nimi</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="35"/>
         <source>The label associated with this address list entry</source>
         <translation>Tähän osoitteeseen liitetty nimi</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="42"/>
-        <source>&amp;Address</source>
-        <translation>&amp;Osoite</translation>
-    </message>
-    <message>
-        <location filename="../forms/editaddressdialog.ui" line="52"/>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
         <translation>Osoite liitettynä tähän osoitekirjan alkioon. Tämä voidaan muokata vain lähetysosoitteissa.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="29"/>
+        <source>&amp;Address</source>
+        <translation>&amp;Osoite</translation>
+    </message>
+    <message>
         <source>New receiving address</source>
-        <translation>Uusi vastaanottava osoite</translation>
+        <translation>Uusi vastaanotto-osoite</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="33"/>
         <source>New sending address</source>
-        <translation>Uusi lähettävä osoite</translation>
+        <translation>Uusi lähetysosoite</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="36"/>
         <source>Edit receiving address</source>
         <translation>Muokkaa vastaanottavaa osoitetta</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="40"/>
         <source>Edit sending address</source>
         <translation>Muokkaa lähettävää osoitetta</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="111"/>
-        <source>The entered address &quot;%1&quot; is not a valid Bitsend address.</source>
-        <translation>Annettu osoite &quot;%1&quot; ei ole pätevä Bitsend osoite.</translation>
+        <source>The entered address "%1" is not a valid bitsend address.</source>
+        <translation>Antamasi osoite "%1" ei ole kelvollinen bitsend-osoite.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="116"/>
-        <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>Osoite &quot;%1&quot; on jo osoitekirjassa.</translation>
+        <source>The entered address "%1" is already in the address book.</source>
+        <translation>Antamasi osoite "%1" on jo osoitekirjassa</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="121"/>
         <source>Could not unlock wallet.</source>
         <translation>Lompakkoa ei voitu avata.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="126"/>
         <source>New key generation failed.</source>
         <translation>Uuden avaimen luonti epäonnistui.</translation>
     </message>
@@ -1265,946 +757,739 @@ Osoite: %4
 <context>
     <name>FreespaceChecker</name>
     <message>
-        <location filename="../intro.cpp" line="69"/>
         <source>A new data directory will be created.</source>
-        <translation>Luodaan uusi datakansio.</translation>
+        <translation>Luodaan uusi kansio.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="91"/>
         <source>name</source>
         <translation>Nimi</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="93"/>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
         <translation>Hakemisto on jo olemassa. Lisää %1 jos tarkoitus on luoda hakemisto tänne.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="96"/>
         <source>Path already exists, and is not a directory.</source>
         <translation>Polku on jo olemassa, eikä se ole kansio.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="103"/>
         <source>Cannot create data directory here.</source>
-        <translation>Ei voida luoda datahakemistoa tänne.</translation>
+        <translation>Ei voida luoda data-hakemistoa tänne.</translation>
     </message>
 </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../forms/helpmessagedialog.ui" line="19"/>
-        <source>Bitsend Core - Command-line options</source>
-        <translation>Bitsend Core - Komentorivi vaihtoehdot</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
         <source>version</source>
         <translation>versio</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="71"/>
+        <source>(%1-bit)</source>
+        <translation>(%1-bit)</translation>
+    </message>
+    <message>
+        <source>About %1</source>
+        <translation>Tietoja %1</translation>
+    </message>
+    <message>
+        <source>Command-line options</source>
+        <translation>Komentorivi parametrit</translation>
+    </message>
+    <message>
         <source>Usage:</source>
         <translation>Käyttö:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="72"/>
         <source>command-line options</source>
         <translation>komentorivi parametrit</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="76"/>
-        <source>UI options</source>
-        <translation>Käyttöliittymän asetukset</translation>
+        <source>UI Options:</source>
+        <translation>Käyttöliittymän asetukset:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="77"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Valitse data-hakemisto käynnistyksessä (oletus: 0)</translation>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation>Valitse datahakemisto käynnistyksen yhteydessä (oletus: %u)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="78"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Aseta kieli, esim. &quot;fi_FI&quot; (oletus: sama kuin järjestelmän)</translation>
+        <source>Set language, for example "de_DE" (default: system locale)</source>
+        <translation>Aseta kieli, esimerkiksi "de_DE" (oletus: järjestelmän kieli)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="79"/>
         <source>Start minimized</source>
         <translation>Käynnistä pienennettynä</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="80"/>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>Aseta SSL root varmenne maksupyynnöille (oletus: -system-)</translation>
+        <translation>Aseta maksupyynnöille SSL-juurivarmenteet (oletus: -system-)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="81"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Näytä aloitusruutu käynnistettäessä (oletus: 1)</translation>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Näytä aloitusruutu käynnistyksen yhteydessä (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Reset all settings changed in the GUI</source>
+        <translation>Nollaa kaikki graafisen käyttöliittymän kautta tehdyt muutokset</translation>
     </message>
 </context>
 <context>
     <name>Intro</name>
     <message>
-        <location filename="../forms/intro.ui" line="14"/>
         <source>Welcome</source>
         <translation>Tervetuloa</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="23"/>
-        <source>Welcome to Bitsend Core.</source>
-        <translation>Bitsend Core - Tervetuloa.</translation>
+        <source>Welcome to %1.</source>
+        <translation>Tervetuloa %1 pariin.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="49"/>
-        <source>As this is the first time the program is launched, you can choose where Bitsend Core will store its data.</source>
-        <translation>Koska tämä on ensimmäinen kerta kun ohjelma käynnistetään, voit valita minne Bitsend Core tallettaa datansa.
-Varoitus: Jos käytät käyttöjärjestelmää (Live os) suoraan usb, dvd tai cd levyltä, ohjaa talletettava data eri levyasemalle turvalliseen paikkaan.</translation>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>Tämä on ensimmäinen kerta, kun %1 on käynnistetty, joten voit valita data-hakemiston paikan.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="59"/>
-        <source>Bitsend Core will download and store a copy of the Bitsend block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitsend Core lataa ja tallettaa kopion lohkoketjusta. Vähintään %1GB dataa talletetaan tähän hakemistoon, ja se myös kasvaa ajan myötä. Myös lompakko talletetaan tähän hakemistoon.</translation>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Kun valitset OK, %1 aloittaa lataamaan ja käsittelemään koko %4 lohkoketjua (%2GB) aloittaen ensimmäisestä siirrosta %3 jolloin %4 käynnistettiin ensimmäistä kertaa.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="69"/>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>Tämä alustava synkronointi on erittäin vaativa ja saattaa tuoda esiin laiteongelmia, joita ei aikaisemmin ole havaittu. Aina kun ajat %1:n, jatketaan siitä kohdasta, mihin viimeksi jäätiin.</translation>
+    </message>
+    <message>
+        <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
+        <translation>Vaikka olisitkin valinnut rajoittaa lohkoketjun tallennustilaa (karsinnalla), täytyy historiatiedot silti ladata ja käsitellä, mutta ne poistetaan jälkikäteen levytilan säästämiseksi.</translation>
+    </message>
+    <message>
         <source>Use the default data directory</source>
-        <translation>Käytä oletushakemistoa</translation>
+        <translation>Käytä oletuskansiota</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="76"/>
         <source>Use a custom data directory:</source>
-        <translation>Määritä oma hakemisto:</translation>
+        <translation>Määritä oma kansio:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="185"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="186"/>
-        <source>Error: Specified data directory &quot;%1&quot; can not be created.</source>
-        <translation>Virhe: Annettua data-hakemistoa &quot;%1&quot; ei voida luoda.</translation>
+        <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
+        <translation>Ainakin %1 GB tietoa varastoidaan tähän hakemistoon ja tarve kasvaa ajan myötä.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="210"/>
+        <source>Approximately %1 GB of data will be stored in this directory.</source>
+        <translation>Noin %1 GB tietoa varastoidaan tähän hakemistoon.</translation>
+    </message>
+    <message>
+        <source>%1 will download and store a copy of the bitsend block chain.</source>
+        <translation>%1 lataa ja tallentaa kopion bitsendin lohkoketjusta.</translation>
+    </message>
+    <message>
+        <source>The wallet will also be stored in this directory.</source>
+        <translation>Lompakko tallennetaan myös tähän hakemistoon.</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Virhe: Annettu datahakemistoa "%1" ei voida luoda.</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
     <message>
-        <location filename="../intro.cpp" line="219"/>
-        <source>GB of free space available</source>
-        <translation>GB vapaata levytilaa</translation>
+        <source>Form</source>
+        <translation>Lomake</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="222"/>
-        <source>(of %1GB needed)</source>
-        <translation>(tarvitaan %1GB)</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitsend network, as detailed below.</source>
+        <translation>Viimeiset tapahtumat eivät välttämättä vielä näy, joten lompakkosi saldo voi olla virheellinen. Tieto korjautuu, kunhan lompakkosi synkronointi bitsend-verkon kanssa on päättynyt. Tiedot näkyvät alla.</translation>
+    </message>
+    <message>
+        <source>Attempting to spend bitsends that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Verkko ei tule hyväksymään sellaisten bitsendien käyttämistä, jotka liittyvät vielä näkymättömissä oleviin siirtoihin.</translation>
+    </message>
+    <message>
+        <source>Number of blocks left</source>
+        <translation>Lohkoja jäljellä</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>Tunnistamaton..</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Viimeisimmän lohkon aika</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Edistyminen</translation>
+    </message>
+    <message>
+        <source>Progress increase per hour</source>
+        <translation>Edistymisen kasvu tunnissa</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>lasketaan..</translation>
+    </message>
+    <message>
+        <source>Estimated time left until synced</source>
+        <translation>Arvioitu jäljellä oleva aika, kunnes synkronoitu</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Piilota</translation>
+    </message>
+    <message>
+        <source>Unknown. Syncing Headers (%1)...</source>
+        <translation>Tuntematon. Synkronoidaan tunnisteita (%1)...</translation>
     </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
-        <location filename="../forms/openuridialog.ui" line="14"/>
         <source>Open URI</source>
         <translation>Avaa URI</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="20"/>
         <source>Open payment request from URI or file</source>
         <translation>Avaa maksupyyntö URI:sta tai tiedostosta</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="29"/>
         <source>URI:</source>
         <translation>URI:</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="40"/>
         <source>Select payment request file</source>
         <translation>Valitse maksupyynnön tiedosto</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="48"/>
         <source>Select payment request file to open</source>
-        <translation>Valitse avattava maksypyynnön tiedosto</translation>
+        <translation>Valitse maksypyynnön tiedosto avattavaksi</translation>
     </message>
 </context>
 <context>
     <name>OptionsDialog</name>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="14"/>
         <source>Options</source>
         <translation>Asetukset</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="27"/>
         <source>&amp;Main</source>
         <translation>&amp;Yleiset</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="33"/>
-        <source>Automatically start Bitsend after logging in to the system.</source>
-        <translation>Käynnistä Bitsend automaattisesti kun järjestelmään kirjaudutaan.</translation>
+        <source>Automatically start %1 after logging in to the system.</source>
+        <translation>Käynnistä %1 automaattisesti järjestelmään kirjautumisen jälkeen.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="36"/>
-        <source>&amp;Start Bitsend on system login</source>
-        <translation>&amp;Käynnistä Bitsend järjestelmään kirjauduttaessa</translation>
+        <source>&amp;Start %1 on system login</source>
+        <translation>&amp;Käynnistä %1 järjestelmään kirjautuessa</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="45"/>
         <source>Size of &amp;database cache</source>
         <translation>&amp;Tietokannan välimuistin koko</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="61"/>
         <source>MB</source>
         <translation>MB</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="88"/>
         <source>Number of script &amp;verification threads</source>
-        <translation>Script &amp;vahvistuksien säikeiden määrä</translation>
+        <translation>Script &amp;varmistuksen threadien määrä</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="101"/>
-        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = auto, &lt;0 = jätä näin monta prosessorin ydintä vapaaksi)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="138"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This setting determines the amount of individual Xnodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tämä asetus määrittää kuinka monen erillisen Xnoden kautta syötteen anonymisointi tehdään. Mitä enemmän anonymisoinnin kierroksia, sen parempi yksityisyys, mutta se myös maksaa enemmän siirtomaksuina.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="141"/>
-        <source>Darksend rounds to use</source>
-        <translation>Kuinka montaa Darksend kierrosta käytetään</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="165"/>
-        <source>This amount acts as a threshold to turn off Darksend once it&apos;s reached.</source>
-        <translation>Tämä määrä toimii rajana keskeytykselle kun Darksend anonymisointi sen saavuttaa.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="180"/>
-        <source>Amount of Bitsend to keep anonymized</source>
-        <translation>Bitsend määrä joka pidetään anonymisoituna</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="206"/>
-        <source>W&amp;allet</source>
-        <translation>&amp;Lompakko</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="212"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB.</source>
-        <translation>Valinnainen siirtopalkkio per kB auttaa varmistamaan että siirtotapahtumasi prosessoidaan nopeasti. Useimmat siirtotapahtumat ovat alle 1 kB.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="227"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Maksa siirtotapahtuman &amp;palkkio</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="271"/>
-        <source>Expert</source>
-        <translation>Expertti</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="277"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Näytetäänkö kolikkokontrollin ominaisuuksia vai ei</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="280"/>
-        <source>Enable coin &amp;control features</source>
-        <translation>Ota käytöön &amp;kolikkokontrolli ominaisuudet</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="287"/>
-        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
-        <translation>Jos poistat vahvistamattomien vaihtorahojen käytön, siirtotapahtuman vaihtorahaa ei voida käyttää ennen vähintään yhtä vahvistusta. Tämä vaikuttaa myös kuinka saldosi lasketaan.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="290"/>
-        <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;Käytä vahvistamattomia vaihtorahoja</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="301"/>
-        <source>&amp;Network</source>
-        <translation>&amp;Verkko</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="307"/>
-        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avaa automaattisesti Bitsend asiakasohjelmalle portti reitittimeen. Tämä toimii vain jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="310"/>
-        <source>Map port using &amp;UPnP</source>
-        <translation>Kartoita portti käyttäen &amp;UPnP:tä</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="317"/>
-        <source>Connect to the Bitsend network through a SOCKS proxy.</source>
-        <translation>Kytkeydy Bitsend verkkoon käyttäen SOCKS proxy:a.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="320"/>
-        <source>&amp;Connect through SOCKS proxy (default proxy):</source>
-        <translation>&amp;Yhdistä SOCKS proxyn kautta (oletus: proxy):</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="329"/>
-        <source>Proxy &amp;IP:</source>
-        <translation>Proxy &amp;IP</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="354"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
-        <translation>IP osoite proxy:lle (esim. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
+        <translation>IP osoite proxille (esim. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="361"/>
-        <source>&amp;Port:</source>
-        <translation>&amp;Portti</translation>
+        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
+        <translation>Ilmoittaa, mikäli oletetettua SOCKS5-välityspalvelinta käytetään vertaisten tavoittamiseen tämän verkkotyypin kautta.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="386"/>
-        <source>Port of the proxy (e.g. 9050)</source>
-        <translation>Proxyn portti (esim. 9050)</translation>
+        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
+        <translation>Minimoi ikkuna ohjelman sulkemisen sijasta kun ikkuna suljetaan. Kun tämä asetus on käytössä, ohjelma suljetaan vain valittaessa valikosta Poistu.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="393"/>
-        <source>SOCKS &amp;Version:</source>
-        <translation>SOCKS &amp;Versio</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="406"/>
-        <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation>Proxy:n SOCKS versio (esim. 5)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="442"/>
-        <source>&amp;Window</source>
-        <translation>&amp;Ikkuna</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="448"/>
-        <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Näytä ainoastaan ikoni ilmaisinalueella ikkunan pienentämisen jälkeen.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="451"/>
-        <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>&amp;Pienennä ilmaisinalueelle työkalurivin sijasta</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="458"/>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Ikkunaa suljettaessa pienennä Bitsend asiakasohjelman ikkuna lopettamatta itse ohjelmaa. Kun tämä asetus on valittuna, ohjelman voi sulkea vain valitsemalla Lopeta ohjelman valikosta.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="461"/>
-        <source>M&amp;inimize on close</source>
-        <translation>P&amp;ienennä suljettaessa</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="482"/>
-        <source>&amp;Display</source>
-        <translation>&amp;Käyttöliittymä</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="490"/>
-        <source>User Interface &amp;language:</source>
-        <translation>&amp;Käyttöliittymän kieli</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="503"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitsend.</source>
-        <translation>Käyttöliittymän kieli asetetaan tässä, Asetus tulee voimaan kun Bitsend asiakasohjelma käynnistetään uudelleen.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="524"/>
-        <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/bitsend/</source>
-        <translation>Puuttuuko sopiva kieli tai käännös on kesken? Auta käännöstyössä täällä:
-https://www.transifex.com/projects/p/bitsend/</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="550"/>
-        <source>&amp;Unit to show amounts in:</source>
-        <translation>Yksikkö joina määrät näytetään</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="563"/>
-        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Valitse mitä yksikköä käytetään ensisijaisesti varojen määrien näyttämiseen.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="572"/>
-        <source>Whether to show Bitsend addresses in the transaction list or not.</source>
-        <translation>Näytetäänkö Bitsend osoitteet siirtotapahtumalistassa vai ei.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="575"/>
-        <source>&amp;Display addresses in transaction list</source>
-        <translation>&amp;Näytä osoitteet siirtotapahtumalistassa</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="584"/>
-        <location filename="../forms/optionsdialog.ui" line="597"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>Ulkopuoliset URL-osoitteet (esim. lohkoselain,) jotka esiintyvät tapahtumat-välilehdellä valikossa. %s URL-osoitteessa korvataan siirtotunnuksella. Useampi URL-osoite on eroteltu pystyviivalla |.</translation>
+        <translation>Ulkopuoliset URL-osoitteet (esim. block explorer,) jotka esiintyvät siirrot-välilehdellä valikossa. %s URL-osoitteessa korvataan siirtotunnuksella. Useampi URL-osoite on eroteltu pystyviivalla |.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="587"/>
-        <source>Third party transaction URLs</source>
-        <translation>Kolmannen osapuolen siirtotapahtuma URL:t</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="628"/>
         <source>Active command-line options that override above options:</source>
         <translation>Aktiiviset komentorivivalinnat jotka ohittavat ylläolevat valinnat:</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="671"/>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation>Avaa %1 asetustiedosto työhakemistosta.</translation>
+    </message>
+    <message>
+        <source>Open Configuration File</source>
+        <translation>Avaa asetustiedosto.</translation>
+    </message>
+    <message>
         <source>Reset all client options to default.</source>
-        <translation>Palauta kaikki asetukset oletusarvoihin.</translation>
+        <translation>Palauta kaikki asetukset takaisin alkuperäisiksi.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="674"/>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Palauta Asetukset</translation>
+        <translation>&amp;Palauta asetukset</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="735"/>
+        <source>&amp;Network</source>
+        <translation>&amp;Verkko</translation>
+    </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = auto, &lt;0 = jätä näin monta ydintä vapaaksi)</translation>
+    </message>
+    <message>
+        <source>W&amp;allet</source>
+        <translation>&amp;Lompakko</translation>
+    </message>
+    <message>
+        <source>Expert</source>
+        <translation>Expertti</translation>
+    </message>
+    <message>
+        <source>Enable coin &amp;control features</source>
+        <translation>Ota käytöön &amp;Kolikkokontrolli-ominaisuudet</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation>Jos poistat varmistamattomien vaihtorahojen käytön, rahansiirron vaihtorahaa ei voida käyttää ennen vähintään yhtä varmistusta. Tämä vaikuttaa myös kuinka taseesi lasketaan.</translation>
+    </message>
+    <message>
+        <source>&amp;Spend unconfirmed change</source>
+        <translation>&amp;Käytä varmistamattomia vaihtorahoja</translation>
+    </message>
+    <message>
+        <source>Automatically open the bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa bitsend-asiakasohjelman portti reitittimellä automaattisesti. Tämä toimii vain, jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
+    </message>
+    <message>
+        <source>Map port using &amp;UPnP</source>
+        <translation>Portin uudelleenohjaus &amp;UPnP:llä</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a SOCKS5 proxy.</source>
+        <translation>Yhdistä bitsend-verkkoon SOCKS5-välityspalvelimen kautta.</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>&amp;Yhdistä SOCKS5-välityspalvelimen kautta (oletus välityspalvelin):</translation>
+    </message>
+    <message>
+        <source>Proxy &amp;IP:</source>
+        <translation>Proxyn &amp;IP:</translation>
+    </message>
+    <message>
+        <source>&amp;Port:</source>
+        <translation>&amp;Portti</translation>
+    </message>
+    <message>
+        <source>Port of the proxy (e.g. 9050)</source>
+        <translation>Proxyn Portti (esim. 9050)</translation>
+    </message>
+    <message>
+        <source>Used for reaching peers via:</source>
+        <translation>Vertaisten saavuttamiseen käytettävät verkkotyypit:</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation>Tor</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Yhdistä bitsend-verkkoon erillisen SOCKS5-välityspalvelimen kautta piilotettuja Tor-palveluja varten.</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Ikkuna</translation>
+    </message>
+    <message>
+        <source>Show only a tray icon after minimizing the window.</source>
+        <translation>Näytä ainoastaan ilmaisinalueella ikkunan pienentämisen jälkeen.</translation>
+    </message>
+    <message>
+        <source>&amp;Minimize to the tray instead of the taskbar</source>
+        <translation>&amp;Pienennä ilmaisinalueelle työkalurivin sijasta</translation>
+    </message>
+    <message>
+        <source>M&amp;inimize on close</source>
+        <translation>P&amp;ienennä suljettaessa</translation>
+    </message>
+    <message>
+        <source>&amp;Display</source>
+        <translation>&amp;Käyttöliittymä</translation>
+    </message>
+    <message>
+        <source>User Interface &amp;language:</source>
+        <translation>&amp;Käyttöliittymän kieli</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation>Tässä voit määritellä käyttöliittymän kielen. Muutokset astuvat voimaan seuraavan kerran, kun %1 käynnistetään.</translation>
+    </message>
+    <message>
+        <source>&amp;Unit to show amounts in:</source>
+        <translation>Yksikkö jona bitsend-määrät näytetään</translation>
+    </message>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Valitse mitä yksikköä käytetään ensisijaisesti bitsend-määrien näyttämiseen.</translation>
+    </message>
+    <message>
+        <source>Whether to show coin control features or not.</source>
+        <translation>Näytetäänkö kolikkokontrollin ominaisuuksia vai ei</translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="742"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Peruuta</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="73"/>
         <source>default</source>
         <translation>oletus</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="134"/>
         <source>none</source>
         <translation>ei mitään</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="222"/>
         <source>Confirm options reset</source>
-        <translation>Vahvista asetusten palautus</translation>
+        <translation>Varmista asetusten palautus</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <location filename="../optionsdialog.cpp" line="253"/>
         <source>Client restart required to activate changes.</source>
-        <translation>Ohjelman uudelleen käynnistys aktivoi muutokset käyttöön.</translation>
+        <translation>Ohjelman uudelleenkäynnistys aktivoi muutokset.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>Ohjelma suljetaan, haluatko jatkaa?</translation>
+        <source>Client will be shut down. Do you want to proceed?</source>
+        <translation>Asiakasohjelma sammutetaan. Haluatko jatkaa?</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="257"/>
+        <source>Configuration options</source>
+        <translation>Kokoonpanoasetukset</translation>
+    </message>
+    <message>
+        <source>The configuration file is used to specify advanced user options which override GUI settings. Additionally, any command-line options will override this configuration file.</source>
+        <translation>Asetustiedostoa käytetään määrittämään kokeneen käyttäjän lisävalintoja, jotka ylikirjoittavat graafisen käyttöliittymän asetukset. Lisäksi komentokehoitteen valinnat ylikirjoittavat kyseisen asetustiedoston.</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Virhe</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation>Asetustiedostoa ei voitu avata.</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
-        <translation>Tämä muutos vaatii ohjelman uudelleen käynnistyksen.</translation>
+        <translation>Tämä muutos vaatii ohjelman uudelleenkäynnistyksen.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="291"/>
         <source>The supplied proxy address is invalid.</source>
-        <translation>Antamasi proxyn osoite on virheellinen.</translation>
+        <translation>Antamasi proxy-osoite on virheellinen.</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../forms/overviewpage.ui" line="20"/>
         <source>Form</source>
         <translation>Lomake</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="63"/>
-        <source>Wallet</source>
-        <translation>Lompakko</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bitsend network after a connection is established, but this process has not completed yet.</source>
+        <translation>Näytetyt tiedot eivät välttämättä ole ajantasalla. Lompakkosi synkronoituu bitsend-verkon kanssa automaattisesti yhteyden muodostamisen jälkeen, mutta synkronointi on vielä meneillään.</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="70"/>
-        <location filename="../forms/overviewpage.ui" line="953"/>
-        <location filename="../forms/overviewpage.ui" line="1021"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation>Näytetyt tiedot eivät välttämättä ole ajan tasalla. Lompakkosi synkronoituu automaattisesti Bitsend verkkoon kun yhteys on muodostettu, mutta tämä prosessi ei vielä ole valmis.</translation>
+        <source>Watch-only:</source>
+        <translation>Seuranta:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="114"/>
         <source>Available:</source>
         <translation>Käytettävissä:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="130"/>
         <source>Your current spendable balance</source>
-        <translation>Nykyinen käytettävissä oleva saldo</translation>
+        <translation>Nykyinen käytettävissä oleva tase</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="146"/>
         <source>Pending:</source>
-        <translation>Vahvistamatta:</translation>
+        <translation>Odotetaan:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="162"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Vahvistamattomien siirtotapahtumien summa, jota ei vielä lasketa käytettävissä olevaan saldoon</translation>
+        <translation>Varmistamattomien rahansiirtojen summa, jota ei lasketa käytettävissä olevaan taseeseen.</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="178"/>
         <source>Immature:</source>
-        <translation>Vahvistamatta:</translation>
+        <translation>Epäkypsää:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="191"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Louhittu saldo, joka ei ole vielä kypsynyt</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="207"/>
+        <source>Balances</source>
+        <translation>Saldot</translation>
+    </message>
+    <message>
         <source>Total:</source>
-        <translation>Saldo Yhteensä:</translation>
+        <translation>Yhteensä:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="223"/>
         <source>Your current total balance</source>
-        <translation>Saldo yhteensä tällä hetkellä</translation>
+        <translation>Tililläsi tällä hetkellä olevien bitsendien määrä</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="302"/>
-        <source>Status:</source>
-        <translation>Tila:</translation>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>Nykyinen tase seurantaosoitetteissa</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="309"/>
-        <source>Enabled/Disabled</source>
-        <translation>Käytössä/Ei käytössä</translation>
+        <source>Spendable:</source>
+        <translation>Käytettävissä:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="316"/>
-        <source>Completion:</source>
-        <translation>Valmiina:</translation>
+        <source>Recent transactions</source>
+        <translation>Viimeisimmät rahansiirrot</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="336"/>
-        <source>Darksend Balance:</source>
-        <translation>Darksend Saldo:</translation>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Vahvistamattomat rahansiirrot vain katseltaviin osoitteisiin</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="349"/>
-        <source>0 BSD</source>
-        <translation>0 BSD</translation>
+        <source>Mined balance in watch-only addresses that has not yet matured</source>
+        <translation>Louhittu, ei vielä kypsynyt saldo vain katseltavissa osoitteissa</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="356"/>
-        <source>Amount and Rounds:</source>
-        <translation>Määrä ja Kierrokset:</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="363"/>
-        <source>0 BSD / 0 Rounds</source>
-        <translation>0 BSD / 0 Kierrosta</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="370"/>
-        <source>Submitted Denom:</source>
-        <translation>Lähetetyt Denom:</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="377"/>
-        <source>The denominations you submitted to the Xnode. To mix, other users must submit the exact same denominations.</source>
-        <translation>Xnodelle lähetetyt denominoinnit. Jotta sekoitus onnistuisi, täytyy muiden käyttäjien käyttää saman arvoisia denominointeja.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="380"/>
-        <source>n/a</source>
-        <translation>e/s</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="946"/>
-        <location filename="../overviewpage.cpp" line="453"/>
-        <location filename="../overviewpage.cpp" line="467"/>
-        <location filename="../overviewpage.cpp" line="481"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="839"/>
-        <source>Start/Stop Mixing</source>
-        <translation>Käynnistä/Lopeta Sekoitus</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="871"/>
-        <source>(Last Message)</source>
-        <translation>(Viimeisin Viesti)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="896"/>
-        <source>Try to manually submit a Darksend request.</source>
-        <translation>Yritä manuaalisesti esittää Darksend sekoituspyyntö.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="899"/>
-        <source>Try Mix</source>
-        <translation>Yritä Sekoittaa</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="918"/>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it&apos;s in the process of Mixing, which can cost you money!)</source>
-        <translation>Nollaa nykyinen Darksend tila (voi keskeyttää Darksend sekoituksen, joka voi maksaa ylimääräisiä kuluja)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="924"/>
-        <source>Reset</source>
-        <translation>Nollaus</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="1014"/>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Viimeisimmät tapahtumat&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="126"/>
-        <location filename="../overviewpage.cpp" line="127"/>
-        <location filename="../overviewpage.cpp" line="128"/>
-        <source>out of sync</source>
-        <translation>Ei ajan tasalla</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="143"/>
-        <location filename="../overviewpage.cpp" line="350"/>
-        <source>Disabled</source>
-        <translation>Ei käytössä</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="146"/>
-        <location filename="../overviewpage.cpp" line="352"/>
-        <location filename="../overviewpage.cpp" line="495"/>
-        <source>Start Darksend Mixing</source>
-        <translation>Käynnistä Darksend Sekoitus</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="148"/>
-        <location filename="../overviewpage.cpp" line="497"/>
-        <source>Stop Darksend Mixing</source>
-        <translation>Lopeta Darksend Sekoitus</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="270"/>
-        <source>No inputs detected</source>
-        <translation>Syötteitä ei havaittu</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="278"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to recalculate.</source>
-        <translation>Löytyi vahvistamattomia syötteitä, odotetaan että ne vahvistetaan uudelleen laskentaa varten.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="335"/>
-        <source>Rounds</source>
-        <translation>Kierrosta</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="366"/>
-        <source>Enabled</source>
-        <translation>Käytössä</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="424"/>
-        <source>Last Darksend message:
-</source>
-        <translation>Viimeisin Darksend viesti:
-</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="377"/>
-        <location filename="../overviewpage.cpp" line="406"/>
-        <source>Darksend is idle.</source>
-        <translation>Darksend odottaa.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="381"/>
-        <source>Mixing in progress...</source>
-        <translation>Sekoitus käynnissä...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="387"/>
-        <source>Darksend request complete: Your transaction was accepted into the pool!</source>
-        <translation>Darksend pyyntö valmis: Tapahtuma on hyväksytty varantoon!</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="393"/>
-        <source>Submitted following entries to Xnode:</source>
-        <translation>Esitettiin seuraavia merkintöjä Xnodelle:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="394"/>
-        <location filename="../overviewpage.cpp" line="395"/>
-        <location filename="../overviewpage.cpp" line="396"/>
-        <source>Submitted to Xnode, Waiting for more entries</source>
-        <translation>Esitetty Xnodelle, odotetaan lisää merkintöjä</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="399"/>
-        <source>Found enough users, signing ...</source>
-        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="400"/>
-        <source>Found enough users, signing ( waiting. )</source>
-        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan (odotetaan.)</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="401"/>
-        <source>Found enough users, signing ( waiting.. )</source>
-        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan (odotetaan..)</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="402"/>
-        <source>Found enough users, signing ( waiting... )</source>
-        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan (odotetaan...)</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="404"/>
-        <source>Transmitting final transaction.</source>
-        <translation>Lähetetään viimeistä siirtotapahtumaa.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="408"/>
-        <source>Finalizing transaction.</source>
-        <translation>Viimeistellään siirtotapahtumaa.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Darksend request incomplete:</source>
-        <translation>Darksend pyyntö kesken:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Will retry...</source>
-        <translation>Yritetään uudelleen...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="412"/>
-        <source>Darksend request complete:</source>
-        <translation>Darksend pyyntö valmis:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="414"/>
-        <source>Submitted to Xnode, waiting in queue .</source>
-        <translation>Esitetty Xnodelle, odotetaan .</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="415"/>
-        <source>Submitted to Xnode, waiting in queue ..</source>
-        <translation>Esitetty Xnodelle, odotetaan ..</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="416"/>
-        <source>Submitted to Xnode, waiting in queue ...</source>
-        <translation>Esitetty Xnodelle, odotetaan ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="418"/>
-        <source>Unknown state:</source>
-        <translation>Tuntematon tila:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="432"/>
-        <source>N/A</source>
-        <translation>e/s</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="454"/>
-        <source>Darksend was successfully reset.</source>
-        <translation>Darksend nollattu onnistuneesti.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="468"/>
-        <source>Darksend requires at least %1 to use.</source>
-        <translation>Darksendin käyttö vaatii vähintään %1.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="482"/>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation>Lompakko on lukittu ja käyttäjä ei avannut sitä. Darksend asetetaan pois käytöstä.</translation>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Nykyinen tase seurantaosoitetteissa</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="293"/>
-        <location filename="../paymentserver.cpp" line="505"/>
-        <location filename="../paymentserver.cpp" line="518"/>
-        <location filename="../paymentserver.cpp" line="613"/>
-        <location filename="../paymentserver.cpp" line="631"/>
-        <location filename="../paymentserver.cpp" line="647"/>
         <source>Payment request error</source>
         <translation>Maksupyyntövirhe</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="294"/>
         <source>Cannot start bitsend: click-to-pay handler</source>
-        <translation>Ei voi käynnistää bitsendia: click-to-pay handler</translation>
+        <translation>bitsendia ei voi käynnistää: klikkaa-maksaaksesi -käsittelijän virhe</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="352"/>
-        <source>Net manager warning</source>
-        <translation>Verkkohallinnan varoitus</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="353"/>
-        <source>Your active proxy doesn&apos;t support SOCKS5, which is required for payment requests via proxy.</source>
-        <translation>Aktiivinen proxy:si ei tue SOCKS5, joka on pakollinen maksupyynnöissä proxyn kautta.</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="404"/>
-        <location filename="../paymentserver.cpp" line="417"/>
         <source>URI handling</source>
         <translation>URI käsittely</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="405"/>
         <source>Payment request fetch URL is invalid: %1</source>
         <translation>Maksupyynnön haku URL on virheellinen: %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="418"/>
-        <source>URI can not be parsed! This can be caused by an invalid Bitsend address or malformed URI parameters.</source>
-        <translation>URI:a ei voida jäsentää! Tämä voi johtua virheellisestä Bitsend osoitteesta tai virheellisestä URI:n muuttujasta. </translation>
+        <source>Invalid payment address %1</source>
+        <translation>Virheellinen maksuosoite %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="432"/>
+        <source>URI cannot be parsed! This can be caused by an invalid bitsend address or malformed URI parameters.</source>
+        <translation>URIa ei voitu jäsentää! Tämä voi johtua virheellisestä bitsend-osoitteesta tai väärin muotoilluista URI parametreista.</translation>
+    </message>
+    <message>
         <source>Payment request file handling</source>
         <translation>Maksupyynnön tiedoston käsittely</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="433"/>
-        <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
-        <translation>Maksupyynnön tiedostoa ei voida lukea tai prosessoida! Tämä voi johtua virheellisestä maksupyyntötiedostosta.</translation>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Maksupyyntötiedostoa ei voi lukea! Tämä saattaa johtua epäkelvosta maksupyyntötiedostosta.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="506"/>
+        <source>Payment request rejected</source>
+        <translation>Maksupyyntö hylätty</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Maksupyyntoverkko ei täsmää asiakasohjelman verkon kanssa.</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>Maksupyyntö vanhentui.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>Maksupyyntöä ei ole alustettu.</translation>
+    </message>
+    <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>Vahvistamattomia maksupyyntöjä kustomoituun maksupalvelun scripteihin ei tueta.</translation>
+        <translation>Varmistamattomia maksupyyntöjä kustomoituun maksupalveluun ei tueta.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="514"/>
+        <source>Invalid payment request.</source>
+        <translation>Virheellinen maksupyyntö.</translation>
+    </message>
+    <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>Maksupyyntö %1 on liian pieni (lasketaan tomuksi).</translation>
+        <translation>Maksupyyntö %1 on liian pieni (kohdellaan tomuna).</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="565"/>
         <source>Refund from %1</source>
         <translation>Maksupalautus %1:sta</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="608"/>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>Maksupyyntö %1 on liian suuri (%2 tavua, sallittu %3 tavua).</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
-        <translation>Virhe kommunikoidessa %1: %2</translation>
+        <translation>Virhe kommunikoidessa %1n kanssa: %2</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="632"/>
-        <source>Payment request can not be parsed or processed!</source>
-        <translation>Maksupyyntöä ei voida jäsentää tai prosessoida!</translation>
+        <source>Payment request cannot be parsed!</source>
+        <translation>Maksupyyntöä ei voida jäsentää!</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="643"/>
         <source>Bad response from server %1</source>
-        <translation>Epäkelpo vastaus palvelimelta %1</translation>
+        <translation>Virheellinen vastaus palvelimelta %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="665"/>
         <source>Network request error</source>
         <translation>Tietoverkon pyyntövirhe</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="676"/>
         <source>Payment acknowledged</source>
         <translation>Rahansiirto tunnistettu</translation>
     </message>
 </context>
 <context>
+    <name>PeerTableModel</name>
+    <message>
+        <source>User Agent</source>
+        <translation>Käyttöliittymä</translation>
+    </message>
+    <message>
+        <source>Node/Service</source>
+        <translation>Noodi/Palvelu</translation>
+    </message>
+    <message>
+        <source>Ping</source>
+        <translation>Vasteaika</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Lähetetyt</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Vastaanotetut</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../bitsend.cpp" line="525"/>
-        <location filename="../bitsend.cpp" line="532"/>
-        <location filename="../bitsend.cpp" line="539"/>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>Amount</source>
+        <translation>Määrä</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="526"/>
-        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
-        <translation>Virhe: Annettua data-hakemistoa &quot;%1&quot; ei ole olemassa.</translation>
+        <source>Enter a bitsend address (e.g. %1)</source>
+        <translation>Syötä bitsend-osoite (esim. %1)</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="533"/>
+        <source>%1 d</source>
+        <translation>%1 d</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation>%1 h</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation>%1 m</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Ei yhtään</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>Ei saatavilla</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 ms</translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 ja %2</translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 B</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 KB</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 MB</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 GB</translation>
+    </message>
+    <message>
+        <source>%1 didn't yet exit safely...</source>
+        <translation>%1 ei vielä sulkeutunut turvallisesti...</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>tuntematon</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
+    <message>
+        <source>Error: Specified data directory "%1" does not exist.</source>
+        <translation>Virhe: Annettua data-hakemistoa "%1" ei ole olemassa.</translation>
+    </message>
+    <message>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>Virhe: Ei voida jäsentää asetustiedostoa: %1. Käytä vain avain=arvo syntaksia.</translation>
+        <translation>Virhe: asetustiedostoa %1 ei voida jäsentää. Käytä vain avain=arvo merkintätapaa.</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="540"/>
-        <source>Error reading Xnode configuration file: %1</source>
-        <translation>Virhe luettaessa Xnoden asetustiedostoa: %1</translation>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Error: Invalid combination of -regtest and -testnet.</source>
-        <translation>Virhe: Virheellinen yhdistelmä -regtest ja -testnet.</translation>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="612"/>
-        <source>Bitsend Core didn&apos;t yet exit safely...</source>
-        <translation>Bitsend Core ei ole vielä sulkeutunut turvallisesti...</translation>
-    </message>
-    <message>
-        <location filename="../guiutil.cpp" line="101"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Syötä Bitsend osoite (esim. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>Error: %1</source>
+        <translation>Virhe: %1</translation>
     </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="36"/>
         <source>&amp;Save Image...</source>
-        <translation>&amp;Tallenna Kuva...</translation>
+        <translation>&amp;Tallenna kuva</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="39"/>
         <source>&amp;Copy Image</source>
         <translation>&amp;Kopioi kuva</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>Save QR Code</source>
         <translation>Tallenna QR-koodi</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>PNG Image (*.png)</source>
         <translation>PNG kuva (*.png)</translation>
     </message>
@@ -2212,299 +1497,365 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="14"/>
-        <source>Tools window</source>
-        <translation>Työkaluikkuna</translation>
+        <source>N/A</source>
+        <translation>Ei saatavilla</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="24"/>
+        <source>Client version</source>
+        <translation>Pääteohjelman versio</translation>
+    </message>
+    <message>
         <source>&amp;Information</source>
         <translation>T&amp;ietoa</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="33"/>
-        <source>Xnode Count</source>
-        <translation>Xnodet määrä</translation>
+        <source>Debug window</source>
+        <translation>&amp;Debug-ikkuna</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="46"/>
         <source>General</source>
         <translation>Yleinen</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="53"/>
-        <source>Name</source>
-        <translation>Nimi</translation>
+        <source>Using BerkeleyDB version</source>
+        <translation>Käyttää BerkeleyDB-versiota</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="60"/>
-        <source>Client name</source>
-        <translation>Asiakasohjelman nimi</translation>
+        <source>Datadir</source>
+        <translation>Data-hakemisto</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="70"/>
-        <location filename="../forms/rpcconsole.ui" line="139"/>
-        <location filename="../forms/rpcconsole.ui" line="192"/>
-        <location filename="../forms/rpcconsole.ui" line="215"/>
-        <location filename="../forms/rpcconsole.ui" line="231"/>
-        <location filename="../forms/rpcconsole.ui" line="247"/>
-        <location filename="../forms/rpcconsole.ui" line="276"/>
-        <location filename="../forms/rpcconsole.ui" line="292"/>
-        <location filename="../forms/rpcconsole.ui" line="315"/>
-        <location filename="../forms/rpcconsole.ui" line="341"/>
-        <source>N/A</source>
-        <translation>e/s</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="83"/>
-        <source>Number of connections</source>
-        <translation>Yhteyksien määrä</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="90"/>
-        <source>Open the Bitsend debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Avaa Bitsend debug lokitiedosto nykyisestä datahakemistosta. Tämä saattaa kestää muutaman sekunnin isoilla tiedostoilla.</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="93"/>
-        <source>&amp;Open</source>
-        <translation>&amp;Avaa</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="116"/>
         <source>Startup time</source>
         <translation>Käynnistysaika</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="129"/>
         <source>Network</source>
         <translation>Verkko</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="152"/>
-        <source>Last block time</source>
-        <translation>Viimeisimmän lohkon aika</translation>
+        <source>Name</source>
+        <translation>Nimi</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="165"/>
-        <source>Debug log file</source>
-        <translation>Debug lokitiedosto</translation>
+        <source>Number of connections</source>
+        <translation>Yhteyksien lukumäärä</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="172"/>
-        <source>Using OpenSSL version</source>
-        <translation>Käytössä oleva OpenSSL-versio</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="182"/>
-        <source>Build date</source>
-        <translation>Ohjelman päiväys</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="205"/>
-        <source>Current number of blocks</source>
-        <translation>Nykyinen lohkojen määrä</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="305"/>
-        <source>Client version</source>
-        <translation>Asiakasohjelman versio</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="334"/>
         <source>Block chain</source>
         <translation>Lohkoketju</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="349"/>
+        <source>Current number of blocks</source>
+        <translation>Nykyinen Lohkojen määrä</translation>
+    </message>
+    <message>
+        <source>Memory Pool</source>
+        <translation>Muistiallas</translation>
+    </message>
+    <message>
+        <source>Current number of transactions</source>
+        <translation>Tämänhetkinen rahansiirtojen määrä</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Muistin käyttö</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Nollaa</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Vastaanotetut</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Lähetetyt</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Vertaiset</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Estetyt vertaiset</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Valitse vertainen eriteltyjä tietoja varten.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>Sallittu</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Suunta</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versio</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Alkaen lohkosta</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>Synkronoidut ylätunnisteet</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Synkronoidut lohkot</translation>
+    </message>
+    <message>
+        <source>User Agent</source>
+        <translation>Käyttöliittymä</translation>
+    </message>
+    <message>
+        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Avaa %1 -debug-loki tämänhetkisestä data-hakemistosta. Tämä voi viedä muutaman sekunnin suurille lokitiedostoille.</translation>
+    </message>
+    <message>
+        <source>Decrease font size</source>
+        <translation>Pienennä fontin kokoa</translation>
+    </message>
+    <message>
+        <source>Increase font size</source>
+        <translation>Suurenna fontin kokoa</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Palvelut</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>Panna-pisteytys</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Yhteysaika</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Viimeisin lähetetty</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Viimeisin vastaanotettu</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Vasteaika</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>Tämänhetkisen merkittävän yhteyskokeilun kesto.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Yhteyskokeilun odotus</translation>
+    </message>
+    <message>
+        <source>Min Ping</source>
+        <translation>Pienin vasteaika</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Ajan poikkeama</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Viimeisimmän lohkon aika</translation>
+    </message>
+    <message>
+        <source>&amp;Open</source>
+        <translation>&amp;Avaa</translation>
+    </message>
+    <message>
         <source>&amp;Console</source>
         <translation>&amp;Konsoli</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="398"/>
-        <source>Clear console</source>
-        <translation>Tyhjennä konsoli</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="421"/>
         <source>&amp;Network Traffic</source>
         <translation>&amp;Verkkoliikenne</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="473"/>
-        <source>&amp;Clear</source>
-        <translation>&amp;Tyhjennä</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="486"/>
         <source>Totals</source>
         <translation>Yhteensä</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="550"/>
-        <location filename="../rpcconsole.cpp" line="367"/>
         <source>In:</source>
         <translation>Sisään:</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="630"/>
-        <location filename="../rpcconsole.cpp" line="368"/>
         <source>Out:</source>
         <translation>Ulos:</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="333"/>
-        <source>Welcome to the Bitsend RPC console.</source>
-        <translation>Tervetuloa Bitsend RPC konsoliin.</translation>
+        <source>Debug log file</source>
+        <translation>Debug lokitiedosto</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="334"/>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Ylös- ja alas-nuolet selaavat historiaa ja &lt;b&gt;Ctrl-L&lt;/b&gt; tyhjentää ruudun.</translation>
+        <source>Clear console</source>
+        <translation>Tyhjennä konsoli</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="335"/>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Kirjoita &lt;b&gt;help&lt;/b&gt; nähdäksesi käytettävissä olevat komennot.</translation>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;tunti</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="474"/>
-        <source>%1 B</source>
-        <translation>%1 B</translation>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;päivä</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="476"/>
-        <source>%1 KB</source>
-        <translation>%1 KB</translation>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;viikko</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="478"/>
-        <source>%1 MB</source>
-        <translation>%1 MB</translation>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;vuosi</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="480"/>
-        <source>%1 GB</source>
-        <translation>%1 GB</translation>
+        <source>&amp;Disconnect</source>
+        <translation>&amp;Katkaise yhteys</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="487"/>
-        <source>%1 m</source>
-        <translation>%1 m</translation>
+        <source>Ban for</source>
+        <translation>Estä </translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="492"/>
-        <source>%1 h</source>
-        <translation>%1 h</translation>
+        <source>&amp;Unban</source>
+        <translation>&amp;Poista esto</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="494"/>
-        <source>%1 h %2 m</source>
-        <translation>%1 h %2 m</translation>
+        <source>Welcome to the %1 RPC console.</source>
+        <translation>Tervetuloa %1 RPC-konsoliin.</translation>
+    </message>
+    <message>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation>Käytä nuolia ylös ja alas selataksesi historiaa, sekä %1 tyhjentääkseksi ruudun.</translation>
+    </message>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>VAROITUS: aktiiviset huijarit neuvovat kirjoittamaan komentoja tähän komentoriviin, varastaen lompakkosi sisällön. Älä käytä komentoriviä ilman täyttä ymmärrystä kirjoittamasi komennon toiminnasta.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled</source>
+        <translation>Verkkoliikenne pysäytetty</translation>
+    </message>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(solmukohdan id: %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>%1 kautta</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>ei koskaan</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Sisääntuleva</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Ulosmenevä</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Kyllä</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Ei</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Tuntematon</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="34"/>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Uudelleenkäytä yksi vanhoista vastaanottavista osoitteista. Uudelleenkäyttössä on turvallisuus- ja yksityisyysongelmia. Älä käytä tätä ellet ole uudelleenluomassa aikaisempaa maksupyyntöä.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="37"/>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>&amp;Uudelleenkäytä vastaanottavaa osoitetta (ei suositella)</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="51"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="74"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
-        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu. Huomio: Viestiä ei lähetetä maksun mukana Bitsend verkkoon.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="54"/>
-        <source>&amp;Message:</source>
-        <translation>&amp;Viesti:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="67"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="88"/>
-        <source>An optional label to associate with the new receiving address.</source>
-        <translation>Valinnainen nimi liitetään uuteen vastaanottavaan osoitteeseen.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="81"/>
-        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Käytä tätä lomaketta maksupyyntöihin. Kaikki kentät ovat &lt;b&gt;valinnaisia&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="91"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Nimi:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="104"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="126"/>
-        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>Valinnainen pyyntömäärä. Jätä tyhjäksi tai nollaksi jos et pyydä tiettyä määrää.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="107"/>
         <source>&amp;Amount:</source>
         <translation>&amp;Määrä</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="141"/>
-        <source>&amp;Request payment</source>
-        <translation>&amp;Vastaanota maksu</translation>
+        <source>&amp;Label:</source>
+        <translation>&amp;Nimi:</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="158"/>
+        <source>&amp;Message:</source>
+        <translation>&amp;Viesti:</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the bitsend network.</source>
+        <translation>Valinnainen viesti liitetään maksupyyntöön ja näytetään avattaessa. Viestiä ei lähetetä bitsend-verkkoon.</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address.</source>
+        <translation>Valinnainen nimi liitetään vastaanottavaan osoitteeseen.</translation>
+    </message>
+    <message>
+        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
+        <translation>Käytä lomaketta maksupyyntöihin. Kaikki kentät ovat &lt;b&gt;valinnaisia&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
+        <translation>Valinnainen pyyntömäärä. Jätä tyhjäksi tai nollaksi jos et pyydä tiettyä määrää.</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="161"/>
         <source>Clear</source>
         <translation>Tyhjennä</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="239"/>
         <source>Requested payments history</source>
         <translation>Pyydettyjen maksujen historia</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="261"/>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Vastaanota maksu</translation>
+    </message>
+    <message>
+        <source>Generate Bech32 address</source>
+        <translation>Luo Bech32-osoite</translation>
+    </message>
+    <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Näytä valittu pyyntö (sama toiminta kuin alkion tuplaklikkaus)</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="264"/>
         <source>Show</source>
         <translation>Näytä</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="278"/>
         <source>Remove the selected entries from the list</source>
         <translation>Poista valitut alkiot listasta</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="281"/>
         <source>Remove</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="39"/>
-        <source>Copy label</source>
-        <translation>Kopioi nimi</translation>
+        <source>Copy URI</source>
+        <translation>Kopioi URI</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="40"/>
+        <source>Copy label</source>
+        <translation>Kopioi nimike</translation>
+    </message>
+    <message>
         <source>Copy message</source>
         <translation>Kopioi viesti</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="41"/>
         <source>Copy amount</source>
         <translation>Kopioi määrä</translation>
     </message>
@@ -2512,67 +1863,54 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="29"/>
         <source>QR Code</source>
         <translation>QR-koodi</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="75"/>
         <source>Copy &amp;URI</source>
         <translation>Kopioi &amp;URI</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="82"/>
         <source>Copy &amp;Address</source>
         <translation>Kopioi &amp;Osoite</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="89"/>
         <source>&amp;Save Image...</source>
-        <translation>&amp;Tallenna Kuva</translation>
+        <translation>&amp;Tallenna kuva</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="136"/>
         <source>Request payment to %1</source>
-        <translation>Vastaanota maksu %1</translation>
+        <translation>Pyydä maksua osoitteeseen %1</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="142"/>
         <source>Payment information</source>
         <translation>Maksutiedot</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="143"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="145"/>
         <source>Address</source>
         <translation>Osoite</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="147"/>
         <source>Amount</source>
         <translation>Määrä</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="149"/>
         <source>Label</source>
-        <translation>Nimi</translation>
+        <translation>Nimike</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="151"/>
         <source>Message</source>
         <translation>Viesti</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="161"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>Tuloksen URI liian pitkä, yritä lyhentää otsikon tekstiä / viestiä.</translation>
+        <translation>Tuloksen URI on liian pitkä, yritä lyhentää otsikon tai viestin tekstiä.</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="166"/>
         <source>Error encoding URI into QR Code.</source>
         <translation>Virhe käännettäessä URI:a QR-koodiksi.</translation>
     </message>
@@ -2580,451 +1918,386 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Date</source>
-        <translation>Päivämäärä</translation>
+        <translation>Aika</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Label</source>
-        <translation>Nimi</translation>
+        <translation>Nimike</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Message</source>
         <translation>Viesti</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
-        <source>Amount</source>
-        <translation>Määrä</translation>
-    </message>
-    <message>
-        <location filename="../recentrequeststablemodel.cpp" line="62"/>
         <source>(no label)</source>
-        <translation>(ei nimeä)</translation>
+        <translation>(ei nimikettä)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="71"/>
         <source>(no message)</source>
         <translation>(ei viestiä)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="79"/>
-        <source>(no amount)</source>
-        <translation>(ei määrää)</translation>
+        <source>(no amount requested)</source>
+        <translation>(ei pyydettyä määrää)</translation>
+    </message>
+    <message>
+        <source>Requested</source>
+        <translation>Pyydetty</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="14"/>
-        <location filename="../sendcoinsdialog.cpp" line="429"/>
-        <location filename="../sendcoinsdialog.cpp" line="521"/>
-        <location filename="../sendcoinsdialog.cpp" line="531"/>
         <source>Send Coins</source>
-        <translation>Lähetä Bitsendeja</translation>
+        <translation>Lähetä kolikoita</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="90"/>
         <source>Coin Control Features</source>
         <translation>Kolikkokontrolli ominaisuudet</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="110"/>
         <source>Inputs...</source>
         <translation>Sisääntulot...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="117"/>
         <source>automatically selected</source>
         <translation>automaattisesti valitut</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="136"/>
         <source>Insufficient funds!</source>
         <translation>Lompakon saldo ei riitä!</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="225"/>
         <source>Quantity:</source>
         <translation>Määrä:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="260"/>
         <source>Bytes:</source>
         <translation>Tavuja:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="308"/>
         <source>Amount:</source>
         <translation>Määrä:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="340"/>
-        <source>Priority:</source>
-        <translation>Prioriteetti:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="353"/>
-        <source>medium</source>
-        <translation>keskisuuri</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="388"/>
         <source>Fee:</source>
         <translation>Palkkio:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="420"/>
-        <source>Low Output:</source>
-        <translation>Pieni Tuotos:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="433"/>
-        <source>no</source>
-        <translation>ei</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="468"/>
         <source>After Fee:</source>
         <translation>Palkkion jälkeen:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="500"/>
         <source>Change:</source>
         <translation>Vaihtoraha:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="544"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>Jos tämä aktivoidaan mutta vaihtorahan osoite on tyhjä tai virheellinen, vaihtoraha tullaan lähettämään uuteen luotuun osoitteeseen.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="547"/>
         <source>Custom change address</source>
         <translation>Kustomoitu vaihtorahan osoite</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="668"/>
-        <source>Confirm the send action</source>
-        <translation>Lähetä klikkaamalla</translation>
+        <source>Transaction Fee:</source>
+        <translation>Rahansiirtokulu:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="671"/>
-        <source>S&amp;end</source>
-        <translation>&amp;Lähetä</translation>
+        <source>Choose...</source>
+        <translation>Valitse...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="691"/>
-        <source>Clear all fields of the form.</source>
-        <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>Fallbackfeen käyttö voi johtaa useita tunteja, päiviä (tai loputtomiin) kestävän siirron lähettämiseen. Harkitse palkkion valitsemista itse tai odota kunnes koko ketju on vahvistettu.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="694"/>
-        <source>Clear &amp;All</source>
-        <translation>&amp;Tyhjennä Kaikki</translation>
+        <source>Warning: Fee estimation is currently not possible.</source>
+        <translation>Varoitus: Kulujen arviointi ei ole juuri nyt mahdollista.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="711"/>
+        <source>collapse fee-settings</source>
+        <translation>pudota kulujen asetukset</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>per kilotavu</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then "per kilobyte" only pays 250 satoshis in fee, while "total at least" pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Jos määritelty palkkio on asetettu 1000 satoshiin ja siirto on vain 250 tavua, niin "kilotavua kohti" maksaa vain 250 satoshin palkkion, kun "vähintään" maksaa 1000 satoshia. Kilotavua suuremmilla siirroilla molemmat maksavat jokaista kilotavua kohti.</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Piilota</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(lue työkaluvinkki)</translation>
+    </message>
+    <message>
+        <source>Recommended:</source>
+        <translation>Suositeltu:</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Muokattu:</translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(Älykästä rahansiirtokulua ei ole vielä alustettu. Tähän kuluu yleensä aikaa muutaman lohkon verran...)</translation>
+    </message>
+    <message>
         <source>Send to multiple recipients at once</source>
-        <translation>Lähetä usealle vastaanottajalle samanaikaisesti</translation>
+        <translation>Lähetä usealla vastaanottajalle samanaikaisesti</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="714"/>
         <source>Add &amp;Recipient</source>
         <translation>Lisää &amp;Vastaanottaja</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="752"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
+        <source>Clear all fields of the form.</source>
+        <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="771"/>
-        <source>InstantX</source>
-        <translation>InstantX</translation>
+        <source>Dust:</source>
+        <translation>Tomu:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="778"/>
+        <source>Confirmation time target:</source>
+        <translation>Vahvistusajan tavoite:</translation>
+    </message>
+    <message>
+        <source>Clear &amp;All</source>
+        <translation>&amp;Tyhjennnä Kaikki</translation>
+    </message>
+    <message>
         <source>Balance:</source>
-        <translation>Saldo:</translation>
+        <translation>Balanssi:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="53"/>
+        <source>Confirm the send action</source>
+        <translation>Vahvista lähetys</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation>&amp;Lähetä</translation>
+    </message>
+    <message>
         <source>Copy quantity</source>
-        <translation>Kopioi määrä</translation>
+        <translation>Kopioi lukumäärä</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="54"/>
         <source>Copy amount</source>
         <translation>Kopioi määrä</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="55"/>
         <source>Copy fee</source>
-        <translation>Kopioi palkkio</translation>
+        <translation>Kopioi rahansiirtokulu</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="56"/>
         <source>Copy after fee</source>
-        <translation>Kopioi palkkion jälkeen</translation>
+        <translation>Kopioi rahansiirtokulun jälkeen</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="57"/>
         <source>Copy bytes</source>
         <translation>Kopioi tavut</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="58"/>
-        <source>Copy priority</source>
-        <translation>Kopioi prioriteetti</translation>
+        <source>Copy dust</source>
+        <translation>Kopioi tomu</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="59"/>
-        <source>Copy low output</source>
-        <translation>Kopioi pieni tuotos</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="60"/>
         <source>Copy change</source>
-        <translation>Kopioi vaihtoraha</translation>
+        <translation>Kopioi vaihtorahat</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>using</source>
-        <translation>käyttäen</translation>
+        <source>%1 (%2 blocks)</source>
+        <translation>%1 (%2 lohkoa)</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <source>anonymous funds</source>
-        <translation>anonymisoituja varoja</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="155"/>
-        <source>(Darksend requires this amount to be rounded up to the nearest %1).</source>
-        <translation>(Darksend pyöristää tämän lähimpään %1).</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>any available funds (not recommended)</source>
-        <translation>kaikkia käytössä olevia varoja (ei suositeltu)</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="166"/>
-        <source>and InstantX</source>
-        <translation>ja InstantX</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="190"/>
-        <location filename="../sendcoinsdialog.cpp" line="195"/>
-        <location filename="../sendcoinsdialog.cpp" line="200"/>
-        <location filename="../sendcoinsdialog.cpp" line="204"/>
         <source>%1 to %2</source>
-        <translation>%1 -&gt; %2</translation>
+        <translation>%1 to %2</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="253"/>
         <source>Are you sure you want to send?</source>
-        <translation>Haluatko varmasti lähettää?</translation>
+        <translation>Oletko varma, että haluat lähettää?</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="262"/>
-        <source>are added as transaction fee</source>
-        <translation>lisätty siirtomaksuna</translation>
+        <source>added as transaction fee</source>
+        <translation>lisätty rahansiirtomaksuna</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="276"/>
-        <source>Total Amount %1 (= %2)</source>
-        <translation>Yhteensä %1 (= %2)</translation>
+        <source>Total Amount %1</source>
+        <translation>Kokonaismäärä %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="278"/>
         <source>or</source>
         <translation>tai</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="280"/>
         <source>Confirm send coins</source>
-        <translation>Hyväksy lähettäminen</translation>
+        <translation>Vahvista kolikoiden lähetys</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="435"/>
-        <source>Payment request expired</source>
-        <translation>Maksupyyntö vanhentunut</translation>
+        <source>The recipient address is not valid. Please recheck.</source>
+        <translation>Vastaanottajan osoite ei ole kelvollinen. Tarkista osoite.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="443"/>
-        <source>Invalid payment address %1</source>
-        <translation>Virheellinen maksuosoite %1</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="498"/>
-        <source>The recipient address is not valid, please recheck.</source>
-        <translation>Vastaanottajan osoite on virheellinen, tarkista osoite.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="501"/>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>Maksettavan summan tulee olla suurempi kuin 0.</translation>
+        <translation>Maksettavan määrän täytyy olla suurempi kuin 0.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="504"/>
         <source>The amount exceeds your balance.</source>
-        <translation>Määrä ylittää käytettävissä olevan saldon.</translation>
+        <translation>Määrä ylittää tilisi saldon.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="507"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>Summa yhteensä ylittää saldosi kun siihen lisätään siirtomaksu %1.</translation>
+        <translation>Kokonaismäärä ylittää saldosi kun %1 siirtomaksu lisätään summaan.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="510"/>
-        <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Sama osoite toistuu useamman kerran, samaan osoitteeseen voi lähettää vain kerran per maksutapahtuma.</translation>
+        <source>Duplicate address found: addresses should only be used once each.</source>
+        <translation>Osoite esiintyy useaan kertaan: osoitteita tulisi käyttää vain kerran kutakin.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="513"/>
         <source>Transaction creation failed!</source>
-        <translation>Siirtotapahtuman luonti epäonnistui!</translation>
+        <translation>Rahansiirron luonti epäonnistui!</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="517"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Siirtotapahtuma hylättiin! Tämä saattaa tapahtua jos lompakossa olevat varat on jo kulutettu, kuten jos käytät kopiota wallet.dat tiedostosta ja varat oli jo käytetty mutta ei merkattu täällä.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation>Siirto hylättiin seuraavasta syystä: %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="522"/>
-        <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>Virhe: Lompakko on avattu vain anonymisointia varten.</translation>
+        <source>A fee higher than %1 is considered an absurdly high fee.</source>
+        <translation>%1:tä ja korkeampaa siirtokulua pidetään mielettömän korkeana.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="635"/>
-        <source>Warning: Invalid Bitsend address</source>
-        <translation>Varoitus: Virheellinen Bitsend osoite</translation>
+        <source>Payment request expired.</source>
+        <translation>Maksupyyntö vanhentui.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="644"/>
+        <source>Pay only the required fee of %1</source>
+        <translation>Maksa vain vaadittu kulu %1 </translation>
+    </message>
+    <message>
+        <source>Warning: Invalid bitsend address</source>
+        <translation>Varoitus: Virheellinen bitsend-osoite </translation>
+    </message>
+    <message>
         <source>Warning: Unknown change address</source>
         <translation>Varoitus: Tuntematon vaihtorahan osoite</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="655"/>
+        <source>Confirm custom change address</source>
+        <translation>Vahvista kustomoitu vaihtorahan osoite</translation>
+    </message>
+    <message>
+        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
+        <translation>Valitsemasi vaihtorahan osoite ei kuulu tähän lompakkoon. Osa tai kaikki varoista lompakossasi voidaan lähettää tähän osoitteeseen. Oletko varma?</translation>
+    </message>
+    <message>
         <source>(no label)</source>
-        <translation>(ei nimeä)</translation>
+        <translation>(ei nimikettä)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="21"/>
-        <source>This is a normal payment.</source>
-        <translation>Tämä on normaali maksu.</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="36"/>
-        <source>Pay &amp;To:</source>
-        <translation>Maksun &amp;saaja:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="54"/>
-        <source>The address to send the payment to (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Osoite johon maksu lähetetään (esim. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="61"/>
-        <source>Choose previously used address</source>
-        <translation>Valitse aikaisemmin käytetty osoite</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="71"/>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="78"/>
-        <source>Paste address from clipboard</source>
-        <translation>Liitä osoite leikepöydältä</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="88"/>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="95"/>
-        <location filename="../forms/sendcoinsentry.ui" line="619"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1155"/>
-        <source>Remove this entry</source>
-        <translation>Poista tämä alkio</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="111"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Nimi:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="124"/>
-        <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listalle.</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="131"/>
-        <location filename="../forms/sendcoinsentry.ui" line="652"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1188"/>
         <source>A&amp;mount:</source>
         <translation>M&amp;äärä:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="147"/>
+        <source>Pay &amp;To:</source>
+        <translation>Maksun saaja:</translation>
+    </message>
+    <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Nimi:</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Valitse aikaisemmin käytetty osoite</translation>
+    </message>
+    <message>
+        <source>This is a normal payment.</source>
+        <translation>Tämä on normaali maksu.</translation>
+    </message>
+    <message>
+        <source>The bitsend address to send the payment to</source>
+        <translation>bitsend-osoite johon maksu lähetetään</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Liitä osoite leikepöydältä</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Remove this entry</source>
+        <translation>Poista tämä alkio</translation>
+    </message>
+    <message>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bitsends than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>Kulu vähennetään lähetettävästä määrästä. Saaja vastaanottaa vähemmän bitsendeja kuin merkitset Määrä-kenttään. Jos saajia on monia, kulu jaetaan tasan.</translation>
+    </message>
+    <message>
+        <source>S&amp;ubtract fee from amount</source>
+        <translation>V&amp;ähennä maksukulu määrästä</translation>
+    </message>
+    <message>
         <source>Message:</source>
         <translation>Viesti:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="157"/>
-        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</source>
-        <translation>Viesti joka liitettiin bitsend: URI joka talletetaan siirtotapahtuman kanssa viitteeksi sinulle. Huomio: Tätä viestiä ei lähetetä Bitsend verkkoon.</translation>
+        <source>This is an unauthenticated payment request.</source>
+        <translation>Tämä on todentamaton maksupyyntö.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="583"/>
-        <source>This is an unverified payment request.</source>
-        <translation>Tämä on vahvistamaton maksupyyntö</translation>
+        <source>This is an authenticated payment request.</source>
+        <translation>Tämä on todennettu maksupyyntö.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="601"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1133"/>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listalle.</translation>
+    </message>
+    <message>
+        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the bitsend network.</source>
+        <translation>Viesti joka liitettiin bitsend: URI:iin tallennetaan rahansiirtoon viitteeksi. Tätä viestiä ei lähetetä bitsend-verkkoon.</translation>
+    </message>
+    <message>
         <source>Pay To:</source>
         <translation>Saaja:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="635"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1171"/>
         <source>Memo:</source>
         <translation>Muistio:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="1115"/>
-        <source>This is a verified payment request.</source>
-        <translation>Tämä on vahvistettu maksupyyntö.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsentry.cpp" line="31"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Anna nimi tälle osoitteelle, jos haluat lisätä sen osoitekirjaan</translation>
+        <translation>Syötä tälle osoitteelle nimi lisätäksesi sen osoitekirjaan</translation>
+    </message>
+</context>
+<context>
+    <name>SendConfirmationDialog</name>
+    <message>
+        <source>Yes</source>
+        <translation>Kyllä</translation>
     </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="129"/>
-        <source>Bitsend Core is shutting down...</source>
-        <translation>Bitsend Core sulkeutuu...</translation>
+        <source>%1 is shutting down...</source>
+        <translation>%1 sulkeutuu...</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="130"/>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>Älä sammuta tietokonetta ennenkuin tämä ikkuna katoaa.</translation>
     </message>
@@ -3032,451 +2305,311 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="14"/>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>Allekirjoitukset - Allekirjoita / Tarkista viesti</translation>
+        <translation>Allekirjoitukset - Allekirjoita / Varmista viesti</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="24"/>
         <source>&amp;Sign Message</source>
         <translation>&amp;Allekirjoita viesti</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="30"/>
-        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Voit allekirjoittaa viestit omilla osoitteillasi todistaaksesi että omistat ne. Ole huolellinen että et allekirjoita mitään epämääräistä, phishing-hyökkäjä voi huijata sinua allekirjoittamaan henkilöllisyytesi omasta puolestaan. Allekirjoita vain yksityiskohtaisesti täytetty selvitys johon sitoudut.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitsends sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Voit allekirjoittaa viestit / sopimukset omalla osoitteellasi todistaaksesi että voit vastaanottaa siihen lähetetyt bitsendit. Varo allekirjoittamasta mitään epämääräistä, sillä phishing-hyökkääjät voivat huijata sinua luovuttamaan henkilöllisyytesi allekirjoituksella. Allekirjoita ainoastaan täysin yksityiskohtainen selvitys siitä, mihin olet sitoutumassa.</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="48"/>
-        <source>The address to sign the message with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Osoite jolla viesti allekirjoitetaan (esim. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The bitsend address to sign the message with</source>
+        <translation>bitsend-osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="55"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="265"/>
         <source>Choose previously used address</source>
         <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="65"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="275"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="75"/>
         <source>Paste address from clipboard</source>
         <translation>Liitä osoite leikepöydältä</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="85"/>
         <source>Alt+P</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="97"/>
         <source>Enter the message you want to sign here</source>
-        <translation>Kirjoita tähän viesti jonka haluat allekirjoittaa</translation>
+        <translation>Kirjoita tähän viesti minkä haluat allekirjoittaa</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="104"/>
         <source>Signature</source>
         <translation>Allekirjoitus</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="131"/>
         <source>Copy the current signature to the system clipboard</source>
-        <translation>Kopioi tämän hetkinen allekirjoitus leikepöydälle</translation>
+        <translation>Kopioi tämänhetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="152"/>
-        <source>Sign the message to prove you own this Bitsend address</source>
-        <translation>Allekirjoita viesti todistaaksesi että omistat tämän Bitsend osoitteen</translation>
+        <source>Sign the message to prove you own this bitsend address</source>
+        <translation>Allekirjoita viesti todistaaksesi, että omistat tämän bitsend-osoitteen</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="155"/>
         <source>Sign &amp;Message</source>
         <translation>Allekirjoita &amp;viesti</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="169"/>
         <source>Reset all sign message fields</source>
-        <translation>Tyhjennä kaikki kentät</translation>
+        <translation>Tyhjennä kaikki allekirjoita-viesti-kentät</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="172"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="315"/>
         <source>Clear &amp;All</source>
-        <translation>&amp;Tyhjennä Kaikki</translation>
+        <translation>&amp;Tyhjennnä Kaikki</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="231"/>
         <source>&amp;Verify Message</source>
-        <translation>&amp;Tarkista viesti</translation>
+        <translation>&amp;Varmista viesti</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="237"/>
-        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Syötä allekirjoittava osoite, viesti ja allekirjoitus alla oleviin kenttiin varmistaaksesi allekirjoituksen aitouden. Varmista että kopioit kaikki kentät täsmälleen oikein, myös rivinvaihdot, välilyönnit, tabulaattorit, jne.</translation>
+        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Syötä vastaanottajan osoite, viesti ja allekirjoitus (varmista että kopioit rivinvaihdot, välilyönnit, sarkaimet yms. täsmälleen) alle vahvistaaksesi viestin. Varo lukemasta allekirjoitukseen enempää kuin mitä viestissä itsessään on välttääksesi man-in-the-middle -hyökkäyksiltä. Huomaa, että tämä todentaa ainoastaan allekirjoittavan vastaanottajan osoitteen, tämä ei voi todentaa minkään tapahtuman lähettäjää!</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="258"/>
-        <source>The address the message was signed with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Osoite jolla viesti on allekirjoitettu (esim. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The bitsend address the message was signed with</source>
+        <translation>bitsend-osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="295"/>
-        <source>Verify the message to ensure it was signed with the specified Bitsend address</source>
-        <translation>Tarkista että viesti on allekirjoitettu määritetyllä Bitsend osoitteella</translation>
+        <source>Verify the message to ensure it was signed with the specified bitsend address</source>
+        <translation>Tarkista viestin allekirjoitus varmistaaksesi, että se allekirjoitettiin tietyllä bitsend-osoitteella</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="298"/>
         <source>Verify &amp;Message</source>
-        <translation>Tarkista &amp;Viesti...</translation>
+        <translation>Varmista &amp;viesti...</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="312"/>
         <source>Reset all verify message fields</source>
-        <translation>Tyhjennä kaikki kentät</translation>
+        <translation>Tyhjennä kaikki varmista-viesti-kentät</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="30"/>
-        <source>Click &quot;Sign Message&quot; to generate signature</source>
-        <translation>Klikkaa &quot;Allekirjoita Viesti&quot; luodaksesi allekirjoituksen</translation>
+        <source>Click "Sign Message" to generate signature</source>
+        <translation>Valitse "Allekirjoita Viesti" luodaksesi allekirjoituksen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="31"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Syötä Bitsend osoite (esim. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
-    </message>
-    <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
         <source>The entered address is invalid.</source>
         <translation>Syötetty osoite on virheellinen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>Please check the address and try again.</source>
         <translation>Tarkista osoite ja yritä uudelleen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>The entered address does not refer to a key.</source>
-        <translation>Syötetyn osoitteen avainta ei löydy.</translation>
+        <translation>Syötetty osoite ei viittaa tunnettuun avaimeen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="130"/>
         <source>Wallet unlock was cancelled.</source>
         <translation>Lompakon avaaminen peruttiin.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="138"/>
         <source>Private key for the entered address is not available.</source>
         <translation>Yksityistä avainta syötetylle osoitteelle ei ole saatavilla.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="150"/>
         <source>Message signing failed.</source>
         <translation>Viestin allekirjoitus epäonnistui.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="155"/>
         <source>Message signed.</source>
         <translation>Viesti allekirjoitettu.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
         <source>The signature could not be decoded.</source>
         <translation>Allekirjoitusta ei pystytty tulkitsemaan.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>Please check the signature and try again.</source>
         <translation>Tarkista allekirjoitus ja yritä uudelleen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>The signature did not match the message digest.</source>
         <translation>Allekirjoitus ei täsmää viestin tiivisteeseen.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="233"/>
         <source>Message verification failed.</source>
-        <translation>Viestin tarkistus epäonnistui.</translation>
+        <translation>Viestin varmistus epäonnistui.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="238"/>
         <source>Message verified.</source>
-        <translation>Viesti tarkistettu.</translation>
+        <translation>Viesti varmistettu.</translation>
     </message>
 </context>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="33"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="34"/>
-        <source>Version %1</source>
-        <translation>Versio %1</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Bitsend Core kehittäjät</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="36"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Bitsend Core kehittäjät</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="37"/>
         <source>[testnet]</source>
-        <translation>[testiverkko]</translation>
+        <translation>[testnet]</translation>
     </message>
 </context>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
-        <location filename="../trafficgraphwidget.cpp" line="79"/>
         <source>KB/s</source>
         <translation>KB/s</translation>
     </message>
 </context>
 <context>
     <name>TransactionDesc</name>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="28"/>
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Avoinna %n lisälohkolle</numerusform><numerusform>Avoinna %n lisälohkolle</numerusform></translation>
-    </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="30"/>
         <source>Open until %1</source>
         <translation>Avoinna %1 asti</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="41"/>
-        <location filename="../transactiondesc.cpp" line="52"/>
-        <location filename="../transactiondesc.cpp" line="62"/>
-        <location filename="../transactiondesc.cpp" line="74"/>
-        <source>conflicted</source>
-        <translation>ristiriitainen</translation>
+        <source>conflicted with a transaction with %1 confirmations</source>
+        <translation>ristiriidassa maksutapahtumalle, jolla on %1 varmistusta</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="43"/>
-        <source>%1/offline (verified via instantx)</source>
-        <translation>%1/ei yhteyttä (vahvistettu instantx:lla)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="45"/>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation>%1/vahvistettu (vahvistettu instantx:lla)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="47"/>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation>%1 vahvistusta (vahvistettu instantx:lla)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="76"/>
         <source>%1/offline</source>
-        <translation>%1/ei yhteyttä</translation>
+        <translation>%1/ei linjalla</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="78"/>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/varmistamaton, %1</translation>
+    </message>
+    <message>
+        <source>in memory pool</source>
+        <translation>muistialtaassa</translation>
+    </message>
+    <message>
+        <source>not in memory pool</source>
+        <translation>ei muistialtaassa</translation>
+    </message>
+    <message>
+        <source>abandoned</source>
+        <translation>hylätty</translation>
+    </message>
+    <message>
         <source>%1/unconfirmed</source>
         <translation>%1/vahvistamaton</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="68"/>
-        <location filename="../transactiondesc.cpp" line="80"/>
         <source>%1 confirmations</source>
         <translation>%1 vahvistusta</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="54"/>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/ei yhteyttä (vahvistus instantx:lla käynnissä - %2 / %3 allekirjoitusta)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="56"/>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/vahvistettu (vahvistus instantx:lla käynnissä - %2 / %3 allekirjoitusta)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="58"/>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 vahvistusta (vahvistus instantx:lla käynnissä - %2 / %3 allekirjoitusta)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="64"/>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/ei yhteyttä (instantx vahvistus epäonnistui)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="66"/>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/vahvistettu (instantx vahvistus epäonnistui)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="98"/>
         <source>Status</source>
         <translation>Tila</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="103"/>
         <source>, has not been successfully broadcast yet</source>
-        <translation>, lähetys ei ole vielä onnistunut</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="105"/>
-        <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, lähetys %n solmun läpi</numerusform><numerusform>, lähetys %n solmun läpi</numerusform></translation>
+        <translation>, ei ole vielä onnistuneesti kuulutettu</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="109"/>
         <source>Date</source>
-        <translation>Päivämäärä</translation>
+        <translation>Aika</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Source</source>
         <translation>Lähde</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Generated</source>
-        <translation>Luotu</translation>
+        <translation>Generoitu</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="121"/>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>From</source>
         <translation>Lähettäjä</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>unknown</source>
         <translation>tuntematon</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="139"/>
-        <location filename="../transactiondesc.cpp" line="161"/>
-        <location filename="../transactiondesc.cpp" line="219"/>
         <source>To</source>
         <translation>Saaja</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
-        <location filename="../transactiondesc.cpp" line="144"/>
         <source>own address</source>
         <translation>oma osoite</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
+        <source>watch-only</source>
+        <translation>vain katseltava</translation>
+    </message>
+    <message>
         <source>label</source>
         <translation>nimi</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="179"/>
-        <location filename="../transactiondesc.cpp" line="191"/>
-        <location filename="../transactiondesc.cpp" line="236"/>
-        <location filename="../transactiondesc.cpp" line="253"/>
-        <location filename="../transactiondesc.cpp" line="306"/>
         <source>Credit</source>
-        <translation>Suoritus</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="181"/>
-        <source>matures in %n more block(s)</source>
-        <translation><numerusform>kypsyy %n lohkon kuluttua</numerusform><numerusform>kypsyy %n lohkon kuluttua</numerusform></translation>
+        <translation>Krediitti</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="183"/>
         <source>not accepted</source>
         <translation>ei hyväksytty</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="227"/>
-        <location filename="../transactiondesc.cpp" line="235"/>
-        <location filename="../transactiondesc.cpp" line="250"/>
-        <location filename="../transactiondesc.cpp" line="303"/>
         <source>Debit</source>
-        <translation>Veloitus</translation>
+        <translation>Debiitti</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="241"/>
+        <source>Total debit</source>
+        <translation>Debiitti yhteensä</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Krediitti yhteensä</translation>
+    </message>
+    <message>
         <source>Transaction fee</source>
-        <translation>Siirtomaksu</translation>
+        <translation>Siirtokulu</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="257"/>
         <source>Net amount</source>
-        <translation>Nettosumma</translation>
+        <translation>Nettomäärä</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="263"/>
-        <location filename="../transactiondesc.cpp" line="272"/>
         <source>Message</source>
         <translation>Viesti</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="265"/>
         <source>Comment</source>
         <translation>Kommentti</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="267"/>
         <source>Transaction ID</source>
-        <translation>Siirtotunnus</translation>
+        <translation>Maksutapahtuman tunnus</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="285"/>
+        <source>Transaction total size</source>
+        <translation>Maksutapahtuman kokonaiskoko</translation>
+    </message>
+    <message>
         <source>Merchant</source>
         <translation>Kauppias</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="292"/>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Luodut (louhitut) varat täytyy kypsyä %1 lohkon ajan kunnes ne voidaan käyttää. Kun generoit tämän lohkon, se lähetettiin verkkoon lohkoketjuun. Jos se epäonnistuu pääsemään lohkoketjuun sen tila tulee muuttumaan &quot;ei hyväksytty&quot; ja sitä ei voida käyttää. Näin voi ajoittain tapahtua kun toisen solmun lohko luodaan samanaikaisesti omasi kanssa.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Luotujen kolikoiden täytyy kypsyä vielä %1 lohkoa ennenkuin niitä voidaan käyttää. Luotuasi tämän lohkon, se kuulutettiin verkolle lohkoketjuun lisättäväksi. Mikäli lohko ei kuitenkaan pääse ketjuun, sen tilaksi vaihdetaan "ei hyväksytty" ja sitä ei voida käyttää. Toisinaan näin tapahtuu, jos jokin verkon toinen solmu luo lohkon lähes samanaikaisesti sinun lohkosi kanssa.</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="300"/>
         <source>Debug information</source>
         <translation>Debug tiedot</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="308"/>
         <source>Transaction</source>
-        <translation>Siirtotapahtuma</translation>
+        <translation>Maksutapahtuma</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="311"/>
         <source>Inputs</source>
         <translation>Sisääntulot</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="332"/>
         <source>Amount</source>
         <translation>Määrä</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>true</source>
         <translation>tosi</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>false</source>
         <translation>epätosi</translation>
     </message>
@@ -3484,382 +2617,290 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="14"/>
-        <source>Transaction details</source>
-        <translation>Siirtotapahtuman yksityiskohdat</translation>
+        <source>This pane shows a detailed description of the transaction</source>
+        <translation>Tämä ruutu näyttää yksityiskohtaisen tiedon rahansiirrosta</translation>
     </message>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="20"/>
-        <source>This pane shows a detailed description of the transaction</source>
-        <translation>Tämä ruutu näyttää yksityiskohtaisen tiedon siirtotapahtumasta</translation>
+        <source>Details for %1</source>
+        <translation>%1:n yksityiskohdat</translation>
     </message>
 </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Date</source>
-        <translation>Päivämäärä</translation>
+        <translation>Aika</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Type</source>
         <translation>Tyyppi</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Address</source>
-        <translation>Osoite</translation>
+        <source>Label</source>
+        <translation>Nimike</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Amount</source>
-        <translation>Määrä</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../transactiontablemodel.cpp" line="285"/>
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Avoinna %n lisälohkolle</numerusform><numerusform>Avoinna %n lisälohkolle</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="288"/>
         <source>Open until %1</source>
         <translation>Avoinna %1 asti</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="291"/>
         <source>Offline</source>
-        <translation>Ei yhteyttä</translation>
+        <translation>Ei yhteydessä</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="294"/>
         <source>Unconfirmed</source>
-        <translation>Vahvistamaton</translation>
+        <translation>Varmistamaton</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="297"/>
+        <source>Abandoned</source>
+        <translation>Hylätty</translation>
+    </message>
+    <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Vahvistetaan (%1 kehoitetusta %2 vahvistuksesta)</translation>
+        <translation>Varmistetaan (%1 suositellusta %2 varmistuksesta)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="300"/>
         <source>Confirmed (%1 confirmations)</source>
-        <translation>Vahvistettu (%1 vahvistusta)</translation>
+        <translation>Varmistettu (%1 varmistusta)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="303"/>
         <source>Conflicted</source>
         <translation>Ristiriitainen</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="306"/>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Epäkypsä (%1 vahvistusta, saatavilla %2 jälkeen)</translation>
+        <translation>Epäkypsä (%1 varmistusta, saatavilla %2 jälkeen)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="309"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
         <translation>Tätä lohkoa ei vastaanotettu mistään muusta solmusta ja sitä ei mahdollisesti hyväksytä!</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="312"/>
         <source>Generated but not accepted</source>
-        <translation>Luotu mutta ei hyväksytty</translation>
+        <translation>Luotu, mutta ei hyäksytty</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="354"/>
         <source>Received with</source>
-        <translation>Vastaanotettu osoitteeseen</translation>
+        <translation>Vastaanotettu osoitteella</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="356"/>
         <source>Received from</source>
-        <translation>Vastaanotettu osoitteesta</translation>
+        <translation>Vastaanotettu</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="358"/>
-        <source>Received via Darksend</source>
-        <translation>Darksend vastaanotettu</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="361"/>
         <source>Sent to</source>
-        <translation>Lähetetty osoitteeseen</translation>
+        <translation>Lähetetty vastaanottajalle</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="363"/>
         <source>Payment to yourself</source>
         <translation>Maksu itsellesi</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="365"/>
         <source>Mined</source>
         <translation>Louhittu</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="368"/>
-        <source>Darksend Denominate</source>
-        <translation>Darksend denominointi</translation>
+        <source>watch-only</source>
+        <translation>vain katseltava</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="370"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Darksend vakuus maksu</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="372"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Darksend luo vakuus syötteet</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="374"/>
-        <source>Darksend Create Denominations</source>
-        <translation>Darksend denominoinnin luonti</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="376"/>
-        <source>Darksent</source>
-        <translation>Darksend lähetetty</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="418"/>
         <source>(n/a)</source>
-        <translation>(e/s)</translation>
+        <translation>(ei saatavilla)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="610"/>
+        <source>(no label)</source>
+        <translation>(ei nimikettä)</translation>
+    </message>
+    <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Siirtotapahtuman tila. Siirrä osoitin kentän päälle nähdäksesi vahvistusten lukumäärä.</translation>
+        <translation>Rahansiirron tila. Siirrä osoitin kentän päälle nähdäksesi vahvistusten lukumäärä.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="612"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>Siirtotapahtuman päivämäärä ja aika.</translation>
+        <translation>Rahansiirron vastaanottamisen päivämäärä ja aika.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="614"/>
         <source>Type of transaction.</source>
-        <translation>Siirtotapahtuman tyyppi.</translation>
+        <translation>Maksutapahtuman tyyppi.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="616"/>
-        <source>Destination address of transaction.</source>
-        <translation>Siirtotapahtuman Bitsend kohdeosoite</translation>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Onko rahansiirrossa mukana ainoastaan katseltava osoite vai ei.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="618"/>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>Käyttäjän määrittämä käyttötarkoitus rahansiirrolle.</translation>
+    </message>
+    <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Vähennetty tai lisätty määrä saldoon.</translation>
+        <translation>Saldoon lisätty tai siitä vähennetty määrä.</translation>
     </message>
 </context>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="60"/>
-        <location filename="../transactionview.cpp" line="76"/>
         <source>All</source>
         <translation>Kaikki</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="61"/>
         <source>Today</source>
         <translation>Tänään</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="62"/>
         <source>This week</source>
         <translation>Tällä viikolla</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="63"/>
         <source>This month</source>
         <translation>Tässä kuussa</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="64"/>
         <source>Last month</source>
         <translation>Viime kuussa</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="65"/>
         <source>This year</source>
         <translation>Tänä vuonna</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="66"/>
         <source>Range...</source>
         <translation>Alue...</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="77"/>
         <source>Received with</source>
-        <translation>Vastaanotettu</translation>
+        <translation>Vastaanotettu osoitteella</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="79"/>
         <source>Sent to</source>
-        <translation>Lähetetty</translation>
+        <translation>Lähetetty vastaanottajalle</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="81"/>
-        <source>Darksent</source>
-        <translation>Darksend lähetetty</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="82"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Darksend luo vakuus syötteet</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="83"/>
-        <source>Darksend Create Denominations</source>
-        <translation>Darksend denom. luonti</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="84"/>
-        <source>Darksend Denominate</source>
-        <translation>Darksend denominointi</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="85"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Darksend vakuus maksu</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="86"/>
         <source>To yourself</source>
         <translation>Itsellesi</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="87"/>
         <source>Mined</source>
         <translation>Louhittu</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="88"/>
         <source>Other</source>
         <translation>Muu</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="94"/>
-        <source>Enter address or label to search</source>
-        <translation>Anna etsittävä osoite tai tunniste</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="100"/>
         <source>Min amount</source>
         <translation>Minimimäärä</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="134"/>
+        <source>Abandon transaction</source>
+        <translation>Hylkää siirto</translation>
+    </message>
+    <message>
+        <source>Increase transaction fee</source>
+        <translation>Kasvata siirtokulun määrää</translation>
+    </message>
+    <message>
         <source>Copy address</source>
         <translation>Kopioi osoite</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="135"/>
         <source>Copy label</source>
-        <translation>Kopioi nimi</translation>
+        <translation>Kopioi nimike</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="136"/>
         <source>Copy amount</source>
         <translation>Kopioi määrä</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="137"/>
         <source>Copy transaction ID</source>
-        <translation>Kopioi siirtotunnus</translation>
+        <translation>Kopioi transaktion ID</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="138"/>
+        <source>Copy raw transaction</source>
+        <translation>Kopioi rahansiirron raakavedos</translation>
+    </message>
+    <message>
+        <source>Copy full transaction details</source>
+        <translation>Kopioi rahansiirron täydet yksityiskohdat</translation>
+    </message>
+    <message>
         <source>Edit label</source>
         <translation>Muokkaa nimeä</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="139"/>
         <source>Show transaction details</source>
-        <translation>Näytä siirtotapahtuman yksityiskohdat</translation>
+        <translation>Näytä rahansiirron yksityiskohdat</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="302"/>
         <source>Export Transaction History</source>
-        <translation>Vie siirtotapahtumien historia</translation>
+        <translation>Vie rahansiirtohistoria</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="303"/>
         <source>Comma separated file (*.csv)</source>
-        <translation>Pilkuilla eritelty tiedosto (*.csv)</translation>
+        <translation>Pilkuilla erotettu tiedosto (*.csv)</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="312"/>
         <source>Confirmed</source>
         <translation>Vahvistettu</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="313"/>
-        <source>Date</source>
-        <translation>Päivämäärä</translation>
+        <source>Watch-only</source>
+        <translation>Vain katseltava</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="314"/>
+        <source>Date</source>
+        <translation>Aika</translation>
+    </message>
+    <message>
         <source>Type</source>
         <translation>Tyyppi</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="315"/>
         <source>Label</source>
-        <translation>Nimi</translation>
+        <translation>Nimike</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="316"/>
         <source>Address</source>
         <translation>Osoite</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="317"/>
-        <source>Amount</source>
-        <translation>Määrä</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="318"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>Exporting Failed</source>
         <translation>Vienti epäonnistui</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>Siirtotapahtumien historian tallentamisessa tapahtui virhe paikkaan %1.</translation>
+        <translation>Rahansiirron historian tallentamisessa tapahtui virhe paikkaan %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>Exporting Successful</source>
         <translation>Vienti onnistui</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>The transaction history was successfully saved to %1.</source>
-        <translation>Siirtotapahtumien historia tallennettiin onnistuneesti paikkaan %1.</translation>
+        <translation>Rahansiirron historia tallennettiin onnistuneesti kohteeseen %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="434"/>
         <source>Range:</source>
         <translation>Alue:</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="442"/>
         <source>to</source>
-        <translation>-&gt;</translation>
+        <translation>vastaanottaja</translation>
+    </message>
+</context>
+<context>
+    <name>UnitDisplayStatusBarControl</name>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Yksikkö jossa määrät näytetään. Klikkaa valitaksesi toisen yksikön.</translation>
     </message>
 </context>
 <context>
     <name>WalletFrame</name>
     <message>
-        <location filename="../walletframe.cpp" line="26"/>
         <source>No wallet has been loaded.</source>
         <translation>Lomakkoa ei ole ladattu.</translation>
     </message>
@@ -3867,56 +2908,65 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="271"/>
-        <location filename="../walletmodel.cpp" line="285"/>
         <source>Send Coins</source>
-        <translation>Lähetä Bitsendeja</translation>
+        <translation>Lähetä kolikoita</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../walletmodel.cpp" line="271"/>
-        <source>InstantX doesn&apos;t support sending values that high yet. Transactions are currently limited to %n BSD.</source>
-        <translation><numerusform>Instantx ei tue näin korkeaa määrää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %n BSD.</numerusform><numerusform>Instantx ei tue näin korkeaa lähetysmäärää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %n BSD.</numerusform></translation>
+    <message>
+        <source>Increasing transaction fee failed</source>
+        <translation>Siirtokulun nosto epäonnistui</translation>
+    </message>
+    <message>
+        <source>Do you want to increase the fee?</source>
+        <translation>Haluatko nostaa siirtomaksua?</translation>
+    </message>
+    <message>
+        <source>Current fee:</source>
+        <translation>Nykyinen palkkio:</translation>
+    </message>
+    <message>
+        <source>New fee:</source>
+        <translation>Uusi palkkio:</translation>
+    </message>
+    <message>
+        <source>Can't sign transaction.</source>
+        <translation>Siirtoa ei voida allekirjoittaa.</translation>
+    </message>
+    <message>
+        <source>Could not commit transaction</source>
+        <translation>Siirtoa ei voitu tehdä</translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="44"/>
         <source>&amp;Export</source>
-        <translation>&amp;Vie...</translation>
+        <translation>&amp;Vie</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="45"/>
         <source>Export the data in the current tab to a file</source>
-        <translation>Vie tällä hetkellä valitun välilehden tiedot tiedostoon</translation>
+        <translation>Vie auki olevan välilehden tiedot tiedostoon</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="231"/>
         <source>Backup Wallet</source>
         <translation>Varmuuskopioi lompakko</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="232"/>
         <source>Wallet Data (*.dat)</source>
         <translation>Lompakkodata (*.dat)</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>Backup Failed</source>
-        <translation>Varmuuskopiointi epäonnistui</translation>
+        <translation>Varmuuskopio epäonnistui</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>There was an error trying to save the wallet data to %1.</source>
         <translation>Lompakon tallennuksessa tapahtui virhe %1.</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>Backup Successful</source>
-        <translation>Varmuuskopiointi onnistui</translation>
+        <translation>Varmuuskopio Onnistui</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>Lompakko tallennettiin onnistuneesti tiedostoon %1.</translation>
     </message>
@@ -3924,1372 +2974,832 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>bitsend-core</name>
     <message>
-        <location filename="../bitsendstrings.cpp" line="16"/>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Bitsend Alert&quot; admin@foo.com
-</source>
-        <translation>%s, sinun tulee asettaa rpc salasana asetustietostossa:
-%s
-Suositellaan että käytät allaolevaa satunnaista salasanaa:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(sinun ei tarvitse muistaa tätä salasanaa)
-Tämä tunnus ja salasana on oltava ERILAISET.
-Jos tiedostoa ei ole, luo se vain omistajan-luku-oikeudella.
-Suositellaan asettaa alertnotify jotta saat tietoa ongelmista,
-esimerkiksi: alertnotify=echo %%s | mail -s &quot;Bitsend Hälytys&quot; admin@foo.com
-</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="29"/>
-        <source>Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</source>
-        <translation>Hyväksytyt salakirjoitukset (oletus: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="32"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>Virhe asetettaessa RPC porttia %u IPv4 verkkoliikenteelle: %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="34"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
-        <translation>Virhe asetettaessa RPC porttia %u IPv6 verkkoliikenteelle, palataan takaisin IPv4:ään %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="37"/>
-        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Kytkeydy annettuun osoitteeseen ja pidä linja aina auki. Käytä [host]:portin merkintätapaa IPv6:lle.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="40"/>
-        <source>Cannot obtain a lock on data directory %s. Bitsend Core is probably already running.</source>
-        <translation>Ei voida lukita data hakemistoa %s. Bitsend Core on luultavasti jo käynnissä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="43"/>
-        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:15)</source>
-        <translation>Rajoita yhtäaikaiset siirtotapahtumat &lt;n&gt;*1000 tavua per minuutti (oletus: 15)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="46"/>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Darksend käyttää tarkalleen denominoituja syötteitä lähettäessään varoja, saatat tarvita anonymisoida lisää varoja.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="49"/>
-        <source>Disable all Xnode and Darksend related functionality (0-1, default: 0)</source>
-        <translation>Kytke pois käytöstä kaikki Xnode ja Darksend toiminnot (0-1, oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="51"/>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: true)</source>
-        <translation>Ota instantx käyttöön, näytä lukittujen siirtojen vahvistukset (oletus: päällä)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="54"/>
-        <source>Enable use of automated Darksend for funds stored in this wallet (0-1, default: 0)</source>
-        <translation>Ota käyttöön automaattinen Darksend rahavaroille tässä lompakossa  (0-1, oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="57"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly. This is intended for regression testing tools and app development.</source>
-        <translation>Aloita regressio testimoodi joka käyttää erikoisketjua missä lohkot voidaan ratkaista välittömästi. Tämä on tarkoitettu regressiotestien työkaluksi ja ohjelman kehittämiseen.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="61"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Aloita regressio testimoodi joka käyttää erikoisketjua jossa lohkoja voidaan ratkaista välittömästi.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="64"/>
-        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>Virhe: Sisääntulevien yhteyksien kuuntelu epäonnistui (kuuntelu palautti virheen %s)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="66"/>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Virhe: Siirtotapahtuma hylättiin! Tämä saattaa tapahtua jos jotkut varat lompakossa on jo käytetty. Esimerkiksi jos käytit kopioitua lompakkoa ja varat on käytetty jo siellä, mutta ei ole merkattu käytetyksi täällä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="70"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Virhe: Tämä siirtotapahtuma vaatii siirtopalkkion vähintään %s johtuen sen määrästä, monimutkaisuudesta tai äskettäin vastaanotettujen varojen käytöstä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="73"/>
-        <source>Error: Wallet unlocked for anonymization only, unable to create transaction.</source>
-        <translation>Virhe: Lompakko on avattu vain anonymisointia varten, siirtotapahtumaa ei voida luoda.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="75"/>
-        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Aja komento kun olennainen hälytys vastaanotetaan tai nähdään todella pitkä haara (%s cmd korvataan viestillä)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="78"/>
-        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Suorita käsky kun lompakon siirtotapahtuma muuttuu (%s cmd on vaihdettu TxID kanssa)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="81"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Suorita käsky kun paras lohko muuttuu (%s cmd on korvattu lohko tarkisteella)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="84"/>
-        <source>Fees smaller than this are considered zero fee (for transaction creation) (default:</source>
-        <translation>Tätä pienemmät palkkiot lasketaan nollaksi (siirtotapahtuman luonnissa) (oletus: </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="87"/>
-        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: 100)</source>
-        <translation>Aja tietokannan tapahtumat muistivarannosta kovalevylogiin joka &lt;n&gt; megatavu (oletus: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="90"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation>Löytyi vahvistamattomia syötteitä, odotetaan että ne vahvistetaan.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="93"/>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: 3)</source>
-        <translation>Kuinka vaativa lohkon vahvistus  -checkblocks on (0-4, oletus:  3)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="95"/>
-        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>Tässä moodissa -genproclimit ohjaa kuinka monta lohkoa luodaan välittömästi.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="98"/>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX vaatii vähintään 6 vahvistusta, odota muutama minuutti ja yritä uudelleen.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="101"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation>Kuuntele JSON-RPC yhteyksiä portista &lt;port&gt; (oletus: 8800 tai testiverkko: 8884)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="103"/>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation>Rakenne url nimi KeePass merkinnälle joka talentaa lompakon salasanan</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="105"/>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Sekuntien määrä, kuinka kauan yritetään uudelleen kytkeytyä vertaisverkkoon (oletus: 86400)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="108"/>
-        <source>Output debugging information (default: 0, supplying &lt;category&gt; is optional)</source>
-        <translation>Tulosta debuggaustieto (oletus: 0, annettu &lt;kategoria&gt; on valinnainen)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="110"/>
-        <source>Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
-        <translation>Tarjoa Darksend:ille likviditeettiä jatkuvaa varojen sekoitusta varten (0-100, oletus: 0, 1=usein, isot maksukulut, 100=harvoin, pienet maksukulut)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="114"/>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>Tiedustele vertaisverkon osoitteita DNS hakua käyttäen jos osoitteita ei ole riittävästi (oletus: 1 paitsi jos -connect)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="117"/>
-        <source>Set external address:port to get to this Xnode (example: address:port)</source>
-        <translation>Aseta ulkoinen osoite:portti tälle Xnodelle (esim: osoite:portti)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="119"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Aseta maksimikoko korkea prioriteetti/pieni palkkio siirtotapahtumiin tavuissa (oletus: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="121"/>
-        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>Aseta script vahvistuksen säikeiden määrä (%u - %d, 0= auto, &lt;0 = jätä näin monta prosessorin ydintä vapaaksi, oletus: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="124"/>
-        <source>Set the processor limit for when generation is on (-1 = unlimited, default: -1)</source>
-        <translation>Aseta prosessorin raja kun lohkojen louhiminen on päällä (-1 = rajoittamaton, oletus: -1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="127"/>
-        <source>Show N confirmations for a successfully locked transaction (0-9999, default: 1)</source>
-        <translation>Näytä N vahvistusta onnistuneesti lukitulle siirtotapahtumalle (0-9999, oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="130"/>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Tämä on esi-julkaistu testiversio - Käytä omalla vastuulla - Älä käytä louhimiseen tai kauppasovelluksiin.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="133"/>
-        <source>Unable to bind to %s on this computer. Bitsend Core is probably already running.</source>
-        <translation>Ei voida yhdistää %s tässä tietokoneessa. Bitsend Core on luultavasti jo käynnissä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="136"/>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
-        <translation>Ei tarpeeksi Darksend anonymisoituja varoja tälle siirtotapahtumalle.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="138"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 BSD.</source>
-        <translation>Ei tarpeeksi Darksend ei-anonymisoituja varoja tälle siirtotapahtumalle, joka ei ole 1000 BSD.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="141"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction.</source>
-        <translation>Ei tarpeeksi Darksend ei-anonymisoituja varoja tälle siirtotapahtumalle.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="143"/>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: -proxy)</source>
-        <translation>Käytä erillistä SOCKS5 proxya tavoittaaksesi vertaisverkon Tor palvelun kautta (oletus: -proxy)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="146"/>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Varoitus: Siirtomaksu on asetettu erittäin korkeaksi! Tämä on maksukulu jonka tulet maksamaan kun lähetät siirron.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="149"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Bitsend will not work properly.</source>
-        <translation>Varoitus: Tarkista että tietokoneesi kellonaika ja päivämäärä ovat ajan tasalla! Bitsend ei toimi oikein väärällä päivämäärällä ja/tai kellonajalla.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="152"/>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Varoitus: Bitsend verkossa on ristiriitoja! Louhijat näyttävät kokevan virhetilanteita.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="155"/>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Varoitus: Olemme vertaisverkon kanssa ristiriidassa! Sinun ja/tai solmujen tulee päivitää uusimpaan Bitsend versioon.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="158"/>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Varoitus: Virhe luettaessa wallet.dat lompakkotiedostoa. Kaikki avaimet luettiin onnistuneesti, mutta siirtohistoria tai osoitekirja saattavat olla kadonneet tai virheellisiä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="161"/>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Varoitus: Wallet.dat lompakkotiedosto on vioittunut, tiedot pelastettu. Alkuperäinen wallet.dat lompakkotiedosto on tallennettu wallet.{timestamp}.bak kansioon %s, jos saldosi tai siirtohistoria on virheellinen, sinun tulisi palauttaa lompakkotiedosto varmuuskopiosta.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="165"/>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Sinun täytyy asettaa rpcpassword=&lt;password&gt; asetustiedostoon:
-%s
-Jos tiedostoa ei ole, niin luo se ainoastaan omistajan kirjoitusoikeuksin.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="170"/>
-        <source>You must specify a Xnodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation>Sinun täytyy määritellä Xnodeprivkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="173"/>
-        <source>(default: 1)</source>
-        <translation>(oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="174"/>
-        <source>(default: wallet.dat)</source>
-        <translation>(oletus: wallet.dat)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="175"/>
-        <source>&lt;category&gt; can be:</source>
-        <translation>&lt;category&gt; voi olla:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="176"/>
-        <source>Accept command line and JSON-RPC commands</source>
-        <translation>Hyväksy merkkipohjaiset ja JSON-RPC käskyt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="177"/>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Hyväksy yhteyksiä ulkopuolelta (oletus: 1 jos -proxy tai -connect ei ole määritelty)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="178"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Lisää solmu mihin liittyä pitääksesi yhteyden auki</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="179"/>
-        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Salli DNS kyselyt -addnode, -seednode ja -connect yhteydessä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="180"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Salli JSON-RPC yhteydet tietystä ip-osoitteesta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="181"/>
-        <source>Already have that input.</source>
-        <translation>Syöte on jo olemassa.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="182"/>
-        <source>Always query for peer addresses via DNS lookup (default: 0)</source>
-        <translation>Tiedustele aina vertaisverkon osoitteita DNS hakua käyttäen (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="183"/>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Yritetään palauttaa yksityisiä avaimia vioittuneesta wallet.dat lompakkotiedostosta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="184"/>
-        <source>Block creation options:</source>
-        <translation>Lohkon luonnin asetukset:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="185"/>
-        <source>Can&apos;t denominate: no compatible inputs left.</source>
-        <translation>Ei voida denominoida: yhteensopivia syötteitä ei ole jäljellä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="186"/>
-        <source>Cannot downgrade wallet</source>
-        <translation>Et voi päivittää lompakkoasi vanhempaan versioon</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="187"/>
-        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
-        <translation>-bind osoitteen &apos;%s&apos; selvittäminen epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="188"/>
-        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
-        <translation>-externalip osoitteen &apos;%s&apos; selvittäminen epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="189"/>
-        <source>Cannot write default address</source>
-        <translation>Oletusosoitetta ei voi kirjoittaa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="190"/>
-        <source>Clear list of wallet transactions (diagnostic tool; implies -rescan)</source>
-        <translation>Tyhjennä lompakon siirtotapahtumien lista (diagnostiikka työkalu; olettaa -rescan)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="191"/>
-        <source>Collateral is not valid.</source>
-        <translation>Vakuus ei ole pätevä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="192"/>
-        <source>Collateral not valid.</source>
-        <translation>Vakuus ei ole pätevä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="193"/>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Yhdistä ainoastaan määriteltyihin solmuihin</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="194"/>
-        <source>Connect through SOCKS proxy</source>
-        <translation>Yhdistä SOCKS proxyn kautta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="195"/>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation>Yhdistä JSON-RPC porttiin &lt;port&gt; (oletus: 8800 tai testiverkko: 8884)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="196"/>
-        <source>Connect to KeePassHttp on port &lt;port&gt; (default: 19455)</source>
-        <translation>Yhdistä KeePassHttp porttiin &lt;port&gt; (oletus: 19455)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="197"/>
-        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Yhdistä solmuun hakeaksesi vertaisverkon osoitteet ja katkaise yhteys</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="198"/>
-        <source>Connection options:</source>
-        <translation>Yhteyden valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="199"/>
-        <source>Corrupted block database detected</source>
-        <translation>Vioittunut lohkotietokanta havaittu</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="200"/>
-        <source>Bitsend Core Daemon</source>
-        <translation>Bitsend Core Palveluprosessi</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="201"/>
-        <source>Bitsend Core RPC client version</source>
-        <translation>Bitsend Core RPC asiakas versio</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="202"/>
-        <source>Darksend is disabled.</source>
-        <translation>Darksend on pois käytöstä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="203"/>
-        <source>Darksend options:</source>
-        <translation>Darksend valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="204"/>
-        <source>Debugging/Testing options:</source>
-        <translation>Debuggaus/Testauksen valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="205"/>
-        <source>Disable safemode, override a real safe mode event (default: 0)</source>
-        <translation>Poista turvatila käytöstä, syrjäytä todellinen turvatilatapahtuma (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="206"/>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Hae oma IP osoite (oletus: 1 kun kuunnellaan ja ei -externalip)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="207"/>
-        <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>Älä lataa lompakkoa ja poista käytöstä lompakon RPC kutsut</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="208"/>
-        <source>Do you want to rebuild the block database now?</source>
-        <translation>Haluatko uudelleenrakentaa lohkotietokannan nyt?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="209"/>
-        <source>Done loading</source>
-        <translation>Lataus on valmis</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="210"/>
-        <source>Downgrading and trying again.</source>
-        <translation>Alennetaan ja yritetään uudestaan.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="211"/>
-        <source>Enable the client to act as a Xnode (0-1, default: 0)</source>
-        <translation>Aseta asiakasohjelma Xnodeksi (0-1, oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="212"/>
-        <source>Entries are full.</source>
-        <translation>Merkinnät on täynnä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="213"/>
-        <source>Error connecting to Xnode.</source>
-        <translation>Virhe Xnodeen kytkeytymisessä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="214"/>
-        <source>Error initializing block database</source>
-        <translation>Virhe lohkotietokannan alustuksessa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="215"/>
-        <source>Error initializing wallet database environment %s!</source>
-        <translation>Virhe lompakon tietokantaympäristön alustuksessa %s!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="216"/>
-        <source>Error loading block database</source>
-        <translation>Virhe lohkotietokannan latauksessa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="217"/>
-        <source>Error loading wallet.dat</source>
-        <translation>Virhe ladattaessa wallet.dat tiedostoa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="218"/>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko vioittunut</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="219"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitsend</source>
-        <translation>Virhe ladattaessa wallet.dat lompakkotiedostoa: Tarvitset uudemman version bitsendista</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="220"/>
-        <source>Error opening block database</source>
-        <translation>Virhe lohkotietokannan avauksessa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="221"/>
-        <source>Error reading from database, shutting down.</source>
-        <translation>Virhe luettaessa tietokantaa, ohjelma suljetaan.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="222"/>
-        <source>Error recovering public key.</source>
-        <translation>Virhe yleisen avaimen palautuksessa.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="223"/>
-        <source>Error</source>
-        <translation>Virhe</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="224"/>
-        <source>Error: Disk space is low!</source>
-        <translation>Virhe: Levytila on alhainen!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="225"/>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Virhe: Lompakko on lukittu, siirtotapahtumaa ei voida luoda!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="226"/>
-        <source>Error: You already have pending entries in the Darksend pool</source>
-        <translation>Virhe: Sinulla on jo odottavia syötteitä Darksend varannossa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="227"/>
-        <source>Error: system error: </source>
-        <translation>Virhe: Järjestelmävirhe:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="228"/>
-        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Ei onnistuttu kuuntelemaan mitään porttia. Käytä -listen=0 jos haluat tätä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="229"/>
-        <source>Failed to read block info</source>
-        <translation>Lohkotietojen luku epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="230"/>
-        <source>Failed to read block</source>
-        <translation>Lohkon luku epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="231"/>
-        <source>Failed to sync block index</source>
-        <translation>Lohkoindeksin synkronointi epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="232"/>
-        <source>Failed to write block index</source>
-        <translation>Lohkoindeksin kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="233"/>
-        <source>Failed to write block info</source>
-        <translation>Lohkotiedon kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="234"/>
-        <source>Failed to write block</source>
-        <translation>Lohkon kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="235"/>
-        <source>Failed to write file info</source>
-        <translation>Tiedoston tietojen kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="236"/>
-        <source>Failed to write to coin database</source>
-        <translation>Tietokannan kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="237"/>
-        <source>Failed to write transaction index</source>
-        <translation>Siirtotapahtumien indeksin kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="238"/>
-        <source>Failed to write undo data</source>
-        <translation>Palautustiedon kirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="239"/>
-        <source>Fee per kB to add to transactions you send</source>
-        <translation>Palkkio per kB joka lisätään lähettämiisi siirtotapahtumiin</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="240"/>
-        <source>Fees smaller than this are considered zero fee (for relaying) (default:</source>
-        <translation>Tätä pienemmät palkkiot lasketaan nollaksi (välittämisessä) (oletus:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="241"/>
-        <source>Force safe mode (default: 0)</source>
-        <translation>Pakota turvatila (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="242"/>
-        <source>Generate coins (default: 0)</source>
-        <translation>Luo varoja (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="243"/>
-        <source>Get help for a command</source>
-        <translation>Etsi apua käskyyn</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="244"/>
-        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
-        <translation>Kuinka monta lohkoa tarkistetaan käynnistettäessä (oletus: 288, 0 = kaikki)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="245"/>
-        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Jos &lt;kategoria&gt; ei ole toimitettu, tulosta kaikki debuggaustieto.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="246"/>
-        <source>Ignore Xnodes less than version (example: 70050; default : 0)</source>
-        <translation>Ohita Xnodet jotka ovat pienempiä versioltaan (esim: 70050; oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="247"/>
-        <source>Importing...</source>
-        <translation>Tuodaan...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="248"/>
-        <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Tuodaan lohkoja ulkoisesta blk000??.dat tiedostosta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="249"/>
-        <source>Incompatible mode.</source>
-        <translation>Yhteensopimaton tila:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="250"/>
-        <source>Incompatible version.</source>
-        <translation>Yhteensopimaton versio.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="251"/>
-        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>Väärä tai ei alkuperäinen lohko löydetty. Väärä data hakemisto verkolle?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="252"/>
-        <source>Information</source>
-        <translation>Tietoa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="253"/>
-        <source>Initialization sanity check failed. Bitsend Core is shutting down.</source>
-        <translation>Alkuperäisyyden tarkistus epäonnistui. Bitsend Core sulkeutuu.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="254"/>
-        <source>Input is not valid.</source>
-        <translation>Syöte ei ole pätevä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="255"/>
-        <source>InstantX options:</source>
-        <translation>InstantX valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="256"/>
-        <source>Insufficient funds</source>
-        <translation>Saldo ei riitä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="257"/>
-        <source>Insufficient funds.</source>
-        <translation>Saldo ei riitä.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="258"/>
-        <source>Invalid -onion address: &apos;%s&apos;</source>
-        <translation>Virheellinen -onion osoite: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="259"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation>Virheellinen proxyn osoite &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="260"/>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Virheellinen määrä -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="261"/>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Virheellinen määrä -mintxfee=&lt;amount&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="262"/>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Virheellinen määrä -paytxfee=&lt;amount&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="263"/>
-        <source>Invalid amount</source>
-        <translation>Virheellinen määrä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="264"/>
-        <source>Invalid Xnodeprivkey. Please see documenation.</source>
-        <translation>Virheellinen Xnoden yksityisavain (Xnodeprivkey). Katso lisätietoja dokumentaatiosta.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="265"/>
-        <source>Invalid private key.</source>
-        <translation>Virheellinen yksityisavain.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="266"/>
-        <source>Invalid script detected.</source>
-        <translation>Virheellinen scripti havaittu.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="267"/>
-        <source>KeePassHttp id for the established association</source>
-        <translation>KeePassHttp tunnus (id) yhdistymiseen</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="268"/>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation>KeePassHttp avain AES salattuun viestintään</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="269"/>
-        <source>Keep N bitsend anonymized (default: 0)</source>
-        <translation>Pidä N bitsendia anonymisoituna (default: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="270"/>
-        <source>Keep at most &lt;n&gt; unconnectable blocks in memory (default: %u)</source>
-        <translation>Pidä enintään &lt;n&gt; ei yhdistettyä lohkoa muistissa (oletus: %u)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="271"/>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Pidä enintään &lt;n&gt; ei yhdistettyä siirtotapahtumaa muistissa (oletus: %u)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="272"/>
-        <source>Last Darksend was too recent.</source>
-        <translation>Viimeisin Darksend oli liian äskettäin.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="273"/>
-        <source>Last successful Darksend action was too recent.</source>
-        <translation>Viimeisin onnistunut Darksend oli liian äskettäin.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="274"/>
-        <source>Limit size of signature cache to &lt;n&gt; entries (default: 50000)</source>
-        <translation>Rajaa allekirjoituksen välimuistin koko &lt;n&gt; alkioon (oletus: 50000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="275"/>
-        <source>List commands</source>
-        <translation>Lista komennoista</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="276"/>
-        <source>Listen for connections on &lt;port&gt; (default: 8886 or testnet: 8885)</source>
-        <translation>Kuuntele yhteyksiä portista &lt;port&gt; (oletus: 8886 tai testiverkko: 8885)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="277"/>
-        <source>Loading addresses...</source>
-        <translation>Ladataan osoitteita...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="278"/>
-        <source>Loading block index...</source>
-        <translation>Ladataan lohkoindeksiä...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="279"/>
-        <source>Loading Xnode list...</source>
-        <translation>Ladataan Xnode listaa...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="280"/>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Ladataan lompakkoa... (%3.2f %%)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="281"/>
-        <source>Loading wallet...</source>
-        <translation>Ladataan lompakkoa...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="282"/>
-        <source>Log transaction priority and fee per kB when mining blocks (default: 0)</source>
-        <translation>Kirjaa siirtotapahtuman prioriteetti ja palkkio per kB kun louhitaan lohkoja (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="283"/>
-        <source>Maintain a full transaction index (default: 0)</source>
-        <translation>Ylläpidä täydellistä siirtotapahtumien indeksiä (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="284"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Pidä enintään &lt;n&gt; yhteyttä vertaisverkkoon (oletus: 125)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="285"/>
-        <source>Xnode options:</source>
-        <translation>Xnode valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="286"/>
-        <source>Xnode queue is full.</source>
-        <translation>Xnode jono on täysi.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="287"/>
-        <source>Xnode:</source>
-        <translation>Xnode:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="288"/>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Suurin vastaanottopuskuri yksittäiselle yhteydelle, &lt;n&gt;*1000 tavua (oletus: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="289"/>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Suurin lähetyspuskuri yksittäiselle yhteydelle, &lt;n&gt;*1000 tavua (oletus: 1000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="290"/>
-        <source>Missing input transaction information.</source>
-        <translation>Puuttuva siirtotapahtuman tieto.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="291"/>
-        <source>No compatible Xnode found.</source>
-        <translation>Yhteensopivaa Xnodea ei löytynyt.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="292"/>
-        <source>No funds detected in need of denominating.</source>
-        <translation>Denominointia tarvitsevia varoja ei löydy.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="293"/>
-        <source>No Xnodes detected.</source>
-        <translation>Xnodeja ei havaittu.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="294"/>
-        <source>No matching denominations found for mixing.</source>
-        <translation>Vastaavia denominointeja sekoitukseen ei löydy.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="295"/>
-        <source>Non-standard public key detected.</source>
-        <translation>Epästandardi yleinen avain havaittu.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="296"/>
-        <source>Not compatible with existing transactions.</source>
-        <translation>Ei yhteensopiva olemassa olevien siirtotapahtumien kanssa.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="297"/>
-        <source>Not enough file descriptors available.</source>
-        <translation>Ei tarpeeksi tiedostomerkintöjä saatavilla.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="298"/>
-        <source>Not in the Xnode list.</source>
-        <translation>Ei ole Xnode listassa.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="299"/>
-        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
-        <translation>Hyväksy vain lohkoketjua vastaavat sisäänrakennetut vahvistuspisteet (Oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="300"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Yhdistä vain verkkosolmuihin &lt;net&gt; (IPv4, IPv6 tai Tor)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="301"/>
         <source>Options:</source>
         <translation>Asetukset:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="302"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Salasana JSON-RPC yhteyksille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="303"/>
-        <source>Prepend debug output with timestamp (default: 1)</source>
-        <translation>Lisää aikamerkintä debug tulosteen eteen (oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="304"/>
-        <source>Print block on startup, if found in block index</source>
-        <translation>Tulosta lohko käynnistyksessä jos löydetään lohkoindeksistä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="305"/>
-        <source>Print block tree on startup (default: 0)</source>
-        <translation>Tulosta lohkopuu käynnistyksessä (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>RPC SSL valinnat: (katso Bitsend Wikistä SSL-asennuksen ohjeet)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="307"/>
-        <source>RPC client options:</source>
-        <translation>RPC asiakas valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="308"/>
-        <source>RPC server options:</source>
-        <translation>RPC palvelimen valinnat:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="309"/>
-        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Satunnaisesti pudota 1 joka &lt;n&gt; verkkoviestistä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="310"/>
-        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Satunnaisesti sekoita 1 joka &lt;n&gt; verkkoviestistä</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="311"/>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Uudelleenrakenna lohkoketjuindeksi nykyisistä blk000??.dat tiedostoista</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="312"/>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Skannaa uudelleen lohkoketju lompakon puuttuvien siirtotapahtumien vuoksi</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="313"/>
-        <source>Rescanning...</source>
-        <translation>Skannataan uudelleen...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="314"/>
-        <source>Run a thread to flush wallet periodically (default: 1)</source>
-        <translation>Aja säie joka tallentaa lompakon ajoittain (oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="315"/>
-        <source>Run in the background as a daemon and accept commands</source>
-        <translation>Aja taustalla palveluprosessina ja hyväksy komennot</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>SSL asetukset: (katso Bitsend Wikistä tarkemmat SSL ohjeet)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="317"/>
-        <source>Select SOCKS version for -proxy (4 or 5, default: 5)</source>
-        <translation>Valitse SOCKS versio -proxy:lle (4 tai 5, oletus: 5)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="318"/>
-        <source>Send command to Bitsend Core</source>
-        <translation>Lähetä komento Bitsend Core:lle</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="319"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Lähetä komentoja solmuun osoitteessa &lt;ip&gt; (oletus: 127.0.0.1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="320"/>
-        <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>Lähetä jäljitys/debug-tieto konsoliin, debug.log tiedoston sijaan</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="321"/>
-        <source>Server certificate file (default: server.cert)</source>
-        <translation>Palvelimen sertifikaatti tiedosto (oletus: server.cert)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="322"/>
-        <source>Server private key (default: server.pem)</source>
-        <translation>Palvelimen yksityisavain (oletus: server.pem)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="323"/>
-        <source>Session not complete!</source>
-        <translation>Istunto ei ole valmis!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="324"/>
-        <source>Session timed out (30 seconds), please resubmit.</source>
-        <translation>Istunto vanheni (30 sekuntia), esitä uudestaan.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="325"/>
-        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Aseta tietokannan välimuistin koko megatavuissa (%d - %d, oletus: %d</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="326"/>
-        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Aseta avainvarannon koko &lt;n&gt; (oletus: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="327"/>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Aseta lohkon maksimikoko tavuissa (oletus: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="328"/>
-        <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Aseta pienin lohkon koko tavuissa (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="329"/>
-        <source>Set the Xnode private key</source>
-        <translation>Aseta Xnoden yksityisavain.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="330"/>
-        <source>Set the number of threads to service RPC calls (default: 4)</source>
-        <translation>Aseta säikeiden lukumäärä RPC kutsuille (oletus: 4)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="331"/>
-        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: 1)</source>
-        <translation>Asettaa DB_PRIVATE lipun lompakon tietokantaympäristössä (oletus: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="332"/>
-        <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Näytä kaikki debuggaus valinnat: (käyttö: --help -help-debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="333"/>
-        <source>Show benchmark information (default: 0)</source>
-        <translation>Näytä suorituskykytietoja (oletus: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="334"/>
-        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Pienennä debug.log tiedosto käynnistyksen yhteydessä (vakioasetus: 1 kun ei -debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="335"/>
-        <source>Signing failed.</source>
-        <translation>Allekirjoitus epäonnistui.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="336"/>
-        <source>Signing timed out, please resubmit.</source>
-        <translation>Allekirjoitus aikaraja, esitä uudestaan.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="337"/>
-        <source>Signing transaction failed</source>
-        <translation>Siirtotapahtuman allekirjoitus epäonnistui</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="338"/>
-        <source>Specify configuration file (default: bitsend.conf)</source>
-        <translation>Määritä asetustiedosto (oletus: bitsend.conf)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="339"/>
-        <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Määritä yhteyden aikaraja millisekunneissa (vakioasetus: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="340"/>
         <source>Specify data directory</source>
-        <translation>Määritä data hakemisto</translation>
+        <translation>Määritä data-hakemisto</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="341"/>
-        <source>Specify Xnode configuration file (default: Xnode.conf)</source>
-        <translation>Määritä Xnoden asetustiedosto (oletus: Xnode.conf)</translation>
+        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
+        <translation>Yhdistä noodiin hakeaksesi naapurien osoitteet ja katkaise yhteys</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="342"/>
-        <source>Specify pid file (default: bitsendd.pid)</source>
-        <translation>Määritä pid tiedosto (oletus: Xnode.pid)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="343"/>
-        <source>Specify wallet file (within data directory)</source>
-        <translation>Määritä lompakkotiedosto (data hakemiston sisällä)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="344"/>
         <source>Specify your own public address</source>
         <translation>Määritä julkinen osoitteesi</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="345"/>
-        <source>Spend unconfirmed change when sending transactions (default: 1)</source>
-        <translation>Käytä vahvistamattomia vaihtorahoja lähetettäessä siirtotapahtumia (oletus: 1)</translation>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation>Hyväksy merkkipohjaiset- ja JSON-RPC-käskyt</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="346"/>
-        <source>Start Bitsend Core Daemon</source>
-        <translation>Käynnistä Bitsend Core palveluprosessi</translation>
+        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
+        <translation>Jaettu MIT -ohjelmistolisenssin alaisuudessa, katso mukana tuleva %s tiedosto tai %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="347"/>
-        <source>System error: </source>
-        <translation>Järjestelmävirhe:</translation>
+        <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
+        <translation>Jos &lt;category&gt; on toimittamatta tai jos &lt;category&gt; = 1, tulosta kaikki debug-tieto.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="348"/>
-        <source>This help message</source>
-        <translation>Tämä ohjeviesti</translation>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>Karsinta konfiguroitu alle minimin %d MiB. Käytä surempaa numeroa.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="349"/>
-        <source>This is intended for regression testing tools and app development.</source>
-        <translation>Tämä on tarkoitettu regression testityökaluille ja ohjelman kehittämiseen.</translation>
+        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
+        <translation>Karsinta: viime lompakon synkronisointi menee karsitun datan taakse. Sinun tarvitsee ajaa -reindex (lataa koko lohkoketju uudelleen tapauksessa jossa karsiva noodi)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="350"/>
-        <source>This is not a Xnode.</source>
-        <translation>Tämä ei ole Xnode.</translation>
+        <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
+        <translation>Uudelleenskannaukset eivät ole mahdollisia karsivassa tilassa. Sinun täytyy käyttää -reindex joka lataa koko lohkoketjun uudelleen.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="351"/>
-        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Kynnysarvo aikakatkaisulle heikosti toimivalle vertaisverkolle (oletus: 100)</translation>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Virhe: Kriittinen sisäinen virhe kohdattiin, katso debug.log lisätietoja varten</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="352"/>
-        <source>To use the %s option</source>
-        <translation>Käytä %s valintaa</translation>
+        <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
+        <translation>Kulu (muodossa %s/kB) joka lisätään rahansiirtoihin joita lähetät (oletus: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="353"/>
-        <source>Transaction amount too small</source>
-        <translation>Siirtosumma on liian pieni</translation>
+        <source>Pruning blockstore...</source>
+        <translation>Karsitaan lohkovarastoa...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="354"/>
-        <source>Transaction amounts must be positive</source>
-        <translation>Siirtosumman tulee olla positiivinen</translation>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation>Aja taustalla daemonina ja hyväksy komennot</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="355"/>
-        <source>Transaction created successfully.</source>
-        <translation>Siirtotapahtuma luotu onnistuneesti.</translation>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>HTTP-palvelinta ei voitu käynnistää. Katso debug-lokista lisätietoja.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="356"/>
-        <source>Transaction fees are too high.</source>
-        <translation>Siirtotapahtuman maksukulu on liian iso.</translation>
+        <source>bitsend Core</source>
+        <translation>bitsend-ydin</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="357"/>
-        <source>Transaction not valid.</source>
-        <translation>Siirtotapahtuma ei ole voimassa.</translation>
+        <source>The %s developers</source>
+        <translation>%s kehittäjät</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="358"/>
-        <source>Transaction too large</source>
-        <translation>Siirtosumma on liian iso</translation>
+        <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
+        <translation>Kulusuhde (%s/kt) jota käytetään, kun kulun arviointiin tarvittava tietomäärä ei riitä (oletus: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="359"/>
-        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>Ei voida yhdistää %s tässä tietokoneessa (yhdistäminen palautti virheen %s)</translation>
+        <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
+        <translation>Hyväksy valkolistatuilta vertaisilta vastaanotetut, välitetyt siirrot silloinkin, kun siirtojen välitys ei ole käytössä (oletus: %d)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="360"/>
-        <source>Unable to sign Xnode payment winner, wrong key?</source>
-        <translation>En voida osoittaa Xnode maksun sajaa, väärä avain?</translation>
+        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
+        <translation>Kytkeydy annettuun osoitteeseen ja pidä linja aina auki. Käytä [host]:portin merkintätapaa IPv6:lle.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="361"/>
-        <source>Unable to sign spork message, wrong key?</source>
-        <translation>En voida allekirjoittaa spork viestiä, väärä avain?</translation>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>Ei voida lukita data-hakemistoa %s. %s on luultavasti jo käynnissä.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="362"/>
-        <source>Unknown -socks proxy version requested: %i</source>
-        <translation>Tuntematon -socks proxy versio pyydetty: %i</translation>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>Poista kaikki lompakon rahasiirrot ja palauta vain määrätyt osat lohkoketjusta -rescan -valitsimella käynnistyksen yhteydessä.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="363"/>
-        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>Tuntematon verkkomääritys -onlynet parametrissa: &apos;%s&apos;</translation>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>Virhe luettaessa %s! Avaimet luetttiin oikein, mutta rahansiirtotiedot tai osoitekirjan sisältö saattavat olla puutteellisia tai vääriä.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="364"/>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Päivitä lompakko uusimpaan formaattiin</translation>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>Suorita käsky kun lompakossa rahansiirto muuttuu (%s cmd on vaihdettu TxID kanssa)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="365"/>
-        <source>Usage (deprecated, use bitsend-cli):</source>
-        <translation>Käyttö (käytöstä poistunut, käytä bitsend-cli):</translation>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation>Muistissa pidettävien rahansiirtojen määrä tiiviiden lohkojen muodostusta varten (oletus: %u)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="366"/>
-        <source>Usage:</source>
-        <translation>Käyttö:</translation>
+        <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
+        <translation>Jos tämä lohko on ketjussa, oleta lohkon sekä sen edeltäjien olevan kelvollisia ja mahdollisesti ohita niiden skriptin vahvistus (0 vahvistaa kaiken, oletus: %s, testnet: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="367"/>
-        <source>Use KeePass 2 integration using KeePassHttp plugin (default: 0)</source>
-        <translation>Käytä KeePass 2 integrointia käyttäen KeePassHttp liitännäistä (default: 0)</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Tarkistathan että tietokoneesi päivämäärä ja kellonaika ovat oikeassa! Jos kellosi on väärässä, %s ei toimi oikein.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="368"/>
-        <source>Use N separate Xnodes to anonymize funds  (2-8, default: 2)</source>
-        <translation>Käytä N erillistä Xnodea varojen anonymisointiin (2-8, oletus: 2)</translation>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>Ole hyvä ja avusta, jos %s on mielestäsi hyödyllinen. Vieraile %s saadaksesi lisää tietoa ohjelmistosta.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="369"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Käytä OpenSSL:ää (https) JSON-RPC yhteyksille</translation>
+        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
+        <translation>Pyydä vertaisten osoitteita DNS-kyselyjen avulla, mikäli osoitteita on vähän (oletus: 1, ellei -connect valitsinta käytetä)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="370"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: 0)</translation>
+        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
+        <translation>Aseta lohkon luonnissa lisättävien siirtojen vähimmäispalkkion suhde (%s/kt) (oletus: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="371"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: 1 kun kuunellaan)</translation>
+        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
+        <translation>Aseta script varmistuksen threadien lukumäärä (%u - %d, 0= auto, &lt;0 = jätä näin monta ydintä vapaaksi, oletus: %d)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="372"/>
-        <source>Use the test network</source>
-        <translation>Käytä testiverkkoa</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <translation>Lohkotietokanta sisältää lohkon, joka vaikuttaa olevan tulevaisuudesta. Tämä saattaa johtua tietokoneesi virheellisesti asetetuista aika-asetuksista. Rakenna lohkotietokanta uudelleen vain jos olet varma, että tietokoneesi päivämäärä ja aika ovat oikein.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="373"/>
-        <source>Username for JSON-RPC connections</source>
-        <translation>Käyttäjätunnus JSON-RPC yhteyksille</translation>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>Tämä on esi-julkaistu kokeiluversio - Käyttö omalla vastuullasi - Ethän käytä louhimiseen tai kauppasovelluksiin.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="374"/>
-        <source>Value more than Darksend pool maximum allows.</source>
-        <translation>Määrä on enemmän kuin Darksend varannon maksimi sallii.</translation>
+        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
+        <translation>Lohkoja ei voida uudelleenlukea. Joulut uudelleenrakentamaan tietokannan käyttämällä -reindex-chainstate -valitsinta.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="375"/>
+        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
+        <translation>Tietokantaa ei onnistuttu palauttamaan tilaan ennen haarautumista. Lohkoketju pitää ladata uudestaan.</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
+        <translation>Käytä UPnP:ta kuuntelevan portin kartoitukseen (oletus: 1 kun kuunnellaan ja -proxy ei käytössä)</translation>
+    </message>
+    <message>
+        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
+        <translation>Varoitus: Tietoverkko ei ole sovussa! Luohijat näyttävät kokevan virhetilanteita.</translation>
+    </message>
+    <message>
+        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>Varoitus: Olemme ristiriidassa vertaisten kanssa! Sinun tulee päivittää tai toisten solmujen tulee päivitää.</translation>
+    </message>
+    <message>
+        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
+        <translation>Tallennetaanko muistivaranto sulkemisen yhteydessä ja ladataanko se käynnistyksessä (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>%d of last 100 blocks have unexpected version</source>
+        <translation>%d viimeisestä 100 lohkosta sisälsi odottamattoman versiotiedon</translation>
+    </message>
+    <message>
+        <source>%s corrupt, salvage failed</source>
+        <translation>%s korruptoitunut, korjaaminen epäonnistui</translation>
+    </message>
+    <message>
+        <source>-maxmempool must be at least %d MB</source>
+        <translation>-maxmempool on oltava vähintään %d MB</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt; voi olla:</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Hyväksy yhteyksiä ulkopuolelta (vakioasetus: 1 jos -proxy tai -connect ei määritelty)</translation>
+    </message>
+    <message>
+        <source>Attempt to recover private keys from a corrupt wallet on startup</source>
+        <translation>Yritä palauttaa yksityiset avaimet korruptoituneesta lompakosta käynnistyksen yhteydessä</translation>
+    </message>
+    <message>
+        <source>Block creation options:</source>
+        <translation>Lohkon luonnin asetukset:</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>-%s -osoitteen '%s' selvittäminen epäonnistui</translation>
+    </message>
+    <message>
+        <source>Connection options:</source>
+        <translation>Yhteyden valinnat:</translation>
+    </message>
+    <message>
+        <source>Copyright (C) %i-%i</source>
+        <translation>Tekijänoikeus (C) %i-%i</translation>
+    </message>
+    <message>
+        <source>Corrupted block database detected</source>
+        <translation>Vioittunut lohkotietokanta havaittu</translation>
+    </message>
+    <message>
+        <source>Debugging/Testing options:</source>
+        <translation>Debuggaus/Testauksen valinnat:</translation>
+    </message>
+    <message>
+        <source>Do not load the wallet and disable wallet RPC calls</source>
+        <translation>Älä lataa lompakkoa ja poista lompakon RPC kutsut</translation>
+    </message>
+    <message>
+        <source>Do you want to rebuild the block database now?</source>
+        <translation>Haluatko uudelleenrakentaa lohkotietokannan nyt?</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation>Ota rahansiirtojen raakavedosten julkaisu käyttöön osoitteessa &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable transaction replacement in the memory pool (default: %u)</source>
+        <translation>Ota rahansiirron korvaaminen käyttöön muistivarannossa (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Error initializing block database</source>
+        <translation>Virhe alustaessa lohkotietokantaa</translation>
+    </message>
+    <message>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>Virhe alustaessa lompakon tietokantaympäristöä %s!</translation>
+    </message>
+    <message>
+        <source>Error loading %s</source>
+        <translation>Virhe ladattaessa %s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet corrupted</source>
+        <translation>Virhe ladattaessa %s: Lompakko vioittunut</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet requires newer version of %s</source>
+        <translation>Virhe ladattaessa %s: Tarvitset uudemman %s -version</translation>
+    </message>
+    <message>
+        <source>Error loading block database</source>
+        <translation>Virhe avattaessa lohkoketjua</translation>
+    </message>
+    <message>
+        <source>Error opening block database</source>
+        <translation>Virhe avattaessa lohkoindeksiä</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is low!</source>
+        <translation>Varoitus: Levytila on vähissä!</translation>
+    </message>
+    <message>
+        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
+        <translation>Ei onnistuttu kuuntelemaan missään portissa. Käytä -listen=0 jos haluat tätä.</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>Tuodaan...</translation>
+    </message>
+    <message>
+        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
+        <translation>Virheellinen tai olematon alkulohko löydetty. Väärä data-hakemisto verkolle?</translation>
+    </message>
+    <message>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>Alustava järkevyyden tarkistus epäonnistui. %s sulkeutuu.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Virheellinen määrä -%s=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
+        <translation>Virheellinen määrä -discardfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
+        <translation>Virheellinen määrä -fallbackfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
+        <translation>Pidä siirtojen muistivaranto alle &lt;n&gt; megatavun (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Loading P2P addresses...</source>
+        <translation>Ladataan P2P-vertaisten osoitteita...</translation>
+    </message>
+    <message>
+        <source>Loading banlist...</source>
+        <translation>Ladataan kieltolistaa...</translation>
+    </message>
+    <message>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation>Todennusevästeen sijainti (oletus: datahakemisto)</translation>
+    </message>
+    <message>
+        <source>Not enough file descriptors available.</source>
+        <translation>Ei tarpeeksi tiedostomerkintöjä vapaana.</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Yhdistä vain solmukohtiin &lt;net&gt;-verkossa (ipv4, ipv6 tai onion)</translation>
+    </message>
+    <message>
+        <source>Print this help message and exit</source>
+        <translation>Näytä tämä ohjeviesti ja poistu</translation>
+    </message>
+    <message>
+        <source>Print version and exit</source>
+        <translation>Näytä versio ja poistu.</translation>
+    </message>
+    <message>
+        <source>Prune cannot be configured with a negative value.</source>
+        <translation>Karsintaa ei voi toteuttaa negatiivisella arvolla.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -txindex.</source>
+        <translation>Karsittu tila ei ole yhteensopiva -txindex:n kanssa.</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
+        <translation>Muodosta ketjun tila ja lohkoindeksi levyllä olevista blk*.dat -tiedostoista</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state from the currently indexed blocks</source>
+        <translation>Muodosta ketjun tila tällä hetkellä indeksoiduista lohkoista</translation>
+    </message>
+    <message>
+        <source>Rewinding blocks...</source>
+        <translation>Varmistetaan lohkoja...</translation>
+    </message>
+    <message>
+        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
+        <translation>Aseta tietokannan välimuistin koko megatavuissa (%d - %d, oletus: %d</translation>
+    </message>
+    <message>
+        <source>Specify wallet file (within data directory)</source>
+        <translation>Aseta lompakkotiedosto (data-hakemiston sisällä)</translation>
+    </message>
+    <message>
+        <source>The source code is available from %s.</source>
+        <translation>Lähdekoodi löytyy %s.</translation>
+    </message>
+    <message>
+        <source>Transaction fee and change calculation failed</source>
+        <translation>Siirtokulun ja vaihtorahan laskenta epäonnistui</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>Kytkeytyminen kohteeseen %s ei onnistu tällä tietokoneella. %s on luultavasti jo käynnissä.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>Argumenttia -benchmark ei tueta, käytä -debug=bench.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>Argumenttia -debugnet ei tueta, käytä -debug=net.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -tor found, use -onion.</source>
+        <translation>Argumenttia -tor ei tueta, käytä -onion.</translation>
+    </message>
+    <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>Lokikategoriaa %s=%s ei tueta.</translation>
+    </message>
+    <message>
+        <source>Upgrading UTXO database</source>
+        <translation>Päivitetään UTXO-tietokantaa</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>Käytä UPnP:ta kuuntelevan portin kartoittamiseen (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Use the test chain</source>
+        <translation>Käytä testiketjua</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
-        <translation>Tarkistetaan lohkoja...</translation>
+        <translation>Varmistetaan lohkoja...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="376"/>
-        <source>Verifying wallet...</source>
-        <translation>Tarkistetaan lompakko...</translation>
+        <source>Wallet debugging/testing options:</source>
+        <translation>Lompakon debug- ja testausvalinnat:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="377"/>
-        <source>Wait for RPC server to start</source>
-        <translation>Odota että RPC palvelin käynnistyy</translation>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>Lompakko tarvitsee uudelleenkirjoittaa: käynnistä %s uudelleen</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="378"/>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>Lompakko %s sijaitsee data hakemiston ulkopuolella %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="379"/>
-        <source>Wallet is locked.</source>
-        <translation>Lompakko on lukittu.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="380"/>
-        <source>Wallet needed to be rewritten: restart Bitsend to complete</source>
-        <translation>Lompakko on kirjoitettava uudelleen, käynnistä Bitsend uudestaan</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="381"/>
         <source>Wallet options:</source>
         <translation>Lompakon valinnat:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="382"/>
+        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
+        <translation>Salli JSON-RPC-yhteydet määritetystä lähteestä. Kelvolliset arvot &lt;ip&gt; ovat yksittäinen IP (esim. 1.2.3.4), verkko/verkkomaski (esim. 1.2.3.4/255.255.255.0) tai verkko/luokaton reititys (esim. 1.2.3.4/24). Tätä valintatapaa voidaan käyttää useita kertoja</translation>
+    </message>
+    <message>
+        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
+        <translation>Kytkeydy osoitteeseen ja valkolistaa siihen yhdistävät vertaiset. Käytä [isäntä]:portti -merkintätapaa IPv6:lle</translation>
+    </message>
+    <message>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Luo uudet tiedostot järjestelmän oletusoikeuksilla, älä umask 077:llä (toimii vain, jos lompakkotoiminto on poissa käytöstä)</translation>
+    </message>
+    <message>
+        <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
+        <translation>Paljasta omat IP-osoitteet (oletus: 1 kun kuunnellaan ja -externalip tai -proxy ei ole käytössä)</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>Virhe: Saapuvien yhteyksien kuuntelu epäonnistui (kuuntelu palautti virheen %s)</translation>
+    </message>
+    <message>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>Aja komento kun olennainen hälytys vastaanotetaan tai nähdään todella pitkä haara (%s komennossa korvataan viestillä)</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
+        <translation>Tätä pienempiä palkkioita (%s/kt) kohdellaan väittäessä, louhittaessa ja siirtoja luodessa nollana (oletus: %s)</translation>
+    </message>
+    <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>Mikäli paytxfee -valitsinta ei ole asetettu, sisällytä riittävä maksu, jotta siirron vahvistus alkaa keskimäärin n lohkon sisällä (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>Suurin tietoa kantavien rahasiirtojen tietomäärä, joita välitetään ja louhitaan (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>Satunnaista tunnisteet jokaiselle välityspalvelinyhteydelle. Tämä mahdollistaa Tor -virran eristämisen (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to send after the fee has been deducted</source>
+        <translation>Siirtomäärä on liian pieni lähetettäväksi kulun vähentämisen jälkeen.</translation>
+    </message>
+    <message>
+        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
+        <translation>Valkolistattuja vertaisia eivät voi DoS -estää, joten niiden siirrot välitetään aina, myös silloin, kun ne ovat jo muistivarannossa. Hyödyllinen esim. yhdyskäytävälle</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation>Palataksesi karsimattomaan tilaan joudut uudelleenrakentamaan tietokannan -reindex -valinnalla. Tämä lataa koko lohkoketjun uudestaan.</translation>
+    </message>
+    <message>
+        <source>(default: %u)</source>
+        <translation>(oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>Hyväksy julkisia REST-pyyntöjä (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>Luo Tor-salattu palvelu automaattisesti (oletus: %d)</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy</source>
+        <translation>Yhdistä SOCKS5 proxin kautta</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
+        <translation>Virhe ladattaessa %s: Et voi poistaa HD-ominaisuutta jo olemassa olevasta HD-lompakosta.</translation>
+    </message>
+    <message>
+        <source>Error reading from database, shutting down.</source>
+        <translation>Virheitä tietokantaa luettaessa, ohjelma pysäytetään.</translation>
+    </message>
+    <message>
+        <source>Imports blocks from external blk000??.dat file on startup</source>
+        <translation>Tuo lohkot ulkoisesta blk000??.dat -tiedostosta käynnistettäessä</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Tietoa</translation>
+    </message>
+    <message>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Virheellinen -onion osoite tai isäntänimi: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid -proxy address or hostname: '%s'</source>
+        <translation>Virheellinen -proxy osoite tai isäntänimi: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Kelvoton määrä argumentille -paytxfee=&lt;amount&gt;: '%s' (pitää olla vähintään %s)</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>Kelvoton verkkopeite määritelty argumentissa -whitelist: '%s'</translation>
+    </message>
+    <message>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>Pidä enimmillään &lt;n&gt; yhdistämiskelvotonta rahansiirtoa muistissa (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Pitää määritellä portti argumentilla -whitebind: '%s'</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Välityssolmukohdan asetukset:</translation>
+    </message>
+    <message>
+        <source>RPC server options:</source>
+        <translation>RPC-palvelimen valinnat:</translation>
+    </message>
+    <message>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>Vähennetään -maxconnections arvoa %d:stä %d:hen järjestelmän rajoitusten vuoksi.</translation>
+    </message>
+    <message>
+        <source>Rescan the block chain for missing wallet transactions on startup</source>
+        <translation>Uudelleenskannaa lohkoketju käynnistyksen yhteydessä puuttuvien lompakon rahansiirtojen vuoksi</translation>
+    </message>
+    <message>
+        <source>Send trace/debug info to console instead of debug.log file</source>
+        <translation>Lähetä jäljitys/debug-tieto konsoliin, debug.log-tiedoston sijaan</translation>
+    </message>
+    <message>
+        <source>Show all debugging options (usage: --help -help-debug)</source>
+        <translation>Näytä kaikki debuggaus valinnat: (käyttö: --help -help-debug)</translation>
+    </message>
+    <message>
+        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
+        <translation>Pienennä debug.log tiedosto käynnistyksen yhteydessä (vakioasetus: 1 kun ei -debug)</translation>
+    </message>
+    <message>
+        <source>Signing transaction failed</source>
+        <translation>Siirron vahvistus epäonnistui</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to pay the fee</source>
+        <translation>Rahansiirron määrä on liian pieni kattaakseen maksukulun</translation>
+    </message>
+    <message>
+        <source>This is experimental software.</source>
+        <translation>Tämä on ohjelmistoa kokeelliseen käyttöön.</translation>
+    </message>
+    <message>
+        <source>Tor control port password (default: empty)</source>
+        <translation>Tor-hallintaportin salasana (oletus: tyhjä)</translation>
+    </message>
+    <message>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation>Tor-hallintaportti jota käytetään jos onion-kuuntelu on käytössä (oletus: %s)</translation>
+    </message>
+    <message>
+        <source>Transaction amount too small</source>
+        <translation>Siirtosumma liian pieni</translation>
+    </message>
+    <message>
+        <source>Transaction too large for fee policy</source>
+        <translation>Rahansiirto on liian suuri maksukulukäytännölle</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>Siirtosumma liian iso</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
+        <translation>Kytkeytyminen kohteeseen %s ei onnistunut tällä tietokonella (kytkeytyminen palautti virheen %s)</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format on startup</source>
+        <translation>Päivitä lompakko viimeisimpään formaattiin käynnistyksen yhteydessä</translation>
+    </message>
+    <message>
+        <source>Username for JSON-RPC connections</source>
+        <translation>Käyttäjätunnus JSON-RPC-yhteyksille</translation>
+    </message>
+    <message>
+        <source>Verifying wallet(s)...</source>
+        <translation>Varmistetaan lompakko(ja)...</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Varoitus</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="383"/>
-        <source>Warning: Deprecated argument -debugnet ignored, use -debug=net</source>
-        <translation>Varoitus: Käytöstä poistunut argumentti -debugnet sivutettu, käytä debug=net</translation>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>Varoitus: tuntemattomia uusia sääntöjä aktivoitu (versiobitti %i)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="384"/>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Varoitus: Tämä versio on vanhentunut, päivitys on tarpeen!</translation>
+        <source>Whether to operate in a blocks only mode (default: %u)</source>
+        <translation>Toimitaanko tilassa jossa ainoastaan lohkot sallitaan (oletus: %u)</translation>
     </message>
     <message>
-        <source>Wrong state.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="385"/>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Sinun tulee uudelleenrakentaa tietokanta käyttäen -reindex vaihtaen -txindex</translation>
+        <translation>Sinun tulee uudelleenrakentaa tietokanta -reindex -valitsimella vaihtaaksesi -txindex -arvoa</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="386"/>
         <source>Zapping all transactions from wallet...</source>
-        <translation>Tyhjennetään kaikki siirtotapahtumat lompakosta....</translation>
+        <translation>Tyhjennetään kaikki rahansiirrot lompakosta....</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="387"/>
-        <source>on startup</source>
-        <translation>käynnistyksessä</translation>
+        <source>ZeroMQ notification options:</source>
+        <translation>ZeroMQ-ilmoitusasetukset:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="388"/>
-        <source>version</source>
-        <translation>versio</translation>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Salasana JSON-RPC-yhteyksille</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="389"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat lompakkotiedosto vioittunut, pelastaminen epäonnistui</translation>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Suorita käsky kun paras lohko muuttuu (%s cmd on vaihdettu block hashin kanssa)</translation>
+    </message>
+    <message>
+        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
+        <translation>Salli DNS kyselyt -addnode, -seednode ja -connect yhteydessä</translation>
+    </message>
+    <message>
+        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>-maxtxfee on asetettu erittäin suureksi! Tämänkokoisia kuluja saatetaan maksaa yhdessä rahansiirrossa.</translation>
+    </message>
+    <message>
+        <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
+        <translation>Älä pidä rahansiirtoja muistivarannoissa kauemmin kuin &lt;n&gt; tuntia (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
+        <translation>Virhe ladattaessa %s: Et voi ottaa HD:ta käyttöön jo olemassa olevalle ei-HD -lompakolle.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
+        <translation>Virhe ladattaessa lompakkoa %s. -wallet -valitsimen pitää osoittaa tiedostonimeen (ei polkuun).</translation>
+    </message>
+    <message>
+        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
+        <translation>Pakota rahansiirtojen välitys valkolistatuilta vertaisilta, vaikka ne rikkoisivatkin paikallisia välitysmääräyksiä (oletus: %d)</translation>
+    </message>
+    <message>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
+        <translation>Kuinka läpikäyvä lohkojen -checkblocks -todennus on (0-4, oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>Kuinka monta sekuntia huonosti käyttäytyviä vertaisia estetään yhdistämästä (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>Tulosta debuggaustieto (oletus: %u, annettu &lt;category&gt; valinnainen)</translation>
+    </message>
+    <message>
+        <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
+        <translation>Pyrkii pitämään lähtevän liikenteen alle annetun tavoitetteen (megatavuina 24 tunnissa). 0 = ei rajaa (oletus: %d)</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>Ei tuettu argumentti -socks löytynyt. SOCKS -version asetusta ei enää tueta, ainoastaan SOCKS5 -välityspalvelimet on tuettu.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
+        <translation>Argumenttia -whitelistalwaysrelay ei tueta ja se ohitettiin. Käytä -whitelistrelay ja/tai -whitelistforcerelay.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>Käytä erillistä SOCKS5-proxyä tavoittaaksesi vertaisia Tor-piilopalveluiden kautta (oletus: %s)</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
+        <translation>Varoitus: Tuntemattomia lohkoversioita louhitaan! Tuntemattomia sääntöjä saattaa olla voimassa</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>%s on asetettu todella korkeaksi!</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>(oletus: %s)</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>Pyydä vertaisten osoitteita aina DNS-kyselyjen avulla (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
+        <translation>Virhe ladattaessa lompakkoa %s. -wallet tiedostonimen pitää osoittaa tavalliseen tiedostoon.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
+        <translation>Virhe ladattaessa lompakkoa %s. -wallet -tiedostonimi esiintyy useaan kertaan.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
+        <translation>Virhe ladattaessa lompakkoa %s. -wallet tiedostonimi sisältää virheellisiä merkkejä.</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>Kuinka monta lohkoa tarkistetaan käynnistyksessä (oletus: %u, 0 = kaikki)</translation>
+    </message>
+    <message>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>Sisällytä IP-osoitteet virheenkorjauslokissa (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation>Avainallas tyhjentyi, ole hyvä ja kutsu keypoolrefill ensin</translation>
+    </message>
+    <message>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Kuuntele JSON-RPC-yhteyksiä portissa &lt;port&gt; (oletus: %u tai testnet: %u)</translation>
+    </message>
+    <message>
+        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Kuuntele yhteyksiä portissa &lt;port&gt; (oletus: %u tai testnet: %u)</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
+        <translation>Ylläpidä enimmillään &lt;n&gt; yhteyttä vertaisiin (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Make the wallet broadcast transactions</source>
+        <translation>Aseta lompakko kuuluttamaan rahansiirtoja</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maksimi yhteyttä kohden käytettävä vastaanottopuskurin koko, &lt;n&gt;*1000 tavua (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maksimi yhteyttä kohden käytettävä lähetyspuskurin koko, &lt;n&gt;*1000 tavua (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Prepend debug output with timestamp (default: %u)</source>
+        <translation>Lisää debug-tietojen alkuun aikaleimat (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>Välitä ja louhi dataa kantavia rahansiirtoja (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Relay non-P2SH multisig (default: %u)</source>
+        <translation>Välitä ei-P2SH-multisig (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
+        <translation>Aseta avainaltaan kooksi &lt;n&gt; (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Set maximum BIP141 block weight (default: %d)</source>
+        <translation>Aseta suurin BIP141-lohkopaino (oletus: %d)</translation>
+    </message>
+    <message>
+        <source>Set the number of threads to service RPC calls (default: %d)</source>
+        <translation>Aseta RPC-kutsujen palvelemiseen tarkoitettujen säikeiden lukumäärä (oletus: %d)</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>Määritä asetustiedosto (oletus: %s)</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>Määritä yhteyden aikakatkaisu millisekunneissa (minimi: 1, oletus: %d)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>Määritä pid-tiedosto (oletus: %s)</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>Käytä vahvistamattomia vaihtorahoja lähetettäessä rahansiirtoja (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Starting network threads...</source>
+        <translation>Käynnistetään verkkoa...</translation>
+    </message>
+    <message>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation>Tämä on jokaisesta siirrosta maksettava vähimmäismaksu.</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Tämä on lähetyksestä maksettava maksu jonka maksat</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>Aikaväli sopimattomien vertaisten yhteyksien katkaisuun (oletus: %u)</translation>
+    </message>
+    <message>
+        <source>Transaction amounts must not be negative</source>
+        <translation>Lähetyksen siirtosumman tulee olla positiivinen</translation>
+    </message>
+    <message>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation>Maksutapahtumalla on liian pitkä muistialtaan ketju</translation>
+    </message>
+    <message>
+        <source>Transaction must have at least one recipient</source>
+        <translation>Lähetyksessä tulee olla ainakin yksi vastaanottaja</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: '%s'</source>
+        <translation>Tuntematon verkko -onlynet parametrina: '%s'</translation>
+    </message>
+    <message>
+        <source>Insufficient funds</source>
+        <translation>Lompakon saldo ei riitä</translation>
+    </message>
+    <message>
+        <source>Loading block index...</source>
+        <translation>Ladataan lohkoindeksiä...</translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>Ladataan lompakkoa...</translation>
+    </message>
+    <message>
+        <source>Cannot downgrade wallet</source>
+        <translation>Et voi päivittää lompakkoasi vanhempaan versioon</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>Skannataan uudelleen...</translation>
+    </message>
+    <message>
+        <source>Done loading</source>
+        <translation>Lataus on valmis</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Virhe</translation>
     </message>
 </context>
 </TS>

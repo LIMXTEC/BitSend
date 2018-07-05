@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2016 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +11,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* BitsendGUI -- Size of icons in status bar */
+/* bitsendGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -48,9 +48,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Bitsend"
-#define QAPP_ORG_DOMAIN "bitsend.info"
-#define QAPP_APP_NAME_DEFAULT "Bitsend-Qt"
-#define QAPP_APP_NAME_TESTNET "Bitsend-Qt-testnet"
+#define QAPP_ORG_NAME "bitsend"
+#define QAPP_ORG_DOMAIN "bitsend.org"
+#define QAPP_APP_NAME_DEFAULT "bitsend-Qt"
+#define QAPP_APP_NAME_TESTNET "bitsend-Qt-testnet"
 
 #endif // BITSEND_QT_GUICONSTANTS_H

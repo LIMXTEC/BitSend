@@ -1,197 +1,114 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.0">
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Bitsend Core</source>
-        <translation>Sobre Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Bitsend Core&lt;/b&gt; version</source>
-        <translation>Versió del&lt;B&gt; Bitsend Core &lt;/ b&gt; </translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
-Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="111"/>
-        <source>
-This is experimental software.
-
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
-        <translation>
-Això és programari experimental.
-
-Distribuït sota llicència de programari MIT/11, vegeu el fitxer COPYING o http://www.opensource.org/licenses/mit-license.php.
-
-Aquest producte inclou programari desenvolupat pel projecte OpenSSL per a l&apos;ús en l&apos;OppenSSL Toolkit (http://www.openssl.org/) i de programari criptogràfic escrit per Eric Young (eay@cryptsoft.com) i programari UPnP escrit per Thomas Bernard.</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>Copyright</source>
-        <translation>Copyright</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Els desenvolupadors del Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Els desenvolupadors del Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="43"/>
-        <location filename="../utilitydialog.cpp" line="45"/>
-        <source>(%1-bit)</source>
-        <translation>(%1-bit)</translation>
-    </message>
-</context>
+<TS language="ca" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="30"/>
-        <source>Double-click to edit address or label</source>
-        <translation>Feu doble clic per editar l&apos;adreça o l&apos;etiqueta</translation>
+        <source>Right-click to edit address or label</source>
+        <translation>Feu clic dret per a editar l'adreça o l'etiqueta</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="57"/>
         <source>Create a new address</source>
         <translation>Crea una nova adreça</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="60"/>
         <source>&amp;New</source>
         <translation>&amp;Nova</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="71"/>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copia l&apos;adreça seleccionada al porta-retalls del sistema</translation>
+        <translation>Copia l'adreça seleccionada al porta-retalls del sistema</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="74"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copia</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="85"/>
-        <source>Delete the currently selected address from the list</source>
-        <translation>Elimina l&apos;adreça sel·leccionada actualment de la llista</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="88"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Elimina</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="112"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Exporta les dades de la pestanya actual a un fitxer</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="115"/>
-        <source>&amp;Export</source>
-        <translation>&amp;Exporta</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="132"/>
         <source>C&amp;lose</source>
         <translation>&amp;Tanca</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="45"/>
+        <source>Delete the currently selected address from the list</source>
+        <translation>Elimina l'adreça sel·leccionada actualment de la llista</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exporta les dades de la pestanya actual a un fitxer</translation>
+    </message>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporta</translation>
+    </message>
+    <message>
+        <source>&amp;Delete</source>
+        <translation>&amp;Elimina</translation>
+    </message>
+    <message>
         <source>Choose the address to send coins to</source>
-        <translation>Trieu una adreça on voleu enviar monedes</translation>
+        <translation>Trieu l'adreça on enviar les monedes</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="46"/>
         <source>Choose the address to receive coins with</source>
-        <translation>Trieu l&apos;adreça on voleu rebre monedes</translation>
+        <translation>Trieu l'adreça on rebre les monedes</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="51"/>
         <source>C&amp;hoose</source>
-        <translation>T&amp;ria</translation>
+        <translation>&amp;Tria</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="57"/>
         <source>Sending addresses</source>
-        <translation>S&apos;estan enviant les adreces</translation>
+        <translation>Adreces d'enviament</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="58"/>
         <source>Receiving addresses</source>
-        <translation>S&apos;estan rebent les adreces</translation>
+        <translation>Adreces de recepció</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="65"/>
-        <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Aquests són les teves adreces Bitsend per enviar pagaments. Comproveu sempre la quantitat i la direcció de recepció abans d&apos;enviar monedes.</translation>
+        <source>These are your bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Aquestes són les vostres adreces de bitsend per enviar els pagaments. Sempre reviseu l'import i l'adreça del destinatari abans de transferir monedes.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="69"/>
-        <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Aquests són les teves adreces Bitsend per rebre pagaments. Es recomana utilitzar una nova adreça de recepció per a cada transacció.</translation>
+        <source>These are your bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Aquestes són les vostres adreces bitsend per rebre pagaments. Es recomana utilitzar una adreça nova de recepció per a cada transacció.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="75"/>
         <source>&amp;Copy Address</source>
-        <translation>&amp;Copia l&apos;adreça</translation>
+        <translation>&amp;Copia l'adreça</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="76"/>
         <source>Copy &amp;Label</source>
-        <translation>Copia l&apos;&amp;etiqueta</translation>
+        <translation>Copia l'eti&amp;queta</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="77"/>
         <source>&amp;Edit</source>
         <translation>&amp;Edita</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="271"/>
         <source>Export Address List</source>
-        <translation>Exporta la llista d&apos;adreces</translation>
+        <translation>Exporta la llista d'adreces</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="272"/>
         <source>Comma separated file (*.csv)</source>
-        <translation>Fitxer de separació amb comes (*.csv)</translation>
+        <translation>Fitxer separat per comes (*.csv)</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="285"/>
         <source>Exporting Failed</source>
-        <translation>L&apos;exportació ha fallat</translation>
+        <translation>L'exportació ha fallat</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="286"/>
-        <source>There was an error trying to save the address list to %1.</source>
-        <translation>S&apos;ha produït un error en provar de desar la llista d&apos;adreces a %1.</translation>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>S'ha produït un error en desar la llista d'adreces a %1. Torneu-ho a provar.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Address</source>
         <translation>Adreça</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="205"/>
         <source>(no label)</source>
         <translation>(sense etiqueta)</translation>
     </message>
@@ -199,1086 +116,659 @@ Aquest producte inclou programari desenvolupat pel projecte OpenSSL per a l&apos
 <context>
     <name>AskPassphraseDialog</name>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="26"/>
         <source>Passphrase Dialog</source>
         <translation>Diàleg de contrasenya</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="47"/>
         <source>Enter passphrase</source>
         <translation>Introduïu una contrasenya</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="61"/>
         <source>New passphrase</source>
         <translation>Nova contrasenya</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="75"/>
         <source>Repeat new passphrase</source>
         <translation>Repetiu la nova contrasenya</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="108"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation type="unfinished"/>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Introduïu la contrasenya nova al moneder.&lt;br/&gt;Utilitzeu una contrasenya de &lt;b&gt;deu o més caràcters aleatoris&lt;/b&gt;, o &lt;b&gt;vuit o més paraules&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="111"/>
-        <source>For anonymization only</source>
-        <translation>Només per anonimitzar.</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="41"/>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Introduïu la nova contrasenya al moneder&lt;br/&gt;Feu servir una contrasenya de &lt;b&gt;10 o més caràcters aleatoris&lt;/b&gt;, o &lt;b&gt;vuit o més paraules&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="42"/>
         <source>Encrypt wallet</source>
         <translation>Encripta el moneder</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="48"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
         <translation>Aquesta operació requereix la contrasenya del moneder per a desbloquejar-lo.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="53"/>
         <source>Unlock wallet</source>
         <translation>Desbloqueja el moneder</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="56"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
         <translation>Aquesta operació requereix la contrasenya del moneder per desencriptar-lo.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="61"/>
         <source>Decrypt wallet</source>
         <translation>Desencripta el moneder</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="64"/>
         <source>Change passphrase</source>
         <translation>Canvia la contrasenya</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="65"/>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Introduïu tant la contrasenya antiga com la nova del moneder.</translation>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <translation>Introduïu la contrasenya antiga i la contrasenya nova al moneder.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="112"/>
         <source>Confirm wallet encryption</source>
-        <translation>Confirma l&apos;encriptació del moneder</translation>
+        <translation>Confirma l'encriptació del moneder</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BSD&lt;/b&gt;!</source>
-        <translation>Advertència: Si xifra seva cartera i perd la seva contrasenya, vostè &lt;b&gt; PERDRÀ TOTS ELS SEUS BSD &lt;/ b&gt;</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
+        <translation>Avís: si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES BITSENDS&lt;/b&gt;!</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Esteu segur que voleu encriptar el vostre moneder?</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="122"/>
-        <location filename="../askpassphrasedialog.cpp" line="181"/>
         <source>Wallet encrypted</source>
         <translation>Moneder encriptat</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="124"/>
-        <source>Bitsend will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
-        <translation type="unfinished"/>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>Ara es tancarà el %1 per finalitzar el procés d'encriptació. Recordeu que encriptar el vostre moneder no garanteix que les vostres bitsends no puguin ser robades per programari maliciós que infecti l'ordinador.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="128"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>IMPORTANT: Tota copia de seguretat que hàgiu realitzat hauria de ser reemplaçada pel, recentment generat, fitxer encriptat del moneder.</translation>
+        <translation>IMPORTANT: Tota copia de seguretat que hàgiu realitzat hauria de ser reemplaçada pel, recentment generat, fitxer encriptat del moneder. Per motius de seguretat, les còpies de seguretat anteriors del fitxer de moneder no encriptat esdevindran inusables tan aviat com començar a utilitzar el nou moneder encriptat.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="137"/>
-        <location filename="../askpassphrasedialog.cpp" line="144"/>
-        <location filename="../askpassphrasedialog.cpp" line="187"/>
-        <location filename="../askpassphrasedialog.cpp" line="193"/>
         <source>Wallet encryption failed</source>
-        <translation>L&apos;encriptació del moneder ha fallat</translation>
+        <translation>L'encriptació del moneder ha fallat</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="138"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>L&apos;encriptació del moneder ha fallat per un error intern. El moneder no ha estat encriptat.</translation>
+        <translation>L'encriptació del moneder ha fallat per un error intern. El moneder no ha estat encriptat.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="145"/>
-        <location filename="../askpassphrasedialog.cpp" line="194"/>
         <source>The supplied passphrases do not match.</source>
-        <translation>La contrasenya introduïda no coincideix.</translation>
+        <translation>Les contrasenyes introduïdes no coincideixen.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="157"/>
         <source>Wallet unlock failed</source>
         <translation>El desbloqueig del moneder ha fallat</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="158"/>
-        <location filename="../askpassphrasedialog.cpp" line="169"/>
-        <location filename="../askpassphrasedialog.cpp" line="188"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>La contrasenya introduïda per a desencriptar el moneder és incorrecta.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="168"/>
         <source>Wallet decryption failed</source>
         <translation>La desencriptació del moneder ha fallat</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="182"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>La contrasenya del moneder ha estat modificada correctament.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="230"/>
-        <location filename="../askpassphrasedialog.cpp" line="254"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Avís: Les lletres majúscules estan activades!</translation>
     </message>
 </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>BanTableModel</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="76"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>IP/Netmask</source>
+        <translation>IP / Màscara de xarxa</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="85"/>
-        <source>Wallet</source>
-        <translation>Moneder</translation>
+        <source>Banned Until</source>
+        <translation>Bandejat fins</translation>
     </message>
+</context>
+<context>
+    <name>bitsendGUI</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="87"/>
-        <source>Node</source>
-        <translation>Node</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="101"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>[testnet]</source>
-        <translation>[testnet]</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="227"/>
-        <source>&amp;Overview</source>
-        <translation>&amp;Panorama general</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="228"/>
-        <source>Show general overview of wallet</source>
-        <translation>Mostra el panorama general del moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="234"/>
-        <source>&amp;Send</source>
-        <translation>&amp;Envia</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="235"/>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Envia monedes a una adreça Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="241"/>
-        <source>&amp;Receive</source>
-        <translation>&amp;Rep</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="242"/>
-        <source>Request payments (generates QR codes and bitsend: URIs)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="248"/>
-        <source>&amp;Transactions</source>
-        <translation>&amp;Transaccions</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="249"/>
-        <source>Browse transaction history</source>
-        <translation>Cerca a l&apos;historial de transaccions</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="266"/>
-        <source>E&amp;xit</source>
-        <translation>S&amp;urt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="267"/>
-        <source>Quit application</source>
-        <translation>Surt de l&apos;aplicació</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="271"/>
-        <location filename="../bitsendgui.cpp" line="273"/>
-        <source>&amp;About Bitsend Core</source>
-        <translation>&amp;Sobre Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="274"/>
-        <source>Show information about Bitsend</source>
-        <translation>Mostra informació sobre Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="277"/>
-        <location filename="../bitsendgui.cpp" line="279"/>
-        <source>About &amp;Qt</source>
-        <translation>Quant a &amp;Qt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="281"/>
-        <source>Show information about Qt</source>
-        <translation>Mostra informació sobre Qt</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="283"/>
-        <source>&amp;Options...</source>
-        <translation>&amp;Opcions...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="284"/>
-        <source>Modify configuration options for Bitsend</source>
-        <translation>Modifica les opcions de configuració per Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="287"/>
-        <location filename="../bitsendgui.cpp" line="289"/>
-        <source>&amp;Show / Hide</source>
-        <translation>&amp;Mostra / Amaga</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="290"/>
-        <source>Show or hide the main Window</source>
-        <translation>Mostra o amaga la finestra principal</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="292"/>
-        <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Encripta el moneder...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="293"/>
-        <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Encripta les claus privades pertanyents al moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="295"/>
-        <source>&amp;Backup Wallet...</source>
-        <translation>&amp;Realitza una còpia de seguretat del moneder...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="296"/>
-        <source>Backup wallet to another location</source>
-        <translation>Realitza una còpia de seguretat del moneder a una altra ubicació</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="297"/>
-        <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Canvia la contrasenya...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="298"/>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>Canvia la contrasenya d&apos;encriptació del moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="299"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Desbloqueja el moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="300"/>
-        <source>Unlock wallet</source>
-        <translation>Desbloqueja el moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="301"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>&amp;Bloqueja el moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="302"/>
         <source>Sign &amp;message...</source>
         <translation>Signa el &amp;missatge...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="303"/>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation type="unfinished"/>
+        <source>Synchronizing with network...</source>
+        <translation>S'està sincronitzant amb la xarxa ...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="304"/>
-        <source>&amp;Verify message...</source>
-        <translation>&amp;Verifica el missatge...</translation>
+        <source>&amp;Overview</source>
+        <translation>&amp;Panorama general</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="305"/>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation type="unfinished"/>
+        <source>Node</source>
+        <translation>Node</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="307"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Informació</translation>
+        <source>Show general overview of wallet</source>
+        <translation>Mostra el panorama general del moneder</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="308"/>
-        <source>Show diagnostic information</source>
-        <translation>Mostra informació de diagnòstic</translation>
+        <source>&amp;Transactions</source>
+        <translation>&amp;Transaccions</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="309"/>
-        <source>&amp;Debug console</source>
-        <translation>&amp;Consola de depuració</translation>
+        <source>Browse transaction history</source>
+        <translation>Cerca a l'historial de transaccions</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="310"/>
-        <source>Open debugging console</source>
-        <translation>Obre la consola de depuració</translation>
+        <source>E&amp;xit</source>
+        <translation>S&amp;urt</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="311"/>
-        <source>&amp;Network Monitor</source>
-        <translation type="unfinished"/>
+        <source>Quit application</source>
+        <translation>Surt de l'aplicació</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="312"/>
-        <source>Show network monitor</source>
-        <translation type="unfinished"/>
+        <source>&amp;About %1</source>
+        <translation>Qu&amp;ant al %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="313"/>
-        <source>Open &amp;Configuration File</source>
-        <translation type="unfinished"/>
+        <source>Show information about %1</source>
+        <translation>Mosta informació sobre el %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="314"/>
-        <source>Open configuration file</source>
-        <translation type="unfinished"/>
+        <source>About &amp;Qt</source>
+        <translation>Quant a &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="316"/>
+        <source>Show information about Qt</source>
+        <translation>Mostra informació sobre Qt</translation>
+    </message>
+    <message>
+        <source>&amp;Options...</source>
+        <translation>&amp;Opcions...</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for %1</source>
+        <translation>Modifica les opcions de configuració de %1</translation>
+    </message>
+    <message>
+        <source>&amp;Encrypt Wallet...</source>
+        <translation>&amp;Encripta el moneder...</translation>
+    </message>
+    <message>
+        <source>&amp;Backup Wallet...</source>
+        <translation>&amp;Realitza una còpia de seguretat del moneder...</translation>
+    </message>
+    <message>
+        <source>&amp;Change Passphrase...</source>
+        <translation>&amp;Canvia la contrasenya...</translation>
+    </message>
+    <message>
         <source>&amp;Sending addresses...</source>
-        <translation>Adreces d&apos;e&amp;nviament...</translation>
+        <translation>Adreces d'e&amp;nviament...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="317"/>
-        <source>Show the list of used sending addresses and labels</source>
-        <translation>Mostra la llista d&apos;adreces d&apos;enviament i etiquetes utilitzades</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
-        <translation>Adreces de &amp;recepció</translation>
+        <translation>Adreces de &amp;recepció...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="319"/>
-        <source>Show the list of used receiving addresses and labels</source>
-        <translation>Mostra la llista d&apos;adreces de recepció i etiquetes utilitzades</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
         <translation>Obre un &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="322"/>
-        <source>Open a bitsend: URI or payment request</source>
-        <translation type="unfinished"/>
+        <source>Click to disable network activity.</source>
+        <translation>Feu clic per inhabilitar l'activitat de la xarxa.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="324"/>
-        <source>&amp;Command-line options</source>
-        <translation>Opcions de la &amp;línia d&apos;ordres</translation>
+        <source>Network activity disabled.</source>
+        <translation>S'ha inhabilitat l'activitat de la xarxa.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="325"/>
-        <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
-        <translation type="unfinished"/>
+        <source>Click to enable network activity again.</source>
+        <translation>Feu clic per tornar a habilitar l'activitat de la xarxa.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="361"/>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>Sincronitzant Capçaleres (%1%)...</translation>
+    </message>
+    <message>
+        <source>Reindexing blocks on disk...</source>
+        <translation>S'estan reindexant els blocs al disc...</translation>
+    </message>
+    <message>
+        <source>Send coins to a bitsend address</source>
+        <translation>Envia monedes a una adreça bitsend</translation>
+    </message>
+    <message>
+        <source>Backup wallet to another location</source>
+        <translation>Realitza una còpia de seguretat del moneder a una altra ubicació</translation>
+    </message>
+    <message>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation>Canvia la contrasenya d'encriptació del moneder</translation>
+    </message>
+    <message>
+        <source>&amp;Debug window</source>
+        <translation>&amp;Finestra de depuració</translation>
+    </message>
+    <message>
+        <source>Open debugging and diagnostic console</source>
+        <translation>Obre la consola de diagnòstic i depuració</translation>
+    </message>
+    <message>
+        <source>&amp;Verify message...</source>
+        <translation>&amp;Verifica el missatge...</translation>
+    </message>
+    <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
+    </message>
+    <message>
+        <source>Wallet</source>
+        <translation>Moneder</translation>
+    </message>
+    <message>
+        <source>&amp;Send</source>
+        <translation>&amp;Envia</translation>
+    </message>
+    <message>
+        <source>&amp;Receive</source>
+        <translation>&amp;Rep</translation>
+    </message>
+    <message>
+        <source>&amp;Show / Hide</source>
+        <translation>&amp;Mostra / Amaga</translation>
+    </message>
+    <message>
+        <source>Show or hide the main Window</source>
+        <translation>Mostra o amaga la finestra principal</translation>
+    </message>
+    <message>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Encripta les claus privades pertanyents al moneder</translation>
+    </message>
+    <message>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>Signa el missatges amb la seva adreça de bitsend per provar que les poseeixes</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Verifiqueu els missatges per assegurar-vos que han estat signats amb una adreça bitsend específica.</translation>
+    </message>
+    <message>
         <source>&amp;File</source>
         <translation>&amp;Fitxer</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="375"/>
         <source>&amp;Settings</source>
         <translation>&amp;Configuració</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="388"/>
-        <source>&amp;Tools</source>
-        <translation>&amp;Eines</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="395"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="406"/>
         <source>Tabs toolbar</source>
-        <translation>Barra d&apos;eines de les pestanyes</translation>
+        <translation>Barra d'eines de les pestanyes</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="493"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>Bitsend client</source>
-        <translation>Client de Bitsend</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="643"/>
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <source>Request payments (generates QR codes and bitsend: URIs)</source>
+        <translation>Sol·licita pagaments (genera codis QR i bitsend: URI)</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="655"/>
-        <source>Synchronizing with network...</source>
-        <translation>S&apos;està sincronitzant amb la xarxa ...</translation>
+        <source>Show the list of used sending addresses and labels</source>
+        <translation>Mostra la llista d'adreces d'enviament i etiquetes utilitzades</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="658"/>
-        <source>Importing blocks from disk...</source>
-        <translation>S&apos;estan important els blocs del disc...</translation>
+        <source>Show the list of used receiving addresses and labels</source>
+        <translation>Mostra la llista d'adreces de recepció i etiquetes utilitzades</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="661"/>
-        <source>Reindexing blocks on disk...</source>
-        <translation>S&apos;estan reindexant els blocs al disc...</translation>
+        <source>Open a bitsend: URI or payment request</source>
+        <translation>Obre una bitsend: sol·licitud d'URI o pagament</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="665"/>
-        <source>No block source available...</source>
-        <translation>No hi ha cap font de bloc disponible...</translation>
+        <source>&amp;Command-line options</source>
+        <translation>Opcions de la &amp;línia d'ordres</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="675"/>
-        <source>Processed %1 blocks of transaction history.</source>
-        <translation>Proccessats %1 blocs del històric de transaccions.</translation>
+        <source>Indexing blocks on disk...</source>
+        <translation>S'estan indexant els blocs al disc...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="680"/>
-        <source>Up to date</source>
-        <translation>Al dia</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="701"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n hora()</numerusform><numerusform>%n hores()</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="705"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%dia()</numerusform><numerusform>%dies()</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="709"/>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n week(s)</source>
-        <translation><numerusform>%n setmana()</numerusform><numerusform>%n setmanes()</numerusform></translation>
+        <source>Processing blocks on disk...</source>
+        <translation>S'estan processant els blocs al disc...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%1 and %2</source>
-        <translation>%1 i %2</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n year(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="719"/>
         <source>%1 behind</source>
         <translation>%1 darrere</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="724"/>
-        <source>Catching up...</source>
-        <translation>S&apos;està posant al dia ...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="740"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>El darrer bloc rebut ha estat generat fa %1.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="742"/>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Les transaccions a partir d&apos;això no seran visibles.</translation>
+        <translation>Les transaccions a partir d'això no seran visibles.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="755"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="769"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Avís</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Informació</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
+        <source>Up to date</source>
+        <translation>Al dia</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible bitsend command-line options</source>
+        <translation>Mostra el missatge d'ajuda del %1 per obtenir una llista amb les possibles opcions de línia d'ordres de bitsend</translation>
+    </message>
+    <message>
+        <source>%1 client</source>
+        <translation>Client de %1</translation>
+    </message>
+    <message>
+        <source>Connecting to peers...</source>
+        <translation>Connectant a altres nodes...</translation>
+    </message>
+    <message>
+        <source>Catching up...</source>
+        <translation>S'està posant al dia ...</translation>
+    </message>
+    <message>
+        <source>Date: %1
+</source>
+        <translation>Data: %1
+</translation>
+    </message>
+    <message>
+        <source>Amount: %1
+</source>
+        <translation>Import: %1
+</translation>
+    </message>
+    <message>
+        <source>Type: %1
+</source>
+        <translation>Tipus: %1
+</translation>
+    </message>
+    <message>
+        <source>Label: %1
+</source>
+        <translation>Etiqueta: %1
+</translation>
+    </message>
+    <message>
+        <source>Address: %1
+</source>
+        <translation>Adreça: %1
+</translation>
+    </message>
+    <message>
         <source>Sent transaction</source>
         <translation>Transacció enviada</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Transacció entrant</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="855"/>
-        <source>Date: %1
-Amount: %2
-Type: %3
-Address: %4
-</source>
-        <translation>Data: %1\nImport: %2\n Tipus: %3\n Adreça: %4\n</translation>
+        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
+        <translation>La generació de la clau HD és &lt;b&gt;habilitada&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="926"/>
+        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation>La generació de la clau HD és &lt;b&gt;inhabilitada&lt;/b&gt;</translation>
+    </message>
+    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>El moneder està &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;desbloquejat&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="936"/>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>El moneder està &lt;b&gt;encriptat&lt;/b&gt; i actualment &lt;b&gt;bloquejat&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="449"/>
-        <source>A fatal error occurred. Bitsend can no longer continue safely and will quit.</source>
-        <translation>Ha tingut lloc un error fatal. Bitsend no pot continuar executant-se de manera segura i es tancarà.</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <location filename="../clientmodel.cpp" line="164"/>
-        <source>Network Alert</source>
-        <translation>Alerta de xarxa</translation>
+        <source>A fatal error occurred. bitsend can no longer continue safely and will quit.</source>
+        <translation>S'ha produït un error fatal. bitsend no pot continuar amb seguretat i finalitzarà.</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="14"/>
-        <source>Coin Control Address Selection</source>
-        <translation>Selecció de l&apos;adreça de control de monedes</translation>
+        <source>Coin Selection</source>
+        <translation>Selecció de moneda</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="48"/>
         <source>Quantity:</source>
         <translation>Quantitat:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="77"/>
         <source>Bytes:</source>
         <translation>Bytes:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="122"/>
         <source>Amount:</source>
         <translation>Import:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="151"/>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="196"/>
         <source>Fee:</source>
-        <translation>Quota:</translation>
+        <translation>Comissió:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="228"/>
-        <source>Low Output:</source>
-        <translation>Baix rendiment:</translation>
+        <source>Dust:</source>
+        <translation>Polsim:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="276"/>
         <source>After Fee:</source>
         <translation>Comissió posterior:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="308"/>
         <source>Change:</source>
         <translation>Canvi:</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="364"/>
         <source>(un)select all</source>
         <translation>(des)selecciona-ho tot</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="377"/>
         <source>Tree mode</source>
         <translation>Mode arbre</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="393"/>
         <source>List mode</source>
         <translation>Mode llista</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="400"/>
-        <source>(1 locked)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="446"/>
         <source>Amount</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="451"/>
-        <source>Label</source>
-        <translation>Etiqueta</translation>
+        <source>Received with label</source>
+        <translation>Rebut amb l'etiqueta</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="456"/>
-        <source>Address</source>
-        <translation>Adreça</translation>
+        <source>Received with address</source>
+        <translation>Rebut amb l'adreça</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="461"/>
-        <source>Darksend Rounds</source>
-        <translation>Rondes Darksend </translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="466"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="471"/>
         <source>Confirmations</source>
         <translation>Confirmacions</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="474"/>
         <source>Confirmed</source>
         <translation>Confirmat</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="479"/>
-        <source>Priority</source>
-        <translation>Prioritat</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="43"/>
         <source>Copy address</source>
-        <translation>Copiar adreça </translation>
+        <translation>Copia l'adreça</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="44"/>
         <source>Copy label</source>
-        <translation>Copiar etiqueta</translation>
+        <translation>Copia l'etiqueta</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="45"/>
-        <location filename="../coincontroldialog.cpp" line="71"/>
         <source>Copy amount</source>
-        <translation>Copia l&apos;import</translation>
+        <translation>Copia l'import</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="46"/>
         <source>Copy transaction ID</source>
-        <translation>Copiar ID de transacció</translation>
+        <translation>Copia l'ID de transacció</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="47"/>
         <source>Lock unspent</source>
         <translation>Bloqueja sense gastar</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="48"/>
         <source>Unlock unspent</source>
         <translation>Desbloqueja sense gastar</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="70"/>
         <source>Copy quantity</source>
         <translation>Copia la quantitat</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="72"/>
         <source>Copy fee</source>
         <translation>Copia la comissió</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="73"/>
         <source>Copy after fee</source>
         <translation>Copia la comissió posterior</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="74"/>
         <source>Copy bytes</source>
         <translation>Copia els bytes</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="75"/>
-        <source>Copy priority</source>
-        <translation>Copia la prioritat</translation>
+        <source>Copy dust</source>
+        <translation>Copia el polsim</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="76"/>
-        <source>Copy low output</source>
-        <translation>Copia el baix rendiment</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="77"/>
         <source>Copy change</source>
         <translation>Copia el canvi</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="410"/>
-        <source>highest</source>
-        <translation>El més alt</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="411"/>
-        <source>higher</source>
-        <translation>Més alt</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="412"/>
-        <source>high</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="413"/>
-        <source>medium-high</source>
-        <translation>mig-alt</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="759"/>
-        <source>n/a</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="164"/>
-        <location filename="../coincontroldialog.cpp" line="414"/>
-        <source>medium</source>
-        <translation>mig</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="418"/>
-        <source>low-medium</source>
-        <translation>baix-mig</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="419"/>
-        <source>low</source>
-        <translation>baix</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="420"/>
-        <source>lower</source>
-        <translation>més baix</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="421"/>
-        <source>lowest</source>
-        <translation>el més baix</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="432"/>
         <source>(%1 locked)</source>
         <translation>(%1 bloquejada)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="464"/>
-        <source>none</source>
-        <translation>cap</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
-        <source>Dust</source>
-        <translation>Polsim</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>yes</source>
         <translation>sí</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="244"/>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>no</source>
         <translation>no</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="625"/>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Aquesta etiqueta es posa de color vermell si la mida de la transacció és més gran de 1000 bytes.</translation>
+        <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
+        <translation>Aquesta etiqueta es torna vermella si cap recipient rep un import inferior al llindar de polsim actual.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="626"/>
-        <location filename="../coincontroldialog.cpp" line="631"/>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Això comporta una comissi d&apos;almenys %1 per kB.</translation>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation>Pot variar en +/- %1 satoshi(s) per entrada.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="627"/>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Pot variar +/- 1 byte per entrada.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="629"/>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Les transaccions amb una major prioritat són més propenses a ser incloses en un bloc.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="630"/>
-        <source>This label turns red, if the priority is smaller than &quot;medium&quot;.</source>
-        <translation>Aquesta etiqueta es torna vermella si la prioritat és menor que «mitjana».</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="633"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Aquesta etiqueta es torna vermella si qualsevol destinatari rep un import inferior a %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="634"/>
-        <location filename="../coincontroldialog.cpp" line="638"/>
-        <source>This means a fee of at least %1 is required.</source>
-        <translation>Això comporta una comissió de com a mínim %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="635"/>
-        <source>Amounts below 0.546 times the minimum relay fee are shown as dust.</source>
-        <translation>Els imports inferiors a 0.546 vegades la comissió de tramesa mínima són mostrats com a polsim.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="637"/>
-        <source>This label turns red, if the change is smaller than %1.</source>
-        <translation>Aquesta etiqueta es torna vermella si el canvi és menor que %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="680"/>
-        <location filename="../coincontroldialog.cpp" line="741"/>
         <source>(no label)</source>
         <translation>(sense etiqueta)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="734"/>
         <source>change from %1 (%2)</source>
         <translation>canvia de %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="735"/>
         <source>(change)</source>
         <translation>(canvia)</translation>
     </message>
 </context>
 <context>
-    <name>DarksendConfig</name>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="14"/>
-        <source>Configure Darksend</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="26"/>
-        <source>Basic Privacy</source>
-        <translation>Privacitat bàsica</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="39"/>
-        <source>High Privacy</source>
-        <translation>Alta privacitat</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="52"/>
-        <source>Maximum Privacy</source>
-        <translation>Privacitat màxima</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="65"/>
-        <source>Please select a privacy level.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="78"/>
-        <source>Use 2 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="91"/>
-        <source>Use 8 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="104"/>
-        <source>Use 16 separate Xnodes</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="117"/>
-        <source>This option is the quickest and will cost about ~0.025 BSD to anonymize 1000 BSD</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="130"/>
-        <source>This option is moderately fast and will cost about 0.05 BSD to anonymize 1000 BSD</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="156"/>
-        <source>0.1 BSD per 1000 BSD you anonymize.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="143"/>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="43"/>
-        <location filename="../Darksendconfig.cpp" line="58"/>
-        <location filename="../Darksendconfig.cpp" line="73"/>
-        <source>Darksend Configuration</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="44"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="59"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="74"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>EditAddressDialog</name>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="14"/>
         <source>Edit Address</source>
-        <translation>Editar Adreça</translation>
+        <translation>Edita l'adreça</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="25"/>
         <source>&amp;Label</source>
         <translation>&amp;Etiqueta</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="35"/>
         <source>The label associated with this address list entry</source>
-        <translation>L&apos;etiqueta associada amb aquesta entrada de llista d&apos;adreces</translation>
+        <translation>L'etiqueta associada amb aquesta entrada de llista d'adreces</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="42"/>
+        <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
+        <translation>L'adreça associada amb aquesta entrada de llista d'adreces. Només es pot modificar per a les adreces d'enviament.</translation>
+    </message>
+    <message>
         <source>&amp;Address</source>
         <translation>&amp;Adreça</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="52"/>
-        <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>L&apos;adreça associada amb aquesta entrada de llista d&apos;adreces. Només es pot modificar per a les adreces d&apos;enviament.</translation>
-    </message>
-    <message>
-        <location filename="../editaddressdialog.cpp" line="29"/>
         <source>New receiving address</source>
-        <translation>Nova adreça de recepció.</translation>
+        <translation>Nova adreça de recepció</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="33"/>
         <source>New sending address</source>
-        <translation>Nova adreça d&apos;enviament</translation>
+        <translation>Nova adreça d'enviament</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="36"/>
         <source>Edit receiving address</source>
-        <translation>Edita les adreces de recepció</translation>
+        <translation>Edita l'adreça de recepció</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="40"/>
         <source>Edit sending address</source>
-        <translation>Edita les adreces d&apos;enviament</translation>
+        <translation>Edita l'adreça d'enviament</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="111"/>
-        <source>The entered address &quot;%1&quot; is not a valid Bitsend address.</source>
-        <translation type="unfinished"/>
+        <source>The entered address "%1" is not a valid bitsend address.</source>
+        <translation>L'adreça introduïda «%1» no és una adreça de bitsend vàlida.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="116"/>
-        <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>L&apos;adreça introduïda «%1» ja és present a la llibreta d&apos;adreces.</translation>
+        <source>The entered address "%1" is already in the address book.</source>
+        <translation>L'adreça introduïda «%1» ja és present a la llibreta d'adreces.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="121"/>
         <source>Could not unlock wallet.</source>
-        <translation>No s&apos;ha pogut desbloquejar el moneder.</translation>
+        <translation>No s'ha pogut desbloquejar el moneder.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="126"/>
         <source>New key generation failed.</source>
-        <translation>Ha fallat la generació d&apos;una nova clau.</translation>
+        <translation>Ha fallat la generació d'una clau nova.</translation>
     </message>
 </context>
 <context>
     <name>FreespaceChecker</name>
     <message>
-        <location filename="../intro.cpp" line="69"/>
         <source>A new data directory will be created.</source>
         <translation>Es crearà un nou directori de dades.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="91"/>
         <source>name</source>
         <translation>nom</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="93"/>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
         <translation>El directori ja existeix. Afegeix %1 si vols crear un nou directori en aquesta ubicació.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="96"/>
         <source>Path already exists, and is not a directory.</source>
         <translation>El camí ja existeix i no és cap directori.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="103"/>
         <source>Cannot create data directory here.</source>
         <translation>No es pot crear el directori de dades aquí.</translation>
     </message>
@@ -1286,915 +776,720 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../forms/helpmessagedialog.ui" line="19"/>
-        <source>Bitsend Core - Command-line options</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
         <source>version</source>
         <translation>versió</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="71"/>
+        <source>(%1-bit)</source>
+        <translation>(%1-bit)</translation>
+    </message>
+    <message>
+        <source>About %1</source>
+        <translation>Quant al %1</translation>
+    </message>
+    <message>
+        <source>Command-line options</source>
+        <translation>Opcions de línia d'ordres</translation>
+    </message>
+    <message>
         <source>Usage:</source>
         <translation>Ús:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="72"/>
         <source>command-line options</source>
-        <translation>Opcions de la línia d&apos;ordres</translation>
+        <translation>Opcions de la línia d'ordres</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="76"/>
-        <source>UI options</source>
-        <translation>Opcions de IU</translation>
+        <source>UI Options:</source>
+        <translation>Opcions d'interfície d'usuari:</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="77"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Tria el directori de dades a l&apos;inici (per defecte: 0)</translation>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation>Trieu el directori de dades a l'inici (per defecte: %u)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="78"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Defineix un idioma, per exemple &quot;de_DE&quot; (per defecte: preferències locals de sistema)</translation>
+        <source>Set language, for example "de_DE" (default: system locale)</source>
+        <translation>Defineix la llengua, per exemple «de_DE» (per defecte: la definida pel sistema)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="79"/>
         <source>Start minimized</source>
         <translation>Inicia minimitzat</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="80"/>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>Defineix certificats arrel SSL per a la sol·licitud de pagament (per defecte: -sistema-)</translation>
+        <translation>Defineix els certificats arrel SSL per a la sol·licitud de pagament (per defecte: els del sistema)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="81"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Mostra la finestra de benvinguda a l&apos;inici (per defecte: 1)</translation>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Mostra la pantalla de benvinguda a l'inici (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Reset all settings changed in the GUI</source>
+        <translation>Reinicialitza tots els canvis de configuració fets des de la interfície gràfica</translation>
     </message>
 </context>
 <context>
     <name>Intro</name>
     <message>
-        <location filename="../forms/intro.ui" line="14"/>
         <source>Welcome</source>
-        <translation>Us donem la benviguda</translation>
+        <translation>Us donem la benvinguda</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="23"/>
-        <source>Welcome to Bitsend Core.</source>
-        <translation type="unfinished"/>
+        <source>Welcome to %1.</source>
+        <translation>Us donem la benvinguda a %1.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="49"/>
-        <source>As this is the first time the program is launched, you can choose where Bitsend Core will store its data.</source>
-        <translation type="unfinished"/>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>Com és la primera vegada que s'executa el programa, podeu triar on %1 emmagatzemarà les dades.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="59"/>
-        <source>Bitsend Core will download and store a copy of the Bitsend block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation type="unfinished"/>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Quan feu clic a D'acord, %1 començarà a descarregar i processar la cadena de blocs %4 completa (%2 GB) començant per les primeres transaccions de %3, any de llençament inicial de %4.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="69"/>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>Aquesta sincronització inicial és molt exigent i pot exposar problemes de maquinari amb l'equip que anteriorment havien passat desapercebuts. Cada vegada que executeu %1, continuarà descarregant des del punt on es va deixar.</translation>
+    </message>
+    <message>
+        <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
+        <translation>Si heu decidit limitar l'emmagatzematge de la cadena de blocs (podar), les dades històriques encara s'hauran de baixar i processar, però se suprimiran més endavant per mantenir baix l'ús del disc.</translation>
+    </message>
+    <message>
         <source>Use the default data directory</source>
         <translation>Utilitza el directori de dades per defecte</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="76"/>
         <source>Use a custom data directory:</source>
         <translation>Utilitza un directori de dades personalitzat:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="185"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="186"/>
-        <source>Error: Specified data directory &quot;%1&quot; can not be created.</source>
-        <translation>Error: el directori de dades especificat «%1» no es pot crear.</translation>
+        <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
+        <translation>Almenys %1 GB de dades s'emmagatzemaran en aquest directori, i creixerà amb el temps.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="210"/>
+        <source>Approximately %1 GB of data will be stored in this directory.</source>
+        <translation>Aproximadament %1 GB de dades s'emmagatzemaran en aquest directori.</translation>
+    </message>
+    <message>
+        <source>%1 will download and store a copy of the bitsend block chain.</source>
+        <translation>%1 descarregarà i emmagatzemarà una còpia de la cadena de blocs bitsend.</translation>
+    </message>
+    <message>
+        <source>The wallet will also be stored in this directory.</source>
+        <translation>El moneder també serà emmagatzemat en aquest directori.</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Error: el directori de dades «%1» especificat no pot ser creat.</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Error</translation>
     </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
     <message>
-        <location filename="../intro.cpp" line="219"/>
-        <source>GB of free space available</source>
-        <translation>GB d&apos;espai lliure disponible</translation>
+        <source>Form</source>
+        <translation>Formulari</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="222"/>
-        <source>(of %1GB needed)</source>
-        <translation>(d&apos; %1GB necessari)</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitsend network, as detailed below.</source>
+        <translation>És possible que les transaccions recents encara no siguin visibles i, per tant, el saldo del vostre moneder podria ser incorrecte. Aquesta informació serà correcta una vegada que el vostre moneder hagi finalitzat la sincronització amb la xarxa bitsend, tal com es detalla més avall.</translation>
+    </message>
+    <message>
+        <source>Attempting to spend bitsends that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Els intents de gastar bitsends que es veuen afectats per les transaccions que encara no s'hagin mostrat no seran acceptats per la xarxa.</translation>
+    </message>
+    <message>
+        <source>Number of blocks left</source>
+        <translation>Nombre de blocs pendents</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>Desconegut...</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Últim temps de bloc</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Progrés</translation>
+    </message>
+    <message>
+        <source>Progress increase per hour</source>
+        <translation>Augment de progrés per hora</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>s'està calculant...</translation>
+    </message>
+    <message>
+        <source>Estimated time left until synced</source>
+        <translation>Temps estimat restant fins sincronitzat</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Amaga</translation>
+    </message>
+    <message>
+        <source>Unknown. Syncing Headers (%1)...</source>
+        <translation>Desconegut. Sincronització de les capçaleres (%1)...</translation>
     </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
-        <location filename="../forms/openuridialog.ui" line="14"/>
         <source>Open URI</source>
         <translation>Obre un URI</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="20"/>
         <source>Open payment request from URI or file</source>
-        <translation>Obre una sol·licitud de pagament des d&apos;un URI o un fitxer</translation>
+        <translation>Obre una sol·licitud de pagament des d'un URI o un fitxer</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="29"/>
         <source>URI:</source>
         <translation>URI:</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="40"/>
         <source>Select payment request file</source>
         <translation>Selecciona un fitxer de sol·licitud de pagament</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="48"/>
         <source>Select payment request file to open</source>
-        <translation>Selecciona el fitxer de sol·licitud de pagament per obrir</translation>
+        <translation>Seleccioneu el fitxer de sol·licitud de pagament per obrir</translation>
     </message>
 </context>
 <context>
     <name>OptionsDialog</name>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="14"/>
         <source>Options</source>
         <translation>Opcions</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="27"/>
         <source>&amp;Main</source>
         <translation>&amp;Principal</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="33"/>
-        <source>Automatically start Bitsend after logging in to the system.</source>
-        <translation type="unfinished"/>
+        <source>Automatically start %1 after logging in to the system.</source>
+        <translation>Inicieu %1 automàticament després d'entrar en el sistema.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="36"/>
-        <source>&amp;Start Bitsend on system login</source>
-        <translation type="unfinished"/>
+        <source>&amp;Start %1 on system login</source>
+        <translation>&amp;Inicia %1 en l'entrada al sistema</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="45"/>
         <source>Size of &amp;database cache</source>
         <translation>Mida de la memòria cau de la base de &amp;dades</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="61"/>
         <source>MB</source>
         <translation>MB</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="88"/>
         <source>Number of script &amp;verification threads</source>
-        <translation>Nombre de fils de &amp;verificació d&apos;scripts</translation>
+        <translation>Nombre de fils de &amp;verificació d'scripts</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="101"/>
-        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = auto, &lt;0 = deixa tants nuclis lliures)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="138"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This setting determines the amount of individual Xnodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="141"/>
-        <source>Darksend rounds to use</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="165"/>
-        <source>This amount acts as a threshold to turn off Darksend once it&apos;s reached.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="180"/>
-        <source>Amount of Bitsend to keep anonymized</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="206"/>
-        <source>W&amp;allet</source>
-        <translation>&amp;Moneder</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="212"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB.</source>
-        <translation>Comissió opcional de transacció per kB que ajuda a assegurar que les transaccions es processen ràpidament. La majoria de transaccions són d&apos;1 kB.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="227"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Paga &amp;comissió de transacció</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="271"/>
-        <source>Expert</source>
-        <translation>Expert</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="277"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Si voleu mostrar les funcions de control de monedes o no.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="280"/>
-        <source>Enable coin &amp;control features</source>
-        <translation>Activa les funcions de &amp;control de les monedes</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="287"/>
-        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
-        <translation>Si inhabiliteu la despesa d&apos;un canvi sense confirmar, el canvi d&apos;una transacció no pot ser utilitzat fins que la transacció no tingui com a mínim una confirmació. Això també afecta com es calcula el vostre balanç.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="290"/>
-        <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;Gasta el canvi sense confirmar</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="301"/>
-        <source>&amp;Network</source>
-        <translation>&amp;Xarxa</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="307"/>
-        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="310"/>
-        <source>Map port using &amp;UPnP</source>
-        <translation>Port obert amb &amp;UPnP</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="317"/>
-        <source>Connect to the Bitsend network through a SOCKS proxy.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="320"/>
-        <source>&amp;Connect through SOCKS proxy (default proxy):</source>
-        <translation>&amp;Connecta a través d&apos;un proxy SOCKS (proxy per defecte):</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="329"/>
-        <source>Proxy &amp;IP:</source>
-        <translation>&amp;IP del proxy:</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="354"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>Adreça IP del proxy (p. ex. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="361"/>
-        <source>&amp;Port:</source>
-        <translation>&amp;Port:</translation>
+        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
+        <translation>Mostra si el proxy SOCKS5 predeterminat subministrat s'utilitza per arribar a altres nodes a través d'aquest tipus de xarxa.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="386"/>
-        <source>Port of the proxy (e.g. 9050)</source>
-        <translation>Port del proxy (per exemple 9050)</translation>
+        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
+        <translation>Minimitza en comptes de sortir de l'aplicació quan la finestra es tanca. Quan s'habilita aquesta opció l'aplicació es tancara només quan se selecciona Surt del menú. </translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="393"/>
-        <source>SOCKS &amp;Version:</source>
-        <translation>&amp;Versió de SOCKS:</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="406"/>
-        <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation>Versió SOCKS del proxy (per exemple 5)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="442"/>
-        <source>&amp;Window</source>
-        <translation>&amp;Finestra</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="448"/>
-        <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Mostra només la icona de la barra en minimitzar la finestra.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="451"/>
-        <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>&amp;Minimitza a la barra d&apos;aplicacions en comptes de la barra de tasques</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="458"/>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimitza en comptes de sortir de la aplicació al tancar la finestra. Quan aquesta opció està activa, la aplicació només es tancarà al seleccionar Sortir al menú.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="461"/>
-        <source>M&amp;inimize on close</source>
-        <translation>M&amp;inimitza en tancar</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="482"/>
-        <source>&amp;Display</source>
-        <translation>&amp;Pantalla</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="490"/>
-        <source>User Interface &amp;language:</source>
-        <translation>&amp;Llengua de la interfície d&apos;usuari:</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="503"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitsend.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="524"/>
-        <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/bitsend/</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="550"/>
-        <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;Unitats per mostrar els imports en:</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="563"/>
-        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Selecciona la unitat de subdivisió per defecte per mostrar en la interfície quan s&apos;envien monedes.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="572"/>
-        <source>Whether to show Bitsend addresses in the transaction list or not.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="575"/>
-        <source>&amp;Display addresses in transaction list</source>
-        <translation>&amp;Mostra adreces al llistat de transaccions</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="584"/>
-        <location filename="../forms/optionsdialog.ui" line="597"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>URL de terceres parts (p. ex. explorador de blocs) que apareix en la pestanya de transaccions com elements del menú contextual. %s en l&apos;URL es reemplaçat pel resum de la transacció. Diferents URL estan separades per una barra vertical |.</translation>
+        <translation>URL de terceres parts (p. ex. explorador de blocs) que apareix en la pestanya de transaccions com elements del menú contextual. %s en l'URL es reemplaçat pel resum de la transacció. Diferents URL estan separades per una barra vertical |.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="587"/>
-        <source>Third party transaction URLs</source>
-        <translation>URL de transaccions de terceres parts</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="628"/>
         <source>Active command-line options that override above options:</source>
-        <translation>Opcions de línies d&apos;ordre active que sobreescriuen les opcions de dalt:</translation>
+        <translation>Opcions de línies d'ordre active que sobreescriuen les opcions de dalt:</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="671"/>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation>Obriu el fitxer de configuració %1 des del directori de treball.</translation>
+    </message>
+    <message>
+        <source>Open Configuration File</source>
+        <translation>Obrir el fitxer de configuració</translation>
+    </message>
+    <message>
         <source>Reset all client options to default.</source>
         <translation>Reestableix totes les opcions del client.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="674"/>
         <source>&amp;Reset Options</source>
         <translation>&amp;Reestableix les opcions</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="735"/>
-        <source>&amp;OK</source>
-        <translation>&amp;D&apos;acord</translation>
+        <source>&amp;Network</source>
+        <translation>&amp;Xarxa</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="742"/>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = auto, &lt;0 = deixa tants nuclis lliures)</translation>
+    </message>
+    <message>
+        <source>W&amp;allet</source>
+        <translation>&amp;Moneder</translation>
+    </message>
+    <message>
+        <source>Expert</source>
+        <translation>Expert</translation>
+    </message>
+    <message>
+        <source>Enable coin &amp;control features</source>
+        <translation>Activa les funcions de &amp;control de les monedes</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation>Si inhabiliteu la despesa d'un canvi sense confirmar, el canvi d'una transacció no pot ser utilitzat fins que la transacció no tingui com a mínim una confirmació. Això també afecta com es calcula el vostre balanç.</translation>
+    </message>
+    <message>
+        <source>&amp;Spend unconfirmed change</source>
+        <translation>&amp;Gasta el canvi sense confirmar</translation>
+    </message>
+    <message>
+        <source>Automatically open the bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Obre el port del client de bitsend al router de forma automàtica. Això només funciona quan el router implementa UPnP i l'opció està activada.</translation>
+    </message>
+    <message>
+        <source>Map port using &amp;UPnP</source>
+        <translation>Port obert amb &amp;UPnP</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a SOCKS5 proxy.</source>
+        <translation>Connecta a la xarxa bitsend a través d'un proxy SOCKS5.</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>&amp;Connecta a través d'un proxy SOCKS5 (proxy per defecte):</translation>
+    </message>
+    <message>
+        <source>Proxy &amp;IP:</source>
+        <translation>&amp;IP del proxy:</translation>
+    </message>
+    <message>
+        <source>&amp;Port:</source>
+        <translation>&amp;Port:</translation>
+    </message>
+    <message>
+        <source>Port of the proxy (e.g. 9050)</source>
+        <translation>Port del proxy (per exemple 9050)</translation>
+    </message>
+    <message>
+        <source>Used for reaching peers via:</source>
+        <translation>Utilitzat per arribar als iguals mitjançant:</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation>Tor</translation>
+    </message>
+    <message>
+        <source>Connect to the bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Conectar a la red de bitsend a través de un proxy SOCKS5 per als serveis ocults de Tor</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Finestra</translation>
+    </message>
+    <message>
+        <source>Show only a tray icon after minimizing the window.</source>
+        <translation>Mostra només la icona de la barra en minimitzar la finestra.</translation>
+    </message>
+    <message>
+        <source>&amp;Minimize to the tray instead of the taskbar</source>
+        <translation>&amp;Minimitza a la barra d'aplicacions en comptes de la barra de tasques</translation>
+    </message>
+    <message>
+        <source>M&amp;inimize on close</source>
+        <translation>M&amp;inimitza en tancar</translation>
+    </message>
+    <message>
+        <source>&amp;Display</source>
+        <translation>&amp;Pantalla</translation>
+    </message>
+    <message>
+        <source>User Interface &amp;language:</source>
+        <translation>&amp;Llengua de la interfície d'usuari:</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation>Aquí es pot definir la llengua de la interfície d'usuari. Aquest paràmetre tindrà efecte en reiniciar el %1.</translation>
+    </message>
+    <message>
+        <source>&amp;Unit to show amounts in:</source>
+        <translation>&amp;Unitats per mostrar els imports en:</translation>
+    </message>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Selecciona la unitat de subdivisió per defecte per mostrar en la interfície quan s'envien monedes.</translation>
+    </message>
+    <message>
+        <source>Whether to show coin control features or not.</source>
+        <translation>Si voleu mostrar les funcions de control de monedes o no.</translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation>&amp;D'acord</translation>
+    </message>
+    <message>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel·la</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="73"/>
         <source>default</source>
         <translation>Per defecte</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="134"/>
         <source>none</source>
         <translation>cap</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="222"/>
         <source>Confirm options reset</source>
         <translation>Confirmeu el reestabliment de les opcions</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <location filename="../optionsdialog.cpp" line="253"/>
         <source>Client restart required to activate changes.</source>
         <translation>Cal reiniciar el client per activar els canvis.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>S&apos;aturarà el client, voleu procedir?</translation>
+        <source>Client will be shut down. Do you want to proceed?</source>
+        <translation>S'aturarà el client. Voleu procedir?</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="257"/>
+        <source>Configuration options</source>
+        <translation>Opcions de configuració</translation>
+    </message>
+    <message>
+        <source>The configuration file is used to specify advanced user options which override GUI settings. Additionally, any command-line options will override this configuration file.</source>
+        <translation>El fitxer de configuració s'utilitza per especificar les opcions d'usuari avançades que substitueixen la configuració de la interfície gràfica d'usuari. A més, qualsevol opció de la línia d'ordres substituirà aquest fitxer de configuració.</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation>No s'ha pogut obrir el fitxer de configuració.</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
         <translation>Amb aquest canvi cal un reinici del client.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="291"/>
         <source>The supplied proxy address is invalid.</source>
-        <translation>L&apos;adreça proxy introduïda és invalida.</translation>
+        <translation>L'adreça proxy introduïda és invalida.</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../forms/overviewpage.ui" line="20"/>
         <source>Form</source>
         <translation>Formulari</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="63"/>
-        <source>Wallet</source>
-        <translation>Moneder</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bitsend network after a connection is established, but this process has not completed yet.</source>
+        <translation>La informació mostrada pot no estar al día. El teu moneder es sincronitza automàticament amb la xarxa bitsend un cop s'ha establert connexió, però aquest proces no s'ha completat encara.</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="70"/>
-        <location filename="../forms/overviewpage.ui" line="953"/>
-        <location filename="../forms/overviewpage.ui" line="1021"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation type="unfinished"/>
+        <source>Watch-only:</source>
+        <translation>Només lectura:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="114"/>
         <source>Available:</source>
         <translation>Disponible:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="130"/>
         <source>Your current spendable balance</source>
         <translation>El balanç que podeu gastar actualment</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="146"/>
         <source>Pending:</source>
         <translation>Pendent:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="162"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Total de transaccions que encara han de confirmar-se i que encara no compten en el balanç que es pot gastar</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="178"/>
         <source>Immature:</source>
         <translation>Immadur:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="191"/>
         <source>Mined balance that has not yet matured</source>
         <translation>Balanç minat que encara no ha madurat</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="207"/>
+        <source>Balances</source>
+        <translation>Balances</translation>
+    </message>
+    <message>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="223"/>
         <source>Your current total balance</source>
         <translation>El balanç total actual</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="302"/>
-        <source>Status:</source>
-        <translation type="unfinished"/>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>El vostre balanç actual en adreces de només lectura</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="309"/>
-        <source>Enabled/Disabled</source>
-        <translation type="unfinished"/>
+        <source>Spendable:</source>
+        <translation>Que es pot gastar:</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="316"/>
-        <source>Completion:</source>
-        <translation type="unfinished"/>
+        <source>Recent transactions</source>
+        <translation>Transaccions recents</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="336"/>
-        <source>Darksend Balance:</source>
-        <translation type="unfinished"/>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Transaccions sense confirmar a adreces de només lectura</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="349"/>
-        <source>0 BSD</source>
-        <translation type="unfinished"/>
+        <source>Mined balance in watch-only addresses that has not yet matured</source>
+        <translation>Balanç minat en adreces de només lectura que encara no ha madurat</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="356"/>
-        <source>Amount and Rounds:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="363"/>
-        <source>0 BSD / 0 Rounds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="370"/>
-        <source>Submitted Denom:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="377"/>
-        <source>The denominations you submitted to the Xnode. To mix, other users must submit the exact same denominations.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="380"/>
-        <source>n/a</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="946"/>
-        <location filename="../overviewpage.cpp" line="453"/>
-        <location filename="../overviewpage.cpp" line="467"/>
-        <location filename="../overviewpage.cpp" line="481"/>
-        <source>Darksend</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="839"/>
-        <source>Start/Stop Mixing</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="871"/>
-        <source>(Last Message)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="896"/>
-        <source>Try to manually submit a Darksend request.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="899"/>
-        <source>Try Mix</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="918"/>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it&apos;s in the process of Mixing, which can cost you money!)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="924"/>
-        <source>Reset</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="1014"/>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Transaccions recents&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="126"/>
-        <location filename="../overviewpage.cpp" line="127"/>
-        <location filename="../overviewpage.cpp" line="128"/>
-        <source>out of sync</source>
-        <translation>Fora de sincronia</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="143"/>
-        <location filename="../overviewpage.cpp" line="350"/>
-        <source>Disabled</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="146"/>
-        <location filename="../overviewpage.cpp" line="352"/>
-        <location filename="../overviewpage.cpp" line="495"/>
-        <source>Start Darksend Mixing</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="148"/>
-        <location filename="../overviewpage.cpp" line="497"/>
-        <source>Stop Darksend Mixing</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="270"/>
-        <source>No inputs detected</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="278"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to recalculate.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="335"/>
-        <source>Rounds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="366"/>
-        <source>Enabled</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="424"/>
-        <source>Last Darksend message:
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="377"/>
-        <location filename="../overviewpage.cpp" line="406"/>
-        <source>Darksend is idle.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="381"/>
-        <source>Mixing in progress...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="387"/>
-        <source>Darksend request complete: Your transaction was accepted into the pool!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="393"/>
-        <source>Submitted following entries to Xnode:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="394"/>
-        <location filename="../overviewpage.cpp" line="395"/>
-        <location filename="../overviewpage.cpp" line="396"/>
-        <source>Submitted to Xnode, Waiting for more entries</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="399"/>
-        <source>Found enough users, signing ...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="400"/>
-        <source>Found enough users, signing ( waiting. )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="401"/>
-        <source>Found enough users, signing ( waiting.. )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="402"/>
-        <source>Found enough users, signing ( waiting... )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="404"/>
-        <source>Transmitting final transaction.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="408"/>
-        <source>Finalizing transaction.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Darksend request incomplete:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Will retry...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="412"/>
-        <source>Darksend request complete:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="414"/>
-        <source>Submitted to Xnode, waiting in queue .</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="415"/>
-        <source>Submitted to Xnode, waiting in queue ..</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="416"/>
-        <source>Submitted to Xnode, waiting in queue ...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="418"/>
-        <source>Unknown state:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="432"/>
-        <source>N/A</source>
-        <translation>N/D</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="454"/>
-        <source>Darksend was successfully reset.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="468"/>
-        <source>Darksend requires at least %1 to use.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="482"/>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation type="unfinished"/>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Balanç total actual en adreces de només lectura</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="293"/>
-        <location filename="../paymentserver.cpp" line="505"/>
-        <location filename="../paymentserver.cpp" line="518"/>
-        <location filename="../paymentserver.cpp" line="613"/>
-        <location filename="../paymentserver.cpp" line="631"/>
-        <location filename="../paymentserver.cpp" line="647"/>
         <source>Payment request error</source>
-        <translation>Error en la sol·licitud de pagament</translation>
+        <translation>Error de la sol·licitud de pagament</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="294"/>
         <source>Cannot start bitsend: click-to-pay handler</source>
-        <translation type="unfinished"/>
+        <translation>No es pot iniciar bitsend: controlador click-to-pay</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="352"/>
-        <source>Net manager warning</source>
-        <translation>Avís del gestor de la xarxa</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="353"/>
-        <source>Your active proxy doesn&apos;t support SOCKS5, which is required for payment requests via proxy.</source>
-        <translation>El vostre proxy actiu no accepta SOCKS5, que és necessari per a sol·licituds de pagament a través d&apos;un proxy.</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="404"/>
-        <location filename="../paymentserver.cpp" line="417"/>
         <source>URI handling</source>
-        <translation>Gestió d&apos;URI</translation>
+        <translation>Gestió d'URI</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="405"/>
         <source>Payment request fetch URL is invalid: %1</source>
-        <translation>L&apos;URL de recuperació de la sol·licitud de pagament no és vàlida: %1</translation>
+        <translation>L'URL de recuperació de la sol·licitud de pagament no és vàlida: %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="418"/>
-        <source>URI can not be parsed! This can be caused by an invalid Bitsend address or malformed URI parameters.</source>
-        <translation type="unfinished"/>
+        <source>Invalid payment address %1</source>
+        <translation>Adreça de pagament no vàlida %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="432"/>
+        <source>URI cannot be parsed! This can be caused by an invalid bitsend address or malformed URI parameters.</source>
+        <translation>L'URI no pot ser analitzat! Això pot ser a causa d'una adreça de bitsend no vàlida o per paràmetres URI amb mal format.</translation>
+    </message>
+    <message>
         <source>Payment request file handling</source>
         <translation>Gestió de fitxers de les sol·licituds de pagament</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="433"/>
-        <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
-        <translation>El fitxer de la sol·licitud de pagament no pot ser llegit o processat. Això pot ser a causa d&apos;un fitxer de sol·licitud de pagament no vàlid.</translation>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>No es pot llegir el fitxer de la sol·licitud de pagament. Això pot ser causat per un fitxer de sol·licitud de pagament no vàlid.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="506"/>
+        <source>Payment request rejected</source>
+        <translation>La sol·licitud de pagament s'ha rebutjat</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>La xarxa de la sol·licitud de pagament no coincideix amb la xarxa del client.</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>La sol·licitud de pagament ha vençut.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>La sol·licitud de pagament no està inicialitzada.</translation>
+    </message>
+    <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>No s&apos;accepten sol·licituds de pagament no verificades a scripts de pagament personalitzats.</translation>
+        <translation>No s'accepten sol·licituds de pagament no verificades a scripts de pagament personalitzats.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="514"/>
+        <source>Invalid payment request.</source>
+        <translation>Sol·licitud de pagament no vàlida.</translation>
+    </message>
+    <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>L&apos;import de pagament sol·licitat %1 és massa petit (es considera polsim).</translation>
+        <translation>L'import de pagament sol·licitat %1 és massa petit (es considera polsim).</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="565"/>
         <source>Refund from %1</source>
         <translation>Reemborsament de %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="608"/>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>La sol·licitud de pagament %1 és massa gran (%2 bytes, permès %3 bytes).</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
         <translation>Error en comunicar amb %1: %2</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="632"/>
-        <source>Payment request can not be parsed or processed!</source>
-        <translation>La sol·licitud de pagament no pot ser analitzada o processada!</translation>
+        <source>Payment request cannot be parsed!</source>
+        <translation>No es pot analitzar la sol·licitud de pagament!</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="643"/>
         <source>Bad response from server %1</source>
         <translation>Mala resposta del servidor %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="665"/>
         <source>Network request error</source>
         <translation>Error en la sol·licitud de xarxa</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="676"/>
         <source>Payment acknowledged</source>
         <translation>Pagament reconegut</translation>
     </message>
 </context>
 <context>
-    <name>QObject</name>
+    <name>PeerTableModel</name>
     <message>
-        <location filename="../bitsend.cpp" line="525"/>
-        <location filename="../bitsend.cpp" line="532"/>
-        <location filename="../bitsend.cpp" line="539"/>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>User Agent</source>
+        <translation>Agent d'usuari</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="526"/>
-        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <source>Node/Service</source>
+        <translation>Node/Servei</translation>
+    </message>
+    <message>
+        <source>NodeId</source>
+        <translation>NodeId</translation>
+    </message>
+    <message>
+        <source>Ping</source>
+        <translation>Ping</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Enviat</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Rebut</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Amount</source>
+        <translation>Import</translation>
+    </message>
+    <message>
+        <source>Enter a bitsend address (e.g. %1)</source>
+        <translation>Introduïu una adreça de bitsend (p. ex. %1)</translation>
+    </message>
+    <message>
+        <source>%1 d</source>
+        <translation>%1 d</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation>%1 h</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation>%1 m</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Cap</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 ms</translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 i %2</translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 B</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 KB</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 MB</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 GB</translation>
+    </message>
+    <message>
+        <source>%1 didn't yet exit safely...</source>
+        <translation>%1 encara no ha finalitzat de manera segura...</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>desconegut</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
+    <message>
+        <source>Error: Specified data directory "%1" does not exist.</source>
         <translation>Error: El directori de dades especificat «%1» no existeix.</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="533"/>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation>Error: no es pot analitzar el fitxer de configuració: %1. Feu servir només la sintaxi clau=valor.</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="540"/>
-        <source>Error reading Xnode configuration file: %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Error: Invalid combination of -regtest and -testnet.</source>
-        <translation>Error: combinació no vàlida de -regtest i -testnet.</translation>
-    </message>
-    <message>
-        <location filename="../bitsend.cpp" line="612"/>
-        <source>Bitsend Core didn&apos;t yet exit safely...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../guiutil.cpp" line="101"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation type="unfinished"/>
+        <source>Error: %1</source>
+        <translation>Error: %1</translation>
     </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="36"/>
         <source>&amp;Save Image...</source>
         <translation>De&amp;sa la imatge...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="39"/>
         <source>&amp;Copy Image</source>
         <translation>&amp;Copia la imatge</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>Save QR Code</source>
         <translation>Desa el codi QR</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>PNG Image (*.png)</source>
         <translation>Imatge PNG (*.png)</translation>
     </message>
@@ -2202,707 +1497,706 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="14"/>
-        <source>Tools window</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="24"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Informació</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="33"/>
-        <source>Xnode Count</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="46"/>
-        <source>General</source>
-        <translation>General</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="53"/>
-        <source>Name</source>
-        <translation>Nom</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="60"/>
-        <source>Client name</source>
-        <translation>Nom del client</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="70"/>
-        <location filename="../forms/rpcconsole.ui" line="139"/>
-        <location filename="../forms/rpcconsole.ui" line="192"/>
-        <location filename="../forms/rpcconsole.ui" line="215"/>
-        <location filename="../forms/rpcconsole.ui" line="231"/>
-        <location filename="../forms/rpcconsole.ui" line="247"/>
-        <location filename="../forms/rpcconsole.ui" line="276"/>
-        <location filename="../forms/rpcconsole.ui" line="292"/>
-        <location filename="../forms/rpcconsole.ui" line="315"/>
-        <location filename="../forms/rpcconsole.ui" line="341"/>
         <source>N/A</source>
-        <translation>N/D</translation>
+        <translation>N/A</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="83"/>
-        <source>Number of connections</source>
-        <translation>Nombre de connexions</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="90"/>
-        <source>Open the Bitsend debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="93"/>
-        <source>&amp;Open</source>
-        <translation>&amp;Obre</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="116"/>
-        <source>Startup time</source>
-        <translation>&amp;Temps d&apos;inici</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="129"/>
-        <source>Network</source>
-        <translation>Xarxa</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="152"/>
-        <source>Last block time</source>
-        <translation>Últim temps de bloc</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="165"/>
-        <source>Debug log file</source>
-        <translation>Fitxer de registre de depuració</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="172"/>
-        <source>Using OpenSSL version</source>
-        <translation>Utilitzant OpenSSL versió</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="182"/>
-        <source>Build date</source>
-        <translation>Data de compilació</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="205"/>
-        <source>Current number of blocks</source>
-        <translation>Nombre de blocs actuals</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="305"/>
         <source>Client version</source>
         <translation>Versió del client</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="334"/>
+        <source>&amp;Information</source>
+        <translation>&amp;Informació</translation>
+    </message>
+    <message>
+        <source>Debug window</source>
+        <translation>Finestra de depuració</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>General</translation>
+    </message>
+    <message>
+        <source>Using BerkeleyDB version</source>
+        <translation>Utilitzant BerkeleyDB versió</translation>
+    </message>
+    <message>
+        <source>Datadir</source>
+        <translation>Datadir</translation>
+    </message>
+    <message>
+        <source>Startup time</source>
+        <translation>&amp;Temps d'inici</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>Xarxa</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nom</translation>
+    </message>
+    <message>
+        <source>Number of connections</source>
+        <translation>Nombre de connexions</translation>
+    </message>
+    <message>
         <source>Block chain</source>
         <translation>Cadena de blocs</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="349"/>
+        <source>Current number of blocks</source>
+        <translation>Nombre de blocs actuals</translation>
+    </message>
+    <message>
+        <source>Memory Pool</source>
+        <translation>Reserva de memòria</translation>
+    </message>
+    <message>
+        <source>Current number of transactions</source>
+        <translation>Nombre actual de transaccions</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Us de memoria</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Reset</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Rebut</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Enviat</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Iguals</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Iguals bandejats</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Seleccioneu un igual per mostrar informació detallada.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>A la llista blanca</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Direcció</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versió</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Bloc d'inici</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>Capçaleres sincronitzades</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Blocs sincronitzats</translation>
+    </message>
+    <message>
+        <source>User Agent</source>
+        <translation>Agent d'usuari</translation>
+    </message>
+    <message>
+        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Obre el fitxer de registre de depuració %1 del directori de dades actual. Això pot trigar uns segons en fitxers de registre grans.</translation>
+    </message>
+    <message>
+        <source>Decrease font size</source>
+        <translation>Disminueix la mida de la font</translation>
+    </message>
+    <message>
+        <source>Increase font size</source>
+        <translation>Augmenta la mida de la font</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Serveis</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>Puntuació de bandeig</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Temps de connexió</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Darrer enviament</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Darrera recepció</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Temps de ping</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>La duració d'un ping més destacat actualment.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Espera de ping</translation>
+    </message>
+    <message>
+        <source>Min Ping</source>
+        <translation>Min Ping</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Diferència horària</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Últim temps de bloc</translation>
+    </message>
+    <message>
+        <source>&amp;Open</source>
+        <translation>&amp;Obre</translation>
+    </message>
+    <message>
         <source>&amp;Console</source>
         <translation>&amp;Consola</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="398"/>
-        <source>Clear console</source>
-        <translation>Neteja la consola</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="421"/>
         <source>&amp;Network Traffic</source>
         <translation>Trà&amp;nsit de la xarxa</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="473"/>
-        <source>&amp;Clear</source>
-        <translation>Nete&amp;ja</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="486"/>
         <source>Totals</source>
         <translation>Totals</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="550"/>
-        <location filename="../rpcconsole.cpp" line="367"/>
         <source>In:</source>
         <translation>Dins:</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="630"/>
-        <location filename="../rpcconsole.cpp" line="368"/>
         <source>Out:</source>
         <translation>Fora:</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="333"/>
-        <source>Welcome to the Bitsend RPC console.</source>
-        <translation type="unfinished"/>
+        <source>Debug log file</source>
+        <translation>Fitxer de registre de depuració</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="334"/>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Utilitza les fletxes d&apos;amunt i avall per navegar per l&apos;historial, i &lt;b&gt;Ctrl-L&lt;\b&gt; per netejar la pantalla.</translation>
+        <source>Clear console</source>
+        <translation>Neteja la consola</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="335"/>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Escriviu &lt;b&gt;help&lt;\b&gt; per a obtenir un llistat de les ordres disponibles.</translation>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;hora</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="474"/>
-        <source>%1 B</source>
-        <translation>%1 B</translation>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;dia</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="476"/>
-        <source>%1 KB</source>
-        <translation>%1 KB</translation>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;setmana</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="478"/>
-        <source>%1 MB</source>
-        <translation>%1 MB</translation>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;any</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="480"/>
-        <source>%1 GB</source>
-        <translation>%1 GB</translation>
+        <source>&amp;Disconnect</source>
+        <translation>&amp;Desconnecta</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="487"/>
-        <source>%1 m</source>
-        <translation>%1 m</translation>
+        <source>Ban for</source>
+        <translation>Bandeja per</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="492"/>
-        <source>%1 h</source>
-        <translation>%1 h</translation>
+        <source>&amp;Unban</source>
+        <translation>Desbandeja per</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="494"/>
-        <source>%1 h %2 m</source>
-        <translation>%1 h %2 m</translation>
+        <source>Welcome to the %1 RPC console.</source>
+        <translation>Benvingut a la consola RPC de %1.</translation>
+    </message>
+    <message>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation>Utilitzeu les fletxes amunt i avall per navegar per l'historial i %1 per netejar la pantalla.</translation>
+    </message>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>ADVERTIMENT: Els estafadors han estat actius, dient als usuaris que escriguin comandaments aquí, robant els contingut dels seus moneders. No utilitzeu aquesta consola sense comprendre completament les ramificacions d'un comandament.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled</source>
+        <translation>Activitat de xarxa inhabilitada</translation>
+    </message>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(id del node: %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>a través de %1</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>mai</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Entrant</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Sortint</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Sí</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Desconegut</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="34"/>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Reutilitza una de les adreces de recepció utilitzades anteriorment. La reutilització d&apos;adreces pot comportar problemes de seguretat i privadesa. No ho utilitzeu llevat que torneu a generar una sol·licitud de pagament feta abans.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="37"/>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>R&amp;eutilitza una adreça de recepció anterior (no recomanat)</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="51"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="74"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="54"/>
-        <source>&amp;Message:</source>
-        <translation>&amp;Missatge:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="67"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="88"/>
-        <source>An optional label to associate with the new receiving address.</source>
-        <translation>Una etiqueta opcional que s&apos;associarà amb la nova adreça receptora.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="81"/>
-        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Utilitzeu aquest formulari per sol·licitar pagaments. Tots els camps són &lt;b&gt;opcionals&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="91"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Etiqueta:</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="104"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="126"/>
-        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>Un import opcional per sol·licitar. Deixeu-ho en blanc o zero per no sol·licitar cap import específic.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="107"/>
         <source>&amp;Amount:</source>
         <translation>Im&amp;port:</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="141"/>
-        <source>&amp;Request payment</source>
-        <translation>&amp;Sol·licitud de pagament</translation>
+        <source>&amp;Label:</source>
+        <translation>&amp;Etiqueta:</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="158"/>
+        <source>&amp;Message:</source>
+        <translation>&amp;Missatge:</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the bitsend network.</source>
+        <translation>Un missatge opcional que s'adjuntarà a la sol·licitud de pagament, que es mostrarà quan s'obri la sol·licitud. Nota: El missatge no s'enviarà amb el pagament per la xarxa bitsend.</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address.</source>
+        <translation>Una etiqueta opcional que s'associarà amb la nova adreça receptora.</translation>
+    </message>
+    <message>
+        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
+        <translation>Utilitzeu aquest formulari per sol·licitar pagaments. Tots els camps són &lt;b&gt;opcionals&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
+        <translation>Un import opcional per sol·licitar. Deixeu-ho en blanc o zero per no sol·licitar cap import específic.</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
-        <translation>Neteja tots els camps del formulari.</translation>
+        <translation>Esborra tots els camps del formuari.</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="161"/>
         <source>Clear</source>
         <translation>Neteja</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="239"/>
         <source>Requested payments history</source>
         <translation>Historial de pagaments sol·licitats</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="261"/>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Sol·licitud de pagament</translation>
+    </message>
+    <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Mostra la sol·licitud seleccionada (fa el mateix que el doble clic a una entrada)</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="264"/>
         <source>Show</source>
         <translation>Mostra</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="278"/>
         <source>Remove the selected entries from the list</source>
         <translation>Esborra les entrades seleccionades de la llista</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="281"/>
         <source>Remove</source>
         <translation>Esborra</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="39"/>
-        <source>Copy label</source>
-        <translation>Copia l&apos;etiqueta</translation>
+        <source>Copy URI</source>
+        <translation>Copia URI</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="40"/>
+        <source>Copy label</source>
+        <translation>Copia l'etiqueta</translation>
+    </message>
+    <message>
         <source>Copy message</source>
         <translation>Copia el missatge</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="41"/>
         <source>Copy amount</source>
-        <translation>Copia l&apos;import</translation>
+        <translation>Copia l'import</translation>
     </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="29"/>
         <source>QR Code</source>
         <translation>Codi QR</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="75"/>
         <source>Copy &amp;URI</source>
-        <translation>Copia l&apos;&amp;URI</translation>
+        <translation>Copia l'&amp;URI</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="82"/>
         <source>Copy &amp;Address</source>
-        <translation>Copia l&apos;&amp;adreça</translation>
+        <translation>Copia l'&amp;adreça</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="89"/>
         <source>&amp;Save Image...</source>
         <translation>De&amp;sa la imatge...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="136"/>
         <source>Request payment to %1</source>
         <translation>Sol·licita un pagament a %1</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="142"/>
         <source>Payment information</source>
         <translation>Informació de pagament</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="143"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="145"/>
         <source>Address</source>
         <translation>Adreça</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="147"/>
         <source>Amount</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="149"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="151"/>
         <source>Message</source>
         <translation>Missatge</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="161"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
         <translation>URI resultant massa llarga, intenta reduir el text per a la etiqueta / missatge</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="166"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation>Error en codificar l&apos;URI en un codi QR.</translation>
+        <translation>Error en codificar l'URI en un codi QR.</translation>
     </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Message</source>
         <translation>Missatge</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
-        <source>Amount</source>
-        <translation>Import</translation>
-    </message>
-    <message>
-        <location filename="../recentrequeststablemodel.cpp" line="62"/>
         <source>(no label)</source>
         <translation>(sense etiqueta)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="71"/>
         <source>(no message)</source>
         <translation>(sense missatge)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="79"/>
-        <source>(no amount)</source>
-        <translation>(sense import)</translation>
+        <source>(no amount requested)</source>
+        <translation>(no s'ha sol·licitat import)</translation>
+    </message>
+    <message>
+        <source>Requested</source>
+        <translation>Sol·licitat</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="14"/>
-        <location filename="../sendcoinsdialog.cpp" line="429"/>
-        <location filename="../sendcoinsdialog.cpp" line="521"/>
-        <location filename="../sendcoinsdialog.cpp" line="531"/>
         <source>Send Coins</source>
         <translation>Envia monedes</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="90"/>
         <source>Coin Control Features</source>
         <translation>Característiques de control de les monedes</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="110"/>
         <source>Inputs...</source>
         <translation>Entrades...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="117"/>
         <source>automatically selected</source>
         <translation>seleccionat automàticament</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="136"/>
         <source>Insufficient funds!</source>
         <translation>Fons insuficients!</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="225"/>
         <source>Quantity:</source>
         <translation>Quantitat:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="260"/>
         <source>Bytes:</source>
         <translation>Bytes:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="308"/>
         <source>Amount:</source>
         <translation>Import:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="340"/>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="353"/>
-        <source>medium</source>
-        <translation>mig</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="388"/>
         <source>Fee:</source>
         <translation>Comissió:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="420"/>
-        <source>Low Output:</source>
-        <translation>Sortida baixa:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="433"/>
-        <source>no</source>
-        <translation>no</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="468"/>
         <source>After Fee:</source>
         <translation>Comissió posterior:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="500"/>
         <source>Change:</source>
         <translation>Canvi:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="544"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
-        <translation>Si s&apos;activa això, però l&apos;adreça de canvi està buida o bé no és vàlida, el canvi s&apos;enviarà a una adreça generada de nou.</translation>
+        <translation>Si s'activa això, però l'adreça de canvi està buida o bé no és vàlida, el canvi s'enviarà a una adreça generada de nou.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="547"/>
         <source>Custom change address</source>
-        <translation>Personalitza l&apos;adreça de canvi</translation>
+        <translation>Personalitza l'adreça de canvi</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="668"/>
-        <source>Confirm the send action</source>
-        <translation>Confirma l&apos;acció d&apos;enviament</translation>
+        <source>Transaction Fee:</source>
+        <translation>Comissió de transacció</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="671"/>
-        <source>S&amp;end</source>
-        <translation>E&amp;nvia</translation>
+        <source>Choose...</source>
+        <translation>Tria...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="691"/>
-        <source>Clear all fields of the form.</source>
-        <translation>Neteja tots els camps del formulari.</translation>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>L'ús de la tarifa de pagament pot provocar l'enviament d'una transacció que trigarà diverses hores o dies (o mai) a confirmar. Penseu a triar la possibilitat d'escollir la tarifa manualment o espereu fins que hagueu validat la cadena completa.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="694"/>
-        <source>Clear &amp;All</source>
-        <translation>Neteja-ho &amp;tot</translation>
+        <source>Warning: Fee estimation is currently not possible.</source>
+        <translation>Advertència: l'estimació de tarifes no és possible actualment.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="711"/>
+        <source>collapse fee-settings</source>
+        <translation>redueix els paràmetres de comissió</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>per kilobyte</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then "per kilobyte" only pays 250 satoshis in fee, while "total at least" pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Si la comissió personalitzada es defineix a 1000 satoshis i la transacció és de només 250 bytes, llavors «per kilobyte» només es paguen 250 satoshis en una comissió, mentre que amb la de «total com a mínim» es pagarien 1000 satoshis. Per a transaccions superiors al kilobyte, en tots dos casos es paga per kilobyte.</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Amaga</translation>
+    </message>
+    <message>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for bitsend transactions than the network can process.</source>
+        <translation>No hi ha cap problema en pagar només la comissió mínima sempre que hi hagi menys volum de transacció que espai en els blocs. Però tingueu present que això pot acabar en una transacció que mai es confirmi una vegada hi hagi més demanda de transaccions de bitsends que la xarxa pugui processar.</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(llegiu l'indicador de funció)</translation>
+    </message>
+    <message>
+        <source>Recommended:</source>
+        <translation>Recomanada:</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Personalitzada:</translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(No s'ha inicialitzat encara la comissió intel·ligent. Normalment pren uns pocs blocs...)</translation>
+    </message>
+    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Envia a múltiples destinataris al mateix temps</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="714"/>
         <source>Add &amp;Recipient</source>
         <translation>Afegeix &amp;destinatari</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="752"/>
-        <source>Darksend</source>
-        <translation type="unfinished"/>
+        <source>Clear all fields of the form.</source>
+        <translation>Esborra tots els camps del formuari.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="771"/>
-        <source>InstantX</source>
-        <translation type="unfinished"/>
+        <source>Dust:</source>
+        <translation>Polsim:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="778"/>
+        <source>Confirmation time target:</source>
+        <translation>Temps de confirmació objectiu:</translation>
+    </message>
+    <message>
+        <source>Clear &amp;All</source>
+        <translation>Neteja-ho &amp;tot</translation>
+    </message>
+    <message>
         <source>Balance:</source>
         <translation>Balanç:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="53"/>
+        <source>Confirm the send action</source>
+        <translation>Confirma l'acció d'enviament</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation>E&amp;nvia</translation>
+    </message>
+    <message>
         <source>Copy quantity</source>
         <translation>Copia la quantitat</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="54"/>
         <source>Copy amount</source>
-        <translation>Copia l&apos;import</translation>
+        <translation>Copia l'import</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="55"/>
         <source>Copy fee</source>
-        <translation>Copia la comissi</translation>
+        <translation>Copia la comissió</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="56"/>
         <source>Copy after fee</source>
         <translation>Copia la comissió posterior</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="57"/>
         <source>Copy bytes</source>
         <translation>Copia els bytes</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="58"/>
-        <source>Copy priority</source>
-        <translation>Copia la prioritat</translation>
+        <source>Copy dust</source>
+        <translation>Copia el polsim</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="59"/>
-        <source>Copy low output</source>
-        <translation>Copia la sortida baixa</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="60"/>
         <source>Copy change</source>
         <translation>Copia el canvi</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>using</source>
-        <translation type="unfinished"/>
+        <source>%1 (%2 blocks)</source>
+        <translation>%1 (%2 blocs)</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <source>anonymous funds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="155"/>
-        <source>(Darksend requires this amount to be rounded up to the nearest %1).</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>any available funds (not recommended)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="166"/>
-        <source>and InstantX</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="190"/>
-        <location filename="../sendcoinsdialog.cpp" line="195"/>
-        <location filename="../sendcoinsdialog.cpp" line="200"/>
-        <location filename="../sendcoinsdialog.cpp" line="204"/>
         <source>%1 to %2</source>
         <translation>%1 a %2</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="253"/>
         <source>Are you sure you want to send?</source>
         <translation>Esteu segur que ho voleu enviar?</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="262"/>
-        <source>are added as transaction fee</source>
-        <translation type="unfinished"/>
+        <source>added as transaction fee</source>
+        <translation>S'ha afegit una taxa de transacció</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="276"/>
-        <source>Total Amount %1 (= %2)</source>
-        <translation>Import total %1 (= %2)</translation>
+        <source>Total Amount %1</source>
+        <translation>Import total %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="278"/>
         <source>or</source>
         <translation>o</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="280"/>
         <source>Confirm send coins</source>
-        <translation>Confirma l&apos;enviament de monedes</translation>
+        <translation>Confirma l'enviament de monedes</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="435"/>
-        <source>Payment request expired</source>
-        <translation>La sol·licitud de pagament ha caducat</translation>
+        <source>The recipient address is not valid. Please recheck.</source>
+        <translation>L'adreça del destinatari no és vàlida. Torneu-la a comprovar.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="443"/>
-        <source>Invalid payment address %1</source>
-        <translation>Adreça de pagament no vàlida %1</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="498"/>
-        <source>The recipient address is not valid, please recheck.</source>
-        <translation>L&apos;adreça de destinatari no és vàlida, si us plau comprovi-la.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="501"/>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>L&apos;import a pagar ha de ser major que 0.</translation>
+        <translation>L'import a pagar ha de ser major que 0.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="504"/>
         <source>The amount exceeds your balance.</source>
-        <translation>L&apos;import supera el vostre balanç.</translation>
+        <translation>L'import supera el vostre balanç.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="507"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>El total excedeix el teu balanç quan s&apos;afegeix la comisió a la transacció %1.</translation>
+        <translation>El total excedeix el vostre balanç quan s'afegeix la comissió a la transacció %1.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="510"/>
-        <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>S&apos;ha trobat una adreça duplicada, tan sols es pot enviar a cada adreça un cop per ordre de enviament.</translation>
+        <source>Duplicate address found: addresses should only be used once each.</source>
+        <translation>S'ha trobat una adreça duplicada: les adreces només s'haurien d'utilitzar una vegada cada una.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="513"/>
         <source>Transaction creation failed!</source>
-        <translation>Ha fallat la creació de la transacció!</translation>
+        <translation>La creació de la transacció ha fallat!</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="517"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>S&apos;ha rebutjat la transacció! Això pot passar si alguna de les monedes del vostre moneder ja s&apos;han gastat; per exemple, si heu fet servir una còpia de seguretat del fitxer wallet.dat i s&apos;haguessin gastat monedes de la còpia però sense marcar-les-hi com a gastades.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation>La transacció s'ha rebutjat amb el motiu següent: %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="522"/>
-        <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation type="unfinished"/>
+        <source>A fee higher than %1 is considered an absurdly high fee.</source>
+        <translation>Una comissió superior a %1 es considera una comissió absurdament alta.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="635"/>
-        <source>Warning: Invalid Bitsend address</source>
-        <translation type="unfinished"/>
+        <source>Payment request expired.</source>
+        <translation>La sol·licitud de pagament ha vençut.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="644"/>
+        <source>Pay only the required fee of %1</source>
+        <translation>Paga només la comissió necessària de %1</translation>
+    </message>
+    <message>
+        <source>Warning: Invalid bitsend address</source>
+        <translation>Avís: adreça bitsend no vàlida</translation>
+    </message>
+    <message>
         <source>Warning: Unknown change address</source>
         <translation>Avís: adreça de canvi desconeguda</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="655"/>
+        <source>Confirm custom change address</source>
+        <translation>Confirma l'adreça de canvi personalitzada</translation>
+    </message>
+    <message>
+        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
+        <translation>L'adreça que heu seleccionat per al canvi no és part d'aquest moneder. Tots els fons del vostre moneder es poden enviar a aquesta adreça. Estàs segur?</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(sense etiqueta)</translation>
     </message>
@@ -2910,298 +2204,239 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="21"/>
-        <source>This is a normal payment.</source>
-        <translation>Això és un pagament normal.</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="36"/>
-        <source>Pay &amp;To:</source>
-        <translation>Paga &amp;a:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="54"/>
-        <source>The address to send the payment to (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="61"/>
-        <source>Choose previously used address</source>
-        <translation>Tria una adreça feta servir anteriorment</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="71"/>
-        <source>Alt+A</source>
-        <translation>Alta+A</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="78"/>
-        <source>Paste address from clipboard</source>
-        <translation>Enganxar adreça del porta-retalls</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="88"/>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="95"/>
-        <location filename="../forms/sendcoinsentry.ui" line="619"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1155"/>
-        <source>Remove this entry</source>
-        <translation>Elimina aquesta entrada</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="111"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Etiqueta:</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="124"/>
-        <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Introduïu una etiqueta per a aquesta adreça per afegir-la a la llista d&apos;adreces utilitzades</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="131"/>
-        <location filename="../forms/sendcoinsentry.ui" line="652"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1188"/>
         <source>A&amp;mount:</source>
         <translation>Q&amp;uantitat:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="147"/>
+        <source>Pay &amp;To:</source>
+        <translation>Paga &amp;a:</translation>
+    </message>
+    <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Etiqueta:</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Tria les adreces fetes servir amb anterioritat</translation>
+    </message>
+    <message>
+        <source>This is a normal payment.</source>
+        <translation>Això és un pagament normal.</translation>
+    </message>
+    <message>
+        <source>The bitsend address to send the payment to</source>
+        <translation>L'adreça bitsend on enviar el pagament</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alta+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Enganxar adreça del porta-retalls</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Remove this entry</source>
+        <translation>Elimina aquesta entrada</translation>
+    </message>
+    <message>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bitsends than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>La comissió es deduirà de l'import que s'enviarà. El destinatari rebrà menys bitsends que les que introduïu al camp d'import. Si se seleccionen múltiples destinataris, la comissió es dividirà per igual.</translation>
+    </message>
+    <message>
+        <source>S&amp;ubtract fee from amount</source>
+        <translation>S&amp;ubstreu la comissió de l'import</translation>
+    </message>
+    <message>
         <source>Message:</source>
         <translation>Missatge:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="157"/>
-        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</source>
-        <translation type="unfinished"/>
+        <source>This is an unauthenticated payment request.</source>
+        <translation>Aquesta és una sol·licitud de pagament no autenticada.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="583"/>
-        <source>This is an unverified payment request.</source>
-        <translation>Aquesta és una sol·licitud de pagament no verificada.</translation>
+        <source>This is an authenticated payment request.</source>
+        <translation>Aquesta és una sol·licitud de pagament autenticada.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="601"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1133"/>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>Introduïu una etiqueta per a aquesta adreça per afegir-la a la llista d'adreces utilitzades</translation>
+    </message>
+    <message>
+        <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the bitsend network.</source>
+        <translation>Un missatge que s'ha adjuntat al bitsend: URI que s'emmagatzemarà amb la transacció per a la vostra referència. Nota: el missatge no s'enviarà a través de la xarxa bitsend.</translation>
+    </message>
+    <message>
         <source>Pay To:</source>
         <translation>Paga a:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="635"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1171"/>
         <source>Memo:</source>
         <translation>Memo:</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="1115"/>
-        <source>This is a verified payment request.</source>
-        <translation>Aquesta és una sol·licitud de pagament verificada.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsentry.cpp" line="31"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Introduïu una etiqueta per a aquesta adreça per afegir-la a la llibreta d&apos;adreces</translation>
+        <translation>Introduïu una etiqueta per a aquesta adreça per afegir-la a la llibreta d'adreces</translation>
+    </message>
+</context>
+<context>
+    <name>SendConfirmationDialog</name>
+    <message>
+        <source>Yes</source>
+        <translation>Sí</translation>
     </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="129"/>
-        <source>Bitsend Core is shutting down...</source>
-        <translation type="unfinished"/>
+        <source>%1 is shutting down...</source>
+        <translation>%1 s'està tancant ...</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="130"/>
         <source>Do not shut down the computer until this window disappears.</source>
-        <translation>No apagueu l&apos;ordinador fins que no desaparegui aquesta finestra.</translation>
+        <translation>No apagueu l'ordinador fins que no desaparegui aquesta finestra.</translation>
     </message>
 </context>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="14"/>
         <source>Signatures - Sign / Verify a Message</source>
         <translation>Signatures - Signa / verifica un missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="24"/>
         <source>&amp;Sign Message</source>
         <translation>&amp;Signa el missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="30"/>
-        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Podeu signar missatges amb la vostra adreça per provar que són vostres. Aneu amb compte no signar qualsevol cosa, ja que els atacs de pesca electrònica (phishing) poden provar de confondre-us perquè els signeu amb la vostra identitat. Només signeu als documents completament detallats amb què hi esteu d&apos;acord.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitsends sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Podeu signar missatges/acords amb les vostres adreces per provar que rebeu les bitsends que s'hi envien. Aneu amb compte no signar res que sigui vague o aleatori, perquè en alguns atacs de suplantació es pot provar que hi signeu la vostra identitat. Només signeu aquelles declaracions completament detallades en què hi esteu d'acord. </translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="48"/>
-        <source>The address to sign the message with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation type="unfinished"/>
+        <source>The bitsend address to sign the message with</source>
+        <translation>L'adreça bitsend amb què signar el missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="55"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="265"/>
         <source>Choose previously used address</source>
         <translation>Tria les adreces fetes servir amb anterioritat</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="65"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="275"/>
         <source>Alt+A</source>
-        <translation>Alt+A</translation>
+        <translation>Alta+A</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="75"/>
         <source>Paste address from clipboard</source>
-        <translation>Enganxa l&apos;adreça del porta-retalls</translation>
+        <translation>Enganxar adreça del porta-retalls</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="85"/>
         <source>Alt+P</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="97"/>
         <source>Enter the message you want to sign here</source>
         <translation>Introduïu aquí el missatge que voleu signar</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="104"/>
         <source>Signature</source>
         <translation>Signatura</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="131"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Copia la signatura actual al porta-retalls del sistema</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="152"/>
-        <source>Sign the message to prove you own this Bitsend address</source>
-        <translation type="unfinished"/>
+        <source>Sign the message to prove you own this bitsend address</source>
+        <translation>Signa el missatge per provar que ets propietari d'aquesta adreça bitsend</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="155"/>
         <source>Sign &amp;Message</source>
         <translation>Signa el &amp;missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="169"/>
         <source>Reset all sign message fields</source>
         <translation>Neteja tots els camps de clau</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="172"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="315"/>
         <source>Clear &amp;All</source>
         <translation>Neteja-ho &amp;tot</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="231"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verifica el missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="237"/>
-        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Introdueixi l&apos;adreça signant, missatge (assegura&apos;t que copies salts de línia, espais, tabuladors, etc excactament tot el text) i la signatura a sota per verificar el missatge. Per evitar ser enganyat per un atac home-entre-mig, vés amb compte de no llegir més en la signatura del que hi ha al missatge signat mateix.</translation>
+        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Introduïu l'adreça del receptor, el missatge (assegureu-vos de copiar els salts de línia, espais, tabuladors, etc. exactament) i signatura de sota per verificar el missatge. Tingueu cura de no llegir més en la signatura del que està al missatge signat, per evitar ser enganyat per un atac d'home-en-el-mig. Tingueu en compte que això només demostra que la part que signa rep amb l'adreça, i no es pot provar l'enviament de qualsevol transacció!</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="258"/>
-        <source>The address the message was signed with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation type="unfinished"/>
+        <source>The bitsend address the message was signed with</source>
+        <translation>L'adreça bitsend amb què va ser signat el missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="295"/>
-        <source>Verify the message to ensure it was signed with the specified Bitsend address</source>
-        <translation type="unfinished"/>
+        <source>Verify the message to ensure it was signed with the specified bitsend address</source>
+        <translation>Verificar el missatge per assegurar-se que ha estat signat amb una adreça bitsend específica</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="298"/>
         <source>Verify &amp;Message</source>
         <translation>Verifica el &amp;missatge</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="312"/>
         <source>Reset all verify message fields</source>
         <translation>Neteja tots els camps de verificació de missatge</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="30"/>
-        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <source>Click "Sign Message" to generate signature</source>
         <translation>Feu clic a «Signa el missatge» per a generar una signatura</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="31"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
         <source>The entered address is invalid.</source>
-        <translation>L&apos;adreça introduïda no és vàlida.</translation>
+        <translation>L'adreça introduïda no és vàlida.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>Please check the address and try again.</source>
-        <translation>Comproveu l&apos;adreça i torneu-ho a provar.</translation>
+        <translation>Comproveu l'adreça i torneu-ho a provar.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>The entered address does not refer to a key.</source>
-        <translation>L&apos;adreça introduïda no referencia a cap clau.</translation>
+        <translation>L'adreça introduïda no referencia a cap clau.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="130"/>
         <source>Wallet unlock was cancelled.</source>
         <translation>El desbloqueig del moneder ha estat cancelat.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="138"/>
         <source>Private key for the entered address is not available.</source>
         <translation>La clau privada per a la adreça introduïda no està disponible.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="150"/>
         <source>Message signing failed.</source>
         <translation>La signatura del missatge ha fallat.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="155"/>
         <source>Message signed.</source>
         <translation>Missatge signat.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
         <source>The signature could not be decoded.</source>
-        <translation>La signatura no s&apos;ha pogut descodificar.</translation>
+        <translation>La signatura no s'ha pogut descodificar.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>Please check the signature and try again.</source>
         <translation>Comproveu la signatura i torneu-ho a provar.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>The signature did not match the message digest.</source>
         <translation>La signatura no coincideix amb el resum del missatge.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="233"/>
         <source>Message verification failed.</source>
         <translation>Ha fallat la verificació del missatge.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="238"/>
         <source>Message verified.</source>
         <translation>Missatge verificat.</translation>
     </message>
@@ -3209,27 +2444,6 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="33"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="34"/>
-        <source>Version %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Els desenvolupadors del Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="36"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Els desenvolupadors del Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="37"/>
         <source>[testnet]</source>
         <translation>[testnet]</translation>
     </message>
@@ -3237,236 +2451,169 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
-        <location filename="../trafficgraphwidget.cpp" line="79"/>
         <source>KB/s</source>
         <translation>KB/s</translation>
     </message>
 </context>
 <context>
     <name>TransactionDesc</name>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="28"/>
-        <source>Open for %n more block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="30"/>
         <source>Open until %1</source>
         <translation>Obert fins %1</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="41"/>
-        <location filename="../transactiondesc.cpp" line="52"/>
-        <location filename="../transactiondesc.cpp" line="62"/>
-        <location filename="../transactiondesc.cpp" line="74"/>
-        <source>conflicted</source>
-        <translation>en conflicte</translation>
+        <source>conflicted with a transaction with %1 confirmations</source>
+        <translation>produït un conflicte amb una transacció amb %1 confirmacions</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="43"/>
-        <source>%1/offline (verified via instantx)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="45"/>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="47"/>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="76"/>
         <source>%1/offline</source>
         <translation>%1/fora de línia</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="78"/>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/no confirmades, %1</translation>
+    </message>
+    <message>
+        <source>in memory pool</source>
+        <translation>a la reserva de memòria</translation>
+    </message>
+    <message>
+        <source>not in memory pool</source>
+        <translation>no a la reserva de memòria</translation>
+    </message>
+    <message>
+        <source>abandoned</source>
+        <translation>abandonat</translation>
+    </message>
+    <message>
         <source>%1/unconfirmed</source>
         <translation>%1/sense confirmar</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="68"/>
-        <location filename="../transactiondesc.cpp" line="80"/>
         <source>%1 confirmations</source>
         <translation>%1 confirmacions</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="54"/>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="56"/>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="58"/>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="64"/>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="66"/>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="98"/>
         <source>Status</source>
         <translation>Estat</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="103"/>
         <source>, has not been successfully broadcast yet</source>
         <translation>, encara no ha estat emès correctement</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="105"/>
-        <source>, broadcast through %n node(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="109"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Source</source>
         <translation>Font</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Generated</source>
-        <translation>Generat</translation>
+        <translation>Generada</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="121"/>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>From</source>
-        <translation>Des de</translation>
+        <translation>De</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>unknown</source>
         <translation>desconegut</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="139"/>
-        <location filename="../transactiondesc.cpp" line="161"/>
-        <location filename="../transactiondesc.cpp" line="219"/>
         <source>To</source>
         <translation>A</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
-        <location filename="../transactiondesc.cpp" line="144"/>
         <source>own address</source>
-        <translation>Adreça pròpia</translation>
+        <translation>adreça pròpia</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
+        <source>watch-only</source>
+        <translation>només lectura</translation>
+    </message>
+    <message>
         <source>label</source>
         <translation>etiqueta</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="179"/>
-        <location filename="../transactiondesc.cpp" line="191"/>
-        <location filename="../transactiondesc.cpp" line="236"/>
-        <location filename="../transactiondesc.cpp" line="253"/>
-        <location filename="../transactiondesc.cpp" line="306"/>
         <source>Credit</source>
         <translation>Crèdit</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="181"/>
-        <source>matures in %n more block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="183"/>
         <source>not accepted</source>
         <translation>no acceptat</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="227"/>
-        <location filename="../transactiondesc.cpp" line="235"/>
-        <location filename="../transactiondesc.cpp" line="250"/>
-        <location filename="../transactiondesc.cpp" line="303"/>
         <source>Debit</source>
         <translation>Dèbit</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="241"/>
+        <source>Total debit</source>
+        <translation>Dèbit total</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Crèdit total</translation>
+    </message>
+    <message>
         <source>Transaction fee</source>
         <translation>Comissió de transacció</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="257"/>
         <source>Net amount</source>
         <translation>Import net</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="263"/>
-        <location filename="../transactiondesc.cpp" line="272"/>
         <source>Message</source>
         <translation>Missatge</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="265"/>
         <source>Comment</source>
-        <translation>Comentar</translation>
+        <translation>Comentari</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="267"/>
         <source>Transaction ID</source>
-        <translation>ID de transacció</translation>
+        <translation>ID de la transacció</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="285"/>
+        <source>Transaction total size</source>
+        <translation>Mida total de la transacció</translation>
+    </message>
+    <message>
+        <source>Output index</source>
+        <translation>Índex de resultats</translation>
+    </message>
+    <message>
         <source>Merchant</source>
         <translation>Mercader</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="292"/>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Les monedes generades han de madurar %1 blocs abans de poder ser gastades. Quan genereu aquest bloc, es farà saber a la xarxa per tal d&apos;afegir-lo a la cadena de blocs. Si no pot fer-se lloc a la cadena, el seu estat canviarà a «no acceptat» i no es podrà gastar. Això pot passar ocasionalment si un altre node genera un bloc en un marge de segons respecte al vostre.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Les monedes generades han de madurar %1 blocs abans de poder ser gastades. Quan genereu aquest bloc, es farà saber a la xarxa per tal d'afegir-lo a la cadena de blocs. Si no pot fer-se lloc a la cadena, el seu estat canviarà a «no acceptat» i no es podrà gastar. Això pot passar ocasionalment si un altre node genera un bloc en un marge de segons respecte al vostre.</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="300"/>
         <source>Debug information</source>
         <translation>Informació de depuració</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="308"/>
         <source>Transaction</source>
         <translation>Transacció</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="311"/>
         <source>Inputs</source>
         <translation>Entrades</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="332"/>
         <source>Amount</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>true</source>
         <translation>cert</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>false</source>
         <translation>fals</translation>
     </message>
@@ -3474,170 +2621,121 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="14"/>
-        <source>Transaction details</source>
-        <translation>Detall de la transacció</translation>
-    </message>
-    <message>
-        <location filename="../forms/transactiondescdialog.ui" line="20"/>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>Aquest panell mostra una descripció detallada de la transacció</translation>
+    </message>
+    <message>
+        <source>Details for %1</source>
+        <translation>Detalls per %1</translation>
     </message>
 </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Type</source>
         <translation>Tipus</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Address</source>
-        <translation>Adreça</translation>
+        <source>Label</source>
+        <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Amount</source>
-        <translation>Import</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../transactiontablemodel.cpp" line="285"/>
-        <source>Open for %n more block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="288"/>
         <source>Open until %1</source>
         <translation>Obert fins %1</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="291"/>
         <source>Offline</source>
         <translation>Fora de línia</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="294"/>
         <source>Unconfirmed</source>
         <translation>Sense confirmar</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="297"/>
+        <source>Abandoned</source>
+        <translation>Abandonada</translation>
+    </message>
+    <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
         <translation>Confirmant (%1 de %2 confirmacions recomanades)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="300"/>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Confirmat (%1 confirmacions)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="303"/>
         <source>Conflicted</source>
         <translation>En conflicte</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="306"/>
         <source>Immature (%1 confirmations, will be available after %2)</source>
         <translation>Immadur (%1 confirmacions, serà disponible després de %2)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="309"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
         <translation>Aquest bloc no ha estat rebut per cap altre node i probablement no serà acceptat!</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="312"/>
         <source>Generated but not accepted</source>
         <translation>Generat però no acceptat</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="354"/>
         <source>Received with</source>
-        <translation>Rebut amb</translation>
+        <translation>Rebuda amb</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="356"/>
         <source>Received from</source>
-        <translation>Rebut de</translation>
+        <translation>Rebuda de</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="358"/>
-        <source>Received via Darksend</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="361"/>
         <source>Sent to</source>
-        <translation>Enviat a</translation>
+        <translation>Enviada a</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="363"/>
         <source>Payment to yourself</source>
         <translation>Pagament a un mateix</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="365"/>
         <source>Mined</source>
-        <translation>Minat</translation>
+        <translation>Minada</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="368"/>
-        <source>Darksend Denominate</source>
-        <translation type="unfinished"/>
+        <source>watch-only</source>
+        <translation>només lectura</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="370"/>
-        <source>Darksend Collateral Payment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="372"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="374"/>
-        <source>Darksend Create Denominations</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="376"/>
-        <source>Darksent</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="418"/>
         <source>(n/a)</source>
         <translation>(n/a)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="610"/>
+        <source>(no label)</source>
+        <translation>(sense etiqueta)</translation>
+    </message>
+    <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
         <translation>Estat de la transacció. Desplaceu-vos sobre aquest camp per mostrar el nombre de confirmacions.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="612"/>
         <source>Date and time that the transaction was received.</source>
         <translation>Data i hora en que la transacció va ser rebuda.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="614"/>
         <source>Type of transaction.</source>
         <translation>Tipus de transacció.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="616"/>
-        <source>Destination address of transaction.</source>
-        <translation>Adreça del destinatari de la transacció.</translation>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Si està implicada o no una adreça només de lectura en la transacció.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="618"/>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>Intenció/propòsit de la transacció definida per l'usuari.</translation>
+    </message>
+    <message>
         <source>Amount removed from or added to balance.</source>
         <translation>Import extret o afegit del balanç.</translation>
     </message>
@@ -3645,1631 +2743,1199 @@ https://www.transifex.com/projects/p/bitsend/</source>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="60"/>
-        <location filename="../transactionview.cpp" line="76"/>
         <source>All</source>
         <translation>Tot</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="61"/>
         <source>Today</source>
         <translation>Avui</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="62"/>
         <source>This week</source>
         <translation>Aquesta setmana</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="63"/>
         <source>This month</source>
         <translation>Aquest mes</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="64"/>
         <source>Last month</source>
         <translation>El mes passat</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="65"/>
         <source>This year</source>
         <translation>Enguany</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="66"/>
         <source>Range...</source>
         <translation>Rang...</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="77"/>
         <source>Received with</source>
-        <translation>Rebut amb</translation>
+        <translation>Rebuda amb</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="79"/>
         <source>Sent to</source>
-        <translation>Enviat a</translation>
+        <translation>Enviada a</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="81"/>
-        <source>Darksent</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="82"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="83"/>
-        <source>Darksend Create Denominations</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="84"/>
-        <source>Darksend Denominate</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="85"/>
-        <source>Darksend Collateral Payment</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="86"/>
         <source>To yourself</source>
         <translation>A un mateix</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="87"/>
         <source>Mined</source>
-        <translation>Minat</translation>
+        <translation>Minada</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="88"/>
         <source>Other</source>
         <translation>Altres</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="94"/>
-        <source>Enter address or label to search</source>
-        <translation>Introduïu una adreça o una etiqueta per cercar</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="100"/>
         <source>Min amount</source>
         <translation>Import mínim</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="134"/>
+        <source>Abandon transaction</source>
+        <translation>Abandonar transacció</translation>
+    </message>
+    <message>
+        <source>Increase transaction fee</source>
+        <translation>Augmenta la comissió de transacció</translation>
+    </message>
+    <message>
         <source>Copy address</source>
-        <translation>Copia l&apos;adreça</translation>
+        <translation>Copia l'adreça</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="135"/>
         <source>Copy label</source>
-        <translation>Copiar etiqueta</translation>
+        <translation>Copia l'etiqueta</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="136"/>
         <source>Copy amount</source>
-        <translation>Copia l&apos;import</translation>
+        <translation>Copia l'import</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="137"/>
         <source>Copy transaction ID</source>
-        <translation>Copiar ID de transacció</translation>
+        <translation>Copia l'ID de transacció</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="138"/>
+        <source>Copy raw transaction</source>
+        <translation>Copia la transacció crua</translation>
+    </message>
+    <message>
+        <source>Copy full transaction details</source>
+        <translation>Copieu els detalls complets de la transacció</translation>
+    </message>
+    <message>
         <source>Edit label</source>
         <translation>Editar etiqueta</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="139"/>
         <source>Show transaction details</source>
         <translation>Mostra detalls de la transacció</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="302"/>
         <source>Export Transaction History</source>
-        <translation>Exporta l&apos;historial de transacció</translation>
+        <translation>Exporta l'historial de transacció</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="303"/>
         <source>Comma separated file (*.csv)</source>
         <translation>Fitxer separat per comes (*.csv)</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="312"/>
         <source>Confirmed</source>
         <translation>Confirmat</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="313"/>
+        <source>Watch-only</source>
+        <translation>Només de lectura</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="314"/>
         <source>Type</source>
         <translation>Tipus</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="315"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="316"/>
         <source>Address</source>
         <translation>Adreça</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="317"/>
-        <source>Amount</source>
-        <translation>Import</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="318"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>Exporting Failed</source>
-        <translation>L&apos;exportació ha fallat</translation>
+        <translation>L'exportació ha fallat</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>S&apos;ha produït un error en provar de desar l&apos;historial de transacció a %1.</translation>
+        <translation>S'ha produït un error en provar de desar l'historial de transacció a %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>Exporting Successful</source>
         <translation>Exportació amb èxit</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>The transaction history was successfully saved to %1.</source>
-        <translation>L&apos;historial de transaccions s&apos;ha desat correctament a %1.</translation>
+        <translation>L'historial de transaccions s'ha desat correctament a %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="434"/>
         <source>Range:</source>
         <translation>Rang:</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="442"/>
         <source>to</source>
         <translation>a</translation>
     </message>
 </context>
 <context>
+    <name>UnitDisplayStatusBarControl</name>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Unitat en què mostrar els imports. Feu clic per seleccionar una altra unitat.</translation>
+    </message>
+</context>
+<context>
     <name>WalletFrame</name>
     <message>
-        <location filename="../walletframe.cpp" line="26"/>
         <source>No wallet has been loaded.</source>
-        <translation>No s&apos;ha carregat cap moneder.</translation>
+        <translation>No s'ha carregat cap moneder.</translation>
     </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="271"/>
-        <location filename="../walletmodel.cpp" line="285"/>
         <source>Send Coins</source>
         <translation>Envia monedes</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../walletmodel.cpp" line="271"/>
-        <source>InstantX doesn&apos;t support sending values that high yet. Transactions are currently limited to %n BSD.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    <message>
+        <source>Fee bump error</source>
+        <translation>Error de recàrrec de tarifes</translation>
+    </message>
+    <message>
+        <source>Increasing transaction fee failed</source>
+        <translation>S'ha produït un error en augmentar la tarifa de transacció</translation>
+    </message>
+    <message>
+        <source>Do you want to increase the fee?</source>
+        <translation>Voleu augmentar la tarifa?</translation>
+    </message>
+    <message>
+        <source>Current fee:</source>
+        <translation>tarifa actual:</translation>
+    </message>
+    <message>
+        <source>Increase:</source>
+        <translation>Increment:</translation>
+    </message>
+    <message>
+        <source>New fee:</source>
+        <translation>Nova tarifa:</translation>
+    </message>
+    <message>
+        <source>Confirm fee bump</source>
+        <translation>Confirmeu el recàrrec de tarifes</translation>
+    </message>
+    <message>
+        <source>Can't sign transaction.</source>
+        <translation>No es pot signar la transacció.</translation>
+    </message>
+    <message>
+        <source>Could not commit transaction</source>
+        <translation>No s'ha pogut confirmar la transacció</translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="44"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporta</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="45"/>
         <source>Export the data in the current tab to a file</source>
         <translation>Exporta les dades de la pestanya actual a un fitxer</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="231"/>
         <source>Backup Wallet</source>
         <translation>Còpia de seguretat del moneder</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="232"/>
         <source>Wallet Data (*.dat)</source>
         <translation>Dades del moneder (*.dat)</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>Backup Failed</source>
         <translation>Ha fallat la còpia de seguretat</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>S&apos;ha produït un error en provar de desar les dades del moneder a %1.</translation>
+        <translation>S'ha produït un error en provar de desar les dades del moneder a %1.</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>Backup Successful</source>
-        <translation>La còpia de seguretat s&apos;ha realitzat correctament</translation>
+        <translation>La còpia de seguretat s'ha realitzat correctament</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>The wallet data was successfully saved to %1.</source>
-        <translation>S&apos;han desat les dades del moneder correctament a %1.</translation>
+        <translation>S'han desat les dades del moneder correctament a %1.</translation>
     </message>
 </context>
 <context>
     <name>bitsend-core</name>
     <message>
-        <location filename="../bitsendstrings.cpp" line="16"/>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Bitsend Alert&quot; admin@foo.com
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="29"/>
-        <source>Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</source>
-        <translation>Xifrats acceptables (per defecte: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="32"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>S&apos;ha produït un error al configurar el port RPC %u escoltant a IPv4: %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="34"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
-        <translation>S&apos;ha produït un error en configurar el port RPC %u escoltant a IPv6, retrocedint a IPv4: %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="37"/>
-        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Vincula a una adreça específica i sempre escolta-hi. Utilitza la notació [host]:port per IPv6</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="40"/>
-        <source>Cannot obtain a lock on data directory %s. Bitsend Core is probably already running.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="43"/>
-        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:15)</source>
-        <translation>Limita contínuament les transaccions gratuïtes a &lt;n&gt;*1000 bytes per minut (per defecte: 15)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="46"/>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="49"/>
-        <source>Disable all Xnode and Darksend related functionality (0-1, default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="51"/>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: true)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="54"/>
-        <source>Enable use of automated Darksend for funds stored in this wallet (0-1, default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="57"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly. This is intended for regression testing tools and app development.</source>
-        <translation>Entra en el mode de prova de regressió, que utilitza una cadena especial en què els blocs es poden resoldre al moment. Això està pensat per a les eines de proves de regressió i per al desenvolupament d&apos;aplicacions.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="61"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Entra en el mode de proves de regressió, que utilitza una cadena especial en què els blocs poden resoldre&apos;s al moment.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="64"/>
-        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="66"/>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacció ha estat rebutjada. Això pot passar si alguna de les monedes del teu moneder ja s&apos;han gastat, com si haguesis usat una copia de l&apos;arxiu wallet.dat i s&apos;haguessin gastat monedes de la copia però sense marcar com gastades en aquest.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="70"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Error: Aquesta transacció requereix una comissió d&apos;almenys %s degut al seu import, complexitat o per l&apos;ús de fons recentment rebuts!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="73"/>
-        <source>Error: Wallet unlocked for anonymization only, unable to create transaction.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="75"/>
-        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Executa l&apos;ordre quan es rebi un avís rellevant o veiem una forquilla molt llarga (%s en cmd és reemplaçat per un missatge)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="78"/>
-        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Executa una ordre quan una transacció del moneder canviï (%s en cmd es canvia per TxID)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="81"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Executa l&apos;ordre quan el millor bloc canviï (%s en cmd es reemplaça per un resum de bloc)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="84"/>
-        <source>Fees smaller than this are considered zero fee (for transaction creation) (default:</source>
-        <translation>Les comissions inferiors que aquesta es consideren comissió zero (per a la creació de la transacció) (per defecte:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="87"/>
-        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: 100)</source>
-        <translation>Buida l&apos;activitat de la base de dades de la memòria disponible al registre del disc cada &lt;n&gt; megabytes (per defecte: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="90"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="93"/>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: 3)</source>
-        <translation>Com d&apos;exhaustiva és la verificació de blocs de -checkblocks is (0-4, per defecte: 3)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="95"/>
-        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>En aquest mode -genproclimit controla quants blocs es generen immediatament.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="98"/>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="101"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="103"/>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="105"/>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Nombre de segons abans de reconectar amb connexions errònies (per defecte: 86400)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="108"/>
-        <source>Output debugging information (default: 0, supplying &lt;category&gt; is optional)</source>
-        <translation>Informació de la depuració de sortida (per defecte: 0, proporcionar &lt;category&gt; és opcional)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="110"/>
-        <source>Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="114"/>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="117"/>
-        <source>Set external address:port to get to this Xnode (example: address:port)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="119"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Defineix la mida màxima de transaccions d&apos;alta prioritat / baixa comissió en bytes (per defecte: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="121"/>
-        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>Defineix el nombre de fils de verificació d&apos;scripts (%u a %d, 0 = auto, &lt;0 = deixa tants nuclis lliures, per defecte: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="124"/>
-        <source>Set the processor limit for when generation is on (-1 = unlimited, default: -1)</source>
-        <translation>Defineix el límit de processadors quan està activada la generació (-1 = sense límit, per defecte: -1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="127"/>
-        <source>Show N confirmations for a successfully locked transaction (0-9999, default: 1)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="130"/>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Aquesta és una versió de pre-llançament - utilitza-la sota la teva responsabilitat - No usar per a minería o aplicacions de compra-venda</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="133"/>
-        <source>Unable to bind to %s on this computer. Bitsend Core is probably already running.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="136"/>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="138"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 BSD.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="141"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="143"/>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: -proxy)</source>
-        <translation>Utilitza un proxy SOCKS5 apart per arribar a iguals a través de serveis de Tor ocults (per defecte: -proxy)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="146"/>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Avís: el -paytxfee és molt elevat! Aquesta és la comissió de transacció que pagareu si envieu una transacció.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="149"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Bitsend will not work properly.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="152"/>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Avís: la xarxa no sembla que hi estigui plenament d&apos;acord. Alguns miners sembla que estan experimentant problemes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="155"/>
-        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Avís: sembla que no estem plenament d&apos;acord amb els nostres iguals! Podria caler que actualitzar l&apos;aplicació, o potser que ho facin altres nodes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="158"/>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Avís: error en llegir el fitxer wallet.dat! Totes les claus es llegeixen correctament, però hi ha dades de transaccions o entrades de la llibreta d&apos;adreces absents o bé son incorrectes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="161"/>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Avís: el fitxer wallet.dat és corrupte, dades rescatades! L&apos;arxiu wallet.dat original ha estat desat com wallet.{estampa_temporal}.bak al directori %s; si el teu balanç o transaccions son incorrectes hauries de restaurar-lo de un backup.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="165"/>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Heu de configurar el rpcpassword=&lt;password&gt; al fitxer de configuració:
-%s
-Si el fitxer no existeix, creeu-lo amb els permís owner-readable-only.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="170"/>
-        <source>You must specify a Xnodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="173"/>
-        <source>(default: 1)</source>
-        <translation>(per defecte: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="174"/>
-        <source>(default: wallet.dat)</source>
-        <translation>(per defecte: wallet.dat)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="175"/>
-        <source>&lt;category&gt; can be:</source>
-        <translation>&lt;category&gt; pot ser:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="176"/>
-        <source>Accept command line and JSON-RPC commands</source>
-        <translation>Accepta la línia d&apos;ordres i ordres JSON-RPC </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="177"/>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Accepta connexions de fora (per defecte: 1 si no -proxy o -connect)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="178"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Afegeix un node per a connectar-s&apos;hi i intenta mantenir-hi la connexió oberta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="179"/>
-        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Permet consultes DNS per a -addnode, -seednode i -connect</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="180"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Permetre connexions JSON-RPC d&apos;adreces IP específiques</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="181"/>
-        <source>Already have that input.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="182"/>
-        <source>Always query for peer addresses via DNS lookup (default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="183"/>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Intenta recuperar les claus privades d&apos;un fitxer wallet.dat corrupte</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="184"/>
-        <source>Block creation options:</source>
-        <translation>Opcions de la creació de blocs:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="185"/>
-        <source>Can&apos;t denominate: no compatible inputs left.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="186"/>
-        <source>Cannot downgrade wallet</source>
-        <translation>No es pot reduir la versió del moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="187"/>
-        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
-        <translation>No es pot resoldre l&apos;adreça -bind: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="188"/>
-        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
-        <translation>No es pot resoldre l&apos;adreça -externalip: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="189"/>
-        <source>Cannot write default address</source>
-        <translation>No es pot escriure l&apos;adreça per defecte</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="190"/>
-        <source>Clear list of wallet transactions (diagnostic tool; implies -rescan)</source>
-        <translation>Neteja la llista de transaccions del moneder (eina de diagnòstic; implica -rescan)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="191"/>
-        <source>Collateral is not valid.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="192"/>
-        <source>Collateral not valid.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="193"/>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Connecta només al(s) node(s) especificats</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="194"/>
-        <source>Connect through SOCKS proxy</source>
-        <translation>Connecta a través d&apos;un proxy SOCKS</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="195"/>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="196"/>
-        <source>Connect to KeePassHttp on port &lt;port&gt; (default: 19455)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="197"/>
-        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Connecta al node per obtenir les adreces de les connexions, i desconnecta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="198"/>
-        <source>Connection options:</source>
-        <translation>Opcions de connexió:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="199"/>
-        <source>Corrupted block database detected</source>
-        <translation>S&apos;ha detectat una base de dades de blocs corrupta</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="200"/>
-        <source>Bitsend Core Daemon</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="201"/>
-        <source>Bitsend Core RPC client version</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="202"/>
-        <source>Darksend is disabled.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="203"/>
-        <source>Darksend options:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="204"/>
-        <source>Debugging/Testing options:</source>
-        <translation>Opcions de depuració/proves:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="205"/>
-        <source>Disable safemode, override a real safe mode event (default: 0)</source>
-        <translation>Inhabilia el mode segur (safemode), invalida un esdeveniment de mode segur real (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="206"/>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Descobreix la pròpia adreça IP (per defecte: 1 quan escoltant i no -externalip)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="207"/>
-        <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>No carreguis el moneder i inhabilita les crides RPC del moneder</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="208"/>
-        <source>Do you want to rebuild the block database now?</source>
-        <translation>Voleu reconstruir la base de dades de blocs ara?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="209"/>
-        <source>Done loading</source>
-        <translation>Ha acabat la càrrega</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="210"/>
-        <source>Downgrading and trying again.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="211"/>
-        <source>Enable the client to act as a Xnode (0-1, default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="212"/>
-        <source>Entries are full.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="213"/>
-        <source>Error connecting to Xnode.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="214"/>
-        <source>Error initializing block database</source>
-        <translation>Error carregant la base de dades de blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="215"/>
-        <source>Error initializing wallet database environment %s!</source>
-        <translation>Error inicialitzant l&apos;entorn de la base de dades del moneder %s!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="216"/>
-        <source>Error loading block database</source>
-        <translation>Error carregant la base de dades del bloc</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="217"/>
-        <source>Error loading wallet.dat</source>
-        <translation>Error en carregar wallet.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="218"/>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Error en carregar wallet.dat: Moneder corrupte</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="219"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitsend</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="220"/>
-        <source>Error opening block database</source>
-        <translation>Error en obrir la base de dades de blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="221"/>
-        <source>Error reading from database, shutting down.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="222"/>
-        <source>Error recovering public key.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="223"/>
-        <source>Error</source>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="224"/>
-        <source>Error: Disk space is low!</source>
-        <translation>Error: Espai al disc baix!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="225"/>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Error: El moneder està bloquejat, no és possible crear la transacció!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="226"/>
-        <source>Error: You already have pending entries in the Darksend pool</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="227"/>
-        <source>Error: system error: </source>
-        <translation>Error: error de sistema: </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="228"/>
-        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Ha fallat escoltar a qualsevol port. Feu servir -listen=0 si voleu fer això.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="229"/>
-        <source>Failed to read block info</source>
-        <translation>Ha fallat la lectura de la informació del bloc</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="230"/>
-        <source>Failed to read block</source>
-        <translation>Ha fallat la lectura del bloc</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="231"/>
-        <source>Failed to sync block index</source>
-        <translation>Ha fallat la sincronització de l&apos;índex de blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="232"/>
-        <source>Failed to write block index</source>
-        <translation>Ha fallat la escriptura de l&apos;índex de blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="233"/>
-        <source>Failed to write block info</source>
-        <translation>Ha fallat la escriptura de la informació de bloc</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="234"/>
-        <source>Failed to write block</source>
-        <translation>Ha fallat l&apos;escriptura del bloc</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="235"/>
-        <source>Failed to write file info</source>
-        <translation>Ha fallat l&apos;escriptura de la informació de fitxer</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="236"/>
-        <source>Failed to write to coin database</source>
-        <translation>Ha fallat l&apos;escriptura de la basse de dades de monedes</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="237"/>
-        <source>Failed to write transaction index</source>
-        <translation>Ha fallat l&apos;escriptura de l&apos;índex de transaccions</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="238"/>
-        <source>Failed to write undo data</source>
-        <translation>Ha fallat el desfer de dades</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="239"/>
-        <source>Fee per kB to add to transactions you send</source>
-        <translation>Comissió per kB per afegir a les transaccions que envieu</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="240"/>
-        <source>Fees smaller than this are considered zero fee (for relaying) (default:</source>
-        <translation>Les comissions inferiors que aquesta es consideren comissions zero (a efectes de transmissió) (per defecte:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="241"/>
-        <source>Force safe mode (default: 0)</source>
-        <translation>Força el mode segur (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="242"/>
-        <source>Generate coins (default: 0)</source>
-        <translation>Genera monedes (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="243"/>
-        <source>Get help for a command</source>
-        <translation>Obté ajuda d&apos;una ordre.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="244"/>
-        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
-        <translation>Quants blocs s&apos;han de confirmar a l&apos;inici (per defecte: 288, 0 = tots)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="245"/>
-        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Si no se subministra &lt;category&gt;, mostra tota la informació de depuració.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="246"/>
-        <source>Ignore Xnodes less than version (example: 70050; default : 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="247"/>
-        <source>Importing...</source>
-        <translation>S&apos;està important...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="248"/>
-        <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Importa blocs de un fitxer blk000??.dat extern</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="249"/>
-        <source>Incompatible mode.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="250"/>
-        <source>Incompatible version.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="251"/>
-        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>No s&apos;ha trobat el bloc de gènesi o és incorrecte. El directori de dades de la xarxa és incorrecte?</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="252"/>
-        <source>Information</source>
-        <translation>Informació</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="253"/>
-        <source>Initialization sanity check failed. Bitsend Core is shutting down.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="254"/>
-        <source>Input is not valid.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="255"/>
-        <source>InstantX options:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="256"/>
-        <source>Insufficient funds</source>
-        <translation>Balanç insuficient</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="257"/>
-        <source>Insufficient funds.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="258"/>
-        <source>Invalid -onion address: &apos;%s&apos;</source>
-        <translation>Adreça -onion no vàlida: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="259"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation>Adreça -proxy invalida: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="260"/>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Import no vàlid per a -minrelaytxfee=&lt;amount&gt;: «%s»</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="261"/>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Import no vàlid per a -mintxfee=&lt;amount&gt;: «%s»</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="262"/>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Import no vàlid per a -paytxfee=&lt;amount&gt;: «%s»</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="263"/>
-        <source>Invalid amount</source>
-        <translation>Import no vàlid</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="264"/>
-        <source>Invalid Xnodeprivkey. Please see documenation.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="265"/>
-        <source>Invalid private key.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="266"/>
-        <source>Invalid script detected.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="267"/>
-        <source>KeePassHttp id for the established association</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="268"/>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="269"/>
-        <source>Keep N bitsend anonymized (default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="270"/>
-        <source>Keep at most &lt;n&gt; unconnectable blocks in memory (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="271"/>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="272"/>
-        <source>Last Darksend was too recent.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="273"/>
-        <source>Last successful Darksend action was too recent.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="274"/>
-        <source>Limit size of signature cache to &lt;n&gt; entries (default: 50000)</source>
-        <translation>Mida límit de la memòria cau de signatura per a &lt;n&gt; entrades (per defecte: 50000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="275"/>
-        <source>List commands</source>
-        <translation>Llista d&apos;ordres</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="276"/>
-        <source>Listen for connections on &lt;port&gt; (default: 8886 or testnet: 8885)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="277"/>
-        <source>Loading addresses...</source>
-        <translation>S&apos;estan carregant les adreces...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="278"/>
-        <source>Loading block index...</source>
-        <translation>S&apos;està carregant l&apos;índex de blocs...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="279"/>
-        <source>Loading Xnode list...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="280"/>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="281"/>
-        <source>Loading wallet...</source>
-        <translation>S&apos;està carregant el moneder...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="282"/>
-        <source>Log transaction priority and fee per kB when mining blocks (default: 0)</source>
-        <translation>Registra la prioritat de transacció i comissió per kB en minar blocs (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="283"/>
-        <source>Maintain a full transaction index (default: 0)</source>
-        <translation>Manté l&apos;índex sencer de transaccions (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="284"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Manté com a molt &lt;n&gt; connexions a iguals (per defecte: 125)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="285"/>
-        <source>Xnode options:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="286"/>
-        <source>Xnode queue is full.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="287"/>
-        <source>Xnode:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="288"/>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Mida màxima del buffer de recepció per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="289"/>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Mida màxima del buffer d&apos;enviament per a cada connexió, &lt;n&gt;*1000 bytes (default: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="290"/>
-        <source>Missing input transaction information.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="291"/>
-        <source>No compatible Xnode found.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="292"/>
-        <source>No funds detected in need of denominating.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="293"/>
-        <source>No Xnodes detected.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="294"/>
-        <source>No matching denominations found for mixing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="295"/>
-        <source>Non-standard public key detected.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="296"/>
-        <source>Not compatible with existing transactions.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="297"/>
-        <source>Not enough file descriptors available.</source>
-        <translation>No hi ha suficient descriptors de fitxers disponibles.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="298"/>
-        <source>Not in the Xnode list.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="299"/>
-        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
-        <translation>Només accepta cadenes de blocs que coincideixin amb els punts de prova (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="300"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Només connecta als nodes de la xarxa &lt;net&gt; (IPv4, IPv6 o Tor)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="301"/>
         <source>Options:</source>
         <translation>Opcions:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="302"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Contrasenya per a connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="303"/>
-        <source>Prepend debug output with timestamp (default: 1)</source>
-        <translation>Posa davant de la sortida de depuració una marca horària (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="304"/>
-        <source>Print block on startup, if found in block index</source>
-        <translation>Imprimeix el block a l&apos;inici, si es troba l&apos;índex de blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="305"/>
-        <source>Print block tree on startup (default: 0)</source>
-        <translation>Imprimeix l&apos;arbre de blocs a l&apos;inici (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Opcions RPC SSL: (veieu el wiki del Bitsend per a instruccions de configuració de l&apos;SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="307"/>
-        <source>RPC client options:</source>
-        <translation>Opcions del client RPC:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="308"/>
-        <source>RPC server options:</source>
-        <translation>Opcions del servidor RPC:</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="309"/>
-        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Descarta a l&apos;atzar 1 de cada &lt;n&gt; missatges de la xarxa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="310"/>
-        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Introdueix incertesa en 1 de cada &lt;n&gt; missatges de la xarxa</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="311"/>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Reconstrueix l&apos;índex de la cadena de blocs dels fitxers actuals blk000??.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="312"/>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Reescaneja la cadena de blocs en les transaccions de moneder perdudes</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="313"/>
-        <source>Rescanning...</source>
-        <translation>S&apos;està reescanejant...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="314"/>
-        <source>Run a thread to flush wallet periodically (default: 1)</source>
-        <translation>Executa un fil per buidar el moneder periòdicament (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="315"/>
-        <source>Run in the background as a daemon and accept commands</source>
-        <translation>Executa en segon pla com a programa dimoni i accepta ordres</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Opcions SSL: (veure la Wiki de Bitsend per a instruccions de configuració SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="317"/>
-        <source>Select SOCKS version for -proxy (4 or 5, default: 5)</source>
-        <translation>Selecciona la versió de SOCKS del -proxy (4 o 5, per defecte: 5)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="318"/>
-        <source>Send command to Bitsend Core</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="319"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Envia ordres al node en execució a &lt;ip&gt; (per defecte: 127.0.0.1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="320"/>
-        <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>Envia informació de traça/depuració a la consola en comptes del fitxer debug.log</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="321"/>
-        <source>Server certificate file (default: server.cert)</source>
-        <translation>Fitxer del certificat de servidor (per defecte: server.cert)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="322"/>
-        <source>Server private key (default: server.pem)</source>
-        <translation>Clau privada del servidor (per defecte: server.pem)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="323"/>
-        <source>Session not complete!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="324"/>
-        <source>Session timed out (30 seconds), please resubmit.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="325"/>
-        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Defineix la mida de la memòria cau de la base de dades en megabytes (%d a %d, per defecte: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="326"/>
-        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Defineix el límit de nombre de claus a &lt;n&gt; (per defecte: 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="327"/>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Defineix la mida màxim del bloc en bytes (per defecte: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="328"/>
-        <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Defineix una mida mínima de bloc en bytes (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="329"/>
-        <source>Set the Xnode private key</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="330"/>
-        <source>Set the number of threads to service RPC calls (default: 4)</source>
-        <translation>Estableix el nombre de fils per atendre trucades RPC (per defecte: 4)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="331"/>
-        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: 1)</source>
-        <translation>Defineix el senyal DB_PRIVATE en l&apos;entorn db del moneder (per defecte: 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="332"/>
-        <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Mostra totes les opcions de depuració (ús: --help  --help-debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="333"/>
-        <source>Show benchmark information (default: 0)</source>
-        <translation>Mostra la informació del test de referència (per defecte: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="334"/>
-        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Redueix el fitxer debug.log durant l&apos;inici del client (per defecte: 1 quan no -debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="335"/>
-        <source>Signing failed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="336"/>
-        <source>Signing timed out, please resubmit.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="337"/>
-        <source>Signing transaction failed</source>
-        <translation>Ha fallat la signatura de la transacció</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="338"/>
-        <source>Specify configuration file (default: bitsend.conf)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="339"/>
-        <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Especifica el temps limit per a un intent de connexió en mil·lisegons (per defecte: 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="340"/>
         <source>Specify data directory</source>
         <translation>Especifica el directori de dades</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="341"/>
-        <source>Specify Xnode configuration file (default: Xnode.conf)</source>
-        <translation type="unfinished"/>
+        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
+        <translation>Connecta al node per obtenir les adreces de les connexions, i desconnecta</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="342"/>
-        <source>Specify pid file (default: bitsendd.pid)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="343"/>
-        <source>Specify wallet file (within data directory)</source>
-        <translation>Especifica un fitxer de moneder (dins del directori de dades)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="344"/>
         <source>Specify your own public address</source>
         <translation>Especifiqueu la vostra adreça pública</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="345"/>
-        <source>Spend unconfirmed change when sending transactions (default: 1)</source>
-        <translation>Gasta el canvi sense confirmar en enviar transaccions (per defecte: 1)</translation>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation>Accepta la línia d'ordres i ordres JSON-RPC </translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="346"/>
-        <source>Start Bitsend Core Daemon</source>
-        <translation type="unfinished"/>
+        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
+        <translation>Distribuït sota la llicència del programari MIT, consulteu el fitxer d'acompanyament %s o %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="347"/>
-        <source>System error: </source>
-        <translation>Error de sistema: </translation>
+        <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
+        <translation>Si no es proporciona &lt;category&gt; o si &lt;category&gt; = 1, treu a la sortida tota la informació de depuració.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="348"/>
-        <source>This help message</source>
-        <translation>Aquest misatge d&apos;ajuda</translation>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>Poda configurada per sota el mínim de %d MiB. Utilitzeu un nombre superior.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="349"/>
-        <source>This is intended for regression testing tools and app development.</source>
-        <translation>Això es així per a eines de proves de regressió per al desenvolupament d&apos;aplicacions.</translation>
+        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
+        <translation>Poda: la darrera sincronització del moneder va més enllà de les dades podades. Cal que activeu -reindex (baixeu tota la cadena de blocs de nou en cas de node podat)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="350"/>
-        <source>This is not a Xnode.</source>
-        <translation type="unfinished"/>
+        <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
+        <translation>Els rescanejos no són possible en el mode de poda. Caldrà que utilitzeu -reindex, que tornarà a baixar la cadena de blocs sencera.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="351"/>
-        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Límit per a desconectar connexions errònies (per defecte: 100)</translation>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Error: s'ha produït un error intern fatal. Vegeu debug.log per a més detalls</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="352"/>
-        <source>To use the %s option</source>
-        <translation>Utilitza l&apos;opció %s</translation>
+        <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
+        <translation>Comissió (en %s/kB) per afegir a les transaccions que envieu (per defecte: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="353"/>
-        <source>Transaction amount too small</source>
-        <translation>Import de la transacció massa petit</translation>
+        <source>Pruning blockstore...</source>
+        <translation>S'està podant la cadena de blocs...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="354"/>
-        <source>Transaction amounts must be positive</source>
-        <translation>Els imports de les transaccions han de ser positius</translation>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation>Executa en segon pla com a programa dimoni i accepta ordres</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="355"/>
-        <source>Transaction created successfully.</source>
-        <translation type="unfinished"/>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>No s'ha pogut iniciar el servidor HTTP. Vegeu debug.log per a més detalls.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="356"/>
-        <source>Transaction fees are too high.</source>
-        <translation type="unfinished"/>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="357"/>
-        <source>Transaction not valid.</source>
-        <translation type="unfinished"/>
+        <source>The %s developers</source>
+        <translation>Els desenvolupadors %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="358"/>
-        <source>Transaction too large</source>
-        <translation>La transacció és massa gran</translation>
+        <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
+        <translation>Una taxa de tarifes (en %s / kB) que s'utilitzarà quan l'estimació de tarifes no tingui prou dades (per defecte: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="359"/>
-        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation type="unfinished"/>
+        <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
+        <translation>Acceptar les transaccions retransmeses rebudes de nodes de llista blanca, fins i tot quan no es retransmetin transaccions (per defecte: %d)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="360"/>
-        <source>Unable to sign Xnode payment winner, wrong key?</source>
-        <translation type="unfinished"/>
+        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
+        <translation>Vincula a una adreça específica i sempre escolta-hi. Utilitza la notació [host]:port per IPv6</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="361"/>
-        <source>Unable to sign spork message, wrong key?</source>
-        <translation type="unfinished"/>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>No es pot obtenir un bloqueig al directori de dades %s. %s probablement ja s'estigui executant.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="362"/>
-        <source>Unknown -socks proxy version requested: %i</source>
-        <translation>S&apos;ha demanat una versió desconeguda de -socks proxy: %i</translation>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>Elimina totes les transaccions del moneder i només recupera aquelles de la cadena de blocs a través de -rescan a l'inici</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="363"/>
-        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>Xarxa desconeguda especificada a -onlynet: &apos;%s&apos;</translation>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>S'ha produït un error en llegir %s. Totes les claus es llegeixen correctament, però les dades de la transacció o les entrades de la llibreta d'adreces podrien faltar o ser incorrectes.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="364"/>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Actualitza el moneder a l&apos;últim format</translation>
+        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
+        <translation>Excloeu la informació de depuració d'una categoria. Pot ser usat juntament amb -debug = 1 per generar registres de depuració per a totes les categories, excepte una o més categories especificades.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="365"/>
-        <source>Usage (deprecated, use bitsend-cli):</source>
-        <translation type="unfinished"/>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
+        <translation>Executa una ordre quan una transacció del moneder canviï (%s en cmd es canvia per TxID)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="366"/>
-        <source>Usage:</source>
-        <translation>Ús:</translation>
+        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
+        <translation>Transaccions addicionals a conservar en memòria per a les reconstruccions de blocs compactes (per defecte: %u)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="367"/>
-        <source>Use KeePass 2 integration using KeePassHttp plugin (default: 0)</source>
-        <translation type="unfinished"/>
+        <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
+        <translation>Si aquest bloc es troba a la cadena, suposa que ell i els seus avantpassats són vàlids i que es pot saltar la seva verificació d'script (0 per verificar-ho tot, per defecte: %s, testnet: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="368"/>
-        <source>Use N separate Xnodes to anonymize funds  (2-8, default: 2)</source>
-        <translation type="unfinished"/>
+        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
+        <translation>Màxim ajust mitjà permès per desplaçament del temps d'iguals. La perspectiva local del temps pot estar influenciada per iguals avançats o endarrerits per aquesta quantitat. (per defecte: %u segons)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="369"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Utilitza OpenSSL (https) per a connexions JSON-RPC</translation>
+        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
+        <translation>Tarifes totals màximes (en %s) per utilitzar-les en una sola transacció de monedes o transaccions en brut; establir-lo massa baix pot cancel·lar grans transaccions (per defecte: %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="370"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 0)</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Comproveu que la data i hora de l'ordinador són correctes. Si el rellotge és incorrecte, %s no funcionarà correctament.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="371"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Utilitza UPnP per a mapejar els ports d&apos;escolta (per defecte: 1 quan s&apos;escolta)</translation>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>Contribueix si trobes %s útil. Visita %s per obtenir més informació sobre el programari.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="372"/>
-        <source>Use the test network</source>
-        <translation>Utilitza la xarxa de prova</translation>
+        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
+        <translation>Consulta adreces d'iguals a través de la cerca del DNS, si tens poques adreces (per defecte: 1, tret que s'utilitzi la connexió)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="373"/>
-        <source>Username for JSON-RPC connections</source>
-        <translation>Nom d&apos;usuari per a connexions JSON-RPC</translation>
+        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
+        <translation>Redueix els requisits d'emmagatzematge permetent la poda (supressió) dels blocs antics. Això permet executar la crida RPC prunblockclass per eliminar blocs específics i permet la poda automàtica de blocs antics si es proporciona una mida de destinació en MiB. Aquest mode és incompatible amb -txindex i -rescan. Advertència: si torna a iniciar aquesta configuració, cal que torneu a baixar la cadena de blocs completa. (per defecte: 0 = desactivar poda de blocs, 1 = permetre la poda manual a través de RPC,&gt;%u = poda automàticament els fitxers de bloc per quedar sota la mida de destinació especificada en MiB)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="374"/>
-        <source>Value more than Darksend pool maximum allows.</source>
-        <translation type="unfinished"/>
+        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
+        <translation>Defineix el nombre de fils de verificació d'scripts (%u a %d, 0 = auto, &lt;0 = deixa tants nuclis lliures, per defecte: %d)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="375"/>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <translation>La base de dades de blocs conté un bloc que sembla ser del futur. Això pot ser degut a que la data i l'hora del vostre ordinador s'estableix incorrectament. Només reconstruïu la base de dades de blocs si esteu segur que la data i l'hora del vostre ordinador són correctes</translation>
+    </message>
+    <message>
+        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
+        <translation>Aquesta és una versió de pre-llançament - utilitza-la sota la teva responsabilitat - No usar per a minería o aplicacions de compra-venda</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
+        <translation>Aquesta és la tarifa de transacció que podeu descartar si el canvi és menor que el polsim a aquest nivell</translation>
+    </message>
+    <message>
+        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
+        <translation>No es poden reproduir els blocs. Haureu de reconstruir la base de dades mitjançant -reindex- chainstate.</translation>
+    </message>
+    <message>
+        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
+        <translation>No es pot rebobinar la base de dades a un estat de pre-bifurcament. Haureu de tornar a descarregar la cadena de blocks</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
+        <translation>Utilitzeu UPnP per mapejar el port d'escolta (per defecte: 1 quan s'escolta i no -proxy)</translation>
+    </message>
+    <message>
+        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
+        <translation>Nom d'usuari i contrasenya resumida per a les connexions JSON-RPC. El camp &lt;userpw&gt; ve en el format: &lt;USERNAME&gt; : &lt;SALT&gt; $ &lt;HASH&gt; . Un script canònic python està inclòs a share / rpcuser. El client es connecta normalment utilitzant rpcuser =&lt;USERNAME&gt;/ rpcpassword =&lt;PASSWORD&gt; com a parell d'arguments. Aquesta opció es pot especificar diverses vegades</translation>
+    </message>
+    <message>
+        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
+        <translation>El moneder no crearà transaccions que infringeixin els límits de la cadena mempool (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
+        <translation>Avís: la xarxa no sembla que hi estigui plenament d'acord. Alguns miners sembla que estan experimentant problemes.</translation>
+    </message>
+    <message>
+        <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
+        <translation>Avís: sembla que no estem plenament d'acord amb els nostres iguals! Podria caler que actualitzar l'aplicació, o potser que ho facin altres nodes.</translation>
+    </message>
+    <message>
+        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
+        <translation>Si es guarda el mempool quan s'apaga i es carrega quan es reinicia (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>%d of last 100 blocks have unexpected version</source>
+        <translation>%d dels últims 100 blocs tenen una versió inesperada</translation>
+    </message>
+    <message>
+        <source>%s corrupt, salvage failed</source>
+        <translation>%s està malmès, el rescat de les dades ha fallat</translation>
+    </message>
+    <message>
+        <source>-maxmempool must be at least %d MB</source>
+        <translation>-maxmempool ha de tenir almenys %d MB</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt; pot ser:</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Accepta connexions de fora (per defecte: 1 si no -proxy o -connect)</translation>
+    </message>
+    <message>
+        <source>Append comment to the user agent string</source>
+        <translation>Afegiu un comentari a la cadena de l'agent d'usuari</translation>
+    </message>
+    <message>
+        <source>Attempt to recover private keys from a corrupt wallet on startup</source>
+        <translation>Intent de recuperació de claus privades d'una cartera malmesa a l'inici</translation>
+    </message>
+    <message>
+        <source>Block creation options:</source>
+        <translation>Opcions de la creació de blocs:</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>No es pot resoldre -%s adreça: '%s'</translation>
+    </message>
+    <message>
+        <source>Chain selection options:</source>
+        <translation>Opcions de selecció de cadenes:</translation>
+    </message>
+    <message>
+        <source>Change index out of range</source>
+        <translation>Canvieu l'índex fora de l'abast</translation>
+    </message>
+    <message>
+        <source>Connection options:</source>
+        <translation>Opcions de connexió:</translation>
+    </message>
+    <message>
+        <source>Copyright (C) %i-%i</source>
+        <translation>Copyright (C) %i-%i</translation>
+    </message>
+    <message>
+        <source>Corrupted block database detected</source>
+        <translation>S'ha detectat una base de dades de blocs corrupta</translation>
+    </message>
+    <message>
+        <source>Debugging/Testing options:</source>
+        <translation>Opcions de depuració/proves:</translation>
+    </message>
+    <message>
+        <source>Do not load the wallet and disable wallet RPC calls</source>
+        <translation>No carreguis el moneder i inhabilita les crides RPC del moneder</translation>
+    </message>
+    <message>
+        <source>Do you want to rebuild the block database now?</source>
+        <translation>Voleu reconstruir la base de dades de blocs ara?</translation>
+    </message>
+    <message>
+        <source>Enable publish hash block in &lt;address&gt;</source>
+        <translation>Habiliteu publicar el bloc de hash a &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish hash transaction in &lt;address&gt;</source>
+        <translation>Habilita la publicació de la transacció hash a &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw block in &lt;address&gt;</source>
+        <translation>Habiliteu publicar el bloc cru a &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation>Habiliteu publicar transaccions en cru a &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable transaction replacement in the memory pool (default: %u)</source>
+        <translation>Activa el reemplaçament de transaccions al grup de memòria (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Error initializing block database</source>
+        <translation>Error carregant la base de dades de blocs</translation>
+    </message>
+    <message>
+        <source>Error initializing wallet database environment %s!</source>
+        <translation>Error inicialitzant l'entorn de la base de dades del moneder %s!</translation>
+    </message>
+    <message>
+        <source>Error loading %s</source>
+        <translation>Error carregant %s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet corrupted</source>
+        <translation>S'ha produït un error en carregar %s: el moneder és corrupte</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet requires newer version of %s</source>
+        <translation>S'ha produït un error en carregar %s: el moneder requereix una versió més nova de %s</translation>
+    </message>
+    <message>
+        <source>Error loading block database</source>
+        <translation>Error carregant la base de dades del bloc</translation>
+    </message>
+    <message>
+        <source>Error opening block database</source>
+        <translation>Error en obrir la base de dades de blocs</translation>
+    </message>
+    <message>
+        <source>Error: Disk space is low!</source>
+        <translation>Error: Espai al disc baix!</translation>
+    </message>
+    <message>
+        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
+        <translation>Ha fallat escoltar a qualsevol port. Feu servir -listen=0 si voleu fer això.</translation>
+    </message>
+    <message>
+        <source>Importing...</source>
+        <translation>S'està important...</translation>
+    </message>
+    <message>
+        <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
+        <translation>No s'ha trobat el bloc de gènesi o és incorrecte. El directori de dades de la xarxa és incorrecte?</translation>
+    </message>
+    <message>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>S'ha produït un error en la verificació de sanejament d'inicialització. S'està tancant %s.</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Import invàlid per -%s=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
+        <translation>Import invàlid per -discardfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
+        <translation>Import invàlid per -fallbackfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
+        <translation>Manteniu el grup de memòria de la transacció per sota de &lt;n&gt; megabytes (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Loading P2P addresses...</source>
+        <translation>S'estan carregant les adreces P2P ...</translation>
+    </message>
+    <message>
+        <source>Loading banlist...</source>
+        <translation>Carregant banlist ...</translation>
+    </message>
+    <message>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation>Ubicació de la cookie auth (per defecte: directori de dades)</translation>
+    </message>
+    <message>
+        <source>Not enough file descriptors available.</source>
+        <translation>No hi ha suficient descriptors de fitxers disponibles.</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Només connecta als nodes de la xarxa &lt;net&gt; (ipv4, ipv6 o onion)</translation>
+    </message>
+    <message>
+        <source>Print this help message and exit</source>
+        <translation>Imprimiu aquest missatge d'ajuda i sortiu</translation>
+    </message>
+    <message>
+        <source>Print version and exit</source>
+        <translation>Imprimir versió i sortir</translation>
+    </message>
+    <message>
+        <source>Prune cannot be configured with a negative value.</source>
+        <translation>La poda no es pot configurar amb un valor negatiu.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -txindex.</source>
+        <translation>El mode de poda és incompatible amb -txindex.</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
+        <translation>Reconstrueix l'estat de la cadena i l'índex de blocs des dels fitxers blk*.dat del disc</translation>
+    </message>
+    <message>
+        <source>Rebuild chain state from the currently indexed blocks</source>
+        <translation>Reconstrueix l'estat de cadena dels blocs actualment indexats</translation>
+    </message>
+    <message>
+        <source>Replaying blocks...</source>
+        <translation>Reproduïnt blocs ...</translation>
+    </message>
+    <message>
+        <source>Rewinding blocks...</source>
+        <translation>Rebobinant blocs...</translation>
+    </message>
+    <message>
+        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
+        <translation>Defineix la mida de la memòria cau de la base de dades en megabytes (%d a %d, per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Specify wallet file (within data directory)</source>
+        <translation>Especifica un fitxer de moneder (dins del directori de dades)</translation>
+    </message>
+    <message>
+        <source>The source code is available from %s.</source>
+        <translation>El codi font està disponible a %s.</translation>
+    </message>
+    <message>
+        <source>Transaction fee and change calculation failed</source>
+        <translation>La tarifa de transacció i el càlcul del canvi no han funcionat</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>No es pot enllaçar a %s en aquest ordinador. %s probablement ja s'estigui executant.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>S'ha ignorat l'argument no admès -benchmark , feu servir -debug=bench.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>S'ha ignorat l'argument no admès -debugnet, feu servir -debug=net.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -tor found, use -onion.</source>
+        <translation>S'ha trobat un argument -tor no acceptat. Feu servir -onion.</translation>
+    </message>
+    <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>Categoria de registre no admesa %s=%s.</translation>
+    </message>
+    <message>
+        <source>Upgrading UTXO database</source>
+        <translation>Actualització de la base de dades UTXO</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>Utilitza UPnP per a mapejar el port d'escolta (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Use the test chain</source>
+        <translation>Utilitza la cadena de proves</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>El comentari de l'agent d'usuari (%s) conté caràcters insegurs.</translation>
+    </message>
+    <message>
         <source>Verifying blocks...</source>
-        <translation>S&apos;estan verificant els blocs...</translation>
+        <translation>S'estan verificant els blocs...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="376"/>
-        <source>Verifying wallet...</source>
-        <translation>S&apos;està verificant el moneder...</translation>
+        <source>Wallet debugging/testing options:</source>
+        <translation>Opcions de depuració/proves del moneder:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="377"/>
-        <source>Wait for RPC server to start</source>
-        <translation>Espereu el servidor RPC per començar</translation>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>Cal reescriure el moneder: reinicieu %s per a completar-ho</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="378"/>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>El moneder %s resideix fora del directori de dades %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="379"/>
-        <source>Wallet is locked.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="380"/>
-        <source>Wallet needed to be rewritten: restart Bitsend to complete</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="381"/>
         <source>Wallet options:</source>
         <translation>Opcions de moneder:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="382"/>
+        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
+        <translation>Permet les connexions JSON-RPC d'una font específica. Vàlid per a &lt;ip&gt; són una IP individual (p. ex., 1.2.3.4), una xarxa / màscara de xarxa (p. ex., 1.2.3.4/255.255.255.0) o una xarxa/CIDR (p. ex., 1.2.3.4/24). Es pot especificar aquesta opció moltes vegades</translation>
+    </message>
+    <message>
+        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
+        <translation>Vincula l'adreça donada i posa a la llista blanca els iguals que s'hi connectin. Feu servir la notació [host]:port per a IPv6</translation>
+    </message>
+    <message>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Crea fitxers nous amb els permisos per defecte del sistema, en comptes de l'umask 077 (només efectiu amb la funcionalitat de moneder inhabilitada)</translation>
+    </message>
+    <message>
+        <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
+        <translation>Descobreix l'adreça IP pròpia (per defecte: 1 quan s'escolta i no -externalip o -proxy)</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>Error: ha fallat escoltar les connexions entrants (l'escoltament ha retornat l'error %s)</translation>
+    </message>
+    <message>
+        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>Executa l'ordre quan es rebi un avís rellevant o veiem una forquilla molt llarga (%s en cmd és reemplaçat per un missatge)</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
+        <translation>Les comissions (en %s/kB) més petites que això es consideren tarifes zero per a la retransmissió, la mineria i la creació de transaccions (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>Si no s'especifica una paytxfee (comissió de transacció de pagament), inclogueu suficient comissió per tal que les transaccions comencin a confirmar-se en una mitja de n blocs (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Import no vàlid per a -maxtxfee=&lt;amount&gt;: '%s' (cal que sigui com a mínim la comissió de minrelay de %s per evitar que les comissions s'encallin)</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>Mida màxima de les dades en les transaccions de l'operador en què confiem i en les meves (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>Genera a l'atzar credencials per a cada connexió proxy. Això habilita l'aïllament del flux de Tor (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to send after the fee has been deducted</source>
+        <translation>L'import de la transacció és massa petit per enviar-la després que se'n dedueixi la comissió</translation>
+    </message>
+    <message>
+        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
+        <translation>Els iguals en la llista blanca no poden ser bandejats per DoS i es transmetran sempre llurs transaccions, fins i tot si ja són a la mempool. Això és útil, p. ex., per a una passarel·la</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation>Cal que torneu a construir la base de dades fent servir -reindex per tornar al mode no podat. Això tornarà a baixar la cadena de blocs sencera</translation>
+    </message>
+    <message>
+        <source>(default: %u)</source>
+        <translation>(per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>Accepta sol·licituds REST públiques (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>Crea automàticament el servei ocult de Tor (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy</source>
+        <translation>Connecta a través del proxy SOCKS5</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
+        <translation>S'ha produït un error en carregar %s: no es pot desactivar HD en un moneder HD ja existent</translation>
+    </message>
+    <message>
+        <source>Error reading from database, shutting down.</source>
+        <translation>Error en llegir la base de dades, tancant.</translation>
+    </message>
+    <message>
+        <source>Error upgrading chainstate database</source>
+        <translation>S'ha produït un error en actualitzar la base de dades de chainstate</translation>
+    </message>
+    <message>
+        <source>Imports blocks from external blk000??.dat file on startup</source>
+        <translation>Importa blocs de fitxers externs blk000?.dat a l'inici de l'apliació</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Informació</translation>
+    </message>
+    <message>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Adreça o nom de l'ordinador -onion no vàlida: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid -proxy address or hostname: '%s'</source>
+        <translation>Adreça o nom de l'ordinador -proxy no vàlida: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Import no vàlid per a -paytxfee=&lt;amount&gt;: «%s» (ha de ser com a mínim %s)</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>S'ha especificat una màscara de xarxa no vàlida a -whitelist: «%s»</translation>
+    </message>
+    <message>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>Manté com a màxim &lt;n&gt; transaccions no connectables en memòria (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Cal especificar un port amb -whitebind: «%s»</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Opcions de transmissió del node:</translation>
+    </message>
+    <message>
+        <source>RPC server options:</source>
+        <translation>Opcions del servidor RPC:</translation>
+    </message>
+    <message>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>Reducció de -maxconnections de %d a %d, a causa de les limitacions del sistema.</translation>
+    </message>
+    <message>
+        <source>Rescan the block chain for missing wallet transactions on startup</source>
+        <translation>Reescaneja la cadena de blocs per a les operacions del moneder que falten a l'inici</translation>
+    </message>
+    <message>
+        <source>Send trace/debug info to console instead of debug.log file</source>
+        <translation>Envia informació de traça/depuració a la consola en comptes del fitxer debug.log</translation>
+    </message>
+    <message>
+        <source>Show all debugging options (usage: --help -help-debug)</source>
+        <translation>Mostra totes les opcions de depuració (ús: --help  --help-debug)</translation>
+    </message>
+    <message>
+        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
+        <translation>Redueix el fitxer debug.log durant l'inici del client (per defecte: 1 quan no -debug)</translation>
+    </message>
+    <message>
+        <source>Signing transaction failed</source>
+        <translation>Ha fallat la signatura de la transacció</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to pay the fee</source>
+        <translation>L'import de la transacció és massa petit per pagar-ne una comissió</translation>
+    </message>
+    <message>
+        <source>This is experimental software.</source>
+        <translation>Això és programari experimental.</translation>
+    </message>
+    <message>
+        <source>Tor control port password (default: empty)</source>
+        <translation>Contrasenya del port de control Tor (per defecte: buida)</translation>
+    </message>
+    <message>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation>Port de control de tor si l'escolta onion està  habilitada (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Transaction amount too small</source>
+        <translation>Import de la transacció massa petit</translation>
+    </message>
+    <message>
+        <source>Transaction too large for fee policy</source>
+        <translation>Transacció massa gran per a la política de comissions</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>La transacció és massa gran</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
+        <translation>No s'ha pogut vincular a %s en aquest ordinador (la vinculació ha retornat l'error %s)</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format on startup</source>
+        <translation>Actualitza el moneder al format més recent a l'inici de l'aplicació</translation>
+    </message>
+    <message>
+        <source>Username for JSON-RPC connections</source>
+        <translation>Nom d'usuari per a connexions JSON-RPC</translation>
+    </message>
+    <message>
+        <source>Verifying wallet(s)...</source>
+        <translation>S'està verificant el moneder(s) ...</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Avís</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="383"/>
-        <source>Warning: Deprecated argument -debugnet ignored, use -debug=net</source>
-        <translation>Avís: argument obsolet -debugnet ignorat, feu servir -debug=net</translation>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>Advertència: regles noves desconegudes activades (versionbit %i)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="384"/>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Avís: aquesta versió està obsoleta. És necessari actualitzar-la!</translation>
+        <source>Whether to operate in a blocks only mode (default: %u)</source>
+        <translation>Si s'ha d'operar en un mode de blocs només (per defecte: %u)</translation>
     </message>
     <message>
-        <source>Wrong state.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="385"/>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Cal que reconstruïu la base de dades fent servir -reindex per canviar -txindex</translation>
+        <translation>Heu de reconstruir la base de dades mitjançant -reindex per canviar -txindex</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="386"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Se suprimeixen totes les transaccions del moneder...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="387"/>
-        <source>on startup</source>
-        <translation>a l&apos;inici de l&apos;aplicació</translation>
+        <source>ZeroMQ notification options:</source>
+        <translation>Opcions de notificació ZeroMQ:</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="388"/>
-        <source>version</source>
-        <translation>versió</translation>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Contrasenya per a connexions JSON-RPC</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="389"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>El fitxer wallet.data és corrupte. El rescat de les dades ha fallat</translation>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Executa l'ordre quan el millor bloc canviï (%s en cmd es reemplaça per un resum de bloc)</translation>
+    </message>
+    <message>
+        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
+        <translation>Permet consultes DNS per a -addnode, -seednode i -connect</translation>
+    </message>
+    <message>
+        <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
+        <translation>(1 = manté les metadades de les tx, p. ex., propietari del compte i informació de sol·licitud del pagament, 2 = prescindeix de les metadades de les tx)</translation>
+    </message>
+    <message>
+        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>-maxtxfee especificat molt alt! Comissions tan grans podrien pagar-se en una única transacció.</translation>
+    </message>
+    <message>
+        <source>Bind to given address to listen for JSON-RPC connections. This option is ignored unless -rpcallowip is also passed. Port is optional and overrides -rpcport. Use [host]:port notation for IPv6. This option can be specified multiple times (default: 127.0.0.1 and ::1 i.e., localhost, or if -rpcallowip has been specified, 0.0.0.0 and :: i.e., all addresses)</source>
+        <translation>Enllaçar a una adreça determinada per escoltar les connexions JSON-RPC. Aquesta opció s'ignora a menys que -rpcallowip també s'especifiqui. El port és opcional i sobreescriu -rpcport. Utilitzeu la notació [host]:port per a IPv6. Aquesta opció es pot especificar diverses vegades (per defecte: 127.0.0.1 i :: 1, és a dir, localhost, o si s'ha especificat -rpcallowip, 0.0.0.0 i :: és a dir, totes les adreces)</translation>
+    </message>
+    <message>
+        <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
+        <translation>No mantingueu les transaccions en el mempool més de &lt;n&gt; hora (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Equivalent bytes per sigop in transactions for relay and mining (default: %u)</source>
+        <translation>Bytes equivalents per sigop en transaccions de relé i mineria (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
+        <translation>S'ha produït un error en carregar %s: no es pot activar HD en un moneder existent que no sigui HD</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
+        <translation>S'ha produït un error en carregar el moneder %s. El paràmetre -wallet només ha d'especificar un nom de fitxer (no una ruta d'accés).</translation>
+    </message>
+    <message>
+        <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Les comissions (en %s/kB) més petites que això es consideren comissions zero per a la creació de transaccions (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
+        <translation>Forçar la retranmissió de les transaccions de nodes de llista blanca encara que infringeixin la política de retransmissió local (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
+        <translation>Com d'exhaustiva és la verificació de blocs del -checkblocks (0-4, per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
+        <translation>Manté un índex complet de transaccions, utilitzat per la crida rpc getrawtransaction (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>Nombre de segons necessaris perquè els iguals de comportament qüestionable puguin tornar a connectar-se (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>Informació de sortida de la depuració (per defecte: %u, proporcionar &lt;category&gt; és opcional)</translation>
+    </message>
+    <message>
+        <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
+        <translation>Estableix la serialització de transaccions crues o bloc hexadecimal retornat en mode no verbose, no-segwit (0) o segwit(1) (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation>Suport de filtrat de blocs i transaccions amb filtres bloom (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
+        <translation>El tipus de tarifa (en %s/kB) que indica la vostra tolerància per descartar el canvi afegint-lo a la tarifa (per defecte: %s). Nota: Es descarta una sortida si és polsim a aquesta tarifa, però sempre anem a descartar la quota de relleu de polsim i una tarifa de descartat per sobre d'això està limitada per l'estimació de tarifes per al destí més llarg</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you may pay when fee estimates are not available.</source>
+        <translation>Aquesta és la tarifa de transacció que podeu pagar quan les estimacions de tarifes no estan disponibles.</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Aquest producte inclou programari desenvolupat pel Projecte OpenSSL per al seu ús en OpenSSL Toolkit %s i programari criptogràfic escrit per Eric Young i el programari UPnP escrit per Thomas Bernard.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>La longitud total de la cadena de la versió de xarxa (%i) supera la longitud màxima (%i). Redueix el nombre o la mida de uacomments.</translation>
+    </message>
+    <message>
+        <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
+        <translation>Intenta mantenir el trànsit sortint sota l'objectiu indicat (a MiB per 24 hores), 0 = sense límit (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>S'ha trobat l'argument -socks no compatible. L'establiment de la versió SOCKS ja no és possible, només es permeten els servidors proxy SOCKS5.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
+        <translation>S'ha ignorat l'argument no acceptat -whitelistalways, utilitza -whitelistrelay i/o -whitelistforcerelay.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>Utilitza un proxy SOCKS4 apart per a arribar als iguals a través de serveis ocults de Tor (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
+        <translation>Advertència: s'està minant versions de blocs desconegudes. És possible que s'estiguin aplicant regles desconegudes</translation>
+    </message>
+    <message>
+        <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>Advertència: el moender està malmès, les dades es recuperen! Original %s guardat com a %s en %s; si el vostre saldo o transaccions són incorrectes, haureu de restaurar des d'una còpia de seguretat.</translation>
+    </message>
+    <message>
+        <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
+        <translation>Nodes de llista blanca s'estan connectant des de l'adreça IP indicada (p. Ex. 1.2.3.4) o la xarxa notificada per CIDR (p. Ex. 1.2.3.0/24). Es pot especificar diverses vegades.</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>%s està especificat molt alt!</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>(per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>Demana sempre les adreces dels iguals a través de consultes DNS (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
+        <translation>S'ha produït un error en carregar el moneder %s. El nom del fitxer -wallet ha de ser un fitxer normal.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
+        <translation>S'ha produït un error en carregar el moneder %s. S'ha especificat un nom de fitxer duplicat -wallet.</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
+        <translation>S'ha produït un error en carregar el moneder %s. Caràcters no vàlids al nom del fitxer -wallet.</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>Quants blocs per comprovar a l'inici (per defecte: %u, 0 = tots)</translation>
+    </message>
+    <message>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>Inclou l'adreça IP a la sortida de depuració (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation>S'ha acabat el Keypool, si us plau, crideu a keypoolrefill primer</translation>
+    </message>
+    <message>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Escolta les connexions JSON-RPC en &lt;port&gt; (per defecte: %u o testnet: %u)</translation>
+    </message>
+    <message>
+        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Escolta les connexions en &lt;port&gt; (per defecte: %u o testnet: %u)</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
+        <translation>Manté com a màxim &lt;n&gt; connexions a iguals (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Make the wallet broadcast transactions</source>
+        <translation>Fes que el moneder faci difusió de les transaccions</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Memòria intermèdia màxima de recepció per connexió, &lt;n&gt;*1000 bytes (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Memòria intermèdia màxima d'enviament per connexió, &lt;n&gt;*1000 bytes (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Prepend debug output with timestamp (default: %u)</source>
+        <translation>Posa davant de la sortida de depuració una marca horària (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>Retransmet i mina les transaccions de l'operador (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Relay non-P2SH multisig (default: %u)</source>
+        <translation>Retransmet multisig no P2SH (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
+        <translation>Defineix la mida clau disponible a &lt;n&gt; (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Set maximum BIP141 block weight (default: %d)</source>
+        <translation>Estableix el pes màxim del bloc BIP141 (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Set the number of threads to service RPC calls (default: %d)</source>
+        <translation>Defineix el nombre de fils a crides de servei RPC (per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>Especifica el fitxer de configuració (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>Especifica el temps d'espera de la connexió en milisegons (mínim: 1, per defecte: %d)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>Especifica el fitxer pid (per defecte: %s)</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>Gasta el canvi no confirmat en enviar les transaccions (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Starting network threads...</source>
+        <translation>S'estan iniciant els fils de la xarxa...</translation>
+    </message>
+    <message>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation>El moneder evitarà pagar menys de la comissió de tramesa mínima</translation>
+    </message>
+    <message>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation>Aquesta és la comissió mínima de transacció que paga en cada transacció.</translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Aquesta és la comissió de transacció que pagareu si envieu una transacció.</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>Llindar per a desconnectar els iguals de comportament qüestionable (per defecte: %u)</translation>
+    </message>
+    <message>
+        <source>Transaction amounts must not be negative</source>
+        <translation>Els imports de la transacció no han de ser negatius</translation>
+    </message>
+    <message>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation>La transacció té massa temps d'una cadena de mempool</translation>
+    </message>
+    <message>
+        <source>Transaction must have at least one recipient</source>
+        <translation>La transacció ha de tenir com a mínim un destinatari</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: '%s'</source>
+        <translation>Xarxa desconeguda especificada a -onlynet: '%s'</translation>
+    </message>
+    <message>
+        <source>Insufficient funds</source>
+        <translation>Balanç insuficient</translation>
+    </message>
+    <message>
+        <source>Loading block index...</source>
+        <translation>S'està carregant l'índex de blocs...</translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>S'està carregant el moneder...</translation>
+    </message>
+    <message>
+        <source>Cannot downgrade wallet</source>
+        <translation>No es pot reduir la versió del moneder</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>S'està reescanejant...</translation>
+    </message>
+    <message>
+        <source>Done loading</source>
+        <translation>Ha acabat la càrrega</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Error</translation>
     </message>
 </context>
 </TS>

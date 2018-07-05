@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,8 +8,7 @@
 #include <QDialog>
 #include <QObject>
 
-class BitsendGUI;
-class ClientModel;
+class bitsendGUI;
 
 namespace Ui {
     class HelpMessageDialog;
@@ -42,8 +41,8 @@ class ShutdownWindow : public QWidget
     Q_OBJECT
 
 public:
-    ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static QWidget *showShutdownWindow(BitsendGUI *window);
+    explicit ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
+    static QWidget *showShutdownWindow(bitsendGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);

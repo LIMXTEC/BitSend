@@ -1,5 +1,5 @@
-Bitsend-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.8.3/
+bitsend-Qt version 0.8.3 is now available from:
+  http://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.

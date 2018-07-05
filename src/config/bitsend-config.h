@@ -9,16 +9,16 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Version Build */
-#define CLIENT_VERSION_BUILD 2
+#define CLIENT_VERSION_BUILD 0
 
 /* Version is release */
-#define CLIENT_VERSION_IS_RELEASE false
+#define CLIENT_VERSION_IS_RELEASE true
 
 /* Major version */
 #define CLIENT_VERSION_MAJOR 0
 
 /* Minor version */
-#define CLIENT_VERSION_MINOR 14
+#define CLIENT_VERSION_MINOR 16
 
 /* Build revision */
 #define CLIENT_VERSION_REVISION 0
@@ -33,7 +33,7 @@
 #define COPYRIGHT_HOLDERS_SUBSTITUTION "bitsend Core"
 
 /* Copyright year */
-#define COPYRIGHT_YEAR 2017
+#define COPYRIGHT_YEAR 2018
 
 /* Define to 1 to enable wallet functions */
 #define ENABLE_WALLET 1
@@ -150,6 +150,18 @@
    don't. */
 #define HAVE_DECL_STRNLEN 1
 
+/* Define to 1 if you have the declaration of `__builtin_clz', and to 0 if you
+   don't. */
+#define HAVE_DECL___BUILTIN_CLZ 1
+
+/* Define to 1 if you have the declaration of `__builtin_clzl', and to 0 if
+   you don't. */
+#define HAVE_DECL___BUILTIN_CLZL 1
+
+/* Define to 1 if you have the declaration of `__builtin_clzll', and to 0 if
+   you don't. */
+#define HAVE_DECL___BUILTIN_CLZLL 1
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
 
@@ -164,6 +176,13 @@
 
 /* Define to 1 if the system has the `visibility' function attribute */
 #define HAVE_FUNC_ATTRIBUTE_VISIBILITY 1
+
+/* Define this symbol if the BSD getentropy system call is available */
+/* #undef HAVE_GETENTROPY */
+
+/* Define this symbol if the BSD getentropy system call is available with
+   sys/random.h */
+/* #undef HAVE_GETENTROPY_RAND */
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
@@ -217,7 +236,7 @@
 #define HAVE_LIBSHLWAPI 1
 
 /* Define to 1 if you have the `ssp' library (-lssp). */
-/* #undef HAVE_LIBSSP */
+#define HAVE_LIBSSP 1
 
 /* Define to 1 if you have the `user32' library (-luser32). */
 #define HAVE_LIBUSER32 1
@@ -237,6 +256,9 @@
 /* Define to 1 if you have the `z ' library (-lz ). */
 #define HAVE_LIBZ_ 1
 
+/* Define this symbol if you have malloc_info */
+/* #undef HAVE_MALLOC_INFO */
+
 /* Define this symbol if you have mallopt with M_ARENA_MAX */
 /* #undef HAVE_MALLOPT_ARENA_MAX */
 
@@ -244,16 +266,19 @@
 #define HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the <miniupnpc/miniupnpc.h> header file. */
-#define HAVE_MINIUPNPC_MINIUPNPC_H 1
+/* #undef HAVE_MINIUPNPC_MINIUPNPC_H */
 
 /* Define to 1 if you have the <miniupnpc/miniwget.h> header file. */
-#define HAVE_MINIUPNPC_MINIWGET_H 1
+/* #undef HAVE_MINIUPNPC_MINIWGET_H */
 
 /* Define to 1 if you have the <miniupnpc/upnpcommands.h> header file. */
-#define HAVE_MINIUPNPC_UPNPCOMMANDS_H 1
+/* #undef HAVE_MINIUPNPC_UPNPCOMMANDS_H */
 
 /* Define to 1 if you have the <miniupnpc/upnperrors.h> header file. */
-#define HAVE_MINIUPNPC_UPNPERRORS_H 1
+/* #undef HAVE_MINIUPNPC_UPNPERRORS_H */
+
+/* Define this symbol if you have MSG_DONTWAIT */
+/* #undef HAVE_MSG_DONTWAIT */
 
 /* Define this symbol if you have MSG_NOSIGNAL */
 /* #undef HAVE_MSG_NOSIGNAL */
@@ -282,8 +307,14 @@
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
 
+/* Define this symbol if the BSD sysctl(KERN_ARND) is available */
+/* #undef HAVE_SYSCTL_ARND */
+
 /* Define to 1 if you have the <sys/endian.h> header file. */
 /* #undef HAVE_SYS_ENDIAN_H */
+
+/* Define this symbol if the Linux getrandom system call is available */
+/* #undef HAVE_SYS_GETRANDOM */
 
 /* Define to 1 if you have the <sys/prctl.h> header file. */
 /* #undef HAVE_SYS_PRCTL_H */
@@ -296,6 +327,9 @@
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
+
+/* Define if thread_local is supported. */
+#define HAVE_THREAD_LOCAL 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
@@ -320,16 +354,16 @@
 #define PACKAGE_NAME "bitsend Core"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "bitsend Core 0.14.0"
+#define PACKAGE_STRING "bitsend Core 0.16.0"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "bitsend"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://bitsend.info/"
+#define PACKAGE_URL "https://bitsendcore.org/"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.14.0"
+#define PACKAGE_VERSION "0.16.0"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
@@ -337,6 +371,9 @@
 
 /* Define this symbol if the qt platform is cocoa */
 /* #undef QT_QPA_PLATFORM_COCOA */
+
+/* Define this symbol if the minimal qt platform exists */
+#define QT_QPA_PLATFORM_MINIMAL 1
 
 /* Define this symbol if the qt platform is windows */
 #define QT_QPA_PLATFORM_WINDOWS 1
@@ -353,6 +390,12 @@
 /* Define to 1 if strerror_r returns char *. */
 /* #undef STRERROR_R_CHAR_P */
 
+/* Define this symbol to build in assembly routines */
+#define USE_ASM 1
+
+/* Define this symbol if coverage is enabled */
+/* #undef USE_COVERAGE */
+
 /* Define if dbus support should be compiled in */
 /* #undef USE_DBUS */
 
@@ -361,7 +404,7 @@
 
 /* UPnP support not compiled if undefined, otherwise value (0 or 1) determines
    default state */
-#define USE_UPNP 0
+/* #undef USE_UPNP */
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */

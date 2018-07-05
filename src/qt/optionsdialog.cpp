@@ -1,27 +1,21 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitsend-config.h"
+#include <config/bitsend-config.h>
 #endif
 
-#include "optionsdialog.h"
-#include "ui_optionsdialog.h"
+#include <qt/optionsdialog.h>
+#include <qt/forms/ui_optionsdialog.h>
 
-#include "bitsendunits.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
+#include <qt/bitsendunits.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
 
-#include "validation.h" // for DEFAULT_SCRIPTCHECK_THREADS and MAX_SCRIPTCHECK_THREADS
-#include "netbase.h"
-#include "txdb.h" // for -dbcache defaults
-
-#ifdef ENABLE_WALLET
-#include "wallet/wallet.h" // for CWallet::GetRequiredFee()
-#endif
-
-#include <boost/thread.hpp>
+#include <validation.h> // for DEFAULT_SCRIPTCHECK_THREADS and MAX_SCRIPTCHECK_THREADS
+#include <netbase.h>
+#include <txdb.h> // for -dbcache defaults
 
 #include <QDataWidgetMapper>
 #include <QDir>
@@ -78,19 +72,15 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
 
     /* Display elements init */
     QDir translations(":translations");
-	//themes kaali
-	ui->theme->addItem(QString("Blue arrow"), QVariant("bitsend_main"));
-    ui->theme->addItem(QString("Linux red"), QVariant("bitsend_theme1"));
-    ui->theme->addItem(QString("Blue City Sky"), QVariant("bitsend_theme2"));
-	ui->theme->addItem(QString("Lambo Car"), QVariant("bitsend_theme3"));
-    ui->theme->addItem(QString("Bitsend Classic"), QVariant("trad"));
 
     ui->bitsendAtStartup->setToolTip(ui->bitsendAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
     ui->bitsendAtStartup->setText(ui->bitsendAtStartup->text().arg(tr(PACKAGE_NAME)));
 
+    ui->openbitsendConfButton->setToolTip(ui->openbitsendConfButton->toolTip().arg(tr(PACKAGE_NAME)));
+
     ui->lang->setToolTip(ui->lang->toolTip().arg(tr(PACKAGE_NAME)));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
-    Q_FOREACH(const QString &langStr, translations.entryList())
+    for (const QString &langStr : translations.entryList())
     {
         QLocale locale(langStr);
 
@@ -120,7 +110,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-    ui->unit->setModel(new BitsendUnits(this));
+    ui->unit->setModel(new bitsendUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -175,7 +165,6 @@ void OptionsDialog::setModel(OptionsModel *_model)
     connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     connect(ui->connectSocksTor, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning()));
     /* Display */
-	connect(ui->theme, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->lang, SIGNAL(valueChanged()), this, SLOT(showRestartWarning()));
     connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
 }
@@ -211,7 +200,6 @@ void OptionsDialog::setMapper()
 #endif
 
     /* Display */
-	mapper->addMapping(ui->theme, OptionsModel::Theme);
     mapper->addMapping(ui->lang, OptionsModel::Language);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->thirdPartyTxUrls, OptionsModel::ThirdPartyTxUrls);
@@ -238,6 +226,18 @@ void OptionsDialog::on_resetButton_clicked()
         model->Reset();
         QApplication::quit();
     }
+}
+
+void OptionsDialog::on_openbitsendConfButton_clicked()
+{
+    /* explain the purpose of the config file */
+    QMessageBox::information(this, tr("Configuration options"),
+        tr("The configuration file is used to specify advanced user options which override GUI settings. "
+           "Additionally, any command-line options will override this configuration file."));
+
+    /* show an error if there was some problem opening the file */
+    if (!GUIUtil::openbitsendConf())
+        QMessageBox::critical(this, tr("Error"), tr("The configuration file could not be opened."));
 }
 
 void OptionsDialog::on_okButton_clicked()
@@ -338,7 +338,7 @@ QValidator::State ProxyAddressValidator::validate(QString &input, int &pos) cons
 {
     Q_UNUSED(pos);
     // Validate the proxy
-    CService serv(LookupNumeric(input.toStdString().c_str(), 9050));
+    CService serv(LookupNumeric(input.toStdString().c_str(), DEFAULT_GUI_PROXY_PORT));
     proxyType addrProxy = proxyType(serv, true);
     if (addrProxy.IsValid())
         return QValidator::Acceptable;

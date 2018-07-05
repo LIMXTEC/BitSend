@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[bitsend.qt-translation-016x]
+file_filter = src/qt/locale/bitsend_<lang>.ts
+source_file = src/qt/locale/bitsend_en.ts
+source_lang = en

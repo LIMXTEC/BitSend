@@ -1,4 +1,4 @@
-Bitsend Core version 0.9.3 is now available from:
+bitsend Core version 0.9.3 is now available from:
 
   https://bitsend.org/bin/0.9.3/
 
@@ -17,7 +17,7 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
+installer (on Windows) or just copy over /Applications/bitsend-Qt (on Mac) or
 bitsendd/bitsend-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you run
@@ -70,7 +70,7 @@ GUI:
 Miscellaneous:
 - key.cpp: fail with a friendlier message on missing ssl EC support
 - Remove bignum dependency for scripts
-- Upgrade OpenSSL to 1.0.1i (see https://www.openssl.org/news/secadv_20140806.txt - just to be sure, no critical issues for Bitsend Core)
+- Upgrade OpenSSL to 1.0.1i (see https://www.openssl.org/news/secadv_20140806.txt - just to be sure, no critical issues for bitsend Core)
 - Upgrade miniupnpc to 1.9.20140701
 - Fix boost detection in build system on some platforms
 

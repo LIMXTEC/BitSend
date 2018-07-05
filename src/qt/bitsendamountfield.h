@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2015 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_BITSENDAMOUNTFIELD_H
 #define BITSEND_QT_BITSENDAMOUNTFIELD_H
 
-#include "amount.h"
+#include <amount.h>
 
 #include <QWidget>
 
@@ -17,7 +17,7 @@ QT_END_NAMESPACE
 
 /** Widget for entering bitsend amounts.
   */
-class BitsendAmountField: public QWidget
+class bitsendAmountField: public QWidget
 {
     Q_OBJECT
 
@@ -26,7 +26,7 @@ class BitsendAmountField: public QWidget
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChanged USER true)
 
 public:
-    explicit BitsendAmountField(QWidget *parent = 0);
+    explicit bitsendAmountField(QWidget *parent = 0);
 
     CAmount value(bool *value=0) const;
     void setValue(const CAmount& value);

@@ -1,7 +1,7 @@
 RPM Spec File Notes
 -------------------
 
-The RPM spec file provided here is for Bitsend-Core 0.12.0 and builds on CentOS
+The RPM spec file provided here is for bitsend-Core 0.12.0 and builds on CentOS
 7 with either the CentOS provided OpenSSL library or with LibreSSL as packaged
 at [LibreLAMP.com](https://librelamp.com/). It should hopefully not be too
 difficult to port the RPM spec file to most RPM based Linux distributions.
@@ -19,7 +19,7 @@ reference the release tarball available from https://bitsend.org/bin/ and
 `Source1` should reference the BerkeleyDB source.
 
 Sources 10-99 are for source files that are maintained in the
-[Bitsend git repository](https://github.com/bitsend/bitsend) but are not part of
+[bitsend git repository](https://github.com/bitsend/bitsend) but are not part of
 the release tarball. Most of these will reside in the `contrib` sub-directory.
 
 Sources 10-19 should be reserved for miscellaneous configuration files.
@@ -34,7 +34,7 @@ release, the full URL specified in the RPM spec file will not work. You can get
 them from the git repository where you retrieved this file.
 
 Sources 100+ are for files that are not source tarballs and are not maintained
-in the bitsend git repository. At present only an SVG version of the Bitsend
+in the bitsend git repository. At present only an SVG version of the bitsend
 icon is used.
 
 ## Patches
@@ -48,7 +48,7 @@ release.
 
 This patch is only needed if building against LibreSSL. LibreSSL is not the
 standard TLS library on most Linux distributions. The patch will likely not be
-needed when 0.12.1 is released, a proper fix is already in the Bitsend git
+needed when 0.12.1 is released, a proper fix is already in the bitsend git
 master branch.
 
 ## BuildRequires
@@ -62,7 +62,7 @@ most likely to be the case with the Qt packages.
 
 The `build-unix.md` file recommends building against BerkeleyDB 4.8.30. Even if
 that is the version your Linux distribution ships with, it probably is a good
-idea to build Bitsend Core against a static version of that library compiled
+idea to build bitsend Core against a static version of that library compiled
 according to the instructions in the `build-unix.md` file so that any changes
 the distribution may make in the future will not result in a problem for users.
 
@@ -84,16 +84,16 @@ If you would prefer not to build the GUI at all, you can pass the switch
 
 The desktop and KDE meta files are created in the spec file itself with the
 `cat` command. This is done to allow easy distribution specific changes without
-needing to use any patches. A specific time stamp is given to the files so that
+needing to use any patches. A specific timestamp is given to the files so that
 it does not they do not appear to have been updated every time the package is
-built. If you do make changes to them, you probably should update time stamp
-assigned to them in the `touch` command that specifies the time stamp.
+built. If you do make changes to them, you probably should update timestamp
+assigned to them in the `touch` command that specifies the timestamp.
 
 ## SVG, PNG, and XPM Icons
 
 The `bitsend.svg` file is from the source listed as `Source100`. It is used as
 the source for the PNG and XPM files. The generated PNG and XPM files are given
-the same time stamp as the source SVG file as a means of indicating they are
+the same timestamp as the source SVG file as a means of indicating they are
 derived from it.
 
 ## Systemd
@@ -105,10 +105,10 @@ distributions that still receive vendor updates do in fact use systemd.
 The files to control the service are created in the RPM spec file itself using
 the `cat` command. This is done to make it easy to modify for other
 distributions that may implement things differently without needing to patch
-source. A specific time stamp is given to the files so that they do not appear
+source. A specific timestamp is given to the files so that they do not appear
 to have been updated every time the package is built. If you do make changes to
-them, you probably should update the time stamp assigned to them in the `touch`
-command that specifies the time stamp.
+them, you probably should update the timestamp assigned to them in the `touch`
+command that specifies the timestamp.
 
 ## SELinux
 
@@ -137,7 +137,7 @@ want the OpenSSL development files.
 LibreSSL (and some newer builds of OpenSSL) do not have support for SSLv3. This
 can cause issues with the Boost package if the Boost package has not been
 patched accordingly. On those distributions, you will either need to build
-Bitsend-Core against OpenSSL or use a patched version of Boost in the build
+bitsend-Core against OpenSSL or use a patched version of Boost in the build
 system.
 
 As SSLv3 is no longer safe, distributions that have not patched Boost to work
@@ -157,7 +157,7 @@ developed on (CentOS 7).
 
 This RPM spec file is largely based upon the work of Michael Hampton at
 [Ringing Liberty](https://www.ringingliberty.com/bitsend/). He has been
-packaging Bitsend for Fedora at least since 2012.
+packaging bitsend for Fedora at least since 2012.
 
 Most of the differences between his packaging and this package are stylistic in
 nature. The major differences:
@@ -181,5 +181,5 @@ knows what they are getting when installing the GUI package.
 
 As far as minor differences, I generally prefer to assign the file permissions
 in the `%files` portion of an RPM spec file rather than specifying the
-permissions of a file during `%install` and other minor things like that that
+permissions of a file during `%install` and other minor things like that
 are largely just cosmetic.

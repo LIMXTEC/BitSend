@@ -1,5 +1,5 @@
-Binaries for Bitsend version 0.3.21 are available at:
-  https://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.3.21/
+Binaries for bitsend version 0.3.21 are available at:
+  https://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.3.21/
 
 Changes and new features from the 0.3.20 release include:
 

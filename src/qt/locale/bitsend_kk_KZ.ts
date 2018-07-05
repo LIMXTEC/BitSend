@@ -48,7 +48,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>&amp;Transactions</source>
         <translation>&amp;Транзакциялар</translation>
@@ -70,7 +70,7 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>Bitsend</source>
+        <source>bitsend</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -169,6 +169,10 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>bitsend</source>
+        <translation>Биткоин</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>қате</translation>
     </message>
@@ -184,6 +188,10 @@
     <message>
         <source>W&amp;allet</source>
         <translation>Әмиян</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>қате</translation>
     </message>
     </context>
 <context>

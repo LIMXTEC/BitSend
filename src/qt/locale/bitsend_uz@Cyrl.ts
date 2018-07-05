@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Хабар ёзиш...</translation>
@@ -146,8 +146,8 @@
         <translation>Дискдаги блоклар қайта индексланмоқда...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Тангаларни Bitsend манзилига жўнатиш</translation>
+        <source>Send coins to a bitsend address</source>
+        <translation>Тангаларни bitsend манзилига жўнатиш</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -170,8 +170,8 @@
         <translation>Хабарни &amp;тасдиқлаш...</translation>
     </message>
     <message>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -198,12 +198,12 @@
         <translation>Ҳамёнингизга тегишли махфий калитларни кодлаш</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Bitsend манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
+        <translation>bitsend манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Хабарларни махсус Bitsend манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
+        <translation>Хабарларни махсус bitsend манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -235,15 +235,15 @@
     </message>
     <message>
         <source>Open a bitsend: URI or payment request</source>
-        <translation>Bitsend’ни очиш: URI ёки тўлов сўрови</translation>
+        <translation>bitsend’ни очиш: URI ёки тўлов сўрови</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Буйруқлар сатри мосламалари</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation><numerusform>%n та Bitsend тармоғига фаол уланиш мавжуд</numerusform></translation>
+        <source>%n active connection(s) to bitsend network</source>
+        <translation><numerusform>%n та bitsend тармоғига фаол уланиш мавжуд</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -437,6 +437,10 @@
         <translation>Бошқа маълумотлар директориясида фойдаланинг:</translation>
     </message>
     <message>
+        <source>bitsend</source>
+        <translation>bitsend</translation>
+    </message>
+    <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
         <translation>Хато: кўрсатилган "%1" маълумотлар директориясини яратиб бўлмайди.</translation>
     </message>
@@ -498,20 +502,8 @@
         <translation>Мавзуларни &amp;тўғрилаш скрипти миқдори</translation>
     </message>
     <message>
-        <source>Accept connections from outside</source>
-        <translation>Ташқаридан уланишларга рози бўлиш</translation>
-    </message>
-    <message>
-        <source>Allow incoming connections</source>
-        <translation>Кирувчи уланишларга рухсат бериш</translation>
-    </message>
-    <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>Прокси IP манзили (масалан: IPv4: 127.0.0.1 / IPv6: ::1)</translation>
-    </message>
-    <message>
-        <source>Third party transaction URLs</source>
-        <translation>Бегона тараф ўтказмалари URL манзиллари</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -586,6 +578,10 @@
         <translation>Ўзгаришлар амалга ошиши учун мижозни қайта ишга тушириш талаб қилинади.</translation>
     </message>
     <message>
+        <source>Error</source>
+        <translation>Хатолик</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
         <translation>Ушбу ўзгариш мижозни қайтадан ишга туширишни талаб қилади.</translation>
     </message>
@@ -601,8 +597,8 @@
         <translation>Шакл</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг Bitsend тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the bitsend network after a connection is established, but this process has not completed yet.</source>
+        <translation>Кўрсатилган маълумот эскирган бўлиши мумкин. Ҳамёнингиз алоқа ўрнатилгандан сўнг bitsend тармоқ билан автоматик тарзда синхронланади, аммо жараён ҳалигача тугалланмади.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -682,8 +678,8 @@
         <translation>Миқдори</translation>
     </message>
     <message>
-        <source>Enter a Bitsend address (e.g. %1)</source>
-        <translation>Bitsend манзилини киритинг (масалан.  %1)</translation>
+        <source>Enter a bitsend address (e.g. %1)</source>
+        <translation>bitsend манзилини киритинг (масалан.  %1)</translation>
     </message>
     <message>
         <source>%1 m</source>
@@ -709,7 +705,27 @@
         <source>%1 and %2</source>
         <translation>%1 ва %2</translation>
     </message>
-    </context>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 Б</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 КБ</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 МБ</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 ГБ</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>Номаълум</translation>
+    </message>
+</context>
 <context>
     <name>QObject::QObject</name>
     </context>
@@ -815,10 +831,6 @@
         <translation>&amp;Тармоқ трафиги</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Тозалаш</translation>
-    </message>
-    <message>
         <source>Totals</source>
         <translation>Жами</translation>
     </message>
@@ -837,30 +849,6 @@
     <message>
         <source>Clear console</source>
         <translation>Терминални тозалаш</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Тарихни кўриш учун тепага ва пастга кўрсаткичларидан фойдаланинг, экранни тозалаш учун &lt;b&gt;Ctrl-L&lt;/b&gt; тугмалар бирикмасидан фойдаланинг.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Мавжуд буйруқларни кўриш учун &lt;b&gt;help&lt;/b&gt; деб ёзинг.</translation>
-    </message>
-    <message>
-        <source>%1 B</source>
-        <translation>%1 Б</translation>
-    </message>
-    <message>
-        <source>%1 KB</source>
-        <translation>%1 КБ</translation>
-    </message>
-    <message>
-        <source>%1 MB</source>
-        <translation>%1 МБ</translation>
-    </message>
-    <message>
-        <source>%1 GB</source>
-        <translation>%1 ГБ</translation>
     </message>
     <message>
         <source>via %1</source>
@@ -904,10 +892,6 @@
     <message>
         <source>&amp;Message:</source>
         <translation>&amp;Хабар:</translation>
-    </message>
-    <message>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Олдинги фойдаланилган қабул қилинган манзиллардан биридан қайта фойдаланилсин. Хавсизлик ва махфийлик муаммолар мавжуд манзиллардан қайта фойдаланилмоқда. Бундан тўлов сўров қайта яратилмагунича фойдаланманг.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1037,14 +1021,6 @@
     <message>
         <source>Recommended:</source>
         <translation>Тавсия этилган</translation>
-    </message>
-    <message>
-        <source>normal</source>
-        <translation>Нормал</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>Тезкор</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
@@ -1208,8 +1184,8 @@
         <translation>Демон сифатида орқа фонда ишга туширинг ва буйруқларга рози бўлинг</translation>
     </message>
     <message>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
     </message>
     <message>
         <source>Connection options:</source>
@@ -1230,10 +1206,6 @@
     <message>
         <source>Password for JSON-RPC connections</source>
         <translation>JSON-RPC уланишлари учун парол</translation>
-    </message>
-    <message>
-        <source>Loading addresses...</source>
-        <translation>Манзиллар юкланмоқда...</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

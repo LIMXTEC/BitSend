@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitsend Core developers
+// Copyright (c) 2009-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,19 +14,18 @@
 #ifndef BITSEND_BASE58_H
 #define BITSEND_BASE58_H
 
-#include "chainparams.h"
-#include "key.h"
-#include "pubkey.h"
-#include "script/script.h"
-#include "script/standard.h"
-#include "support/allocators/zeroafterfree.h"
+#include <chainparams.h>
+#include <key.h>
+#include <pubkey.h>
+#include <script/standard.h>
+#include <support/allocators/zeroafterfree.h>
 
 #include <string>
 #include <vector>
 
 /**
  * Encode a byte sequence as a base58-encoded string.
- * pbegin and pend cannot be NULL, unless both are.
+ * pbegin and pend cannot be nullptr, unless both are.
  */
 std::string EncodeBase58(const unsigned char* pbegin, const unsigned char* pend);
 
@@ -38,7 +37,7 @@ std::string EncodeBase58(const std::vector<unsigned char>& vch);
 /**
  * Decode a base58-encoded string (psz) into a byte vector (vchRet).
  * return true if decoding is successful.
- * psz cannot be NULL.
+ * psz cannot be nullptr.
  */
 bool DecodeBase58(const char* psz, std::vector<unsigned char>& vchRet);
 
@@ -95,34 +94,10 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded Bitsend addresses.
- * Public-key-hash-addresses have version 0 (or 111 testnet).
- * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
- * Script-hash-addresses have version 5 (or 196 testnet).
- * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
- */
-class CBitsendAddress : public CBase58Data {
-public:
-    bool Set(const CKeyID &id);
-    bool Set(const CScriptID &id);
-    bool Set(const CTxDestination &dest);
-    bool IsValid() const;
-    bool IsValid(const CChainParams &params) const;
-
-    CBitsendAddress() {}
-    CBitsendAddress(const CTxDestination &dest) { Set(dest); }
-    CBitsendAddress(const std::string& strAddress) { SetString(strAddress); }
-    CBitsendAddress(const char* pszAddress) { SetString(pszAddress); }
-
-    CTxDestination Get() const;
-    bool GetKeyID(CKeyID &keyID) const;
-    bool IsScript() const;
-};
-
 /**
  * A base58-encoded secret key
  */
-class CBitsendSecret : public CBase58Data
+class CbitsendSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -131,11 +106,14 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CBitsendSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CBitsendSecret() {}
+    CbitsendSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CbitsendSecret() {}
 };
-
-template<typename K, int Size, CChainParams::Base58Type Type> class CBitsendExtKeyBase : public CBase58Data
+namespace
+{
+class DestinationEncoder ;
+}
+template<typename K, int Size, CChainParams::Base58Type Type> class CbitsendExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -148,23 +126,28 @@ public:
         K ret;
         if (vchData.size() == Size) {
             // If base58 encoded data does not hold an ext key, return a !IsValid() key
-            ret.Decode(&vchData[0]);
+            ret.Decode(vchData.data());
         }
         return ret;
     }
 
-    CBitsendExtKeyBase(const K &key) {
+    CbitsendExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CBitsendExtKeyBase(const std::string& strBase58c) {
+    CbitsendExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CBitsendExtKeyBase() {}
+    CbitsendExtKeyBase() {}
 };
 
-typedef CBitsendExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CBitsendExtKey;
-typedef CBitsendExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CBitsendExtPubKey;
+typedef CbitsendExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CbitsendExtKey;
+typedef CbitsendExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CbitsendExtPubKey;
+
+std::string EncodeDestination(const CTxDestination& dest);
+CTxDestination DecodeDestination(const std::string& str);
+bool IsValidDestinationString(const std::string& str);
+bool IsValidDestinationString(const std::string& str, const CChainParams& params);
 
 #endif // BITSEND_BASE58_H

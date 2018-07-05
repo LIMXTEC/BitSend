@@ -18,13 +18,13 @@ using namespace json_spirit;
 using namespace std;
 
 Value darksend(const Array& params, bool fHelp)
-{
+{		CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
     if (fHelp || params.size() == 0)
         throw runtime_error(
             "darksend <bitsendaddress> <amount>\n"
             "bitsendaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and is rounded to the nearest 0.00000001"
-            + HelpRequiringPassphrase());
+            + HelpRequiringPassphrase(pwallet));
 
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
@@ -48,9 +48,9 @@ Value darksend(const Array& params, bool fHelp)
             "darksend <bitsendaddress> <amount>\n"
             "bitsendaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and is rounded to the nearest 0.00000001"
-            + HelpRequiringPassphrase());
+            + HelpRequiringPassphrase(pwallet));
 
-    CBitsendAddress address(params[0].get_str());
+    CbitsendAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Bitsend address");
 
@@ -470,7 +470,7 @@ Value masternode(const Array& params, bool fHelp)
             pubkey.SetDestination(winner->pubkey.GetID());
             CTxDestination address1;
             ExtractDestination(pubkey, address1);
-            CBitsendAddress address2(address1);
+            CbitsendAddress address2(address1);
 
             obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
             obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
@@ -489,7 +489,7 @@ Value masternode(const Array& params, bool fHelp)
         CKey secret;
         secret.MakeNewKey(false);
 
-        return CBitsendSecret(secret).ToString();
+        return CbitsendSecret(secret).ToString();
     }
 
     if (strCommand == "winners")
@@ -502,7 +502,7 @@ Value masternode(const Array& params, bool fHelp)
             if(masternodePayments.GetBlockPayee(nHeight, payee)){
                 CTxDestination address1;
                 ExtractDestination(payee, address1);
-                CBitsendAddress address2(address1);
+                CbitsendAddress address2(address1);
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
             } else {
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));
@@ -734,7 +734,7 @@ Value masternodelist(const Array& params, bool fHelp)
             } else if (strMode == "donation") {
                 CTxDestination address1;
                 ExtractDestination(mn.donationAddress, address1);
-                CBitsendAddress address2(address1);
+                CbitsendAddress address2(address1);
 
                 if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
@@ -752,7 +752,7 @@ Value masternodelist(const Array& params, bool fHelp)
                 pubkey.SetDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitsendAddress address2(address1);
+                CbitsendAddress address2(address1);
 
                 std::ostringstream addrStream;
                 addrStream << setw(21) << strAddr;
@@ -782,7 +782,7 @@ Value masternodelist(const Array& params, bool fHelp)
                 pubkey.SetDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitsendAddress address2(address1);
+                CbitsendAddress address2(address1);
 
                 if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;

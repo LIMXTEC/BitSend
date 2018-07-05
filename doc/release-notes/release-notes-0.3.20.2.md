@@ -3,9 +3,9 @@ worse as people upgraded, so I cherry-picked the bug fix and created a minor rel
 
 The Amazon Machine Images I used to do the builds are available:
 
-  ami-38a05251   Bitsend-v0.3.20.2 Mingw    (Windows; Administrator password 'bitsend development')
-  ami-30a05259   Bitsend_0.3.20.2 Linux32
-  ami-8abc4ee3   Bitsend_0.3.20.2 Linux64
+  ami-38a05251   bitsend-v0.3.20.2 Mingw    (Windows; Administrator password 'bitsend development')
+  ami-30a05259   bitsend_0.3.20.2 Linux32
+  ami-8abc4ee3   bitsend_0.3.20.2 Linux64
 
 (mac build will be done soon)
 

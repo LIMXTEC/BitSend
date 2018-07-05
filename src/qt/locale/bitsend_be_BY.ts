@@ -62,11 +62,11 @@
         <translation>адрасы Прымання</translation>
     </message>
     <message>
-        <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Тут знаходзяцца Біткойн-адрасы для высылання плацяжоў. Заўсёды спраўджвайце колькасць і адрас прызначэння перад здзяйсненнем транзакцыі.</translation>
     </message>
     <message>
-        <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Тут знаходзяцца Біткойн-адрасы для прымання плацяжоў. Пажадана выкарыстоўваць новы адрас для кожнай транзакцыі.</translation>
     </message>
     <message>
@@ -220,7 +220,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>bitsendGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Падпісаць паведамленне...</translation>
@@ -298,7 +298,7 @@
         <translation>Пераіндэксацыя блокаў на дыску...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
+        <source>Send coins to a bitsend address</source>
         <translation>Даслаць манеты на Біткойн-адрас</translation>
     </message>
     <message>
@@ -322,7 +322,7 @@
         <translation>Праверыць паведамленне...</translation>
     </message>
     <message>
-        <source>Bitsend</source>
+        <source>bitsend</source>
         <translation>Біткойн</translation>
     </message>
     <message>
@@ -350,11 +350,11 @@
         <translation>Зашыфраваць прыватныя ключы, якия належаць вашаму гаманцу</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
+        <source>Sign messages with your bitsend addresses to prove you own them</source>
         <translation>Падпісаць паведамленне з дапамогай Біткойн-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
+        <source>Verify messages to ensure they were signed with specified bitsend addresses</source>
         <translation>Спраўдзіць паведамленне з дапамогай Біткойн-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
@@ -675,6 +675,10 @@
         <translation>Вітаем</translation>
     </message>
     <message>
+        <source>bitsend</source>
+        <translation>Біткойн</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Памылка</translation>
     </message>
@@ -707,6 +711,10 @@
         <source>W&amp;allet</source>
         <translation>Гаманец</translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation>Памылка</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -731,7 +739,11 @@
         <source>%1 and %2</source>
         <translation>%1 і %2</translation>
     </message>
-    </context>
+    <message>
+        <source>unknown</source>
+        <translation>невядома</translation>
+    </message>
+</context>
 <context>
     <name>QObject::QObject</name>
     </context>
@@ -1147,10 +1159,6 @@
         <translation>Іншыя</translation>
     </message>
     <message>
-        <source>Enter address or label to search</source>
-        <translation>Увядзіце адрас ці пазнаку для пошуку</translation>
-    </message>
-    <message>
         <source>Min amount</source>
         <translation>Мін. колькасць</translation>
     </message>
@@ -1227,7 +1235,7 @@
         <source>Send Coins</source>
         <translation>Даслаць Манеты</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>WalletView</name>
     <message>
@@ -1258,8 +1266,8 @@
         <translation>Запусціць у фоне як дэман і прымаць каманды</translation>
     </message>
     <message>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>bitsend Core</source>
+        <translation>bitsend Core</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>
@@ -1300,10 +1308,6 @@
     <message>
         <source>Verifying blocks...</source>
         <translation>Праверка блокаў...</translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>Праверка гаманца...</translation>
     </message>
     <message>
         <source>Wallet options:</source>
@@ -1352,10 +1356,6 @@
     <message>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>Выканаць каманду калі лепшы блок зменіцца (%s замяняецца на хэш блока)</translation>
-    </message>
-    <message>
-        <source>Loading addresses...</source>
-        <translation>Загружаем адрасы...</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

@@ -1,4 +1,4 @@
-Bitsend Core version 0.13.2 is now available from:
+bitsend Core version 0.13.2 is now available from:
 
   <https://bitsend.org/bin/bitsend-core-0.13.2/>
 
@@ -11,7 +11,7 @@ Please report bugs using the issue tracker at github:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitsend.info/en/list/announcements/join/>
+  <https://bitsendcore.org/en/list/announcements/join/>
 
 Compatibility
 ==============
@@ -21,7 +21,7 @@ an OS initially released in 2001. This means that not even critical security
 updates will be released anymore. Without security updates, using a bitsend
 wallet on a XP machine is irresponsible at least.
 
-In addition to that, with 0.12.x there have been varied reports of Bitsend Core
+In addition to that, with 0.12.x there have been varied reports of bitsend Core
 randomly crashing on Windows XP. It is [not clear](https://github.com/bitsend/bitsend/issues/7681#issuecomment-217439891)
 what the source of these crashes is, but it is likely that upstream
 libraries such as Qt are no longer being tested on XP.

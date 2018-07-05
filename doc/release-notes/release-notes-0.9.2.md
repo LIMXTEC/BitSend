@@ -1,4 +1,4 @@
-Bitsend Core version 0.9.2 is now available from:
+bitsend Core version 0.9.2 is now available from:
 
   https://bitsend.org/bin/0.9.2/
 
@@ -15,7 +15,7 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
+installer (on Windows) or just copy over /Applications/bitsend-Qt (on Mac) or
 bitsendd/bitsend-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you run
@@ -93,7 +93,7 @@ Protocol and network code:
 Wallet:
 
 - Make GetAvailableCredit run GetHash() only once per transaction (performance improvement)
-- Lower paytxfee warning threshold from 0.25 BSD to 0.01 BSD
+- Lower paytxfee warning threshold from 0.25 BTC to 0.01 BTC
 - Fix importwallet nTimeFirstKey (trigger necessary rescans)
 - Log BerkeleyDB version at startup
 - CWallet init fix

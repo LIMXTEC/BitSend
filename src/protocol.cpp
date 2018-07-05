@@ -1,19 +1,16 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "protocol.h"
+#include <protocol.h>
 
-#include "util.h"
-#include "utilstrencodings.h"
+#include <util.h>
+#include <utilstrencodings.h>
 
 #ifndef WIN32
 # include <arpa/inet.h>
 #endif
-
 /** // TODO-- : NetMsgType::, allNetMessageTypes[]
 static const char* ppszTypeName[] =
 {
@@ -65,7 +62,7 @@ const char *GETBLOCKTXN="getblocktxn";
 const char *BLOCKTXN="blocktxn";
 const char *MNWINNER="masternode winner";
 const char *SPORK="spork";
-};
+} // namespace NetMsgType
 
 /** All known message types. Keep this in the same order as the list of
  * messages above and in protocol.h.
@@ -96,8 +93,7 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::SENDCMPCT,
     NetMsgType::CMPCTBLOCK,
     NetMsgType::GETBLOCKTXN,
-    NetMsgType::BLOCKTXN,
-	NetMsgType::MNWINNER,
+    NetMsgType::BLOCKTXN,NetMsgType::MNWINNER,
 	NetMsgType::SPORK,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes+ARRAYLEN(allNetMessageTypes));
@@ -179,11 +175,7 @@ CInv::CInv()
     hash.SetNull();
 }
 
-CInv::CInv(int typeIn, const uint256& hashIn)
-{
-    type = typeIn;
-    hash = hashIn;
-}
+CInv::CInv(int typeIn, const uint256& hashIn) : type(typeIn), hash(hashIn) {}
 
 bool operator<(const CInv& a, const CInv& b)
 {

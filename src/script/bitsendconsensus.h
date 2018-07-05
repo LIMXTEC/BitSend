@@ -1,7 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +9,7 @@
 #include <stdint.h>
 
 #if defined(BUILD_BITSEND_INTERNAL) && defined(HAVE_CONFIG_H)
-#include "config/bitsend-config.h"
+#include <config/bitsend-config.h>
   #if defined(_WIN32)
     #if defined(DLL_EXPORT)
       #if defined(HAVE_FUNC_ATTRIBUTE_DLLEXPORT)
@@ -65,7 +63,7 @@ enum
 /// Returns 1 if the input nIn of the serialized transaction pointed to by
 /// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 /// the additional constraints specified by flags.
-/// If not NULL, err will contain an error/success code for the operation
+/// If not nullptr, err will contain an error/success code for the operation
 EXPORT_SYMBOL int bitsendconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
                                                  const unsigned char *txTo        , unsigned int txToLen,
                                                  unsigned int nIn, unsigned int flags, bitsendconsensus_error* err);

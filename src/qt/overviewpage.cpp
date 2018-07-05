@@ -1,19 +1,19 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "overviewpage.h"
-#include "ui_overviewpage.h"
+#include <qt/overviewpage.h>
+#include <qt/forms/ui_overviewpage.h>
 
-#include "bitsendunits.h"
-#include "clientmodel.h"
-#include "guiconstants.h"
-#include "guiutil.h"
-#include "optionsmodel.h"
-#include "platformstyle.h"
-#include "transactionfilterproxy.h"
-#include "transactiontablemodel.h"
-#include "walletmodel.h"
+#include <qt/bitsendunits.h>
+#include <qt/clientmodel.h>
+#include <qt/guiconstants.h>
+#include <qt/guiutil.h>
+#include <qt/optionsmodel.h>
+#include <qt/platformstyle.h>
+#include <qt/transactionfilterproxy.h>
+#include <qt/transactiontablemodel.h>
+#include <qt/walletmodel.h>
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
@@ -25,8 +25,8 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(const PlatformStyle *_platformStyle, QObject *parent=nullptr):
-        QAbstractItemDelegate(parent), unit(BitsendUnits::BsD),
+    explicit TxViewDelegate(const PlatformStyle *_platformStyle, QObject *parent=nullptr):
+        QAbstractItemDelegate(parent), unit(bitsendUnits::BTC),
         platformStyle(_platformStyle)
     {
 
@@ -84,7 +84,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = BitsendUnits::formatWithUnit(unit, amount, true, BitsendUnits::separatorAlways);
+        QString amountText = bitsendUnits::formatWithUnit(unit, amount, true, bitsendUnits::separatorAlways);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -106,7 +106,7 @@ public:
     const PlatformStyle *platformStyle;
 
 };
-#include "overviewpage.moc"
+#include <qt/overviewpage.moc>
 
 OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) :
     QWidget(parent),
@@ -168,14 +168,14 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
-    ui->labelBalance->setText(BitsendUnits::formatWithUnit(unit, balance, false, BitsendUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(BitsendUnits::formatWithUnit(unit, unconfirmedBalance, false, BitsendUnits::separatorAlways));
-    ui->labelImmature->setText(BitsendUnits::formatWithUnit(unit, immatureBalance, false, BitsendUnits::separatorAlways));
-    ui->labelTotal->setText(BitsendUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, BitsendUnits::separatorAlways));
-    ui->labelWatchAvailable->setText(BitsendUnits::formatWithUnit(unit, watchOnlyBalance, false, BitsendUnits::separatorAlways));
-    ui->labelWatchPending->setText(BitsendUnits::formatWithUnit(unit, watchUnconfBalance, false, BitsendUnits::separatorAlways));
-    ui->labelWatchImmature->setText(BitsendUnits::formatWithUnit(unit, watchImmatureBalance, false, BitsendUnits::separatorAlways));
-    ui->labelWatchTotal->setText(BitsendUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitsendUnits::separatorAlways));
+    ui->labelBalance->setText(bitsendUnits::formatWithUnit(unit, balance, false, bitsendUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(bitsendUnits::formatWithUnit(unit, unconfirmedBalance, false, bitsendUnits::separatorAlways));
+    ui->labelImmature->setText(bitsendUnits::formatWithUnit(unit, immatureBalance, false, bitsendUnits::separatorAlways));
+    ui->labelTotal->setText(bitsendUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, bitsendUnits::separatorAlways));
+    ui->labelWatchAvailable->setText(bitsendUnits::formatWithUnit(unit, watchOnlyBalance, false, bitsendUnits::separatorAlways));
+    ui->labelWatchPending->setText(bitsendUnits::formatWithUnit(unit, watchUnconfBalance, false, bitsendUnits::separatorAlways));
+    ui->labelWatchImmature->setText(bitsendUnits::formatWithUnit(unit, watchImmatureBalance, false, bitsendUnits::separatorAlways));
+    ui->labelWatchTotal->setText(bitsendUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, bitsendUnits::separatorAlways));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -241,7 +241,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("BSD")
+    // update the display unit, to not use the default ("BTC")
     updateDisplayUnit();
 }
 

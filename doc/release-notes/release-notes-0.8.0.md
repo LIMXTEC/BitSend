@@ -1,5 +1,5 @@
-Bitsend-Qt version 0.8.0 is now available from:
-  http://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.8.0/
+bitsend-Qt version 0.8.0 is now available from:
+  http://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.8.0/
 
 This is a major release designed to improve performance and handle the
 increasing volume of transactions on the network.
@@ -13,7 +13,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/Bitsend-Qt (on Mac) or bitsendd/bitsend-qt (on Linux).
+/Applications/bitsend-Qt (on Mac) or bitsendd/bitsend-qt (on Linux).
 
 The first time you run after the upgrade a re-indexing process will be
 started that will take anywhere from 30 minutes to several hours,
@@ -31,7 +31,7 @@ details).
 Improvements
 ------------
 
-Mac and Windows binaries are signed with certificates owned by the Bitsend
+Mac and Windows binaries are signed with certificates owned by the bitsend
 Foundation, to be compatible with the new security features in OSX 10.8 and
 Windows 8.
 

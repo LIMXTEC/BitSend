@@ -1,5 +1,5 @@
-Bitsend version 0.6.3 is now available for download at:
-  http://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.6.3/
+bitsend version 0.6.3 is now available for download at:
+  http://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.6.3/
 
 This is a bug-fix release, with no new features.
 
@@ -20,10 +20,10 @@ Fixed an obscure bug that could cause the bitsend process to get
 stuck on an invalid block-chain, if the invalid chain was
 hundreds of blocks long.
 
-Bitsend-Qt no longer automatically selects the first address
+bitsend-Qt no longer automatically selects the first address
 in the address book (Issue #1384).
 
-Fixed minimize-to-dock behavior of Bitsend-Qt on the Mac.
+Fixed minimize-to-dock behavior of bitsend-Qt on the Mac.
 
 Added a block checkpoint at block 185,333 to speed up initial
 blockchain download.

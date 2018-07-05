@@ -1,4 +1,4 @@
-Bitsend Core version 0.9.1 is now available from:
+bitsend Core version 0.9.1 is now available from:
 
   https://bitsend.org/bin/0.9.1/
 
@@ -20,7 +20,7 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
+installer (on Windows) or just copy over /Applications/bitsend-Qt (on Mac) or
 bitsendd/bitsend-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you run
@@ -33,7 +33,7 @@ If you are upgrading from version 0.7.2 or earlier, the first time you run
 No code changes were made between 0.9.0 and 0.9.1. Only the dependencies were changed.
 
 - Upgrade OpenSSL to 1.0.1g. This release fixes the following vulnerabilities which can
-  affect the Bitsend Core software:
+  affect the bitsend Core software:
 
   - CVE-2014-0160 ("heartbleed")
     A missing bounds check in the handling of the TLS heartbeat extension can

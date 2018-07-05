@@ -20,12 +20,14 @@ class CMNSignHelper{
 		CTransactionRef txVin;
 		uint256 hash;
 		if(GetTransaction(vin.prevout.hash, txVin, Params().GetConsensus(),hash, true)){
-			BOOST_FOREACH(CTxOut out, txVin->vout){
-				if(out.nValue == MASTERNODEAMOUNT*COIN){
-					if(out.scriptPubKey == payee2){
+			std::vector<CTxOut>::const_iterator it = txVin->vout.begin();
+			while(it!=txVin->vout.end()){
+				if((*it).nValue == MASTERNODEAMOUNT*COIN){
+					if((*it).scriptPubKey == payee2){
 						return true;
 					}
 				}
+				++it;
 			}
 		} else{
 			return false;
@@ -33,7 +35,7 @@ class CMNSignHelper{
 	}
     /// Set the private/public key values, returns true if successful
     bool SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey){
-		CBitsendSecret vchSecret;
+		CbitsendSecret vchSecret;
 		bool fGood = vchSecret.SetString(strSecret);
 
 		if (!fGood) {
@@ -74,20 +76,20 @@ class CMNSignHelper{
 			return false;
 		}
 
-		if (fDebug && pubkey2.GetID() != pubkey.GetID())
+		if ( pubkey2.GetID() != pubkey.GetID())
 			LogPrintf("CDarkSendSigner::VerifyMessage -- keys don't match: %s %s", pubkey2.GetID().ToString(), pubkey.GetID().ToString());
 
 		return (pubkey2.GetID() == pubkey.GetID());
 	}
 	
 	bool SetCollateralAddress(std::string strAddress){
-		CBitsendAddress address;
-		if (!address.SetString(strAddress))
+		CTxDestination destination = DecodeDestination(strAddress);
+		if (!IsValidDestination(destination))
 		{
 			LogPrintf("CDarksendPool::SetCollateralAddress - Invalid Darksend collateral address\n");
 			return false;
 		}
-		collateralPubKey = GetScriptForDestination(address.Get());
+		CScript collateralPubKey = GetScriptForDestination(destination);//collateralPubKey = GetScriptForDestination(address.Get());
 		return true;
 	}
     void InitCollateralAddress(){

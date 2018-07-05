@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2016 The Bitsend Core developers
+# Copyright (c) 2016-2017 The bitsend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,15 +24,17 @@ EXCLUDE = [
     'src/secp256k1/src/java/org_bitsend_NativeSecp256k1.h',
     'src/secp256k1/src/java/org_bitsend_Secp256k1Context.c',
     'src/secp256k1/src/java/org_bitsend_Secp256k1Context.h',
-    # auto generated:
+    # univalue:
+    'src/univalue/test/object.cpp',
     'src/univalue/lib/univalue_escapes.h',
+    # auto generated:
     'src/qt/bitsendstrings.cpp',
     'src/chainparamsseeds.h',
     # other external copyrights:
     'src/tinyformat.h',
     'src/leveldb/util/env_win.cc',
     'src/crypto/ctaes/bench.c',
-    'qa/rpc-tests/test_framework/bignum.py',
+    'test/functional/test_framework/bignum.py',
     # python init:
     '*__init__.py',
 ]
@@ -83,11 +85,11 @@ def compile_copyright_regex(copyright_style, year_style, name):
 
 EXPECTED_HOLDER_NAMES = [
     "Satoshi Nakamoto\n",
-    "The Bitsend Core developers\n",
-    "The Bitsend Core developers \n",
-    "Bitsend Core Developers\n",
-    "the Bitsend Core developers\n",
-    "The Bitsend developers\n",
+    "The bitsend Core developers\n",
+    "The bitsend Core developers \n",
+    "bitsend Core Developers\n",
+    "the bitsend Core developers\n",
+    "The bitsend developers\n",
     "The LevelDB Authors\. All rights reserved\.\n",
     "BitPay Inc\.\n",
     "BitPay, Inc\.\n",
@@ -340,7 +342,7 @@ def write_file_lines(filename, file_lines):
 COPYRIGHT = 'Copyright \(c\)'
 YEAR = "20[0-9][0-9]"
 YEAR_RANGE = '(%s)(-%s)?' % (YEAR, YEAR)
-HOLDER = 'The Bitsend Core developers'
+HOLDER = 'The bitsend Core developers'
 UPDATEABLE_LINE_COMPILED = re.compile(' '.join([COPYRIGHT, YEAR_RANGE, HOLDER]))
 
 def get_updatable_copyright_line(file_lines):
@@ -408,24 +410,24 @@ def exec_update_header_year(base_directory):
 ################################################################################
 
 UPDATE_USAGE = """
-Updates all the copyright headers of "The Bitsend Core developers" which were
+Updates all the copyright headers of "The bitsend Core developers" which were
 changed in a year more recent than is listed. For example:
 
-// Copyright (c) <firstYear>-<lastYear> The Bitsend Core developers
+// Copyright (c) <firstYear>-<lastYear> The bitsend Core developers
 
 will be updated to:
 
-// Copyright (c) <firstYear>-<lastModifiedYear> The Bitsend Core developers
+// Copyright (c) <firstYear>-<lastModifiedYear> The bitsend Core developers
 
 where <lastModifiedYear> is obtained from the 'git log' history.
 
 This subcommand also handles copyright headers that have only a single year. In those cases:
 
-// Copyright (c) <year> The Bitsend Core developers
+// Copyright (c) <year> The bitsend Core developers
 
 will be updated to:
 
-// Copyright (c) <year>-<lastModifiedYear> The Bitsend Core developers
+// Copyright (c) <year>-<lastModifiedYear> The bitsend Core developers
 
 where the update is appropriate.
 
@@ -458,7 +460,7 @@ def get_header_lines(header, start_year, end_year):
     return [line + '\n' for line in lines]
 
 CPP_HEADER = '''
-// Copyright (c) %s The Bitsend Core developers
+// Copyright (c) %s The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
@@ -467,7 +469,7 @@ def get_cpp_header_lines_to_insert(start_year, end_year):
     return reversed(get_header_lines(CPP_HEADER, start_year, end_year))
 
 PYTHON_HEADER = '''
-# Copyright (c) %s The Bitsend Core developers
+# Copyright (c) %s The bitsend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
@@ -521,7 +523,7 @@ def insert_cpp_header(filename, file_lines, start_year, end_year):
 def exec_insert_header(filename, style):
     file_lines = read_file_lines(filename)
     if file_already_has_core_copyright(file_lines):
-        sys.exit('*** %s already has a copyright by The Bitsend Core developers'
+        sys.exit('*** %s already has a copyright by The bitsend Core developers'
                  % (filename))
     start_year, end_year = get_git_change_year_range(filename)
     if style == 'python':
@@ -534,7 +536,7 @@ def exec_insert_header(filename, style):
 ################################################################################
 
 INSERT_USAGE = """
-Inserts a copyright header for "The Bitsend Core developers" at the top of the
+Inserts a copyright header for "The bitsend Core developers" at the top of the
 file in either Python or C++ style as determined by the file extension. If the
 file is a Python file and it has a '#!' starting the first line, the header is
 inserted in the line below it.
@@ -548,7 +550,7 @@ where <year_introduced> is according to the 'git log' history. If
 
 "<current_year>"
 
-If the file already has a copyright for "The Bitsend Core developers", the
+If the file already has a copyright for "The bitsend Core developers", the
 script will exit.
 
 Usage:
@@ -580,7 +582,7 @@ def insert_cmd(argv):
 ################################################################################
 
 USAGE = """
-copyright_header.py - utilities for managing copyright headers of 'The Bitsend
+copyright_header.py - utilities for managing copyright headers of 'The bitsend
 Core developers' in repository source files.
 
 Usage:

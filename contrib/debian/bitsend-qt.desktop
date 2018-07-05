@@ -1,11 +1,14 @@
 [Desktop Entry]
-Encoding=UTF-8
-Name=Bitsend
-Comment=Bitsend P2P Cryptocurrency
+Version=1.0
+Name=bitsend Core
+Comment=Connect to the bitsend P2P Network
+Comment[de]=Verbinde mit dem bitsend peer-to-peer Netzwerk
+Comment[fr]=bitsend, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=bitsend, eşten eşe kriptografik sanal para birimi
 Exec=bitsend-qt %u
 Terminal=false
 Type=Application
 Icon=bitsend128
 MimeType=x-scheme-handler/bitsend;
 Categories=Office;Finance;
-Name[en_US]=bitsend-qt.desktop
+StartupWMClass=bitsend-qt

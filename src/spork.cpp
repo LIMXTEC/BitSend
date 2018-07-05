@@ -30,7 +30,7 @@ std::map<uint256, CSporkMessage> mapSporks;
 std::map<int, CSporkMessage> mapSporksActive;
 
 
-void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman* connman)
 {
     if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
 
@@ -46,10 +46,10 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
         uint256 hash = spork.GetHash();
         if(mapSporksActive.count(spork.nSporkID)) {
             if(mapSporksActive[spork.nSporkID].nTimeSigned >= spork.nTimeSigned){
-                if(fDebug) LogPrintf("spork - seen %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
+                /* if(fDebug) */ LogPrintf("spork - seen %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
                 return;
             } else {
-                if(fDebug) LogPrintf("spork - got updated spork %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
+                /* if(fDebug) */ LogPrintf("spork - got updated spork %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
             }
         }
 
@@ -63,7 +63,7 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
 
         mapSporks[hash] = spork;
         mapSporksActive[spork.nSporkID] = spork;
-        sporkManager.Relay(spork, connman);
+        sporkManager.Relay(spork, *connman);
 
         //does a task if needed
         ExecuteSpork(spork.nSporkID, spork.nValue);
@@ -74,7 +74,7 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
 
         while(it != mapSporksActive.end()) {
             //pfrom->PushMessage("spork", it->second);//todo++
-			connman.PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", it->second));
+			connman->PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", it->second));
             it++;
         }
     }

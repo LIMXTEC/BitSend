@@ -1,5 +1,5 @@
-Bitsend version 0.5.1 is now available for download at:
-http://sourceforge.net/projects/bitsend/files/Bitsend/bitsend-0.5.1/
+bitsend version 0.5.1 is now available for download at:
+http://sourceforge.net/projects/bitsend/files/bitsend/bitsend-0.5.1/
 
 This is a bugfix-only release.
 

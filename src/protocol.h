@@ -1,7 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,10 +10,10 @@
 #ifndef BITSEND_PROTOCOL_H
 #define BITSEND_PROTOCOL_H
 
-#include "netaddress.h"
-#include "serialize.h"
-#include "uint256.h"
-#include "version.h"
+#include <netaddress.h>
+#include <serialize.h>
+#include <uint256.h>
+#include <version.h>
 
 #include <stdint.h>
 #include <string>
@@ -29,19 +27,16 @@
 class CMessageHeader
 {
 public:
-    enum {
-        MESSAGE_START_SIZE = 4,
-        COMMAND_SIZE = 12,
-        MESSAGE_SIZE_SIZE = 4,
-        CHECKSUM_SIZE = 4,
-
-        MESSAGE_SIZE_OFFSET = MESSAGE_START_SIZE + COMMAND_SIZE,
-        CHECKSUM_OFFSET = MESSAGE_SIZE_OFFSET + MESSAGE_SIZE_SIZE,
-        HEADER_SIZE = MESSAGE_START_SIZE + COMMAND_SIZE + MESSAGE_SIZE_SIZE + CHECKSUM_SIZE
-    };
+    static constexpr size_t MESSAGE_START_SIZE = 4;
+    static constexpr size_t COMMAND_SIZE = 12;
+    static constexpr size_t MESSAGE_SIZE_SIZE = 4;
+    static constexpr size_t CHECKSUM_SIZE = 4;
+    static constexpr size_t MESSAGE_SIZE_OFFSET = MESSAGE_START_SIZE + COMMAND_SIZE;
+    static constexpr size_t CHECKSUM_OFFSET = MESSAGE_SIZE_OFFSET + MESSAGE_SIZE_SIZE;
+    static constexpr size_t HEADER_SIZE = MESSAGE_START_SIZE + COMMAND_SIZE + MESSAGE_SIZE_SIZE + CHECKSUM_SIZE;
     typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
 
-    CMessageHeader(const MessageStartChars& pchMessageStartIn);
+    explicit CMessageHeader(const MessageStartChars& pchMessageStartIn);
     CMessageHeader(const MessageStartChars& pchMessageStartIn, const char* pszCommand, unsigned int nMessageSizeIn);
 
     std::string GetCommand() const;
@@ -65,7 +60,7 @@ public:
 };
 
 /**
- * Bitsend protocol message types. When adding new message types, don't forget
+ * bitsend protocol message types. When adding new message types, don't forget
  * to update allNetMessageTypes in protocol.cpp.
  */
 namespace NetMsgType {
@@ -165,7 +160,7 @@ extern const char *PONG;
 /**
  * The notfound message is a reply to a getdata message which requested an
  * object the receiving node does not have available for relay.
- * @ince protocol version 70001.
+ * @since protocol version 70001.
  * @see https://bitsend.org/en/developer-reference#notfound
  */
 extern const char *NOTFOUND;
@@ -256,16 +251,15 @@ const std::vector<std::string> &getAllNetMessageTypes();
 enum ServiceFlags : uint64_t {
     // Nothing
     NODE_NONE = 0,
-    // NODE_NETWORK means that the node is capable of serving the block chain. It is currently
-    // set by all Bitsend Core nodes, and is unset by SPV clients or other peers that just want
-    // network services but don't provide them.
+    // NODE_NETWORK means that the node is capable of serving the complete block chain. It is currently
+    // set by all bitsend Core non pruned nodes, and is unset by SPV clients or other light clients.
     NODE_NETWORK = (1 << 0),
     // NODE_GETUTXO means the node is capable of responding to the getutxo protocol request.
-    // Bitsend Core does not support this but a patch set called Bitsend XT does.
+    // bitsend Core does not support this but a patch set called bitsend XT does.
     // See BIP 64 for details on how this is implemented.
     NODE_GETUTXO = (1 << 1),
     // NODE_BLOOM means the node is capable and willing to handle bloom-filtered connections.
-    // Bitsend Core nodes used to support this by default, without advertising this bit,
+    // bitsend Core nodes used to support this by default, without advertising this bit,
     // but no longer do as of protocol version 70011 (= NO_BLOOM_VERSION)
     NODE_BLOOM = (1 << 2),
     // NODE_WITNESS indicates that a node can be asked for blocks and transactions including
@@ -274,6 +268,10 @@ enum ServiceFlags : uint64_t {
     // NODE_XTHIN means the node supports Xtreme Thinblocks
     // If this is turned off then the node will not service nor make xthin requests
     NODE_XTHIN = (1 << 4),
+    // NODE_NETWORK_LIMITED means the same as NODE_NETWORK with the limitation of only
+    // serving the last 288 (2 day) blocks
+    // See BIP159 for details on how this is implemented.
+    NODE_NETWORK_LIMITED = (1 << 10),
 
     // Bits 24-31 are reserved for temporary experiments. Just pick a bit that
     // isn't getting used, or one not being used much, and notify the
@@ -284,12 +282,57 @@ enum ServiceFlags : uint64_t {
     // BIP process.
 };
 
+/**
+ * Gets the set of service flags which are "desirable" for a given peer.
+ *
+ * These are the flags which are required for a peer to support for them
+ * to be "interesting" to us, ie for us to wish to use one of our few
+ * outbound connection slots for or for us to wish to prioritize keeping
+ * their connection around.
+ *
+ * Relevant service flags may be peer- and state-specific in that the
+ * version of the peer may determine which flags are required (eg in the
+ * case of NODE_NETWORK_LIMITED where we seek out NODE_NETWORK peers
+ * unless they set NODE_NETWORK_LIMITED and we are out of IBD, in which
+ * case NODE_NETWORK_LIMITED suffices).
+ *
+ * Thus, generally, avoid calling with peerServices == NODE_NONE, unless
+ * state-specific flags must absolutely be avoided. When called with
+ * peerServices == NODE_NONE, the returned desirable service flags are
+ * guaranteed to not change dependant on state - ie they are suitable for
+ * use when describing peers which we know to be desirable, but for which
+ * we do not have a confirmed set of service flags.
+ *
+ * If the NODE_NONE return value is changed, contrib/seeds/makeseeds.py
+ * should be updated appropriately to filter for the same nodes.
+ */
+static ServiceFlags GetDesirableServiceFlags(ServiceFlags services) {
+    return ServiceFlags(NODE_NETWORK | NODE_WITNESS);
+}
+
+/**
+ * A shortcut for (services & GetDesirableServiceFlags(services))
+ * == GetDesirableServiceFlags(services), ie determines whether the given
+ * set of service flags are sufficient for a peer to be "relevant".
+ */
+static inline bool HasAllDesirableServiceFlags(ServiceFlags services) {
+    return !(GetDesirableServiceFlags(services) & (~services));
+}
+
+/**
+ * Checks if a peer with the given service flags may be capable of having a
+ * robust address-storage DB. Currently an alias for checking NODE_NETWORK.
+ */
+static inline bool MayHaveUsefulAddressDB(ServiceFlags services) {
+    return services & NODE_NETWORK;
+}
+
 /** A CService with information about it as peer */
 class CAddress : public CService
 {
 public:
     CAddress();
-    explicit CAddress(CService ipIn, ServiceFlags nServicesIn = NODE_NETWORK);//todo++
+    explicit CAddress(CService ipIn, ServiceFlags nServicesIn = NODE_NETWORK);
 
     void Init();
 
@@ -339,7 +382,6 @@ enum GetDataMsg
     MSG_WITNESS_BLOCK = MSG_BLOCK | MSG_WITNESS_FLAG, //!< Defined in BIP144
     MSG_WITNESS_TX = MSG_TX | MSG_WITNESS_FLAG,       //!< Defined in BIP144
     MSG_FILTERED_WITNESS_BLOCK = MSG_FILTERED_BLOCK | MSG_WITNESS_FLAG,
-	
 	/**TODO-- */
     MSG_SPORK = 6,
     MSG_MASTERNODE_WINNER = 7,
@@ -372,27 +414,5 @@ public:
     int type;
     uint256 hash;
 };
-/**TODO-- */
-/*enum {
-    MSG_TX = 1,
-    MSG_BLOCK,
-    // Nodes may always request a MSG_FILTERED_BLOCK in a getdata, however,
-    // MSG_FILTERED_BLOCK should not appear in any invs except as a part of getdata.
-    MSG_FILTERED_BLOCK,
-    MSG_TXLOCK_REQUEST,
-    MSG_TXLOCK_VOTE,
-    MSG_SPORK,
-    MSG_MASTERNODE_WINNER,
-    MSG_MASTERNODE_SCANNING_ERROR,
-    MSG_BUDGET_VOTE,
-    MSG_BUDGET_PROPOSAL,
-    MSG_BUDGET_FINALIZED,
-    MSG_BUDGET_FINALIZED_VOTE,
-    MSG_MASTERNODE_QUORUM,
-    MSG_MASTERNODE_ANNOUNCE,
-    MSG_MASTERNODE_PING,
-    MSG_DSTX
-};*/
-
 
 #endif // BITSEND_PROTOCOL_H

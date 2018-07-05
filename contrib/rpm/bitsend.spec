@@ -37,7 +37,7 @@ Source30:	https://raw.githubusercontent.com/bitsend/bitsend/v%{version}/contrib/
 Source31:	https://raw.githubusercontent.com/bitsend/bitsend/v%{version}/contrib/rpm/bitsend.fc
 Source32:	https://raw.githubusercontent.com/bitsend/bitsend/v%{version}/contrib/rpm/bitsend.if
 
-Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitsend.svg
+Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/bitsend.svg
 
 %if 0%{?_use_libressl:1}
 BuildRequires:	libressl-devel
@@ -54,7 +54,7 @@ Patch0:		bitsend-0.12.0-libressl.patch
 
 
 %description
-Bitsend is a digital cryptographic currency that uses peer-to-peer technology to
+bitsend is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
 issuing of bitsends is carried out collectively by the network.
 
@@ -79,17 +79,17 @@ BuildRequires:	%{_bindir}/inkscape
 BuildRequires:	%{_bindir}/convert
 
 %description core
-Bitsend is a digital cryptographic currency that uses peer-to-peer technology to
+bitsend is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
 issuing of bitsends is carried out collectively by the network.
 
 This package contains the Qt based graphical client and node. If you are looking
-to run a Bitsend wallet, this is probably the package you want.
+to run a bitsend wallet, this is probably the package you want.
 %endif
 
 
 %package libs
-Summary:	Bitsend shared libraries
+Summary:	bitsend shared libraries
 Group:		System Environment/Libraries
 
 %description libs
@@ -134,7 +134,7 @@ If you use the graphical bitsend-core client then you almost certainly do not
 need this package.
 
 %package utils
-Summary:	Bitsend utilities
+Summary:	bitsend utilities
 Group:		Applications/System
 
 %description utils
@@ -209,7 +209,7 @@ touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/bitsend
 mkdir -p %{buildroot}%{_unitdir}
 cat <<EOF > %{buildroot}%{_unitdir}/bitsend.service
 [Unit]
-Description=Bitsend daemon
+Description=bitsend daemon
 After=syslog.target network.target
 
 [Service]
@@ -265,10 +265,10 @@ mkdir -p %{buildroot}%{_datadir}/applications
 cat <<EOF > %{buildroot}%{_datadir}/applications/bitsend-core.desktop
 [Desktop Entry]
 Encoding=UTF-8
-Name=Bitsend
-Comment=Bitsend P2P Cryptocurrency
-Comment[fr]=Bitsend, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Bitsend, eşten eşe kriptografik sanal para birimi
+Name=bitsend
+Comment=bitsend P2P Cryptocurrency
+Comment[fr]=bitsend, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=bitsend, eşten eşe kriptografik sanal para birimi
 Exec=bitsend-qt %u
 Terminal=false
 Type=Application
@@ -311,10 +311,8 @@ rm -f %{buildroot}%{_bindir}/test_*
 
 %check
 make check
-pushd src
-srcdir=. test/bitsend-util-test.py
-popd
-qa/pull-tester/rpc-tests.py -extended
+srcdir=src test/bitsend-util-test.py
+test/functional/test_runner.py --extended
 
 %post libs -p /sbin/ldconfig
 
@@ -324,7 +322,7 @@ qa/pull-tester/rpc-tests.py -extended
 getent group bitsend >/dev/null || groupadd -r bitsend
 getent passwd bitsend >/dev/null ||
 	useradd -r -g bitsend -d /var/lib/bitsend -s /sbin/nologin \
-	-c "Bitsend wallet server" bitsend
+	-c "bitsend wallet server" bitsend
 exit 0
 
 %post server
@@ -338,6 +336,8 @@ done
 %{_sbindir}/semanage port -a -t bitsend_port_t -p tcp 8333
 %{_sbindir}/semanage port -a -t bitsend_port_t -p tcp 18332
 %{_sbindir}/semanage port -a -t bitsend_port_t -p tcp 18333
+%{_sbindir}/semanage port -a -t bitsend_port_t -p tcp 18443
+%{_sbindir}/semanage port -a -t bitsend_port_t -p tcp 18444
 %{_sbindir}/fixfiles -R bitsend-server restore &> /dev/null || :
 %{_sbindir}/restorecon -R %{_localstatedir}/lib/bitsend || :
 fi
@@ -357,6 +357,8 @@ if [ $1 -eq 0 ]; then
 	%{_sbindir}/semanage port -d -p tcp 8333
 	%{_sbindir}/semanage port -d -p tcp 18332
 	%{_sbindir}/semanage port -d -p tcp 18333
+	%{_sbindir}/semanage port -d -p tcp 18443
+	%{_sbindir}/semanage port -d -p tcp 18444
 	for selinuxvariant in %{selinux_variants}; do
 		%{_sbindir}/semodule -s ${selinuxvariant} -r bitsend &> /dev/null || :
 	done

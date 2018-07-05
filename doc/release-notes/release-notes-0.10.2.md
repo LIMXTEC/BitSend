@@ -1,4 +1,4 @@
-Bitsend Core version 0.10.2 is now available from:
+bitsend Core version 0.10.2 is now available from:
 
   <https://bitsend.org/bin/bitsend-core-0.10.2/>
 
@@ -17,7 +17,7 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
+installer (on Windows) or just copy over /Applications/bitsend-Qt (on Mac) or
 bitsendd/bitsend-qt (on Linux).
 
 Downgrade warning
@@ -25,7 +25,7 @@ Downgrade warning
 
 Because release 0.10.0 and later makes use of headers-first synchronization and
 parallel block download (see further), the block files and databases are not
-backwards-compatible with pre-0.10 versions of Bitsend Core or other software:
+backwards-compatible with pre-0.10 versions of bitsend Core or other software:
 
 * Blocks will be stored on disk out of order (in the order they are
 received, really), which makes it incompatible with some tools or

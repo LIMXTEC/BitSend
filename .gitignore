@@ -4,21 +4,39 @@
 src/bitsend
 src/bitsendd
 src/bitsend-cli
+src/bitsend-tx
 src/test/test_bitsend
+src/test/test_bitsend_fuzzy
 src/qt/test/test_bitsend-qt
 
+# autoreconf
 Makefile.in
 aclocal.m4
 autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
 config.log
 config.status
 configure
-src/bitsend-config.h
-src/bitsend-config.h.in
-src/build-aux/
-src/stamp-h1
+libtool
+src/config/bitsend-config.h
+src/config/bitsend-config.h.in
+src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
+
+src/univalue/gen
 
 src/qt/*.moc
 src/qt/moc_*.cpp
@@ -26,16 +44,24 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
+src/qt/bitsend-qt.config
+src/qt/bitsend-qt.creator
+src/qt/bitsend-qt.creator.user
+src/qt/bitsend-qt.files
+src/qt/bitsend-qt.includes
+
 .deps
 .dirstamp
+.libs
 .*.swp
 *.*~*
 *.bak
 *.rej
 *.orig
+*.pyc
 *.o
 *.o-*
-.bitsend
+*.patch
 *.a
 *.pb.cc
 *.pb.h
@@ -47,11 +73,16 @@ src/qt/test/moc*.cpp
 *.json.h
 *.raw.h
 
+#libtool object files
+*.lo
+*.la
+
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
 bitsend-qt
-Bitsend-Qt.app
+bitsend-Qt.app
+background.tiff*
 
 # Unit-tests
 Makefile.test
@@ -60,20 +91,13 @@ bitsend-qt_test
 # Resources cpp
 qrc_*.cpp
 
-# Qt creator
-*.pro.user
-darkcoi*.config
-*.creator
-*.creator.user
-darkcoi*.files
-darkcoi*.includes
-
 # Mac specific
 .DS_Store
 build
 
 #lcov
 *.gcno
+*.gcda
 /*.info
 test_bitsend.coverage/
 total.coverage/
@@ -83,13 +107,12 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-qa/pull-tester/run-bitsendd-for-test.sh
-qa/pull-tester/build-tests.sh
+test/config.ini
+test/cache/*
 
 !src/leveldb*/Makefile
 
-.cproject
-.project
-*.db
-*.db
-*.db
+/doc/doxygen/
+
+libbitsendconsensus.pc
+contrib/devtools/split-debug.sh

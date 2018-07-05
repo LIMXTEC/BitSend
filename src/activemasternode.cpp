@@ -15,7 +15,7 @@ void CActiveMasternode::ManageStatus()
 
     if(!fMasterNode) return;
 
-    if (fDebug) LogPrintf("CActiveMasternode::ManageStatus() - Begin\n");
+    //if (fDebug) LogPrintf("CActiveMasternode::ManageStatus() - Begin\n");
 
     //need correct adjusted time to send ping
     bool fIsInitialDownload = IsInitialBlockDownload();
@@ -265,16 +265,18 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         return false;
     }
 
-    CBitsendAddress address;
+    //CbitsendAddress address;
+	CTxDestination destination = DecodeDestination(strDonationAddress);
+	
     if (strDonationAddress != "")
     {
-        if(!address.SetString(strDonationAddress))
+        if (!IsValidDestination(destination))//if(!address.SetString(strDonationAddress))
         {
             LogPrintf("CActiveMasternode::Register - Invalid Donation Address\n");
             return false;
         }
         //donationAddress.SetDestination(address.Get());
-		donationAddress = GetScriptForDestination(address.Get());//todo++
+		donationAddress = GetScriptForDestination(destination);//todo++
         try {
             donationPercentage = boost::lexical_cast<int>( strDonationPercentage );
         } catch( boost::bad_lexical_cast const& ) {
@@ -350,7 +352,7 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
 		txHash.SetHex(strTxHash);
         int outputIndex = boost::lexical_cast<int>(strOutputIndex);
         bool found = false;
-        BOOST_FOREACH(COutput& out, possibleCoins) {
+        for( COutput& out : possibleCoins){//BOOST_FOREACH(COutput& out, possibleCoins) {
             if(out.tx->GetHash() == txHash && out.i == outputIndex)
             {
                 selectedOutput = &out;
@@ -387,14 +389,18 @@ bool CActiveMasternode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubke
 
     CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    CBitsendAddress address2(address1);
-
-    CKeyID keyID;
-    if (!address2.GetKeyID(keyID)) {
+	//boost::apply_visitor(DestinationEncoder(Params()), address1);
+    //DestinationEncoder address2(boost::apply_visitor(DestinationEncoder(Params()), address1));//
+	EncodeDestination(address1);// : Params());
+	//CbitsendAddress address2(address1);
+	//CTxDestination address1 = DecodeDestination(pubScript);
+    //CKeyID keyID;
+	CKeyID *key = boost::get<CKeyID>(&address1);
+    if (!key) {
         LogPrintf("CActiveMasternode::GetMasterNodeVin - Address does not refer to a key\n");
         return false;
     }
-
+	CKeyID keyID = *key;
     if (!pwalletMain->GetKey(keyID, secretKey)) {
         LogPrintf ("CActiveMasternode::GetMasterNodeVin - Private key for address is not known\n");
         return false;
@@ -414,7 +420,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     pwalletMain->AvailableCoins(vCoins);
 
     // Filter
-    BOOST_FOREACH(const COutput& out, vCoins)
+    for(const COutput& out : vCoins){//BOOST_FOREACH(const COutput& out, vCoins)
     {
         if(out.tx->tx->vout[out.i].nValue == MASTERNODEAMOUNT*COIN) { //exactly        bitsenddev   04-2015
             filteredCoins.push_back(out);
@@ -422,7 +428,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     }
     return filteredCoins;
 }
-
+}
 // when starting a Masternode, this can enable to run as a hot wallet with no funds
 bool CActiveMasternode::EnableHotColdMasterNode(CTxIn& newVin, CService& newService)
 {
@@ -438,3 +444,4 @@ bool CActiveMasternode::EnableHotColdMasterNode(CTxIn& newVin, CService& newServ
 
     return true;
 }
+

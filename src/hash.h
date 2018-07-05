@@ -1,19 +1,17 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_HASH_H
 #define BITSEND_HASH_H
 
-#include "crypto/ripemd160.h"
-#include "crypto/sha256.h"
-#include "prevector.h"
-#include "serialize.h"
-#include "uint256.h"
-#include "version.h"
+#include <crypto/ripemd160.h>
+#include <crypto/sha256.h>
+#include <prevector.h>
+#include <serialize.h>
+#include <uint256.h>
+#include <version.h>
 //TODO-- add more for xvean
 #include "crypto/sph_blake.h"
 #include "crypto/sph_bmw.h"
@@ -33,11 +31,9 @@
 #include "crypto/sph_sha2.h" //X17 
 #include "crypto/sph_haval.h" //X17 
 
-
 #include <vector>
 
 typedef uint256 ChainCode;
-
 /**TODO-- */
 #ifdef GLOBALDEFINED
 #define GLOBAL
@@ -98,7 +94,8 @@ GLOBAL sph_haval256_5_context   z_haval;
 #define ZHAVAL (memcpy(&ctx_haval, &z_haval, sizeof(z_haval)))
 //TODO--ends
 
-/** A hasher class for Bitsend's 256-bit hash (double SHA-256). */
+
+/** A hasher class for bitsend's 256-bit hash (double SHA-256). */
 class CHash256 {
 private:
     CSHA256 sha;
@@ -122,7 +119,7 @@ public:
     }
 };
 
-/** A hasher class for Bitsend's 160-bit hash (SHA-256 + RIPEMD-160). */
+/** A hasher class for bitsend's 160-bit hash (SHA-256 + RIPEMD-160). */
 class CHash160 {
 private:
     CSHA256 sha;
@@ -168,21 +165,6 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
               .Finalize((unsigned char*)&result);
     return result;
 }
-
-/** Compute the 256-bit hash of the concatenation of three objects. */
-template<typename T1, typename T2, typename T3>
-inline uint256 Hash(const T1 p1begin, const T1 p1end,
-                    const T2 p2begin, const T2 p2end,
-                    const T3 p3begin, const T3 p3end) {
-    static const unsigned char pblank[1] = {};
-    uint256 result;
-    CHash256().Write(p1begin == p1end ? pblank : (const unsigned char*)&p1begin[0], (p1end - p1begin) * sizeof(p1begin[0]))
-              .Write(p2begin == p2end ? pblank : (const unsigned char*)&p2begin[0], (p2end - p2begin) * sizeof(p2begin[0]))
-              .Write(p3begin == p3end ? pblank : (const unsigned char*)&p3begin[0], (p3end - p3begin) * sizeof(p3begin[0]))
-              .Finalize((unsigned char*)&result);
-    return result;
-}
-
 /**TODO-- */
 /** Compute the 256-bit hash of the concatenation of three objects. */
 template<typename T1, typename T2, typename T3, typename T4>
@@ -238,8 +220,6 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     return result;
 }
 //TODO--ends
-
-
 /** Compute the 160-bit hash an object. */
 template<typename T1>
 inline uint160 Hash160(const T1 pbegin, const T1 pend)
@@ -298,6 +278,41 @@ public:
     }
 };
 
+/** Reads data from an underlying stream, while hashing the read data. */
+template<typename Source>
+class CHashVerifier : public CHashWriter
+{
+private:
+    Source* source;
+
+public:
+    explicit CHashVerifier(Source* source_) : CHashWriter(source_->GetType(), source_->GetVersion()), source(source_) {}
+
+    void read(char* pch, size_t nSize)
+    {
+        source->read(pch, nSize);
+        this->write(pch, nSize);
+    }
+
+    void ignore(size_t nSize)
+    {
+        char data[1024];
+        while (nSize > 0) {
+            size_t now = std::min<size_t>(nSize, 1024);
+            read(data, now);
+            nSize -= now;
+        }
+    }
+
+    template<typename T>
+    CHashVerifier<Source>& operator>>(T& obj)
+    {
+        // Unserialize from this stream
+        ::Unserialize(*this, obj);
+        return (*this);
+    }
+};
+
 /** Compute the 256-bit hash of an object's serialization. */
 template<typename T>
 uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)
@@ -344,6 +359,7 @@ public:
  *      .Finalize()
  */
 uint64_t SipHashUint256(uint64_t k0, uint64_t k1, const uint256& val);
+uint64_t SipHashUint256Extra(uint64_t k0, uint64_t k1, const uint256& val, uint32_t extra);
 
 /* ----------- X11 Hash ------------------------------------------------ */
 template<typename T1>
@@ -583,7 +599,6 @@ static unsigned char pblank[1];
 
     return hash[33].trim256();
 }
-
 
 
 #endif // BITSEND_HASH_H

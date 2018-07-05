@@ -3,41 +3,66 @@ Developer Notes
 
 Various coding styles have been used during the history of the codebase,
 and the result is not very consistent. However, we're now trying to converge to
-a single style, so please use it in new code. Old code will be converted
-gradually and you are encouraged to use the provided
-[clang-format-diff script](/contrib/devtools/README.md#clang-format-diffpy)
-to clean up the patch automatically before submitting a pull request.
+a single style, which is specified below. When writing patches, favor the new
+style over attempting to mimic the surrounding style, except for move-only
+commits.
 
-- Basic rules specified in [src/.clang-format](/src/.clang-format).
+Do not submit patches solely to modify the style of existing code.
+
+- **Indentation and whitespace rules** as specified in
+[src/.clang-format](/src/.clang-format). You can use the provided
+[clang-format-diff script](/contrib/devtools/README.md#clang-format-diffpy)
+tool to clean up patches automatically before submission.
   - Braces on new lines for namespaces, classes, functions, methods.
   - Braces on the same line for everything else.
   - 4 space indentation (no tabs) for every block except namespaces.
   - No indentation for `public`/`protected`/`private` or for `namespace`.
   - No extra spaces inside parenthesis; don't do ( this )
   - No space after function names; one space after `if`, `for` and `while`.
-  - If an `if` only has a single-statement then-clause, it can appear
-    on the same line as the if, without braces. In every other case,
-    braces are required, and the then and else clauses must appear
+  - If an `if` only has a single-statement `then`-clause, it can appear
+    on the same line as the `if`, without braces. In every other case,
+    braces are required, and the `then` and `else` clauses must appear
     correctly indented on a new line.
+
+- **Symbol naming conventions**. These are preferred in new code, but are not
+required when doing so would need changes to significant pieces of existing
+code.
+  - Variable and namespace names are all lowercase, and may use `_` to
+    separate words (snake_case).
+    - Class member variables have a `m_` prefix.
+    - Global variables have a `g_` prefix.
+  - Constant names are all uppercase, and use `_` to separate words.
+  - Class names, function names and method names are UpperCamelCase
+    (PascalCase). Do not prefix class names with `C`.
+
+- **Miscellaneous**
   - `++i` is preferred over `i++`.
+  - `nullptr` is preferred over `NULL` or `(void*)0`.
+  - `static_assert` is preferred over `assert` where possible. Generally; compile-time checking is preferred over run-time checking.
 
 Block style example:
 ```c++
+int g_count = 0;
+
 namespace foo
 {
 class Class
 {
+    std::string m_name;
+
+public:
     bool Function(const std::string& s, int n)
     {
         // Comment summarising what this section of code does
         for (int i = 0; i < n; ++i) {
+            int total_sum = 0;
             // When something fails, return early
             if (!Something()) return false;
             ...
-            if (SomethingElse()) {
-                DoMore();
+            if (SomethingElse(i)) {
+                total_sum += ComputeSomething(g_count);
             } else {
-                DoLess();
+                DoSomething(m_name, total_sum);
             }
         }
 
@@ -45,7 +70,7 @@ class Class
         return true;
     }
 }
-}
+} // namespace foo
 ```
 
 Doxygen comments
@@ -132,15 +157,46 @@ Run with the -testnet option to run with "play bitsends" on the test network, if
 are testing multi-machine code that needs to operate across the internet.
 
 If you are testing something that can run on one machine, run with the -regtest option.
-In regression test mode, blocks can be created on-demand; see qa/rpc-tests/ for tests
+In regression test mode, blocks can be created on-demand; see test/functional/ for tests
 that run in -regtest mode.
 
 **DEBUG_LOCKORDER**
 
-Bitsend Core is a multithreaded application, and deadlocks or other multithreading bugs
+bitsend Core is a multithreaded application, and deadlocks or other multithreading bugs
 can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
 CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which locks
 are held, and adds warnings to the debug.log file if inconsistencies are detected.
+
+**Valgrind suppressions file**
+
+Valgrind is a programming tool for memory debugging, memory leak detection, and
+profiling. The repo contains a Valgrind suppressions file
+([`valgrind.supp`](https://github.com/bitsend/bitsend/blob/master/contrib/valgrind.supp))
+which includes known Valgrind warnings in our dependencies that cannot be fixed
+in-tree. Example use:
+
+```shell
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_bitsend
+$ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
+      --show-leak-kinds=all src/test/test_bitsend --log_level=test_suite
+$ valgrind -v --leak-check=full src/bitsendd -printtoconsole
+```
+
+**compiling for test coverage**
+
+LCOV can be used to generate a test coverage report based upon `make check`
+execution. LCOV must be installed on your system (e.g. the `lcov` package
+on Debian/Ubuntu).
+
+To enable LCOV report generation during test runs:
+
+```shell
+./configure --enable-lcov
+make
+make cov
+
+# A coverage report will now be accessible at `./test_bitsend.coverage/index.html`.
+```
 
 Locking/mutex usage notes
 -------------------------
@@ -186,7 +242,7 @@ Threads
 
 - ThreadRPCServer : Remote procedure call handler, listens on port 8332 for connections and services them.
 
-- BitsendMiner : Generates bitsends (if wallet is enabled).
+- bitsendMiner : Generates bitsends (if wallet is enabled).
 
 - Shutdown : Does an orderly shutdown of everything.
 
@@ -196,7 +252,7 @@ Ignoring IDE/editor files
 In closed-source environments in which everyone uses the same IDE it is common
 to add temporary files it produces to the project-wide `.gitignore` file.
 
-However, in open source software such as Bitsend Core, where everyone uses
+However, in open source software such as bitsend Core, where everyone uses
 their own editors/IDE/tools, it is less common. Only you know what files your
 editor produces and this may change from version to version. The canonical way
 to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
@@ -226,9 +282,9 @@ Development guidelines
 ============================
 
 A few non-style-related recommendations for developers, as well as points to
-pay attention to for reviewers of Bitsend Core code.
+pay attention to for reviewers of bitsend Core code.
 
-General Bitsend Core
+General bitsend Core
 ----------------------
 
 - New features should be exposed on RPC first, then can be made available in the GUI
@@ -252,7 +308,7 @@ Wallet
 
   - *Rationale*: In RPC code that conditionally uses the wallet (such as
     `validateaddress`) it is easy to forget that global pointer `pwalletMain`
-    can be NULL. See `qa/rpc-tests/disablewallet.py` for functional tests
+    can be nullptr. See `test/functional/disablewallet.py` for functional tests
     exercising the API with `-disablewallet`
 
 - Include `db_cxx.h` (BerkeleyDB header) only when `ENABLE_WALLET` is set
@@ -264,7 +320,7 @@ General C++
 
 - Assertions should not have side-effects
 
-  - *Rationale*: Even though the source code is set to to refuse to compile
+  - *Rationale*: Even though the source code is set to refuse to compile
     with assertions disabled, having side-effects in assertions is unexpected and
     makes the code harder to understand
 
@@ -307,6 +363,12 @@ C++ data structures
   - *Rationale*: Ensure determinism by avoiding accidental use of uninitialized
     values. Also, static analyzers balk about this.
 
+- By default, declare single-argument constructors `explicit`.
+
+  - *Rationale*: This is a precaution to avoid unintended conversions that might
+    arise when single-argument constructors are used as implicit conversion
+    functions.
+
 - Use explicitly signed or unsigned `char`s, or even better `uint8_t` and
   `int8_t`. Do not use bare `char` unless it is to pass to a third-party API.
   This type can be signed or unsigned depending on the architecture, which can
@@ -338,15 +400,14 @@ Strings and formatting
 
 - For `strprintf`, `LogPrint`, `LogPrintf` formatting characters don't need size specifiers
 
-  - *Rationale*: Bitsend Core uses tinyformat, which is type safe. Leave them out to avoid confusion
+  - *Rationale*: bitsend Core uses tinyformat, which is type safe. Leave them out to avoid confusion
 
 Variable names
 --------------
 
-The shadowing warning (`-Wshadow`) is enabled by default. It prevents issues rising
-from using a different variable with the same name.
-
-Please name variables so that their names do not shadow variables defined in the source code.
+Although the shadowing warning (`-Wshadow`) is not enabled by default (it prevents issues rising
+from using a different variable with the same name),
+please name variables so that their names do not shadow variables defined in the source code.
 
 E.g. in member initializers, prepend `_` to the argument name shadowing the
 member name:
@@ -403,10 +464,41 @@ Source code organization
 
   - *Rationale*: Shorter and simpler header files are easier to read, and reduce compile time
 
+- Every `.cpp` and `.h` file should `#include` every header file it directly uses classes, functions or other
+  definitions from, even if those headers are already included indirectly through other headers. One exception
+  is that a `.cpp` file does not need to re-include the includes already included in its corresponding `.h` file.
+
+  - *Rationale*: Excluding headers because they are already indirectly included results in compilation
+    failures when those indirect dependencies change. Furthermore, it obscures what the real code
+    dependencies are.
+
 - Don't import anything into the global namespace (`using namespace ...`). Use
   fully specified types such as `std::string`.
 
   - *Rationale*: Avoids symbol conflicts
+
+- Terminate namespaces with a comment (`// namespace mynamespace`). The comment
+  should be placed on the same line as the brace closing the namespace, e.g.
+
+```c++
+namespace mynamespace {
+    ...
+} // namespace mynamespace
+
+namespace {
+    ...
+} // namespace
+```
+
+  - *Rationale*: Avoids confusion about the namespace context
+
+- Prefer `#include <primitives/transaction.h>` bracket syntax instead of
+  `#include "primitives/transactions.h"` quote syntax when possible.
+
+  - *Rationale*: Bracket syntax is less ambiguous because the preprocessor
+    searches a fixed list of include directories without taking location of the
+    source file into account. This allows quoted includes to stand out more when
+    the location of the source file actually is relevant.
 
 GUI
 -----
@@ -422,12 +514,12 @@ Subtrees
 
 Several parts of the repository are subtrees of software maintained elsewhere.
 
-Some of these are maintained by active developers of Bitsend Core, in which case changes should probably go
+Some of these are maintained by active developers of bitsend Core, in which case changes should probably go
 directly upstream without being PRed directly against the project.  They will be merged back in the next
 subtree merge.
 
 Others are external projects without a tight relationship with our project.  Changes to these should also
-be sent upstream but bugfixes may also be prudent to PR against Bitsend Core so that they can be integrated
+be sent upstream but bugfixes may also be prudent to PR against bitsend Core so that they can be integrated
 quickly.  Cosmetic changes should be purely taken upstream.
 
 There is a tool in contrib/devtools/git-subtree-check.sh to check a subtree directory for consistency with
@@ -439,10 +531,10 @@ Current subtrees include:
   - Upstream at https://github.com/google/leveldb ; Maintained by Google, but open important PRs to Core to avoid delay
 
 - src/libsecp256k1
-  - Upstream at https://github.com/bitcoin-core/secp256k1/ ; actively maintaned by Core contributors.
+  - Upstream at https://github.com/bitsend-core/secp256k1/ ; actively maintaned by Core contributors.
 
 - src/crypto/ctaes
-  - Upstream at https://github.com/bitcoin-core/ctaes ; actively maintained by Core contributors.
+  - Upstream at https://github.com/bitsend-core/ctaes ; actively maintained by Core contributors.
 
 - src/univalue
   - Upstream at https://github.com/jgarzik/univalue ; report important PRs to Core to avoid delay.
@@ -495,3 +587,112 @@ Git and GitHub tips
   This will add an `upstream-pull` remote to your git repository, which can be fetched using `git fetch --all`
   or `git fetch upstream-pull`. Afterwards, you can use `upstream-pull/NUMBER/head` in arguments to `git show`,
   `git checkout` and anywhere a commit id would be acceptable to see the changes from pull request NUMBER.
+
+Scripted diffs
+--------------
+
+For reformatting and refactoring commits where the changes can be easily automated using a bash script, we use
+scripted-diff commits. The bash script is included in the commit message and our Travis CI job checks that
+the result of the script is identical to the commit. This aids reviewers since they can verify that the script
+does exactly what it's supposed to do. It is also helpful for rebasing (since the same script can just be re-run
+on the new master commit).
+
+To create a scripted-diff:
+
+- start the commit message with `scripted-diff:` (and then a description of the diff on the same line)
+- in the commit message include the bash script between lines containing just the following text:
+    - `-BEGIN VERIFY SCRIPT-`
+    - `-END VERIFY SCRIPT-`
+
+The scripted-diff is verified by the tool `contrib/devtools/commit-script-check.sh`
+
+Commit `bb81e173` is an example of a scripted-diff.
+
+RPC interface guidelines
+--------------------------
+
+A few guidelines for introducing and reviewing new RPC interfaces:
+
+- Method naming: use consecutive lower-case names such as `getrawtransaction` and `submitblock`
+
+  - *Rationale*: Consistency with existing interface.
+
+- Argument naming: use snake case `fee_delta` (and not, e.g. camel case `feeDelta`)
+
+  - *Rationale*: Consistency with existing interface.
+
+- Use the JSON parser for parsing, don't manually parse integers or strings from
+  arguments unless absolutely necessary.
+
+  - *Rationale*: Introduces hand-rolled string manipulation code at both the caller and callee sites,
+    which is error prone, and it is easy to get things such as escaping wrong.
+    JSON already supports nested data structures, no need to re-invent the wheel.
+
+  - *Exception*: AmountFromValue can parse amounts as string. This was introduced because many JSON
+    parsers and formatters hard-code handling decimal numbers as floating point
+    values, resulting in potential loss of precision. This is unacceptable for
+    monetary values. **Always** use `AmountFromValue` and `ValueFromAmount` when
+    inputting or outputting monetary values. The only exceptions to this are
+    `prioritisetransaction` and `getblocktemplate` because their interface
+    is specified as-is in BIP22.
+
+- Missing arguments and 'null' should be treated the same: as default values. If there is no
+  default value, both cases should fail in the same way. The easiest way to follow this
+  guideline is detect unspecified arguments with `params[x].isNull()` instead of
+  `params.size() <= x`. The former returns true if the argument is either null or missing,
+  while the latter returns true if is missing, and false if it is null.
+
+  - *Rationale*: Avoids surprises when switching to name-based arguments. Missing name-based arguments
+  are passed as 'null'.
+
+- Try not to overload methods on argument type. E.g. don't make `getblock(true)` and `getblock("hash")`
+  do different things.
+
+  - *Rationale*: This is impossible to use with `bitsend-cli`, and can be surprising to users.
+
+  - *Exception*: Some RPC calls can take both an `int` and `bool`, most notably when a bool was switched
+    to a multi-value, or due to other historical reasons. **Always** have false map to 0 and
+    true to 1 in this case.
+
+- Don't forget to fill in the argument names correctly in the RPC command table.
+
+  - *Rationale*: If not, the call can not be used with name-based arguments.
+
+- Set okSafeMode in the RPC command table to a sensible value: safe mode is when the
+  blockchain is regarded to be in a confused state, and the client deems it unsafe to
+  do anything irreversible such as send. Anything that just queries should be permitted.
+
+  - *Rationale*: Troubleshooting a node in safe mode is difficult if half the
+    RPCs don't work.
+
+- Add every non-string RPC argument `(method, idx, name)` to the table `vRPCConvertParams` in `rpc/client.cpp`.
+
+  - *Rationale*: `bitsend-cli` and the GUI debug console use this table to determine how to
+    convert a plaintext command line to JSON. If the types don't match, the method can be unusable
+    from there.
+
+- A RPC method must either be a wallet method or a non-wallet method. Do not
+  introduce new methods such as `signrawtransaction` that differ in behavior
+  based on presence of a wallet.
+
+  - *Rationale*: as well as complicating the implementation and interfering
+    with the introduction of multi-wallet, wallet and non-wallet code should be
+    separated to avoid introducing circular dependencies between code units.
+
+- Try to make the RPC response a JSON object.
+
+  - *Rationale*: If a RPC response is not a JSON object then it is harder to avoid API breakage if
+    new data in the response is needed.
+
+- Wallet RPCs call BlockUntilSyncedToCurrentChain to maintain consistency with
+  `getblockchaininfo`'s state immediately prior to the call's execution. Wallet
+  RPCs whose behavior does *not* depend on the current chainstate may omit this
+  call.
+
+  - *Rationale*: In previous versions of bitsend Core, the wallet was always
+    in-sync with the chainstate (by virtue of them all being updated in the
+    same cs_main lock). In order to maintain the behavior that wallet RPCs
+    return results as of at least the highest best-known block an RPC
+    client may be aware of prior to entering a wallet RPC call, we must block
+    until the wallet is caught up to the chainstate as of the RPC call's entry.
+    This also makes the API much easier for RPC clients to reason about.

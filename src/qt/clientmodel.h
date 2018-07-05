@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,13 +8,12 @@
 #include <QObject>
 #include <QDateTime>
 
-class AddressTableModel;
+#include <atomic>
+
 class BanTableModel;
 class OptionsModel;
 class PeerTableModel;
-class TransactionTableModel;
 
-class CWallet;
 class CBlockIndex;
 
 QT_BEGIN_NAMESPACE
@@ -35,7 +34,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for Bitsend network client. */
+/** Model for bitsend network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -50,8 +49,7 @@ public:
 
     //! Return number of connections, default is in- and outbound (total)
     int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
-    QString getMasternodeCountString() const;
-	int getNumBlocks() const;
+    int getNumBlocks() const;
     int getHeaderTipHeight() const;
     int64_t getHeaderTipTime() const;
     //! Return number of transactions in the mempool
@@ -82,13 +80,17 @@ public:
     QString formatClientStartupTime() const;
     QString dataDir() const;
 
+    // caches for the best header
+    mutable std::atomic<int> cachedBestHeaderHeight;
+    mutable std::atomic<int64_t> cachedBestHeaderTime;
+
 private:
     OptionsModel *optionsModel;
     PeerTableModel *peerTableModel;
     BanTableModel *banTableModel;
-	QString cachedMasternodeCountString;
+
     QTimer *pollTimer;
-	QTimer* pollMnTimer;
+
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
 
@@ -99,7 +101,7 @@ Q_SIGNALS:
     void networkActiveChanged(bool networkActive);
     void alertsChanged(const QString &warnings);
     void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
-	void strMasternodesChanged(const QString& strMasternodes);
+
     //! Fired when a message should be reported to the user
     void message(const QString &title, const QString &message, unsigned int style);
 
@@ -108,7 +110,6 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     void updateTimer();
-	void updateMnTimer();
     void updateNumConnections(int numConnections);
     void updateNetworkActive(bool networkActive);
     void updateAlert();

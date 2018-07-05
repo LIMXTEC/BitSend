@@ -1,12 +1,12 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_TRANSACTIONRECORD_H
 #define BITSEND_QT_TRANSACTIONRECORD_H
 
-#include "amount.h"
-#include "uint256.h"
+#include <amount.h>
+#include <uint256.h>
 
 #include <QList>
 #include <QString>
@@ -61,6 +61,8 @@ public:
 
     /** Current number of blocks (to know whether cached status is still valid) */
     int cur_num_blocks;
+
+    bool needsUpdate;
 };
 
 /** UI model for a transaction. A core transaction can be represented by multiple UI transactions if it has
@@ -138,7 +140,7 @@ public:
 
     /** Return whether a status update is needed.
      */
-    bool statusUpdateNeeded();
+    bool statusUpdateNeeded() const;
 };
 
 #endif // BITSEND_QT_TRANSACTIONRECORD_H
