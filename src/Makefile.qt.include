@@ -111,8 +111,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsdialog.ui \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
-  qt/forms/transactiondescdialog.ui \
-  qt/forms/masternodelist.ui
+  qt/forms/transactiondescdialog.ui 
   
 QT_MOC_CPP = \
  qt/moc_addressbookpage.cpp \
@@ -159,8 +158,7 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
-  qt/moc_walletview.cpp \
-  qt/moc_masternodelist.cpp
+  qt/moc_walletview.cpp 
 
 BITSEND_MM = \
   qt/macdockiconhandler.mm \
@@ -236,8 +234,7 @@ BITSEND_QT_H = \
   qt/walletmodel.h \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
-  qt/winshutdownmonitor.h \
-  qt/masternodelist.h
+  qt/winshutdownmonitor.h 
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -324,8 +321,7 @@ BITSEND_QT_BASE_CPP = \
   qt/rpcconsole.cpp \
   qt/splashscreen.cpp \
   qt/trafficgraphwidget.cpp \
-  qt/utilitydialog.cpp \
-  qt/masternodelist.cpp
+  qt/utilitydialog.cpp 
 
 BITSEND_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
@@ -355,8 +351,7 @@ BITSEND_QT_WALLET_CPP = \
   qt/walletframe.cpp \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
-  qt/walletview.cpp \
-  qt/masternodelist.cpp
+  qt/walletview.cpp 
   
 BITSEND_QT_CPP = $(BITSEND_QT_BASE_CPP)
 if TARGET_WINDOWS
