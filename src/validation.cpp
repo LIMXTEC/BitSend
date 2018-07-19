@@ -11,6 +11,7 @@
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "checkqueue.h"
+#include "consensus/tx_verify.h"
 #include "consensus/consensus.h"
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
@@ -1997,8 +1998,6 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
                 return error("DisconnectBlock(): transaction and undo data inconsistent");
             for (unsigned int j = tx.vin.size(); j-- > 0;) {
                 const COutPoint &out = tx.vin[j].prevout;
-                Coin &undo = txundo.vprevout[j];
-                int res = ApplyTxInUndo(std::move(undo), view, out);
                 const CTxInUndo &undo = txundo.vprevout[j];
                 if (!ApplyTxInUndo(undo, view, out))
                     fClean = false;
@@ -2011,7 +2010,7 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
                }
 
                 if (fAddressIndex) {
-                     const CTxOut &prevout = view.AccessCoin(tx.vin[j].prevout).out;
+                      const CTxOut &prevout = view.GetOutputFor(tx.vin[j]);
                     if (prevout.scriptPubKey.IsPayToScriptHash()) {
                         std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22);
 
@@ -2048,14 +2047,12 @@ bool DisconnectBlock(const CBlock& block, CValidationState& state, const CBlockI
     }
 
     if (fAddressIndex) {
-        if (!pblocktree->EraseAddressIndex(addressIndex)) {
-             error("Failed to delete address index");
-            return DISCONNECT_FAILED;
-        }
-        if (!pblocktree->UpdateAddressUnspentIndex(addressUnspentIndex)) {
-            error("Failed to write address unspent index");
-            return DISCONNECT_FAILED;
-        }
+           if (!pblocktree->EraseAddressIndex(addressIndex)) {
+               return AbortNode(state, "Failed to delete address index");
+           }
+           if (!pblocktree->UpdateAddressUnspentIndex(addressUnspentIndex)) {
+               return AbortNode(state, "Failed to write address unspent index");
+           }
     }
     return fClean;
 }
@@ -2315,8 +2312,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             {
                 for (size_t j = 0; j < tx.vin.size(); j++) {
 
-                    const CTxIn input = tx.vin[j];
-                    const CTxOut &prevout = view.AccessCoin(tx.vin[j].prevout).out;
+                    const COutPoint &out = tx.vin[j].prevout;
+                    const CTxInUndo &undo = txundo.vprevout[j];
                     uint160 hashBytes;
                     int addressType;
 
@@ -4522,17 +4519,17 @@ bool InitBlockIndex(const CChainParams& chainparams)
         LogPrintf("%s: transaction index %s\n", __func__, fTxIndex ? "enabled" : "disabled");
 
         // Use the provided setting for -addressindex in the new database
-       fAddressIndex = gArgs.GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX);
+       fAddressIndex = GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX);
         pblocktree->WriteFlag("addressindex", fAddressIndex);
         LogPrintf("%s: address index %s\n", __func__, fAddressIndex ? "enabled" : "disabled");
 
         // Use the provided setting for -timestampindex in the new database
-        fTimestampIndex = gArgs.GetBoolArg("-timestampindex", DEFAULT_TIMESTAMPINDEX);
+        fTimestampIndex = GetBoolArg("-timestampindex", DEFAULT_TIMESTAMPINDEX);
         pblocktree->WriteFlag("timestampindex", fTimestampIndex);
         LogPrintf("%s: timestamp index %s\n", __func__, fTimestampIndex ? "enabled" : "disabled");
 
         // Use the provided setting for -spentindex in the new database
-        fSpentIndex = gArgs.GetBoolArg("-spentindex", DEFAULT_SPENTINDEX);
+        fSpentIndex = GetBoolArg("-spentindex", DEFAULT_SPENTINDEX);
         pblocktree->WriteFlag("spentindex", fSpentIndex);
         LogPrintf("%s: spent index %s\n", __func__, fSpentIndex ? "enabled" : "disabled");
 
