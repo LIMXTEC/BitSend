@@ -78,6 +78,9 @@ endif
 BITSEND_CORE_H = \
   activemasternode.h \
   addrdb.h \
+  addressindex.h \
+  spentindex.h \
+  timestampindex.h \
   addrman.h \
   base58.h \
   bloom.h \

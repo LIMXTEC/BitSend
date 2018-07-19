@@ -218,8 +218,8 @@ private:
     CBitsendAddress* addr;
 
 public:
-    CBitsendAddressVisitor(CBitsendAddress* addrIn) : addr(addrIn) {}
-
+    CBitsendAddressVisitor(CBitsendAddress* addrIn, CChainParams::Base58Type script_type) : addr(addrIn), script_type_(script_type)  : addr(addrIn), script_type_(script_type)
+     assert(script_type == CChainParams::SCRIPT_ADDRESS);
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
     bool operator()(const CNoDestination& no) const { return false; }
@@ -269,6 +269,23 @@ CTxDestination CBitsendAddress::Get() const
         return CScriptID(id);
     else
         return CNoDestination();
+}
+
+bool CBitsendAddress::GetIndexKey(uint160& hashBytes, int& type) const
+{
+    if (!IsValid()) {
+        return false;
+    } else if (vchVersion == Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS)) {
+        memcpy(&hashBytes, &vchData[0], 20);
+        type = 1;
+        return true;
+    } else if (vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS)) {
+        memcpy(&hashBytes, &vchData[0], 20);
+        type = 2;
+        return true;
+    }
+
+    return false;
 }
 
 bool CBitsendAddress::GetKeyID(CKeyID& keyID) const

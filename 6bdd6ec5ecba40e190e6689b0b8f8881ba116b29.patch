@@ -1,0 +1,3486 @@
+From 6bdd6ec5ecba40e190e6689b0b8f8881ba116b29 Mon Sep 17 00:00:00 2001
+From: Chris <apfelbaum@email.de>
+Date: Thu, 19 Jul 2018 18:03:29 +0200
+Subject: [PATCH] Insight Patch
+
+---
+ contrib/devtools/check-doc.py     |   2 +-
+ src/Makefile.am                   |   3 +
+ src/addressindex.h                | 295 +++++++++++++++++++++
+ src/base58.cpp                    |  22 +-
+ src/base58.h                      |  36 +--
+ src/dbwrapper.cpp                 |  10 +-
+ src/dbwrapper.h                   |   4 +-
+ src/init.cpp                      |  40 ++-
+ src/rpc/blockchain.cpp            | 209 +++++++++++++++
+ src/rpc/client.cpp                |   9 +
+ src/rpc/misc.cpp                  | 538 ++++++++++++++++++++++++++++++++++++++
+ src/rpc/rawtransaction.cpp        |  67 ++++-
+ src/script/script.cpp             |  11 +
+ src/script/script.h               |   2 +
+ src/serialize.h                   |  11 +
+ src/spentindex.h                  |  98 +++++++
+ src/test/dbwrapper_tests.cpp      |  43 +++
+ src/timestampindex.h              | 131 ++++++++++
+ src/txdb.cpp                      | 161 +++++++++++-
+ src/txdb.h                        |  19 +-
+ src/txmempool.cpp                 | 143 +++++++++-
+ src/txmempool.h                   |  23 ++
+ src/validation.cpp                | 294 ++++++++++++++++++++-
+ src/validation.h                  |  19 ++
+ test/functional/addressindex.py   | 350 +++++++++++++++++++++++++
+ test/functional/spentindex.py     | 142 ++++++++++
+ test/functional/test_runner.py    |   4 +
+ test/functional/timestampindex.py |  62 +++++
+ test/functional/txindex.py        |  74 ++++++
+ 29 files changed, 2779 insertions(+), 43 deletions(-)
+ create mode 100644 src/addressindex.h
+ create mode 100644 src/spentindex.h
+ create mode 100644 src/timestampindex.h
+ create mode 100644 test/functional/addressindex.py
+ create mode 100644 test/functional/spentindex.py
+ create mode 100644 test/functional/timestampindex.py
+ create mode 100644 test/functional/txindex.py
+
+diff --git a/contrib/devtools/check-doc.py b/contrib/devtools/check-doc.py
+index 3b7a8f9a..d0a0efe0 100644
+--- a/contrib/devtools/check-doc.py
++++ b/contrib/devtools/check-doc.py
+@@ -21,7 +21,7 @@
+ REGEX_ARG = re.compile(r'(?:map(?:Multi)?Args(?:\.count\(|\[)|Get(?:Bool)?Arg\()\"(\-[^\"]+?)\"')
+ REGEX_DOC = re.compile(r'HelpMessageOpt\(\"(\-[^\"=]+?)(?:=|\")')
+ # list unsupported, deprecated and duplicate args as they need no documentation
+-SET_DOC_OPTIONAL = set(['-rpcssl', '-benchmark', '-h', '-help', '-socks', '-tor', '-debugnet', '-whitelistalwaysrelay', '-prematurewitness', '-walletprematurewitness', '-promiscuousmempoolflags', '-blockminsize', '-dbcrashratio', '-forcecompactdb'])
++SET_DOC_OPTIONAL = set(['-rpcssl', '-benchmark', '-h', '-help', '-socks', '-tor', '-debugnet', '-whitelistalwaysrelay', '-prematurewitness', '-walletprematurewitness', '-promiscuousmempoolflags', '-blockminsize', '-dbcrashratio', '-forcecompactdb', '-dbmaxopenfiles', '-dbcompression'])
+ 
+ def main():
+   used = check_output(CMD_GREP_ARGS, shell=True)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 703df1d5..7d77a3fa 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -77,6 +77,9 @@ endif
+ # megacoin core #
+ MEGACOIN_CORE_H = \
+   addrdb.h \
++  addressindex.h \
++  spentindex.h \
++  timestampindex.h \
+   addrman.h \
+   base58.h \
+   bloom.h \
+diff --git a/src/addressindex.h b/src/addressindex.h
+new file mode 100644
+index 00000000..bc106058
+--- /dev/null
++++ b/src/addressindex.h
+@@ -0,0 +1,295 @@
++// Copyright (c) 2009-2010 Satoshi Nakamoto
++// Copyright (c) 2009-2015 The Bitcoin Core developers
++// Distributed under the MIT software license, see the accompanying
++// file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#ifndef BITCOIN_ADDRESSINDEX_H
++#define BITCOIN_ADDRESSINDEX_H
++
++#include "uint256.h"
++#include "amount.h"
++#include "script/script.h"
++
++struct CAddressUnspentKey {
++    unsigned int type;
++    uint160 hashBytes;
++    uint256 txhash;
++    size_t index;
++
++    size_t GetSerializeSize() const {
++        return 57;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata8(s, type);
++        hashBytes.Serialize(s);
++        txhash.Serialize(s);
++        ser_writedata32(s, index);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        type = ser_readdata8(s);
++        hashBytes.Unserialize(s);
++        txhash.Unserialize(s);
++        index = ser_readdata32(s);
++    }
++
++    CAddressUnspentKey(unsigned int addressType, uint160 addressHash, uint256 txid, size_t indexValue) {
++        type = addressType;
++        hashBytes = addressHash;
++        txhash = txid;
++        index = indexValue;
++    }
++
++    CAddressUnspentKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        type = 0;
++        hashBytes.SetNull();
++        txhash.SetNull();
++        index = 0;
++    }
++};
++
++struct CAddressUnspentValue {
++    CAmount satoshis;
++    CScript script;
++    int blockHeight;
++
++    ADD_SERIALIZE_METHODS;
++
++    template <typename Stream, typename Operation>
++    inline void SerializationOp(Stream& s, Operation ser_action) {
++        READWRITE(satoshis);
++        READWRITE(*(CScriptBase*)(&script));
++        READWRITE(blockHeight);
++    }
++
++    CAddressUnspentValue(CAmount sats, CScript scriptPubKey, int height) {
++        satoshis = sats;
++        script = scriptPubKey;
++        blockHeight = height;
++    }
++
++    CAddressUnspentValue() {
++        SetNull();
++    }
++
++    void SetNull() {
++        satoshis = -1;
++        script.clear();
++        blockHeight = 0;
++    }
++
++    bool IsNull() const {
++        return (satoshis == -1);
++    }
++};
++
++struct CAddressIndexKey {
++    unsigned int type;
++    uint160 hashBytes;
++    int blockHeight;
++    unsigned int txindex;
++    uint256 txhash;
++    size_t index;
++    bool spending;
++
++    size_t GetSerializeSize() const {
++        return 66;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata8(s, type);
++        hashBytes.Serialize(s);
++        // Heights are stored big-endian for key sorting in LevelDB
++        ser_writedata32be(s, blockHeight);
++        ser_writedata32be(s, txindex);
++        txhash.Serialize(s);
++        ser_writedata32(s, index);
++        char f = spending;
++        ser_writedata8(s, f);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        type = ser_readdata8(s);
++        hashBytes.Unserialize(s);
++        blockHeight = ser_readdata32be(s);
++        txindex = ser_readdata32be(s);
++        txhash.Unserialize(s);
++        index = ser_readdata32(s);
++        char f = ser_readdata8(s);
++        spending = f;
++    }
++
++    CAddressIndexKey(unsigned int addressType, uint160 addressHash, int height, int blockindex,
++                     uint256 txid, size_t indexValue, bool isSpending) {
++        type = addressType;
++        hashBytes = addressHash;
++        blockHeight = height;
++        txindex = blockindex;
++        txhash = txid;
++        index = indexValue;
++        spending = isSpending;
++    }
++
++    CAddressIndexKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        type = 0;
++        hashBytes.SetNull();
++        blockHeight = 0;
++        txindex = 0;
++        txhash.SetNull();
++        index = 0;
++        spending = false;
++    }
++
++};
++
++struct CAddressIndexIteratorKey {
++    unsigned int type;
++    uint160 hashBytes;
++
++    size_t GetSerializeSize() const {
++        return 21;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata8(s, type);
++        hashBytes.Serialize(s);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        type = ser_readdata8(s);
++        hashBytes.Unserialize(s);
++    }
++
++    CAddressIndexIteratorKey(unsigned int addressType, uint160 addressHash) {
++        type = addressType;
++        hashBytes = addressHash;
++    }
++
++    CAddressIndexIteratorKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        type = 0;
++        hashBytes.SetNull();
++    }
++};
++
++struct CAddressIndexIteratorHeightKey {
++    unsigned int type;
++    uint160 hashBytes;
++    int blockHeight;
++
++    size_t GetSerializeSize() const {
++        return 25;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata8(s, type);
++        hashBytes.Serialize(s);
++        ser_writedata32be(s, blockHeight);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        type = ser_readdata8(s);
++        hashBytes.Unserialize(s);
++        blockHeight = ser_readdata32be(s);
++    }
++
++    CAddressIndexIteratorHeightKey(unsigned int addressType, uint160 addressHash, int height) {
++        type = addressType;
++        hashBytes = addressHash;
++        blockHeight = height;
++    }
++
++    CAddressIndexIteratorHeightKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        type = 0;
++        hashBytes.SetNull();
++        blockHeight = 0;
++    }
++};
++
++struct CMempoolAddressDelta
++{
++    int64_t time;
++    CAmount amount;
++    uint256 prevhash;
++    unsigned int prevout;
++
++    CMempoolAddressDelta(int64_t t, CAmount a, uint256 hash, unsigned int out) {
++        time = t;
++        amount = a;
++        prevhash = hash;
++        prevout = out;
++    }
++
++    CMempoolAddressDelta(int64_t t, CAmount a) {
++        time = t;
++        amount = a;
++        prevhash.SetNull();
++        prevout = 0;
++    }
++};
++
++struct CMempoolAddressDeltaKey
++{
++    int type;
++    uint160 addressBytes;
++    uint256 txhash;
++    unsigned int index;
++    int spending;
++
++    CMempoolAddressDeltaKey(int addressType, uint160 addressHash, uint256 hash, unsigned int i, int s) {
++        type = addressType;
++        addressBytes = addressHash;
++        txhash = hash;
++        index = i;
++        spending = s;
++    }
++
++    CMempoolAddressDeltaKey(int addressType, uint160 addressHash) {
++        type = addressType;
++        addressBytes = addressHash;
++        txhash.SetNull();
++        index = 0;
++        spending = 0;
++    }
++};
++
++struct CMempoolAddressDeltaKeyCompare
++{
++    bool operator()(const CMempoolAddressDeltaKey& a, const CMempoolAddressDeltaKey& b) const {
++        if (a.type == b.type) {
++            if (a.addressBytes == b.addressBytes) {
++                if (a.txhash == b.txhash) {
++                    if (a.index == b.index) {
++                        return a.spending < b.spending;
++                    } else {
++                        return a.index < b.index;
++                    }
++                } else {
++                    return a.txhash < b.txhash;
++                }
++            } else {
++                return a.addressBytes < b.addressBytes;
++            }
++        } else {
++            return a.type < b.type;
++        }
++    }
++};
++
++#endif // BITCOIN_ADDRESSINDEX_H
+diff --git a/src/base58.cpp b/src/base58.cpp
+index 220a9542..81089278 100644
+--- a/src/base58.cpp
++++ b/src/base58.cpp
+@@ -219,10 +219,10 @@ class CBitcoinAddressVisitor : public boost::static_visitor<bool>
+     CChainParams::Base58Type script_type_;
+ 
+ public:
+-    CBitcoinAddressVisitor(CBitcoinAddress* addrIn, CChainParams::Base58Type script_type) 
+-      : addr(addrIn), script_type_(script_type) 
++    CBitcoinAddressVisitor(CBitcoinAddress* addrIn, CChainParams::Base58Type script_type)
++      : addr(addrIn), script_type_(script_type)
+     {
+-        assert(script_type == CChainParams::SCRIPT_ADDRESS || 
++        assert(script_type == CChainParams::SCRIPT_ADDRESS ||
+                script_type == CChainParams::SCRIPT_ADDRESS2);
+     }
+ 
+@@ -281,6 +281,22 @@ CTxDestination CBitcoinAddress::Get() const
+         return CNoDestination();
+ }
+ 
++bool CBitcoinAddress::GetIndexKey(uint160& hashBytes, int& type) const
++{
++    if (!IsValid()) {
++        return false;
++    } else if (vchVersion == Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS)) {
++        memcpy(&hashBytes, &vchData[0], 20);
++        type = 1;
++        return true;
++    } else if (vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS)) {
++        memcpy(&hashBytes, &vchData[0], 20);
++        type = 2;
++        return true;
++    }
++
++    return false;
++}
+ bool CBitcoinAddress::GetKeyID(CKeyID& keyID) const
+ {
+     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
+diff --git a/src/base58.h b/src/base58.h
+index d6a730fb..3cd36b19 100644
+--- a/src/base58.h
++++ b/src/base58.h
+@@ -95,29 +95,31 @@ class CBase58Data
+     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
+ };
+ 
++
+ /** base58-encoded Bitcoin addresses.
+  * Public-key-hash-addresses have version 0 (or 111 testnet).
+  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
+  * Script-hash-addresses have version 5 (or 196 testnet).
+  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
+  */
+-class CBitcoinAddress : public CBase58Data {
+-public:
+-    bool Set(const CKeyID &id);
+-    bool Set(const CScriptID &id, CChainParams::Base58Type type=CChainParams::SCRIPT_ADDRESS2);
+-    bool Set(const CTxDestination &dest, CChainParams::Base58Type type=CChainParams::SCRIPT_ADDRESS2);
+-    bool IsValid() const;
+-    bool IsValid(const CChainParams &params) const;
+-
+-    CBitcoinAddress() {}
+-    CBitcoinAddress(const CTxDestination &dest) { Set(dest); }
+-    CBitcoinAddress(const std::string& strAddress) { SetString(strAddress); }
+-    CBitcoinAddress(const char* pszAddress) { SetString(pszAddress); }
+-
+-    CTxDestination Get() const;
+-    bool GetKeyID(CKeyID &keyID) const;
+-    bool IsScript() const;
+-};
++ class CBitcoinAddress : public CBase58Data {
++ public:
++     bool Set(const CKeyID &id);
++     bool Set(const CScriptID &id, CChainParams::Base58Type type=CChainParams::SCRIPT_ADDRESS2);
++     bool Set(const CTxDestination &dest, CChainParams::Base58Type type=CChainParams::SCRIPT_ADDRESS2);
++     bool IsValid() const;
++     bool IsValid(const CChainParams &params) const;
++
++     CBitcoinAddress() {}
++     CBitcoinAddress(const CTxDestination &dest) { Set(dest); }
++     CBitcoinAddress(const std::string& strAddress) { SetString(strAddress); }
++     CBitcoinAddress(const char* pszAddress) { SetString(pszAddress); }
++
++     CTxDestination Get() const;
++     bool GetKeyID(CKeyID &keyID) const;
++     bool GetIndexKey(uint160& hashBytes, int& type) const;
++     bool IsScript() const;
++ };
+ 
+ /**
+  * A base58-encoded secret key
+diff --git a/src/dbwrapper.cpp b/src/dbwrapper.cpp
+index 26a48f23..c41d8ffd 100644
+--- a/src/dbwrapper.cpp
++++ b/src/dbwrapper.cpp
+@@ -73,14 +73,14 @@ class CBitcoinLevelDBLogger : public leveldb::Logger {
+     }
+ };
+ 
+-static leveldb::Options GetOptions(size_t nCacheSize)
++static leveldb::Options GetOptions(size_t nCacheSize, bool compression, int maxOpenFiles)
+ {
+     leveldb::Options options;
+     options.block_cache = leveldb::NewLRUCache(nCacheSize / 2);
+     options.write_buffer_size = nCacheSize / 4; // up to two write buffers may be held in memory simultaneously
+     options.filter_policy = leveldb::NewBloomFilterPolicy(10);
+-    options.compression = leveldb::kNoCompression;
+-    options.max_open_files = 64;
++    options.compression = compression ? leveldb::kSnappyCompression : leveldb::kNoCompression;
++    options.max_open_files = maxOpenFiles;
+     options.info_log = new CBitcoinLevelDBLogger();
+     if (leveldb::kMajorVersion > 1 || (leveldb::kMajorVersion == 1 && leveldb::kMinorVersion >= 16)) {
+         // LevelDB versions before 1.16 consider short writes to be corruption. Only trigger error
+@@ -90,14 +90,14 @@ static leveldb::Options GetOptions(size_t nCacheSize)
+     return options;
+ }
+ 
+-CDBWrapper::CDBWrapper(const fs::path& path, size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate)
++CDBWrapper::CDBWrapper(const fs::path& path, size_t nCacheSize, bool fMemory, bool fWipe, bool obfuscate, bool compression, int maxOpenFiles)
+ {
+     penv = nullptr;
+     readoptions.verify_checksums = true;
+     iteroptions.verify_checksums = true;
+     iteroptions.fill_cache = false;
+     syncoptions.sync = true;
+-    options = GetOptions(nCacheSize);
++    options = GetOptions(nCacheSize, compression, maxOpenFiles);
+     options.create_if_missing = true;
+     if (fMemory) {
+         penv = leveldb::NewMemEnv(leveldb::Env::Default());
+diff --git a/src/dbwrapper.h b/src/dbwrapper.h
+index 418c4b74..760e87ff 100644
+--- a/src/dbwrapper.h
++++ b/src/dbwrapper.h
+@@ -217,8 +217,10 @@ class CDBWrapper
+      * @param[in] fWipe       If true, remove all existing data.
+      * @param[in] obfuscate   If true, store data obfuscated via simple XOR. If false, XOR
+      *                        with a zero'd byte array.
++     * @param[in] compression   Enable snappy compression for the database
++     * @param[in] maxOpenFiles  The maximum number of open files for the database
+      */
+-    CDBWrapper(const fs::path& path, size_t nCacheSize, bool fMemory = false, bool fWipe = false, bool obfuscate = false);
++    CDBWrapper(const fs::path& path, size_t nCacheSize, bool fMemory = false, bool fWipe = false, bool obfuscate = false, bool compression = false, int maxOpenFiles = 64);
+     ~CDBWrapper();
+ 
+     template <typename K, typename V>
+diff --git a/src/init.cpp b/src/init.cpp
+index 02d22dd0..a3719ce9 100644
+--- a/src/init.cpp
++++ b/src/init.cpp
+@@ -486,6 +486,10 @@ std::string HelpMessage(HelpMessageMode mode)
+ #endif
+     strUsage += HelpMessageOpt("-txindex", strprintf(_("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)"), DEFAULT_TXINDEX));
+ 
++    strUsage += HelpMessageOpt("-addressindex", strprintf(_("Maintain a full address index, used to query for the balance, txids and unspent outputs for addresses (default: %u)"), DEFAULT_ADDRESSINDEX));
++    strUsage += HelpMessageOpt("-timestampindex", strprintf(_("Maintain a timestamp index for block hashes, used to query blocks hashes by a range of timestamps (default: %u)"), DEFAULT_TIMESTAMPINDEX));
++    strUsage += HelpMessageOpt("-spentindex", strprintf(_("Maintain a full spent index, used to query the spending txid and input index for an outpoint (default: %u)"), DEFAULT_SPENTINDEX));
++
+     strUsage += HelpMessageGroup(_("Connection options:"));
+     strUsage += HelpMessageOpt("-addnode=<ip>", _("Add a node to connect to and attempt to keep the connection open"));
+     strUsage += HelpMessageOpt("-banscore=<n>", strprintf(_("Threshold for disconnecting misbehaving peers (default: %u)"), DEFAULT_BANSCORE_THRESHOLD));
+@@ -1479,12 +1483,25 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
+     fReindex = gArgs.GetBoolArg("-reindex", false);
+     bool fReindexChainState = gArgs.GetBoolArg("-reindex-chainstate", false);
+ 
++    // block tree db settings
++    int dbMaxOpenFiles = gArgs.GetArg("-dbmaxopenfiles", DEFAULT_DB_MAX_OPEN_FILES);
++    bool dbCompression = gArgs.GetBoolArg("-dbcompression", DEFAULT_DB_COMPRESSION);
++
++    LogPrintf("Block index database configuration:\n");
++    LogPrintf("* Using %d max open files\n", dbMaxOpenFiles);
++    LogPrintf("* Compression is %s\n", dbCompression ? "enabled" : "disabled");
++
+     // cache size calculations
+     int64_t nTotalCache = (gArgs.GetArg("-dbcache", nDefaultDbCache) << 20);
+     nTotalCache = std::max(nTotalCache, nMinDbCache << 20); // total cache cannot be less than nMinDbCache
+     nTotalCache = std::min(nTotalCache, nMaxDbCache << 20); // total cache cannot be greater than nMaxDbcache
+     int64_t nBlockTreeDBCache = nTotalCache / 8;
+-    nBlockTreeDBCache = std::min(nBlockTreeDBCache, (gArgs.GetBoolArg("-txindex", DEFAULT_TXINDEX) ? nMaxBlockDBAndTxIndexCache : nMaxBlockDBCache) << 20);
++    if (gArgs.GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX) || gArgs.GetBoolArg("-spentindex", DEFAULT_SPENTINDEX)) {
++        // enable 3/4 of the cache if addressindex and/or spentindex is enabled
++        nBlockTreeDBCache = nTotalCache * 3 / 4;
++    } else {
++        nBlockTreeDBCache = std::min(nBlockTreeDBCache, (gArgs.GetBoolArg("-txindex", DEFAULT_TXINDEX) ? nMaxBlockDBAndTxIndexCache : nMaxBlockDBCache) << 20);
++    }
+     nTotalCache -= nBlockTreeDBCache;
+     int64_t nCoinDBCache = std::min(nTotalCache / 2, (nTotalCache / 4) + (1 << 23)); // use 25%-50% of the remainder for disk cache
+     nCoinDBCache = std::min(nCoinDBCache, nMaxCoinsDBCache << 20); // cap total coins db cache
+@@ -1492,6 +1509,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
+     nCoinCacheUsage = nTotalCache; // the rest goes to in-memory cache
+     int64_t nMempoolSizeMax = gArgs.GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000;
+     LogPrintf("Cache configuration:\n");
++    LogPrintf("* Max cache setting possible %.1fMiB\n", nMaxDbCache);
+     LogPrintf("* Using %.1fMiB for block index database\n", nBlockTreeDBCache * (1.0 / 1024 / 1024));
+     LogPrintf("* Using %.1fMiB for chain state database\n", nCoinDBCache * (1.0 / 1024 / 1024));
+     LogPrintf("* Using %.1fMiB for in-memory UTXO set (plus up to %.1fMiB of unused mempool space)\n", nCoinCacheUsage * (1.0 / 1024 / 1024), nMempoolSizeMax * (1.0 / 1024 / 1024));
+@@ -1512,7 +1530,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
+                 delete pcoinscatcher;
+                 delete pblocktree;
+ 
+-                pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReset);
++                pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReset, dbCompression, dbMaxOpenFiles);
+ 
+                 if (fReset) {
+                     pblocktree->WriteReindexing(true);
+@@ -1544,6 +1562,24 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
+                     break;
+                 }
+ 
++                // Check for changed -addressindex state
++                if (fAddressIndex != gArgs.GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX)) {
++                    strLoadError = _("You need to rebuild the database using -reindex-chainstate to change -addressindex");
++                    break;
++                }
++
++                // Check for changed -spentindex state
++                if (fSpentIndex != gArgs.GetBoolArg("-spentindex", DEFAULT_SPENTINDEX)) {
++                    strLoadError = _("You need to rebuild the database using -reindex-chainstate to change -spentindex");
++                    break;
++                }
++
++                // Check for changed -timestampindex state
++                if (fTimestampIndex != gArgs.GetBoolArg("-timestampindex", DEFAULT_TIMESTAMPINDEX)) {
++                    strLoadError = _("You need to rebuild the database using -reindex-chainstate to change -timestampindex");
++                    break;
++                }
++
+                 // Check for changed -prune state.  What we are concerned about is a user who has pruned blocks
+                 // in the past, but is now trying to run unpruned.
+                 if (fHavePruned && !fPruneMode) {
+diff --git a/src/rpc/blockchain.cpp b/src/rpc/blockchain.cpp
+index 9b5c1167..4f10e879 100644
+--- a/src/rpc/blockchain.cpp
++++ b/src/rpc/blockchain.cpp
+@@ -6,6 +6,7 @@
+ #include "rpc/blockchain.h"
+ 
+ #include "amount.h"
++#include "base58.h"
+ #include "chain.h"
+ #include "chainparams.h"
+ #include "checkpoints.h"
+@@ -17,6 +18,10 @@
+ #include "policy/policy.h"
+ #include "primitives/transaction.h"
+ #include "rpc/server.h"
++#include "script/script.h"
++#include "script/script_error.h"
++#include "script/sign.h"
++#include "script/standard.h"
+ #include "streams.h"
+ #include "sync.h"
+ #include "txdb.h"
+@@ -147,6 +152,112 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
+     return result;
+ }
+ 
++UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
++{
++    UniValue result(UniValue::VOBJ);
++    result.push_back(Pair("hash", block.GetHash().GetHex()));
++    int confirmations = -1;
++    // Only report confirmations if the block is on the main chain
++    if (chainActive.Contains(blockindex)) {
++        confirmations = chainActive.Height() - blockindex->nHeight + 1;
++    } else {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Block is an orphan");
++    }
++    result.push_back(Pair("confirmations", confirmations));
++    result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
++    result.push_back(Pair("height", blockindex->nHeight));
++    result.push_back(Pair("version", block.nVersion));
++    result.push_back(Pair("merkleroot", block.hashMerkleRoot.GetHex()));
++
++    UniValue deltas(UniValue::VARR);
++
++    for (unsigned int i = 0; i < block.vtx.size(); i++) {
++        const CTransaction &tx = *(block.vtx[i]);
++        const uint256 txhash = tx.GetHash();
++
++        UniValue entry(UniValue::VOBJ);
++        entry.push_back(Pair("txid", txhash.GetHex()));
++        entry.push_back(Pair("index", (int)i));
++
++        UniValue inputs(UniValue::VARR);
++
++        if (!tx.IsCoinBase()) {
++
++            for (size_t j = 0; j < tx.vin.size(); j++) {
++                const CTxIn input = tx.vin[j];
++
++                UniValue delta(UniValue::VOBJ);
++
++                CSpentIndexValue spentInfo;
++                CSpentIndexKey spentKey(input.prevout.hash, input.prevout.n);
++
++                if (GetSpentIndex(spentKey, spentInfo)) {
++                    if (spentInfo.addressType == 1) {
++                        delta.push_back(Pair("address", CBitcoinAddress(CKeyID(spentInfo.addressHash)).ToString()));
++                    } else if (spentInfo.addressType == 2)  {
++                        delta.push_back(Pair("address", CBitcoinAddress(CScriptID(spentInfo.addressHash)).ToString()));
++                    } else {
++                        continue;
++                    }
++                    delta.push_back(Pair("satoshis", -1 * spentInfo.satoshis));
++                    delta.push_back(Pair("index", (int)j));
++                    delta.push_back(Pair("prevtxid", input.prevout.hash.GetHex()));
++                    delta.push_back(Pair("prevout", (int)input.prevout.n));
++
++                    inputs.push_back(delta);
++                } else {
++                    throw JSONRPCError(RPC_INTERNAL_ERROR, "Spent information not available");
++                }
++
++            }
++        }
++
++        entry.push_back(Pair("inputs", inputs));
++
++        UniValue outputs(UniValue::VARR);
++
++        for (unsigned int k = 0; k < tx.vout.size(); k++) {
++            const CTxOut &out = tx.vout[k];
++
++            UniValue delta(UniValue::VOBJ);
++
++            if (out.scriptPubKey.IsPayToScriptHash()) {
++                std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
++                delta.push_back(Pair("address", CBitcoinAddress(CScriptID(uint160(hashBytes))).ToString()));
++
++            } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
++                std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
++                delta.push_back(Pair("address", CBitcoinAddress(CKeyID(uint160(hashBytes))).ToString()));
++            } else {
++                continue;
++            }
++
++            delta.push_back(Pair("satoshis", out.nValue));
++            delta.push_back(Pair("index", (int)k));
++
++            outputs.push_back(delta);
++        }
++
++        entry.push_back(Pair("outputs", outputs));
++        deltas.push_back(entry);
++
++    }
++    result.push_back(Pair("deltas", deltas));
++    result.push_back(Pair("time", block.GetBlockTime()));
++    result.push_back(Pair("mediantime", (int64_t)blockindex->GetMedianTimePast()));
++    result.push_back(Pair("nonce", (uint64_t)block.nNonce));
++    result.push_back(Pair("bits", strprintf("%08x", block.nBits)));
++    result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
++    result.push_back(Pair("chainwork", blockindex->nChainWork.GetHex()));
++
++    if (blockindex->pprev)
++        result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));
++    CBlockIndex *pnext = chainActive.Next(blockindex);
++    if (pnext)
++        result.push_back(Pair("nextblockhash", pnext->GetBlockHash().GetHex()));
++    return result;
++}
++
+ UniValue getblockcount(const JSONRPCRequest& request)
+ {
+     if (request.fHelp || request.params.size() != 0)
+@@ -601,6 +712,102 @@ UniValue getmempoolentry(const JSONRPCRequest& request)
+     return info;
+ }
+ 
++UniValue getblockdeltas(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1)
++        throw std::runtime_error("");
++
++    std::string strHash = request.params[0].get_str();
++    uint256 hash(uint256S(strHash));
++
++    if (mapBlockIndex.count(hash) == 0)
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Block not found");
++
++    CBlock block;
++    CBlockIndex* pblockindex = mapBlockIndex[hash];
++
++    if (fHavePruned && !(pblockindex->nStatus & BLOCK_HAVE_DATA) && pblockindex->nTx > 0)
++        throw JSONRPCError(RPC_INTERNAL_ERROR, "Block not available (pruned data)");
++
++    if(!ReadBlockFromDisk(block, pblockindex, Params().GetConsensus()))
++        throw JSONRPCError(RPC_INTERNAL_ERROR, "Can't read block from disk");
++
++    return blockToDeltasJSON(block, pblockindex);
++}
++
++UniValue getblockhashes(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() < 2)
++        throw std::runtime_error(
++            "getblockhashes timestamp\n"
++            "\nReturns array of hashes of blocks within the timestamp range provided.\n"
++            "\nArguments:\n"
++            "1. high         (numeric, required) The newer block timestamp\n"
++            "2. low          (numeric, required) The older block timestamp\n"
++            "3. options      (string, required) A json object\n"
++            "    {\n"
++            "      \"noOrphans\":true   (boolean) will only include blocks on the main chain\n"
++            "      \"logicalTimes\":true   (boolean) will include logical timestamps with hashes\n"
++            "    }\n"
++            "\nResult:\n"
++            "[\n"
++            "  \"hash\"         (string) The block hash\n"
++            "]\n"
++            "[\n"
++            "  {\n"
++            "    \"blockhash\": (string) The block hash\n"
++            "    \"logicalts\": (numeric) The logical timestamp\n"
++            "  }\n"
++            "]\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getblockhashes", "1231614698 1231024505")
++            + HelpExampleRpc("getblockhashes", "1231614698, 1231024505")
++            + HelpExampleCli("getblockhashes", "1231614698 1231024505 '{\"noOrphans\":false, \"logicalTimes\":true}'")
++            );
++
++    unsigned int high = request.params[0].get_int();
++    unsigned int low = request.params[1].get_int();
++    bool fActiveOnly = false;
++    bool fLogicalTS = false;
++
++    if (request.params.size() > 2) {
++        if (request.params[2].isObject()) {
++            UniValue noOrphans = find_value(request.params[2].get_obj(), "noOrphans");
++            UniValue returnLogical = find_value(request.params[2].get_obj(), "logicalTimes");
++
++            if (noOrphans.isBool())
++                fActiveOnly = noOrphans.get_bool();
++
++            if (returnLogical.isBool())
++                fLogicalTS = returnLogical.get_bool();
++        }
++    }
++
++    std::vector<std::pair<uint256, unsigned int> > blockHashes;
++
++    if (fActiveOnly)
++        LOCK(cs_main);
++
++    if (!GetTimestampIndex(high, low, fActiveOnly, blockHashes)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for block hashes");
++    }
++
++    UniValue result(UniValue::VARR);
++
++    for (std::vector<std::pair<uint256, unsigned int> >::const_iterator it=blockHashes.begin(); it!=blockHashes.end(); it++) {
++        if (fLogicalTS) {
++            UniValue item(UniValue::VOBJ);
++            item.push_back(Pair("blockhash", it->first.GetHex()));
++            item.push_back(Pair("logicalts", (int)it->second));
++            result.push_back(item);
++        } else {
++            result.push_back(it->first.GetHex());
++        }
++    }
++
++    return result;
++}
++
+ UniValue getblockhash(const JSONRPCRequest& request)
+ {
+     if (request.fHelp || request.params.size() != 1)
+@@ -1539,6 +1746,8 @@ static const CRPCCommand commands[] =
+     { "blockchain",         "getbestblockhash",       &getbestblockhash,       true,  {} },
+     { "blockchain",         "getblockcount",          &getblockcount,          true,  {} },
+     { "blockchain",         "getblock",               &getblock,               true,  {"blockhash","verbosity|verbose"} },
++    { "blockchain",         "getblockdeltas",         &getblockdeltas,         false, {} },
++    { "blockchain",         "getblockhashes",         &getblockhashes,         true,  {} },
+     { "blockchain",         "getblockhash",           &getblockhash,           true,  {"height"} },
+     { "blockchain",         "getblockheader",         &getblockheader,         true,  {"blockhash","verbose"} },
+     { "blockchain",         "getchaintips",           &getchaintips,           true,  {} },
+diff --git a/src/rpc/client.cpp b/src/rpc/client.cpp
+index bd4f1a8f..8ce264c2 100644
+--- a/src/rpc/client.cpp
++++ b/src/rpc/client.cpp
+@@ -125,6 +125,15 @@ static const CRPCConvertParam vRPCConvertParams[] =
+     { "setnetworkactive", 0, "state" },
+     { "getmempoolancestors", 1, "verbose" },
+     { "getmempooldescendants", 1, "verbose" },
++    { "getblockhashes", 0 , "high"},
++    { "getblockhashes", 1, "low"},
++    { "getblockhashes", 2, "options" },
++    { "getspentinfo", 0, "txid_index"},
++    { "getaddresstxids", 0, "addresses"},
++    { "getaddressbalance", 0, "addresses"},
++    { "getaddressdeltas", 0, "addresses"},
++    { "getaddressutxos", 0, "addresses"},
++    { "getaddressmempool", 0, "addresses"},
+     { "bumpfee", 1, "options" },
+     { "logging", 0, "include" },
+     { "logging", 1, "exclude" },
+diff --git a/src/rpc/misc.cpp b/src/rpc/misc.cpp
+index e575e8e6..27a782bc 100644
+--- a/src/rpc/misc.cpp
++++ b/src/rpc/misc.cpp
+@@ -15,6 +15,7 @@
+ #include "rpc/blockchain.h"
+ #include "rpc/server.h"
+ #include "timedata.h"
++#include "txmempool.h"
+ #include "util.h"
+ #include "utilstrencodings.h"
+ #ifdef ENABLE_WALLET
+@@ -648,6 +649,533 @@ UniValue echo(const JSONRPCRequest& request)
+     return request.params;
+ }
+ 
++bool getAddressFromIndex(const int &type, const uint160 &hash, std::string &address)
++{
++    if (type == 2) {
++        address = CBitcoinAddress(CScriptID(hash)).ToString();
++    } else if (type == 1) {
++        address = CBitcoinAddress(CKeyID(hash)).ToString();
++    } else {
++        return false;
++    }
++    return true;
++}
++
++bool getAddressesFromParams(const UniValue& params, std::vector<std::pair<uint160, int> > &addresses)
++{
++    if (params[0].isStr()) {
++        CBitcoinAddress address(params[0].get_str());
++        uint160 hashBytes;
++        int type = 0;
++        if (!address.GetIndexKey(hashBytes, type)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++        }
++        addresses.push_back(std::make_pair(hashBytes, type));
++    } else if (params[0].isObject()) {
++
++        UniValue addressValues = find_value(params[0].get_obj(), "addresses");
++        if (!addressValues.isArray()) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Addresses is expected to be an array");
++        }
++
++        std::vector<UniValue> values = addressValues.getValues();
++
++        for (std::vector<UniValue>::iterator it = values.begin(); it != values.end(); ++it) {
++
++            CBitcoinAddress address(it->get_str());
++            uint160 hashBytes;
++            int type = 0;
++            if (!address.GetIndexKey(hashBytes, type)) {
++                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++            }
++            addresses.push_back(std::make_pair(hashBytes, type));
++        }
++    } else {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    return true;
++}
++
++bool heightSort(std::pair<CAddressUnspentKey, CAddressUnspentValue> a,
++                std::pair<CAddressUnspentKey, CAddressUnspentValue> b) {
++    return a.second.blockHeight < b.second.blockHeight;
++}
++
++bool timestampSort(std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> a,
++                   std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> b) {
++    return a.second.time < b.second.time;
++}
++
++UniValue getaddressmempool(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1)
++        throw std::runtime_error(
++            "getaddressmempool\n"
++            "\nReturns all mempool deltas for an address (requires addressindex to be enabled).\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"addresses\"\n"
++            "    [\n"
++            "      \"address\"  (string) The base58check encoded address\n"
++            "      ,...\n"
++            "    ]\n"
++            "}\n"
++            "\nResult:\n"
++            "[\n"
++            "  {\n"
++            "    \"address\"  (string) The base58check encoded address\n"
++            "    \"txid\"  (string) The related txid\n"
++            "    \"index\"  (number) The related input or output index\n"
++            "    \"satoshis\"  (number) The difference of satoshis\n"
++            "    \"timestamp\"  (number) The time the transaction entered the mempool (seconds)\n"
++            "    \"prevtxid\"  (string) The previous txid (if spending)\n"
++            "    \"prevout\"  (string) The previous transaction output index (if spending)\n"
++            "  }\n"
++            "]\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getaddressmempool", "'{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}'")
++            + HelpExampleRpc("getaddressmempool", "{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}")
++        );
++
++    std::vector<std::pair<uint160, int> > addresses;
++
++    if (!getAddressesFromParams(request.params, addresses)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    std::vector<std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> > indexes;
++
++    if (!mempool.getAddressIndex(addresses, indexes)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++    }
++
++    std::sort(indexes.begin(), indexes.end(), timestampSort);
++
++    UniValue result(UniValue::VARR);
++
++    for (std::vector<std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> >::iterator it = indexes.begin();
++         it != indexes.end(); it++) {
++
++        std::string address;
++        if (!getAddressFromIndex(it->first.type, it->first.addressBytes, address)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unknown address type");
++        }
++
++        UniValue delta(UniValue::VOBJ);
++        delta.push_back(Pair("address", address));
++        delta.push_back(Pair("txid", it->first.txhash.GetHex()));
++        delta.push_back(Pair("index", (int)it->first.index));
++        delta.push_back(Pair("satoshis", it->second.amount));
++        delta.push_back(Pair("timestamp", it->second.time));
++        if (it->second.amount < 0) {
++            delta.push_back(Pair("prevtxid", it->second.prevhash.GetHex()));
++            delta.push_back(Pair("prevout", (int)it->second.prevout));
++        }
++        result.push_back(delta);
++    }
++
++    return result;
++}
++
++UniValue getaddressutxos(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1)
++        throw std::runtime_error(
++            "getaddressutxos\n"
++            "\nReturns all unspent outputs for an address (requires addressindex to be enabled).\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"addresses\"\n"
++            "    [\n"
++            "      \"address\"  (string) The base58check encoded address\n"
++            "      ,...\n"
++            "    ],\n"
++            "  \"chainInfo\"  (boolean) Include chain info with results\n"
++            "}\n"
++            "\nResult\n"
++            "[\n"
++            "  {\n"
++            "    \"address\"  (string) The address base58check encoded\n"
++            "    \"txid\"  (string) The output txid\n"
++            "    \"height\"  (number) The block height\n"
++            "    \"outputIndex\"  (number) The output index\n"
++            "    \"script\"  (strin) The script hex encoded\n"
++            "    \"satoshis\"  (number) The number of satoshis of the output\n"
++            "  }\n"
++            "]\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getaddressutxos", "'{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}'")
++            + HelpExampleRpc("getaddressutxos", "{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}")
++            );
++
++    bool includeChainInfo = false;
++    if (request.params[0].isObject()) {
++        UniValue chainInfo = find_value(request.params[0].get_obj(), "chainInfo");
++        if (chainInfo.isBool()) {
++            includeChainInfo = chainInfo.get_bool();
++        }
++    }
++
++    std::vector<std::pair<uint160, int> > addresses;
++
++    if (!getAddressesFromParams(request.params, addresses)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > unspentOutputs;
++
++    for (std::vector<std::pair<uint160, int> >::iterator it = addresses.begin(); it != addresses.end(); it++) {
++        if (!GetAddressUnspent((*it).first, (*it).second, unspentOutputs)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++        }
++    }
++
++    std::sort(unspentOutputs.begin(), unspentOutputs.end(), heightSort);
++
++    UniValue utxos(UniValue::VARR);
++
++    for (std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> >::const_iterator it=unspentOutputs.begin(); it!=unspentOutputs.end(); it++) {
++        UniValue output(UniValue::VOBJ);
++        std::string address;
++        if (!getAddressFromIndex(it->first.type, it->first.hashBytes, address)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unknown address type");
++        }
++
++        output.push_back(Pair("address", address));
++        output.push_back(Pair("txid", it->first.txhash.GetHex()));
++        output.push_back(Pair("outputIndex", (int)it->first.index));
++        output.push_back(Pair("script", HexStr(it->second.script.begin(), it->second.script.end())));
++        output.push_back(Pair("satoshis", it->second.satoshis));
++        output.push_back(Pair("height", it->second.blockHeight));
++        utxos.push_back(output);
++    }
++
++    if (includeChainInfo) {
++        UniValue result(UniValue::VOBJ);
++        result.push_back(Pair("utxos", utxos));
++
++        LOCK(cs_main);
++        result.push_back(Pair("hash", chainActive.Tip()->GetBlockHash().GetHex()));
++        result.push_back(Pair("height", (int)chainActive.Height()));
++        return result;
++    } else {
++        return utxos;
++    }
++}
++
++UniValue getaddressdeltas(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1 || !request.params[0].isObject())
++        throw std::runtime_error(
++            "getaddressdeltas\n"
++            "\nReturns all changes for an address (requires addressindex to be enabled).\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"addresses\"\n"
++            "    [\n"
++            "      \"address\"  (string) The base58check encoded address\n"
++            "      ,...\n"
++            "    ]\n"
++            "  \"start\" (number) The start block height\n"
++            "  \"end\" (number) The end block height\n"
++            "  \"chainInfo\" (boolean) Include chain info in results, only applies if start and end specified\n"
++            "}\n"
++            "\nResult:\n"
++            "[\n"
++            "  {\n"
++            "    \"satoshis\"  (number) The difference of satoshis\n"
++            "    \"txid\"  (string) The related txid\n"
++            "    \"index\"  (number) The related input or output index\n"
++            "    \"height\"  (number) The block height\n"
++            "    \"address\"  (string) The base58check encoded address\n"
++            "  }\n"
++            "]\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getaddressdeltas", "'{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}'")
++            + HelpExampleRpc("getaddressdeltas", "{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}")
++        );
++
++
++    UniValue startValue = find_value(request.params[0].get_obj(), "start");
++    UniValue endValue = find_value(request.params[0].get_obj(), "end");
++
++    UniValue chainInfo = find_value(request.params[0].get_obj(), "chainInfo");
++    bool includeChainInfo = false;
++    if (chainInfo.isBool()) {
++        includeChainInfo = chainInfo.get_bool();
++    }
++
++    int start = 0;
++    int end = 0;
++
++    if (startValue.isNum() && endValue.isNum()) {
++        start = startValue.get_int();
++        end = endValue.get_int();
++        if (start <= 0 || end <= 0) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Start and end is expected to be greater than zero");
++        }
++        if (end < start) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "End value is expected to be greater than start");
++        }
++    }
++
++    std::vector<std::pair<uint160, int> > addresses;
++
++    if (!getAddressesFromParams(request.params, addresses)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
++
++    for (std::vector<std::pair<uint160, int> >::iterator it = addresses.begin(); it != addresses.end(); it++) {
++        if (start > 0 && end > 0) {
++            if (!GetAddressIndex((*it).first, (*it).second, addressIndex, start, end)) {
++                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++            }
++        } else {
++            if (!GetAddressIndex((*it).first, (*it).second, addressIndex)) {
++                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++            }
++        }
++    }
++
++    UniValue deltas(UniValue::VARR);
++
++    for (std::vector<std::pair<CAddressIndexKey, CAmount> >::const_iterator it=addressIndex.begin(); it!=addressIndex.end(); it++) {
++        std::string address;
++        if (!getAddressFromIndex(it->first.type, it->first.hashBytes, address)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unknown address type");
++        }
++
++        UniValue delta(UniValue::VOBJ);
++        delta.push_back(Pair("satoshis", it->second));
++        delta.push_back(Pair("txid", it->first.txhash.GetHex()));
++        delta.push_back(Pair("index", (int)it->first.index));
++        delta.push_back(Pair("blockindex", (int)it->first.txindex));
++        delta.push_back(Pair("height", it->first.blockHeight));
++        delta.push_back(Pair("address", address));
++        deltas.push_back(delta);
++    }
++
++    UniValue result(UniValue::VOBJ);
++
++    if (includeChainInfo && start > 0 && end > 0) {
++        LOCK(cs_main);
++
++        if (start > chainActive.Height() || end > chainActive.Height()) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Start or end is outside chain range");
++        }
++
++        CBlockIndex* startIndex = chainActive[start];
++        CBlockIndex* endIndex = chainActive[end];
++
++        UniValue startInfo(UniValue::VOBJ);
++        UniValue endInfo(UniValue::VOBJ);
++
++        startInfo.push_back(Pair("hash", startIndex->GetBlockHash().GetHex()));
++        startInfo.push_back(Pair("height", start));
++
++        endInfo.push_back(Pair("hash", endIndex->GetBlockHash().GetHex()));
++        endInfo.push_back(Pair("height", end));
++
++        result.push_back(Pair("deltas", deltas));
++        result.push_back(Pair("start", startInfo));
++        result.push_back(Pair("end", endInfo));
++
++        return result;
++    } else {
++        return deltas;
++    }
++}
++
++UniValue getaddressbalance(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1)
++        throw std::runtime_error(
++            "getaddressbalance\n"
++            "\nReturns the balance for an address(es) (requires addressindex to be enabled).\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"addresses\"\n"
++            "    [\n"
++            "      \"address\"  (string) The base58check encoded address\n"
++            "      ,...\n"
++            "    ]\n"
++            "}\n"
++            "\nResult:\n"
++            "{\n"
++            "  \"balance\"  (string) The current balance in satoshis\n"
++            "  \"received\"  (string) The total number of satoshis received (including change)\n"
++            "}\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getaddressbalance", "'{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}'")
++            + HelpExampleRpc("getaddressbalance", "{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}")
++        );
++
++    std::vector<std::pair<uint160, int> > addresses;
++
++    if (!getAddressesFromParams(request.params, addresses)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
++
++    for (std::vector<std::pair<uint160, int> >::iterator it = addresses.begin(); it != addresses.end(); it++) {
++        if (!GetAddressIndex((*it).first, (*it).second, addressIndex)) {
++            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++        }
++    }
++
++    CAmount balance = 0;
++    CAmount received = 0;
++
++    for (std::vector<std::pair<CAddressIndexKey, CAmount> >::const_iterator it=addressIndex.begin(); it!=addressIndex.end(); it++) {
++        if (it->second > 0) {
++            received += it->second;
++        }
++        balance += it->second;
++    }
++
++    UniValue result(UniValue::VOBJ);
++    result.push_back(Pair("balance", balance));
++    result.push_back(Pair("received", received));
++
++    return result;
++
++}
++
++UniValue getaddresstxids(const JSONRPCRequest& request)
++{
++    if (request.fHelp || request.params.size() != 1)
++        throw std::runtime_error(
++            "getaddresstxids\n"
++            "\nReturns the txids for an address(es) (requires addressindex to be enabled).\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"addresses\"\n"
++            "    [\n"
++            "      \"address\"  (string) The base58check encoded address\n"
++            "      ,...\n"
++            "    ]\n"
++            "  \"start\" (number) The start block height\n"
++            "  \"end\" (number) The end block height\n"
++            "}\n"
++            "\nResult:\n"
++            "[\n"
++            "  \"transactionid\"  (string) The transaction id\n"
++            "  ,...\n"
++            "]\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getaddresstxids", "'{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}'")
++            + HelpExampleRpc("getaddresstxids", "{\"addresses\": [\"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX\"]}")
++        );
++
++    std::vector<std::pair<uint160, int> > addresses;
++
++    if (!getAddressesFromParams(request.params, addresses)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid address");
++    }
++
++    int start = 0;
++    int end = 0;
++    if (request.params[0].isObject()) {
++        UniValue startValue = find_value(request.params[0].get_obj(), "start");
++        UniValue endValue = find_value(request.params[0].get_obj(), "end");
++        if (startValue.isNum() && endValue.isNum()) {
++            start = startValue.get_int();
++            end = endValue.get_int();
++        }
++    }
++
++    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
++
++    for (std::vector<std::pair<uint160, int> >::iterator it = addresses.begin(); it != addresses.end(); it++) {
++        if (start > 0 && end > 0) {
++            if (!GetAddressIndex((*it).first, (*it).second, addressIndex, start, end)) {
++                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++            }
++        } else {
++            if (!GetAddressIndex((*it).first, (*it).second, addressIndex)) {
++                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "No information available for address");
++            }
++        }
++    }
++
++    std::set<std::pair<int, std::string> > txids;
++    UniValue result(UniValue::VARR);
++
++    for (std::vector<std::pair<CAddressIndexKey, CAmount> >::const_iterator it=addressIndex.begin(); it!=addressIndex.end(); it++) {
++        int height = it->first.blockHeight;
++        std::string txid = it->first.txhash.GetHex();
++
++        if (addresses.size() > 1) {
++            txids.insert(std::make_pair(height, txid));
++        } else {
++            if (txids.insert(std::make_pair(height, txid)).second) {
++                result.push_back(txid);
++            }
++        }
++    }
++
++    if (addresses.size() > 1) {
++        for (std::set<std::pair<int, std::string> >::const_iterator it=txids.begin(); it!=txids.end(); it++) {
++            result.push_back(it->second);
++        }
++    }
++
++    return result;
++
++}
++
++UniValue getspentinfo(const JSONRPCRequest& request)
++{
++
++    if (request.fHelp || request.params.size() != 1 || !request.params[0].isObject())
++        throw std::runtime_error(
++            "getspentinfo\n"
++            "\nReturns the txid and index where an output is spent.\n"
++            "\nArguments:\n"
++            "{\n"
++            "  \"txid\" (string) The hex string of the txid\n"
++            "  \"index\" (number) The start block height\n"
++            "}\n"
++            "\nResult:\n"
++            "{\n"
++            "  \"txid\"  (string) The transaction id\n"
++            "  \"index\"  (number) The spending input index\n"
++            "  ,...\n"
++            "}\n"
++            "\nExamples:\n"
++            + HelpExampleCli("getspentinfo", "'{\"txid\": \"0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9\", \"index\": 0}'")
++            + HelpExampleRpc("getspentinfo", "{\"txid\": \"0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9\", \"index\": 0}")
++        );
++
++    UniValue txidValue = find_value(request.params[0].get_obj(), "txid");
++    UniValue indexValue = find_value(request.params[0].get_obj(), "index");
++
++    if (!txidValue.isStr() || !indexValue.isNum()) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid txid or index");
++    }
++
++    uint256 txid = ParseHashV(txidValue, "txid");
++    int outputIndex = indexValue.get_int();
++
++    CSpentIndexKey key(txid, outputIndex);
++    CSpentIndexValue value;
++
++    if (!GetSpentIndex(key, value)) {
++        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to get spent info");
++    }
++
++    UniValue obj(UniValue::VOBJ);
++    obj.push_back(Pair("txid", value.txid.GetHex()));
++    obj.push_back(Pair("index", (int)value.inputIndex));
++    obj.push_back(Pair("height", value.blockHeight));
++
++    return obj;
++}
++
+ static const CRPCCommand commands[] =
+ { //  category              name                      actor (function)         okSafeMode
+   //  --------------------- ------------------------  -----------------------  ----------
+@@ -658,6 +1186,16 @@ static const CRPCCommand commands[] =
+     { "util",               "verifymessage",          &verifymessage,          true,  {"address","signature","message"} },
+     { "util",               "signmessagewithprivkey", &signmessagewithprivkey, true,  {"privkey","message"} },
+ 
++    /* Address index */
++    { "addressindex",       "getaddressmempool",      &getaddressmempool,      true, {} },
++    { "addressindex",       "getaddressutxos",        &getaddressutxos,        false, {} },
++    { "addressindex",       "getaddressdeltas",       &getaddressdeltas,       false, {} },
++    { "addressindex",       "getaddresstxids",        &getaddresstxids,        false, {} },
++    { "addressindex",       "getaddressbalance",      &getaddressbalance,      false, {} },
++
++    /* Blockchain */
++    { "blockchain",         "getspentinfo",           &getspentinfo,           false, {} },
++
+     /* Not shown in help */
+     { "hidden",             "setmocktime",            &setmocktime,            true,  {"timestamp"}},
+     { "hidden",             "echo",                   &echo,                   true,  {"arg0","arg1","arg2","arg3","arg4","arg5","arg6","arg7","arg8","arg9"}},
+diff --git a/src/rpc/rawtransaction.cpp b/src/rpc/rawtransaction.cpp
+index 11fa40a3..b0003152 100644
+--- a/src/rpc/rawtransaction.cpp
++++ b/src/rpc/rawtransaction.cpp
+@@ -34,7 +34,7 @@
+ #include <univalue.h>
+ 
+ 
+-void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
++void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry, bool expanded = false)
+ {
+     // Call into TxToUniv() in megacoin-common to decode the transaction hex.
+     //
+@@ -43,18 +43,68 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
+     // data into the returned UniValue.
+     TxToUniv(tx, uint256(), entry, true, RPCSerializationFlags());
+ 
++    if (expanded) {
++        uint256 txid = tx.GetHash();
++        if (!(tx.IsCoinBase())) {
++            const UniValue& oldVin = entry["vin"];
++            UniValue newVin(UniValue::VARR);
++            for (unsigned int i = 0; i < tx.vin.size(); i++) {
++                const CTxIn& txin = tx.vin[i];
++                UniValue in = oldVin[i];
++
++                // Add address and value info if spentindex enabled
++                CSpentIndexValue spentInfo;
++                CSpentIndexKey spentKey(txin.prevout.hash, txin.prevout.n);
++                if (GetSpentIndex(spentKey, spentInfo)) {
++                    in.pushKV("value", ValueFromAmount(spentInfo.satoshis));
++                    in.pushKV("valueSat", spentInfo.satoshis);
++                    if (spentInfo.addressType == 1) {
++                        in.pushKV("address", CBitcoinAddress(CKeyID(spentInfo.addressHash)).ToString());
++                    } else if (spentInfo.addressType == 2) {
++                        in.pushKV("address", CBitcoinAddress(CScriptID(spentInfo.addressHash)).ToString());
++                    }
++                }
++                newVin.push_back(in);
++            }
++            entry.pushKV("vin", newVin);
++        }
++
++        const UniValue& oldVout = entry["vout"];
++        UniValue newVout(UniValue::VARR);
++        for (unsigned int i = 0; i < tx.vout.size(); i++) {
++            const CTxOut& txout = tx.vout[i];
++            UniValue out = oldVout[i];
++
++            // Add spent information if spentindex is enabled
++            CSpentIndexValue spentInfo;
++            CSpentIndexKey spentKey(txid, i);
++            if (GetSpentIndex(spentKey, spentInfo)) {
++                out.pushKV("spentTxId", spentInfo.txid.GetHex());
++                out.pushKV("spentIndex", (int)spentInfo.inputIndex);
++                out.pushKV("spentHeight", spentInfo.blockHeight);
++            }
++
++            out.pushKV("valueSat", txout.nValue);
++            newVout.push_back(out);
++        }
++        entry.pushKV("vout", newVout);
++    }
++
+     if (!hashBlock.IsNull()) {
+-        entry.push_back(Pair("blockhash", hashBlock.GetHex()));
++        entry.pushKV("blockhash", hashBlock.GetHex());
+         BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
+         if (mi != mapBlockIndex.end() && (*mi).second) {
+             CBlockIndex* pindex = (*mi).second;
+             if (chainActive.Contains(pindex)) {
+-                entry.push_back(Pair("confirmations", 1 + chainActive.Height() - pindex->nHeight));
+-                entry.push_back(Pair("time", pindex->GetBlockTime()));
+-                entry.push_back(Pair("blocktime", pindex->GetBlockTime()));
++                entry.pushKV("height", pindex->nHeight);
++                entry.pushKV("confirmations", 1 + chainActive.Height() - pindex->nHeight);
++                entry.pushKV("time", pindex->GetBlockTime());
++                entry.pushKV("blocktime", pindex->GetBlockTime());
++            }
++            else {
++                entry.pushKV("height", -1);
++                entry.pushKV("confirmations", 0);
+             }
+-            else
+-                entry.push_back(Pair("confirmations", 0));
+         }
+     }
+ }
+@@ -154,6 +204,7 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
+     }
+ 
+     CTransactionRef tx;
++
+     uint256 hashBlock;
+     if (!GetTransaction(hash, tx, Params().GetConsensus(), hashBlock, true))
+         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string(fTxIndex ? "No such mempool or blockchain transaction"
+@@ -164,7 +215,7 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
+         return EncodeHexTx(*tx, RPCSerializationFlags());
+ 
+     UniValue result(UniValue::VOBJ);
+-    TxToJSON(*tx, hashBlock, result);
++    TxToJSON(*tx, hashBlock, result, true);
+     return result;
+ }
+ 
+diff --git a/src/script/script.cpp b/src/script/script.cpp
+index 314ecfd6..ab2bd48e 100644
+--- a/src/script/script.cpp
++++ b/src/script/script.cpp
+@@ -199,6 +199,17 @@ unsigned int CScript::GetSigOpCount(const CScript& scriptSig) const
+     return subscript.GetSigOpCount(true);
+ }
+ 
++bool CScript::IsPayToPublicKeyHash() const
++{
++    // Extra-fast test for pay-to-pubkey-hash CScripts:
++    return (this->size() == 25 &&
++	    (*this)[0] == OP_DUP &&
++	    (*this)[1] == OP_HASH160 &&
++	    (*this)[2] == 0x14 &&
++	    (*this)[23] == OP_EQUALVERIFY &&
++	    (*this)[24] == OP_CHECKSIG);
++}
++
+ bool CScript::IsPayToScriptHash() const
+ {
+     // Extra-fast test for pay-to-script-hash CScripts:
+diff --git a/src/script/script.h b/src/script/script.h
+index 82553477..dd9982dd 100644
+--- a/src/script/script.h
++++ b/src/script/script.h
+@@ -633,6 +633,8 @@ class CScript : public CScriptBase
+      */
+     unsigned int GetSigOpCount(const CScript& scriptSig) const;
+ 
++    bool IsPayToPublicKeyHash() const;
++
+     bool IsPayToScriptHash() const;
+     bool IsPayToWitnessScriptHash() const;
+     bool IsWitnessProgram(int& version, std::vector<unsigned char>& program) const;
+diff --git a/src/serialize.h b/src/serialize.h
+index 20effb3f..43ff0343 100644
+--- a/src/serialize.h
++++ b/src/serialize.h
+@@ -77,6 +77,11 @@ template<typename Stream> inline void ser_writedata32(Stream &s, uint32_t obj)
+     obj = htole32(obj);
+     s.write((char*)&obj, 4);
+ }
++template<typename Stream> inline void ser_writedata32be(Stream &s, uint32_t obj)
++{
++    obj = htobe32(obj);
++    s.write((char*)&obj, 4);
++}
+ template<typename Stream> inline void ser_writedata64(Stream &s, uint64_t obj)
+ {
+     obj = htole64(obj);
+@@ -100,6 +105,12 @@ template<typename Stream> inline uint32_t ser_readdata32(Stream &s)
+     s.read((char*)&obj, 4);
+     return le32toh(obj);
+ }
++template<typename Stream> inline uint32_t ser_readdata32be(Stream &s)
++{
++    uint32_t obj;
++    s.read((char*)&obj, 4);
++    return be32toh(obj);
++}
+ template<typename Stream> inline uint64_t ser_readdata64(Stream &s)
+ {
+     uint64_t obj;
+diff --git a/src/spentindex.h b/src/spentindex.h
+new file mode 100644
+index 00000000..7b9da423
+--- /dev/null
++++ b/src/spentindex.h
+@@ -0,0 +1,98 @@
++// Copyright (c) 2009-2010 Satoshi Nakamoto
++// Copyright (c) 2009-2015 The Bitcoin Core developers
++// Distributed under the MIT software license, see the accompanying
++// file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#ifndef BITCOIN_SPENTINDEX_H
++#define BITCOIN_SPENTINDEX_H
++
++#include "uint256.h"
++#include "amount.h"
++
++struct CSpentIndexKey {
++    uint256 txid;
++    unsigned int outputIndex;
++
++    ADD_SERIALIZE_METHODS;
++
++    template <typename Stream, typename Operation>
++    inline void SerializationOp(Stream& s, Operation ser_action) {
++        READWRITE(txid);
++        READWRITE(outputIndex);
++    }
++
++    CSpentIndexKey(uint256 t, unsigned int i) {
++        txid = t;
++        outputIndex = i;
++    }
++
++    CSpentIndexKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        txid.SetNull();
++        outputIndex = 0;
++    }
++
++};
++
++struct CSpentIndexValue {
++    uint256 txid;
++    unsigned int inputIndex;
++    int blockHeight;
++    CAmount satoshis;
++    int addressType;
++    uint160 addressHash;
++
++    ADD_SERIALIZE_METHODS;
++
++    template <typename Stream, typename Operation>
++    inline void SerializationOp(Stream& s, Operation ser_action) {
++        READWRITE(txid);
++        READWRITE(inputIndex);
++        READWRITE(blockHeight);
++        READWRITE(satoshis);
++        READWRITE(addressType);
++        READWRITE(addressHash);
++    }
++
++    CSpentIndexValue(uint256 t, unsigned int i, int h, CAmount s, int type, uint160 a) {
++        txid = t;
++        inputIndex = i;
++        blockHeight = h;
++        satoshis = s;
++        addressType = type;
++        addressHash = a;
++    }
++
++    CSpentIndexValue() {
++        SetNull();
++    }
++
++    void SetNull() {
++        txid.SetNull();
++        inputIndex = 0;
++        blockHeight = 0;
++        satoshis = 0;
++        addressType = 0;
++        addressHash.SetNull();
++    }
++
++    bool IsNull() const {
++        return txid.IsNull();
++    }
++};
++
++struct CSpentIndexKeyCompare
++{
++    bool operator()(const CSpentIndexKey& a, const CSpentIndexKey& b) const {
++        if (a.txid == b.txid) {
++            return a.outputIndex < b.outputIndex;
++        } else {
++            return a.txid < b.txid;
++        }
++    }
++};
++
++#endif // BITCOIN_SPENTINDEX_H
+diff --git a/src/test/dbwrapper_tests.cpp b/src/test/dbwrapper_tests.cpp
+index 40d2ebeb..25e69546 100644
+--- a/src/test/dbwrapper_tests.cpp
++++ b/src/test/dbwrapper_tests.cpp
+@@ -40,6 +40,49 @@ BOOST_AUTO_TEST_CASE(dbwrapper)
+     }
+ }
+ 
++BOOST_AUTO_TEST_CASE(dbwrapper_compression)
++{
++    // Perform tests both with compression and without
++    for (int i = 0; i < 2; i++) {
++        bool compression = (bool)i;
++        boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
++        CDBWrapper dbw(ph, (1 << 20), true, false, false, compression);
++        char key = 'k';
++        uint256 in = GetRandHash();
++        uint256 res;
++
++        BOOST_CHECK(dbw.Write(key, in));
++        BOOST_CHECK(dbw.Read(key, res));
++        BOOST_CHECK_EQUAL(res.ToString(), in.ToString());
++    }
++}
++
++BOOST_AUTO_TEST_CASE(dbwrapper_maxopenfiles_64)
++{
++    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
++    CDBWrapper dbw(ph, (1 << 20), true, false, false, false, 64);
++    char key = 'k';
++    uint256 in = GetRandHash();
++    uint256 res;
++
++    BOOST_CHECK(dbw.Write(key, in));
++    BOOST_CHECK(dbw.Read(key, res));
++    BOOST_CHECK_EQUAL(res.ToString(), in.ToString());
++}
++
++BOOST_AUTO_TEST_CASE(dbwrapper_maxopenfiles_1000)
++{
++    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
++    CDBWrapper dbw(ph, (1 << 20), true, false, false, false, 1000);
++    char key = 'k';
++    uint256 in = GetRandHash();
++    uint256 res;
++
++    BOOST_CHECK(dbw.Write(key, in));
++    BOOST_CHECK(dbw.Read(key, res));
++    BOOST_CHECK_EQUAL(res.ToString(), in.ToString());
++}
++
+ // Test batch operations
+ BOOST_AUTO_TEST_CASE(dbwrapper_batch)
+ {
+diff --git a/src/timestampindex.h b/src/timestampindex.h
+new file mode 100644
+index 00000000..cb182a71
+--- /dev/null
++++ b/src/timestampindex.h
+@@ -0,0 +1,131 @@
++// Copyright (c) 2009-2010 Satoshi Nakamoto
++// Copyright (c) 2009-2015 The Bitcoin Core developers
++// Distributed under the MIT software license, see the accompanying
++// file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#ifndef BITCOIN_TIMESTAMPINDEX_H
++#define BITCOIN_TIMESTAMPINDEX_H
++
++#include "uint256.h"
++
++struct CTimestampIndexIteratorKey {
++    unsigned int timestamp;
++
++    size_t GetSerializeSize() const {
++        return 4;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata32be(s, timestamp);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        timestamp = ser_readdata32be(s);
++    }
++
++    CTimestampIndexIteratorKey(unsigned int time) {
++        timestamp = time;
++    }
++
++    CTimestampIndexIteratorKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        timestamp = 0;
++    }
++};
++
++struct CTimestampIndexKey {
++    unsigned int timestamp;
++    uint256 blockHash;
++
++    size_t GetSerializeSize() const {
++        return 36;
++    }
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata32be(s, timestamp);
++        blockHash.Serialize(s);
++    }
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        timestamp = ser_readdata32be(s);
++        blockHash.Unserialize(s);
++    }
++
++    CTimestampIndexKey(unsigned int time, uint256 hash) {
++        timestamp = time;
++        blockHash = hash;
++    }
++
++    CTimestampIndexKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        timestamp = 0;
++        blockHash.SetNull();
++    }
++};
++
++struct CTimestampBlockIndexKey {
++    uint256 blockHash;
++
++    size_t GetSerializeSize() const {
++        return 32;
++    }
++
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        blockHash.Serialize(s);
++    }
++
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        blockHash.Unserialize(s);
++    }
++
++    CTimestampBlockIndexKey(uint256 hash) {
++        blockHash = hash;
++    }
++
++    CTimestampBlockIndexKey() {
++        SetNull();
++    }
++
++    void SetNull() {
++        blockHash.SetNull();
++    }
++};
++
++struct CTimestampBlockIndexValue {
++    unsigned int ltimestamp;
++    size_t GetSerializeSize() const {
++        return 4;
++    }
++
++    template<typename Stream>
++    void Serialize(Stream& s) const {
++        ser_writedata32be(s, ltimestamp);
++    }
++
++    template<typename Stream>
++    void Unserialize(Stream& s) {
++        ltimestamp = ser_readdata32be(s);
++    }
++
++    CTimestampBlockIndexValue (unsigned int time) {
++        ltimestamp = time;
++    }
++
++    CTimestampBlockIndexValue() {
++        SetNull();
++    }
++
++    void SetNull() {
++        ltimestamp = 0;
++    }
++};
++
++#endif // BITCOIN_TIMESTAMPINDEX_H
+diff --git a/src/txdb.cpp b/src/txdb.cpp
+index 595744f9..9e55cb03 100644
+--- a/src/txdb.cpp
++++ b/src/txdb.cpp
+@@ -13,6 +13,7 @@
+ #include "util.h"
+ #include "ui_interface.h"
+ #include "init.h"
++#include "validation.h"
+ 
+ #include <stdint.h>
+ 
+@@ -22,6 +23,11 @@ static const char DB_COIN = 'C';
+ static const char DB_COINS = 'c';
+ static const char DB_BLOCK_FILES = 'f';
+ static const char DB_TXINDEX = 't';
++static const char DB_ADDRESSINDEX = 'a';
++static const char DB_ADDRESSUNSPENTINDEX = 'u';
++static const char DB_TIMESTAMPINDEX = 's';
++static const char DB_BLOCKHASHINDEX = 'z';
++static const char DB_SPENTINDEX = 'p';
+ static const char DB_BLOCK_INDEX = 'b';
+ 
+ static const char DB_BEST_BLOCK = 'B';
+@@ -54,7 +60,7 @@ struct CoinEntry {
+ 
+ }
+ 
+-CCoinsViewDB::CCoinsViewDB(size_t nCacheSize, bool fMemory, bool fWipe) : db(GetDataDir() / "chainstate", nCacheSize, fMemory, fWipe, true) 
++CCoinsViewDB::CCoinsViewDB(size_t nCacheSize, bool fMemory, bool fWipe) : db(GetDataDir() / "chainstate", nCacheSize, fMemory, fWipe, true, false, 64)
+ {
+ }
+ 
+@@ -147,7 +153,7 @@ size_t CCoinsViewDB::EstimateSize() const
+     return db.EstimateSize(DB_COIN, (char)(DB_COIN+1));
+ }
+ 
+-CBlockTreeDB::CBlockTreeDB(size_t nCacheSize, bool fMemory, bool fWipe) : CDBWrapper(GetDataDir() / "blocks" / "index", nCacheSize, fMemory, fWipe) {
++CBlockTreeDB::CBlockTreeDB(size_t nCacheSize, bool fMemory, bool fWipe, bool compression, int maxOpenFiles) : CDBWrapper(GetDataDir() / "blocks" / "index", nCacheSize, fMemory, fWipe, false, compression, maxOpenFiles) {
+ }
+ 
+ bool CBlockTreeDB::ReadBlockFileInfo(int nFile, CBlockFileInfo &info) {
+@@ -247,6 +253,157 @@ bool CBlockTreeDB::WriteTxIndex(const std::vector<std::pair<uint256, CDiskTxPos>
+     return WriteBatch(batch);
+ }
+ 
++bool CBlockTreeDB::ReadSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value) {
++    return Read(std::make_pair(DB_SPENTINDEX, key), value);
++}
++
++bool CBlockTreeDB::UpdateSpentIndex(const std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> >&vect) {
++    CDBBatch batch(*this);
++    for (std::vector<std::pair<CSpentIndexKey,CSpentIndexValue> >::const_iterator it=vect.begin(); it!=vect.end(); it++) {
++        if (it->second.IsNull()) {
++            batch.Erase(std::make_pair(DB_SPENTINDEX, it->first));
++        } else {
++            batch.Write(std::make_pair(DB_SPENTINDEX, it->first), it->second);
++        }
++    }
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::UpdateAddressUnspentIndex(const std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue > >&vect) {
++    CDBBatch batch(*this);
++    for (std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> >::const_iterator it=vect.begin(); it!=vect.end(); it++) {
++        if (it->second.IsNull()) {
++            batch.Erase(std::make_pair(DB_ADDRESSUNSPENTINDEX, it->first));
++        } else {
++            batch.Write(std::make_pair(DB_ADDRESSUNSPENTINDEX, it->first), it->second);
++        }
++    }
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::ReadAddressUnspentIndex(uint160 addressHash, int type,
++                                           std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > &unspentOutputs) {
++
++    boost::scoped_ptr<CDBIterator> pcursor(NewIterator());
++
++    pcursor->Seek(std::make_pair(DB_ADDRESSUNSPENTINDEX, CAddressIndexIteratorKey(type, addressHash)));
++
++    while (pcursor->Valid()) {
++        boost::this_thread::interruption_point();
++        std::pair<char,CAddressUnspentKey> key;
++        if (pcursor->GetKey(key) && key.first == DB_ADDRESSUNSPENTINDEX && key.second.hashBytes == addressHash) {
++            CAddressUnspentValue nValue;
++            if (pcursor->GetValue(nValue)) {
++                unspentOutputs.push_back(std::make_pair(key.second, nValue));
++                pcursor->Next();
++            } else {
++                return error("failed to get address unspent value");
++            }
++        } else {
++            break;
++        }
++    }
++
++    return true;
++}
++
++bool CBlockTreeDB::WriteAddressIndex(const std::vector<std::pair<CAddressIndexKey, CAmount > >&vect) {
++    CDBBatch batch(*this);
++    for (std::vector<std::pair<CAddressIndexKey, CAmount> >::const_iterator it=vect.begin(); it!=vect.end(); it++)
++        batch.Write(std::make_pair(DB_ADDRESSINDEX, it->first), it->second);
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::EraseAddressIndex(const std::vector<std::pair<CAddressIndexKey, CAmount > >&vect) {
++    CDBBatch batch(*this);
++    for (std::vector<std::pair<CAddressIndexKey, CAmount> >::const_iterator it=vect.begin(); it!=vect.end(); it++)
++        batch.Erase(std::make_pair(DB_ADDRESSINDEX, it->first));
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::ReadAddressIndex(uint160 addressHash, int type,
++                                    std::vector<std::pair<CAddressIndexKey, CAmount> > &addressIndex,
++                                    int start, int end) {
++
++    boost::scoped_ptr<CDBIterator> pcursor(NewIterator());
++
++    if (start > 0 && end > 0) {
++        pcursor->Seek(std::make_pair(DB_ADDRESSINDEX, CAddressIndexIteratorHeightKey(type, addressHash, start)));
++    } else {
++        pcursor->Seek(std::make_pair(DB_ADDRESSINDEX, CAddressIndexIteratorKey(type, addressHash)));
++    }
++
++    while (pcursor->Valid()) {
++        boost::this_thread::interruption_point();
++        std::pair<char,CAddressIndexKey> key;
++        if (pcursor->GetKey(key) && key.first == DB_ADDRESSINDEX && key.second.hashBytes == addressHash) {
++            if (end > 0 && key.second.blockHeight > end) {
++                break;
++            }
++            CAmount nValue;
++            if (pcursor->GetValue(nValue)) {
++                addressIndex.push_back(std::make_pair(key.second, nValue));
++                pcursor->Next();
++            } else {
++                return error("failed to get address index value");
++            }
++        } else {
++            break;
++        }
++    }
++
++    return true;
++}
++
++bool CBlockTreeDB::WriteTimestampIndex(const CTimestampIndexKey &timestampIndex) {
++    CDBBatch batch(*this);
++    batch.Write(std::make_pair(DB_TIMESTAMPINDEX, timestampIndex), 0);
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::ReadTimestampIndex(const unsigned int &high, const unsigned int &low, const bool fActiveOnly, std::vector<std::pair<uint256, unsigned int> > &hashes) {
++
++    boost::scoped_ptr<CDBIterator> pcursor(NewIterator());
++
++    pcursor->Seek(std::make_pair(DB_TIMESTAMPINDEX, CTimestampIndexIteratorKey(low)));
++
++    while (pcursor->Valid()) {
++        boost::this_thread::interruption_point();
++        std::pair<char, CTimestampIndexKey> key;
++        if (pcursor->GetKey(key) && key.first == DB_TIMESTAMPINDEX && key.second.timestamp < high) {
++            if (fActiveOnly) {
++                if (HashOnchainActive(key.second.blockHash)) {
++                    hashes.push_back(std::make_pair(key.second.blockHash, key.second.timestamp));
++                }
++            } else {
++                hashes.push_back(std::make_pair(key.second.blockHash, key.second.timestamp));
++            }
++
++            pcursor->Next();
++        } else {
++            break;
++        }
++    }
++
++    return true;
++}
++
++bool CBlockTreeDB::WriteTimestampBlockIndex(const CTimestampBlockIndexKey &blockhashIndex, const CTimestampBlockIndexValue &logicalts) {
++    CDBBatch batch(*this);
++    batch.Write(std::make_pair(DB_BLOCKHASHINDEX, blockhashIndex), logicalts);
++    return WriteBatch(batch);
++}
++
++bool CBlockTreeDB::ReadTimestampBlockIndex(const uint256 &hash, unsigned int &ltimestamp) {
++
++    CTimestampBlockIndexValue(lts);
++    if (!Read(std::make_pair(DB_BLOCKHASHINDEX, hash), lts))
++	return false;
++
++    ltimestamp = lts.ltimestamp;
++    return true;
++}
++
+ bool CBlockTreeDB::WriteFlag(const std::string &name, bool fValue) {
+     return Write(std::make_pair(DB_FLAG, name), fValue ? '1' : '0');
+ }
+diff --git a/src/txdb.h b/src/txdb.h
+index ef507277..eca93187 100644
+--- a/src/txdb.h
++++ b/src/txdb.h
+@@ -9,6 +9,9 @@
+ #include "coins.h"
+ #include "dbwrapper.h"
+ #include "chain.h"
++#include "addressindex.h"
++#include "spentindex.h"
++#include "timestampindex.h"
+ 
+ #include <map>
+ #include <string>
+@@ -109,7 +112,7 @@ class CCoinsViewDBCursor: public CCoinsViewCursor
+ class CBlockTreeDB : public CDBWrapper
+ {
+ public:
+-    CBlockTreeDB(size_t nCacheSize, bool fMemory = false, bool fWipe = false);
++    CBlockTreeDB(size_t nCacheSize, bool fMemory = false, bool fWipe = false, bool compression = true, int maxOpenFiles = 1000);
+ private:
+     CBlockTreeDB(const CBlockTreeDB&);
+     void operator=(const CBlockTreeDB&);
+@@ -121,6 +124,20 @@ class CBlockTreeDB : public CDBWrapper
+     bool ReadReindexing(bool &fReindex);
+     bool ReadTxIndex(const uint256 &txid, CDiskTxPos &pos);
+     bool WriteTxIndex(const std::vector<std::pair<uint256, CDiskTxPos> > &list);
++    bool ReadSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value);
++    bool UpdateSpentIndex(const std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> >&vect);
++    bool UpdateAddressUnspentIndex(const std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue > >&vect);
++    bool ReadAddressUnspentIndex(uint160 addressHash, int type,
++                                 std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > &vect);
++    bool WriteAddressIndex(const std::vector<std::pair<CAddressIndexKey, CAmount> > &vect);
++    bool EraseAddressIndex(const std::vector<std::pair<CAddressIndexKey, CAmount> > &vect);
++    bool ReadAddressIndex(uint160 addressHash, int type,
++                          std::vector<std::pair<CAddressIndexKey, CAmount> > &addressIndex,
++                          int start = 0, int end = 0);
++    bool WriteTimestampIndex(const CTimestampIndexKey &timestampIndex);
++    bool ReadTimestampIndex(const unsigned int &high, const unsigned int &low, const bool fActiveOnly, std::vector<std::pair<uint256, unsigned int> > &vect);
++    bool WriteTimestampBlockIndex(const CTimestampBlockIndexKey &blockhashIndex, const CTimestampBlockIndexValue &logicalts);
++    bool ReadTimestampBlockIndex(const uint256 &hash, unsigned int &logicalTS);
+     bool WriteFlag(const std::string &name, bool fValue);
+     bool ReadFlag(const std::string &name, bool &fValue);
+     bool LoadBlockIndexGuts(const Consensus::Params& consensusParams, std::function<CBlockIndex*(const uint256&)> insertBlockIndex);
+diff --git a/src/txmempool.cpp b/src/txmempool.cpp
+index b579e639..e24dfedf 100644
+--- a/src/txmempool.cpp
++++ b/src/txmempool.cpp
+@@ -370,7 +370,7 @@ bool CTxMemPool::addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry,
+     // all the appropriate checks.
+     LOCK(cs);
+     indexed_transaction_set::iterator newit = mapTx.insert(entry).first;
+-    mapLinks.insert(make_pair(newit, TxLinks()));
++    mapLinks.insert(std::make_pair(newit, TxLinks()));
+ 
+     // Update transaction for any feeDelta created by PrioritiseTransaction
+     // TODO: refactor so that the fee delta is calculated before inserting
+@@ -421,6 +421,145 @@ bool CTxMemPool::addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry,
+     return true;
+ }
+ 
++void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewCache &view)
++{
++    LOCK(cs);
++    const CTransaction& tx = entry.GetTx();
++    std::vector<CMempoolAddressDeltaKey> inserted;
++
++    uint256 txhash = tx.GetHash();
++    for (unsigned int j = 0; j < tx.vin.size(); j++) {
++        const CTxIn input = tx.vin[j];
++        const CTxOut &prevout = view.AccessCoin(input.prevout).out;
++        if (prevout.scriptPubKey.IsPayToScriptHash()) {
++            std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22);
++            CMempoolAddressDeltaKey key(2, uint160(hashBytes), txhash, j, 1);
++            CMempoolAddressDelta delta(entry.GetTime(), prevout.nValue * -1, input.prevout.hash, input.prevout.n);
++            mapAddress.insert(std::make_pair(key, delta));
++            inserted.push_back(key);
++        } else if (prevout.scriptPubKey.IsPayToPublicKeyHash()) {
++            std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+3, prevout.scriptPubKey.begin()+23);
++            CMempoolAddressDeltaKey key(1, uint160(hashBytes), txhash, j, 1);
++            CMempoolAddressDelta delta(entry.GetTime(), prevout.nValue * -1, input.prevout.hash, input.prevout.n);
++            mapAddress.insert(std::make_pair(key, delta));
++            inserted.push_back(key);
++        }
++    }
++
++    for (unsigned int k = 0; k < tx.vout.size(); k++) {
++        const CTxOut &out = tx.vout[k];
++        if (out.scriptPubKey.IsPayToScriptHash()) {
++            std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
++            CMempoolAddressDeltaKey key(2, uint160(hashBytes), txhash, k, 0);
++            mapAddress.insert(std::make_pair(key, CMempoolAddressDelta(entry.GetTime(), out.nValue)));
++            inserted.push_back(key);
++        } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
++            std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
++            std::pair<addressDeltaMap::iterator,bool> ret;
++            CMempoolAddressDeltaKey key(1, uint160(hashBytes), txhash, k, 0);
++            mapAddress.insert(std::make_pair(key, CMempoolAddressDelta(entry.GetTime(), out.nValue)));
++            inserted.push_back(key);
++        }
++    }
++
++    mapAddressInserted.insert(std::make_pair(txhash, inserted));
++}
++
++bool CTxMemPool::getAddressIndex(std::vector<std::pair<uint160, int> > &addresses,
++                                 std::vector<std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> > &results)
++{
++    LOCK(cs);
++    for (std::vector<std::pair<uint160, int> >::iterator it = addresses.begin(); it != addresses.end(); it++) {
++        addressDeltaMap::iterator ait = mapAddress.lower_bound(CMempoolAddressDeltaKey((*it).second, (*it).first));
++        while (ait != mapAddress.end() && (*ait).first.addressBytes == (*it).first && (*ait).first.type == (*it).second) {
++            results.push_back(*ait);
++            ait++;
++        }
++    }
++    return true;
++}
++
++bool CTxMemPool::removeAddressIndex(const uint256 txhash)
++{
++    LOCK(cs);
++    addressDeltaMapInserted::iterator it = mapAddressInserted.find(txhash);
++
++    if (it != mapAddressInserted.end()) {
++        std::vector<CMempoolAddressDeltaKey> keys = (*it).second;
++        for (std::vector<CMempoolAddressDeltaKey>::iterator mit = keys.begin(); mit != keys.end(); mit++) {
++            mapAddress.erase(*mit);
++        }
++        mapAddressInserted.erase(it);
++    }
++
++    return true;
++}
++
++void CTxMemPool::addSpentIndex(const CTxMemPoolEntry &entry, const CCoinsViewCache &view)
++{
++    LOCK(cs);
++
++    const CTransaction& tx = entry.GetTx();
++    std::vector<CSpentIndexKey> inserted;
++
++    uint256 txhash = tx.GetHash();
++    for (unsigned int j = 0; j < tx.vin.size(); j++) {
++        const CTxIn input = tx.vin[j];
++        const CTxOut &prevout = view.AccessCoin(input.prevout).out;
++        uint160 addressHash;
++        int addressType;
++
++        if (prevout.scriptPubKey.IsPayToScriptHash()) {
++            addressHash = uint160(std::vector<unsigned char> (prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22));
++            addressType = 2;
++        } else if (prevout.scriptPubKey.IsPayToPublicKeyHash()) {
++            addressHash = uint160(std::vector<unsigned char> (prevout.scriptPubKey.begin()+3, prevout.scriptPubKey.begin()+23));
++            addressType = 1;
++        } else {
++            addressHash.SetNull();
++            addressType = 0;
++        }
++
++        CSpentIndexKey key = CSpentIndexKey(input.prevout.hash, input.prevout.n);
++        CSpentIndexValue value = CSpentIndexValue(txhash, j, -1, prevout.nValue, addressType, addressHash);
++
++        mapSpent.insert(std::make_pair(key, value));
++        inserted.push_back(key);
++
++    }
++
++    mapSpentInserted.insert(std::make_pair(txhash, inserted));
++}
++
++bool CTxMemPool::getSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value)
++{
++    LOCK(cs);
++    mapSpentIndex::iterator it;
++
++    it = mapSpent.find(key);
++    if (it != mapSpent.end()) {
++        value = it->second;
++        return true;
++    }
++    return false;
++}
++
++bool CTxMemPool::removeSpentIndex(const uint256 txhash)
++{
++    LOCK(cs);
++    mapSpentIndexInserted::iterator it = mapSpentInserted.find(txhash);
++
++    if (it != mapSpentInserted.end()) {
++        std::vector<CSpentIndexKey> keys = (*it).second;
++        for (std::vector<CSpentIndexKey>::iterator mit = keys.begin(); mit != keys.end(); mit++) {
++            mapSpent.erase(*mit);
++        }
++        mapSpentInserted.erase(it);
++    }
++
++    return true;
++}
++
+ void CTxMemPool::removeUnchecked(txiter it, MemPoolRemovalReason reason)
+ {
+     NotifyEntryRemoved(it->GetSharedTx(), reason);
+@@ -444,6 +583,8 @@ void CTxMemPool::removeUnchecked(txiter it, MemPoolRemovalReason reason)
+     mapTx.erase(it);
+     nTransactionsUpdated++;
+     if (minerPolicyEstimator) {minerPolicyEstimator->removeTx(hash, false);}
++    removeAddressIndex(hash);
++    removeSpentIndex(hash);
+ }
+ 
+ // Calculates descendants of entry that are not already in setDescendants, and adds to
+diff --git a/src/txmempool.h b/src/txmempool.h
+index 0264d416..429af17c 100644
+--- a/src/txmempool.h
++++ b/src/txmempool.h
+@@ -13,6 +13,8 @@
+ #include <utility>
+ #include <string>
+ 
++#include "addressindex.h"
++#include "spentindex.h"
+ #include "amount.h"
+ #include "coins.h"
+ #include "indirectmap.h"
+@@ -490,6 +492,18 @@ class CTxMemPool
+     typedef std::map<txiter, TxLinks, CompareIteratorByHash> txlinksMap;
+     txlinksMap mapLinks;
+ 
++    typedef std::map<CMempoolAddressDeltaKey, CMempoolAddressDelta, CMempoolAddressDeltaKeyCompare> addressDeltaMap;
++    addressDeltaMap mapAddress;
++
++    typedef std::map<uint256, std::vector<CMempoolAddressDeltaKey> > addressDeltaMapInserted;
++    addressDeltaMapInserted mapAddressInserted;
++
++    typedef std::map<CSpentIndexKey, CSpentIndexValue, CSpentIndexKeyCompare> mapSpentIndex;
++    mapSpentIndex mapSpent;
++
++    typedef std::map<uint256, std::vector<CSpentIndexKey> > mapSpentIndexInserted;
++    mapSpentIndexInserted mapSpentInserted;
++
+     void UpdateParent(txiter entry, txiter parent, bool add);
+     void UpdateChild(txiter entry, txiter child, bool add);
+ 
+@@ -519,6 +533,15 @@ class CTxMemPool
+     bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry, bool validFeeEstimate = true);
+     bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry, setEntries &setAncestors, bool validFeeEstimate = true);
+ 
++    void addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewCache &view);
++    bool getAddressIndex(std::vector<std::pair<uint160, int> > &addresses,
++                         std::vector<std::pair<CMempoolAddressDeltaKey, CMempoolAddressDelta> > &results);
++    bool removeAddressIndex(const uint256 txhash);
++
++    void addSpentIndex(const CTxMemPoolEntry &entry, const CCoinsViewCache &view);
++    bool getSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value);
++    bool removeSpentIndex(const uint256 txhash);
++
+     void removeRecursive(const CTransaction &tx, MemPoolRemovalReason reason = MemPoolRemovalReason::UNKNOWN);
+     void removeForReorg(const CCoinsViewCache *pcoins, unsigned int nMemPoolHeight, int flags);
+     void removeConflicts(const CTransaction &tx);
+diff --git a/src/validation.cpp b/src/validation.cpp
+index a0d603f2..7a0e0cc2 100644
+--- a/src/validation.cpp
++++ b/src/validation.cpp
+@@ -68,6 +68,9 @@ int nScriptCheckThreads = 0;
+ std::atomic_bool fImporting(false);
+ bool fReindex = false;
+ bool fTxIndex = false;
++bool fAddressIndex = false;
++bool fTimestampIndex = false;
++bool fSpentIndex = false;
+ bool fHavePruned = false;
+ bool fPruneMode = false;
+ bool fIsBareMultisigStd = DEFAULT_PERMIT_BAREMULTISIG;
+@@ -858,6 +861,16 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
+         // Store transaction in memory
+         pool.addUnchecked(hash, entry, setAncestors, validForFeeEstimation);
+ 
++        // Add memory address index
++        if (fAddressIndex) {
++            pool.addAddressIndex(entry, view);
++        }
++
++        // Add memory spent index
++        if (fSpentIndex) {
++            pool.addSpentIndex(entry, view);
++        }
++
+         // trim mempool and check if tx was trimmed
+         if (!fOverrideMempoolLimit) {
+             LimitMempoolSize(pool, gArgs.GetArg("-maxmempool", DEFAULT_MAX_MEMPOOL_SIZE) * 1000000, gArgs.GetArg("-mempoolexpiry", DEFAULT_MEMPOOL_EXPIRY) * 60 * 60);
+@@ -896,6 +909,66 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
+     return AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, fLimitFree, pfMissingInputs, GetTime(), plTxnReplaced, fOverrideMempoolLimit, nAbsurdFee);
+ }
+ 
++bool GetTimestampIndex(const unsigned int &high, const unsigned int &low, const bool fActiveOnly, std::vector<std::pair<uint256, unsigned int> > &hashes)
++{
++    if (!fTimestampIndex)
++        return error("Timestamp index not enabled");
++
++    if (!pblocktree->ReadTimestampIndex(high, low, fActiveOnly, hashes))
++        return error("Unable to get hashes for timestamps");
++
++    return true;
++}
++
++bool GetSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value)
++{
++    if (!fSpentIndex)
++        return false;
++
++    if (mempool.getSpentIndex(key, value))
++        return true;
++
++    if (!pblocktree->ReadSpentIndex(key, value))
++        return false;
++
++    return true;
++}
++
++bool HashOnchainActive(const uint256 &hash)
++{
++    CBlockIndex* pblockindex = mapBlockIndex[hash];
++
++    if (!chainActive.Contains(pblockindex)) {
++        return false;
++    }
++
++    return true;
++}
++
++bool GetAddressIndex(uint160 addressHash, int type,
++                     std::vector<std::pair<CAddressIndexKey, CAmount> > &addressIndex, int start, int end)
++{
++    if (!fAddressIndex)
++        return error("address index not enabled");
++
++    if (!pblocktree->ReadAddressIndex(addressHash, type, addressIndex, start, end))
++        return error("unable to get txids for address");
++
++    return true;
++}
++
++bool GetAddressUnspent(uint160 addressHash, int type,
++                       std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > &unspentOutputs)
++{
++    if (!fAddressIndex)
++        return error("address index not enabled");
++
++    if (!pblocktree->ReadAddressUnspentIndex(addressHash, type, unspentOutputs))
++        return error("unable to get txids for address");
++
++    return true;
++}
++
+ /** Return transaction in txOut, and if it was found inside a block, its hash is placed in hashBlock */
+ bool GetTransaction(const uint256 &hash, CTransactionRef &txOut, const Consensus::Params& consensusParams, uint256 &hashBlock, bool fAllowSlow)
+ {
+@@ -1476,12 +1549,47 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex*
+         return DISCONNECT_FAILED;
+     }
+ 
++    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
++    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
++    std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
++
+     // undo transactions in reverse order
+     for (int i = block.vtx.size() - 1; i >= 0; i--) {
+         const CTransaction &tx = *(block.vtx[i]);
+         uint256 hash = tx.GetHash();
+         bool is_coinbase = tx.IsCoinBase();
+ 
++        if (fAddressIndex) {
++
++            for (unsigned int k = tx.vout.size(); k-- > 0;) {
++                const CTxOut &out = tx.vout[k];
++
++                if (out.scriptPubKey.IsPayToScriptHash()) {
++                    std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
++
++                    // undo receiving activity
++                    addressIndex.push_back(std::make_pair(CAddressIndexKey(2, uint160(hashBytes), pindex->nHeight, i, hash, k, false), out.nValue));
++
++                    // undo unspent index
++                    addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(2, uint160(hashBytes), hash, k), CAddressUnspentValue()));
++
++                } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
++                    std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
++
++                    // undo receiving activity
++                    addressIndex.push_back(std::make_pair(CAddressIndexKey(1, uint160(hashBytes), pindex->nHeight, i, hash, k, false), out.nValue));
++
++                    // undo unspent index
++                    addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, uint160(hashBytes), hash, k), CAddressUnspentValue()));
++
++                } else {
++                    continue;
++                }
++
++            }
++
++        }
++
+         // Check that all outputs are available and match the outputs in the block itself
+         // exactly.
+         for (size_t o = 0; o < tx.vout.size(); o++) {
+@@ -1504,17 +1612,63 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex*
+             }
+             for (unsigned int j = tx.vin.size(); j-- > 0;) {
+                 const COutPoint &out = tx.vin[j].prevout;
+-                int res = ApplyTxInUndo(std::move(txundo.vprevout[j]), view, out);
++                Coin &undo = txundo.vprevout[j];
++                int res = ApplyTxInUndo(std::move(undo), view, out);
+                 if (res == DISCONNECT_FAILED) return DISCONNECT_FAILED;
+                 fClean = fClean && res != DISCONNECT_UNCLEAN;
++
++                const CTxIn input = tx.vin[j];
++
++                if (fSpentIndex) {
++                    // undo and delete the spent index
++                    spentIndex.push_back(std::make_pair(CSpentIndexKey(input.prevout.hash, input.prevout.n), CSpentIndexValue()));
++                }
++
++                if (fAddressIndex) {
++                    const CTxOut &prevout = view.AccessCoin(tx.vin[j].prevout).out;
++                    if (prevout.scriptPubKey.IsPayToScriptHash()) {
++                        std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22);
++
++                        // undo spending activity
++                        addressIndex.push_back(std::make_pair(CAddressIndexKey(2, uint160(hashBytes), pindex->nHeight, i, hash, j, true), prevout.nValue * -1));
++
++                        // restore unspent index
++                        addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(2, uint160(hashBytes), input.prevout.hash, input.prevout.n), CAddressUnspentValue(prevout.nValue, prevout.scriptPubKey, undo.nHeight)));
++
++
++                    } else if (prevout.scriptPubKey.IsPayToPublicKeyHash()) {
++                        std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+3, prevout.scriptPubKey.begin()+23);
++
++                        // undo spending activity
++                        addressIndex.push_back(std::make_pair(CAddressIndexKey(1, uint160(hashBytes), pindex->nHeight, i, hash, j, true), prevout.nValue * -1));
++
++                        // restore unspent index
++                        addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, uint160(hashBytes), input.prevout.hash, input.prevout.n), CAddressUnspentValue(prevout.nValue, prevout.scriptPubKey, undo.nHeight)));
++
++                    } else {
++                        continue;
++                    }
++                }
+             }
+             // At this point, all of txundo.vprevout should have been moved out.
+         }
+     }
+ 
++
+     // move best block pointer to prevout block
+     view.SetBestBlock(pindex->pprev->GetBlockHash());
+ 
++    if (fAddressIndex) {
++        if (!pblocktree->EraseAddressIndex(addressIndex)) {
++            error("Failed to delete address index");
++            return DISCONNECT_FAILED;
++        }
++        if (!pblocktree->UpdateAddressUnspentIndex(addressUnspentIndex)) {
++            error("Failed to write address unspent index");
++            return DISCONNECT_FAILED;
++        }
++    }
++
+     return fClean ? DISCONNECT_OK : DISCONNECT_UNCLEAN;
+ }
+ 
+@@ -1760,9 +1914,15 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
+     blockundo.vtxundo.reserve(block.vtx.size() - 1);
+     std::vector<PrecomputedTransactionData> txdata;
+     txdata.reserve(block.vtx.size()); // Required so that pointers to individual PrecomputedTransactionData don't get invalidated
++
++    std::vector<std::pair<CAddressIndexKey, CAmount> > addressIndex;
++    std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > addressUnspentIndex;
++    std::vector<std::pair<CSpentIndexKey, CSpentIndexValue> > spentIndex;
++
+     for (unsigned int i = 0; i < block.vtx.size(); i++)
+     {
+         const CTransaction &tx = *(block.vtx[i]);
++        const uint256 txhash = tx.GetHash();
+ 
+         nInputs += tx.vin.size();
+ 
+@@ -1784,6 +1944,43 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
+                 return state.DoS(100, error("%s: contains a non-BIP68-final transaction", __func__),
+                                  REJECT_INVALID, "bad-txns-nonfinal");
+             }
++
++            if (fAddressIndex || fSpentIndex)
++            {
++                for (size_t j = 0; j < tx.vin.size(); j++) {
++
++                    const CTxIn input = tx.vin[j];
++                    const CTxOut &prevout = view.AccessCoin(tx.vin[j].prevout).out;
++                    uint160 hashBytes;
++                    int addressType;
++
++                    if (prevout.scriptPubKey.IsPayToScriptHash()) {
++                        hashBytes = uint160(std::vector <unsigned char>(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22));
++                        addressType = 2;
++                    } else if (prevout.scriptPubKey.IsPayToPublicKeyHash()) {
++                        hashBytes = uint160(std::vector <unsigned char>(prevout.scriptPubKey.begin()+3, prevout.scriptPubKey.begin()+23));
++                        addressType = 1;
++                    } else {
++                        hashBytes.SetNull();
++                        addressType = 0;
++                    }
++
++                    if (fAddressIndex && addressType > 0) {
++                        // record spending activity
++                        addressIndex.push_back(std::make_pair(CAddressIndexKey(addressType, hashBytes, pindex->nHeight, i, txhash, j, true), prevout.nValue * -1));
++
++                        // remove address from unspent index
++                        addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(addressType, hashBytes, input.prevout.hash, input.prevout.n), CAddressUnspentValue()));
++                    }
++
++                    if (fSpentIndex) {
++                        // add the spent index to determine the txid and input that spent an output
++                        // and to find the amount and address from an input
++                        spentIndex.push_back(std::make_pair(CSpentIndexKey(input.prevout.hash, input.prevout.n), CSpentIndexValue(txhash, j, pindex->nHeight, prevout.nValue, addressType, hashBytes)));
++                    }
++                }
++
++            }
+         }
+ 
+         // GetTransactionSigOpCost counts 3 types of sigops:
+@@ -1808,6 +2005,35 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
+             control.Add(vChecks);
+         }
+ 
++        if (fAddressIndex) {
++            for (unsigned int k = 0; k < tx.vout.size(); k++) {
++                const CTxOut &out = tx.vout[k];
++
++                if (out.scriptPubKey.IsPayToScriptHash()) {
++                    std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
++
++                    // record receiving activity
++                    addressIndex.push_back(std::make_pair(CAddressIndexKey(2, uint160(hashBytes), pindex->nHeight, i, txhash, k, false), out.nValue));
++
++                    // record unspent output
++                    addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(2, uint160(hashBytes), txhash, k), CAddressUnspentValue(out.nValue, out.scriptPubKey, pindex->nHeight)));
++
++                } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
++                    std::vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
++
++                    // record receiving activity
++                    addressIndex.push_back(std::make_pair(CAddressIndexKey(1, uint160(hashBytes), pindex->nHeight, i, txhash, k, false), out.nValue));
++
++                    // record unspent output
++                    addressUnspentIndex.push_back(std::make_pair(CAddressUnspentKey(1, uint160(hashBytes), txhash, k), CAddressUnspentValue(out.nValue, out.scriptPubKey, pindex->nHeight)));
++
++                } else {
++                    continue;
++                }
++
++            }
++        }
++
+         CTxUndo undoDummy;
+         if (i > 0) {
+             blockundo.vtxundo.push_back(CTxUndo());
+@@ -1858,6 +2084,41 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
+         if (!pblocktree->WriteTxIndex(vPos))
+             return AbortNode(state, "Failed to write transaction index");
+ 
++                if (fAddressIndex) {
++                    if (!pblocktree->WriteAddressIndex(addressIndex)) {
++                        return AbortNode(state, "Failed to write address index");
++                    }
++
++                    if (!pblocktree->UpdateAddressUnspentIndex(addressUnspentIndex)) {
++                        return AbortNode(state, "Failed to write address unspent index");
++                   }
++                }
++
++                if (fSpentIndex)
++                    if (!pblocktree->UpdateSpentIndex(spentIndex))
++                       return AbortNode(state, "Failed to write transaction index");
++
++                if (fTimestampIndex) {
++                    unsigned int logicalTS = pindex->nTime;
++                    unsigned int prevLogicalTS = 0;
++
++                    // retrieve logical timestamp of the previous block
++                    if (pindex->pprev)
++                        if (!pblocktree->ReadTimestampBlockIndex(pindex->pprev->GetBlockHash(), prevLogicalTS))
++                            LogPrintf("%s: Failed to read previous block's logical timestamp\n", __func__);
++
++                    if (logicalTS <= prevLogicalTS) {
++                        logicalTS = prevLogicalTS + 1;
++                        LogPrintf("%s: Previous logical timestamp is newer Actual[%d] prevLogical[%d] Logical[%d]\n", __func__, pindex->nTime, prevLogicalTS, logicalTS);
++                    }
++
++                    if (!pblocktree->WriteTimestampIndex(CTimestampIndexKey(logicalTS, pindex->GetBlockHash())))
++                        return AbortNode(state, "Failed to write timestamp index");
++
++                    if (!pblocktree->WriteTimestampBlockIndex(CTimestampBlockIndexKey(pindex->GetBlockHash()), CTimestampBlockIndexValue(logicalTS)))
++                        return AbortNode(state, "Failed to write blockhash index");
++                }
++
+     // add this block to the view's block chain
+     view.SetBestBlock(pindex->GetBlockHash());
+ 
+@@ -3019,7 +3280,7 @@ static bool ContextualCheckBlock(const CBlock& block, CValidationState& state, c
+             // The malleation check is ignored; as the transaction tree itself
+             // already does not permit it, it is impossible to trigger in the
+             // witness tree.
+-			
++
+ 			//strprintf("block.vtx[0]->vin[0].scriptWitness.stack[0].size() %d nHeight %d \n",block.vtx[0]->vin[0].scriptWitness.stack[0].size(),nHeight);
+ 			if(nHeight > 25000)	{
+             if (block.vtx[0]->vin[0].scriptWitness.stack.size() != 1 || block.vtx[0]->vin[0].scriptWitness.stack[0].size() != 32) {
+@@ -3567,6 +3828,17 @@ bool static LoadBlockIndexDB(const CChainParams& chainparams)
+     pblocktree->ReadFlag("txindex", fTxIndex);
+     LogPrintf("%s: transaction index %s\n", __func__, fTxIndex ? "enabled" : "disabled");
+ 
++    // Check whether we have an address index
++    pblocktree->ReadFlag("addressindex", fAddressIndex);
++    LogPrintf("%s: address index %s\n", __func__, fAddressIndex ? "enabled" : "disabled");
++
++    // Check whether we have a timestamp index
++    pblocktree->ReadFlag("timestampindex", fTimestampIndex);
++    LogPrintf("%s: timestamp index %s\n", __func__, fTimestampIndex ? "enabled" : "disabled");
++
++    // Check whether we have a spent index
++    pblocktree->ReadFlag("spentindex", fSpentIndex);
++    LogPrintf("%s: spent index %s\n", __func__, fSpentIndex ? "enabled" : "disabled");
+     return true;
+ }
+ 
+@@ -3929,9 +4201,27 @@ bool LoadBlockIndex(const CChainParams& chainparams)
+         // needs_init.
+ 
+         LogPrintf("Initializing databases...\n");
++
+         // Use the provided setting for -txindex in the new database
+         fTxIndex = gArgs.GetBoolArg("-txindex", DEFAULT_TXINDEX);
+         pblocktree->WriteFlag("txindex", fTxIndex);
++        LogPrintf("%s: transaction index %s\n", __func__, fTxIndex ? "enabled" : "disabled");
++
++        // Use the provided setting for -addressindex in the new database
++        fAddressIndex = gArgs.GetBoolArg("-addressindex", DEFAULT_ADDRESSINDEX);
++        pblocktree->WriteFlag("addressindex", fAddressIndex);
++        LogPrintf("%s: address index %s\n", __func__, fAddressIndex ? "enabled" : "disabled");
++
++        // Use the provided setting for -timestampindex in the new database
++        fTimestampIndex = gArgs.GetBoolArg("-timestampindex", DEFAULT_TIMESTAMPINDEX);
++        pblocktree->WriteFlag("timestampindex", fTimestampIndex);
++        LogPrintf("%s: timestamp index %s\n", __func__, fTimestampIndex ? "enabled" : "disabled");
++        
++        // Use the provided setting for -spentindex in the new database
++        fSpentIndex = gArgs.GetBoolArg("-spentindex", DEFAULT_SPENTINDEX);
++        pblocktree->WriteFlag("spentindex", fSpentIndex);
++        LogPrintf("%s: spent index %s\n", __func__, fSpentIndex ? "enabled" : "disabled");
++
+     }
+     return true;
+ }
+diff --git a/src/validation.h b/src/validation.h
+index c686665e..41652ae1 100644
+--- a/src/validation.h
++++ b/src/validation.h
+@@ -18,6 +18,9 @@
+ #include "script/script_error.h"
+ #include "sync.h"
+ #include "versionbits.h"
++#include "spentindex.h"
++#include "addressindex.h"
++#include "timestampindex.h"
+ 
+ #include <algorithm>
+ #include <exception>
+@@ -130,6 +133,11 @@ static const int64_t MAX_FEE_ESTIMATION_TIP_AGE = 3 * 60 * 60;
+ static const bool DEFAULT_PERMIT_BAREMULTISIG = true;
+ static const bool DEFAULT_CHECKPOINTS_ENABLED = true;
+ static const bool DEFAULT_TXINDEX = false;
++static const bool DEFAULT_ADDRESSINDEX = false;
++static const bool DEFAULT_TIMESTAMPINDEX = false;
++static const bool DEFAULT_SPENTINDEX = false;
++static const unsigned int DEFAULT_DB_MAX_OPEN_FILES = 1000;
++static const bool DEFAULT_DB_COMPRESSION = true;
+ static const unsigned int DEFAULT_BANSCORE_THRESHOLD = 100;
+ /** Default for -persistmempool */
+ static const bool DEFAULT_PERSIST_MEMPOOL = true;
+@@ -170,6 +178,9 @@ extern std::atomic_bool fImporting;
+ extern bool fReindex;
+ extern int nScriptCheckThreads;
+ extern bool fTxIndex;
++extern bool fAddressIndex;
++extern bool fSpentIndex;
++extern bool fTimestampIndex;
+ extern bool fIsBareMultisigStd;
+ extern bool fRequireStandard;
+ extern bool fCheckBlockIndex;
+@@ -389,6 +400,14 @@ class CScriptCheck
+ /** Initializes the script-execution cache */
+ void InitScriptExecutionCache();
+ 
++bool GetTimestampIndex(const unsigned int &high, const unsigned int &low, const bool fActiveOnly, std::vector<std::pair<uint256, unsigned int> > &hashes);
++bool GetSpentIndex(CSpentIndexKey &key, CSpentIndexValue &value);
++bool HashOnchainActive(const uint256 &hash);
++bool GetAddressIndex(uint160 addressHash, int type,
++                     std::vector<std::pair<CAddressIndexKey, CAmount> > &addressIndex,
++                     int start = 0, int end = 0);
++bool GetAddressUnspent(uint160 addressHash, int type,
++                       std::vector<std::pair<CAddressUnspentKey, CAddressUnspentValue> > &unspentOutputs);
+ 
+ /** Functions for disk access for blocks */
+ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams);
+diff --git a/test/functional/addressindex.py b/test/functional/addressindex.py
+new file mode 100644
+index 00000000..b0aa205c
+--- /dev/null
++++ b/test/functional/addressindex.py
+@@ -0,0 +1,350 @@
++#!/usr/bin/env python3
++# Copyright (c) 2014-2015 The Bitcoin Core developers
++# Distributed under the MIT software license, see the accompanying
++# file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#
++# Test addressindex generation and fetching
++#
++
++import time
++from test_framework.test_framework import BitcoinTestFramework
++from test_framework.util import *
++from test_framework.script import *
++from test_framework.mininode import *
++import binascii
++
++class AddressIndexTest(BitcoinTestFramework):
++
++    def __init__(self):
++        super().__init__()
++        self.setup_clean_chain = True
++        self.num_nodes = 4
++
++    def setup_network(self):
++        self.nodes = []
++        # Nodes 0/1 are "wallet" nodes
++        self.nodes.append(self.start_node(0, self.options.tmpdir, ["-debug", "-relaypriority=0"]))
++        self.nodes.append(self.start_node(1, self.options.tmpdir, ["-debug", "-addressindex"]))
++        # Nodes 2/3 are used for testing
++        self.nodes.append(self.start_node(2, self.options.tmpdir, ["-debug", "-addressindex", "-relaypriority=0"]))
++        self.nodes.append(self.start_node(3, self.options.tmpdir, ["-debug", "-addressindex"]))
++        connect_nodes(self.nodes[0], 1)
++        connect_nodes(self.nodes[0], 2)
++        connect_nodes(self.nodes[0], 3)
++
++        self.is_network_split = False
++        self.sync_all()
++
++    def run_test(self):
++        print("Mining blocks...")
++        self.nodes[0].generate(105)
++        self.sync_all()
++
++        chain_height = self.nodes[1].getblockcount()
++        assert_equal(chain_height, 105)
++        assert_equal(self.nodes[1].getbalance(), 0)
++        assert_equal(self.nodes[2].getbalance(), 0)
++
++        # Check that balances are correct
++        balance0 = self.nodes[1].getaddressbalance("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br")
++        assert_equal(balance0["balance"], 0)
++
++        # Check p2pkh and p2sh address indexes
++        print("Testing p2pkh and p2sh address index...")
++
++        txid0 = self.nodes[0].sendtoaddress("mo9ncXisMeAoXwqcV5EWuyncbmCcQN4rVs", 10)
++        self.nodes[0].generate(1)
++
++        txidb0 = self.nodes[0].sendtoaddress("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br", 10)
++        self.nodes[0].generate(1)
++
++        txid1 = self.nodes[0].sendtoaddress("mo9ncXisMeAoXwqcV5EWuyncbmCcQN4rVs", 15)
++        self.nodes[0].generate(1)
++
++        txidb1 = self.nodes[0].sendtoaddress("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br", 15)
++        self.nodes[0].generate(1)
++
++        txid2 = self.nodes[0].sendtoaddress("mo9ncXisMeAoXwqcV5EWuyncbmCcQN4rVs", 20)
++        self.nodes[0].generate(1)
++
++        txidb2 = self.nodes[0].sendtoaddress("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br", 20)
++        self.nodes[0].generate(1)
++
++        self.sync_all()
++
++        txids = self.nodes[1].getaddresstxids("mo9ncXisMeAoXwqcV5EWuyncbmCcQN4rVs")
++        assert_equal(len(txids), 3)
++        assert_equal(txids[0], txid0)
++        assert_equal(txids[1], txid1)
++        assert_equal(txids[2], txid2)
++
++        txidsb = self.nodes[1].getaddresstxids("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br")
++        assert_equal(len(txidsb), 3)
++        assert_equal(txidsb[0], txidb0)
++        assert_equal(txidsb[1], txidb1)
++        assert_equal(txidsb[2], txidb2)
++
++        # Check that limiting by height works
++        print("Testing querying txids by range of block heights..")
++        height_txids = self.nodes[1].getaddresstxids({
++            "addresses": ["2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br"],
++            "start": 105,
++            "end": 110
++        })
++        assert_equal(len(height_txids), 2)
++        assert_equal(height_txids[0], txidb0)
++        assert_equal(height_txids[1], txidb1)
++
++        # Check that multiple addresses works
++        multitxids = self.nodes[1].getaddresstxids({"addresses": ["2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br", "mo9ncXisMeAoXwqcV5EWuyncbmCcQN4rVs"]})
++        assert_equal(len(multitxids), 6)
++        assert_equal(multitxids[0], txid0)
++        assert_equal(multitxids[1], txidb0)
++        assert_equal(multitxids[2], txid1)
++        assert_equal(multitxids[3], txidb1)
++        assert_equal(multitxids[4], txid2)
++        assert_equal(multitxids[5], txidb2)
++
++        # Check that balances are correct
++        balance0 = self.nodes[1].getaddressbalance("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br")
++        assert_equal(balance0["balance"], 45 * 100000000)
++
++        # Check that outputs with the same address will only return one txid
++        print("Testing for txid uniqueness...")
++        addressHash = bytes([99,73,164,24,252,69,120,209,10,55,43,84,180,92,40,12,200,196,56,47])
++        scriptPubKey = CScript([OP_HASH160, addressHash, OP_EQUAL])
++        unspent = self.nodes[0].listunspent()
++        tx = CTransaction()
++        tx.vin = [CTxIn(COutPoint(int(unspent[0]["txid"], 16), unspent[0]["vout"]))]
++        tx.vout = [CTxOut(10, scriptPubKey), CTxOut(11, scriptPubKey)]
++        tx.rehash()
++
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        sent_txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++
++        self.nodes[0].generate(1)
++        self.sync_all()
++
++        txidsmany = self.nodes[1].getaddresstxids("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br")
++        assert_equal(len(txidsmany), 4)
++        assert_equal(txidsmany[3], sent_txid)
++
++        # Check that balances are correct
++        print("Testing balances...")
++        balance0 = self.nodes[1].getaddressbalance("2N2JD6wb56AfK4tfmM6PwdVmoYk2dCKf4Br")
++        assert_equal(balance0["balance"], 45 * 100000000 + 21)
++
++        # Check that balances are correct after spending
++        print("Testing balances after spending...")
++        privkey2 = "cSdkPxkAjA4HDr5VHgsebAPDEh9Gyub4HK8UJr2DFGGqKKy4K5sG"
++        address2 = "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW"
++        addressHash2 = bytes([11,47,10,12,49,191,224,64,107,12,204,19,129,253,190,49,25,70,218,220])
++        scriptPubKey2 = CScript([OP_DUP, OP_HASH160, addressHash2, OP_EQUALVERIFY, OP_CHECKSIG])
++        self.nodes[0].importprivkey(privkey2)
++
++        unspent = self.nodes[0].listunspent()
++        tx = CTransaction()
++        tx.vin = [CTxIn(COutPoint(int(unspent[0]["txid"], 16), unspent[0]["vout"]))]
++        amount = int(unspent[0]["amount"] * 100000000 - 100000)
++        tx.vout = [CTxOut(amount, scriptPubKey2)]
++        tx.rehash()
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        spending_txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++        self.nodes[0].generate(1)
++        self.sync_all()
++        balance1 = self.nodes[1].getaddressbalance(address2)
++        assert_equal(balance1["balance"], amount)
++
++        tx = CTransaction()
++        tx.vin = [CTxIn(COutPoint(int(spending_txid, 16), 0))]
++        send_amount = 1 * 100000000 + 12840
++        change_amount = amount - send_amount - 10000
++        tx.vout = [CTxOut(change_amount, scriptPubKey2), CTxOut(send_amount, scriptPubKey)]
++        tx.rehash()
++
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        sent_txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++        self.nodes[0].generate(1)
++        self.sync_all()
++
++        balance2 = self.nodes[1].getaddressbalance(address2)
++        assert_equal(balance2["balance"], change_amount)
++
++        # Check that deltas are returned correctly
++        deltas = self.nodes[1].getaddressdeltas({"addresses": [address2], "start": 1, "end": 200})
++        balance3 = 0
++        for delta in deltas:
++            balance3 += delta["satoshis"]
++        assert_equal(balance3, change_amount)
++        assert_equal(deltas[0]["address"], address2)
++        assert_equal(deltas[0]["blockindex"], 1)
++
++        # Check that entire range will be queried
++        deltasAll = self.nodes[1].getaddressdeltas({"addresses": [address2]})
++        assert_equal(len(deltasAll), len(deltas))
++
++        # Check that deltas can be returned from range of block heights
++        deltas = self.nodes[1].getaddressdeltas({"addresses": [address2], "start": 113, "end": 113})
++        assert_equal(len(deltas), 1)
++
++        # Check that unspent outputs can be queried
++        print("Testing utxos...")
++        utxos = self.nodes[1].getaddressutxos({"addresses": [address2]})
++        assert_equal(len(utxos), 1)
++        assert_equal(utxos[0]["satoshis"], change_amount)
++
++        # Check that indexes will be updated with a reorg
++        print("Testing reorg...")
++
++        best_hash = self.nodes[0].getbestblockhash()
++        self.nodes[0].invalidateblock(best_hash)
++        self.nodes[1].invalidateblock(best_hash)
++        self.nodes[2].invalidateblock(best_hash)
++        self.nodes[3].invalidateblock(best_hash)
++        self.sync_all()
++
++        balance4 = self.nodes[1].getaddressbalance(address2)
++        assert_equal(balance4, balance1)
++
++        utxos2 = self.nodes[1].getaddressutxos({"addresses": [address2]})
++        assert_equal(len(utxos2), 1)
++        assert_equal(utxos2[0]["satoshis"], amount)
++
++        # Check sorting of utxos
++        self.nodes[2].generate(150)
++
++        txidsort1 = self.nodes[2].sendtoaddress(address2, 50)
++        self.nodes[2].generate(1)
++        txidsort2 = self.nodes[2].sendtoaddress(address2, 50)
++        self.nodes[2].generate(1)
++        self.sync_all()
++
++        utxos3 = self.nodes[1].getaddressutxos({"addresses": [address2]})
++        assert_equal(len(utxos3), 3)
++        assert_equal(utxos3[0]["height"], 114)
++        assert_equal(utxos3[1]["height"], 264)
++        assert_equal(utxos3[2]["height"], 265)
++
++        # Check mempool indexing
++        print("Testing mempool indexing...")
++
++        privKey3 = "cVfUn53hAbRrDEuMexyfgDpZPhF7KqXpS8UZevsyTDaugB7HZ3CD"
++        address3 = "mw4ynwhS7MmrQ27hr82kgqu7zryNDK26JB"
++        addressHash3 = bytes([170,152,114,181,187,205,181,17,216,158,14,17,170,39,218,115,253,44,63,80])
++        scriptPubKey3 = CScript([OP_DUP, OP_HASH160, addressHash3, OP_EQUALVERIFY, OP_CHECKSIG])
++        address4 = "2N8oFVB2vThAKury4vnLquW2zVjsYjjAkYQ"
++        scriptPubKey4 = CScript([OP_HASH160, addressHash3, OP_EQUAL])
++        unspent = self.nodes[2].listunspent()
++
++        tx = CTransaction()
++        tx.vin = [CTxIn(COutPoint(int(unspent[0]["txid"], 16), unspent[0]["vout"]))]
++        amount = int(unspent[0]["amount"] * 100000000 - 100000)
++        tx.vout = [CTxOut(amount, scriptPubKey3)]
++        tx.rehash()
++        signed_tx = self.nodes[2].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        memtxid1 = self.nodes[2].sendrawtransaction(signed_tx["hex"], True)
++        time.sleep(2)
++
++        tx2 = CTransaction()
++        tx2.vin = [CTxIn(COutPoint(int(unspent[1]["txid"], 16), unspent[1]["vout"]))]
++        amount = int(unspent[1]["amount"] * 100000000 - 100000)
++        tx2.vout = [
++            CTxOut(int(amount / 4), scriptPubKey3),
++            CTxOut(int(amount / 4), scriptPubKey3),
++            CTxOut(int(amount / 4), scriptPubKey4),
++            CTxOut(int(amount / 4), scriptPubKey4)
++        ]
++        tx2.rehash()
++        signed_tx2 = self.nodes[2].signrawtransaction(binascii.hexlify(tx2.serialize()).decode("utf-8"))
++        memtxid2 = self.nodes[2].sendrawtransaction(signed_tx2["hex"], True)
++        time.sleep(2)
++
++        mempool = self.nodes[2].getaddressmempool({"addresses": [address3]})
++        assert_equal(len(mempool), 3)
++        assert_equal(mempool[0]["txid"], memtxid1)
++        assert_equal(mempool[0]["address"], address3)
++        assert_equal(mempool[0]["index"], 0)
++        assert_equal(mempool[1]["txid"], memtxid2)
++        assert_equal(mempool[1]["index"], 0)
++        assert_equal(mempool[2]["txid"], memtxid2)
++        assert_equal(mempool[2]["index"], 1)
++
++        blk_hashes = self.nodes[2].generate(1);
++        self.sync_all();
++        mempool2 = self.nodes[2].getaddressmempool({"addresses": [address3]})
++        assert_equal(len(mempool2), 0)
++
++        tx = CTransaction()
++        tx.vin = [
++            CTxIn(COutPoint(int(memtxid2, 16), 0)),
++            CTxIn(COutPoint(int(memtxid2, 16), 1))
++        ]
++        tx.vout = [CTxOut(int(amount / 2 - 10000), scriptPubKey2)]
++        tx.rehash()
++        self.nodes[2].importprivkey(privKey3)
++        signed_tx3 = self.nodes[2].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        memtxid3 = self.nodes[2].sendrawtransaction(signed_tx3["hex"], True)
++        time.sleep(2)
++
++        mempool3 = self.nodes[2].getaddressmempool({"addresses": [address3]})
++        assert_equal(len(mempool3), 2)
++        assert_equal(mempool3[0]["prevtxid"], memtxid2)
++        assert_equal(mempool3[0]["prevout"], 0)
++        assert_equal(mempool3[1]["prevtxid"], memtxid2)
++        assert_equal(mempool3[1]["prevout"], 1)
++
++        # sending and receiving to the same address
++        privkey1 = "cQY2s58LhzUCmEXN8jtAp1Etnijx78YRZ466w4ikX1V4UpTpbsf8"
++        address1 = "myAUWSHnwsQrhuMWv4Br6QsCnpB41vFwHn"
++        address1hash = bytes([193,146,191,247,81,175,142,254,193,81,53,212,43,254,237,249,26,111,62,52])
++        address1script = CScript([OP_DUP, OP_HASH160, address1hash, OP_EQUALVERIFY, OP_CHECKSIG])
++
++        self.nodes[0].sendtoaddress(address1, 10)
++        self.nodes[0].generate(1)
++        self.sync_all()
++
++        utxos = self.nodes[1].getaddressutxos({"addresses": [address1]})
++        assert_equal(len(utxos), 1)
++
++        tx = CTransaction()
++        tx.vin = [
++            CTxIn(COutPoint(int(utxos[0]["txid"], 16), utxos[0]["outputIndex"]))
++        ]
++        amount = int(utxos[0]["satoshis"] - 1000)
++        tx.vout = [CTxOut(amount, address1script)]
++        tx.rehash()
++        self.nodes[0].importprivkey(privkey1)
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        mem_txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++
++        self.sync_all()
++        mempool_deltas = self.nodes[2].getaddressmempool({"addresses": [address1]})
++        assert_equal(len(mempool_deltas), 2)
++
++        # Include chaininfo in results
++        print("Testing results with chain info...")
++
++        deltas_with_info = self.nodes[1].getaddressdeltas({
++            "addresses": [address2],
++            "start": 1,
++            "end": 200,
++            "chainInfo": True
++        })
++        start_block_hash = self.nodes[1].getblockhash(1);
++        end_block_hash = self.nodes[1].getblockhash(200);
++        assert_equal(deltas_with_info["start"]["height"], 1)
++        assert_equal(deltas_with_info["start"]["hash"], start_block_hash)
++        assert_equal(deltas_with_info["end"]["height"], 200)
++        assert_equal(deltas_with_info["end"]["hash"], end_block_hash)
++
++        utxos_with_info = self.nodes[1].getaddressutxos({"addresses": [address2], "chainInfo": True})
++        expected_tip_block_hash = self.nodes[1].getblockhash(267);
++        assert_equal(utxos_with_info["height"], 267)
++        assert_equal(utxos_with_info["hash"], expected_tip_block_hash)
++
++        print("Passed\n")
++
++
++if __name__ == '__main__':
++    AddressIndexTest().main()
+\ No newline at end of file
+diff --git a/test/functional/spentindex.py b/test/functional/spentindex.py
+new file mode 100644
+index 00000000..b3f88ad8
+--- /dev/null
++++ b/test/functional/spentindex.py
+@@ -0,0 +1,142 @@
++#!/usr/bin/env python3
++# Copyright (c) 2014-2015 The Bitcoin Core developers
++# Distributed under the MIT software license, see the accompanying
++# file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#
++# Test addressindex generation and fetching
++#
++
++import time
++from test_framework.test_framework import BitcoinTestFramework
++from test_framework.util import *
++from test_framework.script import *
++from test_framework.mininode import *
++import binascii
++
++class SpentIndexTest(BitcoinTestFramework):
++
++    def __init__(self):
++        super().__init__()
++        self.setup_clean_chain = True
++        self.num_nodes = 4
++
++    def setup_network(self):
++        self.nodes = []
++        # Nodes 0/1 are "wallet" nodes
++        self.nodes.append(self.start_node(0, self.options.tmpdir, ["-debug"]))
++        self.nodes.append(self.start_node(1, self.options.tmpdir, ["-debug", "-spentindex"]))
++        # Nodes 2/3 are used for testing
++        self.nodes.append(self.start_node(2, self.options.tmpdir, ["-debug", "-spentindex"]))
++        self.nodes.append(self.start_node(3, self.options.tmpdir, ["-debug", "-spentindex", "-txindex"]))
++        connect_nodes(self.nodes[0], 1)
++        connect_nodes(self.nodes[0], 2)
++        connect_nodes(self.nodes[0], 3)
++
++        self.is_network_split = False
++        self.sync_all()
++
++    def run_test(self):
++        print("Mining blocks...")
++        self.nodes[0].generate(105)
++        self.sync_all()
++
++        chain_height = self.nodes[1].getblockcount()
++        assert_equal(chain_height, 105)
++
++        # Check that
++        print("Testing spent index...")
++
++        feeSatoshis = 10000
++        privkey = "cSdkPxkAjA4HDr5VHgsebAPDEh9Gyub4HK8UJr2DFGGqKKy4K5sG"
++        address = "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW"
++        addressHash = bytes([11,47,10,12,49,191,224,64,107,12,204,19,129,253,190,49,25,70,218,220])
++        scriptPubKey = CScript([OP_DUP, OP_HASH160, addressHash, OP_EQUALVERIFY, OP_CHECKSIG])
++        unspent = self.nodes[0].listunspent()
++        tx = CTransaction()
++        amount = int(unspent[0]["amount"] * 100000000 - feeSatoshis)
++        tx.vin = [CTxIn(COutPoint(int(unspent[0]["txid"], 16), unspent[0]["vout"]))]
++        tx.vout = [CTxOut(amount, scriptPubKey)]
++        tx.rehash()
++
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++        self.nodes[0].generate(1)
++        self.sync_all()
++
++        print("Testing getspentinfo method...")
++
++        # Check that the spentinfo works standalone
++        info = self.nodes[1].getspentinfo({"txid": unspent[0]["txid"], "index": unspent[0]["vout"]})
++        assert_equal(info["txid"], txid)
++        assert_equal(info["index"], 0)
++        assert_equal(info["height"], 106)
++
++        print("Testing getrawtransaction method...")
++
++        # Check that verbose raw transaction includes spent info
++        txVerbose = self.nodes[3].getrawtransaction(unspent[0]["txid"], 1)
++        assert_equal(txVerbose["vout"][unspent[0]["vout"]]["spentTxId"], txid)
++        assert_equal(txVerbose["vout"][unspent[0]["vout"]]["spentIndex"], 0)
++        assert_equal(txVerbose["vout"][unspent[0]["vout"]]["spentHeight"], 106)
++
++        # Check that verbose raw transaction includes input values
++        txVerbose2 = self.nodes[3].getrawtransaction(txid, 1)
++        assert_equal(float(txVerbose2["vin"][0]["value"]), (amount + feeSatoshis) / 100000000)
++        assert_equal(txVerbose2["vin"][0]["valueSat"], amount + feeSatoshis)
++
++        # Check that verbose raw transaction includes address values and input values
++        privkey2 = "cSdkPxkAjA4HDr5VHgsebAPDEh9Gyub4HK8UJr2DFGGqKKy4K5sG"
++        address2 = "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW"
++        addressHash2 = bytes([11,47,10,12,49,191,224,64,107,12,204,19,129,253,190,49,25,70,218,220])
++        scriptPubKey2 = CScript([OP_DUP, OP_HASH160, addressHash2, OP_EQUALVERIFY, OP_CHECKSIG])
++        tx2 = CTransaction()
++        tx2.vin = [CTxIn(COutPoint(int(txid, 16), 0))]
++        amount = int(amount - feeSatoshis);
++        tx2.vout = [CTxOut(amount, scriptPubKey2)]
++        tx.rehash()
++        self.nodes[0].importprivkey(privkey)
++        signed_tx2 = self.nodes[0].signrawtransaction(binascii.hexlify(tx2.serialize()).decode("utf-8"))
++        txid2 = self.nodes[0].sendrawtransaction(signed_tx2["hex"], True)
++
++        # Check the mempool index
++        self.sync_all()
++        txVerbose3 = self.nodes[1].getrawtransaction(txid2, 1)
++        assert_equal(txVerbose3["vin"][0]["address"], address2)
++        assert_equal(txVerbose3["vin"][0]["valueSat"], amount + feeSatoshis)
++        assert_equal(float(txVerbose3["vin"][0]["value"]), (amount + feeSatoshis) / 100000000)
++
++
++        # Check the database index
++        block_hash = self.nodes[0].generate(1)
++        self.sync_all()
++
++        txVerbose4 = self.nodes[3].getrawtransaction(txid2, 1)
++        assert_equal(txVerbose4["vin"][0]["address"], address2)
++        assert_equal(txVerbose4["vin"][0]["valueSat"], amount + feeSatoshis)
++        assert_equal(float(txVerbose4["vin"][0]["value"]), (amount + feeSatoshis) / 100000000)
++
++        # Check block deltas
++        print("Testing getblockdeltas...")
++
++        block = self.nodes[3].getblockdeltas(block_hash[0])
++        assert_equal(len(block["deltas"]), 2)
++        assert_equal(block["deltas"][0]["index"], 0)
++        assert_equal(len(block["deltas"][0]["inputs"]), 0)
++        assert_equal(len(block["deltas"][0]["outputs"]), 0)
++        assert_equal(block["deltas"][1]["index"], 1)
++        assert_equal(block["deltas"][1]["txid"], txid2)
++        assert_equal(block["deltas"][1]["inputs"][0]["index"], 0)
++        assert_equal(block["deltas"][1]["inputs"][0]["address"], "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW")
++        assert_equal(block["deltas"][1]["inputs"][0]["satoshis"], (amount + feeSatoshis) * -1)
++        assert_equal(block["deltas"][1]["inputs"][0]["prevtxid"], txid)
++        assert_equal(block["deltas"][1]["inputs"][0]["prevout"], 0)
++        assert_equal(block["deltas"][1]["outputs"][0]["index"], 0)
++        assert_equal(block["deltas"][1]["outputs"][0]["address"], "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW")
++        assert_equal(block["deltas"][1]["outputs"][0]["satoshis"], amount)
++
++        print("Passed\n")
++
++
++if __name__ == '__main__':
++    SpentIndexTest().main()
+\ No newline at end of file
+diff --git a/test/functional/test_runner.py b/test/functional/test_runner.py
+index 047f51b1..fc2e0326 100644
+--- a/test/functional/test_runner.py
++++ b/test/functional/test_runner.py
+@@ -94,6 +94,10 @@
+     'multi_rpc.py',
+     'proxy_test.py',
+     'signrawtransactions.py',
++    'addressindex.py',
++    'timestampindex.py',
++    'spentindex.py',
++    'txindex.py',
+     'disconnect_ban.py',
+     'decodescript.py',
+     'blockchain.py',
+diff --git a/test/functional/timestampindex.py b/test/functional/timestampindex.py
+new file mode 100644
+index 00000000..90128662
+--- /dev/null
++++ b/test/functional/timestampindex.py
+@@ -0,0 +1,62 @@
++#!/usr/bin/env python3
++# Copyright (c) 2014-2015 The Bitcoin Core developers
++# Distributed under the MIT software license, see the accompanying
++# file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#
++# Test timestampindex generation and fetching
++#
++
++import time
++
++from test_framework.test_framework import BitcoinTestFramework
++from test_framework.util import *
++
++
++class TimestampIndexTest(BitcoinTestFramework):
++
++    def __init__(self):
++        super().__init__()
++        self.setup_clean_chain = True
++        self.num_nodes = 4
++
++    def setup_network(self):
++        self.nodes = []
++        # Nodes 0/1 are "wallet" nodes
++        self.nodes.append(self.start_node(0, self.options.tmpdir, ["-debug"]))
++        self.nodes.append(self.start_node(1, self.options.tmpdir, ["-debug", "-timestampindex"]))
++        # Nodes 2/3 are used for testing
++        self.nodes.append(self.start_node(2, self.options.tmpdir, ["-debug"]))
++        self.nodes.append(self.start_node(3, self.options.tmpdir, ["-debug", "-timestampindex"]))
++        connect_nodes(self.nodes[0], 1)
++        connect_nodes(self.nodes[0], 2)
++        connect_nodes(self.nodes[0], 3)
++
++        self.is_network_split = False
++        self.sync_all()
++
++    def run_test(self):
++        print("Mining 25 blocks...")
++        blockhashes = self.nodes[0].generate(25)
++        time.sleep(3)
++        print("Mining 25 blocks...")
++        blockhashes.extend(self.nodes[0].generate(25))
++        time.sleep(3)
++        print("Mining 25 blocks...")
++        blockhashes.extend(self.nodes[0].generate(25))
++        self.sync_all()
++        low = self.nodes[1].getblock(blockhashes[0])["time"]
++        high = low + 76
++
++        print("Checking timestamp index...")
++        hashes = self.nodes[1].getblockhashes(high, low)
++
++        assert_equal(len(hashes), len(blockhashes))
++
++        assert_equal(hashes, blockhashes)
++
++        print("Passed\n")
++
++
++if __name__ == '__main__':
++    TimestampIndexTest().main()
+\ No newline at end of file
+diff --git a/test/functional/txindex.py b/test/functional/txindex.py
+new file mode 100644
+index 00000000..0407c394
+--- /dev/null
++++ b/test/functional/txindex.py
+@@ -0,0 +1,74 @@
++#!/usr/bin/env python2
++# Copyright (c) 2014-2015 The Bitcoin Core developers
++# Distributed under the MIT software license, see the accompanying
++# file COPYING or http://www.opensource.org/licenses/mit-license.php.
++
++#
++# Test txindex generation and fetching
++#
++
++import time
++from test_framework.test_framework import BitcoinTestFramework
++from test_framework.util import *
++from test_framework.script import *
++from test_framework.mininode import *
++import binascii
++
++class TxIndexTest(BitcoinTestFramework):
++
++    def __init__(self):
++        super().__init__()
++        self.setup_clean_chain = True
++        self.num_nodes = 4
++
++    def setup_network(self):
++        self.nodes = []
++        # Nodes 0/1 are "wallet" nodes
++        self.nodes.append(self.start_node(0, self.options.tmpdir, ["-debug"]))
++        self.nodes.append(self.start_node(1, self.options.tmpdir, ["-debug", "-txindex"]))
++        # Nodes 2/3 are used for testing
++        self.nodes.append(self.start_node(2, self.options.tmpdir, ["-debug", "-txindex"]))
++        self.nodes.append(self.start_node(3, self.options.tmpdir, ["-debug", "-txindex"]))
++        connect_nodes(self.nodes[0], 1)
++        connect_nodes(self.nodes[0], 2)
++        connect_nodes(self.nodes[0], 3)
++
++        self.is_network_split = False
++        self.sync_all()
++
++    def run_test(self):
++        print "Mining blocks..."
++        self.nodes[0].generate(105)
++        self.sync_all()
++
++        chain_height = self.nodes[1].getblockcount()
++        assert_equal(chain_height, 105)
++
++        print "Testing transaction index..."
++
++        privkey = "cSdkPxkAjA4HDr5VHgsebAPDEh9Gyub4HK8UJr2DFGGqKKy4K5sG"
++        address = "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW"
++        addressHash = "0b2f0a0c31bfe0406b0ccc1381fdbe311946dadc".decode("hex")
++        scriptPubKey = CScript([OP_DUP, OP_HASH160, addressHash, OP_EQUALVERIFY, OP_CHECKSIG])
++        unspent = self.nodes[0].listunspent()
++        tx = CTransaction()
++        amount = unspent[0]["amount"] * 100000000
++        tx.vin = [CTxIn(COutPoint(int(unspent[0]["txid"], 16), unspent[0]["vout"]))]
++        tx.vout = [CTxOut(amount, scriptPubKey)]
++        tx.rehash()
++
++        signed_tx = self.nodes[0].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
++        txid = self.nodes[0].sendrawtransaction(signed_tx["hex"], True)
++        self.nodes[0].generate(1)
++        self.sync_all()
++
++        # Check verbose raw transaction results
++        verbose = self.nodes[3].getrawtransaction(unspent[0]["txid"], 1)
++        assert_equal(verbose["vout"][0]["valueSat"], 5000000000);
++        assert_equal(verbose["vout"][0]["value"], 50);
++
++        print "Passed\n"
++
++
++if __name__ == '__main__':
++    TxIndexTest().main()
+\ No newline at end of file
