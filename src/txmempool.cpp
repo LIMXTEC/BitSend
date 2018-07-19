@@ -8,7 +8,6 @@
 #include "txmempool.h"
 
 #include "clientversion.h"
-#include "consensus/tx_verify.h"
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
 #include "validation.h"

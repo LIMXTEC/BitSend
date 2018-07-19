@@ -11,7 +11,6 @@
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "checkqueue.h"
-#include "consensus/tx_verify.h"
 #include "consensus/consensus.h"
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
