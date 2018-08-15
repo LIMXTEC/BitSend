@@ -131,6 +131,7 @@ public:
         vSeeds.push_back(CDNSSeedData("213.136.86.202", "213.136.86.202"));
         vSeeds.push_back(CDNSSeedData("213.136.86.205", "213.136.86.205"));
         vSeeds.push_back(CDNSSeedData("213.136.86.207", "213.136.86.207"));
+        vSeeds.push_back(CDNSSeedData("seed.mybitsend.com", "seed.mybitsend.com"));
 		
 		
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,102);
