@@ -1413,10 +1413,11 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
 		// Ban non Bitsend Nodes
 		if (cleanSubVer.find("Bitsend") == std::string::npos){
+		if (cleanSubVer.find("BSD") == std::string::npos)   {
 		LogPrintf("wrong SubVersion: %s found, disconnect form peer==%s\n", cleanSubVer, pfrom->id );
 		pfrom->fDisconnect = true;
 		return true;
-		}
+		}}
 
 		int64_t nTimeOffset = nTime - GetTime();
 		pfrom->nTimeOffset = nTimeOffset;
