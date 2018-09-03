@@ -460,8 +460,9 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
     if(nBlockHeight <= nLastBlockHeight){
 		LogPrintf(" error::nBlockHeight <= nLastBlockHeight %d. \n", nBlockHeight);
 		return false;}
-    if(!enabled){ LogPrintf(" error::notenabled");
-		return false;
+    if(!enabled){ 
+	    //LogPrintf(" error::notenabled");
+	return false;
 	}
     CMasternodePaymentWinner newWinner;
     int nMinimumAge = mnodeman.CountEnabled();
