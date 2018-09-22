@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
+// Copyright (c) 2009-2017 The Bitcoin Core developers
+// Copyright (c) 2015-2017 The Dash developers
 // Copyright (c) 2015-2017 The Bitsend developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -62,7 +62,7 @@
 /**
  * Global state
  */
- 
+
 #define START_MASTERNODE_PAYMENTS 1430465291
 
 CCriticalSection cs_main;
@@ -1075,21 +1075,21 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
 {
 	const CTransaction& tx = *ptx;
     const uint256 hash = tx.GetHash();
-	
+
 	std::vector<uint256> vHashTxnToUncache;
     AssertLockHeld(cs_main);
-	
+
 	if (!CheckTransaction(tx, state))
         return false; // state filled in by CheckTransaction
 
     // Coinbase is only valid in a block, not as a loose transaction
     if (tx.IsCoinBase())
         return state.DoS(100, false, REJECT_INVALID, "coinbase");
-	
+
 	// is it already in the memory pool?
     if (pool.exists(hash))
         return state.Invalid(false, REJECT_ALREADY_KNOWN, "txn-already-in-mempool");
-	
+
 	// Check for conflicts with in-memory transactions
     std::set<uint256> setConflicts;
     {
@@ -1134,7 +1134,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
         }
     }
     }
-	
+
 	{
 		CCoinsView dummy;
         CCoinsViewCache view(&dummy);
@@ -1161,7 +1161,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
             if (!pcoinsTip->HaveCoinsInCache(txin.prevout.hash))
                 vHashTxnToUncache.push_back(txin.prevout.hash);
             if (!view.HaveCoins(txin.prevout.hash)) {
-                return false; 
+                return false;
             }
         }
 
@@ -1178,17 +1178,17 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
         view.SetBackend(dummy);
 
         }
-		
+
 		// Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
         PrecomputedTransactionData txdata(tx);
         if (!CheckInputs(tx, state, view, false, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, true, txdata)) {
-           
+
 			LogPrintf("CheckInputs is still false\n");
             return false; // state filled in by CheckInputs
         }
 	}
-	
+
 	return true;
 }
 
@@ -1346,14 +1346,14 @@ CAmount GetBlockSubsidy(int nBits, int nHeight, const Consensus::Params& consens
 	//TODO--
 
     CAmount nSubsidy = 50 * COIN;
-	
+
 	if (nHeight <= 2)
-		nSubsidy = 1306400 * COIN; 
-    
+		nSubsidy = 1306400 * COIN;
+
     if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
 	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
-	
-	
+
+
     return nSubsidy;
 }
 
@@ -1362,55 +1362,55 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue/5; // start at 20%
 
-   
 
-   if(nHeight > 140500) ret += blockValue / 20; 
-	// 140500  
-	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20; 
-	// 144532  
+
+   if(nHeight > 140500) ret += blockValue / 20;
+	// 140500
+	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20;
+	// 144532
 	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20;
-	// 148564 
-	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20; 
-	// 152596 
-	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20; 
+	// 148564
+	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20;
+	// 152596
+	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20;
 	// 156628
-	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20;
 	// 160660
-	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20;
 	// 192340
-	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20;
 	// 200980
-	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20;
 	// 218260
-	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20;
 	// 226900
 	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20;
 	// 235540
-	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20; 
+	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20;
 	//  244180
 	/* For later Stop by 20% /80%
-	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50;
 	// 252820
-	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50;
 	// 261460
-	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50;
 	// 270100
-	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50;
 	// 278740
-	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50; 
-	// 287380 
-	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50;
+	// 287380
+	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50;
 	// 296020
-	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50;
 	// 304660
-	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50;
 	// 313300
-	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50; 
+	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50;
 	//  321940
-	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100; 
+	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100;
 	*/
   //  LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
-    
+
 
     return ret;
 }
@@ -3153,7 +3153,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
         if (block.vtx[i]->IsCoinBase())
             return state.DoS(100, false, REJECT_INVALID, "bad-cb-multiple", false, "more than one coinbase");
 
-	
+
 	/**TODO-- */
 
 
@@ -3161,7 +3161,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
     bool MasternodePayments = false;
 
-    
+
 	if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
 
     if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
@@ -3207,7 +3207,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
                             foundPaymentAndPayee = true;
 						}
                     }
-				
+
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
                     CBitsendAddress address2(address1);
@@ -3230,13 +3230,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
     } else {
         LogPrintf("CheckBlock() : skipping masternode payment checks\n");
     }
-	
+
 
     // -------------------------------------------
 
     // Check transactions
     for (const auto& tx : block.vtx)
-        if (!CheckTransaction(*tx, state, false))
+        if (!CheckTransaction(*tx, state, true))
             return state.Invalid(false, state.GetRejectCode(), state.GetRejectReason(),
                                  strprintf("Transaction check failed (tx hash %s) %s", tx->GetHash().ToString(), state.GetDebugMessage()));
 
@@ -3359,7 +3359,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 		if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)){
 			LogPrintf("diff failed with nHeight = %d \n", nHeight);
 			return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
-		} 
+		}
 	}
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
@@ -3651,13 +3651,13 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
             //darkSendPool.NewBlock();//todo++ must add
             if(masternodePayments.ProcessBlock(chainActive.Height()+10))
 				LogPrintf(" masternodePayments.ProcessBlock run success\n");
-            
+
 			mnscan.DoMasternodePOSChecks();
         }
     }///todo++ must be added
 
     LogPrintf("%s : ACCEPTED\n", __func__);
-	
+
     return true;
 }
 
