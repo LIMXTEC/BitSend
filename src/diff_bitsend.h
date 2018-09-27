@@ -14,7 +14,7 @@
 
 #define PERCENT_FACTOR 100
 
-
+// Function and File not used !! 
 unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader *pblock) {
 	// current difficulty formula, ERC3 - DUAL_KGW3, written by Christian Knoepke - apfelbaum@email.de
 	// BitSend and Eropecoin Developer
@@ -31,15 +31,15 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
     double EventHorizonDeviationFast;
     double EventHorizonDeviationSlow;
 	//DUAL_KGW3 SETUP
-	static const int64_t Blocktime = 3 * 60; 
+	static const int64_t Blocktime = 3 * 60;
 	static const unsigned int timeDaySeconds = 60 * 60 * 24;
     uint64_t pastSecondsMin = timeDaySeconds * 0.025;
     uint64_t pastSecondsMax = timeDaySeconds * 7;
     uint64_t PastBlocksMin = pastSecondsMin / Blocktime;
     uint64_t PastBlocksMax = pastSecondsMax / Blocktime;
-	
-	 
-	
+
+
+
     if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || (uint64_t)BlockLastSolved->nHeight < PastBlocksMin) {  Params().ProofOfWorkLimit().GetCompact(); }
 
     for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
@@ -80,10 +80,10 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
          kgw_dual1 *= PastRateActualSeconds;
          kgw_dual1 /= PastRateTargetSeconds;
     }
-	
+
 	int64_t nActualTime1 = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
-	int64_t nActualTimespanshort = nActualTime1;	
-	
+	int64_t nActualTimespanshort = nActualTime1;
+
 	// Retarget BSD Original ...not exactly
 	if(nActualTime1 < 0) nActualTime1 = Blocktime;
 
@@ -91,40 +91,40 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const CBlockHeader 
         nActualTime1 = Blocktime / 3;
 	if (nActualTime1 > Blocktime * 3)
         nActualTime1 = Blocktime * 3;
-		
+
     kgw_dual2 *= nActualTime1;
     kgw_dual2 /= Blocktime;
-	
+
 	//Fusion from Retarget and Classic KGW3 (BitSend=)
-	
+
 	CBigNum bnNew;
 	bnNew = ((kgw_dual2 + kgw_dual1)/2);
 	// DUAL KGW3 increased rapidly the Diff if Blocktime to last block under Blocktime/6 sec.
-	
+
 	if(kgwdebug)LogPrintf("nActualTimespanshort = %d \n", nActualTimespanshort );
 	if( nActualTimespanshort < Blocktime/6 )
 		{
 		if(kgwdebug)LogPrintf("Vordiff:%08x %s bnNew first  \n", bnNew.GetCompact(), bnNew.ToString().c_str());
 		const int nLongShortNew1   = 85; const int nLongShortNew2   = 100;
-		bnNew = bnNew * nLongShortNew1;	bnNew = bnNew / nLongShortNew2;	
+		bnNew = bnNew * nLongShortNew1;	bnNew = bnNew / nLongShortNew2;
 		if(kgwdebug)LogPrintf("Erhöhte Diff:\n %08x %s bnNew second \n", bnNew.GetCompact(), bnNew.ToString().c_str() );
 		}
 
-	
+
 	//BitBreak BitSend
 	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
-	const int nLongTimeLimit   = 6 * 60 * 60; 
+	const int nLongTimeLimit   = 6 * 60 * 60;
     if(kgwdebug)
-	{		
+	{
 	LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	LogPrintf("Vordiff %d \n", nLongTimeLimit);
 	LogPrintf(" %d Block", BlockReading->nHeight );
 	}
-	
-	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+
+	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime
 	{
 		bnNew = Params().ProofOfWorkLimit();
-       	if(kgwdebug)LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
+       	if(kgwdebug)LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	}
 
     if (bnNew > Params().ProofOfWorkLimit()) {
@@ -186,7 +186,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
     if (bnNew > Params().ProofOfWorkLimit()){
         bnNew = Params().ProofOfWorkLimit();
     }
-    
+
     return bnNew.GetCompact();
 }
 
@@ -229,8 +229,8 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
             if (PastRateActualSeconds < 15) { PastRateActualSeconds = 15; }
         }
         else {
-                if (PastRateActualSeconds < 1) { PastRateActualSeconds = 1; } 
-        	
+                if (PastRateActualSeconds < 1) { PastRateActualSeconds = 1; }
+
         }//Fix Bitsenddev new KGW
                 // else { if (PastRateActualSeconds < 0) { PastRateActualSeconds = 0; }; } //Fix Bitsenddev old KGW
                 if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
@@ -270,8 +270,8 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 		LogPrintf(" %08x %s bnNew first 154", bnNew.GetCompact(), bnNew.ToString().c_str() );
 		const int nLongShortNew1   = 85;
 		const int nLongShortNew2   = 100;
-		bnNew = bnNew * nLongShortNew1;	
-		bnNew = bnNew / nLongShortNew2;	
+		bnNew = bnNew * nLongShortNew1;
+		bnNew = bnNew / nLongShortNew2;
 		LogPrintf(" %08x %s bnNew second 159", bnNew.GetCompact(), bnNew.ToString().c_str() );
 		}
 	}
@@ -279,18 +279,18 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
     /////////////////////// BitBreak
 	// LogPrintf("Prediff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	// Reduce difficulty if current block generation time has already exceeded maximum time limit.
-	const int nLongTimeLimit   = 6 * 60 * 60; 
+	const int nLongTimeLimit   = 6 * 60 * 60;
 	// LogPrintf("Vordiff %d \n", nLongTimeLimit);
 	// LogPrintf(" %d Block", BlockReading->nHeight );
-	if (BlockReading->nHeight > 139800){ 
-	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+	if (BlockReading->nHeight > 139800){
+	if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime
 	{
 		if (BlockReading->nHeight > 220000)
 		{
 		//Hier löschen !! 22-06-2016
 		const int nLongTimebnNew   = 3500;
 		bnNew = bnNew * nLongTimebnNew;
-		/* New Setting inactive 
+		/* New Setting inactive
 		const int nLongTimebnNew   = 1000;
 		bnNew = bnNew * nLongTimebnNew;
 		*/
@@ -301,7 +301,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
 	const int nLongTimebnNew   = 3500;
 	bnNew = bnNew * nLongTimebnNew;
 		}
-       	//LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str()); 
+       	//LogPrintf("<BSD> Maximum block time hit - cute diff %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
 	}
 	}
 	///////////////////////
@@ -310,14 +310,14 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
         bnNew = Params().ProofOfWorkLimit();
     }
 // Bitsenddev 22-05-2015
-   
+
     if(fDebug){
     printf("Difficulty Retarget - Kimoto Gravity Well\n");
     printf("PastRateAdjustmentRatio = %g\n", PastRateAdjustmentRatio);
     printf("Before: %08x  %s\n", BlockLastSolved->nBits, CBigNum().SetCompact(BlockLastSolved->nBits).getuint256().ToString().c_str());
     printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
     }
-    
+
     return bnNew.GetCompact();
 }
 
@@ -326,7 +326,7 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
     // These two variables are not used in the calculation at all, but only for logging when -debug is set, to prevent logging the same calculation repeatedly.
     static int64_t nPrevHeight     = 0;
     static int64_t nPrevDifficulty = 0;
-    
+
     std::string sLogInfo;
 
     // The spacing we want our blocks to come in at.
@@ -357,7 +357,7 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
     // Minimum and maximum threshold for the last block, if it exceeds these thresholds then favour a larger swing in difficulty.
     const int64_t nLBMinGap        = nRetargetTimespan / 6;
     const int64_t nLBMaxGap        = nRetargetTimespan * 6;
-    
+
     // Minimum threshold for the short window, if it exceeds these thresholds then favour a larger swing in difficulty.
     const int64_t nQBFrame         = nShortFrame + 1;
     const int64_t nQBMinGap        = (nRetargetTimespan / 1.2) * nQBFrame;
@@ -365,13 +365,13 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
     // Any block with a time lower than nBadTimeLimit is considered to have a 'bad' time, the time is replaced with the value of nBadTimeReplace.
     const int64_t nBadTimeLimit    = 0;
     const int64_t nBadTimeReplace  = nRetargetTimespan / 10;
-    
+
     // Used for 'exception 1' (see code below), if block is lower than 'nLowTimeLimit' then prevent the algorithm from decreasing difficulty any further.
     // If block is lower than 'nFloorTimeLimit' then impose a minor increase in difficulty.
     // This helps to prevent the algorithm from generating and giving away too many sudden/easy 'quick blocks' after a long block or two have occured, and instead forces things to be recovered more gently over time without intefering with other desirable properties of the algorithm.
     const int64_t nLowTimeLimit    = nRetargetTimespan * 0.9;
     const int64_t nFloorTimeLimit  = nRetargetTimespan * 0.65;
-    
+
     // Used for 'exception 2' (see code below), if a block has taken longer than nLongTimeLimit we perform a difficulty reduction by taking the original difficulty and dividing by nLongTimeStep
     // NB!!! nLongTimeLimit MUST ALWAYS EXCEED THE THE MAXIMUM DRIFT ALLOWED (IN BOTH THE POSITIVE AND NEGATIVE DIRECTION)
     // SO AT LEAST DRIFT X2 OR MORE - OR ELSE CLIENTS CAN FORCE LOW DIFFICULTY BLOCKS BY MESSING WITH THE BLOCK TIMES.
@@ -384,7 +384,7 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
     unsigned int nMinimumAdjustLimit = nRetargetTimespan * 0.75;
     // max 150% of default time; 33.3% difficuly decrease
     unsigned int nMaximumAdjustLimit = nRetargetTimespan * 1.5;
-    
+
     // Variables used in calculation
     int64_t nDeltaTimespan         = 0;
     int64_t nLBTimespan            = 0;
@@ -411,12 +411,12 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
 
     // -- Use a fixed difficuly until we have enough blocks to work with (multi algo - this is calculated on a per algo basis)
     if (pindexLast->nHeight <= nQBFrame)
-        return Params().ProofOfWorkLimit().GetCompact();//return nProofOfWorkLimit; 
+        return Params().ProofOfWorkLimit().GetCompact();//return nProofOfWorkLimit;
 
     // -- Calculate timespan for last block window (multi algo - this is calculated on a per algo basis)
     pindexFirst = pindexLast->pprev;
     nLBTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
-   
+
     // Check for very short and long blocks (algo specific)
     // If last block was far too short, let difficulty raise faster
     // by cutting 50% of last block time
@@ -445,7 +445,7 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
         nQBTimespan += nDeltaTimespan;
         pindexFirst = pindexFirst->pprev;
     }
-       
+
     // -- Calculate time interval for middle window (multi algo - this is calculated on a per algo basis)
     if (pindexLast->nHeight - nFirstDeltaBlock <= nMiddleFrame)
     {
@@ -491,14 +491,14 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
             sLogInfo += "<DELTA> Multiple fast blocks - ignoring long and medium weightings.\n";
         nMiddleWeight = nMiddleTimespan = nLongWeight = nLongTimespan = 0;
     }
-    
+
     // -- Combine all the timespans and weights to get a weighted timespan
     nWeightedSum      = (nLBTimespan * nLBWeight) + (nShortTimespan * nShortWeight);
     nWeightedSum     += (nMiddleTimespan * nMiddleWeight) + (nLongTimespan * nLongWeight);
     nWeightedDiv      = (nLastBlock * nLBWeight) + (nShortFrame * nShortWeight);
     nWeightedDiv     += (nMiddleFrame * nMiddleWeight) + (nLongFrame * nLongWeight);
     nWeightedTimespan = nWeightedSum / nWeightedDiv;
-    
+
 
     // Apply the adjustment limits
     // However if we are close to target time then we use smaller limits to smooth things off a little bit more.
@@ -516,7 +516,7 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
         nMinimumAdjustLimit = nRetargetTimespan * 0.8;
         nMaximumAdjustLimit = nRetargetTimespan * 1.2;
     }
-    
+
     // min
     if (nWeightedTimespan < nMinimumAdjustLimit)
         nWeightedTimespan = nMinimumAdjustLimit;
@@ -555,14 +555,14 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
     nWeightedTimespan /= PERCENT_FACTOR;
     #endif
 
-    
+
     // Finally calculate and set the new difficulty.
     CBigNum bnNew;
     bnNew.SetCompact(pindexLast->nBits);
     bnNew *= nWeightedTimespan;
     bnNew /= nRetargetTimespan;
 
-    
+
     // Now that we have the difficulty we run a last few 'special purpose' exception rules which have the ability to override the calculation.
     // Exception 1 - Never adjust difficulty downward (human view) if previous block generation was faster than what we wanted.
     nLBTimespan = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
@@ -585,9 +585,9 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
         }
     }
 
-    
+
     // Exception 2 - Reduce difficulty if current block generation time has already exceeded maximum time limit. (NB! nLongTimeLimit must exceed maximum possible drift in both positive and negative direction)
-    if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime 
+    if ((pblock-> nTime - pindexLast->GetBlockTime()) > nLongTimeLimit)  //block.nTime
     {
         // Reduce in a linear fashion at first, and then start to ramp up with a gradual exponential curve (to catch massive hash extinction events)
         int64_t nNumMissedSteps = ((pblock-> nTime - pindexLast->GetBlockTime()) / nLongTimeStep);
@@ -595,17 +595,17 @@ unsigned int static GetNextWorkRequired_Delta(const CBlockIndex* pindexLast, con
             bnNew *=  nNumMissedSteps;
         else
             bnNew *=  12 + (int64_t)std::floor(std::pow((float)1.14, (float)nNumMissedSteps - 12) + 0.5);
-	
+
         if (fDebug && (nPrevHeight != pindexLast->nHeight ||  bnNew.GetCompact() != nPrevDifficulty) )
             sLogInfo +=  strprintf("<DELTA> Maximum block time hit - halving difficulty %08x %s\n", bnNew.GetCompact(), bnNew.ToString().c_str());
     }
 
-    
+
     // Exception 3 - Difficulty should never go below (human view) the starting difficulty, so if it has we force it back to the limit.
     if (bnNew > Params().ProofOfWorkLimit())
         bnNew = Params().ProofOfWorkLimit();  //bnProofOfWorkLimit
 
-    
+
     if (fDebug)
     {
         if (nPrevHeight != pindexLast->nHeight ||  bnNew.GetCompact() != nPrevDifficulty)

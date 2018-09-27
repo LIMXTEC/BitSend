@@ -3178,7 +3178,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
             if(pindex->GetBlockHash() == block.hashPrevBlock){
                 CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0]->GetValueOut());//todo++
 				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitsenddev 02-06-2015//todo++
-				LogPrintf("## Hardblockreward ## CheckBlock() : BSD masternode payments %d\n", hardblockpowreward);
+				if(fDebug) LogPrintf("## Hardblockreward ## CheckBlock() : BSD masternode payments %d\n", hardblockpowreward);
 				bool fIsInitialDownload = IsInitialBlockDownload();
 
                 // If we don't already have its previous block, skip masternode payment step
