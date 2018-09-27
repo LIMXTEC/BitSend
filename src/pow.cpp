@@ -13,6 +13,7 @@
 #include "uint256.h"
 #include "util.h"
 #include <math.h>
+#include "chainparams.h"
 
 unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Params& params, const CBlockHeader *pblock)
 {
