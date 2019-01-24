@@ -16,7 +16,7 @@
 uint256 CBlockHeader::GetHash() const
 {
 	const int FORKX17_Main_Net2 = 1477958400;
-	if(GetBlockTime() >= FORKX17_Main_Net2) // BitSend PoW Hardfork, Friday, 09-Sep-16 18:00:00 UTC
+	if(GetBlockTime() >= FORKX17_Main_Net2) // BitSend PoW Hardfork, https://chainz.cryptoid.info/bsd/block.dws?229114.htm
 	{
 		return XEVAN(BEGIN(nVersion), END(nNonce));
 		strprintf("XEVAN_Hash is on.");
