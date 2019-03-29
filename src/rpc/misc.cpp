@@ -150,7 +150,6 @@ public:
     }
 };
 #endif
-/**TODO --begin
 /*
     Used for updating/reading spork settings on the network
 */
