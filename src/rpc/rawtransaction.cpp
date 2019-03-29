@@ -125,9 +125,9 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry, 
                     in.pushKV("value", ValueFromAmount(spentInfo.satoshis));
                     in.pushKV("valueSat", spentInfo.satoshis);
                     if (spentInfo.addressType == 1) {
-                        in.pushKV("address", CBitcoreAddress(CKeyID(spentInfo.addressHash)).ToString());
+                        in.pushKV("address", CBitcoinAddress(CKeyID(spentInfo.addressHash)).ToString());
                     } else if (spentInfo.addressType == 2) {
-                        in.pushKV("address", CBitcoreAddress(CScriptID(spentInfo.addressHash)).ToString());
+                        in.pushKV("address", CBitcoinAddress(CScriptID(spentInfo.addressHash)).ToString());
                     }
                 }
                 newVin.push_back(in);
