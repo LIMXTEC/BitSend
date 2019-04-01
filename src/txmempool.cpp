@@ -462,7 +462,8 @@ void CTxMemPool::addAddressIndex(const CTxMemPoolEntry &entry, const CCoinsViewC
     for (unsigned int j = 0; j < tx.vin.size(); j++) {
         const CTxIn input = tx.vin[j];
         //const CTxOut &prevout = view.AccessCoins(input.prevout).out;
-        const COutPoint &prevout = tx.vin[i].prevout;
+        //const COutPoint &prevout = tx.vin[i].prevout;
+        const CTxOut &prevout = view.GetOutputFor(tx.vin[j]);
         if (prevout.scriptPubKey.IsPayToScriptHash()) {
             std::vector<unsigned char> hashBytes(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22);
             CMempoolAddressDeltaKey key(2, uint160(hashBytes), txhash, j, 1);
@@ -538,7 +539,8 @@ void CTxMemPool::addSpentIndex(const CTxMemPoolEntry &entry, const CCoinsViewCac
     for (unsigned int j = 0; j < tx.vin.size(); j++) {
         const CTxIn input = tx.vin[j];
         //const CTxOut &prevout = view.AccessCoins(input.prevout).out;
-        const COutPoint &prevout = tx.vin[i].prevout;
+        //const COutPoint &prevout = tx.vin[i].prevout;
+        const CTxOut &prevout = view.GetOutputFor(tx.vin[j]);
         uint160 addressHash;
         int addressType;
 
