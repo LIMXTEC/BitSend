@@ -2311,13 +2311,10 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             {
                 for (size_t j = 0; j < tx.vin.size(); j++) {
 
-                    //const COutPoint &out = tx.vin[j].prevout;
-                    const COutPoint &prevout = tx.vin[j].prevout;
+                    const COutPoint &out = tx.vin[j].prevout;
                     const CTxInUndo &undo = txundo.vprevout[j];
                     uint160 hashBytes;
                     int addressType;
-
-                    const CTxIn input = tx.vin[j];
 
                     if (prevout.scriptPubKey.IsPayToScriptHash()) {
                         hashBytes = uint160(std::vector <unsigned char>(prevout.scriptPubKey.begin()+2, prevout.scriptPubKey.begin()+22));
