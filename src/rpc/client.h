@@ -1,12 +1,10 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_RPCCLIENT_H
-#define BITSEND_RPCCLIENT_H
+#ifndef BITCOIN_RPC_CLIENT_H
+#define BITCOIN_RPC_CLIENT_H
 
 #include <univalue.h>
 
@@ -21,4 +19,4 @@ UniValue RPCConvertNamedValues(const std::string& strMethod, const std::vector<s
  */
 UniValue ParseNonRFCJSONValue(const std::string& strVal);
 
-#endif // BITSEND_RPCCLIENT_H
+#endif // BITCOIN_RPC_CLIENT_H

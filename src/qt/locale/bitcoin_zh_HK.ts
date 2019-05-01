@@ -62,6 +62,14 @@
         <translation>收款地址</translation>
     </message>
     <message>
+        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>這些是你要付款過去的 Bitcoin 位址。在付款之前，務必要檢查金額和收款位址是否正確。</translation>
+    </message>
+    <message>
+        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>這些是你用來收款的 Bitcoin 位址。建議在每次交易時，都使用一個新的收款位址。</translation>
+    </message>
+    <message>
         <source>&amp;Copy Address</source>
         <translation>複製地址 &amp;C</translation>
     </message>
@@ -124,6 +132,10 @@
         <translation>重複新密碼</translation>
     </message>
     <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>輸入錢包的新密碼。&lt;br/&gt;密碼請用&lt;b&gt;10 個或以上的隨機字元&lt;/b&gt;，或是&lt;b&gt;8 個或以上的字詞&lt;/b&gt;。</translation>
+    </message>
+    <message>
         <source>Encrypt wallet</source>
         <translation>加密錢包</translation>
     </message>
@@ -156,8 +168,8 @@
         <translation>確認錢包加密</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
-        <translation>警告: 如果你將錢包加密後又忘記密碼，你就會&lt;b&gt;失去所有 Bitsend 了&lt;/b&gt;！</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
+        <translation>警告: 如果你將錢包加密後又忘記密碼，你就會&lt;b&gt;失去所有 Bitcoin 了&lt;/b&gt;！</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -168,8 +180,8 @@
         <translation>錢包已加密</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
-        <translation>%1 現在要關閉來完成加密程序。請記得將錢包加密不能完全防止你的 Bitsends 經被入侵電腦的惡意程式偷取。</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
+        <translation>%1 現在要關閉來完成加密程序。請記得將錢包加密不能完全防止你的 Bitcoins 經被入侵電腦的惡意程式偷取。</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -220,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>BitcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>簽署訊息... &amp;m</translation>
@@ -310,8 +322,8 @@
         <translation>正在為磁碟區塊重建索引...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitsend address</source>
-        <translation>付款至一個 Bitsend 位址</translation>
+        <source>Send coins to a Bitcoin address</source>
+        <translation>付款至一個 Bitcoin 位址</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -334,8 +346,8 @@
         <translation>驗證訊息... &amp;V</translation>
     </message>
     <message>
-        <source>Bitsend</source>
-        <translation>Bitsend</translation>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -370,8 +382,8 @@
         <translation>說明 &amp;H</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitsend: URIs)</source>
-        <translation>要求付款 (產生QR碼 bitsend: URIs)</translation>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation>要求付款 (產生QR碼 bitcoin: URIs)</translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -415,6 +427,10 @@
 <context>
     <name>Intro</name>
     <message>
+        <source>Bitcoin</source>
+        <translation>Bitcoin</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
@@ -427,6 +443,10 @@
     </context>
 <context>
     <name>OptionsDialog</name>
+    <message>
+        <source>Error</source>
+        <translation>錯誤</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -436,12 +456,20 @@
     </context>
 <context>
     <name>PeerTableModel</name>
-    </context>
+    <message>
+        <source>Sent</source>
+        <translation>已送出</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>已接收</translation>
+    </message>
+</context>
 <context>
     <name>QObject</name>
     <message>
-        <source>Enter a Bitsend address (e.g. %1)</source>
-        <translation>輸入一個 Bitsend 位址 (例如 %1)</translation>
+        <source>Enter a Bitcoin address (e.g. %1)</source>
+        <translation>輸入一個 Bitcoin 位址 (例如 %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -558,6 +586,10 @@
         <source>Label</source>
         <translation>標記</translation>
     </message>
+    <message>
+        <source>Wallet</source>
+        <translation>錢包</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -650,9 +682,17 @@
     </context>
 <context>
     <name>WalletView</name>
+    <message>
+        <source>&amp;Export</source>
+        <translation>匯出 &amp;E</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>把目前分頁的資料匯出至檔案</translation>
+    </message>
     </context>
 <context>
-    <name>bitsend-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Information</source>
         <translation>資訊</translation>

@@ -1,9 +1,9 @@
-// Copyright (c) 2012-2016 The Bitsend Core developers
+// Copyright (c) 2012-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_LIMITEDMAP_H
-#define BITSEND_LIMITEDMAP_H
+#ifndef BITCOIN_LIMITEDMAP_H
+#define BITCOIN_LIMITEDMAP_H
 
 #include <assert.h>
 #include <map>
@@ -27,7 +27,7 @@ protected:
     size_type nMaxSize;
 
 public:
-    limitedmap(size_type nMaxSizeIn)
+    explicit limitedmap(size_type nMaxSizeIn)
     {
         assert(nMaxSizeIn > 0);
         nMaxSize = nMaxSizeIn;
@@ -70,7 +70,7 @@ public:
         // since it is a constant time operation in C++11. For more details, see
         // https://stackoverflow.com/questions/765148/how-to-remove-constness-of-const-iterator
         iterator itTarget = map.erase(itIn, itIn);
-        
+
         if (itTarget == map.end())
             return;
         std::pair<rmap_iterator, rmap_iterator> itPair = rmap.equal_range(itTarget->second);
@@ -97,4 +97,4 @@ public:
     }
 };
 
-#endif // BITSEND_LIMITEDMAP_H
+#endif // BITCOIN_LIMITEDMAP_H

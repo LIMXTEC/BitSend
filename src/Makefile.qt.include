@@ -1,98 +1,98 @@
-# Copyright (c) 2013-2016 The Bitsend Core developers
+# Copyright (c) 2013-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/bitsend-qt
-EXTRA_LIBRARIES += qt/libbitsendqt.a
+bin_PROGRAMS += qt/bitcoin-qt
+EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# bitsend qt core #
+# bitcoin qt core #
 QT_TS = \
-  qt/locale/bitsend_af.ts \
-  qt/locale/bitsend_af_ZA.ts \
-  qt/locale/bitsend_ar.ts \
-  qt/locale/bitsend_be_BY.ts \
-  qt/locale/bitsend_bg_BG.ts \
-  qt/locale/bitsend_bg.ts \
-  qt/locale/bitsend_ca_ES.ts \
-  qt/locale/bitsend_ca.ts \
-  qt/locale/bitsend_ca@valencia.ts \
-  qt/locale/bitsend_cs.ts \
-  qt/locale/bitsend_cy.ts \
-  qt/locale/bitsend_da.ts \
-  qt/locale/bitsend_de.ts \
-  qt/locale/bitsend_el_GR.ts \
-  qt/locale/bitsend_el.ts \
-  qt/locale/bitsend_en_GB.ts \
-  qt/locale/bitsend_en.ts \
-  qt/locale/bitsend_eo.ts \
-  qt/locale/bitsend_es_AR.ts \
-  qt/locale/bitsend_es_CL.ts \
-  qt/locale/bitsend_es_CO.ts \
-  qt/locale/bitsend_es_DO.ts \
-  qt/locale/bitsend_es_ES.ts \
-  qt/locale/bitsend_es_MX.ts \
-  qt/locale/bitsend_es.ts \
-  qt/locale/bitsend_es_UY.ts \
-  qt/locale/bitsend_es_VE.ts \
-  qt/locale/bitsend_et_EE.ts \
-  qt/locale/bitsend_et.ts \
-  qt/locale/bitsend_eu_ES.ts \
-  qt/locale/bitsend_fa_IR.ts \
-  qt/locale/bitsend_fa.ts \
-  qt/locale/bitsend_fi.ts \
-  qt/locale/bitsend_fr_CA.ts \
-  qt/locale/bitsend_fr_FR.ts \
-  qt/locale/bitsend_fr.ts \
-  qt/locale/bitsend_gl.ts \
-  qt/locale/bitsend_he.ts \
-  qt/locale/bitsend_hi_IN.ts \
-  qt/locale/bitsend_hr.ts \
-  qt/locale/bitsend_hu.ts \
-  qt/locale/bitsend_id_ID.ts \
-  qt/locale/bitsend_it_IT.ts \
-  qt/locale/bitsend_it.ts \
-  qt/locale/bitsend_ja.ts \
-  qt/locale/bitsend_ka.ts \
-  qt/locale/bitsend_kk_KZ.ts \
-  qt/locale/bitsend_ko_KR.ts \
-  qt/locale/bitsend_ku_IQ.ts \
-  qt/locale/bitsend_ky.ts \
-  qt/locale/bitsend_la.ts \
-  qt/locale/bitsend_lt.ts \
-  qt/locale/bitsend_lv_LV.ts \
-  qt/locale/bitsend_mk_MK.ts \
-  qt/locale/bitsend_mn.ts \
-  qt/locale/bitsend_ms_MY.ts \
-  qt/locale/bitsend_nb.ts \
-  qt/locale/bitsend_ne.ts \
-  qt/locale/bitsend_nl.ts \
-  qt/locale/bitsend_pam.ts \
-  qt/locale/bitsend_pl.ts \
-  qt/locale/bitsend_pt_BR.ts \
-  qt/locale/bitsend_pt_PT.ts \
-  qt/locale/bitsend_ro_RO.ts \
-  qt/locale/bitsend_ro.ts \
-  qt/locale/bitsend_ru_RU.ts \
-  qt/locale/bitsend_ru.ts \
-  qt/locale/bitsend_sk.ts \
-  qt/locale/bitsend_sl_SI.ts \
-  qt/locale/bitsend_sq.ts \
-  qt/locale/bitsend_sr@latin.ts \
-  qt/locale/bitsend_sr.ts \
-  qt/locale/bitsend_sv.ts \
-  qt/locale/bitsend_ta.ts \
-  qt/locale/bitsend_th_TH.ts \
-  qt/locale/bitsend_tr_TR.ts \
-  qt/locale/bitsend_tr.ts \
-  qt/locale/bitsend_uk.ts \
-  qt/locale/bitsend_ur_PK.ts \
-  qt/locale/bitsend_uz@Cyrl.ts \
-  qt/locale/bitsend_vi.ts \
-  qt/locale/bitsend_vi_VN.ts \
-  qt/locale/bitsend_zh_CN.ts \
-  qt/locale/bitsend_zh_HK.ts \
-  qt/locale/bitsend_zh.ts \
-  qt/locale/bitsend_zh_TW.ts
+  qt/locale/bitcoin_af.ts \
+  qt/locale/bitcoin_af_ZA.ts \
+  qt/locale/bitcoin_ar.ts \
+  qt/locale/bitcoin_be_BY.ts \
+  qt/locale/bitcoin_bg_BG.ts \
+  qt/locale/bitcoin_bg.ts \
+  qt/locale/bitcoin_ca_ES.ts \
+  qt/locale/bitcoin_ca.ts \
+  qt/locale/bitcoin_ca@valencia.ts \
+  qt/locale/bitcoin_cs.ts \
+  qt/locale/bitcoin_cy.ts \
+  qt/locale/bitcoin_da.ts \
+  qt/locale/bitcoin_de.ts \
+  qt/locale/bitcoin_el_GR.ts \
+  qt/locale/bitcoin_el.ts \
+  qt/locale/bitcoin_en_GB.ts \
+  qt/locale/bitcoin_en.ts \
+  qt/locale/bitcoin_eo.ts \
+  qt/locale/bitcoin_es_AR.ts \
+  qt/locale/bitcoin_es_CL.ts \
+  qt/locale/bitcoin_es_CO.ts \
+  qt/locale/bitcoin_es_DO.ts \
+  qt/locale/bitcoin_es_ES.ts \
+  qt/locale/bitcoin_es_MX.ts \
+  qt/locale/bitcoin_es.ts \
+  qt/locale/bitcoin_es_UY.ts \
+  qt/locale/bitcoin_es_VE.ts \
+  qt/locale/bitcoin_et_EE.ts \
+  qt/locale/bitcoin_et.ts \
+  qt/locale/bitcoin_eu_ES.ts \
+  qt/locale/bitcoin_fa_IR.ts \
+  qt/locale/bitcoin_fa.ts \
+  qt/locale/bitcoin_fi.ts \
+  qt/locale/bitcoin_fr_CA.ts \
+  qt/locale/bitcoin_fr_FR.ts \
+  qt/locale/bitcoin_fr.ts \
+  qt/locale/bitcoin_gl.ts \
+  qt/locale/bitcoin_he.ts \
+  qt/locale/bitcoin_hi_IN.ts \
+  qt/locale/bitcoin_hr.ts \
+  qt/locale/bitcoin_hu.ts \
+  qt/locale/bitcoin_id_ID.ts \
+  qt/locale/bitcoin_it_IT.ts \
+  qt/locale/bitcoin_it.ts \
+  qt/locale/bitcoin_ja.ts \
+  qt/locale/bitcoin_ka.ts \
+  qt/locale/bitcoin_kk_KZ.ts \
+  qt/locale/bitcoin_ko_KR.ts \
+  qt/locale/bitcoin_ku_IQ.ts \
+  qt/locale/bitcoin_ky.ts \
+  qt/locale/bitcoin_la.ts \
+  qt/locale/bitcoin_lt.ts \
+  qt/locale/bitcoin_lv_LV.ts \
+  qt/locale/bitcoin_mk_MK.ts \
+  qt/locale/bitcoin_mn.ts \
+  qt/locale/bitcoin_ms_MY.ts \
+  qt/locale/bitcoin_nb.ts \
+  qt/locale/bitcoin_ne.ts \
+  qt/locale/bitcoin_nl.ts \
+  qt/locale/bitcoin_pam.ts \
+  qt/locale/bitcoin_pl.ts \
+  qt/locale/bitcoin_pt_BR.ts \
+  qt/locale/bitcoin_pt_PT.ts \
+  qt/locale/bitcoin_ro_RO.ts \
+  qt/locale/bitcoin_ro.ts \
+  qt/locale/bitcoin_ru_RU.ts \
+  qt/locale/bitcoin_ru.ts \
+  qt/locale/bitcoin_sk.ts \
+  qt/locale/bitcoin_sl_SI.ts \
+  qt/locale/bitcoin_sq.ts \
+  qt/locale/bitcoin_sr@latin.ts \
+  qt/locale/bitcoin_sr.ts \
+  qt/locale/bitcoin_sv.ts \
+  qt/locale/bitcoin_ta.ts \
+  qt/locale/bitcoin_th_TH.ts \
+  qt/locale/bitcoin_tr_TR.ts \
+  qt/locale/bitcoin_tr.ts \
+  qt/locale/bitcoin_uk.ts \
+  qt/locale/bitcoin_ur_PK.ts \
+  qt/locale/bitcoin_uz@Cyrl.ts \
+  qt/locale/bitcoin_vi.ts \
+  qt/locale/bitcoin_vi_VN.ts \
+  qt/locale/bitcoin_zh_CN.ts \
+  qt/locale/bitcoin_zh_HK.ts \
+  qt/locale/bitcoin_zh.ts \
+  qt/locale/bitcoin_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -111,18 +111,18 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsdialog.ui \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
-  qt/forms/transactiondescdialog.ui \
-  qt/forms/masternodelist.ui
+  qt/forms/transactiondescdialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
   qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
-  qt/moc_bitsendaddressvalidator.cpp \
-  qt/moc_bitsendamountfield.cpp \
-  qt/moc_bitsendgui.cpp \
-  qt/moc_bitsendunits.cpp \
+  qt/moc_bitcoinaddressvalidator.cpp \
+  qt/moc_bitcoinamountfield.cpp \
+  qt/moc_bitcoingui.cpp \
+  qt/moc_bitcoinunits.cpp \
+  qt/moc_callback.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -159,38 +159,39 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
-  qt/moc_walletview.cpp \
-  qt/moc_masternodelist.cpp
+  qt/moc_walletview.cpp
 
-BITSEND_MM = \
+BITCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/bitsend.moc \
-  qt/bitsendamountfield.moc \
+  qt/bitcoin.moc \
+  qt/bitcoinamountfield.moc \
+  qt/callback.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_bitsend.cpp
-QT_QRC = qt/bitsend.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_bitsend_locale.cpp
-QT_QRC_LOCALE = qt/bitsend_locale.qrc
+QT_QRC_CPP = qt/qrc_bitcoin.cpp
+QT_QRC = qt/bitcoin.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_bitcoin_locale.cpp
+QT_QRC_LOCALE = qt/bitcoin_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
 PROTOBUF_PROTO = qt/paymentrequest.proto
 
-BITSEND_QT_H = \
+BITCOIN_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
-  qt/bitsendaddressvalidator.h \
-  qt/bitsendamountfield.h \
-  qt/bitsendgui.h \
-  qt/bitsendunits.h \
+  qt/bitcoinaddressvalidator.h \
+  qt/bitcoinamountfield.h \
+  qt/bitcoingui.h \
+  qt/bitcoinunits.h \
+  qt/callback.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -234,17 +235,16 @@ BITSEND_QT_H = \
   qt/walletmodel.h \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
-  qt/winshutdownmonitor.h \
-  qt/masternodelist.h
+  qt/winshutdownmonitor.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
   qt/res/icons/about.png \
   qt/res/icons/about_qt.png \
-  qt/res/icons/bitsend_ic.ico \
-  qt/res/icons/bitsend_testnet.ico \
-  qt/res/icons/bitsend.png \
+  qt/res/icons/bitcoin.ico \
+  qt/res/icons/bitcoin_testnet.ico \
+  qt/res/icons/bitcoin.png \
   qt/res/icons/chevron.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -257,11 +257,6 @@ RES_ICONS = \
   qt/res/icons/connect2.png \
   qt/res/icons/connect3.png \
   qt/res/icons/connect4.png \
-  qt/res/icons/connect0_16.png \
-  qt/res/icons/connect1_16.png \
-  qt/res/icons/connect2_16.png \
-  qt/res/icons/connect3_16.png \
-  qt/res/icons/connect4_16.png \
   qt/res/icons/debugwindow.png \
   qt/res/icons/edit.png \
   qt/res/icons/editcopy.png \
@@ -283,6 +278,7 @@ RES_ICONS = \
   qt/res/icons/network_disabled.png \
   qt/res/icons/open.png \
   qt/res/icons/overview.png \
+  qt/res/icons/proxy.png \
   qt/res/icons/quit.png \
   qt/res/icons/receive.png \
   qt/res/icons/remove.png \
@@ -297,15 +293,14 @@ RES_ICONS = \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
   qt/res/icons/warning.png \
-  qt/res/icons/verify.png \
-  qt/res/
+  qt/res/icons/verify.png
 
-BITSEND_QT_BASE_CPP = \
+BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
-  qt/bitsendaddressvalidator.cpp \
-  qt/bitsendamountfield.cpp \
-  qt/bitsendgui.cpp \
-  qt/bitsendunits.cpp \
+  qt/bitcoinaddressvalidator.cpp \
+  qt/bitcoinamountfield.cpp \
+  qt/bitcoingui.cpp \
+  qt/bitcoinunits.cpp \
   qt/clientmodel.cpp \
   qt/csvmodelwriter.cpp \
   qt/guiutil.cpp \
@@ -322,12 +317,11 @@ BITSEND_QT_BASE_CPP = \
   qt/rpcconsole.cpp \
   qt/splashscreen.cpp \
   qt/trafficgraphwidget.cpp \
-  qt/utilitydialog.cpp \
-  qt/masternodelist.cpp
+  qt/utilitydialog.cpp
 
-BITSEND_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
-BITSEND_QT_WALLET_CPP = \
+BITCOIN_QT_WALLET_CPP = \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
   qt/askpassphrasedialog.cpp \
@@ -353,58 +347,33 @@ BITSEND_QT_WALLET_CPP = \
   qt/walletframe.cpp \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
-  qt/walletview.cpp \
-  qt/masternodelist.cpp
+  qt/walletview.cpp
 
-BITSEND_QT_CPP = $(BITSEND_QT_BASE_CPP)
+BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
 if TARGET_WINDOWS
-BITSEND_QT_CPP += $(BITSEND_QT_WINDOWS_CPP)
+BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
 endif
 if ENABLE_WALLET
-BITSEND_QT_CPP += $(BITSEND_QT_WALLET_CPP)
+BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
 endif
 
-RES_CSS = \
-  qt/res/css/bitsend_main.css \
-  qt/res/css/bitsend_theme1.css \
-  qt/res/css/bitsend_theme2.css \
-  qt/res/css/bitsend_theme3.css 
-  
-  
-RES_IMAGES = \
-  qt/res/images/about.png \
-  qt/res/images/splash.png \
-  qt/res/images/splash_testnet.png \
-  qt/res/images/paper_wallet.png \
-  qt/res/images/bitsend_logo_horizontal.png \
-  qt/res/images/drkblue_downArrow.png \
-  qt/res/images/drkblue_downArrow_small.png \
-  qt/res/images/drkblue_upArrow_small.png \
-  qt/res/images/drkblue_leftArrow_small.png \
-  qt/res/images/drkblue_rightArrow_small.png \
-  qt/res/images/drkblue_qtreeview_selected.png \
-  qt/res/images/bitsend_main_hg.png \
-  qt/res/images/bitsend_theme1_hg.png \
-  qt/res/images/bitsend_theme2_hg.png \
-  qt/res/images/bitsend_theme3_hg.png
-
-
+RES_IMAGES =
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITSEND_RC = qt/res/bitsend-qt-res.rc
+BITCOIN_RC = qt/res/bitcoin-qt-res.rc
 
-BITSEND_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
-  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+BITCOIN_QT_INCLUDES = -DQT_NO_KEYWORDS
 
-qt_libbitsendqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(BITSEND_QT_INCLUDES) \
+qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_libbitsendqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_libbitsendqt_a_SOURCES = $(BITSEND_QT_CPP) $(BITSEND_QT_H) $(QT_FORMS_UI) \
-  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_CSS) $(RES_IMAGES) $(RES_MOVIES) 
+qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
-nodist_qt_libbitsendqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
 
 # forms/foo.h -> forms/ui_foo.h
@@ -413,71 +382,71 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitsendqt_a_OBJECTS) $(qt_bitsend_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_bitcoin_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# bitsend-qt binary #
-qt_bitsend_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(BITSEND_QT_INCLUDES) \
+# bitcoin-qt binary #
+qt_bitcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_bitsend_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_bitcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_bitsend_qt_SOURCES = qt/bitsend.cpp
+qt_bitcoin_qt_SOURCES = qt/bitcoin.cpp
 if TARGET_DARWIN
-  qt_bitsend_qt_SOURCES += $(BITSEND_MM)
+  qt_bitcoin_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_bitsend_qt_SOURCES += $(BITSEND_RC)
+  qt_bitcoin_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_bitsend_qt_LDADD = qt/libbitsendqt.a $(LIBBITSEND_SERVER)
+qt_bitcoin_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_bitsend_qt_LDADD += $(LIBBITSEND_WALLET)
+qt_bitcoin_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_bitsend_qt_LDADD += $(LIBBITSEND_ZMQ) $(ZMQ_LIBS)
+qt_bitcoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_bitsend_qt_LDADD += $(LIBBITSEND_CLI) $(LIBBITSEND_COMMON) $(LIBBITSEND_UTIL) $(LIBBITSEND_CONSENSUS) $(LIBBITSEND_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_bitcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_bitsend_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_bitsend_qt_LIBTOOLFLAGS = --tag CXX
+qt_bitcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_bitcoin_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/bitsendstrings.cpp: $(libbitsend_server_a_SOURCES) $(libbitsend_wallet_a_SOURCES) $(libbitsend_common_a_SOURCES) $(libbitsend_zmq_a_SOURCES) $(libbitsend_consensus_a_SOURCES) $(libbitsend_util_a_SOURCES)
+$(srcdir)/qt/bitcoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_consensus_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/bitsendstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITSEND_QT_BASE_CPP) qt/bitsend.cpp $(BITSEND_QT_WINDOWS_CPP) $(BITSEND_QT_WALLET_CPP) $(BITSEND_QT_H) $(BITSEND_MM)
+translate: $(srcdir)/qt/bitcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/bitcoin.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/bitsend_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/bitcoin_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitsend_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
-$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS) $(PROTOBUF_H)
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitsend $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitsendqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_bitcoin_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-bitsend_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitsendqt_a_OBJECTS) $(qt_bitsend_qt_OBJECTS) qt/bitsend-qt$(EXEEXT) $(LIBBITSENDQT)
+bitcoin_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_bitcoin_qt_OBJECTS) qt/bitcoin-qt$(EXEEXT) $(LIBBITCOINQT)
 
-bitsend_qt : qt/bitsend-qt$(EXEEXT)
+bitcoin_qt : qt/bitcoin-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

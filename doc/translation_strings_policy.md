@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Bitsend Core software.
+This document provides guidelines for internationalization of the Bitcoin Core software.
 
 How to translate?
 ------------------
@@ -21,20 +21,10 @@ On a high level, these strings are to be translated:
 
 - GUI strings, anything that appears in a dialog or window
 
-- Command-line option documentation
-
 ### GUI strings
 
 Anything that appears to the user in the GUI is to be translated. This includes labels, menu items, button texts, tooltips and window titles.
 This includes messages passed to the GUI through the UI interface through `InitMessage`, `ThreadSafeMessageBox` or `ShowProgress`.
-
-### Command-line options
-
-Documentation for the command line options in the output of `--help` should be translated as well.
-
-Make sure that default values do not end up in the string, but use string formatting like `strprintf(_("Threshold for disconnecting misbehaving peers (default: %u)"), 100)`. Putting default values in strings has led to accidental translations in the past, and forces the string to be retranslated every time the value changes.
-
-Do not translate messages that are only shown to developers, such as those that only appear when `--help-debug` is used.
 
 General recommendations
 ------------------------
@@ -85,10 +75,10 @@ In Qt code use tr's third argument for optional plurality. For example:
 This adds `<numerusform>`s to the respective `.ts` file, which can be translated separately depending on the language. In English, this is simply:
 
     <message numerus="yes">
-        <source>%n active connection(s) to Bitsend network</source>
+        <source>%n active connection(s) to Bitcoin network</source>
         <translation>
-            <numerusform>%n active connection to Bitsend network</numerusform>
-            <numerusform>%n active connections to Bitsend network</numerusform>
+            <numerusform>%n active connection to Bitcoin network</numerusform>
+            <numerusform>%n active connections to Bitcoin network</numerusform>
         </translation>
     </message>
 
@@ -106,4 +96,4 @@ The second example reduces the number of pluralized words that translators have 
 
 During a string freeze (often before a major release), no translation strings are to be added, modified or removed.
 
-This can be checked by executing `make translate` in the `src` directory, then verifying that `bitsend_en.ts` remains unchanged.
+This can be checked by executing `make translate` in the `src` directory, then verifying that `bitcoin_en.ts` remains unchanged.

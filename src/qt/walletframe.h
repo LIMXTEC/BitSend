@@ -1,14 +1,14 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_WALLETFRAME_H
-#define BITSEND_QT_WALLETFRAME_H
+#ifndef BITCOIN_QT_WALLETFRAME_H
+#define BITCOIN_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
 
-class BitsendGUI;
+class BitcoinGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -21,9 +21,9 @@ QT_END_NAMESPACE
 
 /**
  * A container for embedding all wallet-related
- * controls into BitsendGUI. The purpose of this class is to allow future
+ * controls into BitcoinGUI. The purpose of this class is to allow future
  * refinements of the wallet controls with minimal need for further
- * modifications to BitsendGUI, thus greatly simplifying merges while
+ * modifications to BitcoinGUI, thus greatly simplifying merges while
  * reducing the risk of breaking top-level stuff.
  */
 class WalletFrame : public QFrame
@@ -31,12 +31,12 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, BitsendGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, BitcoinGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
 
-    bool addWallet(const QString& name, WalletModel *walletModel);
+    bool addWallet(WalletModel *walletModel);
     bool setCurrentWallet(const QString& name);
     bool removeWallet(const QString &name);
     void removeAllWallets();
@@ -51,7 +51,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget *walletStack;
-    BitsendGUI *gui;
+    BitcoinGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -59,6 +59,7 @@ private:
 
     const PlatformStyle *platformStyle;
 
+public:
     WalletView *currentWalletView();
 
 public Q_SLOTS:
@@ -70,9 +71,7 @@ public Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-	//kaali
-	void gotoMasternodePage();
-	//void gotoBip38Tool();
+
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
@@ -86,8 +85,6 @@ public Q_SLOTS:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
-    /** Ask for passphrase to unlock wallet till application closes */
-    void unlockWalletAndKeepUnlocked();
 
     /** Show used sending addresses */
     void usedSendingAddresses();
@@ -97,4 +94,4 @@ public Q_SLOTS:
     void outOfSyncWarningClicked();
 };
 
-#endif // BITSEND_QT_WALLETFRAME_H
+#endif // BITCOIN_QT_WALLETFRAME_H

@@ -5,6 +5,10 @@
         <source>Create a new address</source>
         <translation>Δημιουργία νέου λογαριασμού</translation>
     </message>
+    <message>
+        <source>&amp;Copy</source>
+        <translation>&amp;Αντιγραφή</translation>
+    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
@@ -28,7 +32,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>BitsendGUI</name>
+    <name>BitcoinGUI</name>
     <message>
         <source>Quit application</source>
         <translation>Κλείσιμο εφαρμογής</translation>
@@ -93,6 +97,10 @@
         <source>W&amp;allet</source>
         <translation>Πορτοφόλι</translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation>Σφάλμα</translation>
+    </message>
     </context>
 <context>
     <name>OverviewPage</name>
@@ -128,6 +136,10 @@
     </context>
 <context>
     <name>ReceiveRequestDialog</name>
+    <message>
+        <source>Wallet</source>
+        <translation>Πορτοφόλι</translation>
+    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -190,7 +202,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>bitsend-core</name>
+    <name>bitcoin-core</name>
     <message>
         <source>Insufficient funds</source>
         <translation>Κεφάλαια μη επαρκή</translation>

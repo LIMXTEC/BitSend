@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2015 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_QVALIDATEDLINEEDIT_H
-#define BITSEND_QT_QVALIDATEDLINEEDIT_H
+#ifndef BITCOIN_QT_QVALIDATEDLINEEDIT_H
+#define BITCOIN_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -34,10 +34,10 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void validationDidChange(QValidatedLineEdit *validatedLineEdit);
-    
+
 private Q_SLOTS:
     void markValid();
     void checkValidity();
 };
 
-#endif // BITSEND_QT_QVALIDATEDLINEEDIT_H
+#endif // BITCOIN_QT_QVALIDATEDLINEEDIT_H

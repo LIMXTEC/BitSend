@@ -1,9 +1,9 @@
-// Copyright (c) 2016 The Bitsend Core developers
+// Copyright (c) 2016-2017 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_THREADINTERRUPT_H
-#define BITSEND_THREADINTERRUPT_H
+#ifndef BITCOIN_THREADINTERRUPT_H
+#define BITCOIN_THREADINTERRUPT_H
 
 #include <atomic>
 #include <chrono>
@@ -18,6 +18,7 @@
 class CThreadInterrupt
 {
 public:
+    CThreadInterrupt();
     explicit operator bool() const;
     void operator()();
     void reset();
@@ -31,4 +32,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif //BITSEND_THREADINTERRUPT_H
+#endif //BITCOIN_THREADINTERRUPT_H

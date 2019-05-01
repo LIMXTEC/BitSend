@@ -1,15 +1,14 @@
-// Copyright (c) 2014 The Bitsend Core developers
+// Copyright (c) 2014-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_WINSHUTDOWNMONITOR_H
-#define BITSEND_QT_WINSHUTDOWNMONITOR_H
+#ifndef BITCOIN_QT_WINSHUTDOWNMONITOR_H
+#define BITCOIN_QT_WINSHUTDOWNMONITOR_H
 
 #ifdef WIN32
 #include <QByteArray>
 #include <QString>
 
-#if QT_VERSION >= 0x050000
 #include <windef.h> // for HWND
 
 #include <QAbstractNativeEventFilter>
@@ -24,6 +23,5 @@ public:
     static void registerShutdownBlockReason(const QString& strReason, const HWND& mainWinId);
 };
 #endif
-#endif
 
-#endif // BITSEND_QT_WINSHUTDOWNMONITOR_H
+#endif // BITCOIN_QT_WINSHUTDOWNMONITOR_H
