@@ -22,6 +22,8 @@
 #include <utiltime.h>
 #include <utilmemory.h>
 
+#include "amount.h"//TODO
+
 #include <atomic>
 #include <exception>
 #include <map>
@@ -33,6 +35,30 @@
 
 #include <boost/signals2/signal.hpp>
 #include <boost/thread/condition_variable.hpp> // for boost::thread_interrupted
+
+/**TODO-- */
+//Bitcoin only features
+
+extern bool fMasterNode;
+extern bool fLiteMode;
+extern bool fEnableInstantX;
+extern bool fProUserModeDarksendInstantX;
+extern bool fProUserModeDarksendInstantX2;
+extern int nInstantXDepth;
+extern int nDarksendRounds;
+extern int nAnonymizeDashAmount;
+extern int nLiquidityProvider;
+extern bool fEnableDarksend;
+extern bool fDarksendMultiSession;
+extern int64_t enforceMasternodePaymentsTime;
+extern std::string strMasterNodeAddr;
+extern int nMasternodeMinProtocol;
+extern int keysLoaded;
+extern bool fSucessfullyLoaded;
+extern std::vector<CAmount> darkSendDenominations;
+extern std::string strBudgetMode;
+//TODO-- ends
+
 
 // Application startup time (used for uptime calculation)
 int64_t GetStartupTime();
@@ -90,6 +116,7 @@ const fs::path &GetBlocksDir(bool fNetSpecific = true);
 const fs::path &GetDataDir(bool fNetSpecific = true);
 void ClearDatadirCache();
 fs::path GetConfigFile(const std::string& confPath);
+boost::filesystem::path GetMasternodeConfigFile();//TODO-- new code work.i.e GetMasternodeConfigFile(const std::string& confPath)
 #ifndef WIN32
 fs::path GetPidFile();
 void CreatePidFile(const fs::path &path, pid_t pid);

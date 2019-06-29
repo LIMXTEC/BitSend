@@ -26,6 +26,9 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
     int nThreshold = Threshold(params);
     int64_t nTimeStart = BeginTime(params);
     int64_t nTimeTimeout = EndTime(params);
+	int64_t nThresholdHeight = Height(params);
+	
+	int64_t nHeight = 0;
 
     // Check if this deployment is always active.
     if (nTimeStart == Consensus::BIP9Deployment::ALWAYS_ACTIVE) {
@@ -34,6 +37,7 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
 
     // A block's state is always the same as that of the first of its period, so it is computed based on a pindexPrev whose height equals a multiple of nPeriod - 1.
     if (pindexPrev != nullptr) {
+		nHeight = pindexPrev->nHeight;
         pindexPrev = pindexPrev->GetAncestor(pindexPrev->nHeight - ((pindexPrev->nHeight + 1) % nPeriod));
     }
 
@@ -87,7 +91,7 @@ ThresholdState AbstractThresholdConditionChecker::GetStateFor(const CBlockIndex*
                     }
                     pindexCount = pindexCount->pprev;
                 }
-                if (count >= nThreshold) {
+                if (count >= nThreshold && nHeight >= nThresholdHeight) {
                     stateNext = ThresholdState::LOCKED_IN;
                 }
                 break;
@@ -137,6 +141,21 @@ BIP9Stats AbstractThresholdConditionChecker::GetStateStatisticsFor(const CBlockI
     stats.possible = (stats.period - stats.threshold ) >= (stats.elapsed - count);
 
     return stats;
+	
+	/* int64_t nHeightPrev = Height(params);
+	
+	ThresholdState state = THRESHOLD_DEFINED;
+	
+	if(pindexPrev->nHeight >= nHeightPrev){
+		state = THRESHOLD_ACTIVE;
+	}
+	//check 
+	/* if(pindexPrev->nHeight >= nHeightPrev && state != THRESHOLD_ACTIVE){
+		//Bug , Please report
+		LogPrintf("Bug Warning");
+	} *
+	
+    return state;  */
 }
 
 int AbstractThresholdConditionChecker::GetStateSinceHeightFor(const CBlockIndex* pindexPrev, const Consensus::Params& params, ThresholdConditionCache& cache) const
@@ -186,6 +205,7 @@ private:
 protected:
     int64_t BeginTime(const Consensus::Params& params) const override { return params.vDeployments[id].nStartTime; }
     int64_t EndTime(const Consensus::Params& params) const override { return params.vDeployments[id].nTimeout; }
+	int64_t Height(const Consensus::Params& params) const { return params.vDeployments[id].nHeight; }
     int Period(const Consensus::Params& params) const override { return params.nMinerConfirmationWindow; }
     int Threshold(const Consensus::Params& params) const override { return params.nRuleChangeActivationThreshold; }
 

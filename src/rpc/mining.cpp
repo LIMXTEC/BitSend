@@ -26,6 +26,11 @@
 #include <validationinterface.h>
 #include <warnings.h>
 
+#include "activemasternode.h"
+#include "masternodeman.h"
+#include "masternodeconfig.h"
+
+
 #include <memory>
 #include <stdint.h>
 

@@ -41,11 +41,17 @@
 #include <validationinterface.h>
 #include <warnings.h>
 
+#include "masternode-pos.h"
+#include "masternode.h"
+#include "spork.h"
+
 #include <future>
 #include <sstream>
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/thread.hpp>
+
+#include <boost/lexical_cast.hpp>
 
 #if defined(NDEBUG)
 # error "Bitsend cannot be compiled without assertions."
@@ -53,6 +59,8 @@
 
 #define MICRO 0.000001
 #define MILLI 0.001
+
+#define START_MASTERNODE_PAYMENTS 1430465291
 
 /**
  * Global state
@@ -999,6 +1007,149 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
     return AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, pfMissingInputs, GetTime(), plTxnReplaced, bypass_limits, nAbsurdFee, test_accept);
 }
 
+int GetInputAge(CTxIn& vin)
+{
+    CCoinsView viewDummy;
+    CCoinsViewCache view(&viewDummy);
+    {
+        LOCK(mempool.cs);//todo++
+        CCoinsViewMemPool viewMempool(pcoinsTip, mempool);
+        view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
+
+        const CCoins* coins = view.AccessCoins(vin.prevout.hash);
+
+        if (coins){
+            if(coins->nHeight < 0) return 0;
+            return (chainActive.Tip()->nHeight+1) - coins->nHeight;
+        }
+        else
+            return -1;
+    }
+}
+
+bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransactionRef& ptx, bool ignoreFees)
+{
+	const CTransaction& tx = *ptx;
+    const uint256 hash = tx.GetHash();
+
+	std::vector<uint256> vHashTxnToUncache;
+    AssertLockHeld(cs_main);
+
+	if (!CheckTransaction(tx, state))
+        return false; // state filled in by CheckTransaction
+
+    // Coinbase is only valid in a block, not as a loose transaction
+    if (tx.IsCoinBase())
+        return state.DoS(100, false, REJECT_INVALID, "coinbase");
+
+	// is it already in the memory pool?
+    if (pool.exists(hash))
+        return state.Invalid(false, REJECT_ALREADY_KNOWN, "txn-already-in-mempool");
+
+	// Check for conflicts with in-memory transactions
+    std::set<uint256> setConflicts;
+    {
+    LOCK(pool.cs); // protect pool.mapNextTx
+    BOOST_FOREACH(const CTxIn &txin, tx.vin)
+    {
+        auto itConflicting = pool.mapNextTx.find(txin.prevout);
+        if (itConflicting != pool.mapNextTx.end())
+        {
+            const CTransaction *ptxConflicting = itConflicting->second;
+            if (!setConflicts.count(ptxConflicting->GetHash()))
+            {
+                // Allow opt-out of transaction replacement by setting
+                // nSequence >= maxint-1 on all inputs.
+                //
+                // maxint-1 is picked to still allow use of nLockTime by
+                // non-replaceable transactions. All inputs rather than just one
+                // is for the sake of multi-party protocols, where we don't
+                // want a single party to be able to disable replacement.
+                //
+                // The opt-out ignores descendants as anyone relying on
+                // first-seen mempool behavior should be checking all
+                // unconfirmed ancestors anyway; doing otherwise is hopelessly
+                // insecure.
+                bool fReplacementOptOut = true;
+                if (fEnableReplacement)
+                {
+                    BOOST_FOREACH(const CTxIn &_txin, ptxConflicting->vin)
+                    {
+                        if (_txin.nSequence < std::numeric_limits<unsigned int>::max()-1)
+                        {
+                            fReplacementOptOut = false;
+                            break;
+                        }
+                    }
+                }
+                if (fReplacementOptOut)
+                    return state.Invalid(false, REJECT_CONFLICT, "txn-mempool-conflict");
+
+                setConflicts.insert(ptxConflicting->GetHash());
+            }
+        }
+    }
+    }
+
+	{
+		CCoinsView dummy;
+        CCoinsViewCache view(&dummy);
+
+        CAmount nValueIn = 0;
+        LockPoints lp;
+        {
+        LOCK(pool.cs);
+        CCoinsViewMemPool viewMemPool(pcoinsTip, pool);
+        view.SetBackend(viewMemPool);
+
+        // do we already have it?
+        bool fHadTxInCache = pcoinsTip->HaveCoinsInCache(hash);
+        if (view.HaveCoins(hash)) {
+            if (!fHadTxInCache)
+                vHashTxnToUncache.push_back(hash);
+            return state.Invalid(false, REJECT_ALREADY_KNOWN, "txn-already-known");
+        }
+
+        // do all inputs exist?
+        // Note that this does not check for the presence of actual outputs (see the next check for that),
+        // and only helps with filling in pfMissingInputs (to determine missing vs spent).
+        BOOST_FOREACH(const CTxIn txin, tx.vin) {
+            if (!pcoinsTip->HaveCoinsInCache(txin.prevout.hash))
+                vHashTxnToUncache.push_back(txin.prevout.hash);
+            if (!view.HaveCoins(txin.prevout.hash)) {
+                return false;
+            }
+        }
+
+        // are the actual inputs available?
+        if (!view.HaveInputs(tx))
+            return state.Invalid(false, REJECT_DUPLICATE, "bad-txns-inputs-spent");
+
+        // Bring the best block into scope
+        view.GetBestBlock();
+
+        nValueIn = view.GetValueIn(tx);
+
+        // we have all inputs cached now, so switch back to dummy, so we don't need to keep lock on mempool
+        view.SetBackend(dummy);
+
+        }
+
+		// Check against previous transactions
+        // This is done last to help prevent CPU exhaustion denial-of-service attacks.
+        PrecomputedTransactionData txdata(tx);
+        if (!CheckInputs(tx, state, view, false, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, true, txdata)) {
+
+			LogPrintf("CheckInputs is still false\n");
+            return false; // state filled in by CheckInputs
+        }
+	}
+
+	return true;
+}
+
+
+
 /**
  * Return transaction in txOut, and if it was found inside a block, its hash is placed in hashBlock.
  * If blockIndex is provided, the transaction is fetched from the corresponding block.
@@ -1161,16 +1312,76 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+   
+	CAmount nSubsidy = 50 * COIN;
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
+	if (nHeight <= 2)
+		nSubsidy = 1306400 * COIN;
+
+    if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
+	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
+
+
     return nSubsidy;
 }
+
+CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
+{
+    CAmount ret = blockValue/5; // start at 20%
+
+
+
+   if(nHeight > 140500) ret += blockValue / 20;
+	// 140500
+	if(nHeight > 140500+((288*14)* 1)) ret += blockValue / 20;
+	// 144532
+	if(nHeight > 140500+((288*14)* 2)) ret += blockValue / 20;
+	// 148564
+	if(nHeight > 140500+((288*14)* 3)) ret += blockValue / 20;
+	// 152596
+	if(nHeight > 140500+((288*14)* 4)) ret += blockValue / 20;
+	// 156628
+	if(nHeight > 140500+((288*14)* 5)) ret += blockValue / 20;
+	// 160660
+	if(nHeight > 140500+((288*30)* 6)) ret += blockValue / 20;
+	// 192340
+	if(nHeight > 140500+((288*30)* 7)) ret += blockValue / 20;
+	// 200980
+	if(nHeight > 140500+((288*30)* 8)) ret += blockValue / 20;
+	// 218260
+	if(nHeight > 140500+((288*30)* 9)) ret += blockValue / 20;
+	// 226900
+	if(nHeight > 140500+((288*30)* 10)) ret += blockValue / 20;
+	// 235540
+	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20;
+	//  244180
+	/* For later Stop by 20% /80%
+	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50;
+	// 252820
+	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50;
+	// 261460
+	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50;
+	// 270100
+	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50;
+	// 278740
+	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50;
+	// 287380
+	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50;
+	// 296020
+	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50;
+	// 304660
+	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50;
+	// 313300
+	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50;
+	//  321940
+	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100;
+	*/
+  //  LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
+
+
+    return ret;
+}
+
 
 bool IsInitialBlockDownload()
 {
@@ -1720,14 +1931,16 @@ public:
 
     int64_t BeginTime(const Consensus::Params& params) const override { return 0; }
     int64_t EndTime(const Consensus::Params& params) const override { return std::numeric_limits<int64_t>::max(); }
+	int64_t Height(const Consensus::Params& params) const { return 400000; }
     int Period(const Consensus::Params& params) const override { return params.nMinerConfirmationWindow; }
     int Threshold(const Consensus::Params& params) const override { return params.nRuleChangeActivationThreshold; }
 
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const override
     {
-        return ((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) &&
+        /* return ((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) &&
                ((pindex->nVersion >> bit) & 1) != 0 &&
-               ((ComputeBlockVersion(pindex->pprev, params) >> bit) & 1) == 0;
+               ((ComputeBlockVersion(pindex->pprev, params) >> bit) & 1) == 0; */
+		return pindex->nHeight >= 400000;//current height
     }
 };
 
@@ -3127,6 +3340,84 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
     for (unsigned int i = 1; i < block.vtx.size(); i++)
         if (block.vtx[i]->IsCoinBase())
             return state.DoS(100, false, REJECT_INVALID, "bad-cb-multiple", false, "more than one coinbase");
+		
+	// ----------- masternode payments -----------
+
+    bool MasternodePayments = false;
+
+
+	if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
+
+    if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
+        MasternodePayments = true; // Bitcoindev
+        if(fDebug) LogPrintf("CheckBlock() : Masternode payment enforcement is off\n");
+    }
+
+    if(MasternodePayments)
+    {
+        LOCK2(cs_main, mempool.cs);
+
+        CBlockIndex *pindex = chainActive.Tip();
+        if(pindex != NULL){
+            if(pindex->GetBlockHash() == block.hashPrevBlock){
+                CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0]->GetValueOut());//todo++
+				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitcoindev 02-06-2015//todo++
+				if(fDebug) LogPrintf("## Hardblockreward ## CheckBlock() : BTC masternode payments %d\n", hardblockpowreward);
+				bool fIsInitialDownload = IsInitialBlockDownload();
+
+                // If we don't already have its previous block, skip masternode payment step
+                if (!fIsInitialDownload && pindex != NULL)
+                {
+                    bool foundPaymentAmount = false;
+                    bool foundPayee = false;
+                    bool foundPaymentAndPayee = false;
+					CScript payee;
+                    if(!masternodePayments.GetBlockPayee(chainActive.Tip()->nHeight+1, payee) || payee == CScript()){
+                        foundPayee = true; //doesn't require a specific payee
+                        foundPaymentAmount = true;
+                        foundPaymentAndPayee = true;
+						LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", chainActive.Tip()->nHeight+1);
+				    }
+					// todo-- must notice block.vtx[]. to block.vtx[]->
+					// Funtion no Intitial Download
+					for (unsigned int i = 0; i < block.vtx[0]->vout.size(); i++) {
+						if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount ){
+							foundPaymentAmount = true;
+						}
+						if(block.vtx[0]->vout[i].scriptPubKey == payee ){
+                            foundPayee = true;
+						}
+						if(block.vtx[0]->vout[i].nValue == masternodePaymentAmount && block.vtx[0]->vout[i].scriptPubKey == payee){
+                            foundPaymentAndPayee = true;
+						}
+                    }
+
+                    CTxDestination address1;
+                    ExtractDestination(payee, address1);
+                    CBitcoinAddress address2(address1);
+
+                    if(!foundPaymentAndPayee) {
+                        LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                        return state.DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));//todo++
+                    } else {
+                        LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);
+                    }
+                } else {
+                    LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", chainActive.Tip()->nHeight+1);
+                }
+            } else {
+                LogPrintf("CheckBlock() : Skipping masternode payment check - nHeight %d Hash %s\n", chainActive.Tip()->nHeight+1, block.GetHash().ToString().c_str());
+            }
+        } else {
+            LogPrintf("CheckBlock() : pindex is null, skipping masternode payment check\n");
+        }
+    } else {
+        LogPrintf("CheckBlock() : skipping masternode payment checks\n");
+    }
+
+
+    // -------------------------------------------
+
 
     // Check transactions
     for (const auto& tx : block.vtx)
@@ -3232,8 +3523,13 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
 
     // Check proof of work
     const Consensus::Params& consensusParams = params.GetConsensus();
-    if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
-        return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+    if(nHeight >= 260000){
+
+		if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams)){
+			LogPrintf("diff failed with nHeight = %d \n", nHeight);
+			return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+		}
+	}
 
     // Check against checkpoints
     if (fCheckpointsEnabled) {
@@ -3561,6 +3857,26 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
     CValidationState state; // Only used to report errors, not invalidity - ignore it
     if (!g_chainstate.ActivateBestChain(state, chainparams, pblock))
         return error("%s: ActivateBestChain failed (%s)", __func__, FormatStateMessage(state));
+
+	/**TODO-- */
+	/*if(!fLiteMode){
+        if (masternodeSync.RequestedMasternodeAssets > MASTERNODE_SYNC_LIST) {
+            darkSendPool.NewBlock();
+            masternodePayments.ProcessBlock(GetHeight()+10);
+            budget.NewBlock();
+        }
+    }*///TODO--
+	if(!fProUserModeDarksendInstantX2){
+        if (!fImporting && !fReindex && chainActive.Height() > 50000){//TODO-- last checkpointed height
+            //darkSendPool.NewBlock();//todo++ must add
+            if(masternodePayments.ProcessBlock(chainActive.Height()+10))
+				LogPrintf(" masternodePayments.ProcessBlock run success\n");
+
+			mnscan.DoMasternodePOSChecks();
+        }
+    }///todo++ must be added
+
+    LogPrintf("%s : ACCEPTED\n", __func__);
 
     return true;
 }
