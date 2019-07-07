@@ -238,6 +238,11 @@ extern const char *GETBLOCKTXN;
  * @since protocol version 70014 as described by BIP 152
  */
 extern const char *BLOCKTXN;
+
+extern const char *MNWINNER;
+
+extern const char *SPORK;
+
 };
 
 /* Get a vector of all valid message types (see above) */
@@ -329,7 +334,7 @@ class CAddress : public CService
 {
 public:
     CAddress();
-    explicit CAddress(CService ipIn, ServiceFlags nServicesIn);
+    explicit CAddress(CService ipIn, ServiceFlags nServicesIn = NODE_NETWORK);
 
     void Init();
 
@@ -379,6 +384,11 @@ enum GetDataMsg
     MSG_WITNESS_BLOCK = MSG_BLOCK | MSG_WITNESS_FLAG, //!< Defined in BIP144
     MSG_WITNESS_TX = MSG_TX | MSG_WITNESS_FLAG,       //!< Defined in BIP144
     MSG_FILTERED_WITNESS_BLOCK = MSG_FILTERED_BLOCK | MSG_WITNESS_FLAG,
+	
+	/**TODO-- */
+    MSG_SPORK = 6,
+    MSG_MASTERNODE_WINNER = 7,
+    MSG_MASTERNODE_SCANNING_ERROR = 8,
 };
 
 /** inv message data */

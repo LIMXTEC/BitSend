@@ -71,6 +71,9 @@ public Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
+	
+	//kaali
+	void gotoMasternodePage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
@@ -85,6 +88,9 @@ public Q_SLOTS:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
+	
+	/** Ask for passphrase to unlock wallet till application closes */
+    void unlockWalletAndKeepUnlocked();
 
     /** Show used sending addresses */
     void usedSendingAddresses();

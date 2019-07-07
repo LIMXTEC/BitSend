@@ -19,6 +19,8 @@
 #include <qt/transactionview.h>
 #include <qt/walletmodel.h>
 
+#include "masternodeconfig.h"//kaali
+
 #include <interfaces/node.h>
 #include <ui_interface.h>
 
@@ -34,6 +36,7 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     QStackedWidget(parent),
     clientModel(0),
     walletModel(0),
+	unlockContext(0),
     platformStyle(_platformStyle)
 {
     // Create tabs
@@ -64,6 +67,8 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     addWidget(transactionsPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
+	masternodeListPage = new MasternodeList();//kaali
+	addWidget(masternodeListPage);
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
@@ -86,6 +91,8 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 
 WalletView::~WalletView()
 {
+	if(unlockContext)
+        delete (WalletModel::UnlockContext*)(unlockContext);
 }
 
 void WalletView::setBitsendGUI(BitsendGUI *gui)
@@ -118,6 +125,7 @@ void WalletView::setClientModel(ClientModel *_clientModel)
 
     overviewPage->setClientModel(_clientModel);
     sendCoinsPage->setClientModel(_clientModel);
+	masternodeListPage->setClientModel(clientModel);
 }
 
 void WalletView::setWalletModel(WalletModel *_walletModel)
@@ -129,6 +137,7 @@ void WalletView::setWalletModel(WalletModel *_walletModel)
     overviewPage->setWalletModel(_walletModel);
     receiveCoinsPage->setModel(_walletModel);
     sendCoinsPage->setModel(_walletModel);
+	masternodeListPage->setWalletModel(walletModel);
     usedReceivingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);
     usedSendingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);
 
@@ -189,6 +198,11 @@ void WalletView::gotoHistoryPage()
 void WalletView::gotoReceiveCoinsPage()
 {
     setCurrentWidget(receiveCoinsPage);
+}
+
+void WalletView::gotoMasternodePage()
+{
+	setCurrentWidget(masternodeListPage);
 }
 
 void WalletView::gotoSendCoinsPage(QString addr)
@@ -287,6 +301,16 @@ void WalletView::unlockWallet()
         dlg.exec();
     }
 }
+
+void WalletView::requestUnlockWallet()
+{
+    if(walletModel)
+    {
+        unlockContext = (void*)(new WalletModel::UnlockContext(walletModel->requestUnlock()));
+    }
+    unlockContext = 0;
+}
+
 
 void WalletView::usedSendingAddresses()
 {

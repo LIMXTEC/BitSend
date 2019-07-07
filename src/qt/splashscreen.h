@@ -24,12 +24,13 @@ class Wallet;
  * can take a long time, and in that case a progress window that cannot be
  * moved around and minimized has turned out to be frustrating to the user.
  */
-class SplashScreen : public QWidget
+class SplashScreen : public QSplashScreen/* QWidget */
 {
     Q_OBJECT
 
 public:
-    explicit SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const NetworkStyle *networkStyle);
+    //explicit SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const NetworkStyle *networkStyle);
+	explicit SplashScreen(Qt::WindowFlags f, const QPixmap &pixmap);
     ~SplashScreen();
 
 protected:

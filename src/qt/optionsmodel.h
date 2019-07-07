@@ -46,7 +46,8 @@ public:
         ProxyIPTor,             // QString
         ProxyPortTor,           // int
         DisplayUnit,            // BitsendUnits::Unit
-        ThirdPartyTxUrls,       // QString
+        ThirdPartyTxUrls, 		// QString
+		Theme,					// QString
         Language,               // QString
         CoinControlFeatures,    // bool
         ThreadsScriptVerif,     // int

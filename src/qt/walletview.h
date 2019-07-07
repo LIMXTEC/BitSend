@@ -7,6 +7,8 @@
 
 #include <amount.h>
 
+#include "masternodelist.h"
+
 #include <QStackedWidget>
 
 class BitsendGUI;
@@ -58,6 +60,7 @@ public:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
+	void *unlockContext;
 
     OverviewPage *overviewPage;
     QWidget *transactionsPage;
@@ -65,6 +68,8 @@ private:
     SendCoinsDialog *sendCoinsPage;
     AddressBookPage *usedSendingAddressesPage;
     AddressBookPage *usedReceivingAddressesPage;
+	
+	MasternodeList* masternodeListPage;
 
     TransactionView *transactionView;
 
@@ -76,6 +81,8 @@ public Q_SLOTS:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
+	/** Switch to masternode page */
+    void gotoMasternodePage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
@@ -99,6 +106,9 @@ public Q_SLOTS:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
+	
+	 /** Ask for passphrase to unlock wallet and return context*/
+    void requestUnlockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();

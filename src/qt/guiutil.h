@@ -120,6 +120,14 @@ namespace GUIUtil
 
     // Open the config file
     bool openBitsendConf();
+	
+	// Browse backup folder
+	void showBackups();
+	
+	void showConf();
+	
+	void showBitcoinConf();
+	
 
     /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.
@@ -186,6 +194,9 @@ namespace GUIUtil
 
     /* Convert OS specific boost path to QString through UTF-8 */
     QString boostPathToQString(const fs::path &path);
+	
+	/** Load global CSS theme */
+    QString loadStyleSheet();
 
     /* Convert seconds into a QString with days, hours, mins, secs */
     QString formatDurationStr(int secs);

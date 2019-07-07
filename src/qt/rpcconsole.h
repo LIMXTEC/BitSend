@@ -62,7 +62,8 @@ public:
         TAB_INFO = 0,
         TAB_CONSOLE = 1,
         TAB_GRAPH = 2,
-        TAB_PEERS = 3
+        TAB_PEERS = 3,
+		TAB_REPAIR=4
     };
 
 protected:
@@ -91,6 +92,15 @@ private Q_SLOTS:
     void clearSelectedNode();
 
 public Q_SLOTS:
+
+	/** Wallet repair options */
+    void walletSalvage();
+    void walletRescan();
+    void walletZaptxes1();
+    void walletZaptxes2();
+    void walletUpgrade();
+    void walletReindex();
+	
     void clear(bool clearHistory = true);
     void fontBigger();
     void fontSmaller();
@@ -99,6 +109,8 @@ public Q_SLOTS:
     void message(int category, const QString &message, bool html = false);
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);
+	 /** Switch to wallet-repair tab and show */
+    void showRepair();
     /** Set network state shown in the UI */
     void setNetworkActive(bool networkActive);
     /** Set number of blocks and last block date shown in the UI */
@@ -121,6 +133,10 @@ public Q_SLOTS:
     void banSelectedNode(int bantime);
     /** Unban a selected node on the Bans tab */
     void unbanSelectedNode();
+	/** Show folder with wallet backups in default browser */
+    void showBackups();
+	void showBitcoinConf();
+	void showConf();
     /** set which tab has the focus (is visible) */
     void setTabFocus(enum TabTypes tabType);
 
@@ -128,12 +144,17 @@ Q_SIGNALS:
     // For RPC command executor
     void stopExecutor();
     void cmdRequest(const QString &command, const QString &walletID);
+	/** Get restart command-line parameters and handle restart */
+    void handleRestart(QStringList args);
 
 private:
     void startExecutor();
     void setTrafficGraphRange(int mins);
     /** show detailed information on ui about selected node */
     void updateNodeDetail(const CNodeCombinedStats *stats);
+	
+	/** Build parameter list for restart */
+    void buildParameterlist(QString arg);
 
     enum ColumnWidths
     {
