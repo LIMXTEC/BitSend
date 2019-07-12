@@ -77,6 +77,8 @@ public:
 
     // memory only
     mutable bool fChecked;
+	
+	mutable CScript payee;//TODO--
 
     CBlock()
     {
@@ -101,6 +103,7 @@ public:
     {
         CBlockHeader::SetNull();
         vtx.clear();
+		payee = CScript();//TODO--
         fChecked = false;
     }
 

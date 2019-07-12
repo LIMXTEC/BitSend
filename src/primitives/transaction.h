@@ -52,6 +52,11 @@ public:
     }
 
     std::string ToString() const;
+	
+	std::string ToStringShort() const; //TODO--
+
+    uint256 GetHash();//TODO--
+	
 };
 
 /** An input of a transaction.  It contains the location of the previous
@@ -65,6 +70,7 @@ public:
     CScript scriptSig;
     uint32_t nSequence;
     CScriptWitness scriptWitness; //! Only serialized through CTransaction
+	CScript prevPubKey;
 
     /* Setting nSequence to this value for every input in a transaction
      * disables nLockTime. */
@@ -121,6 +127,13 @@ public:
     {
         return !(a == b);
     }
+	
+	/**TODO-- */
+	friend bool operator<(const CTxIn& a, const CTxIn& b)
+    {
+        return a.prevout<b.prevout;
+    }
+
 
     std::string ToString() const;
 };
@@ -170,6 +183,13 @@ public:
     {
         return !(a == b);
     }
+	
+	/**TODO-- */
+	friend bool operator<(const CTxOut& a, const CTxOut& b)
+    {
+        return a.nValue < b.nValue || (a.nValue == b.nValue && a.scriptPubKey < b.scriptPubKey);
+    }
+
 
     std::string ToString() const;
 };
@@ -265,7 +285,7 @@ class CTransaction
 {
 public:
     // Default transaction version.
-    static const int32_t CURRENT_VERSION=2;
+    static const int32_t CURRENT_VERSION=1;
 
     // Changing the default transaction version requires a two step process: first
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
@@ -298,6 +318,8 @@ public:
     /** Convert a CMutableTransaction into a CTransaction. */
     CTransaction(const CMutableTransaction &tx);
     CTransaction(CMutableTransaction &&tx);
+	
+	CTransaction& operator=(const CTransaction& tx);//TODO++
 
     template <typename Stream>
     inline void Serialize(Stream& s) const {
@@ -387,6 +409,19 @@ struct CMutableTransaction
      * fly, as opposed to GetHash() in CTransaction, which uses a cached result.
      */
     uint256 GetHash() const;
+	
+	/**TODO-- */
+	std::string ToString() const;
+	
+	friend bool operator!=(const CMutableTransaction& a, const CMutableTransaction& b)
+    {
+        return !(a == b);
+    }
+
+	friend bool operator==(const CMutableTransaction& a, const CMutableTransaction& b)
+    {
+        return a.GetHash() == b.GetHash();
+    }
 
     bool HasWitness() const
     {
