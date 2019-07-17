@@ -80,6 +80,14 @@ public:
     const std::vector<SeedSpec6>& FixedSeeds() const { return vFixedSeeds; }
     const CCheckpointData& Checkpoints() const { return checkpointData; }
     const ChainTxData& TxData() const { return chainTxData; }
+	
+	/**TODO-- */
+	int PoolMaxTransactions() const { return nPoolMaxTransactions; }
+    std::string SporkKey() const { return strSporkKey; }
+    std::string DarksendPoolDummyAddress() const { return strDarksendPoolDummyAddress; }
+    std::string MasternodePaymentPubKey() const { return strMasternodePaymentsPubKey; }
+    int64_t StartMasternodePayments() const { return nStartMasternodePayments; }//TODO-- ends
+	
     void UpdateVersionBitsParameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout);
 protected:
     CChainParams() {}
@@ -100,6 +108,13 @@ protected:
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
     bool m_fallback_fee_enabled;
+	
+	/**TODO-- */
+	int nPoolMaxTransactions;
+    std::string strSporkKey;
+    std::string strMasternodePaymentsPubKey;
+    std::string strDarksendPoolDummyAddress;
+    int64_t nStartMasternodePayments;
 };
 
 /**

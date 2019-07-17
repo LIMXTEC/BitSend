@@ -59,6 +59,8 @@ bool AppInitLockDataDirectory();
  */
 bool AppInitMain();
 
+void PrepareShutdown();//TODO--
+
 /**
  * Setup the arguments for gArgs
  */
