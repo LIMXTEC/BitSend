@@ -90,6 +90,12 @@ endif
 .PHONY: FORCE check-symbols check-security
 # bitsend core #
 BITSEND_CORE_H = \
+  activemasternode.h \
+  masternode.h \
+  masternode-pos.h \
+  masternodeman.h \
+  masternodeconfig.h \
+  spork.h \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -215,6 +221,8 @@ libbitsend_util_a-clientversion.$(OBJEXT): obj/build.h
 libbitsend_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitsend_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_server_a_SOURCES = \
+  activemasternode.cpp \
+  bitpool.cpp \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -274,6 +282,7 @@ endif
 libbitsend_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_wallet_a_SOURCES = \
+  activemasternode.cpp \
   interfaces/wallet.cpp \
   wallet/coincontrol.cpp \
   wallet/crypter.cpp \
@@ -309,7 +318,43 @@ crypto_libbitsend_crypto_base_a_SOURCES = \
   crypto/sha256.cpp \
   crypto/sha256.h \
   crypto/sha512.cpp \
-  crypto/sha512.h
+  crypto/sha512.h \
+  crypto/aes_helper.c \
+  crypto/luffa.c \
+  crypto/groestl.c \
+  crypto/jh.c \
+  crypto/echo.c \
+  crypto/shavite.c \
+  crypto/keccak.c \
+  crypto/skein.c \
+  crypto/fugue.c \
+  crypto/hamsi.c \
+  crypto/haval.c \
+  crypto/shabal.c \
+  crypto/whirlpool.c \
+  crypto/sph_sha2big.c \
+  crypto/bmw.c \
+  crypto/simd.c \
+  crypto/cubehash.c \
+  crypto/blake.c \
+  crypto/sph_blake.h \
+  crypto/sph_bmw.h \
+  crypto/sph_cubehash.h \
+  crypto/sph_echo.h \
+  crypto/sph_groestl.h \
+  crypto/sph_jh.h \
+  crypto/sph_keccak.h \
+  crypto/sph_luffa.h \
+  crypto/sph_shavite.h \
+  crypto/sph_simd.h \
+  crypto/sph_skein.h \
+  crypto/sph_types.h \
+  crypto/sph_fugue.h \
+  crypto/sph_hamsi.h \
+  crypto/sph_haval.h \
+  crypto/sph_shabal.h \
+  crypto/sph_sha2.h \
+  crypto/sph_whirlpool.h 
 
 if USE_ASM
 crypto_libbitsend_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
@@ -373,6 +418,12 @@ libbitsend_consensus_a_SOURCES = \
 libbitsend_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_common_a_SOURCES = \
+  activemasternode.cpp \
+  masternode.cpp \
+  masternode-pos.cpp \
+  masternodeconfig.cpp \
+  masternodeman.cpp \
+  spork.cpp \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
