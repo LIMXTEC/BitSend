@@ -21,6 +21,8 @@
 #include <utilstrencodings.h>
 #include <walletinitinterface.h>
 
+#include "masternodeconfig.h"
+
 #include <stdio.h>
 
 /* Introduction text for doxygen: */
@@ -103,6 +105,14 @@ static bool AppInit(int argc, char* argv[])
             SelectParams(gArgs.GetChainName());
         } catch (const std::exception& e) {
             fprintf(stderr, "Error: %s\n", e.what());
+            return false;
+        }
+		
+		/**TODO-- */
+		// parse masternode.conf
+        std::string strErr;
+        if(!masternodeConfig.read(strErr)) {
+            fprintf(stderr,"Error reading masternode configuration file: %s\n", strErr.c_str());
             return false;
         }
 

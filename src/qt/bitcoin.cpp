@@ -21,6 +21,10 @@
 #include <qt/utilitydialog.h>
 #include <qt/winshutdownmonitor.h>
 
+#include "net.h"//
+#include "masternodeconfig.h"
+
+
 #ifdef ENABLE_WALLET
 #include <qt/paymentserver.h>
 #include <qt/walletmodel.h>
@@ -50,6 +54,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QTranslator>
+#include <QProcess>
 
 #if defined(QT_STATICPLUGIN)
 #include <QtPlugin>
@@ -159,6 +164,7 @@ public:
 public Q_SLOTS:
     void initialize();
     void shutdown();
+	void restart(QStringList args);
 
 Q_SIGNALS:
     void initializeResult(bool success);
@@ -168,6 +174,7 @@ Q_SIGNALS:
 private:
     /// Pass fatal exception message to UI thread
     void handleRunawayException(const std::exception *e);
+	bool execute_restart;
 
     interfaces::Node& m_node;
 };
@@ -191,7 +198,7 @@ public:
     /// Create main window
     void createWindow(const NetworkStyle *networkStyle);
     /// Create splash screen
-    void createSplashScreen(const NetworkStyle *networkStyle);
+    void createSplashScreen(/*const NetworkStyle *networkStyle*/);
 
     /// Request core initialization
     void requestInitialize();
@@ -217,6 +224,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void requestedInitialize();
+	void requestedRestart(QStringList args);
     void requestedShutdown();
     void stopThread();
     void splashFinished(QWidget *window);
@@ -254,7 +262,7 @@ void BitsendCore::handleRunawayException(const std::exception *e)
 }
 
 void BitsendCore::initialize()
-{
+{ execute_restart = true;
     try
     {
         qDebug() << __func__ << ": Running initialization in thread";
@@ -264,6 +272,29 @@ void BitsendCore::initialize()
         handleRunawayException(&e);
     } catch (...) {
         handleRunawayException(nullptr);
+    }
+}
+
+void BitcoinCore::restart(QStringList args)
+{
+    if (execute_restart) { // Only restart 1x, no matter how often a user clicks on a restart-button
+        execute_restart = false;
+        try {
+            qDebug() << __func__ << ": Running Restart in thread";
+            Interrupt(threadGroup);
+            threadGroup.join_all();
+            PrepareShutdown();
+            qDebug() << __func__ << ": Shutdown finished";
+            Q_EMIT shutdownResult(1);
+            //CExplicitNetCleanup::callCleanup();
+            QProcess::startDetached(QApplication::applicationFilePath(), args);
+            qDebug() << __func__ << ": Restart initiated...";
+            QApplication::quit();
+        } catch (std::exception& e) {
+            handleRunawayException(&e);
+        } catch (...) {
+            handleRunawayException(NULL);
+        }
     }
 }
 
@@ -355,9 +386,9 @@ void BitsendApplication::createWindow(const NetworkStyle *networkStyle)
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
 }
 
-void BitsendApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void BitsendApplication::createSplashScreen(/*const NetworkStyle *networkStyle*/)
 {
-    SplashScreen *splash = new SplashScreen(m_node, 0, networkStyle);
+    SplashScreen *splash = new SplashScreen(m_node, 0, QPixmap());
     // We don't hold a direct pointer to the splash screen after creation, but the splash
     // screen will take care of deleting itself when slotFinish happens.
     splash->show();
@@ -378,6 +409,7 @@ void BitsendApplication::startThread()
     connect(executor, SIGNAL(shutdownResult()), this, SLOT(shutdownResult()));
     connect(executor, SIGNAL(runawayException(QString)), this, SLOT(handleRunawayException(QString)));
     connect(this, SIGNAL(requestedInitialize()), executor, SLOT(initialize()));
+	connect(window, SIGNAL(requestedRestart(QStringList)), executor, SLOT(restart(QStringList)));
     connect(this, SIGNAL(requestedShutdown()), executor, SLOT(shutdown()));
     /*  make sure executor object is deleted in its own thread */
     connect(this, SIGNAL(stopThread()), executor, SLOT(deleteLater()));
@@ -666,6 +698,15 @@ int main(int argc, char *argv[])
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
 
 #ifdef ENABLE_WALLET
+
+	 /// 7a. parse masternode.conf
+    std::string strErr;
+    if(!masternodeConfig.read(strErr)) {
+        QMessageBox::critical(0, QObject::tr("Bitcoin"),
+                              QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
+        return false;
+    }
+
     /// 8. URI IPC sending
     // - Do this early as we don't want to bother initializing if we are just calling IPC
     // - Do this *after* setting up the data directory, as the data directory hash is used in the name
@@ -698,7 +739,7 @@ int main(int argc, char *argv[])
     std::unique_ptr<interfaces::Handler> handler = node->handleInitMessage(InitMessage);
 
     if (gArgs.GetBoolArg("-splash", DEFAULT_SPLASHSCREEN) && !gArgs.GetBoolArg("-min", false))
-        app.createSplashScreen(networkStyle.data());
+        app.createSplashScreen(/*networkStyle.data()*/);
 
     int rv = EXIT_SUCCESS;
     try

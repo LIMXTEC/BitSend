@@ -32,6 +32,7 @@ class WalletFrame;
 class WalletModel;
 class HelpMessageDialog;
 class ModalOverlay;
+class MasternodeList;
 
 namespace interfaces {
 class Handler;
@@ -104,6 +105,7 @@ private:
     QToolBar* appToolBar = nullptr;
     QAction* overviewAction = nullptr;
     QAction* historyAction = nullptr;
+	QAction *masternodeAction = nullptr;
     QAction* quitAction = nullptr;
     QAction* sendCoinsAction = nullptr;
     QAction* sendCoinsMenuAction = nullptr;
@@ -122,6 +124,11 @@ private:
     QAction* aboutQtAction = nullptr;
     QAction* openRPCConsoleAction = nullptr;
     QAction* openAction = nullptr;
+	QAction* openRepairAction;
+	QAction* showBackupsAction;
+	QAction* showConfAction;
+	QAction* showBitcoinConfAction;
+	QAction *unlockWalletAction;
     QAction* showHelpMessageAction = nullptr;
     QAction* m_wallet_selector_label_action = nullptr;
     QAction* m_wallet_selector_action = nullptr;
@@ -169,6 +176,8 @@ private:
 Q_SIGNALS:
     /** Signal raised when a URI was entered or dragged to the GUI */
     void receivedURI(const QString &uri);
+	//handlerestart
+	void requestedRestart(QStringList args);
 
 public Q_SLOTS:
     /** Set number of connections shown in the UI */
@@ -177,6 +186,9 @@ public Q_SLOTS:
     void setNetworkActive(bool networkActive);
     /** Set number of blocks and last block date shown in the UI */
     void setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool headers);
+	
+	/** Get restart command-line parameters and request restart */
+    void handleRestart(QStringList args);
 
     /** Notify the user of an event from the core network or transaction handling code.
        @param[in] title     the message box / notification title
@@ -228,6 +240,9 @@ private Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
+	
+	//kaali-goto masternode page
+	void gotoMasternodePage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
