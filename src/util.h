@@ -37,7 +37,7 @@
 #include <boost/thread/condition_variable.hpp> // for boost::thread_interrupted
 
 /**TODO-- */
-//Bitcoin only features
+//Bitsend only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;

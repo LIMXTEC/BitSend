@@ -84,11 +84,11 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     QDir translations(":translations");
 	
 	//themes kaali
-	ui->theme->addItem(QString("Blue arrow"), QVariant("bitcoin_main"));
-    ui->theme->addItem(QString("Linux red"), QVariant("bitcoin_theme1"));
-    ui->theme->addItem(QString("Blue City Sky"), QVariant("bitcoin_theme2"));
-	ui->theme->addItem(QString("Lambo Car"), QVariant("bitcoin_theme3"));
-    ui->theme->addItem(QString("Bitcoin Classic"), QVariant("trad"));
+	ui->theme->addItem(QString("Blue arrow"), QVariant("bitsend_main"));
+    ui->theme->addItem(QString("Linux red"), QVariant("bitsend_theme1"));
+    ui->theme->addItem(QString("Blue City Sky"), QVariant("bitsend_theme2"));
+	ui->theme->addItem(QString("Lambo Car"), QVariant("bitsend_theme3"));
+    ui->theme->addItem(QString("Bitsend Classic"), QVariant("trad"));
 
 
     ui->bitsendAtStartup->setToolTip(ui->bitsendAtStartup->toolTip().arg(tr(PACKAGE_NAME)));

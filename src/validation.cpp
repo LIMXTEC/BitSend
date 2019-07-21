@@ -3349,7 +3349,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 	if(block.nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
 
     if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
-        MasternodePayments = true; // Bitcoindev
+        MasternodePayments = true; // Bitsenddev
         if(fDebug) LogPrintf("CheckBlock() : Masternode payment enforcement is off\n");
     }
 
@@ -3361,7 +3361,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
         if(pindex != NULL){
             if(pindex->GetBlockHash() == block.hashPrevBlock){
                 CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0]->GetValueOut());//todo++
-				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitcoindev 02-06-2015//todo++
+				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitsenddev 02-06-2015//todo++
 				if(fDebug) LogPrintf("## Hardblockreward ## CheckBlock() : BTC masternode payments %d\n", hardblockpowreward);
 				bool fIsInitialDownload = IsInitialBlockDownload();
 
@@ -3394,7 +3394,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
 
                     CTxDestination address1;
                     ExtractDestination(payee, address1);
-                    CBitcoinAddress address2(address1);
+                    CBitsendAddress address2(address1);
 
                     if(!foundPaymentAndPayee) {
                         LogPrintf("CheckBlock() : !!Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), chainActive.Tip()->nHeight+1);

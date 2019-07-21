@@ -684,7 +684,7 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
 	if(pblock->payee != CScript()){
         CTxDestination address1;
         ExtractDestination(pblock->payee, address1);
-        CBitcoinAddress address2(address1);
+        CBitsendAddress address2(address1);
         result.push_back(Pair("payee", address2.ToString().c_str()));
         result.push_back(Pair("payee_amount", (int64_t)GetMasternodePayment(pindexPrev->nHeight+1, pblock->vtx[0]->GetValueOut())));
     } else {
@@ -985,7 +985,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 "  rank           - Print rank of a masternode based on current block\n"
                 "  status         - Print masternode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
                 "  vin            - Print vin associated with a masternode (can be additionally filtered, partial match)\n"
-                "  votes          - Print all masternode votes for a Bitcoin initiative (can be additionally filtered, partial match)\n"
+                "  votes          - Print all masternode votes for a Bitsend initiative (can be additionally filtered, partial match)\n"
                 );
     }
 
@@ -1008,7 +1008,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
             } else if (strMode == "donation") {
                 CTxDestination address1;
                 ExtractDestination(mn.donationAddress, address1);
-                CBitcoinAddress address2(address1);
+                CBitsendAddress address2(address1);
 
                 if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
@@ -1026,7 +1026,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 pubkey = GetScriptForDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitcoinAddress address2(address1);
+                CBitsendAddress address2(address1);
 
                 std::ostringstream addrStream;
                 addrStream << setw(21) << strAddr;
@@ -1056,7 +1056,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 pubkey = GetScriptForDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitcoinAddress address2(address1);
+                CBitsendAddress address2(address1);
 
                 if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
@@ -1113,10 +1113,10 @@ UniValue masternode(const JSONRPCRequest& request)
                 "  genkey       - Generate new masternodeprivkey\n"
                 "  enforce      - Enforce masternode payments\n"
                 "  outputs      - Print masternode compatible outputs\n"
-                "  start        - Start masternode configured in bitcoin.conf\n"
+                "  start        - Start masternode configured in bitsend.conf\n"
                 "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
                 "  start-many   - Start all masternodes configured in masternode.conf\n"
-                "  stop         - Stop masternode configured in bitcoin.conf\n"
+                "  stop         - Stop masternode configured in bitsend.conf\n"
                 "  stop-alias   - Stop single masternode by assigned alias configured in masternode.conf\n"
                 "  stop-many    - Stop all masternodes configured in masternode.conf\n"
                 "  list         - see masternodelist, This command has been removed.\n"
@@ -1491,7 +1491,7 @@ UniValue masternode(const JSONRPCRequest& request)
             pubkey = GetScriptForDestination(winner->pubkey.GetID());
             CTxDestination address1;
             ExtractDestination(pubkey, address1);
-            CBitcoinAddress address2(address1);
+            CBitsendAddress address2(address1);
 
             obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
             obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
@@ -1510,7 +1510,7 @@ UniValue masternode(const JSONRPCRequest& request)
         CKey secret;
         secret.MakeNewKey(false);
 
-        return CBitcoinSecret(secret).ToString();
+        return CBitsendSecret(secret).ToString();
     }
 	
 	if (strCommand == "winners")
@@ -1524,7 +1524,7 @@ UniValue masternode(const JSONRPCRequest& request)
             if(masternodePayments.GetBlockPayee(nHeight, payee)){
                 CTxDestination address1;
                 ExtractDestination(payee, address1);
-                CBitcoinAddress address2(address1);
+                CBitsendAddress address2(address1);
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
             } else {
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));

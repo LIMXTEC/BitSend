@@ -195,7 +195,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 
             CTxDestination address1;
             ExtractDestination(pblock->payee, address1);
-            CBitcoinAddress address2(address1);
+            CBitsendAddress address2(address1);
 
             LogPrintf("Masternode payment to %s\n", address2.ToString().c_str());
         }
@@ -208,7 +208,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         coinbaseTx.vout[payments-1].nValue = masternodePayment;
         blockValue -= masternodePayment;
         //   LogPrintf("Zugriff miner.cpp 375 blockValue %u\n", blockValue);
-        //   LogPrintf("Zugriff main.cpp 375 masternodePayment %u\n", masternodePayment); // bitcoindev
+        //   LogPrintf("Zugriff main.cpp 375 masternodePayment %u\n", masternodePayment); // bitsenddev
     }
     coinbaseTx.vout[0].nValue = blockValue; // else if payments either equal to 1, 
 	

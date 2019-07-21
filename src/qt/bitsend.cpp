@@ -275,7 +275,7 @@ void BitsendCore::initialize()
     }
 }
 
-void BitcoinCore::restart(QStringList args)
+void BitsendCore::restart(QStringList args)
 {
     if (execute_restart) { // Only restart 1x, no matter how often a user clicks on a restart-button
         execute_restart = false;
@@ -702,7 +702,7 @@ int main(int argc, char *argv[])
 	 /// 7a. parse masternode.conf
     std::string strErr;
     if(!masternodeConfig.read(strErr)) {
-        QMessageBox::critical(0, QObject::tr("Bitcoin"),
+        QMessageBox::critical(0, QObject::tr("Bitsend"),
                               QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
         return false;
     }

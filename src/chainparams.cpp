@@ -115,10 +115,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-         pchMessageStart[0] = 0xa3;    //bitcoindev 04-2015   mainc.pp 3072    ggf testnet wert = falshc
-        pchMessageStart[1] = 0xd5;    ///bitcoindev 04-2015
-        pchMessageStart[2] = 0xc2;    //bitcoindev 04-2015
-        pchMessageStart[3] = 0xf9;    //bitcoindev 04-2015
+         pchMessageStart[0] = 0xa3;    //bitsenddev 04-2015   mainc.pp 3072    ggf testnet wert = falshc
+        pchMessageStart[1] = 0xd5;    ///bitsenddev 04-2015
+        pchMessageStart[2] = 0xc2;    //bitsenddev 04-2015
+        pchMessageStart[3] = 0xf9;    //bitsenddev 04-2015
         nDefaultPort = 8886;
         nPruneAfterHeight = 100000;
 
@@ -156,7 +156,7 @@ public:
 
         checkpointData = {
             {
-               (  0, uint256S("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")) //bitcoindev 04-2015
+               (  0, uint256S("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")) //bitsenddev 04-2015
 
             }
         };
@@ -302,10 +302,10 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
-        pchMessageStart[0] = 0x4c;   //bitcoindev 04-2015
-        pchMessageStart[1] = 0x1a;   //bitcoindev 04-2015
-        pchMessageStart[2] = 0x2c;   //bitcoindev 04-2015
-        pchMessageStart[3] = 0xaf;   //bitcoindev 04-2015   Testnet
+        pchMessageStart[0] = 0x4c;   //bitsenddev 04-2015
+        pchMessageStart[1] = 0x1a;   //bitsenddev 04-2015
+        pchMessageStart[2] = 0x2c;   //bitsenddev 04-2015
+        pchMessageStart[3] = 0xaf;   //bitsenddev 04-2015   Testnet
         nDefaultPort = 8885;
         nPruneAfterHeight = 1000;
 

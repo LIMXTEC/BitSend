@@ -384,9 +384,9 @@ void showConf()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathBackups)));
 }
 
-void showBitcoinConf()
+void showBitsendConf()
 {
-    boost::filesystem::path pathBackups = GetDataDir() / "bitcoin.conf";
+    boost::filesystem::path pathBackups = GetDataDir() / "bitsend.conf";
 
     /* Open folder with default browser */
     if (boost::filesystem::exists(pathBackups))
@@ -813,8 +813,8 @@ QString loadStyleSheet()
         cssName = QString(":/css/") + theme; 
     }
     else {
-        cssName = QString(":/css/bitcoin_theme2");  
-        settings.setValue("theme", "bitcoin_theme2");
+        cssName = QString(":/css/bitsend_theme2");  
+        settings.setValue("theme", "bitsend_theme2");
     }
     
     QFile qFile(cssName);      

@@ -573,8 +573,8 @@ std::string LicenseInfo()
     const std::string URL_SOURCE_CODE = "<https://github.com/limxtec/bitsend>";
     const std::string URL_WEBSITE = "<https://bitsend.info>";
 
-    //TODO-- add bitcoin license
-    return FormatParagraph(strprintf(_("Copyright (C) 2009 -%i The Bitcoin Core developers"), COPYRIGHT_YEAR)) + "\n" +
+    //TODO-- add bitsend license
+    return FormatParagraph(strprintf(_("Copyright (C) 2009 -%i The Bitsend Core developers"), COPYRIGHT_YEAR)) + "\n" +
 		   FormatParagraph(strprintf(_("Copyright (C) 2014 -%i The Dash Developers"), COPYRIGHT_YEAR)) + "\n" +
            FormatParagraph(strprintf(_("Copyright (C) 2015 -%i The BitSend Core Developers"), COPYRIGHT_YEAR)) + "\n" + "\n" +
            strprintf(_("Please contribute if you find %s useful. "
@@ -1233,7 +1233,7 @@ static bool LockDataDirectory(bool probeOnly)
 	/**TODO-- */
    // Wait maximum 10 seconds if an old wallet is still running. Avoids lockup during restart
 	//if (!lock.timed_lock(boost::get_system_time() + boost::posix_time::seconds(10)))
-		//return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitcoin is probably already running."), strDataDir));
+		//return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitsend is probably already running."), strDataDir));
     return true;
 }
 
@@ -1348,14 +1348,14 @@ bool AppInitMain()
 			//CKey secret;
 			//secret.MakeNewKey(false);
 
-			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
+			//LogPrintf("Masternode: Create new key %s", CBitsendSecret(secret).ToString());
             return InitError(_("Unable to sign masternode payment winner, wrong key?"));
 		}
         if (!sporkManager.SetPrivKey(GetArg("-masternodepaymentskey", ""))){
 			//CKey secret;
 			//secret.MakeNewKey(false);
 
-			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
+			//LogPrintf("Masternode: Create new key %s", CBitsendSecret(secret).ToString());
             return InitError(_("Unable to sign spork message, wrong key?"));
 		}
     }

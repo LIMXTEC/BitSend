@@ -127,7 +127,7 @@ private:
 	QAction* openRepairAction;
 	QAction* showBackupsAction;
 	QAction* showConfAction;
-	QAction* showBitcoinConfAction;
+	QAction* showBitsendConfAction;
 	QAction *unlockWalletAction;
     QAction* showHelpMessageAction = nullptr;
     QAction* m_wallet_selector_label_action = nullptr;

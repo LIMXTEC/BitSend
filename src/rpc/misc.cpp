@@ -68,7 +68,7 @@ static UniValue spork(const JSONRPCRequest& request)
         } else {
             return "failure";
             LogPrintf("Zugriff NSporkID rpcmisc %u\n", nSporkID);
-            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Bitcoindev
+            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Bitsenddev
         }
 
     }

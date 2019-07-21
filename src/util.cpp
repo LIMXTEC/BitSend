@@ -82,8 +82,8 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-/**TODO-- port to bitcoin*/
-//Bitcoin only features
+/**TODO-- port to bitsend*/
+//Bitsend only features
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
 string strMasterNodeAddr = "";

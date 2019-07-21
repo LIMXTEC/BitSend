@@ -370,10 +370,10 @@ BITSEND_QT_CPP += $(BITSEND_QT_WALLET_CPP)
 endif
 
 RES_CSS = \
-  qt/res/css/bitcoin_main.css \
-  qt/res/css/bitcoin_theme1.css \
-  qt/res/css/bitcoin_theme2.css \
-  qt/res/css/bitcoin_theme3.css 
+  qt/res/css/bitsend_main.css \
+  qt/res/css/bitsend_theme1.css \
+  qt/res/css/bitsend_theme2.css \
+  qt/res/css/bitsend_theme3.css 
   
   
 RES_IMAGES = \
@@ -381,17 +381,17 @@ RES_IMAGES = \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
   qt/res/images/paper_wallet.png \
-  qt/res/images/bitcoin_logo_horizontal.png \
+  qt/res/images/bitsend_logo_horizontal.png \
   qt/res/images/drkblue_downArrow.png \
   qt/res/images/drkblue_downArrow_small.png \
   qt/res/images/drkblue_upArrow_small.png \
   qt/res/images/drkblue_leftArrow_small.png \
   qt/res/images/drkblue_rightArrow_small.png \
   qt/res/images/drkblue_qtreeview_selected.png \
-  qt/res/images/bitcoin_main_hg.png \
-  qt/res/images/bitcoin_theme1_hg.png \
-  qt/res/images/bitcoin_theme2_hg.png \
-  qt/res/images/bitcoin_theme3_hg.png
+  qt/res/images/bitsend_main_hg.png \
+  qt/res/images/bitsend_theme1_hg.png \
+  qt/res/images/bitsend_theme2_hg.png \
+  qt/res/images/bitsend_theme3_hg.png
 
 
 

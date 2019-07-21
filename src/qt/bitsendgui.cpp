@@ -196,7 +196,7 @@ BitsendGUI::BitsendGUI(interfaces::Node& node, const PlatformStyle *_platformSty
 	connect(showConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showConf()));
 	
 	//AAAA
-	connect(showBitcoinConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showBitcoinConf()));
+	connect(showBitsendConfAction, SIGNAL(triggered()), rpcConsole, SLOT(showBitsendConf()));
 	
 
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
@@ -343,8 +343,8 @@ void BitsendGUI::createActions()
 	showBackupsAction = new QAction(QIcon(":/icons/filesave"), tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
 	//AAA
-	showBitcoinConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Bitcoin Conf file"), this);
-    showBitcoinConfAction->setStatusTip(tr("Show bitcoin configuration file"));
+	showBitsendConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Bitsend Conf file"), this);
+    showBitsendConfAction->setStatusTip(tr("Show bitsend configuration file"));
 	
 	showConfAction = new QAction(QIcon(":/icons/address-book"), tr("Show Masternode Conf file"), this);
     showConfAction->setStatusTip(tr("Show masternode configuration file"));
@@ -443,7 +443,7 @@ void BitsendGUI::createMenuBar()
 		help->addSeparator();
 		help->addAction(openRepairAction);
 		help->addAction(showBackupsAction);
-		help->addAction(showBitcoinConfAction);
+		help->addAction(showBitsendConfAction);
 		help->addAction(showConfAction);
     }
     help->addAction(showHelpMessageAction);
@@ -679,7 +679,7 @@ void BitsendGUI::createTrayIconMenu()
         trayIconMenu->addSeparator();
         trayIconMenu->addAction(openRPCConsoleAction);
 		trayIconMenu->addAction(showBackupsAction);
-		trayIconMenu->addAction(showBitcoinConfAction);
+		trayIconMenu->addAction(showBitsendConfAction);
 		trayIconMenu->addAction(showConfAction);
     }
     trayIconMenu->addAction(optionsAction);
@@ -764,7 +764,7 @@ void BitsendGUI::gotoHistoryPage()
 }
 
 //kaali
-void BitcoinGUI::gotoMasternodePage()
+void BitsendGUI::gotoMasternodePage()
 {
         masternodeAction->setChecked(true);
         if (walletFrame) walletFrame->gotoMasternodePage();
@@ -824,9 +824,9 @@ void BitsendGUI::updateNetworkState()
 
     if (m_node.getNetworkActive()) {
         if(IsMasternodeActive){
-			tooltip = tr("%n active connection(s) to Bitcoin network", "", count) + QString(".<br>") + tr("Masternode is active ") + QString(".<br>") + tr("Click to disable network activity.");
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Masternode is active ") + QString(".<br>") + tr("Click to disable network activity.");
 		}else {
-			tooltip = tr("%n active connection(s) to Bitcoin network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
 		}
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
@@ -846,7 +846,7 @@ void BitsendGUI::setNumConnections(int count)
 }
 
 /** Get restart command-line parameters and request restart */
-void BitcoinGUI::handleRestart(QStringList args)
+void BitsendGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
