@@ -33,7 +33,7 @@ class CNetAddr
 {
     protected:
         unsigned char ip[16]; // in network byte order
-        uint32_t scopeId; // for scoped/link-local ipv6 addresses
+        uint32_t scopeId{0}; // for scoped/link-local ipv6 addresses
 
     public:
         CNetAddr();
@@ -149,6 +149,13 @@ class CService : public CNetAddr
         CService(const CNetAddr& ip, unsigned short port);
         CService(const struct in_addr& ipv4Addr, unsigned short port);
         explicit CService(const struct sockaddr_in& addr);
+		
+		//TODO--
+		explicit CService(const char *pszIpPort, int portDefault);
+        explicit CService(const char *pszIpPort);
+        explicit CService(const std::string& strIpPort, int portDefault);
+        explicit CService(const std::string& strIpPort);//ends
+		
         unsigned short GetPort() const;
         bool GetSockAddr(struct sockaddr* paddr, socklen_t *addrlen) const;
         bool SetSockAddr(const struct sockaddr* paddr);

@@ -5,6 +5,7 @@
 
 #include <util.h>
 
+#include "support/allocators/secure.h"
 #include <chainparamsbase.h>
 #include <random.h>
 #include <serialize.h>
@@ -80,6 +81,30 @@
 
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
+
+/**TODO-- port to bitcoin*/
+//Bitcoin only features
+bool fMasterNode = false;
+string strMasterNodePrivKey = "";
+string strMasterNodeAddr = "";
+bool fProUserModeDarksendInstantX = false;
+bool fProUserModeDarksendInstantX2 = false;
+bool fLiteMode = false;
+bool fEnableInstantX = true;
+int nInstantXDepth = 5;
+int nDarksendRounds = 2;
+int nAnonymizeDashAmount = 1000;
+int nLiquidityProvider = 0;
+/** Spork enforcement enabled time */
+int64_t enforceMasternodePaymentsTime = 4085657524;
+bool fSucessfullyLoaded = false;
+bool fEnableDarksend = false;
+bool fDarksendMultiSession = false;
+/** All denominations used by darksend */
+std::vector<CAmount> darkSendDenominations;
+string strBudgetMode = "";
+//TODO-- ends
+
 
 const char * const BITSEND_CONF_FILENAME = "bitsend.conf";
 const char * const BITSEND_PID_FILENAME = "bitsendd.pid";
@@ -808,6 +833,15 @@ void ClearDatadirCache()
 fs::path GetConfigFile(const std::string& confPath)
 {
     return AbsPathForConfigVal(fs::path(confPath), false);
+}
+
+/**TODO-- improve code*/
+boost::filesystem::path GetMasternodeConfigFile(/*const std::string& confPath*/)
+{
+    boost::filesystem::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
+    if (!pathConfigFile.is_complete())
+		pathConfigFile = GetDataDir() / pathConfigFile;
+    return pathConfigFile;
 }
 
 static std::string TrimString(const std::string& str, const std::string& pattern)

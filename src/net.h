@@ -49,8 +49,8 @@ static const unsigned int MAX_INV_SZ = 50000;
 static const unsigned int MAX_LOCATOR_SZ = 101;
 /** The maximum number of new addresses to accumulate before announcing. */
 static const unsigned int MAX_ADDR_TO_SEND = 1000;
-/** Maximum length of incoming protocol messages (no message over 4 MB is currently acceptable). */
-static const unsigned int MAX_PROTOCOL_MESSAGE_LENGTH = 4 * 1000 * 1000;
+/** Maximum length of incoming protocol messages (no message over 80 MB is currently acceptable). */
+static const unsigned int MAX_PROTOCOL_MESSAGE_LENGTH = 80 * 1000 * 1000;
 /** Maximum length of strSubVer in `version` message */
 static const unsigned int MAX_SUBVERSION_LENGTH = 256;
 /** Maximum number of automatic outgoing nodes */
@@ -383,6 +383,9 @@ private:
     uint64_t nMaxOutboundCycleStartTime GUARDED_BY(cs_totalBytesSent);
     uint64_t nMaxOutboundLimit GUARDED_BY(cs_totalBytesSent);
     uint64_t nMaxOutboundTimeframe GUARDED_BY(cs_totalBytesSent);
+	
+	std::vector<std::string> vecRequestsFulfilled; //keep track of what client has asked for
+    
 
     // Whitelisted ranges. Any node connecting from these is automatically
     // whitelisted (as well as those connecting to whitelisted binds).
@@ -681,6 +684,8 @@ protected:
 
     mapMsgCmdSize mapSendBytesPerMsgCmd;
     mapMsgCmdSize mapRecvBytesPerMsgCmd;
+	
+	std::vector<std::string> vecRequestsFulfilled;
 
 public:
     uint256 hashContinue;
@@ -863,6 +868,35 @@ public:
     {
         return nLocalServices;
     }
+	
+	//TODO--
+	bool HasFulfilledRequest(std::string strRequest)
+    {
+        BOOST_FOREACH(std::string& type, vecRequestsFulfilled)
+        {
+            if(type == strRequest) return true;
+        }
+        return false;
+    }
+
+    void ClearFulfilledRequest(std::string strRequest)
+    {
+        std::vector<std::string>::iterator it = vecRequestsFulfilled.begin();
+        while(it != vecRequestsFulfilled.end()){
+            if((*it) == strRequest) {
+                vecRequestsFulfilled.erase(it);
+                return;
+            }
+            ++it;
+        }
+    }
+
+    void FulfilledRequest(std::string strRequest)
+    {
+        if(HasFulfilledRequest(strRequest)) return;
+        vecRequestsFulfilled.push_back(strRequest);
+    }
+    //TODO-- ends
 
     std::string GetAddrName() const;
     //! Sets the addrName only if it was not previously set

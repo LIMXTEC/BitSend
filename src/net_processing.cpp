@@ -29,11 +29,22 @@
 #include <utilmoneystr.h>
 #include <utilstrencodings.h>
 
+#include "signhelper_mn.h"
+#include "masternodeman.h"//
+#include "masternode.h" //
+#include "masternode-pos.h" //
+#include "spork.h"//
+#include "activemasternode.h"//
+#include "spork.h"
+
 #include <memory>
 
 #if defined(NDEBUG)
 # error "Bitsend cannot be compiled without assertions."
 #endif
+
+
+CMNSignHelper darkSendSigner;//--test
 
 /** Expiration time for orphan transactions in seconds */
 static constexpr int64_t ORPHAN_TX_EXPIRE_TIME = 20 * 60;
@@ -1055,6 +1066,15 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
     case MSG_BLOCK:
     case MSG_WITNESS_BLOCK:
         return LookupBlockIndex(inv.hash) != nullptr;
+		
+	/**TODO-- */
+	
+	case MSG_SPORK:
+		return mapSporks.count(inv.hash);
+	case MSG_MASTERNODE_WINNER:
+		return mapSeenMasternodeVotes.count(inv.hash);
+	case MSG_MASTERNODE_SCANNING_ERROR:
+		return mapMasternodeScanningErrors.count(inv.hash);
     }
     // Don't know what it is, just say we already got one
     return true;
@@ -1270,7 +1290,7 @@ void static ProcessGetData(CNode* pfrom, const CChainParams& chainparams, CConnm
     {
         LOCK(cs_main);
 
-        while (it != pfrom->vRecvGetData.end() && (it->type == MSG_TX || it->type == MSG_WITNESS_TX)) {
+        while (it != pfrom->vRecvGetData.end() && (it->type == MSG_TX || it->type == MSG_WITNESS_TX || it->type == MSG_MASTERNODE_SCANNING_ERROR || it->type == MSG_MASTERNODE_WINNER || it->type == MSG_SPORK)) {
             if (interruptMsgProc)
                 return;
             // Don't bother if send buffer is too full to respond anyway
@@ -1287,15 +1307,38 @@ void static ProcessGetData(CNode* pfrom, const CChainParams& chainparams, CConnm
             if (mi != mapRelay.end()) {
                 connman->PushMessage(pfrom, msgMaker.Make(nSendFlags, NetMsgType::TX, *mi->second));
                 push = true;
-            } else if (pfrom->timeLastMempoolReq) {
-                auto txinfo = mempool.info(inv.hash);
-                // To protect privacy, do not answer getdata using the mempool when
-                // that TX couldn't have been INVed in reply to a MEMPOOL request.
-                if (txinfo.tx && txinfo.nTime <= pfrom->timeLastMempoolReq) {
-                    connman->PushMessage(pfrom, msgMaker.Make(nSendFlags, NetMsgType::TX, *txinfo.tx));
-                    push = true;
-                }
             }
+			if(!push && it->type == MSG_TX){				
+				if (pfrom->timeLastMempoolReq) {
+					auto txinfo = mempool.info(inv.hash);
+					// To protect privacy, do not answer getdata using the mempool when
+					// that TX couldn't have been INVed in reply to a MEMPOOL request.
+					if (txinfo.tx && txinfo.nTime <= pfrom->timeLastMempoolReq) {
+						connman->PushMessage(pfrom, msgMaker.Make(nSendFlags, NetMsgType::TX, *txinfo.tx));
+						push = true;
+					}
+				}
+			}
+			
+			if (!push && it->type == MSG_SPORK) {
+				if(mapSporks.count(inv.hash)){
+					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", mapSporks[inv.hash]));
+					push = true;
+				}
+			}
+			if (!push && it->type == MSG_MASTERNODE_WINNER) {
+				if(mapSeenMasternodeVotes.count(inv.hash)){
+					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
+					push = true;
+				}
+			}
+			if (!push && it->type == MSG_MASTERNODE_SCANNING_ERROR) {
+				if(mapMasternodeScanningErrors.count(inv.hash)){
+					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnse", mapMasternodeScanningErrors[inv.hash]));
+					push = true;
+				}
+			}				 
+
             if (!push) {
                 vNotFound.push_back(inv);
             }
@@ -2938,8 +2981,10 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
     }
 
     else {
-        // Ignore unknown commands for extensibility
-        LogPrint(BCLog::NET, "Unknown command \"%s\" from peer=%d\n", SanitizeString(strCommand), pfrom->GetId());
+        mnodeman.ProcessMessage(pfrom, strCommand, vRecv, connman);
+		ProcessMessageMasternodePayments(pfrom, strCommand, vRecv, connman);
+		ProcessSpork(pfrom, strCommand, vRecv, connman);
+		ProcessMessageMasternodePOS(pfrom, strCommand, vRecv, connman);
     }
 
 

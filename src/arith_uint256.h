@@ -29,6 +29,11 @@ protected:
     uint32_t pn[WIDTH];
 public:
 
+	uint64_t Get64(int n=0) const
+    {
+        return pn[2*n] | (uint64_t)pn[2*n+1] << 32;
+    }
+
     base_uint()
     {
         static_assert(BITS/32 > 0 && BITS%32 == 0, "Template parameter BITS must be a positive multiple of 32.");

@@ -19,6 +19,9 @@
 #include <timedata.h>
 #include <util.h>
 #include <utilstrencodings.h>
+
+#include "spork.h"//
+
 #ifdef ENABLE_WALLET
 #include <wallet/rpcwallet.h>
 #include <wallet/wallet.h>
@@ -32,6 +35,52 @@
 #endif
 
 #include <univalue.h>
+
+
+/*
+    Used for updating/reading spork settings on the network
+*/
+static UniValue spork(const JSONRPCRequest& request)
+{
+    if(request.params.size() == 1 && request.params[0].get_str() == "show"){
+        std::map<int, CSporkMessage>::iterator it = mapSporksActive.begin();
+
+        //Object ret;
+		UniValue ret(UniValue::VOBJ);
+        while(it != mapSporksActive.end()) {
+            ret.push_back(Pair(sporkManager.GetSporkNameByID(it->second.nSporkID), it->second.nValue));
+            it++;
+        }
+        return ret;
+    } else if (request.params.size() == 2){
+        int nSporkID = sporkManager.GetSporkIDByName(request.params[0].get_str());
+        if(nSporkID == -1){
+            return "Invalid spork name";
+        }
+
+        // SPORK VALUE
+        int64_t nValue = stoi(request.params[1].get_str());
+		//TODO: Add core method.
+
+        //broadcast new spork
+        if(sporkManager.UpdateSpork(nSporkID, nValue)){
+            return "success";
+        } else {
+            return "failure";
+            LogPrintf("Zugriff NSporkID rpcmisc %u\n", nSporkID);
+            LogPrintf("Zugriff nValue rpcmisc %u\n", nValue);// Bitcoindev
+        }
+
+    }
+
+    throw runtime_error(
+        "spork <name> [<value>]\n"
+        "<name> is the corresponding spork name, or 'show' to show all current spork settings"
+        "<value> is a epoch datetime to enable or disable spork"
+        + HelpRequiringPassphrase());
+}
+//TODO-- ends
+
 
 static UniValue validateaddress(const JSONRPCRequest& request)
 {
@@ -474,9 +523,12 @@ static const CRPCCommand commands[] =
     { "control",            "getmemoryinfo",          &getmemoryinfo,          {"mode"} },
     { "control",            "logging",                &logging,                {"include", "exclude"}},
     { "util",               "validateaddress",        &validateaddress,        {"address"} }, /* uses wallet if enabled */
-    { "util",               "createmultisig",         &createmultisig,         {"nrequired","keys"} },
+    { "util",               "createmultisig",         &createmultisig,         {"nrequired","keys","address_type"} },
     { "util",               "verifymessage",          &verifymessage,          {"address","signature","message"} },
     { "util",               "signmessagewithprivkey", &signmessagewithprivkey, {"privkey","message"} },
+	
+		
+	{ "spork",              "spork",                  &spork,                  {"show"} },
 
     /* Not shown in help */
     { "hidden",             "setmocktime",            &setmocktime,            {"timestamp"}},
