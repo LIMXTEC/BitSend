@@ -1,12 +1,12 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_WALLETVIEW_H
 #define BITSEND_QT_WALLETVIEW_H
 
-#include "amount.h"
-#include "masternodelist.h"
+#include <amount.h>
+
 #include <QStackedWidget>
 
 class BitsendGUI;
@@ -44,6 +44,7 @@ public:
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
+    WalletModel *getWalletModel() { return walletModel; }
     /** Set the wallet model.
         The wallet model represents a bitsend wallet, and offers access to the list of transactions, address book and sending
         functionality.
@@ -57,7 +58,6 @@ public:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
-    void *unlockContext;
 
     OverviewPage *overviewPage;
     QWidget *transactionsPage;
@@ -65,13 +65,11 @@ private:
     SendCoinsDialog *sendCoinsPage;
     AddressBookPage *usedSendingAddressesPage;
     AddressBookPage *usedReceivingAddressesPage;
-	MasternodeList* masternodeListPage;
-	
+
     TransactionView *transactionView;
-	
+
     QProgressDialog *progressDialog;
     const PlatformStyle *platformStyle;
-
 
 public Q_SLOTS:
     /** Switch to overview (home) page */
@@ -79,10 +77,7 @@ public Q_SLOTS:
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to receive coins page */
-	/** Switch to masternode page */
-    void gotoMasternodePage();
     void gotoReceiveCoinsPage();
-	//void gotoBip38Tool()
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
 
@@ -104,8 +99,6 @@ public Q_SLOTS:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
-    /** Ask for passphrase to unlock wallet and return context*/
-    void requestUnlockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();
@@ -127,11 +120,11 @@ Q_SIGNALS:
     /**  Fired when a message should be reported to the user */
     void message(const QString &title, const QString &message, unsigned int style);
     /** Encryption status of wallet changed */
-    void encryptionStatusChanged(int status);
+    void encryptionStatusChanged();
     /** HD-Enabled status of wallet changed (only possible during startup) */
-    void hdEnabledStatusChanged(int hdEnabled);
+    void hdEnabledStatusChanged();
     /** Notify that a new transaction appeared */
-    void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label);
+    void incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label, const QString& walletName);
     /** Notify that the out of sync warning icon has been pressed */
     void outOfSyncWarningClicked();
 };

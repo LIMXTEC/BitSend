@@ -1,55 +1,17 @@
-0.11.2 Release notes
-====================
-
-
 Bitsend Core version 0.11.2 is now available from:
 
-  https://bitsend.eu
+  <https://bitsend.org/bin/bitsend-core-0.11.2/>
+
+This is a new minor version release, bringing bug fixes, the BIP65
+(CLTV) consensus change, and relay policy preparation for BIP113. It is
+recommended to upgrade to this version as soon as possible.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/BSD-SUPPORT/Bitsend
+  <https://github.com/bitsend/bitsend/issues>
 
-
-Mining and relay policy enhancements
-------------------------------------
-
-Bitsend Core's block templates are now for version 3 blocks only, and any
-mining software relying on its `getblocktemplate` must be updated in parallel
-to use libblkmaker either version 0.4.2 or any version from 0.5.1 onward. If you
-are solo mining, this will affect you the moment you upgrade Bitsend Core,
-which must be done prior to BIP66 achieving its 951/1001 status. If you are
-mining with the stratum mining protocol: this does not affect you. If you are
-mining with the getblocktemplate protocol to a pool: this will affect you at the
-pool operator's discretion, which must be no later than BIP66 achieving its
-951/1001 status.
-
-
-BIP 66: strict DER encoding for signatures
-------------------------------------------
-
-Bitsend Core 0.11.2 implements BIP 66, which introduces block version 3, and a
-new consensus rule, which prohibits non-DER signatures. Such transactions have
-been non-standard since Bitsend 0.8, but were technically still permitted
-inside blocks.
-
-This change breaks the dependency on OpenSSL's signature parsing, and is
-required if implementations would want to remove all of OpenSSL from the
-consensus code.
-
-The same miner-voting mechanism as in BIP 34 is used: when 751 out of a
-sequence of 1001 blocks have version number 3 or higher, the new consensus
-rule becomes active for those blocks. When 951 out of a sequence of 1001
-blocks have version number 3 or higher, it becomes mandatory for all blocks.
-
-Backward compatibility with current mining software is NOT provided, thus
-miners should read the first paragraph of "Mining and relay policy
-enhancements" above.
-
-Also compare with [upstream release notes](https://github.com/bitsend/bitsend/blob/0.10/doc/release-notes.md#mining-and-relay-policy-enhancements).
-
-More info on [BIP 66](https://github.com/bitsend/bips/blob/master/bip-0066.mediawiki).
-
+Upgrading and downgrading
+=========================
 
 How to Upgrade
 --------------
@@ -59,298 +21,197 @@ shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
 bitsendd/bitsend-qt (on Linux).
 
+Downgrade warning
+------------------
 
-0.11.2 changelog
-----------------
-- Bitsend Core 0.11.2.17 is forked off the Dash Core 0.11.2.17. Please feel free and compare against forks https://github.com/dashpay
-- The old bitsend version 0.9.1.4 was forked from the Darkcoin 0.9.1.0 tree, done by iparn https://github.com/IParn/Bitsend
-- The first limecoin currency is full implemented in the BSD chain, done by iparn https://github.com/IParn/limecoin
-- The following changes are introduced in this major release. 
+Because release 0.10.0 and later makes use of headers-first synchronization and
+parallel block download (see further), the block files and databases are not
+backwards-compatible with pre-0.10 versions of Bitsend Core or other software:
 
-Bitsend Core:
+* Blocks will be stored on disk out of order (in the order they are
+received, really), which makes it incompatible with some tools or
+other programs. Reindexing using earlier versions will also not work
+anymore as a result of this.
 
-- Rebrand to Bitsend Core
-- Version bumped to 0.11.2.17 to indicate a new major release
-- Renamed client to identify with network from Satoshi to Core
-- Bumped protocol version to 70075
-- Masternode with 5000 BSD
-- NEW Reward = 40 BSD per Miner/Pool & 10 BSD per Masternode
-- NEW RPC PORT 8800 and NEW P2P Port Default 8886
-- Changed testnet address versions 
-- Defined BIP32 (HD) address versions
-- Adapted BIP44 coin type 5 for Bitsend (0x80000005) as defined in SLIP-0044
-- Added new units: limes (1 / 100.000.000 BSD)
-- Added units for testnet: tBSD, mtBSD, uBSD, tlimes
-- Fixed wallet locking after sending coins
-- Add -regtest mode, similar to testnet but private with instant block generation with setgenerate RPC.
-- Add separate bitsend-cli client
-- - Implemented KeyPass integration for CLI, RPC and Qt: keepass, keepassport, keepasskey, keepassid, keepassname
-- Masternodes:
+* The block index database will now hold headers for which no block is
+stored on disk, which earlier versions won't support.
 
-Masternodes:
+If you want to be able to downgrade smoothly, make a backup of your entire data
+directory. Without this your node will need start syncing (or importing from
+bootstrap.dat) anew afterwards. It is possible that the data from a completely
+synchronised 0.10 node may be usable in older versions as-is, but this is not
+supported and may break as soon as the older version attempts to reindex.
 
-- Improve support for start-many with multi masternode config
-- New masternode rpc commands: stop-many, start-alias, stop-alias, list-conf
-- Fixed possible masternode payments exploit
-- Better support for non-specific masternode payments
-- Added masternode support for regtest
-- Randomly sort masternodes before picking next winner
-- Show number of masternodes in debug window
+This does not affect wallet forward or backward compatibility. There are no
+known problems when downgrading from 0.11.x to 0.10.x.
 
+Notable changes since 0.11.1
+============================
 
-Darksend:
+BIP65 soft fork to enforce OP_CHECKLOCKTIMEVERIFY opcode
+--------------------------------------------------------
 
-- Reduced lower darksend limit to 1.5 BSD
-- Fixed progress bar calculation for low amounts
-- Improved support for adding BSD after anon has completed
-- Added denomination information to Overview tab
-- Added more detailed Darksend status information to Overview tab
-- Added Darksend high precision matching engine
-- Added Darksend balance to `getinfo`
-- Changed maximum rounds of mixing to 16
+This release includes several changes related to the [BIP65][] soft fork
+which redefines the existing OP_NOP2 opcode as OP_CHECKLOCKTIMEVERIFY
+(CLTV) so that a transaction output can be made unspendable until a
+specified point in the future.
 
+1. This release will only relay and mine transactions spending a CLTV
+   output if they comply with the BIP65 rules as provided in code.
 
-RPC:
+2. This release will produce version 4 blocks by default. Please see the
+   *notice to miners* below.
 
-- Add `getwalletinfo`, `getblockchaininfo` and `getnetworkinfo` calls
-  (will replace hodge-podge `getinfo` at some point)
-- Add a `relayfee` field to `getnetworkinfo`
-- Always show syncnode in `getpeerinfo`
-- `sendrawtransaction`: report the reject code and reason, and make it possible
-  to re-send transactions that are already in the mempool
-- `getmininginfo` show right genproclimit
-- New notion of 'conflicted' transactions, reported as confirmations: -1
-- 'listreceivedbyaddress' now provides tx ids
-- Add raw transaction hex to 'gettransaction' output
-- Updated help and tests for 'getreceivedby(account|address)'
-- In 'getblock', accept 2nd 'verbose' parameter, similar to getrawtransaction,
-  but defaulting to 1 for backward compatibility
-- Add 'verifychain', to verify chain database at runtime
-- Add 'dumpwallet' and 'importwallet' RPCs
-- 'keypoolrefill' gains optional size parameter
-- Add 'getbestblockhash', to return tip of best chain
-- Add 'chainwork' (the total work done by all blocks since the genesis block)
-  to 'getblock' output
-- Make RPC password resistant to timing attacks
-- Clarify help messages and add examples
-- Add 'getrawchangeaddress' call for raw transaction change destinations
-- Reject insanely high fees by default in 'sendrawtransaction'
-- Add RPC call 'decodescript' to decode a hex-encoded transaction script
-- Make 'validateaddress' provide redeemScript
-- Add 'getnetworkhashps' to get the calculated network hashrate
-- New RPC 'ping' command to request ping, new 'pingtime' and 'pingwait' fields
-  in 'getpeerinfo' output
-- Adding new 'addrlocal' field to 'getpeerinfo' output
-- Add verbose boolean to 'getrawmempool'
-- Add rpc command 'getunconfirmedbalance' to obtain total unconfirmed balance
-- Explicitly ensure that wallet is unlocked in `importprivkey`
-- Add check for valid keys in `importprivkey`
-- Disable SSLv3 (in favor of TLS) for the RPC client and server.
+3. Once 951 out of a sequence of 1,001 blocks on the local node's best block
+   chain contain version 4 (or higher) blocks, this release will no
+   longer accept new version 3 blocks and it will only accept version 4
+   blocks if they comply with the BIP65 rules for CLTV.
 
+For more information about the soft-forking change, please see
+<https://github.com/bitsend/bitsend/pull/6351>
 
-Command-line options:
+Graphs showing the progress towards block version 4 adoption may be
+found at the URLs below:
 
-- Fix `-printblocktree` output
-- Show error message if ReadConfigFile fails
-- New option: -nospendzeroconfchange to never spend unconfirmed change outputs
-- New option: -zapwallettxes to rebuild the wallet's transaction information
-- Rename option '-tor' to '-onion' to better reflect what it does
-- Add '-disablewallet' mode to let bitsendd run entirely without wallet (when
-  built with wallet)
-- Update default '-rpcsslciphers' to include TLSv1.2
-- make '-logtimestamps' default on and rework help-message
-- RPC client option: '-rpcwait', to wait for server start
-- Remove '-logtodebugger'
-- Allow `-noserver` with bitsendd
-- Make -proxy set all network types, avoiding a connect leak.
+- Block versions over the last 50,000 blocks as progress towards BIP65
+  consensus enforcement: <http://bitsend.sipa.be/ver-50k.png>
 
+- Block versions over the last 2,000 blocks showing the days to the
+  earliest possible BIP65 consensus-enforced block: <http://bitsend.sipa.be/ver-2k.png>
 
-Block-chain handling and storage:
+**Notice to miners:** Bitsend Core’s block templates are now for
+version 4 blocks only, and any mining software relying on its
+getblocktemplate must be updated in parallel to use libblkmaker either
+version 0.4.3 or any version from 0.5.2 onward.
 
-- Upgrade leveldb to 1.17
-- Check for correct genesis (prevent cases where a datadir from the wrong
-  network is accidentally loaded)
-- Allow txindex to be removed and add a reindex dialog
-- Log aborted block database rebuilds
-- Store orphan blocks in serialized form, to save memory
-- Limit the number of orphan blocks in memory to 750
-- Fix non-standard disconnected transactions causing mempool orphans
+- If you are solo mining, this will affect you the moment you upgrade
+  Bitsend Core, which must be done prior to BIP65 achieving its 951/1001
+  status.
 
+- If you are mining with the stratum mining protocol: this does not
+  affect you.
 
-Protocol and network code:
+- If you are mining with the getblocktemplate protocol to a pool: this
+  will affect you at the pool operator’s discretion, which must be no
+  later than BIP65 achieving its 951/1001 status.
 
-- Don't poll showmyip.com, it doesn't exist anymore
-- Add a way to limit deserialized string lengths and use it
-- Increase IsStandard() scriptSig length
-- Avoid querying DNS seeds, if we have open connections
-- Remove a useless millisleep in socket handler
-- Stricter memory limits on CNode
-- Better orphan transaction handling
-- Add `-maxorphantx=<n>` and `-maxorphanblocks=<n>` options for control over the
-  maximum orphan transactions and blocks
-- Per-peer block download tracking and stalled download detection
-- Prevent socket leak in ThreadSocketHandler and correct some proxy related
-  socket leaks
-- Use pnode->nLastRecv as sync score (was the wrong way around)
-- Drop the fee required to relay a transaction to 0.01mDRK per kilobyte
-- Send tx relay flag with version
-- New 'reject' P2P message (BIP 0061, see
-  https://gist.github.com/gavinandresen/7079034 for draft)
-- Dump addresses every 15 minutes instead of 10 seconds
-- Relay OP_RETURN data TxOut as standard transaction type
-- Remove CENT-output free transaction rule when relaying
-- Lower maximum size for free transaction creation
-- Send multiple inv messages if mempool.size > MAX_INV_SZ
-- Split MIN_PROTO_VERSION into INIT_PROTO_VERSION and MIN_PEER_PROTO_VERSION
-- Do not treat fFromMe transaction differently when broadcasting
-- Process received messages one at a time without sleeping between messages
-- Improve logging of failed connections
-- Add some additional logging to give extra network insight
-- Limit the number of new addressses to accumulate
+[BIP65]: https://github.com/bitsend/bips/blob/master/bip-0065.mediawiki
 
+BIP113 mempool-only locktime enforcement using GetMedianTimePast()
+----------------------------------------------------------------
 
-Wallet:
+Bitsend transactions currently may specify a locktime indicating when
+they may be added to a valid block.  Current consensus rules require
+that blocks have a block header time greater than the locktime specified
+in any transaction in that block.
 
-- Check redeemScript size does not exceed 520 byte limit
-- Ignore (and warn about) too-long redeemScripts while loading wallet
-- Make GetAvailableCredit run GetHash() only once per transaction (performance
-  improvement)
-- Lower paytxfee warning threshold
-- Fix importwallet nTimeFirstKey (trigger necessary rescans)
-- Log BerkeleyDB version at startup
-- CWallet init fix
-- Bug fixes and new regression tests to correctly compute
-  the balance of wallets containing double-spent (or mutated) transactions
-- Store key creation time. Calculate whole-wallet birthday.
-- Optimize rescan to skip blocks prior to birthday
-- Let user select wallet file with -wallet=foo.dat
-- Don't count txins for priority to encourage sweeping
-- Don't create empty transactions when reading a corrupted wallet
-- Fix rescan to start from beginning after importprivkey
+Miners get to choose what time they use for their header time, with the
+consensus rule being that no node will accept a block whose time is more
+than two hours in the future.  This creates a incentive for miners to
+set their header times to future values in order to include locktimed
+transactions which weren't supposed to be included for up to two more
+hours.
 
+The consensus rules also specify that valid blocks may have a header
+time greater than that of the median of the 11 previous blocks.  This
+GetMedianTimePast() time has a key feature we generally associate with
+time: it can't go backwards.
 
-Mining:
+[BIP113][] specifies a soft fork (**not enforced in this release**) that
+weakens this perverse incentive for individual miners to use a future
+time by requiring that valid blocks have a computed GetMedianTimePast()
+greater than the locktime specified in any transaction in that block.
 
-- Increase default -blockmaxsize/prioritysize to 750K/50K
-- 'getblocktemplate' does not require a key to create a block template
-- Mining code fee policy now matches relay fee policy
+Mempool inclusion rules currently require transactions to be valid for
+immediate inclusion in a block in order to be accepted into the mempool.
+This release begins applying the BIP113 rule to received transactions,
+so transaction whose time is greater than the GetMedianTimePast() will
+no longer be accepted into the mempool.
 
+**Implication for miners:** you will begin rejecting transactions that
+would not be valid under BIP113, which will prevent you from producing
+invalid blocks if/when BIP113 is enforced on the network. Any
+transactions which are valid under the current rules but not yet valid
+under the BIP113 rules will either be mined by other miners or delayed
+until they are valid under BIP113. Note, however, that time-based
+locktime transactions are more or less unseen on the network currently.
 
-GUI:
+**Implication for users:** GetMedianTimePast() always trails behind the
+current time, so a transaction locktime set to the present time will be
+rejected by nodes running this release until the median time moves
+forward. To compensate, subtract one hour (3,600 seconds) from your
+locktimes to allow those transactions to be included in mempools at
+approximately the expected time.
 
-- fix 'opens in testnet mode when presented with a BIP-72 link with no fallback'
-- AvailableCoins: acquire cs_main mutex
-- Fix unicode character display on MacOSX
-- Fix various coin control visual issues
-- Show number of in/out connections in debug console
-- Show weeks as well as years behind for long timespans behind
-- Enable and disable the Show and Remove buttons for requested payments history
-  based on whether any entry is selected.
-- Show also value for options overridden on command line in options dialog
-- Fill in label from address book also for URIs
-- Fixes feel when resizing the last column on tables
-- Fix ESC in disablewallet mode
-- Add expert section to wallet tab in optionsdialog
-- Do proper boost::path conversion (fixes unicode in datadir)
-- Only override -datadir if different from the default (fixes -datadir in config
-  file)
-- Show rescan progress at start-up
-- Show importwallet progress
-- Get required locks upfront in polling functions (avoids hanging on locks)
-- Catch Windows shutdown events while client is running
-- Optionally add third party links to transaction context menu
-- Check for !pixmap() before trying to export QR code (avoids crashes when no QR
-  code could be generated)
-- Fix "Start bitsend on system login"
-- Switch to Qt 5.2.0 for Windows build
-- Add payment request (BIP 0070) support
-- Improve options dialog
-- Show transaction fee in new send confirmation dialog
-- Add total balance in overview page
-- Allow user to choose data directory on first start, when data directory is
-  missing, or when the -choosedatadir option is passed
-- Save and restore window positions
-- Add vout index to transaction id in transactions details dialog
-- Add network traffic graph in debug window
-- Add open URI dialog
-- Improve receive coins workflow: make the 'Receive' tab into a form to request
-  payments, and move historical address list functionality to File menu.
-- Move initialization/shutdown to a thread. This prevents "Not responding"
-  messages during startup. Also show a window during shutdown.
-- Don't regenerate autostart link on every client startup
-- Show and store message of normal bitsend:URI
-- Fix richtext detection hang issue on very old Qt versions
-- OS X: Make use of the 10.8+ user notification center to display Growl-like
-  notifications
-- OS X: Added NSHighResolutionCapable flag to Info.plist for better font
-  rendering on Retina displays.
-- OS X: Fix bitsend-qt startup crash when clicking dock icon
-- Linux: Fix Gnome bitsend: URI handler
+[BIP113]: https://github.com/bitsend/bips/blob/master/bip-0113.mediawiki
 
+Windows bug fix for corrupted UTXO database on unclean shutdowns
+----------------------------------------------------------------
 
-Validation:
+Several Windows users reported that they often need to reindex the
+entire blockchain after an unclean shutdown of Bitsend Core on Windows
+(or an unclean shutdown of Windows itself). Although unclean shutdowns
+remain unsafe, this release no longer relies on memory-mapped files for
+the UTXO database, which significantly reduced the frequency of unclean
+shutdowns leading to required reindexes during testing.
 
-- Log reason for non-standard transaction rejection
-- Prune provably-unspendable outputs, and adapt consistency check for it.
-- Detect any sufficiently long fork and add a warning
-- Call the -alertnotify script when we see a long or invalid fork
-- Fix multi-block reorg transaction resurrection
-- Reject non-canonically-encoded serialization sizes
-- Reject dust amounts during validation
-- Accept nLockTime transactions that finalize in the next block
-- consensus: guard against openssl's new strict DER checks
-- fail immediately on an empty signature
-- Improve robustness of DER recoding code
+For more information, see: <https://github.com/bitsend/bitsend/pull/6917>
 
+Other fixes for database corruption on Windows are expected in the
+next major release.
 
-Build system:
+0.11.2 Change log
+=================
 
-- Add OSX build descriptors to gitian
-- Fix explicit --disable-qt-dbus
-- Don't require db_cxx.h when compiling with wallet disabled and GUI enabled
-- Improve missing boost error reporting
-- gitian-linux: --enable-glibc-back-compat for binary compatibility with old
-  distributions
-- gitian: don't export any symbols from executable
-- gitian: build against Qt 4.6
-- devtools: add script to check symbols from Linux gitian executables
-- Remove build-time no-IPv6 setting
-- Add statically built executables to Linux build
-- Switch to autotools-based build system
-- Build without wallet by passing `--disable-wallet` to configure, this
-  removes the BerkeleyDB dependency
-- Upgrade gitian dependencies (libpng, libz, libupnpc, boost, openssl) to more
-  recent versions
-- Windows 64-bit build support
-- Solaris compatibility fixes
-- Check integrity of gitian input source tarballs
-- Enable full GCC Stack-smashing protection for all OSes
-- build: Fix OSX build when using Homebrew and qt5
-- Keep symlinks when copying into .app bundle
-- osx: fix signing to make Gatekeeper happy (again)
+Detailed release notes follow. This overview includes changes that affect
+behavior, not code moves, refactors and string updates. For convenience in locating
+the code changes and accompanying discussion, both the pull request and
+git merge commit are mentioned.
 
-
-Miscellaneous:
-
-- key.cpp: fail with a friendlier message on missing ssl EC support
-- Remove bignum dependency for scripts
-- Upgrade OpenSSL to 1.0.1i, includes CVE-2014-0224, CVE-2014-0160 and
-  CVE-2014-0076 (see https://www.openssl.org/news/secadv_20140806.txt)
-- Upgrade miniupnpc to 1.9.20140701
-- Fix boost detection in build system on some platforms
-- Replace non-threadsafe C functions (gmtime, strerror and setlocale)
-- Add missing cs_main and wallet locks
-- Avoid exception at startup when system locale not recognized
-- devtools: add a script to fetch and postprocess translations
-- Refactor -alertnotify code
-- doc: Add instructions for consistent Mac OS X build names
-
+- #6124 `684636b` Make CScriptNum() take nMaxNumSize as an argument
+- #6124 `4fa7a04` Replace NOP2 with CHECKLOCKTIMEVERIFY (BIP65)
+- #6124 `6ea5ca4` Enable CHECKLOCKTIMEVERIFY as a standard script verify flag
+- #6351 `5e82e1c` Add CHECKLOCKTIMEVERIFY (BIP65) soft-fork logic
+- #6353 `ba1da90` Show softfork status in getblockchaininfo
+- #6351 `6af25b0` Add BIP65 to getblockchaininfo softforks list
+- #6688 `01878c9` Fix locking in GetTransaction
+- #6653 `b3eaa30` [Qt] Raise debug window when requested
+- #6600 `1e672ae` Debian/Ubuntu: Include bitsend-tx binary
+- #6600 `2394f4d` Debian/Ubuntu: Split bitsend-tx into its own package
+- #5987 `33d6825` Bugfix: Allow mining on top of old tip blocks for testnet
+- #6852 `21e58b8` build: make sure OpenSSL heeds noexecstack
+- #6846 `af6edac` alias `-h` for `--help`
+- #6867 `95a5039` Set TCP_NODELAY on P2P sockets.
+- #6856 `dfe55bd` Do not allow blockfile pruning during reindex.
+- #6566 `a1d3c6f` Add rules--presently disabled--for using GetMedianTimePast as end point for lock-time calculations
+- #6566 `f720c5f` Enable policy enforcing GetMedianTimePast as the end point of lock-time constraints
+- #6917 `0af5b8e` leveldb: Win32WritableFile without memory mapping
+- #6948 `4e895b0` Always flush block and undo when switching to new file
 
 Credits
---------
+=======
 
-Thanks to who contributed to this release, at least:
+Thanks to everyone who directly contributed to this release:
 
-- *to do ..*
+- Alex Morcos
+- ฿tcDrak
+- Chris Kleeschulte
+- Daniel Cousens
+- Diego Viola
+- Eric Lombrozo
+- Esteban Ordano
+- Gregory Maxwell
+- Luke Dashjr
+- Marco Falke
+- Mark Friedenbach
+- Matt Corallo
+- Micha
+- Mitchell Cash
+- Peter Todd
+- Pieter Wuille
+- Wladimir J. van der Laan
+- Zak Wilcox
+
+And those who contributed additional code review and/or security research.
 
 As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitsend/).

@@ -1,18 +1,23 @@
-// Copyright (c) 2016 The Bitsend Core developers
+// Copyright (c) 2016-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_WALLET_TEST_FIXTURE_H
-#define BITSEND_WALLET_TEST_FIXTURE_H
+#ifndef BITSEND_WALLET_TEST_WALLET_TEST_FIXTURE_H
+#define BITSEND_WALLET_TEST_WALLET_TEST_FIXTURE_H
 
-#include "test/test_bitsend.h"
+#include <test/test_bitsend.h>
+
+#include <wallet/wallet.h>
+
+#include <memory>
 
 /** Testing setup and teardown for wallet.
  */
 struct WalletTestingSetup: public TestingSetup {
-    WalletTestingSetup(const std::string& chainName = CBaseChainParams::MAIN);
+    explicit WalletTestingSetup(const std::string& chainName = CBaseChainParams::MAIN);
     ~WalletTestingSetup();
+
+    CWallet m_wallet;
 };
 
-#endif
-
+#endif // BITSEND_WALLET_TEST_WALLET_TEST_FIXTURE_H

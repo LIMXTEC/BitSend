@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_BITSENDUNITS_H
 #define BITSEND_QT_BITSENDUNITS_H
 
-#include "amount.h"
+#include <amount.h>
 
 #include <QAbstractListModel>
 #include <QString>
@@ -56,9 +56,10 @@ public:
      */
     enum Unit
     {
-        BsD,
-        mBSD,
-        uBSD
+        BTC,
+        mBTC,
+        uBTC,
+        SAT
     };
 
     enum SeparatorStyle
@@ -76,8 +77,10 @@ public:
     static QList<Unit> availableUnits();
     //! Is unit ID valid?
     static bool valid(int unit);
+    //! Long name
+    static QString longName(int unit);
     //! Short name
-    static QString name(int unit);
+    static QString shortName(int unit);
     //! Longer description
     static QString description(int unit);
     //! Number of Satoshis (1e-8) per unit

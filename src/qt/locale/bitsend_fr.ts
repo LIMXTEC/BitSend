@@ -1,198 +1,118 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Bitsend Core</source>
-        <translation>A propos de Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Bitsend Core&lt;/b&gt; version</source>
-        <translation>Version de &lt;b&gt;Bitsend Core&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="94"/>
-        <source>Copyright &amp;copy; 2009-YYYY The Bitsend and DASH Core developers.
-Copyright &amp;copy; 2014-YYYY The Bitsend Core developers.</source>
-        <translation>Droits réservés &amp;copy; 2009-YYYY The Bitsend and Dash Core developers.
-Droits réservés &amp;copy; 2014-YYYY The Bitsend Core developers.</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="111"/>
-        <source>
-This is experimental software.
-
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
-        <translation>
-Ce logiciel est expérimental.
-
-Distribué sous licence MIT/X11, voir le fichier COPYING joint ou http://www.opensource.org/licenses/mit-license.php.
-
-Ce produit comprend des logiciels développés par le projet OpenSSL afin d&apos;être utilisés dans la boîte à outils OpenSSL (http://www.openssl.org/), un logiciel de chiffrement écrit par Eric Young (eay@cryptsoft.com) et un logiciel UPnP développé par Thomas Bernard.</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>Copyright</source>
-        <translation>Tous droits réservés</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="30"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Les développeurs Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="31"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Les développeurs Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="43"/>
-        <location filename="../utilitydialog.cpp" line="45"/>
-        <source>(%1-bit)</source>
-        <translation>(%1-bit)</translation>
-    </message>
-</context>
+<TS language="fr" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="30"/>
-        <source>Double-click to edit address or label</source>
-        <translation>Double cliquer afin de modifier l&apos;adresse ou l&apos;étiquette</translation>
+        <source>Right-click to edit address or label</source>
+        <translation>Cliquer à droite pour modifier l’adresse ou l’étiquette</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="57"/>
         <source>Create a new address</source>
         <translation>Créer une nouvelle adresse</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="60"/>
         <source>&amp;New</source>
-        <translation>&amp;Nouveau</translation>
+        <translation>&amp;Nouvelle</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="71"/>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copier l&apos;adresse courante sélectionnée dans le presse-papier</translation>
+        <translation>Copier l’adresse sélectionnée actuellement dans le presse-papiers</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="74"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copier</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="85"/>
-        <source>Delete the currently selected address from the list</source>
-        <translation>Effacer l&apos;adresse actuellement sélectionnée de la liste</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="88"/>
-        <source>&amp;Delete</source>
-        <translation>&amp;Supprimer</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="112"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Exporter les données de l&apos;onglet courant vers un fichier</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="115"/>
-        <source>&amp;Export</source>
-        <translation>&amp;Exporter</translation>
-    </message>
-    <message>
-        <location filename="../forms/addressbookpage.ui" line="132"/>
         <source>C&amp;lose</source>
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="45"/>
+        <source>Delete the currently selected address from the list</source>
+        <translation>Supprimer de la liste l’adresse sélectionnée actuellement</translation>
+    </message>
+    <message>
+        <source>Enter address or label to search</source>
+        <translation>Saisir une adresse ou une étiquette à rechercher</translation>
+    </message>
+    <message>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Exporter les données de l’onglet actuel vers un fichier</translation>
+    </message>
+    <message>
+        <source>&amp;Export</source>
+        <translation>&amp;Exporter</translation>
+    </message>
+    <message>
+        <source>&amp;Delete</source>
+        <translation>&amp;Supprimer</translation>
+    </message>
+    <message>
         <source>Choose the address to send coins to</source>
-        <translation>Choisir l&apos;adresse à laquelle envoyer des pièces</translation>
+        <translation>Choisir l’adresse à laquelle envoyer des pièces</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="46"/>
         <source>Choose the address to receive coins with</source>
-        <translation>Choisir l&apos;adresse avec laquelle recevoir des pîèces</translation>
+        <translation>Choisir l’adresse avec laquelle recevoir des pîèces</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="51"/>
         <source>C&amp;hoose</source>
         <translation>C&amp;hoisir</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="57"/>
         <source>Sending addresses</source>
-        <translation>Adresses d&apos;envoi</translation>
+        <translation>Adresses d’envoi</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="58"/>
         <source>Receiving addresses</source>
         <translation>Adresses de réception</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="65"/>
         <source>These are your Bitsend addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ce sont vos adresses Bitsend pour l&apos;envoi de paiements. Vérifiez toujours le montant et l&apos;adresse de réception avant l&apos;envoi de pièces.</translation>
+        <translation>Voici vos adresses Bitsend pour envoyer des paiements. Vérifiez toujours le montant et l’adresse du destinataire avant d’envoyer des pièces.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="69"/>
         <source>These are your Bitsend addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Ce sont vos adresses Bitsend pour la réception de paiements. Il est recommandé d&apos;utiliser une nouvelle adresse pour chaque transaction.</translation>
+        <translation>Voici vos adresses Bitsend pour recevoir des paiements. Il est recommandé d’utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="75"/>
         <source>&amp;Copy Address</source>
-        <translation>&amp;Copier l&apos;adresse</translation>
+        <translation>&amp;Copier l’adresse</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="76"/>
         <source>Copy &amp;Label</source>
-        <translation>Copier l&apos;é&amp;tiquette</translation>
+        <translation>Copier l’é&amp;tiquette</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="77"/>
         <source>&amp;Edit</source>
         <translation>&amp;Modifier</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="271"/>
         <source>Export Address List</source>
-        <translation>Exporter la liste d&apos;adresses</translation>
+        <translation>Exporter la liste d’adresses</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="272"/>
         <source>Comma separated file (*.csv)</source>
         <translation>Valeurs séparées par des virgules (*.csv)</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="285"/>
         <source>Exporting Failed</source>
-        <translation>L&apos;exportation a échoué</translation>
+        <translation>Échec d’exportation</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="286"/>
-        <source>There was an error trying to save the address list to %1.</source>
-        <translation>Une erreur est survenue lors de l&apos;enregistrement de la liste d&apos;adresses vers %1.</translation>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Une erreur est survenue lors de l’enregistrement de la liste d’adresses vers %1. Veuillez ressayer plus tard.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Label</source>
         <translation>Étiquette</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="169"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
     <message>
-        <location filename="../addresstablemodel.cpp" line="205"/>
         <source>(no label)</source>
         <translation>(aucune étiquette)</translation>
     </message>
@@ -200,1090 +120,689 @@ Ce produit comprend des logiciels développés par le projet OpenSSL afin d&apos
 <context>
     <name>AskPassphraseDialog</name>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="26"/>
         <source>Passphrase Dialog</source>
-        <translation>Dialogue de phrase de passe</translation>
+        <translation>Fenêtre de dialogue de la phrase de passe</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="47"/>
         <source>Enter passphrase</source>
         <translation>Saisir la phrase de passe</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="61"/>
         <source>New passphrase</source>
         <translation>Nouvelle phrase de passe</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="75"/>
         <source>Repeat new passphrase</source>
         <translation>Répéter la phrase de passe</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="108"/>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Utiliser pour désactiver le mode d&apos;envoi trivial de paiement lorsque le compte système est compromis. N&apos;assure pas une sécurité efficace.</translation>
+        <source>Show password</source>
+        <translation>Afficher le mot de passe</translation>
     </message>
     <message>
-        <location filename="../forms/askpassphrasedialog.ui" line="111"/>
-        <source>For anonymization only</source>
-        <translation>Pour anonymisation uniquement</translation>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Saisissez la nouvelle phrase de passe du porte-monnaie.&lt;br/&gt;Veuillez utiliser une phrase de passe composée de &lt;b&gt;dix caractères aléatoires ou plus&lt;/b&gt;, ou de &lt;b&gt;huit mots ou plus&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="41"/>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Saisir la nouvelle phrase de passe pour le portefeuille. &lt;br/&gt;Veuillez utiliser une phrase de passe de &lt;b&gt;10 caractères aléatoires ou plus&lt;/b&gt;, ou de &lt;b&gt;huit mots ou plus&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../askpassphrasedialog.cpp" line="42"/>
         <source>Encrypt wallet</source>
-        <translation>Chiffrer le portefeuille</translation>
+        <translation>Chiffrer le porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="48"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Cette opération nécessite votre phrase de passe pour déverrouiller le portefeuille.</translation>
+        <translation>Cette opération nécessite votre phrase de passe pour déverrouiller le porte-monnaie.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="53"/>
         <source>Unlock wallet</source>
-        <translation>Déverrouiller le portefeuille</translation>
+        <translation>Déverrouiller le porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="56"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Cette opération nécessite votre phrase de passe pour déchiffrer le portefeuille.</translation>
+        <translation>Cette opération nécessite votre phrase de passe pour déchiffrer le porte-monnaie.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="61"/>
         <source>Decrypt wallet</source>
-        <translation>Déchiffrer le portefeuille</translation>
+        <translation>Déchiffrer le porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="64"/>
         <source>Change passphrase</source>
         <translation>Changer la phrase de passe</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="65"/>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Saisir l’ancienne phrase de passe pour le portefeuille ainsi que la nouvelle.</translation>
+        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <translation>Saisir l’ancienne puis la nouvelle phrase de passe du porte-monnaie.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="112"/>
         <source>Confirm wallet encryption</source>
-        <translation>Confirmer le chiffrement du portefeuille</translation>
+        <translation>Confirmer le chiffrement du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BSD&lt;/b&gt;!</source>
-        <translation>Attention : Si vous chiffrez votre portefeuille et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS BSD&lt;/b&gt; !</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITSENDS&lt;/b&gt;!</source>
+        <translation>Avertissement : si vous chiffrez votre porte-monnaie et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS BITSENDS&lt;/b&gt; !</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="113"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Êtes-vous sûr de vouloir chiffrer votre portefeuille ?</translation>
+        <translation>Voulez-vous vraiment chiffrer votre porte-monnaie ?</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="122"/>
-        <location filename="../askpassphrasedialog.cpp" line="181"/>
         <source>Wallet encrypted</source>
-        <translation>Portefeuille chiffré</translation>
+        <translation>Le porte-monnaie est chiffré</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="124"/>
-        <source>Bitsend will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
-        <translation>Bitsend va à présent se fermer pour terminer le chiffrement. N&apos;oubliez pas que le chiffrement de votre portefeuille n&apos;est pas une protection totale contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitsends from being stolen by malware infecting your computer.</source>
+        <translation>%1 va maintenant se fermer pour terminer le processus de chiffrement. Souvenez-vous que le chiffrement de votre porte-monnaie ne peut pas protéger entièrement vos bitsends contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="128"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>IMPORTANT : Toute sauvegarde précédente de votre fichier de portefeuille devrait être remplacée par le nouveau fichier de portefeuille chiffré. Pour des raisons de sécurité, les sauvegardes précédentes de votre fichier de portefeuille non chiffré deviendront inutilisables dès que vous commencerez à utiliser le nouveau portefeuille chiffré.</translation>
+        <translation>IMPORTANT : toutes les sauvegardes précédentes du fichier de votre porte-monnaie devraient être remplacées par le fichier du porte-monnaie chiffré nouvellement généré. Pour des raisons de sécurité, les sauvegardes précédentes de votre fichier de porte-monnaie non chiffré deviendront inutilisables dès que vous commencerez à utiliser le nouveau porte-monnaie chiffré.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="137"/>
-        <location filename="../askpassphrasedialog.cpp" line="144"/>
-        <location filename="../askpassphrasedialog.cpp" line="187"/>
-        <location filename="../askpassphrasedialog.cpp" line="193"/>
         <source>Wallet encryption failed</source>
-        <translation>Le chiffrement du portefeuille a échoué</translation>
+        <translation>Échec de chiffrement du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="138"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>Le chiffrement du portefeuille a échoué en raison d&apos;une erreur interne. Votre portefeuille n&apos;a pas été chiffré.</translation>
+        <translation>Le chiffrement du porte-monnaie a échoué en raison d’une erreur interne. Votre porte-monnaie n’a pas été chiffré.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="145"/>
-        <location filename="../askpassphrasedialog.cpp" line="194"/>
         <source>The supplied passphrases do not match.</source>
         <translation>Les phrases de passe saisies ne correspondent pas.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="157"/>
         <source>Wallet unlock failed</source>
-        <translation>Le déverrouillage du portefeuille a échoué</translation>
+        <translation>Échec de déverrouillage du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="158"/>
-        <location filename="../askpassphrasedialog.cpp" line="169"/>
-        <location filename="../askpassphrasedialog.cpp" line="188"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>La phrase de passe saisie pour déchiffrer le portefeuille était incorrecte.</translation>
+        <translation>La phrase de passe saisie pour déchiffrer le porte-monnaie était erronée.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="168"/>
         <source>Wallet decryption failed</source>
-        <translation>Le déchiffrage du portefeuille a échoué</translation>
+        <translation>Échec de déchiffrement du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="182"/>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>La phrase de passe du portefeuille a été modifiée avec succès.</translation>
+        <translation>La phrase de passe du porte-monnaie a été modifiée avec succès.</translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="230"/>
-        <location filename="../askpassphrasedialog.cpp" line="254"/>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Attention : la touche Verr. Maj. est activée !</translation>
+        <translation>Avertissement : la touche Verr. Maj. est activée !</translation>
+    </message>
+</context>
+<context>
+    <name>BanTableModel</name>
+    <message>
+        <source>IP/Netmask</source>
+        <translation>IP/masque réseau</translation>
+    </message>
+    <message>
+        <source>Banned Until</source>
+        <translation>Banni jusqu’au</translation>
     </message>
 </context>
 <context>
     <name>BitsendGUI</name>
     <message>
-        <location filename="../bitsendgui.cpp" line="76"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
+        <source>Sign &amp;message...</source>
+        <translation>Signer un &amp;message...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="85"/>
-        <source>Wallet</source>
-        <translation>Portefeuille</translation>
+        <source>Synchronizing with network...</source>
+        <translation>Synchronisation avec le réseau…</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="87"/>
+        <source>&amp;Overview</source>
+        <translation>&amp;Vue d’ensemble</translation>
+    </message>
+    <message>
         <source>Node</source>
         <translation>Nœud</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="101"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>[testnet]</source>
-        <translation>[testnet]</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="227"/>
-        <source>&amp;Overview</source>
-        <translation>&amp;Vue d&apos;ensemble</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="228"/>
         <source>Show general overview of wallet</source>
-        <translation>Afficher une vue d’ensemble du portefeuille</translation>
+        <translation>Afficher une vue d’ensemble du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="234"/>
-        <source>&amp;Send</source>
-        <translation>&amp;Envoyer</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="235"/>
-        <source>Send coins to a Bitsend address</source>
-        <translation>Envoyer des pièces sur une adresse Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="241"/>
-        <source>&amp;Receive</source>
-        <translation>&amp;Recevoir</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="242"/>
-        <source>Request payments (generates QR codes and bitsend: URIs)</source>
-        <translation>Demande de paiements (Générer des QR code et des URIs bitsend)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="248"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Transactions</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="249"/>
         <source>Browse transaction history</source>
-        <translation>Parcourir l&apos;historique des transactions</translation>
+        <translation>Parcourir l’historique transactionnel</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="266"/>
         <source>E&amp;xit</source>
         <translation>Q&amp;uitter</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="267"/>
         <source>Quit application</source>
         <translation>Quitter l’application</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="271"/>
-        <location filename="../bitsendgui.cpp" line="273"/>
-        <source>&amp;About Bitsend Core</source>
-        <translation>À propos du noyau Bitsend</translation>
+        <source>&amp;About %1</source>
+        <translation>À &amp;propos de %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="274"/>
-        <source>Show information about Bitsend</source>
-        <translation>Voir des informations à propos de Bitsend</translation>
+        <source>Show information about %1</source>
+        <translation>Afficher des informations à propos de %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="277"/>
-        <location filename="../bitsendgui.cpp" line="279"/>
         <source>About &amp;Qt</source>
         <translation>À propos de &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="281"/>
         <source>Show information about Qt</source>
         <translation>Afficher des informations sur Qt</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="283"/>
         <source>&amp;Options...</source>
         <translation>&amp;Options…</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="284"/>
-        <source>Modify configuration options for Bitsend</source>
-        <translation>Modifier les options de configuration pour Bitsend</translation>
+        <source>Modify configuration options for %1</source>
+        <translation>Modifier les options de configuration de %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="287"/>
-        <location filename="../bitsendgui.cpp" line="289"/>
-        <source>&amp;Show / Hide</source>
-        <translation>&amp;Afficher / Cacher</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="290"/>
-        <source>Show or hide the main Window</source>
-        <translation>Afficher ou masquer la fenêtre principale</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="292"/>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Chiffrer le portefeuille...</translation>
+        <translation>&amp;Chiffrer le porte-monnaie...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="293"/>
-        <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Chiffrer les clefs privées de votre portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="295"/>
         <source>&amp;Backup Wallet...</source>
-        <translation>Sauvegarder le &amp;portefeuille...</translation>
+        <translation>Sauvegarder le &amp;porte-monnaie...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="296"/>
-        <source>Backup wallet to another location</source>
-        <translation>Sauvegarder le portefeuille vers un autre emplacement</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="297"/>
         <source>&amp;Change Passphrase...</source>
         <translation>&amp;Changer la phrase de passe...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="298"/>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>Modifier la phrase de passe utilisée pour le chiffrement du portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="299"/>
-        <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Déverrouiller le portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="300"/>
-        <source>Unlock wallet</source>
-        <translation>Déverrouiller le portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="301"/>
-        <source>&amp;Lock Wallet</source>
-        <translation>&amp;Vérouiller le portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="302"/>
-        <source>Sign &amp;message...</source>
-        <translation>&amp;Signer le message...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="303"/>
-        <source>Sign messages with your Bitsend addresses to prove you own them</source>
-        <translation>Signer les messages avec votre adresses Bitsend pour prouver que vous êtes le propriétaire</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="304"/>
-        <source>&amp;Verify message...</source>
-        <translation>&amp;Vérifier un message...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="305"/>
-        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
-        <translation>Vérifier les messages pour vous assurer qu&apos;ils ont été signés avec les adresses Bitsend spécifiées</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="307"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Informations</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="308"/>
-        <source>Show diagnostic information</source>
-        <translation>Voir les informaion de diagnostique</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="309"/>
-        <source>&amp;Debug console</source>
-        <translation>&amp;Console de débogage</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="310"/>
-        <source>Open debugging console</source>
-        <translation>Ouvrir la console de débogage</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="311"/>
-        <source>&amp;Network Monitor</source>
-        <translation>&amp;Moniteur réseau</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="312"/>
-        <source>Show network monitor</source>
-        <translation>Voir le moniteur réseau</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="313"/>
-        <source>Open &amp;Configuration File</source>
-        <translation>Ouvrir Fichier de &amp;Configuration</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="314"/>
-        <source>Open configuration file</source>
-        <translation>Ouvrir fichier de configuration</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="316"/>
         <source>&amp;Sending addresses...</source>
-        <translation>Adresses d&apos;&amp;envoi...</translation>
+        <translation>Adresses d’&amp;envoi...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="317"/>
-        <source>Show the list of used sending addresses and labels</source>
-        <translation>Afficher la liste d&apos;adresses d&apos;envoi et d&apos;étiquettes utilisées</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="318"/>
         <source>&amp;Receiving addresses...</source>
         <translation>Adresses de &amp;réception...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="319"/>
-        <source>Show the list of used receiving addresses and labels</source>
-        <translation>Afficher la liste d&apos;adresses de réception et d&apos;étiquettes utilisées</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="321"/>
         <source>Open &amp;URI...</source>
-        <translation>Ouvrir un &amp;URI...</translation>
+        <translation>Ouvrir une &amp;URI...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="322"/>
-        <source>Open a bitsend: URI or payment request</source>
-        <translation>Ouvrir une URI ou demande de paiement bitsend</translation>
+        <source>Wallet:</source>
+        <translation>Porte-monnaie :</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="324"/>
-        <source>&amp;Command-line options</source>
-        <translation>Options de ligne de &amp;commande</translation>
+        <source>default wallet</source>
+        <translation>porte-monnaie par défaut</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="325"/>
-        <source>Show the Bitsend Core help message to get a list with possible Bitsend command-line options</source>
-        <translation>Afficher le message d&apos;aide de Bitsend Core pour obtenir une liste des options de ligne de commande Bitsend possibles.</translation>
+        <source>Click to disable network activity.</source>
+        <translation>Cliquer pour désactiver l’activité réseau.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="361"/>
-        <source>&amp;File</source>
-        <translation>&amp;Fichier</translation>
+        <source>Network activity disabled.</source>
+        <translation>L’activité réseau est désactivée.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="375"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Réglages</translation>
+        <source>Click to enable network activity again.</source>
+        <translation>Cliquer pour réactiver l’activité réseau.</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="388"/>
-        <source>&amp;Tools</source>
-        <translation>&amp;Outils</translation>
+        <source>Syncing Headers (%1%)...</source>
+        <translation>Synchronisation des en-têtes (%1)...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="395"/>
-        <source>&amp;Help</source>
-        <translation>&amp;Aide</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="406"/>
-        <source>Tabs toolbar</source>
-        <translation>Barre d&apos;outils des onglets</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="493"/>
-        <location filename="../bitsendgui.cpp" line="498"/>
-        <source>Bitsend client</source>
-        <translation>Client Bitsend</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="643"/>
-        <source>%n active connection(s) to Bitsend network</source>
-        <translation><numerusform>%n connection(s) active(s) sur le réseau Bitsend</numerusform><numerusform>%n connection(s) active sur le réseau Bitsend</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="655"/>
-        <source>Synchronizing with network...</source>
-        <translation>Synchronisation avec le réseau en cours…</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="658"/>
-        <source>Importing blocks from disk...</source>
-        <translation>Importation des blocs depuis le disque...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="661"/>
         <source>Reindexing blocks on disk...</source>
         <translation>Réindexation des blocs sur le disque...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="665"/>
-        <source>No block source available...</source>
-        <translation>Aucune source de blocs disponible...</translation>
+        <source>Proxy is &lt;b&gt;enabled&lt;/b&gt;: %1</source>
+        <translation>Le serveur mandataire est &lt;b&gt;activé&lt;/b&gt; : %1</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="675"/>
-        <source>Processed %1 blocks of transaction history.</source>
-        <translation>À traité %1 blocs de l&apos;historique des transactions.</translation>
+        <source>Send coins to a Bitsend address</source>
+        <translation>Envoyer des pièces à une adresse Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="680"/>
-        <source>Up to date</source>
-        <translation>À jour</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="701"/>
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n heure(s)</numerusform><numerusform>%n heure(s)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="705"/>
-        <source>%n day(s)</source>
-        <translation><numerusform>%n jour(s)</numerusform><numerusform>%n jour(s)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="709"/>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n week(s)</source>
-        <translation><numerusform>%n semaine(s)</numerusform><numerusform>%n semaine(s)</numerusform></translation>
+        <source>Backup wallet to another location</source>
+        <translation>Sauvegarder le porte-monnaie vers un autre emplacement</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%1 and %2</source>
-        <translation>%1 et %2</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../bitsendgui.cpp" line="715"/>
-        <source>%n year(s)</source>
-        <translation><numerusform>%n année(s)</numerusform><numerusform>%n année(s)</numerusform></translation>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation>Modifier la phrase de passe utilisée pour le chiffrement du porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="719"/>
-        <source>%1 behind</source>
-        <translation>%1 en retard</translation>
+        <source>&amp;Debug window</source>
+        <translation>Fenêtre de &amp;débogage</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="724"/>
-        <source>Catching up...</source>
-        <translation>Rattrapage en cours…</translation>
+        <source>Open debugging and diagnostic console</source>
+        <translation>Ouvrir une console de débogage et de diagnostic</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="740"/>
-        <source>Last received block was generated %1 ago.</source>
-        <translation>Le dernier bloc reçu avait été généré il y a %1.</translation>
+        <source>&amp;Verify message...</source>
+        <translation>&amp;Vérifier un message...</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="742"/>
-        <source>Transactions after this will not yet be visible.</source>
-        <translation>Les transactions après ceci ne sont pas encore visibles.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="755"/>
         <source>Bitsend</source>
         <translation>Bitsend</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="769"/>
+        <source>Wallet</source>
+        <translation>Porte-monnaie</translation>
+    </message>
+    <message>
+        <source>&amp;Send</source>
+        <translation>&amp;Envoyer</translation>
+    </message>
+    <message>
+        <source>&amp;Receive</source>
+        <translation>&amp;Recevoir</translation>
+    </message>
+    <message>
+        <source>&amp;Show / Hide</source>
+        <translation>&amp;Afficher / cacher</translation>
+    </message>
+    <message>
+        <source>Show or hide the main Window</source>
+        <translation>Afficher ou cacher la fenêtre principale</translation>
+    </message>
+    <message>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation>Chiffrer les clés privées qui appartiennent à votre porte-monnaie</translation>
+    </message>
+    <message>
+        <source>Sign messages with your Bitsend addresses to prove you own them</source>
+        <translation>Signer les messages avec vos adresses Bitsend pour prouver que vous les détenez</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified Bitsend addresses</source>
+        <translation>Vérifier les messages pour s’assurer qu’ils ont été signés avec les adresses Bitsend indiquées</translation>
+    </message>
+    <message>
+        <source>&amp;File</source>
+        <translation>&amp;Fichier</translation>
+    </message>
+    <message>
+        <source>&amp;Settings</source>
+        <translation>&amp;Paramètres</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>&amp;Aide</translation>
+    </message>
+    <message>
+        <source>Tabs toolbar</source>
+        <translation>Barre d’outils des onglets</translation>
+    </message>
+    <message>
+        <source>Request payments (generates QR codes and bitsend: URIs)</source>
+        <translation>Demander des paiements (génère des codes QR et des URI bitsend:)</translation>
+    </message>
+    <message>
+        <source>Show the list of used sending addresses and labels</source>
+        <translation>Afficher la liste d’adresses d’envoi et d’étiquettes utilisées</translation>
+    </message>
+    <message>
+        <source>Show the list of used receiving addresses and labels</source>
+        <translation>Afficher la liste d’adresses de réception et d’étiquettes utilisées</translation>
+    </message>
+    <message>
+        <source>Open a bitsend: URI or payment request</source>
+        <translation>Ouvrir une URI bitsend: ou une demande de paiement</translation>
+    </message>
+    <message>
+        <source>&amp;Command-line options</source>
+        <translation>Options de ligne de &amp;commande</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to Bitsend network</source>
+        <translation><numerusform>%n connexion active avec le réseau Bitsend</numerusform><numerusform>%n connexions actives avec le réseau Bitsend</numerusform></translation>
+    </message>
+    <message>
+        <source>Indexing blocks on disk...</source>
+        <translation>Indexation des blocs sur le disque...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk...</source>
+        <translation>Traitement des blocs sur le disque...</translation>
+    </message>
+    <message numerus="yes">
+        <source>Processed %n block(s) of transaction history.</source>
+        <translation><numerusform>%n bloc d’historique transactionnel a été traité</numerusform><numerusform>%n blocs d’historique transactionnel ont été traités</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation>en retard de %1</translation>
+    </message>
+    <message>
+        <source>Last received block was generated %1 ago.</source>
+        <translation>Le dernier bloc reçu avait été généré il y a %1.</translation>
+    </message>
+    <message>
+        <source>Transactions after this will not yet be visible.</source>
+        <translation>Les transactions suivantes ne seront pas déjà visibles.</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="772"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="775"/>
         <source>Information</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
+        <source>Up to date</source>
+        <translation>À jour</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible Bitsend command-line options</source>
+        <translation>Afficher le message d’aide de %1 pour obtenir la liste des options de ligne de commande Bitsend possibles.</translation>
+    </message>
+    <message>
+        <source>%1 client</source>
+        <translation>Client %1</translation>
+    </message>
+    <message>
+        <source>Connecting to peers...</source>
+        <translation>Connexion aux pairs...</translation>
+    </message>
+    <message>
+        <source>Catching up...</source>
+        <translation>Rattrapage…</translation>
+    </message>
+    <message>
+        <source>Date: %1
+</source>
+        <translation>Date : %1
+</translation>
+    </message>
+    <message>
+        <source>Amount: %1
+</source>
+        <translation>Montant : %1
+</translation>
+    </message>
+    <message>
+        <source>Wallet: %1
+</source>
+        <translation>Porte-monnaie : %1
+</translation>
+    </message>
+    <message>
+        <source>Type: %1
+</source>
+        <translation>Type : %1
+</translation>
+    </message>
+    <message>
+        <source>Label: %1
+</source>
+        <translation>Étiquette : %1
+</translation>
+    </message>
+    <message>
+        <source>Address: %1
+</source>
+        <translation>Adresse : %1
+</translation>
+    </message>
+    <message>
         <source>Sent transaction</source>
         <translation>Transaction envoyée</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="854"/>
         <source>Incoming transaction</source>
         <translation>Transaction entrante</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="855"/>
-        <source>Date: %1
-Amount: %2
-Type: %3
-Address: %4
-</source>
-        <translation>Date : %1
-Montant : %2
-Type : %3
-Adresse : %4
-</translation>
+        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
+        <translation>La génération de clé HD est &lt;b&gt;activée&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="926"/>
+        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation>La génération de clé HD est &lt;b&gt;désactivée&lt;/b&gt;</translation>
+    </message>
+    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>Le portefeuille est &lt;b&gt;chiffré&lt;/b&gt; et est actuellement &lt;b&gt;déverrouillé&lt;/b&gt;</translation>
+        <translation>Le porte-monnaie est &lt;b&gt;chiffré&lt;/b&gt; et est actuellement &lt;b&gt;déverrouillé&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsendgui.cpp" line="936"/>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation>Le portefeuille est &lt;b&gt;chiffré&lt;/b&gt; et est actuellement &lt;b&gt;déverrouillé&lt;/b&gt; seulement pour l&apos;anonymisation</translation>
-    </message>
-    <message>
-        <location filename="../bitsendgui.cpp" line="946"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>Le portefeuille est &lt;b&gt;chiffré&lt;/b&gt; et actuellement &lt;b&gt;verrouillé&lt;/b&gt;</translation>
+        <translation>Le porte-monnaie est &lt;b&gt;chiffré&lt;/b&gt; et actuellement &lt;b&gt;verrouillé&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="449"/>
         <source>A fatal error occurred. Bitsend can no longer continue safely and will quit.</source>
-        <translation>Une erreur fatale est survenue. Bitsend ne peut plus continuer de façon sûre et va s&apos;arrêter.</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <location filename="../clientmodel.cpp" line="164"/>
-        <source>Network Alert</source>
-        <translation>Alerte réseau</translation>
+        <translation>Une erreur fatale est survenue. Bitsend ne peut plus continuer en toute sécurité et va s’arrêter.</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="14"/>
-        <source>Coin Control Address Selection</source>
-        <translation>Sélection de l&apos;adresse de contrôle des pièces</translation>
+        <source>Coin Selection</source>
+        <translation>Sélection des pièces</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="48"/>
         <source>Quantity:</source>
         <translation>Quantité :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="77"/>
         <source>Bytes:</source>
         <translation>Octets :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="122"/>
         <source>Amount:</source>
-        <translation>Montant :</translation>
+        <translation>Montant :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="151"/>
-        <source>Priority:</source>
-        <translation>Priorité :</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="196"/>
         <source>Fee:</source>
         <translation>Frais :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="228"/>
-        <source>Low Output:</source>
-        <translation>Sortie faible :</translation>
+        <source>Dust:</source>
+        <translation>Poussière :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="276"/>
         <source>After Fee:</source>
         <translation>Après les frais :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="308"/>
         <source>Change:</source>
         <translation>Monnaie :</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="364"/>
         <source>(un)select all</source>
-        <translation>Tout (dé)sélectionner</translation>
+        <translation>Tout (des)sélectionner</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="377"/>
         <source>Tree mode</source>
         <translation>Mode arborescence</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="393"/>
         <source>List mode</source>
         <translation>Mode liste</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="400"/>
-        <source>(1 locked)</source>
-        <translation>(1 verrouillé)</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="446"/>
         <source>Amount</source>
         <translation>Montant</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="451"/>
-        <source>Label</source>
-        <translation>Etiquette</translation>
+        <source>Received with label</source>
+        <translation>Reçu avec une étiquette</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="456"/>
-        <source>Address</source>
-        <translation>Adresse</translation>
+        <source>Received with address</source>
+        <translation>Reçu avec une adresse</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="461"/>
-        <source>Darksend Rounds</source>
-        <translation>Cycles Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="466"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="471"/>
         <source>Confirmations</source>
         <translation>Confirmations</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="474"/>
         <source>Confirmed</source>
         <translation>Confirmée</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="479"/>
-        <source>Priority</source>
-        <translation>Priorité</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="43"/>
         <source>Copy address</source>
         <translation>Copier l’adresse</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="44"/>
         <source>Copy label</source>
         <translation>Copier l’étiquette</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="45"/>
-        <location filename="../coincontroldialog.cpp" line="71"/>
         <source>Copy amount</source>
         <translation>Copier le montant</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="46"/>
         <source>Copy transaction ID</source>
-        <translation>Copier l&apos;ID de la transaction</translation>
+        <translation>Copier l’ID de la transaction</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="47"/>
         <source>Lock unspent</source>
-        <translation>Verrouiller ce qui n&apos;est pas dépensé</translation>
+        <translation>Verrouiller les transactions non dépensées</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="48"/>
         <source>Unlock unspent</source>
-        <translation>Déverrouiller ce qui n&apos;est pas dépensé</translation>
+        <translation>Déverrouiller les transactions non dépensées</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="70"/>
         <source>Copy quantity</source>
         <translation>Copier la quantité</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="72"/>
         <source>Copy fee</source>
         <translation>Copier les frais</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="73"/>
         <source>Copy after fee</source>
-        <translation>Copier le montant après les frais</translation>
+        <translation>Copier après les frais</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="74"/>
         <source>Copy bytes</source>
         <translation>Copier les octets</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="75"/>
-        <source>Copy priority</source>
-        <translation>Copier la priorité</translation>
+        <source>Copy dust</source>
+        <translation>Copier la poussière</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="76"/>
-        <source>Copy low output</source>
-        <translation>Copier la sortie faible</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="77"/>
         <source>Copy change</source>
         <translation>Copier la monnaie</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="410"/>
-        <source>highest</source>
-        <translation>la plus élevée</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="411"/>
-        <source>higher</source>
-        <translation>plus élevée</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="412"/>
-        <source>high</source>
-        <translation>élevée</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="413"/>
-        <source>medium-high</source>
-        <translation>moyennement-élevée</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="759"/>
-        <source>n/a</source>
-        <translation>n/a</translation>
-    </message>
-    <message>
-        <location filename="../forms/coincontroldialog.ui" line="164"/>
-        <location filename="../coincontroldialog.cpp" line="414"/>
-        <source>medium</source>
-        <translation>moyenne</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="418"/>
-        <source>low-medium</source>
-        <translation>moyennement-basse</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="419"/>
-        <source>low</source>
-        <translation>basse</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="420"/>
-        <source>lower</source>
-        <translation>plus basse</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="421"/>
-        <source>lowest</source>
-        <translation>la plus basse</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="432"/>
         <source>(%1 locked)</source>
-        <translation>(%1 verrouillé)</translation>
+        <translation>(%1 verrouillée)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="464"/>
-        <source>none</source>
-        <translation>aucun</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
-        <source>Dust</source>
-        <translation>Poussière</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>yes</source>
         <translation>oui</translation>
     </message>
     <message>
-        <location filename="../forms/coincontroldialog.ui" line="244"/>
-        <location filename="../coincontroldialog.cpp" line="615"/>
         <source>no</source>
         <translation>non</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="625"/>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Cette étiquette devient rouge si la taille de la transaction est plus grande que 1 000 octets.</translation>
+        <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
+        <translation>Cette étiquette devient rouge si un destinataire reçoit un montant inférieur au seuil actuel de poussière.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="626"/>
-        <location filename="../coincontroldialog.cpp" line="631"/>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Cela signifie qu&apos;une taxe d&apos;au moins %1 par ko est nécessaire </translation>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation>Peut varier +/- %1 satoshi(s) par entrée.</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="627"/>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Peut varier +/- 1 octet par entrée.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="629"/>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Les transactions à priorité plus haute sont plus à même d&apos;être incluses dans un bloc.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="630"/>
-        <source>This label turns red, if the priority is smaller than &quot;medium&quot;.</source>
-        <translation>Cette étiquette devient rouge si la priorité est plus basse que « moyenne »</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="633"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Cette étiquette devient rouge si un destinataire reçoit un montant inférieur à %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="634"/>
-        <location filename="../coincontroldialog.cpp" line="638"/>
-        <source>This means a fee of at least %1 is required.</source>
-        <translation>Signifie que des frais d&apos;au moins %1 sont requis.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="635"/>
-        <source>Amounts below 0.546 times the minimum relay fee are shown as dust.</source>
-        <translation>Les montants inférieurs à 0,546 fois les frais minimums de relais sont affichés en tant que poussière.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="637"/>
-        <source>This label turns red, if the change is smaller than %1.</source>
-        <translation>Cette étiquette devient rouge si la monnaie rendue est inférieure à %1.</translation>
-    </message>
-    <message>
-        <location filename="../coincontroldialog.cpp" line="680"/>
-        <location filename="../coincontroldialog.cpp" line="741"/>
         <source>(no label)</source>
         <translation>(aucune étiquette)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="734"/>
         <source>change from %1 (%2)</source>
         <translation>monnaie de %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="735"/>
         <source>(change)</source>
         <translation>(monnaie)</translation>
     </message>
 </context>
 <context>
-    <name>DarksendConfig</name>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="14"/>
-        <source>Configure Darksend</source>
-        <translation>Configurer Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="26"/>
-        <source>Basic Privacy</source>
-        <translation>Confidentialité normale</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="39"/>
-        <source>High Privacy</source>
-        <translation>Confidentialité élevée</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="52"/>
-        <source>Maximum Privacy</source>
-        <translation>Confidentialité maximale</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="65"/>
-        <source>Please select a privacy level.</source>
-        <translation>Veuillez choisir un niveau de confidentialité.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="78"/>
-        <source>Use 2 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Utiliser 2 Xnodes pour mélanger jusqu&apos;à 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="91"/>
-        <source>Use 8 separate Xnodes to mix funds up to 1000 BSD</source>
-        <translation>Utiliser 8 Xnodes pour mélanger jusqu&apos;à 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="104"/>
-        <source>Use 16 separate Xnodes</source>
-        <translation>Utiliser 16 Xnodes</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="117"/>
-        <source>This option is the quickest and will cost about ~0.025 BSD to anonymize 1000 BSD</source>
-        <translation>Cette option est la plus rapide et coûtera environ 0,025 BSD pour anonymiser 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="130"/>
-        <source>This option is moderately fast and will cost about 0.05 BSD to anonymize 1000 BSD</source>
-        <translation>Cette option est un peu moins rapide et coûtera environ 0,05 BSD pour anonymiser 1000 BSD</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="156"/>
-        <source>0.1 BSD per 1000 BSD you anonymize.</source>
-        <translation>0,1 BSD par 1000 BSD anonymisés.</translation>
-    </message>
-    <message>
-        <location filename="../forms/Darksendconfig.ui" line="143"/>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Cette option est le plus lente et la plus sécurisée. Utiliser l&apos;anonymisation maximale coûtera</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="43"/>
-        <location filename="../Darksendconfig.cpp" line="58"/>
-        <location filename="../Darksendconfig.cpp" line="73"/>
-        <source>Darksend Configuration</source>
-        <translation>Configuration de Darksend</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="44"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend est réglé avec succès sur normal (%1 and 2 rounds). Vous pouvez changer cela à tout moment en ouvrant la fenêtre de configuration du Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="59"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend est réglé avec succès sur haut (%1 and 8 rounds). Vous pouvez changer cela à tout moment en ouvrant la fenêtre de configuration du Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../Darksendconfig.cpp" line="74"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Bitsend&apos;s configuration screen.</source>
-        <translation>Darksend est réglé avec succès sur maximum (%1 and 16 rounds). Vous pouvez changer cela à tout moment en ouvrant la fenêtre de configuration du Bitsend.</translation>
-    </message>
-</context>
-<context>
     <name>EditAddressDialog</name>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="14"/>
         <source>Edit Address</source>
-        <translation>Modifier l&apos;adresse</translation>
+        <translation>Modifier l’adresse</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="25"/>
         <source>&amp;Label</source>
-        <translation>&amp;Étiquette</translation>
+        <translation>É&amp;tiquette</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="35"/>
         <source>The label associated with this address list entry</source>
-        <translation>L&apos;étiquette associée à cette entrée de la liste d&apos;adresses</translation>
+        <translation>L’étiquette associée à cette entrée de la liste d’adresses</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="42"/>
+        <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
+        <translation>L’adresse associée à cette entrée de la liste d’adresses. Cela ne peut être modifié que pour les adresses d’envoi.</translation>
+    </message>
+    <message>
         <source>&amp;Address</source>
         <translation>&amp;Adresse</translation>
     </message>
     <message>
-        <location filename="../forms/editaddressdialog.ui" line="52"/>
-        <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>L&apos;adresse associée à cette entrée de la liste d&apos;adresses. Ceci ne peut être modifié que pour les adresses d&apos;envoi.</translation>
-    </message>
-    <message>
-        <location filename="../editaddressdialog.cpp" line="29"/>
-        <source>New receiving address</source>
-        <translation>Nouvelle adresse de réception</translation>
-    </message>
-    <message>
-        <location filename="../editaddressdialog.cpp" line="33"/>
         <source>New sending address</source>
         <translation>Nouvelle adresse d’envoi</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="36"/>
         <source>Edit receiving address</source>
         <translation>Modifier l’adresse de réception</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="40"/>
         <source>Edit sending address</source>
-        <translation>Modifier l’adresse d&apos;envoi</translation>
+        <translation>Modifier l’adresse d’envoi</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="111"/>
-        <source>The entered address &quot;%1&quot; is not a valid Bitsend address.</source>
-        <translation>L&apos;adresse entrée &quot;%1&quot; est pas une adresse Bitsend valide</translation>
+        <source>The entered address "%1" is not a valid Bitsend address.</source>
+        <translation>L’adresse saisie « %1 » n’est pas une adresse Bitsend valide.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="116"/>
-        <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>L’adresse fournie « %1 » est déjà présente dans le carnet d&apos;adresses.</translation>
+        <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
+        <translation>L’adresse « %1 » existe déjà en tant qu’adresse de réception avec l’étiquette « %2 » et ne peut donc pas être ajoutée en tant qu’adresse d’envoi.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="121"/>
+        <source>The entered address "%1" is already in the address book with label "%2".</source>
+        <translation>L’adresse saisie « %1 » est déjà présente dans le carnet d’adresses avec l’étiquette « %2 ».</translation>
+    </message>
+    <message>
         <source>Could not unlock wallet.</source>
-        <translation>Impossible de déverrouiller le portefeuille.</translation>
+        <translation>Impossible de déverrouiller le porte-monnaie.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="126"/>
         <source>New key generation failed.</source>
-        <translation>Échec de génération de la nouvelle clef.</translation>
+        <translation>Échec de génération de la nouvelle clé.</translation>
     </message>
 </context>
 <context>
     <name>FreespaceChecker</name>
     <message>
-        <location filename="../intro.cpp" line="69"/>
         <source>A new data directory will be created.</source>
         <translation>Un nouveau répertoire de données sera créé.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="91"/>
         <source>name</source>
         <translation>nom</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="93"/>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
-        <translation>Le répertoire existe déjà. Ajoutez %1 si vous voulez créer un nouveau répertoire ici.</translation>
+        <translation>Le répertoire existe déjà. Ajouter %1 si vous comptez créer un nouveau répertoire ici.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="96"/>
         <source>Path already exists, and is not a directory.</source>
-        <translation>Le chemin existe déjà et n&apos;est pas un répertoire.</translation>
+        <translation>Le chemin existe déjà et n’est pas un répertoire.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="103"/>
         <source>Cannot create data directory here.</source>
         <translation>Impossible de créer un répertoire de données ici.</translation>
     </message>
@@ -1291,143 +810,163 @@ Adresse : %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../forms/helpmessagedialog.ui" line="19"/>
-        <source>Bitsend Core - Command-line options</source>
-        <translation>Bitsend Core - options de la ligne de commande</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="69"/>
         <source>version</source>
         <translation>version</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="71"/>
-        <source>Usage:</source>
-        <translation>Utilisation :</translation>
+        <source>(%1-bit)</source>
+        <translation>(%1-bit)</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="72"/>
-        <source>command-line options</source>
-        <translation>options de ligne de commande</translation>
+        <source>About %1</source>
+        <translation>À propos de %1</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="76"/>
-        <source>UI options</source>
-        <translation>Options de l&apos;interface utilisateur</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="77"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Choisir un répertoire de données au démarrage (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="78"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Définir la langue, par exemple « fr_CA » (par défaut : la langue du système)</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="79"/>
-        <source>Start minimized</source>
-        <translation>Démarrer minimisé</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="80"/>
-        <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>Définir les certificats SSL racine pour les requêtes de paiement (par défaut : -système-)</translation>
-    </message>
-    <message>
-        <location filename="../utilitydialog.cpp" line="81"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Afficher l&apos;écran d&apos;accueil au démarrage (par défaut : 1)</translation>
+        <source>Command-line options</source>
+        <translation>Options de ligne de commande</translation>
     </message>
 </context>
 <context>
     <name>Intro</name>
     <message>
-        <location filename="../forms/intro.ui" line="14"/>
         <source>Welcome</source>
         <translation>Bienvenue</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="23"/>
-        <source>Welcome to Bitsend Core.</source>
-        <translation>Bienvenue à Bitsend Core</translation>
+        <source>Welcome to %1.</source>
+        <translation>Bienvenue à %1.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="49"/>
-        <source>As this is the first time the program is launched, you can choose where Bitsend Core will store its data.</source>
-        <translation>Comme il s&apos;agit du premier lancement du logiciel, vous pouvez choisir l&apos;emplacement où Bitsend Core sauvegardera ses données.</translation>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>Puisque c’est la première fois que le logiciel est lancé, vous pouvez choisir où %1 stockera ses données.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="59"/>
-        <source>Bitsend Core will download and store a copy of the Bitsend block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitsend Core téléchargera et sauvegardera une copie de la chaîne de blocs Bitsend. Au moins %1Go de données seront sauvegardées dans ce répertoire, et cette taille augmentera avec le temps. Le portefeuille sera aussi sauvegardé dans ce répertoire.</translation>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>Lorsque vous cliquez sur OK, %1 commence à télécharger et à traiter l’intégralité de la chaîne de blocs %4 (%2 Go) en débutant avec les transactions les plus anciennes de %3, quand %4 a été lancé initialement.</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="69"/>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>La synchronisation initiale est très exigeante et pourrait exposer des problèmes matériels dans votre ordinateur passés inaperçus auparavant. Chaque fois que vous exécuterez %1, le téléchargement reprendra où il s’était arrêté.</translation>
+    </message>
+    <message>
+        <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
+        <translation>Si vous avez choisi de limiter le stockage de la chaîne de blocs (élagage), les données historiques doivent quand même être téléchargées et traitées, mais seront supprimées par la suite pour minimiser l’utilisation de votre espace disque.</translation>
+    </message>
+    <message>
         <source>Use the default data directory</source>
         <translation>Utiliser le répertoire de données par défaut</translation>
     </message>
     <message>
-        <location filename="../forms/intro.ui" line="76"/>
         <source>Use a custom data directory:</source>
         <translation>Utiliser un répertoire de données personnalisé :</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="185"/>
         <source>Bitsend</source>
         <translation>Bitsend</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="186"/>
-        <source>Error: Specified data directory &quot;%1&quot; can not be created.</source>
-        <translation>Erreur : le répertoire de données spécifié « %1 » ne peut pas être créé.</translation>
+        <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
+        <translation>Au moins %1 Go de données seront stockés dans ce répertoire et sa taille augmentera avec le temps.</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="210"/>
+        <source>Approximately %1 GB of data will be stored in this directory.</source>
+        <translation>Approximativement %1 Go de données seront stockés dans ce répertoire.</translation>
+    </message>
+    <message>
+        <source>%1 will download and store a copy of the Bitsend block chain.</source>
+        <translation>%1 téléchargera et stockera une copie de la chaîne de blocs Bitsend.</translation>
+    </message>
+    <message>
+        <source>The wallet will also be stored in this directory.</source>
+        <translation>Le porte-monnaie sera aussi stocké dans ce répertoire.</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Erreur : Le répertoire de données indiqué « %1 » ne peut pas être créé.</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
+    <message numerus="yes">
+        <source>%n GB of free space available</source>
+        <translation><numerusform>%n Go d’espace libre disponible</numerusform><numerusform>%n Go d’espace libre disponibles</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation><numerusform>(sur %n Go requis)</numerusform><numerusform>(sur %n Go requis)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ModalOverlay</name>
     <message>
-        <location filename="../intro.cpp" line="219"/>
-        <source>GB of free space available</source>
-        <translation>Go d&apos;espace libre disponible</translation>
+        <source>Form</source>
+        <translation>Formulaire</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="222"/>
-        <source>(of %1GB needed)</source>
-        <translation>(sur %1Go nécessaires)</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitsend network, as detailed below.</source>
+        <translation>Les transactions récentes ne sont peut-être pas encore visibles et par conséquent le solde de votre porte-monnaie est peut-être erroné. Cette information sera juste quand votre porte-monnaie aura fini de se synchroniser avec le réseau Bitsend, comme décrit ci-dessous.</translation>
+    </message>
+    <message>
+        <source>Attempting to spend bitsends that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Toute tentative de dépense de bitsends affectés par des transactions qui ne sont pas encore affichées ne sera pas acceptée par le réseau.</translation>
+    </message>
+    <message>
+        <source>Number of blocks left</source>
+        <translation>Nombre de blocs restants</translation>
+    </message>
+    <message>
+        <source>Unknown...</source>
+        <translation>Inconnu...</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Estampille temporelle du dernier bloc</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation>Progression</translation>
+    </message>
+    <message>
+        <source>Progress increase per hour</source>
+        <translation>Avancement de la progression par heure</translation>
+    </message>
+    <message>
+        <source>calculating...</source>
+        <translation>calcul en cours...</translation>
+    </message>
+    <message>
+        <source>Estimated time left until synced</source>
+        <translation>Temps estimé avant la fin de la synchronisation</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Cacher</translation>
+    </message>
+    <message>
+        <source>Unknown. Syncing Headers (%1)...</source>
+        <translation>Inconnu. Synchronisation des en-têtes (%1)...</translation>
     </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
-        <location filename="../forms/openuridialog.ui" line="14"/>
         <source>Open URI</source>
-        <translation>Ouvrir un URI</translation>
+        <translation>Ouvrir une URI</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="20"/>
         <source>Open payment request from URI or file</source>
-        <translation>Ouvrir une demande de paiement à partir d&apos;un URI ou d&apos;un fichier</translation>
+        <translation>Ouvrir une demande de paiement à partir d’une URI ou d’un fichier</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="29"/>
         <source>URI:</source>
         <translation>URI :</translation>
     </message>
     <message>
-        <location filename="../forms/openuridialog.ui" line="40"/>
         <source>Select payment request file</source>
         <translation>Choisir le fichier de demande de paiement</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="48"/>
         <source>Select payment request file to open</source>
         <translation>Choisir le fichier de demande de paiement à ouvrir</translation>
     </message>
@@ -1435,773 +974,600 @@ Adresse : %4
 <context>
     <name>OptionsDialog</name>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="14"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="27"/>
         <source>&amp;Main</source>
-        <translation>Réglages &amp;principaux</translation>
+        <translation>&amp;Principaux</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="33"/>
-        <source>Automatically start Bitsend after logging in to the system.</source>
-        <translation>Démarrer Bitsend automatiquement au démarrage du système.</translation>
+        <source>Automatically start %1 after logging in to the system.</source>
+        <translation>Démarrer %1 automatiquement après avoir ouvert une session sur l’ordinateur.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="36"/>
-        <source>&amp;Start Bitsend on system login</source>
-        <translation>&amp;Démarrer Bitsend au démarrage du système</translation>
+        <source>&amp;Start %1 on system login</source>
+        <translation>&amp;Démarrer %1 lors de l’ouverture d’une session</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="45"/>
         <source>Size of &amp;database cache</source>
         <translation>Taille du cache de la base de &amp;données</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="61"/>
         <source>MB</source>
         <translation>Mo</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="88"/>
         <source>Number of script &amp;verification threads</source>
-        <translation>Nombre d&apos;exétrons de &amp;vérification de script</translation>
+        <translation>Nombre de fils de &amp;vérification de script</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="101"/>
-        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = auto, &lt; 0 = laisser ce nombre de cœurs inutilisés)</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="138"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This setting determines the amount of individual Xnodes that an input will be anonymized through. More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ce paramètre détermine le nombre de Xnodes uniques par lesquels l&apos;anonymisation sera effectuée. Plus le nombre de cycles d&apos;anonymisation est important, plus le degré de confidentialité est élevé, mais les frais associés sont d&apos;autant plus importants.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="141"/>
-        <source>Darksend rounds to use</source>
-        <translation>Nombre de cycles Darksend à effectuer</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="165"/>
-        <source>This amount acts as a threshold to turn off Darksend once it&apos;s reached.</source>
-        <translation>Ce montant est le seuil pour désactiver Darksend dès qu&apos;il est atteint.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="180"/>
-        <source>Amount of Bitsend to keep anonymized</source>
-        <translation>Nombre de Bitsend à conserver anonymisés</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="206"/>
-        <source>W&amp;allet</source>
-        <translation>&amp;Portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="212"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB.</source>
-        <translation>Frais de transaction optionnel par ko qui aident à garantir un traitement rapide des transactions. La plupart des transactions utilisent 1 ko.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="227"/>
-        <source>Pay transaction &amp;fee</source>
-        <translation>Payer des &amp;frais de transaction</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="271"/>
-        <source>Expert</source>
-        <translation>Expert</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="277"/>
-        <source>Whether to show coin control features or not.</source>
-        <translation>Afficher ou non les fonctions de contrôle des pièces.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="280"/>
-        <source>Enable coin &amp;control features</source>
-        <translation>Activer les fonctions de &amp;contrôle des pièces </translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="287"/>
-        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
-        <translation>Si vous désactivé la dépense de la monnaie non confirmée, la monnaie d&apos;une transaction ne peut pas être utilisée tant que cette transaction n&apos;a pas reçu au moins une confirmation. Ceci affecte aussi comment votre solde est calculé.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="290"/>
-        <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;Dépenser la monnaie non confirmée</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="301"/>
-        <source>&amp;Network</source>
-        <translation>&amp;Réseau</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="307"/>
-        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ouvrir automatiquement le port client Bitsend sur le routeur. Cela ne fonctionne que sur les routeurs supportant et ayant activé UPnP.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="310"/>
-        <source>Map port using &amp;UPnP</source>
-        <translation>Mapper le port avec l&apos;&amp;UPnP</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="317"/>
-        <source>Connect to the Bitsend network through a SOCKS proxy.</source>
-        <translation>Connecter au réseau Bitsend à travers un proxy SOCKS.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="320"/>
-        <source>&amp;Connect through SOCKS proxy (default proxy):</source>
-        <translation>Se &amp;connecter par un mandataire SOCKS (mandataire par défaut) :</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="329"/>
-        <source>Proxy &amp;IP:</source>
-        <translation>&amp;IP du serveur mandataire :</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="354"/>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
-        <translation>Adresse IP du mandataire (par ex. IPv4 : 127.0.0.1 / IPv6 : ::1)</translation>
+        <translation>Adresse IP du mandataire (p. ex. IPv4 : 127.0.0.1 / IPv6 : ::1)</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="361"/>
-        <source>&amp;Port:</source>
-        <translation>&amp;Port :</translation>
+        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
+        <translation>Indique si le mandataire SOCKS5 par défaut fourni est utilisé pour atteindre des pairs par ce type de réseau.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="386"/>
-        <source>Port of the proxy (e.g. 9050)</source>
-        <translation>Port du serveur mandataire (par ex. 9050)</translation>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor hidden services:</source>
+        <translation>Utiliser un mandataire SOCKS&amp;5 séparé pour atteindre les pairs en utilisant les services cachés de Tor.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="393"/>
-        <source>SOCKS &amp;Version:</source>
-        <translation>&amp;Version SOCKS :</translation>
+        <source>Hide the icon from the system tray.</source>
+        <translation>Cacher l’icône dans la zone de notification.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="406"/>
-        <source>SOCKS version of the proxy (e.g. 5)</source>
-        <translation>Version SOCKS du serveur mandataire (par ex. 5)</translation>
+        <source>&amp;Hide tray icon</source>
+        <translation>Cac&amp;her l’icône de la zone de notification</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="442"/>
-        <source>&amp;Window</source>
-        <translation>&amp;Fenêtre</translation>
+        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
+        <translation>Quand la fenêtre est fermée, réduire au lieu de quitter l’application. Si cette option est activée, l’application ne sera fermée qu’en sélectionnant Quitter dans le menu.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="448"/>
-        <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Afficher uniquement une icône système après minimisation.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="451"/>
-        <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>&amp;Minimiser dans la barre système au lieu de la barre des tâches</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="458"/>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimiser au lieu de quitter l&apos;application lorsque la fenêtre est fermée. Si cette option est activée, l&apos;application ne pourra être fermée qu&apos;en sélectionnant Quitter dans le menu.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="461"/>
-        <source>M&amp;inimize on close</source>
-        <translation>M&amp;inimiser lors de la fermeture</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="482"/>
-        <source>&amp;Display</source>
-        <translation>&amp;Affichage</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="490"/>
-        <source>User Interface &amp;language:</source>
-        <translation>&amp;Langue de l&apos;interface utilisateur :</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="503"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitsend.</source>
-        <translation>La langue de l&apos;interface utilisateur peut être modifiée ici. Ce paramètre sera pris en compte au redémarrage de Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="524"/>
-        <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/bitsend/</source>
-        <translation>Langage manquant ou traduction incomplète ? Participez aux traductions ici :
-https://www.transifex.com/projects/p/bitsend/</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="550"/>
-        <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;Unité d&apos;affichage des montants :</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="563"/>
-        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Choisissez la sous-unité par défaut pour l&apos;affichage dans l&apos;interface et lors de l&apos;envoi de pièces.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="572"/>
-        <source>Whether to show Bitsend addresses in the transaction list or not.</source>
-        <translation>Afficher ou non les adresses Bitsend dans la liste des transactions.</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="575"/>
-        <source>&amp;Display addresses in transaction list</source>
-        <translation>&amp;Afficher les adresses sur la liste des transactions</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="584"/>
-        <location filename="../forms/optionsdialog.ui" line="597"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>URL de tiers (par ex. un explorateur de blocs) apparaissant dans l&apos;onglet des transactions comme éléments du menu contextuel. %s dans l&apos;URL est remplacé par le hachage de la transaction. Les URL multiples sont séparées par une barre verticale |.</translation>
+        <translation>URL de tiers (p. ex. un explorateur de blocs) apparaissant dans l’onglet des transactions comme éléments du menu contextuel. %s dans l’URL est remplacé par le hachage de la transaction. Les URL multiples sont séparées par une barre verticale |.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="587"/>
-        <source>Third party transaction URLs</source>
-        <translation>URL de transaction d&apos;un tiers</translation>
-    </message>
-    <message>
-        <location filename="../forms/optionsdialog.ui" line="628"/>
         <source>Active command-line options that override above options:</source>
-        <translation>Options actives de ligne de commande qui annulent les options ci-dessus :</translation>
+        <translation>Options de ligne de commande actives qui remplacent les options ci-dessus :</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="671"/>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation>Ouvrir le fichier de configuration %1 du répertoire de travail.</translation>
+    </message>
+    <message>
+        <source>Open Configuration File</source>
+        <translation>Ouvrir le fichier de configuration</translation>
+    </message>
+    <message>
         <source>Reset all client options to default.</source>
         <translation>Réinitialiser toutes les options du client aux valeurs par défaut.</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="674"/>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Réinitialisation des options</translation>
+        <translation>&amp;Réinitialiser les options</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="735"/>
+        <source>&amp;Network</source>
+        <translation>&amp;Réseau</translation>
+    </message>
+    <message>
+        <source>Disables some advanced features but all blocks will still be fully validated. Reverting this setting requires re-downloading the entire blockchain. Actual disk usage may be somewhat higher.</source>
+        <translation>Désactive certaines fonctions avancées, mais tous les blocs seront quand même validés entièrement. Changer ce paramètre à sa valeur antérieure exige de retélécharger la chaîne de blocs dans son intégralité. L’espace disque utilisé pourrait être un peu plus élevé.</translation>
+    </message>
+    <message>
+        <source>Prune &amp;block storage to</source>
+        <translation>Élaguer l’espace de stockage des &amp;blocs jusqu’à</translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation>Go</translation>
+    </message>
+    <message>
+        <source>Reverting this setting requires re-downloading the entire blockchain.</source>
+        <translation>Changer ce paramètre à sa valeur antérieure exige de retélécharger la chaîne de blocs dans son intégralité.</translation>
+    </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation>(0 = auto, &lt; 0 = laisser ce nombre de cœurs inutilisés)</translation>
+    </message>
+    <message>
+        <source>W&amp;allet</source>
+        <translation>&amp;Porte-monnaie</translation>
+    </message>
+    <message>
+        <source>Expert</source>
+        <translation>Expert</translation>
+    </message>
+    <message>
+        <source>Enable coin &amp;control features</source>
+        <translation>Activer les fonctions de &amp;contrôle des pièces</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation>Si vous désactivé la dépense de la monnaie non confirmée, la monnaie d’une transaction ne peut pas être utilisée tant que cette transaction n’a pas reçu au moins une confirmation. Celai affecte aussi le calcul de votre solde.</translation>
+    </message>
+    <message>
+        <source>&amp;Spend unconfirmed change</source>
+        <translation>&amp;Dépenser la monnaie non confirmée</translation>
+    </message>
+    <message>
+        <source>Automatically open the Bitsend client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ouvrir automatiquement le port du client Bitsend sur le routeur. Cela ne fonctionne que si votre routeur prend en charge l’UPnP et si la fonction est activée.</translation>
+    </message>
+    <message>
+        <source>Map port using &amp;UPnP</source>
+        <translation>Mapper le port avec l’&amp;UPnP</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside.</source>
+        <translation>Accepter les connexions provenant de l’extérieur.</translation>
+    </message>
+    <message>
+        <source>Allow incomin&amp;g connections</source>
+        <translation>Permettre les connexions e&amp;ntrantes</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitsend network through a SOCKS5 proxy.</source>
+        <translation>Se connecter au réseau Bitsend par un mandataire SOCKS5.</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>Se &amp;connecter par un mandataire SOCKS5 (mandataire par défaut) :</translation>
+    </message>
+    <message>
+        <source>Proxy &amp;IP:</source>
+        <translation>&amp;IP du mandataire :</translation>
+    </message>
+    <message>
+        <source>&amp;Port:</source>
+        <translation>&amp;Port :</translation>
+    </message>
+    <message>
+        <source>Port of the proxy (e.g. 9050)</source>
+        <translation>Port du mandataire (p. ex. 9050)</translation>
+    </message>
+    <message>
+        <source>Used for reaching peers via:</source>
+        <translation>Utilisé pour rejoindre les pairs par :</translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation>IPv4</translation>
+    </message>
+    <message>
+        <source>IPv6</source>
+        <translation>IPv6</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation>Tor</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitsend network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Se connecter au réseau Bitsend au travers d’un mandataire SOCKS5 séparé pour les services cachés de Tor.</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation>&amp;Fenêtre</translation>
+    </message>
+    <message>
+        <source>Show only a tray icon after minimizing the window.</source>
+        <translation>N’afficher qu’une icône dans la zone de notification après minimisation.</translation>
+    </message>
+    <message>
+        <source>&amp;Minimize to the tray instead of the taskbar</source>
+        <translation>&amp;Réduire dans la zone de notification au lieu de la barre des tâches</translation>
+    </message>
+    <message>
+        <source>M&amp;inimize on close</source>
+        <translation>Ré&amp;duire lors de la fermeture</translation>
+    </message>
+    <message>
+        <source>&amp;Display</source>
+        <translation>&amp;Affichage</translation>
+    </message>
+    <message>
+        <source>User Interface &amp;language:</source>
+        <translation>&amp;Langue de l’interface utilisateur :</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation>La langue de l’interface utilisateur peut être définie ici. Ce réglage sera pris en compte après redémarrage de %1.</translation>
+    </message>
+    <message>
+        <source>&amp;Unit to show amounts in:</source>
+        <translation>&amp;Unité d’affichage des montants :</translation>
+    </message>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Choisir la sous-unité par défaut d’affichage dans l’interface et lors d’envoi de pièces.</translation>
+    </message>
+    <message>
+        <source>Whether to show coin control features or not.</source>
+        <translation>Afficher ou non les fonctions de contrôle des pièces.</translation>
+    </message>
+    <message>
+        <source>&amp;Third party transaction URLs</source>
+        <translation>URL de transaction de &amp;tiers</translation>
+    </message>
+    <message>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../forms/optionsdialog.ui" line="742"/>
         <source>&amp;Cancel</source>
         <translation>A&amp;nnuler</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="73"/>
         <source>default</source>
         <translation>par défaut</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="134"/>
         <source>none</source>
         <translation>aucune</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="222"/>
         <source>Confirm options reset</source>
         <translation>Confirmer la réinitialisation des options</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <location filename="../optionsdialog.cpp" line="253"/>
         <source>Client restart required to activate changes.</source>
-        <translation>Le redémarrage du client est nécessaire pour activer les changements.</translation>
+        <translation>Le redémarrage du client est exigé pour activer les changements.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="223"/>
-        <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>Le client sera arrêté, voulez-vous continuer?</translation>
+        <source>Client will be shut down. Do you want to proceed?</source>
+        <translation>Le client sera arrêté. Voulez-vous continuer ?</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="257"/>
+        <source>Configuration options</source>
+        <translation>Options de configuration</translation>
+    </message>
+    <message>
+        <source>The configuration file is used to specify advanced user options which override GUI settings. Additionally, any command-line options will override this configuration file.</source>
+        <translation>Le fichier de configuration est utilisé pour indiquer aux utilisateurs experts quelles options remplacent les paramètres de l’IUG. De plus, toute option de ligne de commande modifiera ce fichier de configuration.</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Erreur</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation>Impossible d’ouvrir le fichier de configuration.</translation>
+    </message>
+    <message>
         <source>This change would require a client restart.</source>
-        <translation>Ce changement nécessite un redémarrage du client.</translation>
+        <translation>Ce changement demanderait un redémarrage du client.</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="291"/>
         <source>The supplied proxy address is invalid.</source>
-        <translation>L&apos;adresse de serveur mandataire fournie est invalide.</translation>
+        <translation>L’adresse de serveur mandataire fournie est invalide.</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../forms/overviewpage.ui" line="20"/>
         <source>Form</source>
         <translation>Formulaire</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="63"/>
-        <source>Wallet</source>
-        <translation>Portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="70"/>
-        <location filename="../forms/overviewpage.ui" line="953"/>
-        <location filename="../forms/overviewpage.ui" line="1021"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitsend network after a connection is established, but this process has not completed yet.</source>
-        <translation>L&apos;information affichée peut être obsolète. Votre portefeuille se synchronise automatiquement avec le réseau Bitsend lorsque la connection est établie, mais le process n&apos;est pas encore terminé.</translation>
+        <translation>Les informations affichées peuvent être obsolètes. Votre porte-monnaie est automatiquement synchronisé avec le réseau Bitsend lorsque la connexion s’établit, or ce processus n’est pas encore terminé.</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="114"/>
+        <source>Watch-only:</source>
+        <translation>Juste-regarder :</translation>
+    </message>
+    <message>
         <source>Available:</source>
         <translation>Disponible :</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="130"/>
         <source>Your current spendable balance</source>
-        <translation>Votre solde actuel pouvant être dépensé</translation>
+        <translation>Votre solde actuel disponible</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="146"/>
         <source>Pending:</source>
         <translation>En attente :</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="162"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Total des transactions qui doivent encore être confirmées et qu&apos;il n&apos;est pas encore possible de dépenser</translation>
+        <translation>Total des transactions qui doivent encore être confirmées et qui ne sont pas prises en compte dans le solde disponible</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="178"/>
         <source>Immature:</source>
         <translation>Immature :</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="191"/>
         <source>Mined balance that has not yet matured</source>
-        <translation>Le solde généré n&apos;est pas encore mûr</translation>
+        <translation>Le solde miné n’est pas encore mûr</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="207"/>
+        <source>Balances</source>
+        <translation>Soldes</translation>
+    </message>
+    <message>
         <source>Total:</source>
         <translation>Total :</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="223"/>
         <source>Your current total balance</source>
         <translation>Votre solde total actuel</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="302"/>
-        <source>Status:</source>
-        <translation>Status :</translation>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>Votre balance actuelle en adresses juste-regarder</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="309"/>
-        <source>Enabled/Disabled</source>
-        <translation>Activé/Désactivé</translation>
+        <source>Spendable:</source>
+        <translation>Disponible :</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="316"/>
-        <source>Completion:</source>
-        <translation>Complétude :</translation>
+        <source>Recent transactions</source>
+        <translation>Transactions récentes</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="336"/>
-        <source>Darksend Balance:</source>
-        <translation>Balance Darksend :</translation>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Transactions non confirmées vers des adresses juste-regarder</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="349"/>
-        <source>0 BSD</source>
-        <translation>0 BSD</translation>
+        <source>Mined balance in watch-only addresses that has not yet matured</source>
+        <translation>Le solde miné dans des adresses juste-regarder, qui n’est pas encore mûr</translation>
     </message>
     <message>
-        <location filename="../forms/overviewpage.ui" line="356"/>
-        <source>Amount and Rounds:</source>
-        <translation>Montant et Cycles</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="363"/>
-        <source>0 BSD / 0 Rounds</source>
-        <translation>0 BSD / 0 Cycles</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="370"/>
-        <source>Submitted Denom:</source>
-        <translation>Denom soumis :</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="377"/>
-        <source>The denominations you submitted to the Xnode. To mix, other users must submit the exact same denominations.</source>
-        <translation>Les dénominations que vous avez soumises au Xnode. Pour mélanger, les autres utilisateurs doivent soumettre exactement les mêmes dénominations.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="380"/>
-        <source>n/a</source>
-        <translation>n/a</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="946"/>
-        <location filename="../overviewpage.cpp" line="453"/>
-        <location filename="../overviewpage.cpp" line="467"/>
-        <location filename="../overviewpage.cpp" line="481"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="839"/>
-        <source>Start/Stop Mixing</source>
-        <translation>Démarrer/Arrêtér le mélange</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="871"/>
-        <source>(Last Message)</source>
-        <translation>(Dernier Message)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="896"/>
-        <source>Try to manually submit a Darksend request.</source>
-        <translation>Essayer de soumettre manuellement une requête Darksend.</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="899"/>
-        <source>Try Mix</source>
-        <translation>Essayer le mélange</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="918"/>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it&apos;s in the process of Mixing, which can cost you money!)</source>
-        <translation>Réinitialiser le statut de Darksend (peut interrompre Darksend si le process de mélange est en cours, ce qui peut vous coûter de l&apos;argent !)</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="924"/>
-        <source>Reset</source>
-        <translation>Réinitialiser</translation>
-    </message>
-    <message>
-        <location filename="../forms/overviewpage.ui" line="1014"/>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Transactions récentes&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="126"/>
-        <location filename="../overviewpage.cpp" line="127"/>
-        <location filename="../overviewpage.cpp" line="128"/>
-        <source>out of sync</source>
-        <translation>désynchronisé</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="143"/>
-        <location filename="../overviewpage.cpp" line="350"/>
-        <source>Disabled</source>
-        <translation>Désactivé</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="146"/>
-        <location filename="../overviewpage.cpp" line="352"/>
-        <location filename="../overviewpage.cpp" line="495"/>
-        <source>Start Darksend Mixing</source>
-        <translation>Démarrer le mélange Darksend</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="148"/>
-        <location filename="../overviewpage.cpp" line="497"/>
-        <source>Stop Darksend Mixing</source>
-        <translation>Arrêter le mélange Darksend</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="270"/>
-        <source>No inputs detected</source>
-        <translation>Aucune entrée détectée</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="278"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to recalculate.</source>
-        <translation>Détection de sorties dénominées non confirmées, attente de leur confirmation pour recalculer.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="335"/>
-        <source>Rounds</source>
-        <translation>Cycles</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="366"/>
-        <source>Enabled</source>
-        <translation>Activé</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="424"/>
-        <source>Last Darksend message:
-</source>
-        <translation>Dernier message de Darksend:
-</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="377"/>
-        <location filename="../overviewpage.cpp" line="406"/>
-        <source>Darksend is idle.</source>
-        <translation>Darksend est inactif.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="381"/>
-        <source>Mixing in progress...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="387"/>
-        <source>Darksend request complete: Your transaction was accepted into the pool!</source>
-        <translation>Requête de Darksend terminée : Votre transaction a été acceptée dans le pool!</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="393"/>
-        <source>Submitted following entries to Xnode:</source>
-        <translation>Les entrées suivantes ont été envoyées au Xnode:</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="394"/>
-        <location filename="../overviewpage.cpp" line="395"/>
-        <location filename="../overviewpage.cpp" line="396"/>
-        <source>Submitted to Xnode, Waiting for more entries</source>
-        <translation>Envoyé au Xnode, Attente d&apos;entrées supplémentaires</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="399"/>
-        <source>Found enough users, signing ...</source>
-        <translation>Nombre suffisant d&apos;utilisateurs trouvé, signature ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="400"/>
-        <source>Found enough users, signing ( waiting. )</source>
-        <translation>Nombre suffisant d&apos;utilisateurs trouvé, signature ( attente. )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="401"/>
-        <source>Found enough users, signing ( waiting.. )</source>
-        <translation>Nombre suffisant d&apos;utilisateurs trouvé, signature ( attente.. )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="402"/>
-        <source>Found enough users, signing ( waiting... )</source>
-        <translation>Nombre suffisant d&apos;utilisateurs trouvé, signature ( attente... )</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="404"/>
-        <source>Transmitting final transaction.</source>
-        <translation>Transmission de la transaction finale.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="408"/>
-        <source>Finalizing transaction.</source>
-        <translation>Finalisation de la transaction.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Darksend request incomplete:</source>
-        <translation>Requête Darksend incomplète.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="410"/>
-        <source>Will retry...</source>
-        <translation>Va réessayer ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="412"/>
-        <source>Darksend request complete:</source>
-        <translation>Requête Darksend complète :</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="414"/>
-        <source>Submitted to Xnode, waiting in queue .</source>
-        <translation>Soumis au Xnode, dans la file d&apos;attente .</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="415"/>
-        <source>Submitted to Xnode, waiting in queue ..</source>
-        <translation>Soumis au Xnode, dans la file d&apos;attente ..</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="416"/>
-        <source>Submitted to Xnode, waiting in queue ...</source>
-        <translation>Soumis au Xnode, dans la file d&apos;attente ...</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="418"/>
-        <source>Unknown state:</source>
-        <translation>Etat inconnu :</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="432"/>
-        <source>N/A</source>
-        <translation>N.D.</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="454"/>
-        <source>Darksend was successfully reset.</source>
-        <translation>Darksend est réinitialisé avec succès</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="468"/>
-        <source>Darksend requires at least %1 to use.</source>
-        <translation>Darksend nécessite au moins %1 pour l&apos;utiliser</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="482"/>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation>Le portefeuille est vérouillé et l&apos;utilisateur a refusé de le débloquer. Désactivation de Darksend.</translation>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Solde total actuel dans des adresses juste-regarder</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="293"/>
-        <location filename="../paymentserver.cpp" line="505"/>
-        <location filename="../paymentserver.cpp" line="518"/>
-        <location filename="../paymentserver.cpp" line="613"/>
-        <location filename="../paymentserver.cpp" line="631"/>
-        <location filename="../paymentserver.cpp" line="647"/>
         <source>Payment request error</source>
         <translation>Erreur de demande de paiement</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="294"/>
         <source>Cannot start bitsend: click-to-pay handler</source>
-        <translation>Impossible de démarrer bitsend: click-to-pay le gestionnaire</translation>
+        <translation>Impossible de démarrer le gestionnaire de cliquer-pour-payer bitsend:</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="352"/>
-        <source>Net manager warning</source>
-        <translation>Avertissement du gestionnaire de réseau</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="353"/>
-        <source>Your active proxy doesn&apos;t support SOCKS5, which is required for payment requests via proxy.</source>
-        <translation>Votre serveur mandataire actif ne prend pas en charge SOCKS5 ce qui est exigé pour les demandes de paiements par serveur mandataire.</translation>
-    </message>
-    <message>
-        <location filename="../paymentserver.cpp" line="404"/>
-        <location filename="../paymentserver.cpp" line="417"/>
         <source>URI handling</source>
-        <translation>Gestion des URIs</translation>
+        <translation>Gestion des URI</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="405"/>
+        <source>'bitsend://' is not a valid URI. Use 'bitsend:' instead.</source>
+        <translation>'bitsend://' n’est pas une URI valide. Utilisez plutôt 'bitsend:'.</translation>
+    </message>
+    <message>
         <source>Payment request fetch URL is invalid: %1</source>
-        <translation>L&apos;URL de récupération de la demande de paiement est invalide : %1</translation>
+        <translation>L’URL de récupération de la demande de paiement est invalide : %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="418"/>
-        <source>URI can not be parsed! This can be caused by an invalid Bitsend address or malformed URI parameters.</source>
-        <translation>L&apos;URI ne peut être analysé ! Ceci peut être causé par une adresse Bitsend invalide ou par des paramètres d&apos;URI mal composé.</translation>
+        <source>Invalid payment address %1</source>
+        <translation>Adresse de paiement invalide %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="432"/>
+        <source>URI cannot be parsed! This can be caused by an invalid Bitsend address or malformed URI parameters.</source>
+        <translation>L’URI ne peut pas être analysée ! Cela peut être causé par une adresse Bitsend invalide ou par des paramètres d’URI mal formés.</translation>
+    </message>
+    <message>
         <source>Payment request file handling</source>
         <translation>Gestion des fichiers de demande de paiement</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="433"/>
-        <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
-        <translation>Le fichier de demande de paiement ne peut pas être lu ou traité ! Ceci peut être causé par un fichier de demande de paiement invalide.</translation>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Le fichier de demande de paiement ne peut pas être lu ! Cela peut être causé par un fichier de demande de paiement invalide.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="506"/>
+        <source>Payment request rejected</source>
+        <translation>Demande de paiement rejetée</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Le réseau de la demande de paiement ne correspond pas au réseau du client.</translation>
+    </message>
+    <message>
+        <source>Payment request expired.</source>
+        <translation>La demande de paiement a expiré</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>La demande de paiement n’est pas initialisée.</translation>
+    </message>
+    <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>Les demandes de paiements non vérifiées à des scripts de paiement personnalisés ne sont pas prises en charge.</translation>
+        <translation>Les demandes de paiements non vérifiées vers des scripts de paiement personnalisés ne sont pas prises en charge.</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="514"/>
+        <source>Invalid payment request.</source>
+        <translation>Demande de paiement invalide.</translation>
+    </message>
+    <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>Le paiement demandé d&apos;un montant de %1 est trop faible (considéré comme de la poussière).</translation>
+        <translation>Le paiement demandé d’un montant de %1 est trop faible (considéré comme de la poussière).</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="565"/>
         <source>Refund from %1</source>
         <translation>Remboursement de %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="608"/>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>La demande de paiement %1 est trop grande (%2 octets, %3 octets permis).</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
         <translation>Erreur de communication avec %1 : %2</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="632"/>
-        <source>Payment request can not be parsed or processed!</source>
-        <translation>La demande de paiement ne peut pas être analysée ou traitée !</translation>
+        <source>Payment request cannot be parsed!</source>
+        <translation>La demande de paiement ne peut pas être analysée !</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="643"/>
         <source>Bad response from server %1</source>
         <translation>Mauvaise réponse du serveur %1</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="665"/>
         <source>Network request error</source>
         <translation>Erreur de demande réseau</translation>
     </message>
     <message>
-        <location filename="../paymentserver.cpp" line="676"/>
         <source>Payment acknowledged</source>
         <translation>Le paiement a été confirmé</translation>
     </message>
 </context>
 <context>
+    <name>PeerTableModel</name>
+    <message>
+        <source>User Agent</source>
+        <translation>Agent utilisateur</translation>
+    </message>
+    <message>
+        <source>Node/Service</source>
+        <translation>Nœud/service</translation>
+    </message>
+    <message>
+        <source>NodeId</source>
+        <translation>ID de nœud</translation>
+    </message>
+    <message>
+        <source>Ping</source>
+        <translation>Ping</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Envoyé</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Reçu</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../bitsend.cpp" line="525"/>
-        <location filename="../bitsend.cpp" line="532"/>
-        <location filename="../bitsend.cpp" line="539"/>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Bitsend</source>
-        <translation>Le Bitsend</translation>
+        <source>Amount</source>
+        <translation>Montant</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="526"/>
-        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
-        <translation>Erreur : le répertoire de données spécifié « %1 » n&apos;existe pas.</translation>
+        <source>Enter a Bitsend address (e.g. %1)</source>
+        <translation>Saisir une adresse Bitsend (p. ex. %1)</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="533"/>
-        <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>Erreur : impossible d&apos;analyser le fichier de configuration : %1. N’utilisez que la syntaxe clef=valeur.</translation>
+        <source>%1 d</source>
+        <translation>%1 j</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="540"/>
-        <source>Error reading Xnode configuration file: %1</source>
-        <translation>Erreur de lecture du fichier de configuration du Xnode: %1</translation>
+        <source>%1 h</source>
+        <translation>%1 h</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="552"/>
-        <source>Error: Invalid combination of -regtest and -testnet.</source>
-        <translation>Erreur : combinaison invalide de -regtest et de -testnet.</translation>
+        <source>%1 m</source>
+        <translation>%1 min</translation>
     </message>
     <message>
-        <location filename="../bitsend.cpp" line="612"/>
-        <source>Bitsend Core didn&apos;t yet exit safely...</source>
-        <translation>Bitsend Core ne s&apos;est pas encore arrêté en toute sécurité...</translation>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="101"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Entrez une adresse Bitsend (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>None</source>
+        <translation>Aucun</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>N.D.</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 ms</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation><numerusform>%n seconde</numerusform><numerusform>%n secondes</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n heure</numerusform><numerusform>%n heures</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n jour</numerusform><numerusform>%n jours</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n semaine</numerusform><numerusform>%n semaines</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 et %2</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n an</numerusform><numerusform>%n ans</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 o</translation>
+    </message>
+    <message>
+        <source>%1 KB</source>
+        <translation>%1 Ko</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 Mo</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation>%1 Go</translation>
+    </message>
+    <message>
+        <source>%1 didn't yet exit safely...</source>
+        <translation>%1 ne s’est pas encore arrêté en toute sécurité...</translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>inconnue</translation>
+    </message>
+</context>
+<context>
+    <name>QObject::QObject</name>
+    <message>
+        <source>Error parsing command line arguments: %1.</source>
+        <translation>Erreur d’analyse des arguments de ligne de commande : %1.</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" does not exist.</source>
+        <translation>Erreur : Le répertoire de données indiqué « %1 » n’existe pas.</translation>
+    </message>
+    <message>
+        <source>Error: Cannot parse configuration file: %1.</source>
+        <translation>Erreur : Impossible d’analyser le fichier de configuration : %1.</translation>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation>Erreur : %1</translation>
     </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="36"/>
         <source>&amp;Save Image...</source>
-        <translation>&amp;Sauvegarder l&apos;image...</translation>
+        <translation>&amp;Enregistrer l’image...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="39"/>
         <source>&amp;Copy Image</source>
-        <translation>&amp;Copier l&apos;image</translation>
+        <translation>&amp;Copier l’image</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>Save QR Code</source>
-        <translation>Sauvegarder le code QR</translation>
+        <translation>Enregistrer le code QR</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="71"/>
         <source>PNG Image (*.png)</source>
         <translation>Image PNG (*.png)</translation>
     </message>
@@ -2209,299 +1575,397 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="14"/>
-        <source>Tools window</source>
-        <translation>Fenêtre des outils</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="24"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Informations</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="33"/>
-        <source>Xnode Count</source>
-        <translation>Compteur de Xnodes</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="46"/>
-        <source>General</source>
-        <translation>Général</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="53"/>
-        <source>Name</source>
-        <translation>Nom</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="60"/>
-        <source>Client name</source>
-        <translation>Nom du client</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="70"/>
-        <location filename="../forms/rpcconsole.ui" line="139"/>
-        <location filename="../forms/rpcconsole.ui" line="192"/>
-        <location filename="../forms/rpcconsole.ui" line="215"/>
-        <location filename="../forms/rpcconsole.ui" line="231"/>
-        <location filename="../forms/rpcconsole.ui" line="247"/>
-        <location filename="../forms/rpcconsole.ui" line="276"/>
-        <location filename="../forms/rpcconsole.ui" line="292"/>
-        <location filename="../forms/rpcconsole.ui" line="315"/>
-        <location filename="../forms/rpcconsole.ui" line="341"/>
         <source>N/A</source>
         <translation>N.D.</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="83"/>
-        <source>Number of connections</source>
-        <translation>Nombre de connexions</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="90"/>
-        <source>Open the Bitsend debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Ouvrir le fichier de debug Bitsend depuis le répertoire de données actuel. Ceci peut prendre plusieurs secondes pour un fichier de debug imposant.</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="93"/>
-        <source>&amp;Open</source>
-        <translation>&amp;Ouvrir</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="116"/>
-        <source>Startup time</source>
-        <translation>Heure de démarrage</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="129"/>
-        <source>Network</source>
-        <translation>Réseau</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="152"/>
-        <source>Last block time</source>
-        <translation>Horodatage du dernier bloc</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="165"/>
-        <source>Debug log file</source>
-        <translation>Journal de débogage</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="172"/>
-        <source>Using OpenSSL version</source>
-        <translation>Version d&apos;OpenSSL utilisée</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="182"/>
-        <source>Build date</source>
-        <translation>Date de compilation</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="205"/>
-        <source>Current number of blocks</source>
-        <translation>Nombre actuel de blocs</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="305"/>
         <source>Client version</source>
         <translation>Version du client</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="334"/>
+        <source>&amp;Information</source>
+        <translation>&amp;Informations</translation>
+    </message>
+    <message>
+        <source>Debug window</source>
+        <translation>Fenêtre de débogage</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <source>Using BerkeleyDB version</source>
+        <translation>Version BerkeleyDB utilisée</translation>
+    </message>
+    <message>
+        <source>Datadir</source>
+        <translation>Datadir</translation>
+    </message>
+    <message>
+        <source>Startup time</source>
+        <translation>Heure de démarrage</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation>Réseau</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nom</translation>
+    </message>
+    <message>
+        <source>Number of connections</source>
+        <translation>Nombre de connexions</translation>
+    </message>
+    <message>
         <source>Block chain</source>
         <translation>Chaîne de blocs</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="349"/>
+        <source>Current number of blocks</source>
+        <translation>Nombre actuel de blocs</translation>
+    </message>
+    <message>
+        <source>Memory Pool</source>
+        <translation>Réserve de mémoire</translation>
+    </message>
+    <message>
+        <source>Current number of transactions</source>
+        <translation>Nombre actuel de transactions</translation>
+    </message>
+    <message>
+        <source>Memory usage</source>
+        <translation>Utilisation de la mémoire</translation>
+    </message>
+    <message>
+        <source>Wallet: </source>
+        <translation>Porte-monnaie :</translation>
+    </message>
+    <message>
+        <source>(none)</source>
+        <translation>(aucun)</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Réinitialiser</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Reçu</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Envoyé</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Pairs</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Pairs bannis</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Choisir un pair pour voir l’information détaillée.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>Dans la liste blanche</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Direction</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Bloc de départ</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>En-têtes synchronisés</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Blocs synchronisés</translation>
+    </message>
+    <message>
+        <source>User Agent</source>
+        <translation>Agent utilisateur</translation>
+    </message>
+    <message>
+        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Ouvrir le fichier journal de débogage de %1 à partir du répertoire de données actuel. Cela peut prendre quelques secondes pour les fichiers journaux de grande taille.</translation>
+    </message>
+    <message>
+        <source>Decrease font size</source>
+        <translation>Diminuer la taille de police</translation>
+    </message>
+    <message>
+        <source>Increase font size</source>
+        <translation>Augmenter la taille de police</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Services</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>Pointage des bannissements</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Temps de connexion</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Dernier envoi</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Dernière réception</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Temps de ping</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>La durée d’un ping en cours.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Attente du ping</translation>
+    </message>
+    <message>
+        <source>Min Ping</source>
+        <translation>Ping min.</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Décalage temporel</translation>
+    </message>
+    <message>
+        <source>Last block time</source>
+        <translation>Estampille temporelle du dernier bloc</translation>
+    </message>
+    <message>
+        <source>&amp;Open</source>
+        <translation>&amp;Ouvrir</translation>
+    </message>
+    <message>
         <source>&amp;Console</source>
         <translation>&amp;Console</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="398"/>
-        <source>Clear console</source>
-        <translation>Nettoyer la console</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="421"/>
         <source>&amp;Network Traffic</source>
         <translation>Trafic &amp;réseau</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="473"/>
-        <source>&amp;Clear</source>
-        <translation>&amp;Nettoyer</translation>
-    </message>
-    <message>
-        <location filename="../forms/rpcconsole.ui" line="486"/>
         <source>Totals</source>
         <translation>Totaux</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="550"/>
-        <location filename="../rpcconsole.cpp" line="367"/>
         <source>In:</source>
         <translation>Entrant :</translation>
     </message>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="630"/>
-        <location filename="../rpcconsole.cpp" line="368"/>
         <source>Out:</source>
         <translation>Sortant :</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="333"/>
-        <source>Welcome to the Bitsend RPC console.</source>
-        <translation>Bienvenue sur la console RPC de Bitsend.</translation>
+        <source>Debug log file</source>
+        <translation>Fichier journal de débogage</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="334"/>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Utiliser les touches de curseur pour naviguer dans l&apos;historique et &lt;b&gt;Ctrl-L&lt;/b&gt; pour effacer l&apos;écran.</translation>
+        <source>Clear console</source>
+        <translation>Effacer la console</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="335"/>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Taper &lt;b&gt;help&lt;/b&gt; pour afficher une vue générale des commandes disponibles.</translation>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;heure</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="474"/>
-        <source>%1 B</source>
-        <translation>%1 o</translation>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;jour</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="476"/>
-        <source>%1 KB</source>
-        <translation>%1 Ko</translation>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;semaine</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="478"/>
-        <source>%1 MB</source>
-        <translation>%1 Mo</translation>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;an</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="480"/>
-        <source>%1 GB</source>
-        <translation>%1 Go</translation>
+        <source>&amp;Disconnect</source>
+        <translation>&amp;Déconnecter</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="487"/>
-        <source>%1 m</source>
-        <translation>%1 min</translation>
+        <source>Ban for</source>
+        <translation>Bannir pendant</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="492"/>
-        <source>%1 h</source>
-        <translation>%1 h</translation>
+        <source>&amp;Unban</source>
+        <translation>&amp;Réhabiliter</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="494"/>
-        <source>%1 h %2 m</source>
-        <translation>%1 h %2 min</translation>
+        <source>default wallet</source>
+        <translation>porte-monnaie par défaut</translation>
+    </message>
+    <message>
+        <source>Welcome to the %1 RPC console.</source>
+        <translation>Bienvenue sur la console RPC de %1.</translation>
+    </message>
+    <message>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation>Utiliser les touches de déplacement pour naviguer dans l’historique et %1 pour effacer l’écran.</translation>
+    </message>
+    <message>
+        <source>Type %1 for an overview of available commands.</source>
+        <translation>Taper %1 pour afficher un aperçu des commandes proposées.</translation>
+    </message>
+    <message>
+        <source>For more information on using this console type %1.</source>
+        <translation>Pour plus d’informations sur l’utilisation de cette console, taper %1.</translation>
+    </message>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>AVERTISSEMENT : des fraudeurs sont réputés être à l’oeuvre, demandant aux utilisateurs de taper des commandes ici, dérobant ainsi le contenu de leurs porte-monnaie. Ne pas utiliser cette console sans une compréhension parfaite des conséquences d’une commande.</translation>
+    </message>
+    <message>
+        <source>Network activity disabled</source>
+        <translation>L’activité réseau est désactivée.</translation>
+    </message>
+    <message>
+        <source>Executing command without any wallet</source>
+        <translation>Exécution de la commande sans aucun porte-monnaie</translation>
+    </message>
+    <message>
+        <source>Executing command using "%1" wallet</source>
+        <translation>Exécution de la commande en utilisant le porte-monnaie « %1 »</translation>
+    </message>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(ID de nœud : %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>par %1</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>jamais</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Entrant</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Sortant</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Oui</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Non</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Inconnu</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="34"/>
-        <source>Reuse one of the previously used receiving addresses. Reusing addresses has security and privacy issues. Do not use this unless re-generating a payment request made before.</source>
-        <translation>Réutilise une adresse de réception précédemment utilisée. Réutiliser une adresse pose des problèmes de sécurité et de vie privée. N&apos;utilisez pas cette option sauf si vous générez à nouveau une demande de paiement déjà faite.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="37"/>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>Ré&amp;utiliser une adresse de réception existante (non recommandé)</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="51"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="74"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
-        <translation>Un message optionnel à joindre à la demande de paiement, qui sera affiché quand la demande sera ouverte. Note : Ce message ne sera pas envoyé avec le paiement à travers le réseau Bitsend.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="54"/>
-        <source>&amp;Message:</source>
-        <translation>M&amp;essage :</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="67"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="88"/>
-        <source>An optional label to associate with the new receiving address.</source>
-        <translation>Un étiquette optionnelle à associer à la nouvelle adresse de réception</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="81"/>
-        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Utiliser ce formulaire pour demander des paiements. Tous les champs sont  &lt;b&gt;optionnels&lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="91"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Étiquette :</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="104"/>
-        <location filename="../forms/receivecoinsdialog.ui" line="126"/>
-        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>Un montant optionnel à demander. Laisser ceci vide ou à zéro pour ne pas demander de montant spécifique.</translation>
-    </message>
-    <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="107"/>
         <source>&amp;Amount:</source>
         <translation>&amp;Montant :</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="141"/>
-        <source>&amp;Request payment</source>
-        <translation>&amp;Demande de paiement</translation>
+        <source>&amp;Label:</source>
+        <translation>&amp;Étiquette :</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="158"/>
+        <source>&amp;Message:</source>
+        <translation>M&amp;essage :</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitsend network.</source>
+        <translation>Un message facultatif à joindre à la demande de paiement et qui sera affiché à l’ouverture de celle-ci. Note : le message ne sera pas envoyé avec le paiement par le réseau Bitsend.</translation>
+    </message>
+    <message>
+        <source>An optional label to associate with the new receiving address.</source>
+        <translation>Un étiquette facultative à associer à la nouvelle adresse de réception.</translation>
+    </message>
+    <message>
+        <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
+        <translation>Utiliser ce formulaire pour demander des paiements. Tous les champs sont  &lt;b&gt;facultatifs&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
+        <translation>Un montant facultatif à demander. Ne rien saisir ou un zéro pour ne pas demander de montant précis.</translation>
+    </message>
+    <message>
         <source>Clear all fields of the form.</source>
         <translation>Effacer tous les champs du formulaire.</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="161"/>
         <source>Clear</source>
         <translation>Effacer</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="239"/>
+        <source>Native segwit addresses (aka Bech32 or BIP-173) reduce your transaction fees later on and offer better protection against typos, but old wallets don't support them. When unchecked, an address compatible with older wallets will be created instead.</source>
+        <translation>Les adresses SegWit natives (aussi appelées Bech32 ou BIP-173) réduisent vos frais de transaction ultérieurs et offrent une meilleure protection contre les erreurs de frappe, mais les anciens porte-monnaie ne les prennent pas en charge. Si cette option n’est pas cochée, une adresse compatible avec les anciens porte-monnaie sera plutôt créée.</translation>
+    </message>
+    <message>
+        <source>Generate native segwit (Bech32) address</source>
+        <translation>Générer une adresse SegWit native (Bech32)</translation>
+    </message>
+    <message>
         <source>Requested payments history</source>
         <translation>Historique des paiements demandés</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="261"/>
-        <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>Afficher la demande choisie (identique à un double-clic sur une entrée)</translation>
+        <source>&amp;Request payment</source>
+        <translation>&amp;Demander un paiement</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="264"/>
+        <source>Show the selected request (does the same as double clicking an entry)</source>
+        <translation>Afficher la demande choisie (comme double-cliquer sur une entrée)</translation>
+    </message>
+    <message>
         <source>Show</source>
         <translation>Afficher</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="278"/>
         <source>Remove the selected entries from the list</source>
-        <translation>Enlever les entrées sélectionnées de la liste</translation>
+        <translation>Retirer les entrées sélectionnées de la liste</translation>
     </message>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="281"/>
         <source>Remove</source>
-        <translation>Enlever</translation>
+        <translation>Retirer</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="39"/>
+        <source>Copy URI</source>
+        <translation>Copier l’URI</translation>
+    </message>
+    <message>
         <source>Copy label</source>
         <translation>Copier l’étiquette</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="40"/>
         <source>Copy message</source>
         <translation>Copier le message</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="41"/>
         <source>Copy amount</source>
         <translation>Copier le montant</translation>
     </message>
@@ -2509,734 +1973,631 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="29"/>
         <source>QR Code</source>
         <translation>Code QR</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="75"/>
         <source>Copy &amp;URI</source>
-        <translation>Copier l&apos;&amp;URI</translation>
+        <translation>Copier l’&amp;URI</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="82"/>
         <source>Copy &amp;Address</source>
-        <translation>Copier l&apos;&amp;adresse</translation>
+        <translation>Copier l’&amp;adresse</translation>
     </message>
     <message>
-        <location filename="../forms/receiverequestdialog.ui" line="89"/>
         <source>&amp;Save Image...</source>
-        <translation>&amp;Sauvegarder l&apos;image...</translation>
+        <translation>&amp;Enregistrer l’image...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="136"/>
         <source>Request payment to %1</source>
         <translation>Demande de paiement à %1</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="142"/>
         <source>Payment information</source>
         <translation>Informations de paiement</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="143"/>
         <source>URI</source>
         <translation>URI</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="145"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="147"/>
         <source>Amount</source>
         <translation>Montant</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="149"/>
         <source>Label</source>
         <translation>Étiquette</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="151"/>
         <source>Message</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="161"/>
-        <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>L&apos;URI résultant est trop long, essayez de réduire le texte d&apos;étiquette / de message.</translation>
+        <source>Wallet</source>
+        <translation>Porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="166"/>
+        <source>Resulting URI too long, try to reduce the text for label / message.</source>
+        <translation>L’URI résultante est trop longue. Essayez de réduire le texte de l’étiquette ou du message.</translation>
+    </message>
+    <message>
         <source>Error encoding URI into QR Code.</source>
-        <translation>Erreur d&apos;encodage de l&apos;URI en code QR.</translation>
+        <translation>Erreur d’encodage de l’URI en code QR.</translation>
     </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Label</source>
         <translation>Étiquette</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
         <source>Message</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="24"/>
-        <source>Amount</source>
-        <translation>Montant</translation>
-    </message>
-    <message>
-        <location filename="../recentrequeststablemodel.cpp" line="62"/>
         <source>(no label)</source>
-        <translation>(pas d&apos;étiquette)</translation>
+        <translation>(aucune étiquette)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="71"/>
         <source>(no message)</source>
-        <translation>(pas de message)</translation>
+        <translation>(aucun message)</translation>
     </message>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="79"/>
-        <source>(no amount)</source>
-        <translation>(aucun montant)</translation>
+        <source>(no amount requested)</source>
+        <translation>(aucun montant demandé)</translation>
+    </message>
+    <message>
+        <source>Requested</source>
+        <translation>Demandée</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="14"/>
-        <location filename="../sendcoinsdialog.cpp" line="429"/>
-        <location filename="../sendcoinsdialog.cpp" line="521"/>
-        <location filename="../sendcoinsdialog.cpp" line="531"/>
         <source>Send Coins</source>
         <translation>Envoyer des pièces</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="90"/>
         <source>Coin Control Features</source>
         <translation>Fonctions de contrôle des pièces</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="110"/>
         <source>Inputs...</source>
-        <translation>Entrées...</translation>
+        <translation>Entrants...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="117"/>
         <source>automatically selected</source>
         <translation>choisi automatiquement</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="136"/>
         <source>Insufficient funds!</source>
-        <translation>Fonds insuffisants !</translation>
+        <translation>Fonds insuffisants !</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="225"/>
         <source>Quantity:</source>
         <translation>Quantité :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="260"/>
         <source>Bytes:</source>
         <translation>Octets :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="308"/>
         <source>Amount:</source>
-        <translation>Montant :</translation>
+        <translation>Montant :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="340"/>
-        <source>Priority:</source>
-        <translation>Priorité :</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="353"/>
-        <source>medium</source>
-        <translation>moyen</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="388"/>
         <source>Fee:</source>
         <translation>Frais :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="420"/>
-        <source>Low Output:</source>
-        <translation>Sortie faible</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="433"/>
-        <source>no</source>
-        <translation>non</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="468"/>
         <source>After Fee:</source>
         <translation>Après les frais :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="500"/>
         <source>Change:</source>
         <translation>Monnaie :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="544"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
-        <translation>Si ceci est actif mais l&apos;adresse de monnaie rendue est vide ou invalide, la monnaie sera envoyée vers une adresse nouvellement générée.</translation>
+        <translation>Si cette option est activée et l’adresse de monnaie est vide ou invalide, la monnaie sera envoyée vers une adresse nouvellement générée.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="547"/>
         <source>Custom change address</source>
-        <translation>Adresse personnalisée de monnaie rendue</translation>
+        <translation>Adresse personnalisée de monnaie</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="668"/>
-        <source>Confirm the send action</source>
-        <translation>Confirmer l’action d&apos;envoi</translation>
+        <source>Transaction Fee:</source>
+        <translation>Frais de transaction :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="671"/>
-        <source>S&amp;end</source>
-        <translation>E&amp;nvoyer</translation>
+        <source>Choose...</source>
+        <translation>Choisir...</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="691"/>
-        <source>Clear all fields of the form.</source>
-        <translation>Effacer tous les champs du formulaire.</translation>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>L’utilisation de l’option « fallbackfee » (frais de repli) peut avoir comme effet d’envoyer une transaction qui prendra plusieurs heures ou jours pour être confirmée ou qui ne le sera jamais. Envisagez de choisir vos frais manuellement ou attendez d’avoir validé l’intégralité de la chaîne.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="694"/>
-        <source>Clear &amp;All</source>
-        <translation>&amp;Tout nettoyer</translation>
+        <source>Warning: Fee estimation is currently not possible.</source>
+        <translation>Avertissement : l’estimation des frais n’est actuellement pas possible.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="711"/>
+        <source>collapse fee-settings</source>
+        <translation>réduire les paramètres des frais</translation>
+    </message>
+    <message>
+        <source>Specify a custom fee per kB (1,000 bytes) of the transaction's virtual size.
+
+Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis per kB" for a transaction size of 500 bytes (half of 1 kB) would ultimately yield a fee of only 50 satoshis.</source>
+        <translation>Déterminer des frais personnalisés par Ko (1 000 octets) de la taille virtuelle de la transaction.
+
+Note : Les frais étant calculés par octet, des frais de « 100 satoshis par Ko » pour une transaction d’une taille de 500 octets (la moitié de 1 Ko) donneront des frais de seulement 50 satoshis.</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>par kilo-octet</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>Cacher</translation>
+    </message>
+    <message>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for bitsend transactions than the network can process.</source>
+        <translation>Il est correct de payer les frais minimum tant que le volume transactionnel est inférieur à l’espace dans les blocs. Mais soyez conscient que cela pourrait résulter en une transaction n’étant jamais confirmée une fois qu’il y aura plus de transactions que le réseau ne pourra en traiter.</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(lire l’infobulle)</translation>
+    </message>
+    <message>
+        <source>Recommended:</source>
+        <translation>Recommandés :</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Personnalisés : </translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(Les frais intelligents ne sont pas encore initialisés. Cela prend habituellement quelques blocs...)</translation>
+    </message>
+    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Envoyer à plusieurs destinataires à la fois</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="714"/>
         <source>Add &amp;Recipient</source>
         <translation>Ajouter un &amp;destinataire</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="752"/>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
+        <source>Clear all fields of the form.</source>
+        <translation>Effacer tous les champs du formulaire.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="771"/>
-        <source>InstantX</source>
-        <translation>InstantX</translation>
+        <source>Dust:</source>
+        <translation>Poussière :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="778"/>
+        <source>Confirmation time target:</source>
+        <translation>Estimation du délai de confirmation :</translation>
+    </message>
+    <message>
+        <source>Enable Replace-By-Fee</source>
+        <translation>Activer Remplacer-par-des-frais</translation>
+    </message>
+    <message>
+        <source>With Replace-By-Fee (BIP-125) you can increase a transaction's fee after it is sent. Without this, a higher fee may be recommended to compensate for increased transaction delay risk.</source>
+        <translation>Avec Remplacer-par-des-frais (BIP-125), vous pouvez augmenter les frais de transaction après qu’elle est envoyée. Sans cela, des frais plus élevés peuvent être recommandés pour compenser le risque accru de retard transactionnel.</translation>
+    </message>
+    <message>
+        <source>Clear &amp;All</source>
+        <translation>&amp;Tout effacer</translation>
+    </message>
+    <message>
         <source>Balance:</source>
-        <translation>Solde :</translation>
+        <translation>Solde :</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="53"/>
+        <source>Confirm the send action</source>
+        <translation>Confirmer l’action d’envoi</translation>
+    </message>
+    <message>
+        <source>S&amp;end</source>
+        <translation>E&amp;nvoyer</translation>
+    </message>
+    <message>
         <source>Copy quantity</source>
         <translation>Copier la quantité</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="54"/>
         <source>Copy amount</source>
         <translation>Copier le montant</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="55"/>
         <source>Copy fee</source>
         <translation>Copier les frais</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="56"/>
         <source>Copy after fee</source>
-        <translation>Copier le montant après les frais</translation>
+        <translation>Copier après les frais</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="57"/>
         <source>Copy bytes</source>
         <translation>Copier les octets</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="58"/>
-        <source>Copy priority</source>
-        <translation>Copier la priorité</translation>
+        <source>Copy dust</source>
+        <translation>Copier la poussière</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="59"/>
-        <source>Copy low output</source>
-        <translation>Copier la sortie faible</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="60"/>
         <source>Copy change</source>
         <translation>Copier la monnaie</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>using</source>
-        <translation>utiliser</translation>
+        <source>%1 (%2 blocks)</source>
+        <translation>%1 (%2 blocs)</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="145"/>
-        <location filename="../sendcoinsdialog.cpp" line="151"/>
-        <source>anonymous funds</source>
-        <translation>fonds anonymisés</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="155"/>
-        <source>(Darksend requires this amount to be rounded up to the nearest %1).</source>
-        <translation>(Darksend nécessite que ce montant soit arrondi au plus proche de %1).</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="160"/>
-        <source>any available funds (not recommended)</source>
-        <translation>tout fonds disponible (non recommandé)</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="166"/>
-        <source>and InstantX</source>
-        <translation>et InstantX</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="190"/>
-        <location filename="../sendcoinsdialog.cpp" line="195"/>
-        <location filename="../sendcoinsdialog.cpp" line="200"/>
-        <location filename="../sendcoinsdialog.cpp" line="204"/>
         <source>%1 to %2</source>
         <translation>%1 à %2</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="253"/>
         <source>Are you sure you want to send?</source>
-        <translation>Êtes-vous sûr de vouloir envoyer ?</translation>
+        <translation>Voulez-vous vraiment envoyer ?</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="262"/>
-        <source>are added as transaction fee</source>
-        <translation>ajouté en tant que frais de transaction</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="276"/>
-        <source>Total Amount %1 (= %2)</source>
-        <translation>Montant total %1 (= %2)</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="278"/>
         <source>or</source>
         <translation>ou</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="280"/>
+        <source>You can increase the fee later (signals Replace-By-Fee, BIP-125).</source>
+        <translation>Vous pouvez augmenter les frais ultérieurement (signale Remplacer-par-des-frais, BIP-125).</translation>
+    </message>
+    <message>
+        <source>from wallet %1</source>
+        <translation>du porte-monnaie %1</translation>
+    </message>
+    <message>
+        <source>Please, review your transaction.</source>
+        <translation>Veuillez vérifier votre transaction.</translation>
+    </message>
+    <message>
+        <source>Transaction fee</source>
+        <translation>Frais de transaction</translation>
+    </message>
+    <message>
+        <source>Not signalling Replace-By-Fee, BIP-125.</source>
+        <translation>Ne signale pas Remplacer-par-des-frais, BIP-125.</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation>Montant total</translation>
+    </message>
+    <message>
         <source>Confirm send coins</source>
-        <translation>Confirmer l’envoi des pièces</translation>
+        <translation>Confirmer l’envoi de pièces</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="435"/>
-        <source>Payment request expired</source>
-        <translation>La demande de paiement a expiré</translation>
+        <source>The recipient address is not valid. Please recheck.</source>
+        <translation>L’adresse du destinataire est invalide. Veuillez la revérifier.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="443"/>
-        <source>Invalid payment address %1</source>
-        <translation>Adresse de paiement invalide %1</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="498"/>
-        <source>The recipient address is not valid, please recheck.</source>
-        <translation>L&apos;adresse du destinataire n’est pas valide, veuillez la vérifier.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsdialog.cpp" line="501"/>
         <source>The amount to pay must be larger than 0.</source>
         <translation>Le montant à payer doit être supérieur à 0.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="504"/>
         <source>The amount exceeds your balance.</source>
         <translation>Le montant dépasse votre solde.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="507"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
         <translation>Le montant dépasse votre solde lorsque les frais de transaction de %1 sont inclus.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="510"/>
-        <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Adresse indentique trouvée, il n&apos;est possible d&apos;envoyer qu&apos;une fois à chaque adresse par opération d&apos;envoi.</translation>
+        <source>Duplicate address found: addresses should only be used once each.</source>
+        <translation>Adresse identique trouvée : chaque adresse ne devrait être utilisée qu’une fois.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="513"/>
         <source>Transaction creation failed!</source>
-        <translation>La création de la transaction a échoué !</translation>
+        <translation>Échec de création de la transaction !</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="517"/>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>La transaction a été rejetée ! Ceci peut arriver si certaines pièces de votre portefeuille étaient déjà dépensées, par exemple si vous avez utilisé une copie de wallet.dat et que des pièces ont été dépensées dans la copie sans être marquées comme telles ici.</translation>
+        <source>The transaction was rejected with the following reason: %1</source>
+        <translation>La transaction a été rejetée pour la raison suivante : %1</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="522"/>
-        <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>Erreur: Le portefeuille a été déverouillé seulement pour l&apos;anonymisation des pièces.</translation>
+        <source>A fee higher than %1 is considered an absurdly high fee.</source>
+        <translation>Des frais supérieurs à %1 sont considérés comme ridiculement élevés.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="635"/>
+        <source>Payment request expired.</source>
+        <translation>La demande de paiement a expiré</translation>
+    </message>
+    <message>
+        <source>Pay only the required fee of %1</source>
+        <translation>Payer seulement les frais exigés de %1</translation>
+    </message>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation><numerusform>Il est estimé que la confirmation commencera dans %n bloc.</numerusform><numerusform>Il est estimé que la confirmation commencera dans %n blocs.</numerusform></translation>
+    </message>
+    <message>
         <source>Warning: Invalid Bitsend address</source>
-        <translation>Attention: adresse Bitsend invalide</translation>
+        <translation>Avertissement : adresse Bitsend invalide</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="644"/>
         <source>Warning: Unknown change address</source>
-        <translation>Attention : adresse de monnaie rendue inconnue</translation>
+        <translation>Avertissement : adresse de monnaie inconnue</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="655"/>
+        <source>Confirm custom change address</source>
+        <translation>Confimer l’adresse personnalisée de monnaie</translation>
+    </message>
+    <message>
+        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
+        <translation>L’adresse que vous avez sélectionnée pour la monnaie ne fait pas partie de ce porte-monnaie. Les fonds de ce porte-monnaie peuvent en partie ou en totalité être envoyés vers cette adresse. Êtes-vous certain ?</translation>
+    </message>
+    <message>
         <source>(no label)</source>
-        <translation>(pas d&apos;étiquette)</translation>
+        <translation>(aucune étiquette)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="21"/>
-        <source>This is a normal payment.</source>
-        <translation>Ceci est un paiement normal.</translation>
+        <source>A&amp;mount:</source>
+        <translation>&amp;Montant :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="36"/>
         <source>Pay &amp;To:</source>
-        <translation>&amp;Payer à :</translation>
+        <translation>&amp;Payer à :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="54"/>
-        <source>The address to send the payment to (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>L&apos;adresse à qui envoyer le paiement (ex. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>&amp;Label:</source>
+        <translation>É&amp;tiquette :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="61"/>
         <source>Choose previously used address</source>
         <translation>Choisir une adresse déjà utilisée</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="71"/>
+        <source>This is a normal payment.</source>
+        <translation>Ceci est un paiement normal.</translation>
+    </message>
+    <message>
+        <source>The Bitsend address to send the payment to</source>
+        <translation>L’adresse Bitsend à laquelle envoyer le paiement</translation>
+    </message>
+    <message>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="78"/>
         <source>Paste address from clipboard</source>
-        <translation>Coller l&apos;adresse depuis le presse-papier</translation>
+        <translation>Coller l’adresse du presse-papiers</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="88"/>
         <source>Alt+P</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="95"/>
-        <location filename="../forms/sendcoinsentry.ui" line="619"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1155"/>
         <source>Remove this entry</source>
-        <translation>Enlever cette entrée</translation>
+        <translation>Retirer cette entrée</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="111"/>
-        <source>&amp;Label:</source>
-        <translation>É&amp;tiquette :</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less bitsends than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>Les frais seront déduits du montant envoyé. Le destinataire recevra moins de bitsends que le montant saisi dans le champ de montant. Si plusieurs destinataires sont sélectionnés, les frais seront partagés également..</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="124"/>
-        <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Saisir une étiquette pour cette adresse afin de l&apos;ajouter à la liste d&apos;adresses utilisées</translation>
+        <source>S&amp;ubtract fee from amount</source>
+        <translation>S&amp;oustraire les frais du montant</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="131"/>
-        <location filename="../forms/sendcoinsentry.ui" line="652"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1188"/>
-        <source>A&amp;mount:</source>
-        <translation>&amp;Montant :</translation>
+        <source>Use available balance</source>
+        <translation>Utiliser le solde disponible</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="147"/>
         <source>Message:</source>
-        <translation>Message :</translation>
+        <translation>Message :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="157"/>
+        <source>This is an unauthenticated payment request.</source>
+        <translation>Cette demande de paiement n’est pas authentifiée.</translation>
+    </message>
+    <message>
+        <source>This is an authenticated payment request.</source>
+        <translation>Cette demande de paiement est authentifiée.</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>Saisir une étiquette pour cette adresse afin de l’ajouter à la liste d’adresses utilisées</translation>
+    </message>
+    <message>
         <source>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</source>
-        <translation>Un message qui était joint au Bitsend : URI qui sera sauvegardée avec la transaction pour référence. Note : Ce message ne sera pas envoyé à travers le réseau Bitsend.</translation>
+        <translation>Un message qui était joint à l’URI bitsend: et qui sera stocké avec la transaction pour référence. Note : ce message ne sera pas envoyé par le réseau Bitsend.</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="583"/>
-        <source>This is an unverified payment request.</source>
-        <translation>Ceci est une demande de paiement non vérifiée.</translation>
-    </message>
-    <message>
-        <location filename="../forms/sendcoinsentry.ui" line="601"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1133"/>
         <source>Pay To:</source>
         <translation>Payer à :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="635"/>
-        <location filename="../forms/sendcoinsentry.ui" line="1171"/>
         <source>Memo:</source>
         <translation>Mémo :</translation>
     </message>
     <message>
-        <location filename="../forms/sendcoinsentry.ui" line="1115"/>
-        <source>This is a verified payment request.</source>
-        <translation>Ceci est une demande de paiement vérifiée.</translation>
-    </message>
-    <message>
-        <location filename="../sendcoinsentry.cpp" line="31"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Saisir une étiquette pour cette adresse afin de l’ajouter à votre carnet d’adresses</translation>
     </message>
 </context>
 <context>
+    <name>SendConfirmationDialog</name>
+    <message>
+        <source>Yes</source>
+        <translation>Oui</translation>
+    </message>
+</context>
+<context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="129"/>
-        <source>Bitsend Core is shutting down...</source>
-        <translation>Arrêt de Bitsend Core...</translation>
+        <source>%1 is shutting down...</source>
+        <translation>Arrêt de %1...</translation>
     </message>
     <message>
-        <location filename="../utilitydialog.cpp" line="130"/>
         <source>Do not shut down the computer until this window disappears.</source>
-        <translation>Ne pas fermer l&apos;ordinateur jusqu&apos;à la disparition de cette fenêtre.</translation>
+        <translation>Ne pas éteindre l’ordinateur jusqu’à la disparition de cette fenêtre.</translation>
     </message>
 </context>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="14"/>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>Signatures - Signer / Vérifier un message</translation>
+        <translation>Signatures - Signer / vérifier un message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="24"/>
         <source>&amp;Sign Message</source>
         <translation>&amp;Signer un message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="30"/>
-        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Vous pouvez signer des messages avec vos adresses pour prouver que vous les détenez. Faites attention de ne pas signer de vague car des attaques d&apos;hameçonnage peuvent essayer d&apos;usurper votre identité par votre signature. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous serez d&apos;accord.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive bitsends sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Vous pouvez signer des messages ou des accords avec vos adresses pour prouver que vous pouvez recevoir des bitsends à ces dernières. Faites attention de ne rien signer de vague ou au hasard, car des attaques d’hameçonnage pourraient essayer de vous faire signer avec votre identité afin de l’usurper. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous êtes d’accord.</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="48"/>
-        <source>The address to sign the message with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>L&apos;adresse pour signer le message (ex. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The Bitsend address to sign the message with</source>
+        <translation>L’adresse Bitsend avec laquelle signer le message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="55"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="265"/>
         <source>Choose previously used address</source>
-        <translation>Choisir une adresse précédemment utilisée</translation>
+        <translation>Choisir une adresse déjà utilisée</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="65"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="275"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="75"/>
         <source>Paste address from clipboard</source>
-        <translation>Coller une adresse depuis le presse-papier</translation>
+        <translation>Coller une adresse du presse-papiers</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="85"/>
         <source>Alt+P</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="97"/>
         <source>Enter the message you want to sign here</source>
         <translation>Saisir ici le message que vous désirez signer</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="104"/>
         <source>Signature</source>
         <translation>Signature</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="131"/>
         <source>Copy the current signature to the system clipboard</source>
-        <translation>Copier la signature actuelle dans le presse-papier</translation>
+        <translation>Copier la signature actuelle dans le presse-papiers</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="152"/>
         <source>Sign the message to prove you own this Bitsend address</source>
-        <translation>Signer le message pour prouver que vous possédez cette adresse Bitsend</translation>
+        <translation>Signer le message afin de prouver que vous détenez cette adresse Bitsend</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="155"/>
         <source>Sign &amp;Message</source>
         <translation>Signer le &amp;message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="169"/>
         <source>Reset all sign message fields</source>
         <translation>Réinitialiser tous les champs de signature de message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="172"/>
-        <location filename="../forms/signverifymessagedialog.ui" line="315"/>
         <source>Clear &amp;All</source>
-        <translation>&amp;Tout nettoyer</translation>
+        <translation>&amp;Tout effacer</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="231"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Vérifier un message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="237"/>
-        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Saisir ci-dessous l&apos;adresse de signature, le message (assurez-vous d&apos;avoir copié exactement les retours à la ligne, les espaces, tabulations etc.) et la signature pour vérifier le message. Faire attention à ne pas déduire davantage de la signature que ce qui est contenu dans le message signé lui-même pour éviter d&apos;être trompé par une attaque d&apos;homme du milieu.</translation>
+        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <translation>Saisir ci-dessous l’adresse du destinataire, le message (s’assurer de copier fidèlement les retours à la ligne, les espaces, les tabulations, etc.) et la signature pour vérifier le message. Faire attention à ne pas déduire davantage de la signature que ce qui est contenu dans le message signé même, pour éviter d’être trompé par une attaque d’homme du milieu. Prendre en compte que cela ne fait que prouver que le signataire reçoit l’adresse et ne peut pas prouver la provenance d’une transaction !</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="258"/>
-        <source>The address the message was signed with (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>L&apos;adresse utilisée pour signer le message (ex. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
+        <source>The Bitsend address the message was signed with</source>
+        <translation>L’adresse Bitsend avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="295"/>
         <source>Verify the message to ensure it was signed with the specified Bitsend address</source>
-        <translation>Vérifier le message pour s&apos;assurer qu&apos;il a été signé avec l&apos;adresse Bitsend spécifiée</translation>
+        <translation>Vérifier le message pour s’assurer qu’il a été signé avec l’adresse Bitsend indiquée</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="298"/>
         <source>Verify &amp;Message</source>
         <translation>Vérifier le &amp;message</translation>
     </message>
     <message>
-        <location filename="../forms/signverifymessagedialog.ui" line="312"/>
         <source>Reset all verify message fields</source>
         <translation>Réinitialiser tous les champs de vérification de message</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="30"/>
-        <source>Click &quot;Sign Message&quot; to generate signature</source>
-        <translation>Cliquez sur « Signer le message » pour générer la signature</translation>
+        <source>Click "Sign Message" to generate signature</source>
+        <translation>Cliquez sur « Signer le message » pour générer la signature</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="31"/>
-        <source>Enter a Bitsend address (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</source>
-        <translation>Entrez une adresse Bitsend (e.g. iGJXtgFacXixKeK8Pxmk3a7YhXMc2o8EsB )</translation>
-    </message>
-    <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
         <source>The entered address is invalid.</source>
-        <translation>L&apos;adresse saisie est invalide.</translation>
+        <translation>L’adresse saisie est invalide.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="114"/>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="194"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>Please check the address and try again.</source>
-        <translation>Veuillez vérifier l&apos;adresse et réessayer.</translation>
+        <translation>Veuillez vérifier l’adresse et ressayer.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="122"/>
-        <location filename="../signverifymessagedialog.cpp" line="202"/>
         <source>The entered address does not refer to a key.</source>
-        <translation>L&apos;adresse saisie ne fait pas référence à une clef.</translation>
+        <translation>L’adresse saisie ne fait pas référence à une clé.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="130"/>
         <source>Wallet unlock was cancelled.</source>
-        <translation>Le déverrouillage du portefeuille a été annulé.</translation>
+        <translation>Le déverrouillage du porte-monnaie a été annulé.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="138"/>
         <source>Private key for the entered address is not available.</source>
-        <translation>La clef privée pour l&apos;adresse indiquée n&apos;est pas disponible.</translation>
+        <translation>La clé privée pour l’adresse saisie n’est pas disponible.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="150"/>
         <source>Message signing failed.</source>
-        <translation>La signature du message a échoué.</translation>
+        <translation>Échec de signature du message.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="155"/>
         <source>Message signed.</source>
         <translation>Le message a été signé.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
         <source>The signature could not be decoded.</source>
-        <translation>La signature n&apos;a pu être décodée.</translation>
+        <translation>La signature n’a pu être décodée.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="213"/>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>Please check the signature and try again.</source>
-        <translation>Veuillez vérifier la signature et réessayer.</translation>
+        <translation>Veuillez vérifier la signature et ressayer.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="226"/>
         <source>The signature did not match the message digest.</source>
-        <translation>La signature ne correspond pas à l&apos;empreinte du message.</translation>
+        <translation>La signature ne correspond pas au condensé du message.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="233"/>
         <source>Message verification failed.</source>
-        <translation>Échec de la vérification du message.</translation>
+        <translation>Échec de vérification du message.</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="238"/>
         <source>Message verified.</source>
-        <translation>Message vérifié.</translation>
+        <translation>Le message a été vérifié.</translation>
     </message>
 </context>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="33"/>
-        <source>Bitsend Core</source>
-        <translation>Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="34"/>
-        <source>Version %1</source>
-        <translation>Version %1</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="35"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Les développeurs Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="36"/>
-        <source>The Bitsend Core developers</source>
-        <translation>Les développeurs Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../splashscreen.cpp" line="37"/>
         <source>[testnet]</source>
         <translation>[testnet]</translation>
     </message>
@@ -3244,7 +2605,6 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TrafficGraphWidget</name>
     <message>
-        <location filename="../trafficgraphwidget.cpp" line="79"/>
         <source>KB/s</source>
         <translation>Ko/s</translation>
     </message>
@@ -3252,228 +2612,166 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TransactionDesc</name>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="28"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Ouvert pour %n bloc(s) de plus</numerusform><numerusform>Ouvert pour %n bloc(s) de plus</numerusform></translation>
+        <translation><numerusform>Ouvert pendant encore %n bloc</numerusform><numerusform>Ouvert pendant encore %n blocs</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="30"/>
         <source>Open until %1</source>
-        <translation>Ouvert jusqu&apos;à %1</translation>
+        <translation>Ouvert jusqu’à %1</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="41"/>
-        <location filename="../transactiondesc.cpp" line="52"/>
-        <location filename="../transactiondesc.cpp" line="62"/>
-        <location filename="../transactiondesc.cpp" line="74"/>
-        <source>conflicted</source>
-        <translation>en conflit</translation>
+        <source>conflicted with a transaction with %1 confirmations</source>
+        <translation>est en conflit avec une transaction ayant %1 confirmations</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="43"/>
-        <source>%1/offline (verified via instantx)</source>
-        <translation>%1/déconnecté (vérifié avec instantx)</translation>
+        <source>0/unconfirmed, %1</source>
+        <translation>0/non confirmées, %1</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="45"/>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation>%1/confirmé (verifié avec instantx)</translation>
+        <source>in memory pool</source>
+        <translation>dans la réserve de mémoire</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="47"/>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation>%1 confirmations (verifié avec instantx)</translation>
+        <source>not in memory pool</source>
+        <translation>pas dans la réserve de mémoire</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="76"/>
-        <source>%1/offline</source>
-        <translation>%1/déconnecté</translation>
+        <source>abandoned</source>
+        <translation>abandonnée</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="78"/>
         <source>%1/unconfirmed</source>
         <translation>%1/non confirmée</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="68"/>
-        <location filename="../transactiondesc.cpp" line="80"/>
         <source>%1 confirmations</source>
         <translation>%1 confirmations</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="54"/>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/déconnecté (vérification d&apos;InstantX en cours - %2 sur %3 signatures)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="56"/>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/confirmé (vérification d&apos;InstantX en cours - %2 sur %3 signatures)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="58"/>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 confirmations (vérification d&apos;InstantX en cours - %2 sur %3 signatures)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="64"/>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/déconnecté (La vérification d&apos;InstantX a échoué)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="66"/>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/confirmé (La vérification d&apos;InstantX a échoué)</translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="98"/>
         <source>Status</source>
         <translation>État</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="103"/>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>, n’a pas encore été diffusée avec succès</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="105"/>
-        <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, diffusée à travers %n nœud(s)</numerusform><numerusform>, diffusée à travers %n nœud(s)</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../transactiondesc.cpp" line="109"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Source</source>
         <translation>Source</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="116"/>
         <source>Generated</source>
-        <translation>Généré</translation>
+        <translation>Générée</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="121"/>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>From</source>
         <translation>De</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="138"/>
         <source>unknown</source>
-        <translation>inconnu</translation>
+        <translation>inconnue</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="139"/>
-        <location filename="../transactiondesc.cpp" line="161"/>
-        <location filename="../transactiondesc.cpp" line="219"/>
         <source>To</source>
         <translation>À</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
-        <location filename="../transactiondesc.cpp" line="144"/>
         <source>own address</source>
-        <translation>votre propre adresse</translation>
+        <translation>votre adresse</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="142"/>
+        <source>watch-only</source>
+        <translation>juste-regarder</translation>
+    </message>
+    <message>
         <source>label</source>
         <translation>étiquette</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="179"/>
-        <location filename="../transactiondesc.cpp" line="191"/>
-        <location filename="../transactiondesc.cpp" line="236"/>
-        <location filename="../transactiondesc.cpp" line="253"/>
-        <location filename="../transactiondesc.cpp" line="306"/>
         <source>Credit</source>
         <translation>Crédit</translation>
     </message>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="181"/>
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>arrive à maturité dans %n bloc(s) de plus</numerusform><numerusform>arrive à maturité dans %n bloc(s) de plus</numerusform></translation>
+        <translation><numerusform>arrivera à maturité dans %n bloc</numerusform><numerusform>arrivera à maturité dans %n blocs</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="183"/>
         <source>not accepted</source>
-        <translation>refusé</translation>
+        <translation>refusée</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="227"/>
-        <location filename="../transactiondesc.cpp" line="235"/>
-        <location filename="../transactiondesc.cpp" line="250"/>
-        <location filename="../transactiondesc.cpp" line="303"/>
         <source>Debit</source>
         <translation>Débit</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="241"/>
+        <source>Total debit</source>
+        <translation>Débit total</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Crédit total</translation>
+    </message>
+    <message>
         <source>Transaction fee</source>
         <translation>Frais de transaction</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="257"/>
         <source>Net amount</source>
         <translation>Montant net</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="263"/>
-        <location filename="../transactiondesc.cpp" line="272"/>
         <source>Message</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="265"/>
         <source>Comment</source>
         <translation>Commentaire</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="267"/>
         <source>Transaction ID</source>
         <translation>ID de la transaction</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="285"/>
+        <source>Transaction total size</source>
+        <translation>Taille totale de la transaction</translation>
+    </message>
+    <message>
+        <source>Transaction virtual size</source>
+        <translation>Taille virtuelle de la transaction</translation>
+    </message>
+    <message>
+        <source>Output index</source>
+        <translation>Index de sorties</translation>
+    </message>
+    <message>
         <source>Merchant</source>
         <translation>Marchand</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="292"/>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Les pièces générées doivent mûrir pendant %1 blocs avant de pouvoir être dépensées. Lorsque vous avez généré ce bloc, il a été diffusé sur le réseau pour être ajouté à la chaîne de blocs. S’il échoue a intégrer la chaîne, son état sera modifié en « non accepté » et il ne sera pas possible de le dépenser. Ceci peut arriver occasionnellement si un autre nœud génère un bloc à quelques secondes du votre.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Les pièces générées doivent mûrir pendant %1 blocs avant de pouvoir être dépensées. Lorsque ce bloc a été généré, il a été diffusé sur le réseau pour être ajouté à la chaîne de blocs. Si son intégration à la chaîne échoue, son état sera modifié en « refusée » et il ne sera pas possible de le dépenser. Cela peut arriver occasionnellement si un autre nœud génère un bloc à quelques secondes du vôtre.</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="300"/>
         <source>Debug information</source>
         <translation>Informations de débogage</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="308"/>
         <source>Transaction</source>
         <translation>Transaction</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="311"/>
         <source>Inputs</source>
         <translation>Entrées</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="332"/>
         <source>Amount</source>
         <translation>Montant</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>true</source>
         <translation>vrai</translation>
     </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="333"/>
         <source>false</source>
         <translation>faux</translation>
     </message>
@@ -3481,1812 +2779,881 @@ https://www.transifex.com/projects/p/bitsend/</translation>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <location filename="../forms/transactiondescdialog.ui" line="14"/>
-        <source>Transaction details</source>
-        <translation>Détails de la transaction</translation>
-    </message>
-    <message>
-        <location filename="../forms/transactiondescdialog.ui" line="20"/>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>Ce panneau affiche une description détaillée de la transaction</translation>
+    </message>
+    <message>
+        <source>Details for %1</source>
+        <translation>Détails de %1</translation>
     </message>
 </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Address</source>
-        <translation>Adresse</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="233"/>
-        <source>Amount</source>
-        <translation>Montant</translation>
+        <source>Label</source>
+        <translation>Étiquette</translation>
     </message>
     <message numerus="yes">
-        <location filename="../transactiontablemodel.cpp" line="285"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Ouvert pour %n bloc(s) de plus</numerusform><numerusform>Ouvert pour %n bloc(s) de plus</numerusform></translation>
+        <translation><numerusform>Ouvert pendant encore %n bloc</numerusform><numerusform>Ouvert pendant encore %n blocs</numerusform></translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="288"/>
         <source>Open until %1</source>
-        <translation>Ouvert jusqu&apos;à %1</translation>
+        <translation>Ouvert jusqu’à %1</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="291"/>
-        <source>Offline</source>
-        <translation>Déconnecté</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="294"/>
         <source>Unconfirmed</source>
-        <translation>Non confirmé</translation>
+        <translation>Non confirmée</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="297"/>
+        <source>Abandoned</source>
+        <translation>Abandonnée</translation>
+    </message>
+    <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
         <translation>Confirmation (%1 sur %2 confirmations recommandées)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="300"/>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Confirmée (%1 confirmations)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="303"/>
         <source>Conflicted</source>
         <translation>En conflit</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="306"/>
         <source>Immature (%1 confirmations, will be available after %2)</source>
         <translation>Immature (%1 confirmations, sera disponible après %2)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="309"/>
-        <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Ce bloc n’a été reçu par aucun autre nœud et ne sera probablement pas accepté !</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="312"/>
         <source>Generated but not accepted</source>
-        <translation>Généré mais pas accepté</translation>
+        <translation>Générée mais refusée</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="354"/>
         <source>Received with</source>
         <translation>Reçue avec</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="356"/>
         <source>Received from</source>
         <translation>Reçue de</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="358"/>
-        <source>Received via Darksend</source>
-        <translation>Reçu par Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="361"/>
         <source>Sent to</source>
         <translation>Envoyée à</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="363"/>
         <source>Payment to yourself</source>
         <translation>Paiement à vous-même</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="365"/>
         <source>Mined</source>
         <translation>Miné</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="368"/>
-        <source>Darksend Denominate</source>
-        <translation>Dénomination Darksend</translation>
+        <source>watch-only</source>
+        <translation>juste-regarder</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="370"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Paiement Darksend Collatéral</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="372"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="374"/>
-        <source>Darksend Create Denominations</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="376"/>
-        <source>Darksent</source>
-        <translation>Darksent</translation>
-    </message>
-    <message>
-        <location filename="../transactiontablemodel.cpp" line="418"/>
         <source>(n/a)</source>
         <translation>(n.d)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="610"/>
-        <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>État de la transaction. Laissez le pointeur de la souris sur ce champ pour voir le nombre de confirmations.</translation>
+        <source>(no label)</source>
+        <translation>(aucune étiquette)</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="612"/>
+        <source>Transaction status. Hover over this field to show number of confirmations.</source>
+        <translation>État de la transaction. Survoler ce champ avec la souris pour afficher le nombre de confirmations.</translation>
+    </message>
+    <message>
         <source>Date and time that the transaction was received.</source>
         <translation>Date et heure de réception de la transaction.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="614"/>
         <source>Type of transaction.</source>
         <translation>Type de transaction.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="616"/>
-        <source>Destination address of transaction.</source>
-        <translation>L’adresse de destination de la transaction.</translation>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Une adresse juste-regarder est-elle ou non impliquée dans cette transaction.</translation>
     </message>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="618"/>
+        <source>User-defined intent/purpose of the transaction.</source>
+        <translation>Intention/but de la transaction défini par l’utilisateur.</translation>
+    </message>
+    <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Montant ajouté ou enlevé au solde.</translation>
+        <translation>Le montant a été ajouté ou soustrait du solde.</translation>
     </message>
 </context>
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="60"/>
-        <location filename="../transactionview.cpp" line="76"/>
         <source>All</source>
         <translation>Toutes</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="61"/>
         <source>Today</source>
         <translation>Aujourd’hui</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="62"/>
         <source>This week</source>
         <translation>Cette semaine</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="63"/>
         <source>This month</source>
-        <translation>Ce mois-ci</translation>
+        <translation>Ce mois</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="64"/>
         <source>Last month</source>
         <translation>Le mois dernier</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="65"/>
         <source>This year</source>
         <translation>Cette année</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="66"/>
         <source>Range...</source>
-        <translation>Intervalle…</translation>
+        <translation>Plage…</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="77"/>
         <source>Received with</source>
         <translation>Reçue avec</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="79"/>
         <source>Sent to</source>
         <translation>Envoyée à</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="81"/>
-        <source>Darksent</source>
-        <translation>Darksent</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="82"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="83"/>
-        <source>Darksend Create Denominations</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="84"/>
-        <source>Darksend Denominate</source>
-        <translation>Dénomination Darksend</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="85"/>
-        <source>Darksend Collateral Payment</source>
-        <translation>Paiement Darksend Collatéral</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="86"/>
         <source>To yourself</source>
         <translation>À vous-même</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="87"/>
         <source>Mined</source>
-        <translation>Miné</translation>
+        <translation>Miné </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="88"/>
         <source>Other</source>
-        <translation>Autres</translation>
+        <translation>Autres </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="94"/>
-        <source>Enter address or label to search</source>
-        <translation>Saisir une adresse ou une étiquette à rechercher</translation>
+        <source>Enter address, transaction id, or label to search</source>
+        <translation>Saisir l’adresse, l’ID de transaction ou l’étiquette à chercher</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="100"/>
         <source>Min amount</source>
         <translation>Montant min.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="134"/>
+        <source>Abandon transaction</source>
+        <translation>Abandonner la transaction</translation>
+    </message>
+    <message>
+        <source>Increase transaction fee</source>
+        <translation>Augmenter les frais de transaction</translation>
+    </message>
+    <message>
         <source>Copy address</source>
         <translation>Copier l’adresse</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="135"/>
         <source>Copy label</source>
-        <translation>Copier l’étiquette</translation>
+        <translation>Copier l’étiquette </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="136"/>
         <source>Copy amount</source>
-        <translation>Copier le montant</translation>
+        <translation>Copier le montant </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="137"/>
         <source>Copy transaction ID</source>
-        <translation>Copier l&apos;ID de la transaction</translation>
+        <translation>Copier l’ID de la transaction</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="138"/>
+        <source>Copy raw transaction</source>
+        <translation>Copier la transaction brute</translation>
+    </message>
+    <message>
+        <source>Copy full transaction details</source>
+        <translation>Copier tous les détails de la transaction</translation>
+    </message>
+    <message>
         <source>Edit label</source>
-        <translation>Modifier l’étiquette</translation>
+        <translation>Modifier l’étiquette </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="139"/>
         <source>Show transaction details</source>
         <translation>Afficher les détails de la transaction</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="302"/>
         <source>Export Transaction History</source>
-        <translation>Exporter l&apos;historique des transactions</translation>
+        <translation>Exporter l’historique transactionnel</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="303"/>
         <source>Comma separated file (*.csv)</source>
         <translation>Valeurs séparées par des virgules (*.csv)</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="312"/>
         <source>Confirmed</source>
         <translation>Confirmée</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="313"/>
+        <source>Watch-only</source>
+        <translation>Juste-regarder</translation>
+    </message>
+    <message>
         <source>Date</source>
-        <translation>Date</translation>
+        <translation>Date </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="314"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>Type </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="315"/>
         <source>Label</source>
         <translation>Étiquette</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="316"/>
         <source>Address</source>
         <translation>Adresse</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="317"/>
-        <source>Amount</source>
-        <translation>Montant</translation>
-    </message>
-    <message>
-        <location filename="../transactionview.cpp" line="318"/>
         <source>ID</source>
-        <translation>ID</translation>
+        <translation>ID </translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>Exporting Failed</source>
-        <translation>L&apos;exportation a échoué</translation>
+        <translation>Échec d’exportation</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="321"/>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>Une erreur est survenue lors de l&apos;enregistrement de l&apos;historique des transactions vers %1.</translation>
+        <translation>Une erreur est survenue lors de l’enregistrement de l’historique transactionnel vers %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>Exporting Successful</source>
-        <translation>Exportation réussie</translation>
+        <translation>L’exportation est réussie</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="325"/>
         <source>The transaction history was successfully saved to %1.</source>
-        <translation>L&apos;historique des transactions a été sauvegardée avec succès vers %1.</translation>
+        <translation>L’historique transactionnel a été enregistré avec succès vers %1.</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="434"/>
         <source>Range:</source>
-        <translation>Intervalle :</translation>
+        <translation>Plage :</translation>
     </message>
     <message>
-        <location filename="../transactionview.cpp" line="442"/>
         <source>to</source>
-        <translation>à</translation>
+        <translation>à </translation>
+    </message>
+</context>
+<context>
+    <name>UnitDisplayStatusBarControl</name>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Unité d’affichage des montants. Cliquer pour choisir une autre unité.</translation>
     </message>
 </context>
 <context>
     <name>WalletFrame</name>
     <message>
-        <location filename="../walletframe.cpp" line="26"/>
         <source>No wallet has been loaded.</source>
-        <translation>Aucun portefeuille de chargé.</translation>
+        <translation>Aucun porte-monnaie n’a été chargé.</translation>
     </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="271"/>
-        <location filename="../walletmodel.cpp" line="285"/>
         <source>Send Coins</source>
         <translation>Envoyer des pièces</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../walletmodel.cpp" line="271"/>
-        <source>InstantX doesn&apos;t support sending values that high yet. Transactions are currently limited to %n BSD.</source>
-        <translation><numerusform>InstantX ne supporte pas des transferts aussi élevés. Les transactions sont pour le moment limitées à %n BSD.</numerusform><numerusform>InstantX ne supporte pas des transferts aussi élevés. Les transactions sont pour le moment limitées à %n BSD.</numerusform></translation>
+    <message>
+        <source>Fee bump error</source>
+        <translation>Erreur d’augmentation des frais</translation>
+    </message>
+    <message>
+        <source>Increasing transaction fee failed</source>
+        <translation>Échec d’augmentation des frais de transaction</translation>
+    </message>
+    <message>
+        <source>Do you want to increase the fee?</source>
+        <translation>Souhaitez-vous augmenter les frais ?</translation>
+    </message>
+    <message>
+        <source>Current fee:</source>
+        <translation>Frais actuels :</translation>
+    </message>
+    <message>
+        <source>Increase:</source>
+        <translation>Augmentation :</translation>
+    </message>
+    <message>
+        <source>New fee:</source>
+        <translation>Nouveaux frais :</translation>
+    </message>
+    <message>
+        <source>Confirm fee bump</source>
+        <translation>Confirmer l’augmentation des frais</translation>
+    </message>
+    <message>
+        <source>Can't sign transaction.</source>
+        <translation>Impossible de signer la transaction.</translation>
+    </message>
+    <message>
+        <source>Could not commit transaction</source>
+        <translation>Impossible de valider la transaction</translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="44"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="45"/>
         <source>Export the data in the current tab to a file</source>
-        <translation>Exporter les données de l&apos;onglet courant vers un fichier</translation>
+        <translation>Exporter les données de l’onglet actuel vers un fichier</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="231"/>
         <source>Backup Wallet</source>
-        <translation>Sauvegarder le portefeuille</translation>
+        <translation>Sauvegarder le porte-monnaie</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="232"/>
         <source>Wallet Data (*.dat)</source>
-        <translation>Données de portefeuille (*.dat)</translation>
+        <translation>Données du porte-monnaie (*.dat)</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>Backup Failed</source>
         <translation>Échec de la sauvegarde</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="238"/>
         <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>Une erreur est survenue lors de l&apos;enregistrement des données de portefeuille vers %1.</translation>
+        <translation>Une erreur est survenue lors de l’enregistrement des données du porte-monnaie vers %1.</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>Backup Successful</source>
-        <translation>Sauvegarde réussie</translation>
+        <translation>La sauvegarde est réussie</translation>
     </message>
     <message>
-        <location filename="../walletview.cpp" line="242"/>
         <source>The wallet data was successfully saved to %1.</source>
-        <translation>Les données de portefeuille ont été enregistrées avec succès vers %1</translation>
+        <translation>Les données du porte-monnaie ont été enregistrées avec succès vers %1</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuler</translation>
     </message>
 </context>
 <context>
     <name>bitsend-core</name>
     <message>
-        <location filename="../bitsendstrings.cpp" line="16"/>
-        <source>%s, you must set a rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Bitsend Alert&quot; admin@foo.com
-</source>
-        <translation>%s, vous devez définir un rpc mot de passe dans le fichier de configuration: 
-%s
-Il est recommandé que vous utilisiez ce mot de passe aléatoire:
-rpcuser=bitsendrpc
-rpcpassword=%s
-(Vous ne devez pas vous souvenir de ce mot de passe)
-Le nom d&apos;utilisateur et le mot de passe NE DOIVENT PAS être équivalent.
-Si le fichier n&apos;existe pas, créé le avec les permissions de lecture uniquement pour le propriétaire.
-Il est recommandé de régler alertnotify pour que vous soyez averti des problèmes;
-Pour exemple: alertnotify=echo %%s | mail -s &quot;Alerte Bitsend&quot; admin@foo.com
-</translation>
+        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
+        <translation>Distribué sous la licence MIT d’utilisation d’un logiciel. Consulter le fichier joint %s ou %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="29"/>
-        <source>Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</source>
-        <translation>Chiffrements acceptables (par défaut : TLSv1.2+HIGH : TLSv1+HIGH : !SSLv2 : !aNULL : !eNULL : !3DES : @STRENGTH)</translation>
+        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
+        <translation>L’élagage est configuré au-dessous du minimum de %d Mio. Veuillez utiliser un nombre plus élevé.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="32"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>Une erreur est survenue lors du réglage du port RPC %u pour écouter sur IPv4 : %s</translation>
+        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
+        <translation>Élagage : la dernière synchronisation de porte-monnaie va par-delà les données élaguées.  Vous devez -reindex (réindexer, télécharger de nouveau toute la chaîne de blocs en cas de nœud élagué)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="34"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
-        <translation>Une erreur est survenue lors du réglage du port RPC %u pour écouter sur IPv6, retour à IPv4 : %s</translation>
+        <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
+        <translation>Les rebalayages sont impossibles en mode élagage. Vous devrez utiliser -reindex, ce qui téléchargera de nouveau la chaîne de blocs en entier.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="37"/>
-        <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Se lier à l&apos;adresse donnée et toujours l&apos;écouter. Utilisez la notation [host]:port pour l&apos;IPv6</translation>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Erreur : Une erreur interne fatale s’est produite. Voir debug.log pour plus de détails</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="40"/>
-        <source>Cannot obtain a lock on data directory %s. Bitsend Core is probably already running.</source>
-        <translation>Impossible d’obtenir un verrou sur le répertoire de données %s. Bitsend Core fonctionne probablement déjà.</translation>
+        <source>Pruning blockstore...</source>
+        <translation>Élagage du magasin de blocs...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="43"/>
-        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:15)</source>
-        <translation>Limiter continuellement les transactions gratuites à &lt;n&gt;*1000 octets par minute (par défaut : 15)</translation>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>Impossible de démarrer le serveur HTTP. Voir le journal de débogage pour plus de détails.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="46"/>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Darksend utilise les montants dénominés exacts pour envoyer des fonds, vous pourriez simplement avoir besoin d&apos;anonymiser plus de pièces.</translation>
+        <source>Bitsend Core</source>
+        <translation>Bitsend Core</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="49"/>
-        <source>Disable all Xnode and Darksend related functionality (0-1, default: 0)</source>
-        <translation>Désactivez toutes les fonctionnalités liées à Xnode et Darksend (0-1, par défaut: 0)</translation>
+        <source>The %s developers</source>
+        <translation>Les développeurs de %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="51"/>
-        <source>Enable instantx, show confirmations for locked transactions (bool, default: true)</source>
-        <translation>Activer instantx, montrer les confirmations pour les transactions verrouillées (bool, par defaut: true)</translation>
+        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
+        <translation>Impossible d’obtenir un verrou sur le répertoire de données %s. %s fonctionne probablement déjà.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="54"/>
-        <source>Enable use of automated Darksend for funds stored in this wallet (0-1, default: 0)</source>
-        <translation>Activer l&apos;utilisation automatique de Darksend pour les fonds stockés dans ce portefeuille (0-1, défaut: 0)</translation>
+        <source>Cannot provide specific connections and have addrman find outgoing connections at the same.</source>
+        <translation>Il est impossible de fournir des connexions particulières et en même temps demander à addrman de trouver les connexions sortantes.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="57"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly. This is intended for regression testing tools and app development.</source>
-        <translation>Entrer dans le mode de test de régression qui utilise une chaîne spéciale dans laquelle les blocs peuvent être résolus instantanément. Ceci est destiné aux outils de test de régression et au développement d&apos;applications.</translation>
+        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>Erreur de lecture de %s ! Toutes les clés ont été lues correctement, mais les données transactionnelles ou les entrées du carnet d’adresses sont peut-être manquantes ou incorrectes.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="61"/>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Passer en mode de test de régression qui utilise une chaîne spéciale dans laquelle les blocs sont résolus instantanément.</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <translation>Veuillez vérifier que l’heure et la date de votre ordinateur sont justes ! Si votre horloge n’est pas à l’heure, %s ne fonctionnera pas correctement.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="64"/>
-        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation type="unfinished"/>
+        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
+        <translation>Si vous trouvez %s utile, vous pouvez y contribuer. Vous trouverez davantage d’informations à propos du logiciel sur %s.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="66"/>
-        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Erreur : La transaction a été rejetée ! Ceci peut arriver si certaines pièces de votre portefeuille étaient déjà dépensées, par exemple si vous avez utilisé une copie de wallet.dat et les pièces ont été dépensées avec cette copie sans être marquées comme tel ici.</translation>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <translation>La base de données de blocs contient un bloc qui semble provenir du futur. Cela pourrait être causé par la date et l’heure erronées de votre ordinateur. Ne reconstruisez la base de données de blocs que si vous êtes certain que la date et l’heure de votre ordinateur sont justes.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="70"/>
-        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
-        <translation>Erreur : Cette transaction nécessite des frais de transaction d&apos;au moins %s en raison de son montant, de sa complexité ou de l&apos;utilisation de fonds reçus récemment !</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="73"/>
-        <source>Error: Wallet unlocked for anonymization only, unable to create transaction.</source>
-        <translation>Erreur: Portefeuille uniquement déverrouillé pour l&apos;anonymisation, impossible d&apos;effectuer une transaction.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="75"/>
-        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Exécuter une commande lorsqu&apos;une alerte pertinente est reçue ou si nous voyons une bifurcation vraiment étendue (%s dans la commande est remplacé par le message)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="78"/>
-        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Exécuter la commande lorsqu&apos;une transaction de portefeuille change (%s dans la commande est remplacée par TxID)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="81"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Exécuter la commande lorsque le meilleur bloc change (%s dans cmd est remplacé par le hachage du bloc)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="84"/>
-        <source>Fees smaller than this are considered zero fee (for transaction creation) (default:</source>
-        <translation>Les frais inférieurs à ce seuil sont considérés comme nuls (pour la création de transactions) (par défaut :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="87"/>
-        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: 100)</source>
-        <translation>Purger l’activité de la base de données de la zone de mémoire vers le journal sur disque tous les &lt;n&gt; mégaoctets (par défaut : 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="90"/>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation>Détection de sorties dénominées non confirmées, attente de leur confirmation pour continuer.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="93"/>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: 3)</source>
-        <translation>Degré de profondeur de la vérification des blocs -checkblocks (0-4, par défaut : 3)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="95"/>
-        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>Dans ce mode -genproclimit contrôle combien de blocs sont générés immédiatement.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="98"/>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX nécessite des entrées avec au moins 6 confirmations, vous devriez attendre quelques minutes avant de réessayer.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="101"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation>Écouter les connexions JSON-RPC sur &lt;port&gt; (par défaut : 8800 ou tesnet : 8884)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="103"/>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation>Nom pour construire l&apos;URL pour l&apos;entrée KeePass qui conserve la phrase de passe du portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="105"/>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Délai en secondes de refus de reconnexion pour les pairs présentant un mauvais comportement (par défaut : 86400)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="108"/>
-        <source>Output debugging information (default: 0, supplying &lt;category&gt; is optional)</source>
-        <translation>Extraire les informations de débogage (par défaut : 0, fournir &lt;category&gt; est optionnel)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="110"/>
-        <source>Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
-        <translation>Fournir des liquidités à Darksend en mélangeant occasionnellement mais régulièrement des pièces (0-100, par défaut : 0, 1=très fréquent, frais élevés, 100=très rare, frais bas)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="114"/>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="117"/>
-        <source>Set external address:port to get to this Xnode (example: address:port)</source>
-        <translation>Définir une adresse externe:port pour accéder à ce Xnode (exemple : adresse:port)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="119"/>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Définir la taille maximale en octets des transactions prioritaires/à frais modiques (par défaut : %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="121"/>
-        <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>Définir le nombre d&apos;exétrons de vérification des scripts (%u à %d, 0 = auto, &lt; 0 = laisser ce nombre de cœurs inutilisés, par défaut : %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="124"/>
-        <source>Set the processor limit for when generation is on (-1 = unlimited, default: -1)</source>
-        <translation>Définir la limite processeur définissant quand la génération est en fonction (-1 = illimité, par défaut : -1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="127"/>
-        <source>Show N confirmations for a successfully locked transaction (0-9999, default: 1)</source>
-        <translation>Afficher N confirmations for une transaction verrouillée réussie (0-9999, default : 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="130"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Ceci est une pré-version de test - l&apos;utiliser à vos risques et périls - ne pas l&apos;utiliser pour miner ou pour des applications marchandes</translation>
+        <translation>Ceci est une préversion de test - son utilisation est entièrement à vos risques - ne pas l’utiliser pour miner ou pour des applications marchandes</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="133"/>
-        <source>Unable to bind to %s on this computer. Bitsend Core is probably already running.</source>
-        <translation>Impossible de se lier à %s sur cet ordinateur. Bitsend Core fonctionne probablement déjà.</translation>
+        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
+        <translation>Les frais de transaction que vous pouvez ignorer si la monnaie rendue est inférieure à la poussière à ce niveau</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="136"/>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
-        <translation>Impossible de localiser suffisamment de fonds Darksend dénominés pour cette transaction.</translation>
+        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
+        <translation>Impossible de relire les blocs. Vous devrez reconstruire la base de données en utilisant -reindex-chainstate.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="138"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 BSD.</source>
-        <translation>Impossible de localiser suffisamment de fonds non-dénominés Darksend pour cette transaction qui ne sont pas égaux à 1000 BSD.</translation>
+        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
+        <translation>Impossible de rebobiner la base de données à un état préfourche. Vous devrez retélécharger la chaîne de blocs</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="141"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction.</source>
-        <translation>Impossible de localiser suffisamment de fonds Darksend non-dénominés  pour cette transaction.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="143"/>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: -proxy)</source>
-        <translation>Utiliser un serveur mandataire SOCKS5 séparé pour atteindre les pairs par les services cachés de Tor (par défaut : -proxy)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="146"/>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Attention : -paytxfee est réglée sur un montant très élevé ! Il s&apos;agit des frais de transaction que vous payerez si vous envoyez une transaction.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="149"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Bitsend will not work properly.</source>
-        <translation>Attention : Veuillez vérifier que la date et l&apos;heure de votre ordinateur sont justes ! Si votre horloge n&apos;est pas à l&apos;heure, Bitsend ne fonctionnera pas correctement.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="152"/>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Attention : Le réseau ne semble pas totalement d&apos;accord ! Quelques mineurs semblent éprouver des difficultés.</translation>
+        <translation>Avertissement : le réseau ne semble pas totalement d’accord ! Certains mineurs semblent éprouver des problèmes.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="155"/>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Attention : Nous ne semblons pas être en accord complet avec nos pairs ! Vous pourriez avoir besoin d&apos;effectuer une mise à niveau, ou d&apos;autres nœuds du réseau pourraient avoir besoin d&apos;effectuer une mise à niveau.</translation>
+        <translation>Avertissement : nous ne semblons pas être en accord complet avec nos pairs ! Une mise à niveau pourrait être nécessaire pour vous ou pour d’autres nœuds du réseau.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="158"/>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Avertissement : une erreur est survenue lors de la lecture de wallet.dat ! Toutes les clefs ont été lues correctement mais les données de transaction ou les entrées du carnet d&apos;adresses sont peut-être incorrectes ou manquantes.</translation>
+        <source>%d of last 100 blocks have unexpected version</source>
+        <translation>%d des 100 derniers blocs ont une version inattendue</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="161"/>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Avertissement : wallet.dat corrompu, données récupérées ! Le fichier wallet.dat original a été enregistré en tant que wallet.{timestamp}.bak dans %s ; si votre solde ou transactions sont incorrects vous devriez effectuer une restauration depuis une sauvegarde.</translation>
+        <source>%s corrupt, salvage failed</source>
+        <translation>%s corrompu, la récupération a échoué</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="165"/>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Vous devez ajouter la ligne rpcpassword=&lt;mot-de-passe&gt; au fichier de configuration :
-%s
-Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule accordés au propriétaire.</translation>
+        <source>-maxmempool must be at least %d MB</source>
+        <translation>-maxmempool doit être d’au moins %d Mo</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="170"/>
-        <source>You must specify a Xnodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation>Vous devez définir Xnodeprivkey dans la configuration. Veuillez consulter la documentation pour plus d&apos;aide.</translation>
+        <source>Cannot resolve -%s address: '%s'</source>
+        <translation>Impossible de résoudre l’adresse -%s : « %s »</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="173"/>
-        <source>(default: 1)</source>
-        <translation>(par défaut : 1)</translation>
+        <source>Change index out of range</source>
+        <translation>L’index de changement est hors échelle</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="174"/>
-        <source>(default: wallet.dat)</source>
-        <translation>(par défaut : wallet.dat)</translation>
+        <source>Copyright (C) %i-%i</source>
+        <translation>Tous droits réservés (C) %i-%i</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="175"/>
-        <source>&lt;category&gt; can be:</source>
-        <translation>&lt;category&gt; peut être :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="176"/>
-        <source>Accept command line and JSON-RPC commands</source>
-        <translation>Accepter les commandes de JSON-RPC et de la ligne de commande</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="177"/>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Accepter les connexions entrantes (par défaut : 1 si aucun -proxy ou -connect )</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="178"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Ajouter un nœud auquel se connecter et tenter de garder la connexion ouverte</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="179"/>
-        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Autoriser les recherches DNS pour -addnode, -seednode et -connect</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="180"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Autoriser les connexions JSON-RPC depuis l&apos;adresse IP spécifiée</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="181"/>
-        <source>Already have that input.</source>
-        <translation>Entrée déjà présente.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="182"/>
-        <source>Always query for peer addresses via DNS lookup (default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="183"/>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Tenter de récupérer les clefs privées d&apos;un wallet.dat corrompu</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="184"/>
-        <source>Block creation options:</source>
-        <translation>Options de création de bloc :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="185"/>
-        <source>Can&apos;t denominate: no compatible inputs left.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="186"/>
-        <source>Cannot downgrade wallet</source>
-        <translation>Impossible de revenir à une version inférieure du portefeuille</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="187"/>
-        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
-        <translation>Impossible de résoudre l&apos;adresse -bind : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="188"/>
-        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
-        <translation>Impossible de résoudre l&apos;adresse -externalip : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="189"/>
-        <source>Cannot write default address</source>
-        <translation>Impossible d&apos;écrire l&apos;adresse par défaut</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="190"/>
-        <source>Clear list of wallet transactions (diagnostic tool; implies -rescan)</source>
-        <translation>Effacer la liste des transactions du portefeuille (outil de diagnostic, implique un nouveau balayage -rescan)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="191"/>
-        <source>Collateral is not valid.</source>
-        <translation>Le collatéral est invalide.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="192"/>
-        <source>Collateral not valid.</source>
-        <translation>Collatéral invalide.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="193"/>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Ne se connecter qu&apos;au(x) nœud(s) spécifié(s)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="194"/>
-        <source>Connect through SOCKS proxy</source>
-        <translation>Connexion à travers un serveur mandataire SOCKS</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="195"/>
-        <source>Connect to JSON-RPC on &lt;port&gt; (default: 8800 or testnet: 8884)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="196"/>
-        <source>Connect to KeePassHttp on port &lt;port&gt; (default: 19455)</source>
-        <translation>Connecter à KeePassHttp sur le pot &lt;port&gt; (par défaut: 19455)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="197"/>
-        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Se connecter à un nœud pour obtenir des adresses de pairs puis se déconnecter</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="198"/>
-        <source>Connection options:</source>
-        <translation>Options de connexion :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="199"/>
         <source>Corrupted block database detected</source>
-        <translation>Base corrompue de données des blocs détectée</translation>
+        <translation>Une base de données de blocs corrompue a été détectée</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="200"/>
-        <source>Bitsend Core Daemon</source>
-        <translation>Démon Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="201"/>
-        <source>Bitsend Core RPC client version</source>
-        <translation>Version du client RPC de Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="202"/>
-        <source>Darksend is disabled.</source>
-        <translation>Darksend est désactivé.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="203"/>
-        <source>Darksend options:</source>
-        <translation>Options Darksend :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="204"/>
-        <source>Debugging/Testing options:</source>
-        <translation>Options de test/de débogage :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="205"/>
-        <source>Disable safemode, override a real safe mode event (default: 0)</source>
-        <translation>Désactiver le mode sans échec, passer outre un événement sans échec réel (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="206"/>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Découvrir sa propre adresse IP (par défaut : 1 lors de l&apos;écoute et si aucun -externalip)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="207"/>
-        <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>Ne pas charger le portefeuille et désactiver les appels RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="208"/>
         <source>Do you want to rebuild the block database now?</source>
-        <translation>Voulez-vous reconstruire la base de données des blocs maintenant ?</translation>
+        <translation>Voulez-vous reconstruire la base de données de blocs maintenant ?</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="209"/>
-        <source>Done loading</source>
-        <translation>Chargement terminé</translation>
+        <source>Error creating %s: You can't create non-HD wallets with this version.</source>
+        <translation>Erreur de création de %s : vous ne pouvez pas créer de porte-monnaie non HD avec cette version.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="210"/>
-        <source>Downgrading and trying again.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="211"/>
-        <source>Enable the client to act as a Xnode (0-1, default: 0)</source>
-        <translation>Autoriser le client à agir en tant que Xnode (0-1, par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="212"/>
-        <source>Entries are full.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="213"/>
-        <source>Error connecting to Xnode.</source>
-        <translation>Erreur de connexion au Xnode.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="214"/>
         <source>Error initializing block database</source>
-        <translation>Erreur lors de l&apos;initialisation de la base de données des blocs</translation>
+        <translation>Erreur d’initialisation de la base de données de blocs</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="215"/>
         <source>Error initializing wallet database environment %s!</source>
-        <translation>Erreur lors de l&apos;initialisation de l&apos;environnement de la base de données du portefeuille %s !</translation>
+        <translation>Erreur d’initialisation de l’environnement de la base de données du porte-monnaie %s !</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="216"/>
+        <source>Error loading %s</source>
+        <translation>Erreur de chargement de %s</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Private keys can only be disabled during creation</source>
+        <translation>Erreur de chargement de %s : les clés privées ne peuvent être désactivées qu’à la création.</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet corrupted</source>
+        <translation>Erreur de chargement de %s : porte-monnaie corrompu</translation>
+    </message>
+    <message>
+        <source>Error loading %s: Wallet requires newer version of %s</source>
+        <translation>Erreur de chargement de %s : le porte-monnaie exige une version plus récente de %s</translation>
+    </message>
+    <message>
         <source>Error loading block database</source>
-        <translation>Erreur du chargement de la base de données des blocs</translation>
+        <translation>Erreur de chargement de la base de données de blocs</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="217"/>
-        <source>Error loading wallet.dat</source>
-        <translation>Erreur lors du chargement de wallet.dat</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="218"/>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Erreur lors du chargement de wallet.dat : portefeuille corrompu</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="219"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitsend</source>
-        <translation>Erreur au chargement de wallet.dat : le Portefeuille nécessite une nouvelle version de Bitsend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="220"/>
         <source>Error opening block database</source>
-        <translation>Erreur lors de l&apos;ouverture de la base de données des blocs</translation>
+        <translation>Erreur d’ouverture de la base de données de blocs</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="221"/>
-        <source>Error reading from database, shutting down.</source>
-        <translation>Erreur à la lecture de la base de données, arrêt en cours.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="222"/>
-        <source>Error recovering public key.</source>
-        <translation>Erreur à la récupération de la clé publique.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="223"/>
-        <source>Error</source>
-        <translation>Erreur</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="224"/>
         <source>Error: Disk space is low!</source>
-        <translation>Erreur : l&apos;espace disque est faible !</translation>
+        <translation>Erreur : Il reste peu d’espace disque !</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="225"/>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Erreur : Portefeuille verrouillé, impossible de créer la transaction !</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="226"/>
-        <source>Error: You already have pending entries in the Darksend pool</source>
-        <translation>Erreur : Vous avez déjà des entrées en attente dans la pool Darksend</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="227"/>
-        <source>Error: system error: </source>
-        <translation>Erreur : erreur système :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="228"/>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Échec de l&apos;écoute sur un port quelconque. Utilisez -listen=0 si vous voulez ceci.</translation>
+        <translation>Échec d’écoute sur un port quelconque. Utiliser -listen=0 si vous le voulez.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="229"/>
-        <source>Failed to read block info</source>
-        <translation>La lecture des informations de bloc a échoué</translation>
+        <source>Failed to rescan the wallet during initialization</source>
+        <translation>Échec de réanalyse du porte-monnaie lors de l’initialisation</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="230"/>
-        <source>Failed to read block</source>
-        <translation>La lecture du bloc a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="231"/>
-        <source>Failed to sync block index</source>
-        <translation>La synchronisation de l&apos;index des blocs a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="232"/>
-        <source>Failed to write block index</source>
-        <translation>L&apos;&apos;écriture de l&apos;index des blocs a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="233"/>
-        <source>Failed to write block info</source>
-        <translation>L&apos;écriture des informations du bloc a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="234"/>
-        <source>Failed to write block</source>
-        <translation>L&apos;écriture du bloc a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="235"/>
-        <source>Failed to write file info</source>
-        <translation>L&apos;écriture des informations de fichier a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="236"/>
-        <source>Failed to write to coin database</source>
-        <translation>L&apos;écriture dans la base de données des pièces a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="237"/>
-        <source>Failed to write transaction index</source>
-        <translation>L&apos;écriture de l&apos;index des transactions a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="238"/>
-        <source>Failed to write undo data</source>
-        <translation>L&apos;écriture des données d&apos;annulation a échoué</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="239"/>
-        <source>Fee per kB to add to transactions you send</source>
-        <translation>Frais par ko à ajouter aux transactions que vous envoyez</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="240"/>
-        <source>Fees smaller than this are considered zero fee (for relaying) (default:</source>
-        <translation>Les frais inférieurs à ce seuil sont considérés comme nuls (pour le relayage) (par défaut :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="241"/>
-        <source>Force safe mode (default: 0)</source>
-        <translation>Forcer le mode sans échec (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="242"/>
-        <source>Generate coins (default: 0)</source>
-        <translation>Générer des pièces (défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="243"/>
-        <source>Get help for a command</source>
-        <translation>Obtenir de l’aide pour une commande</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="244"/>
-        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
-        <translation>Nombre de blocs à vérifier au démarrage (par défaut : 288, 0 = tous)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="245"/>
-        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Si &lt;category&gt; n&apos;est pas indiqué, extraire toutes les données de débogage.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="246"/>
-        <source>Ignore Xnodes less than version (example: 70050; default : 0)</source>
-        <translation>Ignorer les Xnodes ayant une version inférieure (exemple: 70050 ; par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="247"/>
         <source>Importing...</source>
         <translation>Importation...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="248"/>
-        <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Importe des blocs depuis un fichier blk000??.dat externe</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="249"/>
-        <source>Incompatible mode.</source>
-        <translation>Mode incompatible.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="250"/>
-        <source>Incompatible version.</source>
-        <translation>Version incompatible.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="251"/>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>Bloc de genèse incorrect ou introuvable. Mauvais répertoire de données pour le réseau ?</translation>
+        <translation>Bloc de genèse incorrect ou introuvable. Mauvais datadir pour le réseau ?</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="252"/>
+        <source>Initialization sanity check failed. %s is shutting down.</source>
+        <translation>L’initialisation du test de cohérence a échoué. %s est en cours de fermeture. </translation>
+    </message>
+    <message>
+        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
+        <translation>Montant invalide pour -%s=&lt;amount&gt; : « %s »</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
+        <translation>Montant invalide pour -discardfee=&lt;amount&gt; : « %s »</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
+        <translation>Montant invalide pour -fallbackfee=&lt;amount&gt; : « %s »</translation>
+    </message>
+    <message>
+        <source>Upgrading txindex database</source>
+        <translation>Mise à niveau de la base de données txindex</translation>
+    </message>
+    <message>
+        <source>Loading P2P addresses...</source>
+        <translation>Chargement des adresses P2P...</translation>
+    </message>
+    <message>
+        <source>Loading banlist...</source>
+        <translation>Chargement de la liste d’interdiction...</translation>
+    </message>
+    <message>
+        <source>Not enough file descriptors available.</source>
+        <translation>Pas assez de descripteurs de fichiers proposés.</translation>
+    </message>
+    <message>
+        <source>Prune cannot be configured with a negative value.</source>
+        <translation>L’élagage ne peut pas être configuré avec une valeur négative.</translation>
+    </message>
+    <message>
+        <source>Prune mode is incompatible with -txindex.</source>
+        <translation>Le mode élagage n’est pas compatible avec -txindex.</translation>
+    </message>
+    <message>
+        <source>Replaying blocks...</source>
+        <translation>Relecture des blocs...</translation>
+    </message>
+    <message>
+        <source>Rewinding blocks...</source>
+        <translation>Rebobinage des blocs...</translation>
+    </message>
+    <message>
+        <source>The source code is available from %s.</source>
+        <translation>Le code source se trouve sur %s.</translation>
+    </message>
+    <message>
+        <source>Transaction fee and change calculation failed</source>
+        <translation>Échec du calcul des frais de transaction et de la monnaie</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
+        <translation>Impossible de se lier à %s sur cet ordinateur. %s fonctionne probablement déjà.</translation>
+    </message>
+    <message>
+        <source>Unable to generate keys</source>
+        <translation>Impossible de générer les clés</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>Argument non pris en charge -benchmark ignoré, utiliser -debug=bench.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>Argument non pris en charge -debugnet ignoré, utiliser -debug=net.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -tor found, use -onion.</source>
+        <translation>Argument non pris en charge -tor trouvé, utiliser -onion</translation>
+    </message>
+    <message>
+        <source>Unsupported logging category %s=%s.</source>
+        <translation>Catégorie de journalisation non prise en charge %s=%s.</translation>
+    </message>
+    <message>
+        <source>Upgrading UTXO database</source>
+        <translation>Mise à niveau de la base de données UTXO</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>Le commentaire d’agent utilisateur (%s) contient des caractères dangereux.</translation>
+    </message>
+    <message>
+        <source>Verifying blocks...</source>
+        <translation>Vérification des blocs... </translation>
+    </message>
+    <message>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>Le porte-monnaie devait être réécrit : redémarrer %s pour terminer l’opération.</translation>
+    </message>
+    <message>
+        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
+        <translation>Erreur : L’écoute des connexions entrantes a échoué (l’écoute a retourné l’erreur %s)</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Montant invalide pour -maxtxfee=&lt;amount&gt; : « %s » (doit être au moins les frais minrelay de %s pour prévenir le blocage des transactions)</translation>
+    </message>
+    <message>
+        <source>The transaction amount is too small to send after the fee has been deducted</source>
+        <translation>Le montant de la transaction est trop bas pour être envoyé une fois que les frais ont été déduits</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
+        <translation>Vous devez reconstruire la base de données en utilisant -reindex afin de revenir au mode sans élagage. Cela retéléchargera complètement la chaîne de blocs.</translation>
+    </message>
+    <message>
+        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
+        <translation>Erreur de chargement de %s : vous ne pouvez pas désactiver HD sur un porte-monnaie HD existant</translation>
+    </message>
+    <message>
+        <source>Error reading from database, shutting down.</source>
+        <translation>Erreur de lecture de la base de données, fermeture en cours.</translation>
+    </message>
+    <message>
+        <source>Error upgrading chainstate database</source>
+        <translation>Erreur de mise à niveau de la base de données d’état de la chaîne</translation>
+    </message>
+    <message>
         <source>Information</source>
         <translation>Informations</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="253"/>
-        <source>Initialization sanity check failed. Bitsend Core is shutting down.</source>
-        <translation type="unfinished"/>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Adresse ou nom d’hôte -onion invalide : « %s »</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="254"/>
-        <source>Input is not valid.</source>
-        <translation>L&apos;entrée est invalide.</translation>
+        <source>Invalid -proxy address or hostname: '%s'</source>
+        <translation>Adresse ou nom d’hôte -proxy invalide : « %s »</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="255"/>
-        <source>InstantX options:</source>
-        <translation>Options InstantX :</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Montant invalide pour -paytxfee=&lt;montant&gt; : « %s » (doit être au moins %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="256"/>
-        <source>Insufficient funds</source>
-        <translation>Fonds insuffisants</translation>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>Masque réseau invalide indiqué dans -whitelist : « %s »</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="257"/>
-        <source>Insufficient funds.</source>
-        <translation>Fonds insuffisants</translation>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Un port doit être précisé avec -whitebind : « %s »</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="258"/>
-        <source>Invalid -onion address: &apos;%s&apos;</source>
-        <translation>Adresse -onion invalide : « %s »</translation>
+        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
+        <translation>Réduction de -maxconnections de %d à %d, due aux restrictions du système</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="259"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation>Adresse -proxy invalide : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="260"/>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Montant invalide pour -minrelayfee=&lt;montant&gt; : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="261"/>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Montant invalide pour -mintxfee=&lt;montant&gt; : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="262"/>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Montant invalide pour -paytxfee=&lt;montant&gt; : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="263"/>
-        <source>Invalid amount</source>
-        <translation>Montant invalide</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="264"/>
-        <source>Invalid Xnodeprivkey. Please see documenation.</source>
-        <translation>Xnodeprivkey invalide. Veuillez vous référer à la documentation.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="265"/>
-        <source>Invalid private key.</source>
-        <translation>Clé privée invalide.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="266"/>
-        <source>Invalid script detected.</source>
-        <translation>Script invalide détecté.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="267"/>
-        <source>KeePassHttp id for the established association</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="268"/>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="269"/>
-        <source>Keep N bitsend anonymized (default: 0)</source>
-        <translation>Maintenir N bitsend anonymisé en permanence (défaut: 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="270"/>
-        <source>Keep at most &lt;n&gt; unconnectable blocks in memory (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="271"/>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="272"/>
-        <source>Last Darksend was too recent.</source>
-        <translation>Le dernier Darksend est trop récent.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="273"/>
-        <source>Last successful Darksend action was too recent.</source>
-        <translation>La dernière action Darksend est trop récente.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="274"/>
-        <source>Limit size of signature cache to &lt;n&gt; entries (default: 50000)</source>
-        <translation>Limiter la taille du cache des signatures à &lt;n&gt; entrées (par défaut : 50000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="275"/>
-        <source>List commands</source>
-        <translation>Lister les commandes</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="276"/>
-        <source>Listen for connections on &lt;port&gt; (default: 8886 or testnet: 8885)</source>
-        <translation>Écouter les connexions sur &lt;port&gt; (par défaut: 8886 ou testnet: 8885)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="277"/>
-        <source>Loading addresses...</source>
-        <translation>Chargement des adresses…</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="278"/>
-        <source>Loading block index...</source>
-        <translation>Chargement de l’index des blocs…</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="279"/>
-        <source>Loading Xnode list...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="280"/>
-        <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Chargement du portefeuille... (%3.2f %%)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="281"/>
-        <source>Loading wallet...</source>
-        <translation>Chargement du portefeuille…</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="282"/>
-        <source>Log transaction priority and fee per kB when mining blocks (default: 0)</source>
-        <translation>Lors du minage, journaliser la priorité des transactions et les frais par ko (par défaut : 0) </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="283"/>
-        <source>Maintain a full transaction index (default: 0)</source>
-        <translation>Maintenir un index complet des transactions (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="284"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Garder au plus &lt;n&gt; connexions avec les pairs (par défaut : 125)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="285"/>
-        <source>Xnode options:</source>
-        <translation>Options Xnode :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="286"/>
-        <source>Xnode queue is full.</source>
-        <translation>La file d&apos;attente du Xnode est pleine.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="287"/>
-        <source>Xnode:</source>
-        <translation>Xnode :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="288"/>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Tampon maximal de réception par connexion, &lt;n&gt;*1 000 octets (par défaut : 5000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="289"/>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Tampon maximal d&apos;envoi par connexion », &lt;n&gt;*1000 octets (par défaut : 1000)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="290"/>
-        <source>Missing input transaction information.</source>
-        <translation>Informations de transaction entrante manquantes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="291"/>
-        <source>No compatible Xnode found.</source>
-        <translation>Aucun Xnode compatible trouvé.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="292"/>
-        <source>No funds detected in need of denominating.</source>
-        <translation>Aucuns fonds détectés nécessitant une dénomination.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="293"/>
-        <source>No Xnodes detected.</source>
-        <translation>Aucun Xnode détecté.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="294"/>
-        <source>No matching denominations found for mixing.</source>
-        <translation>Pas de dénominations équivalentes trouvées pour le mélange.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="295"/>
-        <source>Non-standard public key detected.</source>
-        <translation>Clé publique non standard détectée.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="296"/>
-        <source>Not compatible with existing transactions.</source>
-        <translation>Non compatible avec les transactions existantes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="297"/>
-        <source>Not enough file descriptors available.</source>
-        <translation>Pas assez de descripteurs de fichiers de disponibles.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="298"/>
-        <source>Not in the Xnode list.</source>
-        <translation>Absent de la liste des Xnodes.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="299"/>
-        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
-        <translation>N&apos;accepter qu&apos;une chaîne de blocs correspondant aux points de vérification intégrés (par défaut : 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="300"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Se connecter uniquement aux nœuds du réseau &lt;net&gt; (IPv4, IPv6 ou Tor)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="301"/>
-        <source>Options:</source>
-        <translation>Options :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="302"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Mot de passe pour les connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="303"/>
-        <source>Prepend debug output with timestamp (default: 1)</source>
-        <translation>Ajouter l&apos;horodatage au début de la sortie de débogage (par défaut : 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="304"/>
-        <source>Print block on startup, if found in block index</source>
-        <translation>Imprimer le bloc au démarrage s&apos;il est trouvé dans l&apos;index des blocs</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="305"/>
-        <source>Print block tree on startup (default: 0)</source>
-        <translation>Imprimer l&apos;arborescence des blocs au démarrage (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="306"/>
-        <source>RPC SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Options RPC SSL : (voir le wiki Bitsend pour les instructions de configuration de SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="307"/>
-        <source>RPC client options:</source>
-        <translation>Options du client RPC :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="308"/>
-        <source>RPC server options:</source>
-        <translation>Options du serveur RPC :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="309"/>
-        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Abandonner aléatoirement 1 message du réseau sur &lt;n&gt;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="310"/>
-        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Tester aléatoirement 1 message du réseau sur &lt;n&gt;</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="311"/>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Reconstruire l&apos;index de la chaîne de blocs à partir des fichiers blk000??.dat courants</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="312"/>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Réanalyser la chaîne de blocs pour les transactions de portefeuille manquantes</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="313"/>
-        <source>Rescanning...</source>
-        <translation>Nouvelle analyse…</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="314"/>
-        <source>Run a thread to flush wallet periodically (default: 1)</source>
-        <translation>Exécuter une tâche pour purger le portefeuille périodiquement (par défaut : 1) </translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="315"/>
-        <source>Run in the background as a daemon and accept commands</source>
-        <translation>Fonctionner en arrière-plan en tant que démon et accepter les commandes</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="316"/>
-        <source>SSL options: (see the Bitsend Wiki for SSL setup instructions)</source>
-        <translation>Options SSL : (voir le Wiki de Bitsend pour les instructions de configuration du SSL)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="317"/>
-        <source>Select SOCKS version for -proxy (4 or 5, default: 5)</source>
-        <translation>Choisir la version SOCKS pour -proxy (4 ou 5, par défaut : 5)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="318"/>
-        <source>Send command to Bitsend Core</source>
-        <translation>Envoyer commandes vers Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="319"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Envoyer des commandes au nœud fonctionnant sur &lt;ip&gt; (par défaut : 127.0.0.1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="320"/>
-        <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>Envoyer les informations de débogage/trace à la console au lieu du fichier debug.log</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="321"/>
-        <source>Server certificate file (default: server.cert)</source>
-        <translation>Fichier de certification du serveur (par défaut : server.cert)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="322"/>
-        <source>Server private key (default: server.pem)</source>
-        <translation>Clef privée du serveur (par défaut : server.pem)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="323"/>
-        <source>Session not complete!</source>
-        <translation>Session incomplète!</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="324"/>
-        <source>Session timed out (30 seconds), please resubmit.</source>
-        <translation>Session expirée (30 secondes), veuillez s&apos;il vous plaît réessayer.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="325"/>
-        <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Définir la taille du cache de la base de données en mégaoctets (%d to %d, default: %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="326"/>
-        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Définir la taille de la réserve de clefs à &lt;n&gt; (par défaut : 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="327"/>
-        <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Définir la taille minimale de bloc en octets (par défaut : %d)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="328"/>
-        <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Définir la taille de bloc minimale en octets (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="329"/>
-        <source>Set the Xnode private key</source>
-        <translation>Définir la clé privée du Xnode</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="330"/>
-        <source>Set the number of threads to service RPC calls (default: 4)</source>
-        <translation>Définir le nombre d&apos;exétrons pour desservir les appels RPC (par défaut : 4)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="331"/>
-        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: 1)</source>
-        <translation>Définit le drapeau DB_PRIVATE dans l&apos;environnement de la BD du portefeuille (par défaut : 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="332"/>
-        <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Montrer toutes les options de débogage (utilisation : --help --help-debug)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="333"/>
-        <source>Show benchmark information (default: 0)</source>
-        <translation>Afficher les infos du test de performance (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="334"/>
-        <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Réduire le fichier debug.log lors du démarrage du client (par défaut : 1 lorsque -debug n&apos;est pas présent)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="335"/>
-        <source>Signing failed.</source>
-        <translation>La signature a échoué.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="336"/>
-        <source>Signing timed out, please resubmit.</source>
-        <translation>Signature expirée, veuillez s&apos;il vous plaît réessayer.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="337"/>
         <source>Signing transaction failed</source>
-        <translation>La signature de la transaction a échoué</translation>
+        <translation>Échec de signature de la transaction</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="338"/>
-        <source>Specify configuration file (default: bitsend.conf)</source>
-        <translation>Définir le fichier de configuration (défaut: bitsend.conf)</translation>
+        <source>The transaction amount is too small to pay the fee</source>
+        <translation>Le montant de la transaction est trop bas pour que les frais soient payés</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="339"/>
-        <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Spécifier le délai d&apos;expiration de la connexion en millisecondes (par défaut : 5 000)</translation>
+        <source>This is experimental software.</source>
+        <translation>Ceci est un logiciel expérimental.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="340"/>
-        <source>Specify data directory</source>
-        <translation>Spécifier le répertoire de données</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="341"/>
-        <source>Specify Xnode configuration file (default: Xnode.conf)</source>
-        <translation>Définir le fichier de configuration du Xnode (par défaut : Xnode.conf)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="342"/>
-        <source>Specify pid file (default: bitsendd.pid)</source>
-        <translation>Définir le fichier pid (défaut: bitsendd.pid)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="343"/>
-        <source>Specify wallet file (within data directory)</source>
-        <translation>Spécifiez le fichier de portefeuille (dans le répertoire de données)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="344"/>
-        <source>Specify your own public address</source>
-        <translation>Spécifier votre propre adresse publique</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="345"/>
-        <source>Spend unconfirmed change when sending transactions (default: 1)</source>
-        <translation>Dépenser la monnaie non confirmée lors de l&apos;envoi de transactions (par défaut : 1)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="346"/>
-        <source>Start Bitsend Core Daemon</source>
-        <translation>Démarrer le démon Bitsend Core</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="347"/>
-        <source>System error: </source>
-        <translation>Erreur système :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="348"/>
-        <source>This help message</source>
-        <translation>Ce message d&apos;aide</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="349"/>
-        <source>This is intended for regression testing tools and app development.</source>
-        <translation>Ceci est à l&apos;intention des outils de test de régression et du développement applicatif.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="350"/>
-        <source>This is not a Xnode.</source>
-        <translation>Ceci n&apos;est pas un Xnode.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="351"/>
-        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Seuil de déconnexion des pairs présentant un mauvais comportement (par défaut : 100)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="352"/>
-        <source>To use the %s option</source>
-        <translation>Pour utiliser l&apos;option %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="353"/>
         <source>Transaction amount too small</source>
-        <translation>Montant de la transaction trop bas</translation>
+        <translation>Le montant de la transaction est trop bas</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="354"/>
-        <source>Transaction amounts must be positive</source>
-        <translation>Les montants de transaction doivent être positifs</translation>
+        <source>Transaction too large for fee policy</source>
+        <translation>La transaction est trop grosse pour la politique de frais</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="355"/>
-        <source>Transaction created successfully.</source>
-        <translation>Transaction créée avec succès.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="356"/>
-        <source>Transaction fees are too high.</source>
-        <translation>Les frais de transaction sont trop élevés.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="357"/>
-        <source>Transaction not valid.</source>
-        <translation>Transaction invalide.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="358"/>
         <source>Transaction too large</source>
-        <translation>Transaction trop volumineuse</translation>
+        <translation>La transaction est trop grosse</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="359"/>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de se lier à %s sur cet ordinateur (bind a retourné l’erreur %s)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="360"/>
-        <source>Unable to sign Xnode payment winner, wrong key?</source>
-        <translation type="unfinished"/>
+        <source>Unable to generate initial keys</source>
+        <translation>Impossible de générer les clés initiales</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="361"/>
-        <source>Unable to sign spork message, wrong key?</source>
-        <translation type="unfinished"/>
+        <source>Verifying wallet(s)...</source>
+        <translation>Vérification des porte-monnaie...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="362"/>
-        <source>Unknown -socks proxy version requested: %i</source>
-        <translation>Version inconnue de serveur mandataire -socks demandée : %i</translation>
+        <source>Wallet %s resides outside wallet directory %s</source>
+        <translation>Le porte-monnaie %s se trouve en dehors du répertoire de porte-monnaie %s</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="363"/>
-        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>Réseau inconnu spécifié sur -onlynet : « %s »</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="364"/>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Mettre à niveau le portefeuille vers le format le plus récent</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="365"/>
-        <source>Usage (deprecated, use bitsend-cli):</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="366"/>
-        <source>Usage:</source>
-        <translation>Utilisation :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="367"/>
-        <source>Use KeePass 2 integration using KeePassHttp plugin (default: 0)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="368"/>
-        <source>Use N separate Xnodes to anonymize funds  (2-8, default: 2)</source>
-        <translation>Utiliser N Xnodes différents pour anonymiser les fonds (2-8, par défaut : 2)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="369"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Utiliser OpenSSL (https) pour les connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="370"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Utiliser l&apos;UPnP pour mapper le port d&apos;écoute (par défaut : 0)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="371"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Utiliser l&apos;UPnP pour mapper le port d&apos;écoute (par défaut : 1 lors de l&apos;écoute)</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="372"/>
-        <source>Use the test network</source>
-        <translation>Utiliser le réseau de test</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="373"/>
-        <source>Username for JSON-RPC connections</source>
-        <translation>Nom d&apos;utilisateur pour les connexions JSON-RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="374"/>
-        <source>Value more than Darksend pool maximum allows.</source>
-        <translation>Valeur supérieure au maximum autorisé par le pool.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="375"/>
-        <source>Verifying blocks...</source>
-        <translation>Vérification des blocs en cours...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="376"/>
-        <source>Verifying wallet...</source>
-        <translation>Vérification du portefeuille en cours...</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="377"/>
-        <source>Wait for RPC server to start</source>
-        <translation>Attendre le démarrage du serveur RPC</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="378"/>
-        <source>Wallet %s resides outside data directory %s</source>
-        <translation>Le portefeuille %s réside en dehors du répertoire de données %s</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="379"/>
-        <source>Wallet is locked.</source>
-        <translation>Le Portefeuille est verrouillé.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="380"/>
-        <source>Wallet needed to be rewritten: restart Bitsend to complete</source>
-        <translation>Le portefeuille devait être réécrit : redémarrer Bitsend pour terminer l&apos;opération.</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="381"/>
-        <source>Wallet options:</source>
-        <translation>Options du portefeuille :</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="382"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="383"/>
-        <source>Warning: Deprecated argument -debugnet ignored, use -debug=net</source>
-        <translation>Attention : l&apos;argument obsolète -debugnet a été ignoré, utiliser -debug=net</translation>
+        <source>Warning: unknown new rules activated (versionbit %i)</source>
+        <translation>Avertissement : nouvelles règles inconnues activées (bit de version %i)</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="384"/>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Avertissement : cette version est obsolète, une mise à niveau est nécessaire !</translation>
-    </message>
-    <message>
-        <source>Wrong state.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="385"/>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Vous devez reconstruire la base de données en utilisant -reindex afin de modifier -txindex</translation>
-    </message>
-    <message>
-        <location filename="../bitsendstrings.cpp" line="386"/>
         <source>Zapping all transactions from wallet...</source>
-        <translation>Supprimer toutes les transactions du portefeuille...</translation>
+        <translation>Supprimer toutes les transactions du porte-monnaie...</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="387"/>
-        <source>on startup</source>
-        <translation>au démarrage</translation>
+        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>La valeur -maxtxfee est très élevée ! Des frais aussi élevés pourraient être payés en une seule transaction.</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="388"/>
-        <source>version</source>
-        <translation>version</translation>
+        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
+        <translation>Erreur de chargement de %s : vous ne pouvez pas activer HD sur un porte-monnaie non HD existant</translation>
     </message>
     <message>
-        <location filename="../bitsendstrings.cpp" line="389"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat corrompu, la récupération a échoué</translation>
+        <source>This is the transaction fee you may pay when fee estimates are not available.</source>
+        <translation>Il s’agit des frais de transaction que vous pourriez payer si aucune estimation de frais n’est proposée.</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Ce produit comprend des logiciels développés par le Projet OpenSSL pour être utilisés dans la boîte à outils OpenSSL %s, et un logiciel cryptographique écrit par Eric Young, ainsi qu’un logiciel UPnP écrit par Thomas Bernard.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>La taille totale de la chaîne de version de réseau (%i) dépasse la longueur maximale (%i). Réduire le nombre ou la taille des commentaires uacomments.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>L’argument non pris en charge -socks a été trouvé. Il n’est plus possible de définir la version de SOCKS, seuls les mandataires SOCKS5 sont pris en charge.</translation>
+    </message>
+    <message>
+        <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
+        <translation>Argument non pris charge -whitelistalwaysrelay ignoré, utiliser -whitelistrelay et/ou -whitelistforcerelay.</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
+        <translation>Avertissement : des versions de blocs inconnues sont minées ! Il est possible que des règles inconnues soient en vigueur</translation>
+    </message>
+    <message>
+        <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>Avertissement : le fichier du porte-monnaie est corrompu, les données ont été récupérées ! Le fichier %s original a été enregistré en tant que %s dans %s ; si votre solde ou vos transactions sont incorrects, vous devriez restaurer une sauvegarde.</translation>
+    </message>
+    <message>
+        <source>%s is set very high!</source>
+        <translation>La valeur %s est très élevée !</translation>
+    </message>
+    <message>
+        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
+        <translation>Erreur de chargement du porte-monnaie %s. Le nom de fichier -wallet indiqué est un doublon.</translation>
+    </message>
+    <message>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation>La réserve de clés est épuisée, veuillez d’abord appeler « keypoolrefill »</translation>
+    </message>
+    <message>
+        <source>Starting network threads...</source>
+        <translation>Démarrage des processus réseau...</translation>
+    </message>
+    <message>
+        <source>The wallet will avoid paying less than the minimum relay fee.</source>
+        <translation>Le porte-monnaie évitera de payer moins que les frais minimaux de relais. </translation>
+    </message>
+    <message>
+        <source>This is the minimum transaction fee you pay on every transaction.</source>
+        <translation>Il s’agit des frais minimaux que vous payez pour chaque transaction. </translation>
+    </message>
+    <message>
+        <source>This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Il s’agit des frais minimaux que vous payez si vous envoyez une transaction.</translation>
+    </message>
+    <message>
+        <source>Transaction amounts must not be negative</source>
+        <translation>Les montants transactionnels ne doivent pas être négatifs</translation>
+    </message>
+    <message>
+        <source>Transaction has too long of a mempool chain</source>
+        <translation>La chaîne de la réserve de mémoire de la transaction est trop longue</translation>
+    </message>
+    <message>
+        <source>Transaction must have at least one recipient</source>
+        <translation>La transaction doit comporter au moins un destinataire</translation>
+    </message>
+    <message>
+        <source>Unknown network specified in -onlynet: '%s'</source>
+        <translation>Réseau inconnu précisé dans -onlynet : « %s »</translation>
+    </message>
+    <message>
+        <source>Insufficient funds</source>
+        <translation>Fonds insuffisants</translation>
+    </message>
+    <message>
+        <source>Can't generate a change-address key. Private keys are disabled for this wallet.</source>
+        <translation>Impossible de générer une clé d’adresse de monnaie. Les clés privées sont désactivées pour ce porte-monnaie.</translation>
+    </message>
+    <message>
+        <source>Cannot upgrade a non HD split wallet without upgrading to support pre split keypool. Please use -upgradewallet=169900 or -upgradewallet with no version specified.</source>
+        <translation>Impossible de mettre à niveau un porte-monnaie divisé non-HD sans mettre à niveau pour prendre en charge la réserve de clés antérieure à la division. Veuillez utiliser -upgradewallet=169900 ou -upgradewallet sans indiquer de version.</translation>
+    </message>
+    <message>
+        <source>Fee estimation failed. Fallbackfee is disabled. Wait a few blocks or enable -fallbackfee.</source>
+        <translation>Échec d’estimation des frais. L’option de frais de repli est désactivée. Attendez quelques blocs ou activez -fallbackfee.</translation>
+    </message>
+    <message>
+        <source>Warning: Private keys detected in wallet {%s} with disabled private keys</source>
+        <translation>Avertissement : Des clés privées ont été détectées dans le porte-monnaie {%s} dont les clés privées sont désactivées.</translation>
+    </message>
+    <message>
+        <source>Cannot write to data directory '%s'; check permissions.</source>
+        <translation>Impossible d’écrire dans le répertoire de données '%s' ; veuillez vérifier les droits.</translation>
+    </message>
+    <message>
+        <source>Loading block index...</source>
+        <translation>Chargement de l’index des blocs…</translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>Chargement du porte-monnaie…</translation>
+    </message>
+    <message>
+        <source>Cannot downgrade wallet</source>
+        <translation>Impossible de revenir à une version inférieure du porte-monnaie</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>Nouvelle analyse…</translation>
+    </message>
+    <message>
+        <source>Done loading</source>
+        <translation>Chargement terminé</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Erreur</translation>
     </message>
 </context>
 </TS>

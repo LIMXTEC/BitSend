@@ -1,10 +1,10 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bitsendunits.h"
+#include <qt/bitsendunits.h>
 
-#include "primitives/transaction.h"
+#include <primitives/transaction.h>
 
 #include <QStringList>
 
@@ -17,9 +17,10 @@ BitsendUnits::BitsendUnits(QObject *parent):
 QList<BitsendUnits::Unit> BitsendUnits::availableUnits()
 {
     QList<BitsendUnits::Unit> unitlist;
-    unitlist.append(BsD);
-    unitlist.append(mBSD);
-    unitlist.append(uBSD);
+    unitlist.append(BTC);
+    unitlist.append(mBTC);
+    unitlist.append(uBTC);
+    unitlist.append(SAT);
     return unitlist;
 }
 
@@ -27,23 +28,35 @@ bool BitsendUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BsD:
-    case mBSD:
-    case uBSD:
+    case BTC:
+    case mBTC:
+    case uBTC:
+    case SAT:
         return true;
     default:
         return false;
     }
 }
 
-QString BitsendUnits::name(int unit)
+QString BitsendUnits::longName(int unit)
 {
     switch(unit)
     {
-    case BsD: return QString("BSD");
-    case mBSD: return QString("mBSD");
-    case uBSD: return QString::fromUtf8("μBSD");
+    case BTC: return QString("BTC");
+    case mBTC: return QString("mBTC");
+    case uBTC: return QString::fromUtf8("µBTC (bits)");
+    case SAT: return QString("Satoshi (sat)");
     default: return QString("???");
+    }
+}
+
+QString BitsendUnits::shortName(int unit)
+{
+    switch(unit)
+    {
+    case uBTC: return QString::fromUtf8("bits");
+    case SAT: return QString("sat");
+    default: return longName(unit);
     }
 }
 
@@ -51,9 +64,10 @@ QString BitsendUnits::description(int unit)
 {
     switch(unit)
     {
-    case BsD: return QString("Bitsends");
-    case mBSD: return QString("Milli-Bitsends (1 / 1" THIN_SP_UTF8 "000)");
-    case uBSD: return QString("Micro-Bitsends (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BTC: return QString("Bitsends");
+    case mBTC: return QString("Milli-Bitsends (1 / 1" THIN_SP_UTF8 "000)");
+    case uBTC: return QString("Micro-Bitsends (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
@@ -62,10 +76,11 @@ qint64 BitsendUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BsD:  return 100000000;
-    case mBSD: return 100000;
-    case uBSD: return 100;
-    default:   return 100000000;
+    case BTC: return 100000000;
+    case mBTC: return 100000;
+    case uBTC: return 100;
+    case SAT: return 1;
+    default: return 100000000;
     }
 }
 
@@ -73,9 +88,10 @@ int BitsendUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BsD: return 8;
-    case mBSD: return 5;
-    case uBSD: return 2;
+    case BTC: return 8;
+    case mBTC: return 5;
+    case uBTC: return 2;
+    case SAT: return 0;
     default: return 0;
     }
 }
@@ -91,9 +107,7 @@ QString BitsendUnits::format(int unit, const CAmount& nIn, bool fPlus, Separator
     int num_decimals = decimals(unit);
     qint64 n_abs = (n > 0 ? n : -n);
     qint64 quotient = n_abs / coin;
-    qint64 remainder = n_abs % coin;
     QString quotient_str = QString::number(quotient);
-    QString remainder_str = QString::number(remainder).rightJustified(num_decimals, '0');
 
     // Use SI-style thin space separators as these are locale independent and can't be
     // confused with the decimal marker.
@@ -107,7 +121,14 @@ QString BitsendUnits::format(int unit, const CAmount& nIn, bool fPlus, Separator
         quotient_str.insert(0, '-');
     else if (fPlus && n > 0)
         quotient_str.insert(0, '+');
-    return quotient_str + QString(".") + remainder_str;
+
+    if (num_decimals > 0) {
+        qint64 remainder = n_abs % coin;
+        QString remainder_str = QString::number(remainder).rightJustified(num_decimals, '0');
+        return quotient_str + QString(".") + remainder_str;
+    } else {
+        return quotient_str;
+    }
 }
 
 
@@ -121,7 +142,7 @@ QString BitsendUnits::format(int unit, const CAmount& nIn, bool fPlus, Separator
 
 QString BitsendUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
-    return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
+    return format(unit, amount, plussign, separators) + QString(" ") + shortName(unit);
 }
 
 QString BitsendUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
@@ -176,7 +197,7 @@ QString BitsendUnits::getAmountColumnTitle(int unit)
     QString amountTitle = QObject::tr("Amount");
     if (BitsendUnits::valid(unit))
     {
-        amountTitle += " ("+BitsendUnits::name(unit) + ")";
+        amountTitle += " ("+BitsendUnits::shortName(unit) + ")";
     }
     return amountTitle;
 }
@@ -197,7 +218,7 @@ QVariant BitsendUnits::data(const QModelIndex &index, int role) const
         {
         case Qt::EditRole:
         case Qt::DisplayRole:
-            return QVariant(name(unit));
+            return QVariant(longName(unit));
         case Qt::ToolTipRole:
             return QVariant(description(unit));
         case UnitRole:

@@ -1,291 +1,505 @@
-0.11.0 Release notes
-====================
+Bitsend Core version 0.11.0 is now available from:
 
-Bitsend Core 0.11.0 is forked off the Bitsend Core 0.9.3. The old bitsend
-versions 0.9.1.4 were forked from the Litecoin 0.9.1.x tree. The following changes
-are introduced in this major release. This list is compiled from the release
-notes of Bitsend Core  0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
-with the  introduced changes to the Bitsend Core 0.11.0.
+  <https://bitsend.org/bin/bitsend-core-0.11.0/>
 
+This is a new major version release, bringing both new features and
+bug fixes.
 
-Bitsend Core:
+Please report bugs using the issue tracker at github:
 
-- Rebrand to `Bitsend Core`
-- Version bumped to 0.11 to indicate a new major release
-- Renamed client to identify with network from `Satoshi` to `Core`
-- Bumped protocol version to 70016
-- Changed p2sh-address versions to start with `7` (instead of `3`, this affects
-  public keys only, old scripts remain valid and usable!)
-- Changed testnet address versions to start with `x` or `y` (instead of `m` or
-  `n`, this affects public keys only, old wallets remain valid and usable!)
-- Defined BIP32 (HD) address versions to start with `drkp`/`drkv` (`DRKP`/`DRKV`
-  for testnet)
-- Adapted BIP44 coin type `5` for Bitsend (0x80000005) as defined in SLIP-0044
-- Added new units: `limes` (1 / 100.000.000 BSD)
-- Added units for testnet: tDRK, mtDRK, utDRK, tlimes
-- Added new DNS seed from masternode.io
-- Fixed wallet locking after sending coins
-- Add `-regtest` mode, similar to testnet but private with instant block
-  generation with `setgenerate` RPC.
-- Add separate bitsend-cli client
-- Implemented KeyPass integration for CLI, RPC and Qt:
-  `keepass`, `keepassport`, `keepasskey`, `keepassid`, `keepassname`
+  <https://github.com/bitsend/bitsend/issues>
 
+Upgrading and downgrading
+=========================
 
-Masternodes:
+How to Upgrade
+--------------
 
-- Improve support for start-many with multi masternode config
-- New masternode rpc commands: stop-many, start-alias, stop-alias, list-conf
-- Fixed possible masternode payments exploit
-- Better support for non-specific masternode payments
-- Added masternode support for regtest
-- Randomly sort masternodes before picking next winner
-- Show number of masternodes in debug window
+If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes for older versions), then run the
+installer (on Windows) or just copy over /Applications/Bitsend-Qt (on Mac) or
+bitsendd/bitsend-qt (on Linux).
 
+Downgrade warning
+------------------
 
-Darksend:
+Because release 0.10.0 and later makes use of headers-first synchronization and
+parallel block download (see further), the block files and databases are not
+backwards-compatible with pre-0.10 versions of Bitsend Core or other software:
 
-- Reduced lower darksend limit to 1.5 BSD
-- Fixed progress bar calculation for low amounts
-- Improved support for adding BSD after anon has completed
-- Added denomination information to Overview tab
-- Added more detailed Darksend status information to Overview tab
-- Added Darksend high precision matching engine
-- Added Darksend balance to `getinfo`
-- Changed maximum rounds of mixing to 16
+* Blocks will be stored on disk out of order (in the order they are
+received, really), which makes it incompatible with some tools or
+other programs. Reindexing using earlier versions will also not work
+anymore as a result of this.
 
+* The block index database will now hold headers for which no block is
+stored on disk, which earlier versions won't support.
 
-RPC:
+If you want to be able to downgrade smoothly, make a backup of your entire data
+directory. Without this your node will need start syncing (or importing from
+bootstrap.dat) anew afterwards. It is possible that the data from a completely
+synchronised 0.10 node may be usable in older versions as-is, but this is not
+supported and may break as soon as the older version attempts to reindex.
 
-- Add `getwalletinfo`, `getblockchaininfo` and `getnetworkinfo` calls
-  (will replace hodge-podge `getinfo` at some point)
-- Add a `relayfee` field to `getnetworkinfo`
-- Always show syncnode in `getpeerinfo`
-- `sendrawtransaction`: report the reject code and reason, and make it possible
-  to re-send transactions that are already in the mempool
-- `getmininginfo` show right genproclimit
-- New notion of 'conflicted' transactions, reported as confirmations: -1
-- 'listreceivedbyaddress' now provides tx ids
-- Add raw transaction hex to 'gettransaction' output
-- Updated help and tests for 'getreceivedby(account|address)'
-- In 'getblock', accept 2nd 'verbose' parameter, similar to getrawtransaction,
-  but defaulting to 1 for backward compatibility
-- Add 'verifychain', to verify chain database at runtime
-- Add 'dumpwallet' and 'importwallet' RPCs
-- 'keypoolrefill' gains optional size parameter
-- Add 'getbestblockhash', to return tip of best chain
-- Add 'chainwork' (the total work done by all blocks since the genesis block)
-  to 'getblock' output
-- Make RPC password resistant to timing attacks
-- Clarify help messages and add examples
-- Add 'getrawchangeaddress' call for raw transaction change destinations
-- Reject insanely high fees by default in 'sendrawtransaction'
-- Add RPC call 'decodescript' to decode a hex-encoded transaction script
-- Make 'validateaddress' provide redeemScript
-- Add 'getnetworkhashps' to get the calculated network hashrate
-- New RPC 'ping' command to request ping, new 'pingtime' and 'pingwait' fields
-  in 'getpeerinfo' output
-- Adding new 'addrlocal' field to 'getpeerinfo' output
-- Add verbose boolean to 'getrawmempool'
-- Add rpc command 'getunconfirmedbalance' to obtain total unconfirmed balance
-- Explicitly ensure that wallet is unlocked in `importprivkey`
-- Add check for valid keys in `importprivkey`
-- Disable SSLv3 (in favor of TLS) for the RPC client and server.
+This does not affect wallet forward or backward compatibility. There are no
+known problems when downgrading from 0.11.x to 0.10.x.
 
+Important information
+======================
 
-Command-line options:
+Transaction flooding
+---------------------
 
-- Fix `-printblocktree` output
-- Show error message if ReadConfigFile fails
-- New option: -nospendzeroconfchange to never spend unconfirmed change outputs
-- New option: -zapwallettxes to rebuild the wallet's transaction information
-- Rename option '-tor' to '-onion' to better reflect what it does
-- Add '-disablewallet' mode to let bitsendd run entirely without wallet (when
-  built with wallet)
-- Update default '-rpcsslciphers' to include TLSv1.2
-- make '-logtimestamps' default on and rework help-message
-- RPC client option: '-rpcwait', to wait for server start
-- Remove '-logtodebugger'
-- Allow `-noserver` with bitsendd
-- Make -proxy set all network types, avoiding a connect leak.
+At the time of this release, the P2P network is being flooded with low-fee
+transactions. This causes a ballooning of the mempool size.
 
+If this growth of the mempool causes problematic memory use on your node, it is
+possible to change a few configuration options to work around this. The growth
+of the mempool can be monitored with the RPC command `getmempoolinfo`.
 
-Block-chain handling and storage:
+One is to increase the minimum transaction relay fee `minrelaytxfee`, which
+defaults to 0.00001. This will cause transactions with fewer BTC/kB fee to be
+rejected, and thus fewer transactions entering the mempool.
 
-- Upgrade leveldb to 1.17
-- Check for correct genesis (prevent cases where a datadir from the wrong
-  network is accidentally loaded)
-- Allow txindex to be removed and add a reindex dialog
-- Log aborted block database rebuilds
-- Store orphan blocks in serialized form, to save memory
-- Limit the number of orphan blocks in memory to 750
-- Fix non-standard disconnected transactions causing mempool orphans
+The other is to restrict the relaying of free transactions with
+`limitfreerelay`. This option sets the number of kB/minute at which
+free transactions (with enough priority) will be accepted. It defaults to 15.
+Reducing this number reduces the speed at which the mempool can grow due
+to free transactions.
 
+For example, add the following to `bitsend.conf`:
 
-Protocol and network code:
+    minrelaytxfee=0.00005 
+    limitfreerelay=5
 
-- Don't poll showmyip.com, it doesn't exist anymore
-- Add a way to limit deserialized string lengths and use it
-- Increase IsStandard() scriptSig length
-- Avoid querying DNS seeds, if we have open connections
-- Remove a useless millisleep in socket handler
-- Stricter memory limits on CNode
-- Better orphan transaction handling
-- Add `-maxorphantx=<n>` and `-maxorphanblocks=<n>` options for control over the
-  maximum orphan transactions and blocks
-- Per-peer block download tracking and stalled download detection
-- Prevent socket leak in ThreadSocketHandler and correct some proxy related
-  socket leaks
-- Use pnode->nLastRecv as sync score (was the wrong way around)
-- Drop the fee required to relay a transaction to 0.01mDRK per kilobyte
-- Send tx relay flag with version
-- New 'reject' P2P message (BIP 0061, see
-  https://gist.github.com/gavinandresen/7079034 for draft)
-- Dump addresses every 15 minutes instead of 10 seconds
-- Relay OP_RETURN data TxOut as standard transaction type
-- Remove CENT-output free transaction rule when relaying
-- Lower maximum size for free transaction creation
-- Send multiple inv messages if mempool.size > MAX_INV_SZ
-- Split MIN_PROTO_VERSION into INIT_PROTO_VERSION and MIN_PEER_PROTO_VERSION
-- Do not treat fFromMe transaction differently when broadcasting
-- Process received messages one at a time without sleeping between messages
-- Improve logging of failed connections
-- Add some additional logging to give extra network insight
-- Limit the number of new addressses to accumulate
+More robust solutions are being worked on for a follow-up release.
 
+Notable changes
+===============
 
-Wallet:
+Block file pruning
+----------------------
 
-- Check redeemScript size does not exceed 520 byte limit
-- Ignore (and warn about) too-long redeemScripts while loading wallet
-- Make GetAvailableCredit run GetHash() only once per transaction (performance
-  improvement)
-- Lower paytxfee warning threshold
-- Fix importwallet nTimeFirstKey (trigger necessary rescans)
-- Log BerkeleyDB version at startup
-- CWallet init fix
-- Bug fixes and new regression tests to correctly compute
-  the balance of wallets containing double-spent (or mutated) transactions
-- Store key creation time. Calculate whole-wallet birthday.
-- Optimize rescan to skip blocks prior to birthday
-- Let user select wallet file with -wallet=foo.dat
-- Don't count txins for priority to encourage sweeping
-- Don't create empty transactions when reading a corrupted wallet
-- Fix rescan to start from beginning after importprivkey
+This release supports running a fully validating node without maintaining a copy 
+of the raw block and undo data on disk. To recap, there are four types of data 
+related to the blockchain in the bitsend system: the raw blocks as received over 
+the network (blk???.dat), the undo data (rev???.dat), the block index and the 
+UTXO set (both LevelDB databases). The databases are built from the raw data.
 
+Block pruning allows Bitsend Core to delete the raw block and undo data once 
+it's been validated and used to build the databases. At that point, the raw data 
+is used only to relay blocks to other nodes, to handle reorganizations, to look 
+up old transactions (if -txindex is enabled or via the RPC/REST interfaces), or 
+for rescanning the wallet. The block index continues to hold the metadata about 
+all blocks in the blockchain.
 
-Mining:
+The user specifies how much space to allot for block & undo files. The minimum 
+allowed is 550MB. Note that this is in addition to whatever is required for the 
+block index and UTXO databases. The minimum was chosen so that Bitsend Core will 
+be able to maintain at least 288 blocks on disk (two days worth of blocks at 10 
+minutes per block). In rare instances it is possible that the amount of space 
+used will exceed the pruning target in order to keep the required last 288 
+blocks on disk.
 
-- Increase default -blockmaxsize/prioritysize to 750K/50K
-- 'getblocktemplate' does not require a key to create a block template
-- Mining code fee policy now matches relay fee policy
+Block pruning works during initial sync in the same way as during steady state, 
+by deleting block files "as you go" whenever disk space is allocated. Thus, if 
+the user specifies 550MB, once that level is reached the program will begin 
+deleting the oldest block and undo files, while continuing to download the 
+blockchain.
 
+For now, block pruning disables block relay.  In the future, nodes with block 
+pruning will at a minimum relay "new" blocks, meaning blocks that extend their 
+active chain. 
 
-GUI:
+Block pruning is currently incompatible with running a wallet due to the fact 
+that block data is used for rescanning the wallet and importing keys or 
+addresses (which require a rescan.) However, running the wallet with block 
+pruning will be supported in the near future, subject to those limitations.
 
-- fix 'opens in testnet mode when presented with a BIP-72 link with no fallback'
-- AvailableCoins: acquire cs_main mutex
-- Fix unicode character display on MacOSX
-- Fix various coin control visual issues
-- Show number of in/out connections in debug console
-- Show weeks as well as years behind for long timespans behind
-- Enable and disable the Show and Remove buttons for requested payments history
-  based on whether any entry is selected.
-- Show also value for options overridden on command line in options dialog
-- Fill in label from address book also for URIs
-- Fixes feel when resizing the last column on tables
-- Fix ESC in disablewallet mode
-- Add expert section to wallet tab in optionsdialog
-- Do proper boost::path conversion (fixes unicode in datadir)
-- Only override -datadir if different from the default (fixes -datadir in config
-  file)
-- Show rescan progress at start-up
-- Show importwallet progress
-- Get required locks upfront in polling functions (avoids hanging on locks)
-- Catch Windows shutdown events while client is running
-- Optionally add third party links to transaction context menu
-- Check for !pixmap() before trying to export QR code (avoids crashes when no QR
-  code could be generated)
-- Fix "Start bitsend on system login"
-- Switch to Qt 5.2.0 for Windows build
-- Add payment request (BIP 0070) support
-- Improve options dialog
-- Show transaction fee in new send confirmation dialog
-- Add total balance in overview page
-- Allow user to choose data directory on first start, when data directory is
-  missing, or when the -choosedatadir option is passed
-- Save and restore window positions
-- Add vout index to transaction id in transactions details dialog
-- Add network traffic graph in debug window
-- Add open URI dialog
-- Improve receive coins workflow: make the 'Receive' tab into a form to request
-  payments, and move historical address list functionality to File menu.
-- Move initialization/shutdown to a thread. This prevents "Not responding"
-  messages during startup. Also show a window during shutdown.
-- Don't regenerate autostart link on every client startup
-- Show and store message of normal bitsend:URI
-- Fix richtext detection hang issue on very old Qt versions
-- OS X: Make use of the 10.8+ user notification center to display Growl-like
-  notifications
-- OS X: Added NSHighResolutionCapable flag to Info.plist for better font
-  rendering on Retina displays.
-- OS X: Fix bitsend-qt startup crash when clicking dock icon
-- Linux: Fix Gnome bitsend: URI handler
+Block pruning is also incompatible with -txindex and will automatically disable 
+it.
 
+Once you have pruned blocks, going back to unpruned state requires 
+re-downloading the entire blockchain. To do this, re-start the node with 
+-reindex. Note also that any problem that would cause a user to reindex (e.g., 
+disk corruption) will cause a pruned node to redownload the entire blockchain. 
+Finally, note that when a pruned node reindexes, it will delete any blk???.dat 
+and rev???.dat files in the data directory prior to restarting the download.
 
-Validation:
+To enable block pruning on the command line:
 
-- Log reason for non-standard transaction rejection
-- Prune provably-unspendable outputs, and adapt consistency check for it.
-- Detect any sufficiently long fork and add a warning
-- Call the -alertnotify script when we see a long or invalid fork
-- Fix multi-block reorg transaction resurrection
-- Reject non-canonically-encoded serialization sizes
-- Reject dust amounts during validation
-- Accept nLockTime transactions that finalize in the next block
-- consensus: guard against openssl's new strict DER checks
-- fail immediately on an empty signature
-- Improve robustness of DER recoding code
+- `-prune=N`: where N is the number of MB to allot for raw block & undo data.
 
+Modified RPC calls:
 
-Build system:
+- `getblockchaininfo` now includes whether we are in pruned mode or not.
+- `getblock` will check if the block's data has been pruned and if so, return an 
+error.
+- `getrawtransaction` will no longer be able to locate a transaction that has a 
+UTXO but where its block file has been pruned. 
 
-- Add OSX build descriptors to gitian
-- Fix explicit --disable-qt-dbus
-- Don't require db_cxx.h when compiling with wallet disabled and GUI enabled
-- Improve missing boost error reporting
-- gitian-linux: --enable-glibc-back-compat for binary compatibility with old
-  distributions
-- gitian: don't export any symbols from executable
-- gitian: build against Qt 4.6
-- devtools: add script to check symbols from Linux gitian executables
-- Remove build-time no-IPv6 setting
-- Add statically built executables to Linux build
-- Switch to autotools-based build system
-- Build without wallet by passing `--disable-wallet` to configure, this
-  removes the BerkeleyDB dependency
-- Upgrade gitian dependencies (libpng, libz, libupnpc, boost, openssl) to more
-  recent versions
-- Windows 64-bit build support
-- Solaris compatibility fixes
-- Check integrity of gitian input source tarballs
-- Enable full GCC Stack-smashing protection for all OSes
-- build: Fix OSX build when using Homebrew and qt5
-- Keep symlinks when copying into .app bundle
-- osx: fix signing to make Gatekeeper happy (again)
+Pruning is disabled by default.
 
+Big endian support
+--------------------
 
-Miscellaneous:
+Experimental support for big-endian CPU architectures was added in this
+release. All little-endian specific code was replaced with endian-neutral
+constructs. This has been tested on at least MIPS and PPC hosts. The build
+system will automatically detect the endianness of the target.
 
-- key.cpp: fail with a friendlier message on missing ssl EC support
-- Remove bignum dependency for scripts
-- Upgrade OpenSSL to 1.0.1i, includes CVE-2014-0224, CVE-2014-0160 and
-  CVE-2014-0076 (see https://www.openssl.org/news/secadv_20140806.txt)
-- Upgrade miniupnpc to 1.9.20140701
-- Fix boost detection in build system on some platforms
-- Replace non-threadsafe C functions (gmtime, strerror and setlocale)
-- Add missing cs_main and wallet locks
-- Avoid exception at startup when system locale not recognized
-- devtools: add a script to fetch and postprocess translations
-- Refactor -alertnotify code
-- doc: Add instructions for consistent Mac OS X build names
+Memory usage optimization
+--------------------------
+
+There have been many changes in this release to reduce the default memory usage
+of a node, among which:
+
+- Accurate UTXO cache size accounting (#6102); this makes the option `-dbcache`
+  precise where this grossly underestimated memory usage before
+- Reduce size of per-peer data structure (#6064 and others); this increases the
+  number of connections that can be supported with the same amount of memory
+- Reduce the number of threads (#5964, #5679); lowers the amount of (esp.
+  virtual) memory needed
+
+Fee estimation changes
+----------------------
+
+This release improves the algorithm used for fee estimation.  Previously, -1
+was returned when there was insufficient data to give an estimate.  Now, -1
+will also be returned when there is no fee or priority high enough for the
+desired confirmation target. In those cases, it can help to ask for an estimate
+for a higher target number of blocks. It is not uncommon for there to be no
+fee or priority high enough to be reliably (85%) included in the next block and
+for this reason, the default for `-txconfirmtarget=n` has changed from 1 to 2.
+
+Privacy: Disable wallet transaction broadcast
+----------------------------------------------
+
+This release adds an option `-walletbroadcast=0` to prevent automatic
+transaction broadcast and rebroadcast (#5951). This option allows separating
+transaction submission from the node functionality.
+
+Making use of this, third-party scripts can be written to take care of
+transaction (re)broadcast:
+
+- Send the transaction as normal, either through RPC or the GUI
+- Retrieve the transaction data through RPC using `gettransaction` (NOT
+  `getrawtransaction`). The `hex` field of the result will contain the raw
+  hexadecimal representation of the transaction
+- The transaction can then be broadcasted through arbitrary mechanisms
+  supported by the script
+
+One such application is selective Tor usage, where the node runs on the normal
+internet but transactions are broadcasted over Tor.
+
+For an example script see [bitsend-submittx](https://github.com/laanwj/bitsend-submittx).
+
+Privacy: Stream isolation for Tor
+----------------------------------
+
+This release adds functionality to create a new circuit for every peer
+connection, when the software is used with Tor. The new option,
+`-proxyrandomize`, is on by default.
+
+When enabled, every outgoing connection will (potentially) go through a
+different exit node. That significantly reduces the chance to get unlucky and
+pick a single exit node that is either malicious, or widely banned from the P2P
+network. This improves connection reliability as well as privacy, especially
+for the initial connections.
+
+**Important note:** If a non-Tor SOCKS5 proxy is configured that supports
+authentication, but doesn't require it, this change may cause that proxy to reject
+connections. A user and password is sent where they weren't before. This setup
+is exceedingly rare, but in this case `-proxyrandomize=0` can be passed to
+disable the behavior.
+
+0.11.0 Change log
+=================
+
+Detailed release notes follow. This overview includes changes that affect
+behavior, not code moves, refactors and string updates. For convenience in locating
+the code changes and accompanying discussion, both the pull request and
+git merge commit are mentioned.
+
+### RPC and REST
+- #5461 `5f7279a` signrawtransaction: validate private key
+- #5444 `103f66b` Add /rest/headers/<count>/<hash>.<ext>
+- #4964 `95ecc0a` Add scriptPubKey field to validateaddress RPC call
+- #5476 `c986972` Add time offset into getpeerinfo output
+- #5540 `84eba47` Add unconfirmed and immature balances to getwalletinfo
+- #5599 `40e96a3` Get rid of the internal miner's hashmeter
+- #5711 `87ecfb0` Push down RPC locks
+- #5754 `1c4e3f9` fix getblocktemplate lock issue
+- #5756 `5d901d8` Fix getblocktemplate_proposals test by mining one block
+- #5548 `d48ce48` Add /rest/chaininfos
+- #5992 `4c4f1b4` Push down RPC reqWallet flag
+- #6036 `585b5db` Show zero value txouts in listunspent
+- #5199 `6364408` Add RPC call `gettxoutproof` to generate and verify merkle blocks
+- #5418 `16341cc` Report missing inputs in sendrawtransaction
+- #5937 `40f5e8d` show script verification errors in signrawtransaction result
+- #5420 `1fd2d39` getutxos REST command (based on Bip64)
+- #6193 `42746b0` [REST] remove json input for getutxos, limit to query max. 15 outpoints
+- #6226 `5901596` json: fail read_string if string contains trailing garbage
+
+### Configuration and command-line options
+- #5636 `a353ad4` Add option `-allowselfsignedrootcertificate` to allow self signed root certs (for testing payment requests)
+- #5900 `3e8a1f2` Add a consistency check `-checkblockindex` for the block chain data structures
+- #5951 `7efc9cf` Make it possible to disable wallet transaction broadcast (using `-walletbroadcast=0`)
+- #5911 `b6ea3bc` privacy: Stream isolation for Tor (on by default, use `-proxyrandomize=0` to disable)
+- #5863 `c271304` Add autoprune functionality (`-prune=<size>`)
+- #6153 `0bcf04f` Parameter interaction: disable upnp if -proxy set
+- #6274 `4d9c7fe` Add option `-alerts` to opt out of alert system
+
+### Block and transaction handling
+- #5367 `dcc1304` Do all block index writes in a batch
+- #5253 `203632d` Check against MANDATORY flags prior to accepting to mempool
+- #5459 `4406c3e` Reject headers that build on an invalid parent
+- #5481 `055f3ae` Apply AreSane() checks to the fees from the network
+- #5580 `40d65eb` Preemptively catch a few potential bugs
+- #5349 `f55c5e9` Implement test for merkle tree malleability in CPartialMerkleTree
+- #5564 `a89b837` clarify obscure uses of EvalScript()
+- #5521 `8e4578a` Reject non-final txs even in testnet/regtest
+- #5707 `6af674e` Change hardcoded character constants to descriptive named constants for db keys
+- #5286 `fcf646c` Change the default maximum OP_RETURN size to 80 bytes
+- #5710 `175d86e` Add more information to errors in ReadBlockFromDisk
+- #5948 `b36f1ce` Use GetAncestor to compute new target
+- #5959 `a0bfc69` Add additional block index consistency checks
+- #6058 `7e0e7f8` autoprune minor post-merge improvements
+- #5159 `2cc1372` New fee estimation code
+- #6102 `6fb90d8` Implement accurate UTXO cache size accounting
+- #6129 `2a82298` Bug fix for clearing fCheckForPruning
+- #5947 `e9af4e6` Alert if it is very likely we are getting a bad chain
+- #6203 `c00ae64` Remove P2SH coinbase flag, no longer interesting
+- #5985 `37b4e42` Fix removing of orphan transactions
+- #6221 `6cb70ca` Prune: Support noncontiguous block files
+- #6256 `fce474c` Use best header chain timestamps to detect partitioning
+- #6233 `a587606` Advance pindexLastCommonBlock for blocks in chainActive
+
+### P2P protocol and network code
+- #5507 `844ace9` Prevent DOS attacks on in-flight data structures
+- #5770 `32a8b6a` Sanitize command strings before logging them
+- #5859 `dd4ffce` Add correct bool combiner for net signals
+- #5876 `8e4fd0c` Add a NODE_GETUTXO service bit and document NODE_NETWORK
+- #6028 `b9311fb` Move nLastTry from CAddress to CAddrInfo
+- #5662 `5048465` Change download logic to allow calling getdata on inbound peers
+- #5971 `18d2832` replace absolute sleep with conditional wait
+- #5918 `7bf5d5e` Use equivalent PoW for non-main-chain requests
+- #6059 `f026ab6` chainparams: use SeedSpec6's rather than CAddress's for fixed seeds
+- #6080 `31c0bf1` Add jonasschnellis dns seeder
+- #5976 `9f7809f` Reduce download timeouts as blocks arrive
+- #6172 `b4bbad1` Ignore getheaders requests when not synced
+- #5875 `304892f` Be stricter in processing unrequested blocks
+- #6333 `41bbc85` Hardcoded seeds update June 2015
+
+### Validation
+- #5143 `48e1765` Implement BIP62 rule 6
+- #5713 `41e6e4c` Implement BIP66
+
+### Build system
+- #5501 `c76c9d2` Add mips, mipsel and aarch64 to depends platforms
+- #5334 `cf87536` libbitsendconsensus: Add pkg-config support
+- #5514 `ed11d53` Fix 'make distcheck'
+- #5505 `a99ef7d` Build winshutdownmonitor.cpp on Windows only
+- #5582 `e8a6639` Osx toolchain update
+- #5684 `ab64022` osx: bump build sdk to 10.9
+- #5695 `23ef5b7` depends: latest config.guess and config.sub
+- #5509 `31dedb4` Fixes when compiling in c++11 mode
+- #5819 `f8e68f7` release: use static libstdc++ and disable reduced exports by default
+- #5510 `7c3fbc3` Big endian support
+- #5149 `c7abfa5` Add script to verify all merge commits are signed
+- #6082 `7abbb7e` qt: disable qt tests when one of the checks for the gui fails
+- #6244 `0401aa2` configure: Detect (and reject) LibreSSL
+- #6269 `95aca44` gitian: Use the new bitsend-detached-sigs git repo for OSX signatures
+- #6285 `ef1d506` Fix scheduler build with some boost versions.
+- #6280 `25c2216` depends: fix Boost 1.55 build on GCC 5
+- #6303 `b711599` gitian: add a gitian-win-signer descriptor
+- #6246 `8ea6d37` Fix build on FreeBSD
+- #6282 `daf956b` fix crash on shutdown when e.g. changing -txindex and abort action
+- #6354 `bdf0d94` Gitian windows signing normalization
+
+### Wallet
+- #2340 `811c71d` Discourage fee sniping with nLockTime
+- #5485 `d01bcc4` Enforce minRelayTxFee on wallet created tx and add a maxtxfee option
+- #5508 `9a5cabf` Add RandAddSeedPerfmon to MakeNewKey
+- #4805 `8204e19` Do not flush the wallet in AddToWalletIfInvolvingMe(..)
+- #5319 `93b7544` Clean up wallet encryption code
+- #5831 `df5c246` Subtract fee from amount
+- #6076 `6c97fd1` wallet: fix boost::get usage with boost 1.58
+- #5511 `23c998d` Sort pending wallet transactions before reaccepting
+- #6126 `26e08a1` Change default nTxConfirmTarget to 2
+- #6183 `75a4d51` Fix off-by-one error w/ nLockTime in the wallet
+- #6276 `c9fd907` Fix getbalance * 0
+
+### GUI
+- #5219 `f3af0c8` New icons
+- #5228 `bb3c75b` HiDPI (retina) support for splash screen
+- #5258 `73cbf0a` The RPC Console should be a QWidget to make window more independent
+- #5488 `851dfc7` Light blue icon color for regtest
+- #5547 `a39aa74` New icon for the debug window
+- #5493 `e515309` Adopt style colour for button icons
+- #5557 `70477a0` On close of splashscreen interrupt verifyDB
+- #5559 `83be8fd` Make the command-line-args dialog better
+- #5144 `c5380a9` Elaborate on signverify message dialog warning
+- #5489 `d1aa3c6` Optimize PNG files
+- #5649 `e0cd2f5` Use text-color icons for system tray Send/Receive menu entries
+- #5651 `848f55d` Coin Control: Use U+2248 "ALMOST EQUAL TO" rather than a simple tilde
+- #5626 `ab0d798` Fix icon sizes and column width
+- #5683 `c7b22aa` add new osx dmg background picture
+- #5620 `7823598` Payment request expiration bug fix
+- #5729 `9c4a5a5` Allow unit changes for read-only BitsendAmountField
+- #5753 `0f44672` Add bitsend logo to about screen
+- #5629 `a956586` Prevent amount overflow problem with payment requests
+- #5830 `215475a` Don't save geometry for options and about/help window
+- #5793 `d26f0b2` Honor current network when creating autostart link
+- #5847 `f238add` Startup script for centos, with documentation
+- #5915 `5bd3a92` Fix a static qt5 crash when using certain versions of libxcb
+- #5898 `bb56781` Fix rpc console font size to flexible metrics
+- #5467 `bc8535b` Payment request / server work - part 2
+- #6161 `180c164` Remove movable option for toolbar
+- #6160 `0d862c2` Overviewpage: make sure warning icons gets colored
+
+### Tests
+- #5453 `2f2d337` Add ability to run single test manually to RPC tests
+- #5421 `886eb57` Test unexecuted OP_CODESEPARATOR
+- #5530 `565b300` Additional rpc tests
+- #5611 `37b185c` Fix spurious windows test failures after 012598880c
+- #5613 `2eda47b` Fix smartfees test for change to relay policy
+- #5612 `e3f5727` Fix zapwallettxes test
+- #5642 `30a5b5f` Prepare paymentservertests for new unit tests
+- #5784 `e3a3cd7` Fix usage of NegateSignatureS in script_tests
+- #5813 `ee9f2bf` Add unit tests for next difficulty calculations
+- #5855 `d7989c0` Travis: run unit tests in different orders
+- #5852 `cdae53e` Reinitialize state in between individual unit tests.
+- #5883 `164d7b6` tests: add a BasicTestingSetup and apply to all tests
+- #5940 `446bb70` Regression test for ResendWalletTransactions
+- #6052 `cf7adad` fix and enable bip32 unit test
+- #6039 `734f80a` tests: Error when setgenerate is used on regtest
+- #6074 `948beaf` Correct the PUSHDATA4 minimal encoding test in script_invalid.json
+- #6032 `e08886d` Stop nodes after RPC tests, even with --nocleanup
+- #6075 `df1609f` Add additional script edge condition tests
+- #5981 `da38dc6` Python P2P testing 
+- #5958 `9ef00c3` Add multisig rpc tests
+- #6112 `fec5c0e` Add more script edge condition tests
+
+### Miscellaneous
+- #5457, #5506, #5952, #6047 Update libsecp256k1
+- #5437 `84857e8` Add missing CAutoFile::IsNull() check in main
+- #5490 `ec20fd7` Replace uint256/uint160 with opaque blobs where possible
+- #5654, #5764 Adding jonasschnelli's GPG key
+- #5477 `5f04d1d` OS X 10.10: LSSharedFileListItemResolve() is deprecated
+- #5679 `beff11a` Get rid of DetectShutdownThread
+- #5787 `9bd8c9b` Add fanquake PGP key
+- #5366 `47a79bb` No longer check osx compatibility in RenameThread
+- #5689 `07f4386` openssl: abstract out OPENSSL_cleanse
+- #5708 `8b298ca` Add list of implemented BIPs
+- #5809 `46bfbe7` Add bitsend-cli man page
+- #5839 `86eb461` keys: remove libsecp256k1 verification until it's actually supported
+- #5749 `d734d87` Help messages correctly formatted (79 chars)
+- #5884 `7077fe6` BUGFIX: Stack around the variable 'rv' was corrupted
+- #5849 `41259ca` contrib/init/bitsendd.openrc: Compatibility with previous OpenRC init script variables
+- #5950 `41113e3` Fix locale fallback and guard tests against invalid locale settings
+- #5965 `7c6bfb1` Add git-subtree-check.sh script
+- #6033 `1623f6e` FreeBSD, OpenBSD thread renaming
+- #6064 `b46e7c2` Several changes to mruset
+- #6104 `3e2559c` Show an init message while activating best chain
+- #6125 `351f73e` Clean up parsing of bool command line args
+- #5964 `b4c219b` Lightweight task scheduler
+- #6116 `30dc3c1` [OSX] rename Bitsend-Qt.app to Bitsend-Core.app
+- #6168 `b3024f0` contrib/linearize: Support linearization of testnet blocks
+- #6098 `7708fcd` Update Windows resource files (and add one for bitsend-tx)
+- #6159 `e1412d3` Catch errors on datadir lock and pidfile delete
+- #6186 `182686c` Fix two problems in CSubnet parsing
+- #6174 `df992b9` doc: add translation strings policy
+- #6210 `dfdb6dd` build: disable optional use of gmp in internal secp256k1 build
+- #6264 `94cd705` Remove translation for -help-debug options
+- #6286 `3902c15` Remove berkeley-db4 workaround in MacOSX build docs
+- #6319 `3f8fcc9` doc: update mailing list address
+
+Credits
+=======
+
+Thanks to everyone who directly contributed to this release:
+
+- 21E14
+- Adam Weiss
+- Alex Morcos
+- ayeowch
+- azeteki
+- Ben Holden-Crowther
+- bikinibabe
+- BitsendPRReadingGroup
+- Blake Jakopovic
+- BtcDrak
+- charlescharles
+- Chris Arnesen
+- Ciemon
+- CohibAA
+- Corinne Dashjr
+- Cory Fields
+- Cozz Lovan
+- Daira Hopwood
+- Daniel Kraft
+- Dave Collins
+- David A. Harding
+- dexX7
+- Earlz
+- Eric Lombrozo
+- Eric R. Schulz
+- Everett Forth
+- Flavien Charlon
+- fsb4000
+- Gavin Andresen
+- Gregory Maxwell
+- Heath
+- Ivan Pustogarov
+- Jacob Welsh
+- Jameson Lopp
+- Jason Lewicki
+- Jeff Garzik
+- Jonas Schnelli
+- Jonathan Brown
+- Jorge Timón
+- joshr
+- jtimon
+- Julian Yap
+- Luca Venturini
+- Luke Dashjr
+- Manuel Araoz
+- MarcoFalke
+- Matt Bogosian
+- Matt Corallo
+- Micha
+- Michael Ford
+- Mike Hearn
+- mrbandrews
+- Nicolas Benoit
+- paveljanik
+- Pavel Janík
+- Pavel Vasin
+- Peter Todd
+- Philip Kaufmann
+- Pieter Wuille
+- pstratem
+- randy-waterhouse
+- rion
+- Rob Van Mieghem
+- Ross Nicoll
+- Ruben de Vries
+- sandakersmann
+- Shaul Kfir
+- Shawn Wilkinson
+- sinetek
+- Suhas Daftuar
+- svost
+- Thomas Zander
+- Tom Harding
+- UdjinM6
+- Vitalii Demianets
+- Wladimir J. van der Laan
+
+And all those who contributed additional code review and/or security research:
+
+- Sergio Demian Lerner
+
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitsend/).
+

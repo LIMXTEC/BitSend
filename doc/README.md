@@ -1,78 +1,83 @@
-Bitsend 1.2.7.0
-====================
-
-Copyright (c) 2009-2017 Bitsend Developers
-Copyright (c) 2014-2015 Dash Developers
-Copyright (c) 2014-2017 Bitsend Developers
-
+Bitsend Core
+=============
 
 Setup
 ---------------------
-[Bitsend Core](https://github.com/LIMXTEC/BitSend/releases) is the original Bitsend client and it builds the backbone of the network. However, it downloads and stores the entire history of Bitsend transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once. If you would like the process to go faster you can [download the blockchain directly](bootstrap.md).
+Bitsend Core is the original Bitsend client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bitsend transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+
+To download Bitsend Core, visit [bitsendcore.org](https://bitsendcore.org/en/releases/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Bitsend on your native platform.
+The following are some helpful notes on how to run Bitsend Core on your native platform.
 
 ### Unix
 
-You need the Qt4 run-time libraries to run Bitsend-Qt. On Debian or Ubuntu:
-
-	sudo apt-get install libqtgui4
-
 Unpack the files into a directory and run:
 
-- bin/32/bitsend-qt (GUI, 32-bit) or bin/32/bitsendd (headless, 32-bit)
-- bin/64/bitsend-qt (GUI, 64-bit) or bin/64/bitsendd (headless, 64-bit)
-
-
+- `bin/bitsend-qt` (GUI) or
+- `bin/bitsendd` (headless)
 
 ### Windows
 
 Unpack the files into a directory, and then run bitsend-qt.exe.
 
-### OSX
+### macOS
 
-Drag Bitsend-Qt to your applications folder, and then run Bitsend-Qt.
+Drag Bitsend Core to your applications folder, and then run Bitsend Core.
 
 ### Need Help?
 
-* See the documentation at the [bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page)
+* See the documentation at the [Bitsend Wiki](https://en.bitsend.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [#bitcoin](http://webchat.freenode.net?channels=bitcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bitcoin).
-* Ask for help on the [bitcoinTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
+* Ask for help on [#bitsend](http://webchat.freenode.net?channels=bitsend) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bitsend).
+* Ask for help on the [BitsendTalk](https://bitsendtalk.org/) forums, in the [Technical Support board](https://bitsendtalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build Bitsend on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Bitsend Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
-- [OSX Build Notes](build-osx.md)
+- [Dependencies](dependencies.md)
+- [macOS Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
-- [Windows Build Notes](build-msw.md)
+- [Windows Build Notes](build-windows.md)
+- [OpenBSD Build Notes](build-openbsd.md)
+- [NetBSD Build Notes](build-netbsd.md)
+- [Gitian Building Guide](gitian-building.md)
 
 Development
 ---------------------
-The Bitsend repo's [root README](https://github.com/LIMXTEC/BitSend) contains relevant information on the development process and automated testing.
+The Bitsend repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
-- [Coding Guidelines](coding.md)
-- [Multiwallet Qt Development](multiwallet-qt.md)
+- [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/bitcoin/doxygen/)
+- [Source Code Documentation (External Link)](https://dev.visucore.com/bitsend/doxygen/)
 - [Translation Process](translation_process.md)
-- [Unit Tests](unit-tests.md)
+- [Translation Strings Policy](translation_strings_policy.md)
+- [Travis CI](travis-ci.md)
+- [Unauthenticated REST Interface](REST-interface.md)
+- [Shared Libraries](shared-libraries.md)
+- [BIPS](bips.md)
+- [Dnsseed Policy](dnsseed-policy.md)
+- [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [bitcoinTalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
-* Discuss on [#bitcoin-dev](http://webchat.freenode.net/?channels=bitcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitcoin-dev).
+* Discuss on the [BitsendTalk](https://bitsendtalk.org/) forums, in the [Development & Technical Discussion board](https://bitsendtalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bitsend-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitsend-core-dev).
+* Discuss general Bitsend development on #bitsend-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitsend-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
+- [Fuzz-testing](fuzzing.md)
+- [Reduce Traffic](reduce-traffic.md)
 - [Tor Support](tor.md)
+- [Init Scripts (systemd/upstart/openrc)](init.md)
+- [ZMQ](zmq.md)
 
 License
 ---------------------
-Distributed under the [MIT/X11 software license](http://www.opensource.org/licenses/mit-license.php).
-This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](http://www.openssl.org/). This product includes
+Distributed under the [MIT software license](/COPYING).
+This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

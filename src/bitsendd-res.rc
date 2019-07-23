@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "LIMXTEC"
-            VALUE "FileDescription",    "bitsendd (bitsend node with a JSON-RPC server)"
+            VALUE "CompanyName",        "Bitsend"
+            VALUE "FileDescription",    "bitsendd (Bitsend node with a JSON-RPC server)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "bitsendd"
             VALUE "LegalCopyright",     COPYRIGHT_STR

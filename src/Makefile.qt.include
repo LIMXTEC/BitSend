@@ -111,8 +111,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsdialog.ui \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
-  qt/forms/transactiondescdialog.ui \
-  qt/forms/masternodelist.ui
+  qt/forms/transactiondescdialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -123,6 +122,7 @@ QT_MOC_CPP = \
   qt/moc_bitsendamountfield.cpp \
   qt/moc_bitsendgui.cpp \
   qt/moc_bitsendunits.cpp \
+  qt/moc_callback.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -159,8 +159,7 @@ QT_MOC_CPP = \
   qt/moc_utilitydialog.cpp \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
-  qt/moc_walletview.cpp \
-  qt/moc_masternodelist.cpp
+  qt/moc_walletview.cpp
 
 BITSEND_MM = \
   qt/macdockiconhandler.mm \
@@ -169,6 +168,7 @@ BITSEND_MM = \
 QT_MOC = \
   qt/bitsend.moc \
   qt/bitsendamountfield.moc \
+  qt/callback.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
@@ -191,6 +191,7 @@ BITSEND_QT_H = \
   qt/bitsendamountfield.h \
   qt/bitsendgui.h \
   qt/bitsendunits.h \
+  qt/callback.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -234,15 +235,14 @@ BITSEND_QT_H = \
   qt/walletmodel.h \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
-  qt/winshutdownmonitor.h \
-  qt/masternodelist.h
+  qt/winshutdownmonitor.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
   qt/res/icons/about.png \
   qt/res/icons/about_qt.png \
-  qt/res/icons/bitsend_ic.ico \
+  qt/res/icons/bitsend.ico \
   qt/res/icons/bitsend_testnet.ico \
   qt/res/icons/bitsend.png \
   qt/res/icons/chevron.png \
@@ -257,11 +257,6 @@ RES_ICONS = \
   qt/res/icons/connect2.png \
   qt/res/icons/connect3.png \
   qt/res/icons/connect4.png \
-  qt/res/icons/connect0_16.png \
-  qt/res/icons/connect1_16.png \
-  qt/res/icons/connect2_16.png \
-  qt/res/icons/connect3_16.png \
-  qt/res/icons/connect4_16.png \
   qt/res/icons/debugwindow.png \
   qt/res/icons/edit.png \
   qt/res/icons/editcopy.png \
@@ -283,6 +278,7 @@ RES_ICONS = \
   qt/res/icons/network_disabled.png \
   qt/res/icons/open.png \
   qt/res/icons/overview.png \
+  qt/res/icons/proxy.png \
   qt/res/icons/quit.png \
   qt/res/icons/receive.png \
   qt/res/icons/remove.png \
@@ -297,8 +293,7 @@ RES_ICONS = \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
   qt/res/icons/warning.png \
-  qt/res/icons/verify.png \
-  qt/res/
+  qt/res/icons/verify.png
 
 BITSEND_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
@@ -322,8 +317,7 @@ BITSEND_QT_BASE_CPP = \
   qt/rpcconsole.cpp \
   qt/splashscreen.cpp \
   qt/trafficgraphwidget.cpp \
-  qt/utilitydialog.cpp \
-  qt/masternodelist.cpp
+  qt/utilitydialog.cpp
 
 BITSEND_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
 
@@ -353,8 +347,7 @@ BITSEND_QT_WALLET_CPP = \
   qt/walletframe.cpp \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
-  qt/walletview.cpp \
-  qt/masternodelist.cpp
+  qt/walletview.cpp
 
 BITSEND_QT_CPP = $(BITSEND_QT_BASE_CPP)
 if TARGET_WINDOWS
@@ -364,45 +357,21 @@ if ENABLE_WALLET
 BITSEND_QT_CPP += $(BITSEND_QT_WALLET_CPP)
 endif
 
-RES_CSS = \
-  qt/res/css/bitsend_main.css \
-  qt/res/css/bitsend_theme1.css \
-  qt/res/css/bitsend_theme2.css \
-  qt/res/css/bitsend_theme3.css 
-  
-  
-RES_IMAGES = \
-  qt/res/images/about.png \
-  qt/res/images/splash.png \
-  qt/res/images/splash_testnet.png \
-  qt/res/images/paper_wallet.png \
-  qt/res/images/bitsend_logo_horizontal.png \
-  qt/res/images/drkblue_downArrow.png \
-  qt/res/images/drkblue_downArrow_small.png \
-  qt/res/images/drkblue_upArrow_small.png \
-  qt/res/images/drkblue_leftArrow_small.png \
-  qt/res/images/drkblue_rightArrow_small.png \
-  qt/res/images/drkblue_qtreeview_selected.png \
-  qt/res/images/bitsend_main_hg.png \
-  qt/res/images/bitsend_theme1_hg.png \
-  qt/res/images/bitsend_theme2_hg.png \
-  qt/res/images/bitsend_theme3_hg.png
-
-
+RES_IMAGES =
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
 BITSEND_RC = qt/res/bitsend-qt-res.rc
 
-BITSEND_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
-  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+BITSEND_QT_INCLUDES = -DQT_NO_KEYWORDS
 
 qt_libbitsendqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(BITSEND_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 qt_libbitsendqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitsendqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
 
 qt_libbitsendqt_a_SOURCES = $(BITSEND_QT_CPP) $(BITSEND_QT_H) $(QT_FORMS_UI) \
-  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_CSS) $(RES_IMAGES) $(RES_MOVIES) 
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
 nodist_qt_libbitsendqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
@@ -434,16 +403,16 @@ if TARGET_WINDOWS
 endif
 qt_bitsend_qt_LDADD = qt/libbitsendqt.a $(LIBBITSEND_SERVER)
 if ENABLE_WALLET
-qt_bitsend_qt_LDADD += $(LIBBITSEND_WALLET)
+qt_bitsend_qt_LDADD += $(LIBBITSEND_UTIL) $(LIBBITSEND_WALLET)
 endif
 if ENABLE_ZMQ
 qt_bitsend_qt_LDADD += $(LIBBITSEND_ZMQ) $(ZMQ_LIBS)
 endif
-qt_bitsend_qt_LDADD += $(LIBBITSEND_CLI) $(LIBBITSEND_COMMON) $(LIBBITSEND_UTIL) $(LIBBITSEND_CONSENSUS) $(LIBBITSEND_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_bitsend_qt_LDADD += $(LIBBITSEND_CLI) $(LIBBITSEND_COMMON) $(LIBBITSEND_UTIL) $(LIBBITSEND_CONSENSUS) $(LIBBITSEND_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_bitsend_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_bitsend_qt_LIBTOOLFLAGS = --tag CXX
+qt_bitsend_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
@@ -465,12 +434,12 @@ $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
-$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS) $(PROTOBUF_H)
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitsend $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitsendqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+CLEAN_QT = $(nodist_qt_libbitsendqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_bitsend_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 

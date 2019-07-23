@@ -1,12 +1,14 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "walletframe.h"
+#include <qt/walletframe.h>
+#include <qt/walletmodel.h>
 
-#include "bitsendgui.h"
-#include "walletview.h"
+#include <qt/bitsendgui.h>
+#include <qt/walletview.h>
 
+#include <cassert>
 #include <cstdio>
 
 #include <QHBoxLayout>
@@ -38,10 +40,16 @@ void WalletFrame::setClientModel(ClientModel *_clientModel)
     this->clientModel = _clientModel;
 }
 
-bool WalletFrame::addWallet(const QString& name, WalletModel *walletModel)
+bool WalletFrame::addWallet(WalletModel *walletModel)
 {
-    if (!gui || !clientModel || !walletModel || mapWalletViews.count(name) > 0)
+    if (!gui || !clientModel || !walletModel) {
         return false;
+    }
+
+    const QString name = walletModel->getWalletName();
+    if (mapWalletViews.count(name) > 0) {
+        return false;
+    }
 
     WalletView *walletView = new WalletView(platformStyle, this);
     walletView->setBitsendGUI(gui);
@@ -49,8 +57,13 @@ bool WalletFrame::addWallet(const QString& name, WalletModel *walletModel)
     walletView->setWalletModel(walletModel);
     walletView->showOutOfSyncWarning(bOutOfSync);
 
-     /* TODO we should goto the currently selected page once dynamically adding wallets is supported */
-    walletView->gotoOverviewPage();
+    WalletView* current_wallet_view = currentWalletView();
+    if (current_wallet_view) {
+        walletView->setCurrentIndex(current_wallet_view->currentIndex());
+    } else {
+        walletView->gotoOverviewPage();
+    }
+
     walletStack->addWidget(walletView);
     mapWalletViews[name] = walletView;
 
@@ -69,6 +82,7 @@ bool WalletFrame::setCurrentWallet(const QString& name)
 
     WalletView *walletView = mapWalletViews.value(name);
     walletStack->setCurrentWidget(walletView);
+    assert(walletView);
     walletView->updateEncryptionStatus();
     return true;
 }
@@ -80,6 +94,7 @@ bool WalletFrame::removeWallet(const QString &name)
 
     WalletView *walletView = mapWalletViews.take(name);
     walletStack->removeWidget(walletView);
+    delete walletView;
     return true;
 }
 
@@ -113,13 +128,6 @@ void WalletFrame::gotoOverviewPage()
     QMap<QString, WalletView*>::const_iterator i;
     for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
         i.value()->gotoOverviewPage();
-}
-
-void WalletFrame::gotoMasternodePage()
-{
-    QMap<QString, WalletView*>::const_iterator i;
-    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoMasternodePage();
 }
 
 void WalletFrame::gotoHistoryPage()
@@ -185,13 +193,6 @@ void WalletFrame::unlockWallet()
         walletView->unlockWallet();
 }
 
-void WalletFrame::unlockWalletAndKeepUnlocked()
-{
-    WalletView *walletView = currentWalletView();
-    if (walletView)
-        walletView->requestUnlockWallet();
-}
-
 void WalletFrame::usedSendingAddresses()
 {
     WalletView *walletView = currentWalletView();
@@ -205,12 +206,7 @@ void WalletFrame::usedReceivingAddresses()
     if (walletView)
         walletView->usedReceivingAddresses();
 }
-/* void WalletFrame::gotoBip38Tool()
-{
-    WalletView* walletView = currentWalletView();
-    if (walletView)
-        walletView->gotoBip38Tool();
-} */
+
 WalletView *WalletFrame::currentWalletView()
 {
     return qobject_cast<WalletView*>(walletStack->currentWidget());

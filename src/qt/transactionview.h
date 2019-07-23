@@ -1,11 +1,13 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitsend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_QT_TRANSACTIONVIEW_H
 #define BITSEND_QT_TRANSACTIONVIEW_H
 
-#include "guiutil.h"
+#include <qt/guiutil.h>
+
+#include <uint256.h>
 
 #include <QWidget>
 #include <QKeyEvent>
@@ -66,7 +68,7 @@ private:
     QComboBox *dateWidget;
     QComboBox *typeWidget;
     QComboBox *watchOnlyWidget;
-    QLineEdit *addressWidget;
+    QLineEdit *search_widget;
     QLineEdit *amountWidget;
 
     QMenu *contextMenu;
@@ -76,6 +78,7 @@ private:
     QDateTimeEdit *dateFrom;
     QDateTimeEdit *dateTo;
     QAction *abandonAction;
+    QAction *bumpFeeAction;
 
     QWidget *createDateRangeWidget();
 
@@ -99,6 +102,7 @@ private Q_SLOTS:
     void openThirdPartyTxUrl(QString url);
     void updateWatchOnlyColumn(bool fHaveWatchOnly);
     void abandonTx();
+    void bumpFee();
 
 Q_SIGNALS:
     void doubleClicked(const QModelIndex&);
@@ -110,11 +114,11 @@ public Q_SLOTS:
     void chooseDate(int idx);
     void chooseType(int idx);
     void chooseWatchonly(int idx);
-    void changedPrefix(const QString &prefix);
-    void changedAmount(const QString &amount);
+    void changedAmount();
+    void changedSearch();
     void exportClicked();
     void focusTransaction(const QModelIndex&);
-
+    void focusTransaction(const uint256& txid);
 };
 
 #endif // BITSEND_QT_TRANSACTIONVIEW_H
