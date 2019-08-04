@@ -13,6 +13,8 @@ typedef int64_t CAmount;
 
 static const CAmount COIN = 100000000;
 static const CAmount CENT = 1000000;
+static const int FORKX17_Main_Net = 240000;
+static const int FORKX17_Main_Net2 = 1477958400;
 
 /** No amount larger than this (in satoshi) is valid.
  *

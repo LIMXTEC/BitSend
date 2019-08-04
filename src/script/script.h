@@ -557,6 +557,8 @@ public:
         CScriptBase::clear();
         shrink_to_fit();
     }
+
+    std::string ToString() const;
 };
 
 struct CScriptWitness

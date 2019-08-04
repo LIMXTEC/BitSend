@@ -869,12 +869,12 @@ public:
         return nLocalServices;
     }
 	
-	//TODO--
-	bool HasFulfilledRequest(std::string strRequest)
+    bool HasFulfilledRequest(std::string strRequest)
     {
-        BOOST_FOREACH(std::string& type, vecRequestsFulfilled)
-        {
-            if(type == strRequest) return true;
+        std::vector<std::string>::iterator it = vecRequestsFulfilled.begin();
+        while(it != vecRequestsFulfilled.end()){
+            if((*it) == strRequest)
+                return true;
         }
         return false;
     }
@@ -896,7 +896,6 @@ public:
         if(HasFulfilledRequest(strRequest)) return;
         vecRequestsFulfilled.push_back(strRequest);
     }
-    //TODO-- ends
 
     std::string GetAddrName() const;
     //! Sets the addrName only if it was not previously set

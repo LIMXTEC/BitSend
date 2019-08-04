@@ -15,7 +15,7 @@ void CActiveMasternode::ManageStatus()
 
     if(!fMasterNode) return;
 
-    if (fDebug) LogPrintf("CActiveMasternode::ManageStatus() - Begin\n");
+    //if (fDebug) LogPrintf("CActiveMasternode::ManageStatus() - Begin\n");
 
     //need correct adjusted time to send ping
     bool fIsInitialDownload = IsInitialBlockDownload();
@@ -60,7 +60,7 @@ void CActiveMasternode::ManageStatus()
             return;
         }
 		
-		bool pnode1 = g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
+                //bool pnode1 = g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
 		/**We try here to stablish a connection, 
 		* Since if we are running masternode, then client will connect to itself
 		* to avoid it , we try a connection, and leave
@@ -73,6 +73,7 @@ void CActiveMasternode::ManageStatus()
 				}
 		**/
 
+        //TODO:
         if(pwalletMain->IsLocked()){
             notCapableReason = "Wallet is locked.";
             status = MASTERNODE_NOT_CAPABLE;
@@ -265,16 +266,18 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         return false;
     }
 
-    CBitsendAddress address;
+    //CBitsendAddress address;
+
     if (strDonationAddress != "")
     {
-        if(!address.SetString(strDonationAddress))
+        CTxDestination destAddr = DecodeDestination(strDonationAddress);
+        if(!IsValidDestination(destAddr))
         {
             LogPrintf("CActiveMasternode::Register - Invalid Donation Address\n");
             return false;
         }
         //donationAddress.SetDestination(address.Get());
-		donationAddress = GetScriptForDestination(address.Get());//todo++
+                donationAddress = GetScriptForDestination(destAddr);//todo++
         try {
             donationPercentage = boost::lexical_cast<int>( strDonationPercentage );
         } catch( boost::bad_lexical_cast const& ) {
@@ -350,7 +353,7 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
 		txHash.SetHex(strTxHash);
         int outputIndex = boost::lexical_cast<int>(strOutputIndex);
         bool found = false;
-        BOOST_FOREACH(COutput& out, possibleCoins) {
+        for(COutput& out : possibleCoins) {
             if(out.tx->GetHash() == txHash && out.i == outputIndex)
             {
                 selectedOutput = &out;
@@ -387,10 +390,11 @@ bool CActiveMasternode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubke
 
     CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    CBitsendAddress address2(address1);
+    //CBitsendAddress address2(address1);
 
-    CKeyID keyID;
-    if (!address2.GetKeyID(keyID)) {
+    CKeyID keyID = GetKeyForDestination(*pwalletMain, address1);
+    //const CKeyID *keyID = boost::get<CKeyID>(&address1);
+    if (keyID.IsNull()) {
         LogPrintf("CActiveMasternode::GetMasterNodeVin - Address does not refer to a key\n");
         return false;
     }
@@ -414,7 +418,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     pwalletMain->AvailableCoins(vCoins);
 
     // Filter
-    BOOST_FOREACH(const COutput& out, vCoins)
+    for(const COutput& out: vCoins)
     {
         if(out.tx->tx->vout[out.i].nValue == MASTERNODEAMOUNT*COIN) { //exactly        bitsenddev   04-2015
             filteredCoins.push_back(out);

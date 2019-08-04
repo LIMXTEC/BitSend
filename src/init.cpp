@@ -203,7 +203,7 @@ void Interrupt()
 /** Preparing steps before shutting down or restarting the wallet */
 void PrepareShutdown() //TODO--
 {
-    fRequestShutdown = true; // Needed when we shutdown the wallet//TODO--
+    StartShutdown();//fRequestShutdown = true; // Needed when we shutdown the wallet//TODO--
     fRestartRequested = true; // Needed when we restart the wallet//TODO--
     LogPrintf("%s: In progress...\n", __func__);
     static CCriticalSection cs_Shutdown;
