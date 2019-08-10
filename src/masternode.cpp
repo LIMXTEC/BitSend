@@ -26,7 +26,7 @@ map<uint256, int> mapSeenMasternodeScanningErrors;
 // cache block hashes as we calculate them
 std::map<int64_t, uint256> mapCacheBlockHashes;
 
-static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CConnman &connman)
+static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CConnman* connman)
 {
     CInv inv(MSG_MASTERNODE_WINNER, winner.GetHash());
 
@@ -36,13 +36,13 @@ static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CCon
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
     }*/
-	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+        connman->ForEachNode([&vInv](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
     });
 }
 
-void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman* connman)
 {
     if(IsInitialBlockDownload()) return;
 
@@ -574,13 +574,13 @@ void CMasternodePayments::Relay(CMasternodePaymentWinner& winner)
     });
 }
 
-void CMasternodePayments::Sync(CNode* node, CConnman& connman)
+void CMasternodePayments::Sync(CNode* node, CConnman *connman)
 {
     LOCK(cs_masternodepayments);
 
     BOOST_FOREACH(CMasternodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= chainActive.Tip()->nHeight-10 && winner.nBlockHeight <= chainActive.Tip()->nHeight + 20)
-            connman.PushMessage(node, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", winner));//node->PushMessage("mnw", winner);
+            connman->PushMessage(node, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", winner));//node->PushMessage("mnw", winner);
 		
 }
 

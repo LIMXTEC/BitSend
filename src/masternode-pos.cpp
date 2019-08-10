@@ -263,7 +263,7 @@ void CMasternodeScanningError::RelayProcessBlock()
     });
 }
 
-void CMasternodeScanningError::Relay(CNode* pnode, CConnman& connman)
+void CMasternodeScanningError::Relay(CNode* pnode, CConnman* connman)
 {
     CInv inv(MSG_MASTERNODE_SCANNING_ERROR, GetHash());
 
@@ -273,8 +273,8 @@ void CMasternodeScanningError::Relay(CNode* pnode, CConnman& connman)
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
     }*/
-	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+        connman->ForEachNode([&vInv, &connman](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
     });
 }

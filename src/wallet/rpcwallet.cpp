@@ -4517,7 +4517,7 @@ bool FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, int sig
 
         if (PSBTInputSigned(input)) {
             continue;
-        }
+        } // todoImp
 
         // Verify input looks sane. This will check that we have at most one uxto, witness or non-witness.
         if (!input.IsSane()) {

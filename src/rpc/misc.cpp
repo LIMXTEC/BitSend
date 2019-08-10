@@ -77,7 +77,7 @@ static UniValue spork(const JSONRPCRequest& request)
         "spork <name> [<value>]\n"
         "<name> is the corresponding spork name, or 'show' to show all current spork settings"
         "<value> is a epoch datetime to enable or disable spork"
-        + HelpRequiringPassphrase());
+        /*+ HelpRequiringPassphrase()*/);
 }
 //TODO-- ends
 

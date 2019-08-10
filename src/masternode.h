@@ -52,7 +52,7 @@ extern map<int64_t, uint256> mapCacheBlockHashes;
 //void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
 bool GetBlockHash(uint256& hash, int nBlockHeight);
 
-void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+void ProcessMessageMasternodePayments(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman* connman);
 
 //
 // The Masternode Class. For managing the Darksend process. It contains the input of the 1000DRK, signature to prove
@@ -359,7 +359,7 @@ public:
     bool AddWinningMasternode(CMasternodePaymentWinner& winner);
     bool ProcessBlock(int nBlockHeight);
     void Relay(CMasternodePaymentWinner& winner);
-    void Sync(CNode* node, CConnman& connman);
+    void Sync(CNode* node, CConnman* connman);
     void CleanPaymentList();
     int LastPayment(CMasternode& mn);
 

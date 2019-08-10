@@ -30,9 +30,15 @@
 #include "masternodeman.h"
 #include "masternodeconfig.h"
 
+#include <boost/foreach.hpp>
+
+#include <iomanip>
+
 
 #include <memory>
 #include <stdint.h>
+
+using namespace std;
 
 unsigned int ParseConfirmTarget(const UniValue& value)
 {
@@ -684,8 +690,8 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
 	if(pblock->payee != CScript()){
         CTxDestination address1;
         ExtractDestination(pblock->payee, address1);
-        CBitcoinAddress address2(address1);
-        result.push_back(Pair("payee", address2.ToString().c_str()));
+        //CBitcoinAddress address2(address1);
+        //result.push_back(Pair("payee", En);
         result.push_back(Pair("payee_amount", (int64_t)GetMasternodePayment(pindexPrev->nHeight+1, pblock->vtx[0]->GetValueOut())));
     } else {
         result.push_back(Pair("payee", ""));
@@ -993,7 +999,8 @@ UniValue masternodelist(const JSONRPCRequest& request)
 	UniValue obj(UniValue::VOBJ);
     if (strMode == "rank") {
         std::vector<pair<int, CMasternode> > vMasternodeRanks = mnodeman.GetMasternodeRanks(chainActive.Tip()->nHeight);
-        BOOST_FOREACH(PAIRTYPE(int, CMasternode)& s, vMasternodeRanks) {
+        typedef std::pair<int, CMasternode>s;
+        BOOST_FOREACH( s &s, vMasternodeRanks) {
             std::string strAddr = s.second.addr.ToString();
             if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       s.first));
@@ -1008,15 +1015,15 @@ UniValue masternodelist(const JSONRPCRequest& request)
             } else if (strMode == "donation") {
                 CTxDestination address1;
                 ExtractDestination(mn.donationAddress, address1);
-                CBitcoinAddress address2(address1);
+                //CBitcoinAddress address2(address1);
 
-                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                if(strFilter !="" && EncodeDestination(address1).find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
 
                 std::string strOut = "";
 
                 if(mn.donationPercentage != 0){
-                    strOut = address2.ToString().c_str();
+                    strOut = EncodeDestination(address1);
                     strOut += ":";
                     strOut += boost::lexical_cast<std::string>(mn.donationPercentage);
                 }
@@ -1026,16 +1033,16 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 pubkey = GetScriptForDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitcoinAddress address2(address1);
+                EncodeDestination(address1);
 
                 std::ostringstream addrStream;
-                addrStream << setw(21) << strAddr;
+                addrStream << std::setw(21) << strAddr;
 
                 std::ostringstream stringStream;
                 stringStream << setw(10) <<
                                mn.Status() << " " <<
                                mn.protocolVersion << " " <<
-                               address2.ToString() << " " <<
+                               EncodeDestination(address1) << " " <<
                                addrStream.str() << " " <<
                                mn.lastTimeSeen << " " << setw(8) <<
                                (mn.lastTimeSeen - mn.sigTime);
@@ -1056,11 +1063,11 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 pubkey = GetScriptForDestination(mn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitcoinAddress address2(address1);
+                //CBitcoinAddress address2(address1);
 
-                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                if(strFilter !="" && EncodeDestination(address1).find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
+                obj.push_back(Pair(strAddr,       EncodeDestination(address1).c_str()));
             } else if (strMode == "pose") {
                 if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
                 std::string strOut = boost::lexical_cast<std::string>(mn.nScanningErrorCount);
@@ -1491,12 +1498,12 @@ UniValue masternode(const JSONRPCRequest& request)
             pubkey = GetScriptForDestination(winner->pubkey.GetID());
             CTxDestination address1;
             ExtractDestination(pubkey, address1);
-            CBitcoinAddress address2(address1);
+            //CBitcoinAddress address2(address1);
 
             obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
             obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
             obj.push_back(Pair("vin",           winner->vin.prevout.hash.ToString().c_str()));
-            obj.push_back(Pair("pubkey",        address2.ToString().c_str()));
+            obj.push_back(Pair("pubkey",        EncodeDestination(address1)));
             obj.push_back(Pair("lastseen",      (int64_t)winner->lastTimeSeen));
             obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->sigTime)));
             return obj;
@@ -1510,7 +1517,7 @@ UniValue masternode(const JSONRPCRequest& request)
         CKey secret;
         secret.MakeNewKey(false);
 
-        return CBitcoinSecret(secret).ToString();
+        return EncodeSecret(secret);
     }
 	
 	if (strCommand == "winners")
@@ -1524,8 +1531,8 @@ UniValue masternode(const JSONRPCRequest& request)
             if(masternodePayments.GetBlockPayee(nHeight, payee)){
                 CTxDestination address1;
                 ExtractDestination(payee, address1);
-                CBitcoinAddress address2(address1);
-                obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
+                //CBitcoinAddress address2(address1);
+                obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       EncodeDestination(address1)));
             } else {
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));
             }
@@ -1553,13 +1560,14 @@ UniValue masternode(const JSONRPCRequest& request)
 		CService service2(LookupNumeric(strAddress.c_str(), 0));
 		addr = service2;
 		
-		bool pnode1 = g_connman->OpenNetworkConnection((CAddress)addr, false, NULL, addr.ToString().c_str());
+                /*bool pnode1 =*/ g_connman->OpenNetworkConnection((CAddress)addr, false, nullptr, addr.ToString().c_str(), false, false, true);
 
-        if(pnode1){
+        /*if(pnode1){
             return "successfully connected";
         } else {
             return "error connecting";
-        }
+        }*/
+                return "attempted to connect";
     }
 	
 	if(strCommand == "list-conf")

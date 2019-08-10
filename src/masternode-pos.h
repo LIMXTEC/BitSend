@@ -46,7 +46,7 @@ static const int MASTERNODE_SCANNING_ERROR_THESHOLD = 6;  //6 Bitsenddev  to lit
 
 //extern void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);//
 
-void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+void ProcessMessageMasternodePOS(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman* connman);
 
 class CMasternodeScanning
 {
@@ -101,7 +101,7 @@ public:
     bool SignatureValid();
     bool Sign();
     bool IsExpired() {return GetTime() > nExpiration;}
-    void Relay(CNode* pnode, CConnman& connman);//
+    void Relay(CNode* pnode, CConnman *connman);//
 	void RelayProcessBlock();
     bool IsValid() {
     	return (nErrorType > 0 && nErrorType <= SCANNING_ERROR_MAX);

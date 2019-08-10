@@ -547,7 +547,7 @@ void CMasternodeMan::ProcessMasternodeConnections()
     }*///todo ++ add must
 }
 
-void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman* connman)
 {
 
     if(fProUserModeDarksendInstantX2) return; //disable all Darksend/Masternode related functionality
@@ -717,7 +717,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 			std::vector<CAddress> vAddr;
 			//vAddr = CAddress(addr);
 			vAddr.push_back(CAddress(addr));
-            connman.AddNewAddresses(vAddr, pfrom->addr, 2*60*60);
+            connman->AddNewAddresses(vAddr, pfrom->addr, 2*60*60);
             
              //doesn't support multisig addresses
             if(donationAddress.IsPayToScriptHash()){
@@ -820,7 +820,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
 
         LogPrintf("dseep - Asking source node for missing entry %s\n", vin.ToString().c_str());
         //pfrom->PushMessage("dseg", vin);
-		connman.PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseg", vin));
+                connman->PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseg", vin));
         int64_t askAgain = GetTime() + MASTERNODE_MIN_DSEEP_SECONDS;
         mWeAskedForMasternodeListEntry[vin.prevout] = askAgain;
 
@@ -853,9 +853,9 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
                 /*LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
                     pnode->PushMessage("mvote", vin, vchSig, nVote);*/
-				connman.ForEachNode([&connman, &vin, &vchSig, &nVote](CNode* pnode)
+                                connman->ForEachNode([ &vin, &vchSig, &nVote](CNode* pnode)
 				{
-					connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mvote", vin, vchSig, nVote));
+                                        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mvote", vin, vchSig, nVote));
 				});
             }
 
@@ -898,10 +898,10 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
                 if(fDebug) LogPrintf("dseg - Sending Masternode entry - %s \n", mn.addr.ToString().c_str());
                 if(vin == CTxIn()){
                     //pfrom->PushMessage("dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, mn.donationAddress, mn.donationPercentage);
-					connman.PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, *(CScriptBase*)(&mn.donationAddress), mn.donationPercentage));
+                                        connman->PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, *(CScriptBase*)(&mn.donationAddress), mn.donationPercentage));
                 } else if (vin == mn.vin) {
                     //pfrom->PushMessage("dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, mn.donationAddress, mn.donationPercentage);
-					connman.PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, *(CScriptBase*)(&mn.donationAddress), mn.donationPercentage));
+                                        connman->PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", mn.vin, mn.addr, mn.sig, mn.sigTime, mn.pubkey, mn.pubkey2, count, i, mn.lastTimeSeen, mn.protocolVersion, *(CScriptBase*)(&mn.donationAddress), mn.donationPercentage));
                     LogPrintf("dseg - Sent 1 Masternode entries to %s\n", pfrom->addr.ToString().c_str());
                     return;
                 }
@@ -913,27 +913,27 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, const std::string& strCommand,
     }
 
 }
-void CMasternodeMan::RelayMasternodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage, CConnman& connman)
+void CMasternodeMan::RelayMasternodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage, CConnman* connman)
 {
      /*LOCK(cs_vNodes);
      BOOST_FOREACH(CNode* pnode, vNodes)
      pnode->PushMessage("dsee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
 	*/
-	connman.ForEachNode([&connman, &vin, &addr, &vchSig, &nNow, &pubkey, &pubkey2, &count, &current, &lastUpdated, &protocolVersion, &donationAddress, &donationPercentage](CNode* pnode)
+        connman->ForEachNode([ &vin, &addr, &vchSig, &nNow, &pubkey, &pubkey2, &count, &current, &lastUpdated, &protocolVersion, &donationAddress, &donationPercentage](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, *(CScriptBase*)(&donationAddress), donationPercentage));
+        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dsee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, *(CScriptBase*)(&donationAddress), donationPercentage));
     });
 }
 
 
-void CMasternodeMan::RelayMasternodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop, CConnman& connman)
+void CMasternodeMan::RelayMasternodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop, CConnman* connman)
 {
     /*LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
         pnode->PushMessage("dseep", vin, vchSig, nNow, stop);*/
-	connman.ForEachNode([&connman, &vin, &vchSig, &nNow, &stop](CNode* pnode)
+        connman->ForEachNode([ &vin, &vchSig, &nNow, &stop](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseep", vin, vchSig, nNow, stop));
+        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "dseep", vin, vchSig, nNow, stop));
     });
 }
 

@@ -68,6 +68,7 @@
 #include <boost/bind.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/thread.hpp>
+#include <boost/foreach.hpp>
 #include <openssl/crypto.h>
 
 #if ENABLE_ZMQ
@@ -1342,39 +1343,40 @@ bool AppInitMain()
             return InitError(_("Unable to start HTTP server. See debug log for details."));
     }
 	
-	if (mapMultiArgs.count("-masternodepaymentskey")) // masternode payments priv key
+    if (gArgs.IsArgSet("-masternodepaymentskey")) // masternode payments priv key
     {
-        if (!masternodePayments.SetPrivKey(GetArg("-masternodepaymentskey", ""))){
-			//CKey secret;
-			//secret.MakeNewKey(false);
+        if (!masternodePayments.SetPrivKey(gArgs.GetArg("-masternodepaymentskey", ""))){
+            //CKey secret;
+            //secret.MakeNewKey(false);
 
-			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
+            //LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
             return InitError(_("Unable to sign masternode payment winner, wrong key?"));
-		}
-        if (!sporkManager.SetPrivKey(GetArg("-masternodepaymentskey", ""))){
-			//CKey secret;
-			//secret.MakeNewKey(false);
+        }
+        if (!sporkManager.SetPrivKey(gArgs.GetArg("-masternodepaymentskey", ""))){
+            //CKey secret;
+            //secret.MakeNewKey(false);
 
-			//LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
+            //LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
             return InitError(_("Unable to sign spork message, wrong key?"));
-		}
+        }
     }
 
 
     // ********************************************************* Step 5: verify wallet database integrity
     if (!g_wallet_init_interface.Verify()) return false;
-	
-	if (!fDisableWallet) {
-    
-	/**TODO-- */
-	std::string strWalletFile = GetArg("-wallet", "wallet.dat");
+
+#if ENABLE_WALLET
+    /*if (!fDisableWallet)*/ {
+
+        /**TODO-- */
+        std::string strWalletFile = gArgs.GetArg("-wallet", "wallet.dat");
         filesystem::path backupDir = GetDataDir() / "backups";
         if (!filesystem::exists(backupDir))
         {
             // Always create backup folder to not confuse the operating system's file browser
             filesystem::create_directories(backupDir);
         }
-        nWalletBackups = GetArg("-createwalletbackups", 10);
+        nWalletBackups = gArgs.GetArg("-createwalletbackups", 10);
         nWalletBackups = std::max(0, std::min(10, nWalletBackups));
         if(nWalletBackups > 0)
         {
@@ -1421,7 +1423,7 @@ bool AppInitMain()
                 }
                 // Loop backward through backup files and keep the N newest ones (1 <= N <= 10)
                 int counter = 0;
-                BOOST_REVERSE_FOREACH(PAIRTYPE(const std::time_t, boost::filesystem::path) file, folder_set)
+                /*BOOST_REVERSE_FOREACH(PAIRTYPE(const std::time_t, boost::filesystem::path) file, folder_set)
                 {
                     counter++;
                     if (counter > nWalletBackups)
@@ -1434,14 +1436,14 @@ bool AppInitMain()
                             LogPrintf("Failed to delete backup %s\n", error.what());
                         }
                     }
-                }
+                }*/
             }
-        }//TODO-- ends 
+        }//TODO-- ends
 
         
 
     } /// (!fDisableWallet)
-
+#endif
     // ********************************************************* Step 6: network initialization
     // Note that we absolutely cannot open any actual connections
     // until the very end ("start node") as the UTXO/block state
@@ -1844,10 +1846,10 @@ bool AppInitMain()
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
     }
 
-    fMasterNode = GetBoolArg("-masternode", false);
+    fMasterNode = gArgs.GetBoolArg("-masternode", false);
     if(fMasterNode) {
         LogPrintf("IS DARKSEND MASTER NODE\n");
-        strMasterNodeAddr = GetArg("-masternodeaddr", "");
+        strMasterNodeAddr = gArgs.GetArg("-masternodeaddr", "");
 
         LogPrintf(" addr %s\n", strMasterNodeAddr.c_str());
 
@@ -1860,7 +1862,7 @@ bool AppInitMain()
             }
         }
 
-        strMasterNodePrivKey = GetArg("-masternodeprivkey", "");
+        strMasterNodePrivKey = gArgs.GetArg("-masternodeprivkey", "");
         if(!strMasterNodePrivKey.empty()){
             std::string errorMessage;
 
@@ -1878,7 +1880,7 @@ bool AppInitMain()
             return InitError(_("You must specify a masternodeprivkey in the configuration. Please see documentation for help."));
         }
     }
-    if(GetBoolArg("-mnconflock", true)) {
+    if(gArgs.GetBoolArg("-mnconflock", true)) {
         LogPrintf("Locking Masternodes:\n");
         uint256 mnTxHash;
         BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
@@ -1890,8 +1892,8 @@ bool AppInitMain()
     }
 
 	//-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
-    fProUserModeDarksendInstantX = GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
-	fProUserModeDarksendInstantX2 = GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+    fProUserModeDarksendInstantX = gArgs.GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+        fProUserModeDarksendInstantX2 = gArgs.GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
     if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
         return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
     } //BitSenddev 13-05-2016
