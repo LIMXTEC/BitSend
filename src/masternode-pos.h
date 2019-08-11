@@ -101,7 +101,7 @@ public:
     bool SignatureValid();
     bool Sign();
     bool IsExpired() {return GetTime() > nExpiration;}
-    void Relay(CNode* pnode, CConnman *connman);//
+    void Relay(CNode* pnode, CConnman* connman);//
 	void RelayProcessBlock();
     bool IsValid() {
     	return (nErrorType > 0 && nErrorType <= SCANNING_ERROR_MAX);

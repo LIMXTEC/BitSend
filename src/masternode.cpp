@@ -13,6 +13,7 @@
 #include "net_processing.h"
 #include "consensus/validation.h"
 #include <boost/lexical_cast.hpp>
+#include <boost/foreach.hpp>
 
 CCriticalSection cs_masternodepayments;
 
@@ -38,7 +39,7 @@ static void RelayMNpayments(CMasternodePaymentWinner& winner, CNode* pnode, CCon
     }*/
         connman->ForEachNode([&vInv](CNode* pnode)
     {
-        connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
     });
 }
 
@@ -51,7 +52,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strComman
 
         if(pfrom->HasFulfilledRequest("mnget")) {
             LogPrintf("mnget - peer already asked me for the list\n");
-            Misbehaving(pfrom->GetId(), 20);
+            //Misbehaving(pfrom->GetId(), 20);
             return;
         }
 
@@ -71,30 +72,30 @@ void ProcessMessageMasternodePayments(CNode* pfrom, const std::string& strComman
 
         CTxDestination address1;
         ExtractDestination(winner.payee, address1);
-        CBitsendAddress address2(address1);
+        //CBitsendAddress address2(address1);
 
         arith_uint256 hash = UintToArith256(winner.GetHash());
         if(mapSeenMasternodeVotes.count(ArithToUint256(hash))) {
-            if(fDebug) LogPrintf("mnw - seen vote %s Addr %s Height %d bestHeight %d\n", hash.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, chainActive.Tip()->nHeight);
+            //if(fDebug) LogPrintf("mnw - seen vote %s Addr %s Height %d bestHeight %d\n", hash.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, chainActive.Tip()->nHeight);
             return;
         }
 
         if(winner.nBlockHeight < chainActive.Tip()->nHeight - 10 || winner.nBlockHeight > chainActive.Tip()->nHeight+20){
-            LogPrintf("mnw - winner out of range %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, chainActive.Tip()->nHeight);
+            LogPrintf("mnw - winner out of range %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), EncodeDestination(address1), winner.nBlockHeight, chainActive.Tip()->nHeight);
             return;
         }
 
         if(winner.vin.nSequence != std::numeric_limits<unsigned int>::max()){
             LogPrintf("mnw - invalid nSequence\n");
-            Misbehaving(pfrom->GetId(), 100);
+            //Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
-        LogPrintf("mnw - winning vote - Vin %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, chainActive.Tip()->nHeight);
+        LogPrintf("mnw - winning vote - Vin %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), EncodeDestination(address1), winner.nBlockHeight, chainActive.Tip()->nHeight);
 
         if(!masternodePayments.CheckSignature(winner)){
             LogPrintf("mnw - invalid signature\n");
-            Misbehaving(pfrom->GetId(), 100);
+            //Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
@@ -444,7 +445,7 @@ void CMasternodePayments::CleanPaymentList()
     vector<CMasternodePaymentWinner>::iterator it;
     for(it=vWinning.begin();it<vWinning.end();it++){
         if(chainActive.Tip()->nHeight - (*it).nBlockHeight > nLimit){
-            if(fDebug) LogPrintf("CMasternodePayments::CleanPaymentList - Removing old Masternode payment - block %d\n", (*it).nBlockHeight);
+            //if(fDebug) LogPrintf("CMasternodePayments::CleanPaymentList - Removing old Masternode payment - block %d\n", (*it).nBlockHeight);
             vWinning.erase(it);
             break;
         }
@@ -536,14 +537,14 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 
     CTxDestination address1;
     ExtractDestination(newWinner.payee, address1);
-    CBitsendAddress address2(address1);
+    //CBitsendAddress address2(address1);
 
 	CTxDestination address3;
 
 
 	ExtractDestination(payeeSource, address3);
-	CBitsendAddress address4(address3);
-	LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
+        //CBitsendAddress address4(address3);
+        LogPrintf("Winner payee %s nHeight %d vin source %s. \n", EncodeDestination(address1), newWinner.nBlockHeight, EncodeDestination(address3) );
 
     if(Sign(newWinner))
     {

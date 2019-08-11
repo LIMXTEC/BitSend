@@ -85,8 +85,8 @@ const int64_t nStartupTime = GetTime();
 /**TODO-- port to bitcoin*/
 //Bitcoin only features
 bool fMasterNode = false;
-string strMasterNodePrivKey = "";
-string strMasterNodeAddr = "";
+std::string strMasterNodePrivKey = "";
+std::string strMasterNodeAddr = "";
 bool fProUserModeDarksendInstantX = false;
 bool fProUserModeDarksendInstantX2 = false;
 bool fLiteMode = false;
@@ -102,7 +102,7 @@ bool fEnableDarksend = false;
 bool fDarksendMultiSession = false;
 /** All denominations used by darksend */
 std::vector<CAmount> darkSendDenominations;
-string strBudgetMode = "";
+std::string strBudgetMode = "";
 //TODO-- ends
 
 
@@ -838,7 +838,7 @@ fs::path GetConfigFile(const std::string& confPath)
 /**TODO-- improve code*/
 boost::filesystem::path GetMasternodeConfigFile(/*const std::string& confPath*/)
 {
-    boost::filesystem::path pathConfigFile(GetArg("-mnconf", "masternode.conf"));
+    boost::filesystem::path pathConfigFile(gArgs.GetArg("-mnconf", "masternode.conf"));
     if (!pathConfigFile.is_complete())
 		pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;
