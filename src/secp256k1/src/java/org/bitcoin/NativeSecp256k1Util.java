@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.bitsend;
+package org.bitcoin;
 
 public class NativeSecp256k1Util{
 

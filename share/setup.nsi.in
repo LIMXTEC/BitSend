@@ -5,12 +5,11 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION @CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@
-!define COMPANY "Bitsend Core project"
-!define URL https://www.bitsendpay.io/
+!define COMPANY "@PACKAGE_NAME@ project"
+!define URL @PACKAGE_URL@
 
 # MUI Symbol Definitions
-!define MUI_ICON "@abs_top_srcdir@/share/pixmaps/bitsend.ico"
+!define MUI_ICON "@abs_top_srcdir@/share/pixmaps/bitcoin.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "@abs_top_srcdir@/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
@@ -20,7 +19,8 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "@PACKAGE_NAME@"
-!define MUI_FINISHPAGE_RUN $INSTDIR\bitsend-qt.exe
+!define MUI_FINISHPAGE_RUN "$WINDIR\explorer.exe"
+!define MUI_FINISHPAGE_RUN_PARAMETERS $INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "@abs_top_srcdir@/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -48,22 +48,22 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile @abs_top_srcdir@/bitsend-${VERSION}-win@WINDOWS_BITS@-setup.exe
+OutFile @abs_top_srcdir@/@PACKAGE_TARNAME@-@PACKAGE_VERSION@-win@WINDOWS_BITS@-setup.exe
 !if "@WINDOWS_BITS@" == "64"
-InstallDir $PROGRAMFILES64\Bitsend
+InstallDir $PROGRAMFILES64\Bitcoin
 !else
-InstallDir $PROGRAMFILES\Bitsend
+InstallDir $PROGRAMFILES\Bitcoin
 !endif
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion ${VERSION}.@CLIENT_VERSION_BUILD@
-VIAddVersionKey ProductName "Bitsend Core"
-VIAddVersionKey ProductVersion "${VERSION}"
+VIProductVersion @CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@.@CLIENT_VERSION_BUILD@
+VIAddVersionKey ProductName "@PACKAGE_NAME@"
+VIAddVersionKey ProductVersion "@PACKAGE_VERSION@"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
-VIAddVersionKey FileVersion "${VERSION}"
+VIAddVersionKey FileVersion "@PACKAGE_VERSION@"
 VIAddVersionKey FileDescription ""
 VIAddVersionKey LegalCopyright ""
 InstallDirRegKey HKCU "${REGKEY}" Path
@@ -73,20 +73,18 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File @abs_top_srcdir@/release/bitsend-qt.exe
+    File @abs_top_srcdir@/release/@BITCOIN_GUI_NAME@@EXEEXT@
     File /oname=COPYING.txt @abs_top_srcdir@/COPYING
     File /oname=readme.txt @abs_top_srcdir@/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File @abs_top_srcdir@/release/bitsendd.exe
-    File @abs_top_srcdir@/release/bitsend-cli.exe
+    File @abs_top_srcdir@/release/@BITCOIN_DAEMON_NAME@@EXEEXT@
+    File @abs_top_srcdir@/release/@BITCOIN_CLI_NAME@@EXEEXT@
+    File @abs_top_srcdir@/release/@BITCOIN_TX_NAME@@EXEEXT@
+    File @abs_top_srcdir@/release/@BITCOIN_WALLET_TOOL_NAME@@EXEEXT@
     SetOutPath $INSTDIR\doc
-    File /r @abs_top_srcdir@/doc\*.*
+    File /r /x Makefile* @abs_top_srcdir@/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
-
-    # Remove old wxwidgets-based-bitsend executable and locales:
-    Delete /REBOOTOK $INSTDIR\bitsend.exe
-    RMDir /r /REBOOTOK $INSTDIR\locale
 SectionEnd
 
 Section -post SEC0001
@@ -95,21 +93,22 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\bitsend-qt.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\@PACKAGE_NAME@ (testnet, @WINDOWS_BITS@-bit).lnk" "$INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@" "-testnet" "$INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@" 1
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
-    WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
+    WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "@PACKAGE_VERSION@"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" Publisher "${COMPANY}"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" URLInfoAbout "${URL}"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayIcon $INSTDIR\uninstall.exe
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
-    WriteRegStr HKCR "bitsend" "URL Protocol" ""
-    WriteRegStr HKCR "bitsend" "" "URL:Bitsend"
-    WriteRegStr HKCR "bitsend\DefaultIcon" "" $INSTDIR\bitsend-qt.exe
-    WriteRegStr HKCR "bitsend\shell\open\command" "" '"$INSTDIR\bitsend-qt.exe" "%1"'
+    WriteRegStr HKCR "@PACKAGE_TARNAME@" "URL Protocol" ""
+    WriteRegStr HKCR "@PACKAGE_TARNAME@" "" "URL:Bitcoin"
+    WriteRegStr HKCR "@PACKAGE_TARNAME@\DefaultIcon" "" $INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@
+    WriteRegStr HKCR "@PACKAGE_TARNAME@\shell\open\command" "" '"$INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -127,7 +126,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\bitsend-qt.exe
+    Delete /REBOOTOK $INSTDIR\@BITCOIN_GUI_NAME@@EXEEXT@
     Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
@@ -139,7 +138,8 @@ Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
-    Delete /REBOOTOK "$SMSTARTUP\Bitsend.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\@PACKAGE_NAME@ (testnet, @WINDOWS_BITS@-bit).lnk"
+    Delete /REBOOTOK "$SMSTARTUP\Bitcoin.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
     Delete /REBOOTOK $INSTDIR\db.log
@@ -147,7 +147,7 @@ Section -un.post UNSEC0001
     DeleteRegValue HKCU "${REGKEY}" Path
     DeleteRegKey /IfEmpty HKCU "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKCU "${REGKEY}"
-    DeleteRegKey HKCR "bitsend"
+    DeleteRegKey HKCR "@PACKAGE_TARNAME@"
     RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
     RmDir /REBOOTOK $INSTDIR
     Push $R0

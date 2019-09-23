@@ -18,4 +18,4 @@ FORMS += \
     ../src/qt/forms/transactiondescdialog.ui \
 
 RESOURCES += \
-    ../src/qt/bitsend.qrc
+    ../src/qt/bitcoin.qrc

@@ -1,17 +1,15 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_RECENTREQUESTSTABLEMODEL_H
-#define BITSEND_QT_RECENTREQUESTSTABLEMODEL_H
+#ifndef BITCOIN_QT_RECENTREQUESTSTABLEMODEL_H
+#define BITCOIN_QT_RECENTREQUESTSTABLEMODEL_H
 
-#include "walletmodel.h"
+#include <qt/walletmodel.h>
 
 #include <QAbstractTableModel>
 #include <QStringList>
 #include <QDateTime>
-
-class CWallet;
 
 class RecentRequestEntry
 {
@@ -52,7 +50,7 @@ private:
     Qt::SortOrder order;
 };
 
-/** Model for list of recently generated payment requests / bitsend: URIs.
+/** Model for list of recently generated payment requests / bitcoin: URIs.
  * Part of wallet model.
  */
 class RecentRequestsTableModel: public QAbstractTableModel
@@ -60,7 +58,7 @@ class RecentRequestsTableModel: public QAbstractTableModel
     Q_OBJECT
 
 public:
-    explicit RecentRequestsTableModel(CWallet *wallet, WalletModel *parent);
+    explicit RecentRequestsTableModel(WalletModel *parent);
     ~RecentRequestsTableModel();
 
     enum ColumnIndex {
@@ -96,7 +94,7 @@ private:
     WalletModel *walletModel;
     QStringList columns;
     QList<RecentRequestEntry> list;
-    int64_t nReceiveRequestsMaxId;
+    int64_t nReceiveRequestsMaxId{0};
 
     /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
     void updateAmountColumnTitle();
@@ -104,4 +102,4 @@ private:
     QString getAmountTitle();
 };
 
-#endif // BITSEND_QT_RECENTREQUESTSTABLEMODEL_H
+#endif // BITCOIN_QT_RECENTREQUESTSTABLEMODEL_H

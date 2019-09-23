@@ -1,7 +1,7 @@
 // This file contains source that originates from:
 // http://code.google.com/p/leveldbwin/source/browse/trunk/win32_impl_src/env_win32.h
 // http://code.google.com/p/leveldbwin/source/browse/trunk/win32_impl_src/port_win32.cc
-// Those files dont' have any explict license headers but the 
+// Those files don't have any explicit license headers but the 
 // project (http://code.google.com/p/leveldbwin/) lists the 'New BSD License'
 // as the license.
 #if defined(LEVELDB_PLATFORM_WINDOWS)
@@ -78,6 +78,7 @@ public:
     virtual Status Read(size_t n, Slice* result, char* scratch);
     virtual Status Skip(uint64_t n);
     BOOL isEnable();
+    virtual std::string GetName() const { return _filename; }
 private:
     BOOL _Init();
     void _CleanUp();
@@ -94,6 +95,7 @@ public:
     virtual ~Win32RandomAccessFile();
     virtual Status Read(uint64_t offset, size_t n, Slice* result,char* scratch) const;
     BOOL isEnable();
+    virtual std::string GetName() const { return _filename; }
 private:
     BOOL _Init(LPCWSTR path);
     void _CleanUp();
@@ -114,6 +116,7 @@ public:
     virtual Status Flush();
     virtual Status Sync();
     BOOL isEnable();
+    virtual std::string GetName() const { return filename_; }
 private:
     std::string filename_;
     ::HANDLE _hFile;
@@ -200,22 +203,14 @@ public:
 
 void ToWidePath(const std::string& value, std::wstring& target) {
 	wchar_t buffer[MAX_PATH];
-	MultiByteToWideChar(CP_ACP, 0, value.c_str(), -1, buffer, MAX_PATH);
+	MultiByteToWideChar(CP_UTF8, 0, value.c_str(), -1, buffer, MAX_PATH);
 	target = buffer;
 }
 
 void ToNarrowPath(const std::wstring& value, std::string& target) {
 	char buffer[MAX_PATH];
-	WideCharToMultiByte(CP_ACP, 0, value.c_str(), -1, buffer, MAX_PATH, NULL, NULL);
+	WideCharToMultiByte(CP_UTF8, 0, value.c_str(), -1, buffer, MAX_PATH, NULL, NULL);
 	target = buffer;
-}
-
-std::string GetCurrentDir()
-{
-    CHAR path[MAX_PATH];
-    ::GetModuleFileNameA(::GetModuleHandleA(NULL),path,MAX_PATH);
-    *strrchr(path,'\\') = 0;
-    return std::string(path);
 }
 
 std::wstring GetCurrentDirW()
@@ -224,6 +219,13 @@ std::wstring GetCurrentDirW()
     ::GetModuleFileNameW(::GetModuleHandleW(NULL),path,MAX_PATH);
     *wcsrchr(path,L'\\') = 0;
     return std::wstring(path);
+}
+
+std::string GetCurrentDir()
+{
+    std::string path;
+    ToNarrowPath(GetCurrentDirW(), path);
+    return path;
 }
 
 std::string& ModifyPath(std::string& path)
@@ -355,11 +357,13 @@ BOOL Win32SequentialFile::_Init()
 	ToWidePath(_filename, path);
 	_hFile = CreateFileW(path.c_str(),
                          GENERIC_READ,
-                         FILE_SHARE_READ,
+                         FILE_SHARE_READ | FILE_SHARE_WRITE,
                          NULL,
                          OPEN_EXISTING,
-                         FILE_ATTRIBUTE_NORMAL,
+                         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN,
                          NULL);
+    if (_hFile == INVALID_HANDLE_VALUE)
+        _hFile = NULL;
     return _hFile ? TRUE : FALSE;
 }
 
@@ -403,7 +407,7 @@ BOOL Win32RandomAccessFile::_Init( LPCWSTR path )
 {
     BOOL bRet = FALSE;
     if(!_hFile)
-        _hFile = ::CreateFileW(path,GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,
+        _hFile = ::CreateFileW(path,GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE,NULL,OPEN_EXISTING,
         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_RANDOM_ACCESS,NULL);
     if(!_hFile || _hFile == INVALID_HANDLE_VALUE )
         _hFile = NULL;
@@ -669,7 +673,7 @@ Status Win32Env::GetFileSize( const std::string& fname, uint64_t* file_size )
 	ToWidePath(ModifyPath(path), wpath);
 
     HANDLE file = ::CreateFileW(wpath.c_str(),
-        GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
+        GENERIC_READ,FILE_SHARE_READ|FILE_SHARE_WRITE,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
     LARGE_INTEGER li;
     if(::GetFileSizeEx(file,&li)){
         *file_size = (uint64_t)li.QuadPart;
@@ -759,14 +763,16 @@ uint64_t Win32Env::NowMicros()
 static Status CreateDirInner( const std::string& dirname )
 {
     Status sRet;
-    DWORD attr = ::GetFileAttributes(dirname.c_str());
+    std::wstring dirnameW;
+    ToWidePath(dirname, dirnameW);
+    DWORD attr = ::GetFileAttributesW(dirnameW.c_str());
     if (attr == INVALID_FILE_ATTRIBUTES) { // doesn't exist:
       std::size_t slash = dirname.find_last_of("\\");
       if (slash != std::string::npos){
 	sRet = CreateDirInner(dirname.substr(0, slash));
 	if (!sRet.ok()) return sRet;
       }
-      BOOL result = ::CreateDirectory(dirname.c_str(), NULL);
+      BOOL result = ::CreateDirectoryW(dirnameW.c_str(), NULL);
       if (result == FALSE) {
 	sRet = Status::IOError(dirname, "Could not create directory.");
 	return sRet;

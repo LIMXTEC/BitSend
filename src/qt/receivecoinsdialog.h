@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_RECEIVECOINSDIALOG_H
-#define BITSEND_QT_RECEIVECOINSDIALOG_H
+#ifndef BITCOIN_QT_RECEIVECOINSDIALOG_H
+#define BITCOIN_QT_RECEIVECOINSDIALOG_H
 
-#include "guiutil.h"
+#include <qt/guiutil.h>
 
 #include <QDialog>
 #include <QHeaderView>
@@ -15,7 +15,6 @@
 #include <QPoint>
 #include <QVariant>
 
-class OptionsModel;
 class PlatformStyle;
 class WalletModel;
 
@@ -27,7 +26,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Dialog for requesting payment of bitsends */
+/** Dialog for requesting payment of bitcoins */
 class ReceiveCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -40,7 +39,7 @@ public:
         MINIMUM_COLUMN_WIDTH = 130
     };
 
-    explicit ReceiveCoinsDialog(const PlatformStyle *platformStyle, QWidget *parent = 0);
+    explicit ReceiveCoinsDialog(const PlatformStyle *platformStyle, QWidget *parent = nullptr);
     ~ReceiveCoinsDialog();
 
     void setModel(WalletModel *model);
@@ -78,4 +77,4 @@ private Q_SLOTS:
     void copyAmount();
 };
 
-#endif // BITSEND_QT_RECEIVECOINSDIALOG_H
+#endif // BITCOIN_QT_RECEIVECOINSDIALOG_H

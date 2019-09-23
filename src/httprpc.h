@@ -1,14 +1,12 @@
-// Copyright (c) 2015 The Bitsend Core developers
+// Copyright (c) 2015-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_HTTPRPC_H
-#define BITSEND_HTTPRPC_H
+#ifndef BITCOIN_HTTPRPC_H
+#define BITCOIN_HTTPRPC_H
 
 #include <string>
 #include <map>
-
-class HTTPRequest;
 
 /** Start HTTP RPC subsystem.
  * Precondition; HTTP and RPC has been started.
@@ -25,7 +23,7 @@ void StopHTTPRPC();
 /** Start HTTP REST subsystem.
  * Precondition; HTTP and RPC has been started.
  */
-bool StartREST();
+void StartREST();
 /** Interrupt RPC REST subsystem.
  */
 void InterruptREST();

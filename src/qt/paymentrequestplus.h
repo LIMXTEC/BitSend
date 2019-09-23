@@ -1,16 +1,17 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_PAYMENTREQUESTPLUS_H
-#define BITSEND_QT_PAYMENTREQUESTPLUS_H
+#ifndef BITCOIN_QT_PAYMENTREQUESTPLUS_H
+#define BITCOIN_QT_PAYMENTREQUESTPLUS_H
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#include "paymentrequest.pb.h"
+#include <qt/paymentrequest.pb.h>
 #pragma GCC diagnostic pop
 
-#include "base58.h"
+#include <amount.h>
+#include <script/script.h>
 
 #include <openssl/x509.h>
 
@@ -48,4 +49,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // BITSEND_QT_PAYMENTREQUESTPLUS_H
+#endif // BITCOIN_QT_PAYMENTREQUESTPLUS_H

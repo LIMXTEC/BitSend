@@ -1,10 +1,10 @@
-// Copyright (c) 2014-2016 The Bitsend Core developers
+// Copyright (c) 2014-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "networkstyle.h"
+#include <qt/networkstyle.h>
 
-#include "guiconstants.h"
+#include <qt/guiconstants.h>
 
 #include <QApplication>
 
@@ -17,7 +17,7 @@ static const struct {
 } network_styles[] = {
     {"main", QAPP_APP_NAME_DEFAULT, 0, 0, ""},
     {"test", QAPP_APP_NAME_TESTNET, 70, 30, QT_TRANSLATE_NOOP("SplashScreen", "[testnet]")},
-    {"regtest", QAPP_APP_NAME_TESTNET, 160, 30, "[regtest]"}
+    {"regtest", QAPP_APP_NAME_REGTEST, 160, 30, "[regtest]"}
 };
 static const unsigned network_styles_count = sizeof(network_styles)/sizeof(*network_styles);
 
@@ -27,7 +27,7 @@ NetworkStyle::NetworkStyle(const QString &_appName, const int iconColorHueShift,
     titleAddText(qApp->translate("SplashScreen", _titleAddText))
 {
     // load pixmap
-    QPixmap pixmap(":/icons/bitsend");
+    QPixmap pixmap(":/icons/bitcoin");
 
     if(iconColorHueShift != 0 && iconColorSaturationReduction != 0)
     {
@@ -44,7 +44,7 @@ NetworkStyle::NetworkStyle(const QString &_appName, const int iconColorHueShift,
             // loop through pixels
             for(int x=0;x<img.width();x++)
             {
-                // preserve alpha because QColor::getHsl doesen't return the alpha value
+                // preserve alpha because QColor::getHsl doesn't return the alpha value
                 a = qAlpha(scL[x]);
                 QColor col(scL[x]);
 
@@ -68,11 +68,7 @@ NetworkStyle::NetworkStyle(const QString &_appName, const int iconColorHueShift,
         }
 
         //convert back to QPixmap
-#if QT_VERSION >= 0x040700
         pixmap.convertFromImage(img);
-#else
-        pixmap = QPixmap::fromImage(img);
-#endif
     }
 
     appIcon             = QIcon(pixmap);
@@ -92,5 +88,5 @@ const NetworkStyle *NetworkStyle::instantiate(const QString &networkId)
                     network_styles[x].titleAddText);
         }
     }
-    return 0;
+    return nullptr;
 }

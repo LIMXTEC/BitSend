@@ -1,16 +1,16 @@
-// Copyright (c) 2015-2016 The Bitsend Core developers
+// Copyright (c) 2015-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_CORE_MEMUSAGE_H
-#define BITSEND_CORE_MEMUSAGE_H
+#ifndef BITCOIN_CORE_MEMUSAGE_H
+#define BITCOIN_CORE_MEMUSAGE_H
 
-#include "primitives/transaction.h"
-#include "primitives/block.h"
-#include "memusage.h"
+#include <primitives/transaction.h>
+#include <primitives/block.h>
+#include <memusage.h>
 
 static inline size_t RecursiveDynamicUsage(const CScript& script) {
-    return memusage::DynamicUsage(*static_cast<const CScriptBase*>(&script));
+    return memusage::DynamicUsage(script);
 }
 
 static inline size_t RecursiveDynamicUsage(const COutPoint& out) {
@@ -63,4 +63,9 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator) {
     return memusage::DynamicUsage(locator.vHave);
 }
 
-#endif // BITSEND_CORE_MEMUSAGE_H
+template<typename X>
+static inline size_t RecursiveDynamicUsage(const std::shared_ptr<X>& p) {
+    return p ? memusage::DynamicUsage(p) + RecursiveDynamicUsage(*p) : 0;
+}
+
+#endif // BITCOIN_CORE_MEMUSAGE_H

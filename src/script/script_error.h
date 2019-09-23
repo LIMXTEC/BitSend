@@ -1,12 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers 
-// Copyright (c) 2015-2017 The Dash developers 
-// Copyright (c) 2015-2017 The Bitsend developers
+// Copyright (c) 2009-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_SCRIPT_SCRIPT_ERROR_H
-#define BITSEND_SCRIPT_SCRIPT_ERROR_H
+#ifndef BITCOIN_SCRIPT_SCRIPT_ERROR_H
+#define BITCOIN_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t
 {
@@ -66,6 +64,10 @@ typedef enum ScriptError_t
     SCRIPT_ERR_WITNESS_UNEXPECTED,
     SCRIPT_ERR_WITNESS_PUBKEYTYPE,
 
+    /* Constant scriptCode */
+    SCRIPT_ERR_OP_CODESEPARATOR,
+    SCRIPT_ERR_SIG_FINDANDDELETE,
+
     SCRIPT_ERR_ERROR_COUNT
 } ScriptError;
 
@@ -73,4 +75,4 @@ typedef enum ScriptError_t
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // BITSEND_SCRIPT_SCRIPT_ERROR_H
+#endif // BITCOIN_SCRIPT_SCRIPT_ERROR_H

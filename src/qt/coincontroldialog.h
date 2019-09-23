@@ -1,11 +1,11 @@
-// Copyright (c) 2011-2016 The Bitsend Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITSEND_QT_COINCONTROLDIALOG_H
-#define BITSEND_QT_COINCONTROLDIALOG_H
+#ifndef BITCOIN_QT_COINCONTROLDIALOG_H
+#define BITCOIN_QT_COINCONTROLDIALOG_H
 
-#include "amount.h"
+#include <amount.h>
 
 #include <QAbstractButton>
 #include <QAction>
@@ -20,7 +20,6 @@ class PlatformStyle;
 class WalletModel;
 
 class CCoinControl;
-class CTxMemPool;
 
 namespace Ui {
     class CoinControlDialog;
@@ -31,9 +30,9 @@ namespace Ui {
 class CCoinControlWidgetItem : public QTreeWidgetItem
 {
 public:
-    CCoinControlWidgetItem(QTreeWidget *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
-    CCoinControlWidgetItem(int type = Type) : QTreeWidgetItem(type) {}
-    CCoinControlWidgetItem(QTreeWidgetItem *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
+    explicit CCoinControlWidgetItem(QTreeWidget *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
+    explicit CCoinControlWidgetItem(int type = Type) : QTreeWidgetItem(type) {}
+    explicit CCoinControlWidgetItem(QTreeWidgetItem *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
 
     bool operator<(const QTreeWidgetItem &other) const;
 };
@@ -44,7 +43,7 @@ class CoinControlDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit CoinControlDialog(const PlatformStyle *platformStyle, QWidget *parent = 0);
+    explicit CoinControlDialog(const PlatformStyle *platformStyle, QWidget *parent = nullptr);
     ~CoinControlDialog();
 
     void setModel(WalletModel *model);
@@ -53,7 +52,7 @@ public:
     static void updateLabels(WalletModel*, QDialog*);
 
     static QList<CAmount> payAmounts;
-    static CCoinControl *coinControl;
+    static CCoinControl *coinControl();
     static bool fSubtractFeeFromAmount;
 
 private:
@@ -81,9 +80,14 @@ private:
         COLUMN_ADDRESS,
         COLUMN_DATE,
         COLUMN_CONFIRMATIONS,
-        COLUMN_TXHASH,
-        COLUMN_VOUT_INDEX,
     };
+
+    enum
+    {
+        TxHashRole = Qt::UserRole,
+        VOutRole
+    };
+
     friend class CCoinControlWidgetItem;
 
 private Q_SLOTS:
@@ -110,4 +114,4 @@ private Q_SLOTS:
     void updateLabelLocked();
 };
 
-#endif // BITSEND_QT_COINCONTROLDIALOG_H
+#endif // BITCOIN_QT_COINCONTROLDIALOG_H

@@ -39,8 +39,8 @@ noinst_HEADERS += src/field_5x52.h
 noinst_HEADERS += src/field_5x52_impl.h
 noinst_HEADERS += src/field_5x52_int128_impl.h
 noinst_HEADERS += src/field_5x52_asm_impl.h
-noinst_HEADERS += src/java/org_bitsend_NativeSecp256k1.h
-noinst_HEADERS += src/java/org_bitsend_Secp256k1Context.h
+noinst_HEADERS += src/java/org_bitcoin_NativeSecp256k1.h
+noinst_HEADERS += src/java/org_bitcoin_Secp256k1Context.h
 noinst_HEADERS += src/util.h
 noinst_HEADERS += src/testrand.h
 noinst_HEADERS += src/testrand_impl.h
@@ -74,7 +74,7 @@ libsecp256k1_la_SOURCES = src/secp256k1.c
 libsecp256k1_la_CPPFLAGS = -DSECP256K1_BUILD -I$(top_srcdir)/include -I$(top_srcdir)/src $(SECP_INCLUDES)
 libsecp256k1_la_LIBADD = $(JNI_LIB) $(SECP_LIBS) $(COMMON_LIB)
 
-libsecp256k1_jni_la_SOURCES  = src/java/org_bitsend_NativeSecp256k1.c src/java/org_bitsend_Secp256k1Context.c
+libsecp256k1_jni_la_SOURCES  = src/java/org_bitcoin_NativeSecp256k1.c src/java/org_bitcoin_Secp256k1Context.c
 libsecp256k1_jni_la_CPPFLAGS = -DSECP256K1_BUILD $(JNI_INCLUDES)
 
 noinst_PROGRAMS =
@@ -93,7 +93,10 @@ TESTS =
 if USE_TESTS
 noinst_PROGRAMS += tests
 tests_SOURCES = src/tests.c
-tests_CPPFLAGS = -DSECP256K1_BUILD -DVERIFY -I$(top_srcdir)/src -I$(top_srcdir)/include $(SECP_INCLUDES) $(SECP_TEST_INCLUDES)
+tests_CPPFLAGS = -DSECP256K1_BUILD -I$(top_srcdir)/src -I$(top_srcdir)/include $(SECP_INCLUDES) $(SECP_TEST_INCLUDES)
+if !ENABLE_COVERAGE
+tests_CPPFLAGS += -DVERIFY
+endif
 tests_LDADD = $(SECP_LIBS) $(SECP_TEST_LIBS) $(COMMON_LIB)
 tests_LDFLAGS = -static
 TESTS += tests
@@ -102,14 +105,17 @@ endif
 if USE_EXHAUSTIVE_TESTS
 noinst_PROGRAMS += exhaustive_tests
 exhaustive_tests_SOURCES = src/tests_exhaustive.c
-exhaustive_tests_CPPFLAGS = -DSECP256K1_BUILD -DVERIFY -I$(top_srcdir)/src $(SECP_INCLUDES)
+exhaustive_tests_CPPFLAGS = -DSECP256K1_BUILD -I$(top_srcdir)/src $(SECP_INCLUDES)
+if !ENABLE_COVERAGE
+exhaustive_tests_CPPFLAGS += -DVERIFY
+endif
 exhaustive_tests_LDADD = $(SECP_LIBS)
 exhaustive_tests_LDFLAGS = -static
 TESTS += exhaustive_tests
 endif
 
 JAVAROOT=src/java
-JAVAORG=org/bitsend
+JAVAORG=org/bitcoin
 JAVA_GUAVA=$(srcdir)/$(JAVAROOT)/guava/guava-18.0.jar
 CLASSPATH_ENV=CLASSPATH=$(JAVA_GUAVA)
 JAVA_FILES= \
