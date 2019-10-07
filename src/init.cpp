@@ -49,15 +49,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-/**TODO-- change accordingly */
-
-#include "activemasternode.h"
-#include "masternodeman.h"
-#include "masternodeconfig.h"
-#include "spork.h"
-#include "signhelper_mn.h"
-
-
 #ifndef WIN32
 #include <signal.h>
 #endif
@@ -68,7 +59,6 @@
 #include <boost/bind.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/thread.hpp>
-#include <boost/foreach.hpp>
 #include <openssl/crypto.h>
 
 #if ENABLE_ZMQ
@@ -76,14 +66,7 @@
 #include <zmq/zmqrpc.h>
 #endif
 
-/**TODO-- */
-#ifdef ENABLE_WALLET
-//CWallet* pwalletMain = NULL;
-int nWalletBackups = 10;
-#endif
-
 bool fFeeEstimatesInitialized = false;
-bool fRestartRequested = false;  // true: restart false: shutdown //TODO--
 static const bool DEFAULT_PROXYRANDOMIZE = true;
 static const bool DEFAULT_REST_ENABLE = false;
 static const bool DEFAULT_STOPAFTERBLOCKIMPORT = false;
@@ -200,12 +183,8 @@ void Interrupt()
     }
 }
 
-/**TODO-- */
-/** Preparing steps before shutting down or restarting the wallet */
-void PrepareShutdown() //TODO--
+void Shutdown()
 {
-    StartShutdown();//fRequestShutdown = true; // Needed when we shutdown the wallet//TODO--
-    fRestartRequested = true; // Needed when we restart the wallet//TODO--
     LogPrintf("%s: In progress...\n", __func__);
     static CCriticalSection cs_Shutdown;
     TRY_LOCK(cs_Shutdown, lockShutdown);
@@ -226,8 +205,6 @@ void PrepareShutdown() //TODO--
     g_wallet_init_interface.Flush();
     StopMapPort();
 
-	DumpMasternodes();// TODO--
-	
     // Because these depend on each-other, we make sure that neither can be
     // using the other before destroying them.
     if (peerLogic) UnregisterValidationInterface(peerLogic.get());
@@ -305,31 +282,10 @@ void PrepareShutdown() //TODO--
         LogPrintf("%s: Unable to remove pidfile: %s\n", __func__, e.what());
     }
 #endif
+    g_wallet_init_interface.Close();
     UnregisterAllValidationInterfaces();
-		/**TODO-- */
-}
-/*TODO-- */
-/**
-* Shutdown is split into 2 parts:
-* Part 1: shut down everything but the main wallet instance (done in PrepareShutdown() )
-* Part 2: delete wallet instance
-*
-* In case of a restart PrepareShutdown() was already called before, but this method here gets
-* called implicitly when the parent object is deleted. In this case we have to skip the
-* PrepareShutdown() part because it was already executed and just delete the wallet instance.
-*/
-void Shutdown()
-{
-    // Shutdown part 1: prepare shutdown
-    if(!fRestartRequested){
-        PrepareShutdown();
-    }
-
-   // Shutdown part 2: delete wallet instance
-	
     GetMainSignals().UnregisterBackgroundSignalScheduler();
     GetMainSignals().UnregisterWithMempoolSignals(mempool);
-    g_wallet_init_interface.Close();
     globalVerifyHandle.reset();
     ECC_Stop();
     LogPrintf("%s: done\n", __func__);
@@ -571,13 +527,11 @@ void SetupServerArgs()
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/limxtec/bitsend>";
-    const std::string URL_WEBSITE = "<https://bitsend.info>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/bitsend/bitsend>";
+    const std::string URL_WEBSITE = "<https://bitsendcore.org>";
 
-    //TODO-- add bitcoin license
-    return FormatParagraph(strprintf(_("Copyright (C) 2009 -%i The Bitcoin Core developers"), COPYRIGHT_YEAR)) + "\n" +
-		   FormatParagraph(strprintf(_("Copyright (C) 2014 -%i The Dash Developers"), COPYRIGHT_YEAR)) + "\n" +
-           FormatParagraph(strprintf(_("Copyright (C) 2015 -%i The BitSend Core Developers"), COPYRIGHT_YEAR)) + "\n" + "\n" +
+    return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
+           "\n" +
            strprintf(_("Please contribute if you find %s useful. "
                        "Visit %s for further information about the software."),
                PACKAGE_NAME, URL_WEBSITE) +
@@ -1231,10 +1185,6 @@ static bool LockDataDirectory(bool probeOnly)
     if (!LockDirectory(datadir, ".lock", probeOnly)) {
         return InitError(strprintf(_("Cannot obtain a lock on data directory %s. %s is probably already running."), datadir.string(), _(PACKAGE_NAME)));
     }
-	/**TODO-- */
-   // Wait maximum 10 seconds if an old wallet is still running. Avoids lockup during restart
-	//if (!lock.timed_lock(boost::get_system_time() + boost::posix_time::seconds(10)))
-		//return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitcoin is probably already running."), strDataDir));
     return true;
 }
 
@@ -1342,108 +1292,10 @@ bool AppInitMain()
         if (!AppInitServers())
             return InitError(_("Unable to start HTTP server. See debug log for details."));
     }
-	
-    if (gArgs.IsArgSet("-masternodepaymentskey")) // masternode payments priv key
-    {
-        if (!masternodePayments.SetPrivKey(gArgs.GetArg("-masternodepaymentskey", ""))){
-            //CKey secret;
-            //secret.MakeNewKey(false);
-
-            //LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
-            return InitError(_("Unable to sign masternode payment winner, wrong key?"));
-        }
-        if (!sporkManager.SetPrivKey(gArgs.GetArg("-masternodepaymentskey", ""))){
-            //CKey secret;
-            //secret.MakeNewKey(false);
-
-            //LogPrintf("Masternode: Create new key %s", CBitcoinSecret(secret).ToString());
-            return InitError(_("Unable to sign spork message, wrong key?"));
-        }
-    }
-
 
     // ********************************************************* Step 5: verify wallet database integrity
     if (!g_wallet_init_interface.Verify()) return false;
 
-#if ENABLE_WALLET
-    /*if (!fDisableWallet)*/ {
-
-        /**TODO-- */
-        std::string strWalletFile = gArgs.GetArg("-wallet", "wallet.dat");
-        filesystem::path backupDir = GetDataDir() / "backups";
-        if (!filesystem::exists(backupDir))
-        {
-            // Always create backup folder to not confuse the operating system's file browser
-            filesystem::create_directories(backupDir);
-        }
-        nWalletBackups = gArgs.GetArg("-createwalletbackups", 10);
-        nWalletBackups = std::max(0, std::min(10, nWalletBackups));
-        if(nWalletBackups > 0)
-        {
-            if (filesystem::exists(backupDir))
-            {
-                // Create backup of the wallet
-                std::string dateTimeStr = DateTimeStrFormat(".%Y-%m-%d-%H-%M", GetTime());
-                std::string backupPathStr = backupDir.string();
-                backupPathStr += "/" + strWalletFile;
-                std::string sourcePathStr = GetDataDir().string();
-                sourcePathStr += "/" + strWalletFile;
-                boost::filesystem::path sourceFile = sourcePathStr;
-                boost::filesystem::path backupFile = backupPathStr + dateTimeStr;
-                sourceFile.make_preferred();
-                backupFile.make_preferred();
-                if(boost::filesystem::exists(sourceFile)) {
-                    try {
-                        boost::filesystem::copy_file(sourceFile, backupFile);
-                        LogPrintf("Creating backup of %s -> %s\n", sourceFile, backupFile);
-                    } catch(boost::filesystem::filesystem_error &error) {
-                        LogPrintf("Failed to create backup %s\n", error.what());
-                    }
-                }
-                // Keep only the last 10 backups, including the new one of course
-                typedef std::multimap<std::time_t, boost::filesystem::path> folder_set_t;
-                folder_set_t folder_set;
-                boost::filesystem::directory_iterator end_iter;
-                boost::filesystem::path backupFolder = backupDir.string();
-                backupFolder.make_preferred();
-                // Build map of backup files for current(!) wallet sorted by last write time
-                boost::filesystem::path currentFile;
-                for (boost::filesystem::directory_iterator dir_iter(backupFolder); dir_iter != end_iter; ++dir_iter)
-                {
-                    // Only check regular files
-                    if ( boost::filesystem::is_regular_file(dir_iter->status()))
-                    {
-                        currentFile = dir_iter->path().filename();
-                        // Only add the backups for the current wallet, e.g. wallet.dat.*
-                        if(dir_iter->path().stem().string() == strWalletFile)
-                        {
-                            folder_set.insert(folder_set_t::value_type(boost::filesystem::last_write_time(dir_iter->path()), *dir_iter));
-                        }
-                    }
-                }
-                // Loop backward through backup files and keep the N newest ones (1 <= N <= 10)
-                int counter = 0;
-                /*BOOST_REVERSE_FOREACH(PAIRTYPE(const std::time_t, boost::filesystem::path) file, folder_set)
-                {
-                    counter++;
-                    if (counter > nWalletBackups)
-                    {
-                        // More than nWalletBackups backups: delete oldest one(s)
-                        try {
-                            boost::filesystem::remove(file.second);
-                            LogPrintf("Old backup deleted: %s\n", file.second);
-                        } catch(boost::filesystem::filesystem_error &error) {
-                            LogPrintf("Failed to delete backup %s\n", error.what());
-                        }
-                    }
-                }*/
-            }
-        }//TODO-- ends
-
-        
-
-    } /// (!fDisableWallet)
-#endif
     // ********************************************************* Step 6: network initialization
     // Note that we absolutely cannot open any actual connections
     // until the very end ("start node") as the UTXO/block state
@@ -1823,88 +1675,6 @@ bool AppInitMain()
     if (ShutdownRequested()) {
         return false;
     }
-	
-	/**TODO-- */
-	// ********************************************************* Step 11a: setup Masternode
-
-    //string strNode = "23.23.186.131";
-    //CAddress addr;
-    //ConnectNode(addr, strNode.c_str(), true);
-
-    uiInterface.InitMessage(_("Loading masternode cache..."));
-
-    CMasternodeDB mndb;
-    CMasternodeDB::ReadResult readResult = mndb.Read(mnodeman);
-    if (readResult == CMasternodeDB::FileError)
-        LogPrintf("Missing masternode cache file - mncache.dat, will try to recreate\n");
-    else if (readResult != CMasternodeDB::Ok)
-    {
-        LogPrintf("Error reading mncache.dat: ");
-        if(readResult == CMasternodeDB::IncorrectFormat)
-            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
-        else
-            LogPrintf("file format is unknown or invalid, please fix it manually\n");
-    }
-
-    fMasterNode = gArgs.GetBoolArg("-masternode", false);
-    if(fMasterNode) {
-        LogPrintf("IS DARKSEND MASTER NODE\n");
-        strMasterNodeAddr = gArgs.GetArg("-masternodeaddr", "");
-
-        LogPrintf(" addr %s\n", strMasterNodeAddr.c_str());
-
-        if(!strMasterNodeAddr.empty()){
-            CService addrTest;
-			CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
-			addrTest = service2;
-            if (!addrTest.IsValid()) {
-                return InitError("Invalid -masternodeaddr address: " + strMasterNodeAddr);
-            }
-        }
-
-        strMasterNodePrivKey = gArgs.GetArg("-masternodeprivkey", "");
-        if(!strMasterNodePrivKey.empty()){
-            std::string errorMessage;
-
-            CKey key;
-            CPubKey pubkey;
-
-            if(!darkSendSigner.SetKey(strMasterNodePrivKey, errorMessage, key, pubkey))
-            {
-                return InitError(_("Invalid masternodeprivkey. Please see documenation."));
-            }
-
-            activeMasternode.pubKeyMasternode = pubkey;
-
-        } else {
-            return InitError(_("You must specify a masternodeprivkey in the configuration. Please see documentation for help."));
-        }
-    }
-    if(gArgs.GetBoolArg("-mnconflock", true)) {
-        LogPrintf("Locking Masternodes:\n");
-        uint256 mnTxHash;
-        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-            LogPrintf("  %s %s\n", mne.getTxHash(), mne.getOutputIndex());
-            mnTxHash.SetHex(mne.getTxHash());
-            COutPoint outpoint = COutPoint(mnTxHash, boost::lexical_cast<unsigned int>(mne.getOutputIndex()));
-            pwalletMain->LockCoin(outpoint);
-        }
-    }
-
-	//-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
-    fProUserModeDarksendInstantX = gArgs.GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
-        fProUserModeDarksendInstantX2 = gArgs.GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
-    if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
-        return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
-    } //BitSenddev 13-05-2016
-
-    LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
-	LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
-    
-
-    darkSendSigner.InitCollateralAddress();
-
-    threadGroup.create_thread(boost::bind(&ThreadBitPool)); //TODO-- ends
 
     // ********************************************************* Step 12: start node
 
