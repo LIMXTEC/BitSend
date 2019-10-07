@@ -96,6 +96,7 @@ BITSEND_CORE_H = \
   masternodeman.h \
   masternodeconfig.h \
   spork.h \
+  signhelper_mn.h \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -223,6 +224,11 @@ libbitsend_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_server_a_SOURCES = \
   activemasternode.cpp \
   bitpool.cpp \
+  masternode.cpp \
+  masternode-pos.cpp \
+  masternodeconfig.cpp \
+  masternodeman.cpp \
+  spork.cpp \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -419,11 +425,6 @@ libbitsend_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_common_a_SOURCES = \
   activemasternode.cpp \
-  masternode.cpp \
-  masternode-pos.cpp \
-  masternodeconfig.cpp \
-  masternodeman.cpp \
-  spork.cpp \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
