@@ -30,7 +30,7 @@ std::map<uint256, CSporkMessage> mapSporks;
 std::map<int, CSporkMessage> mapSporksActive;
 
 
-void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman* connman)
 {
     if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
 
@@ -46,10 +46,10 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
         uint256 hash = spork.GetHash();
         if(mapSporksActive.count(spork.nSporkID)) {
             if(mapSporksActive[spork.nSporkID].nTimeSigned >= spork.nTimeSigned){
-                if(fDebug) LogPrintf("spork - seen %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
+                //if(fDebug) LogPrintf("spork - seen %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
                 return;
             } else {
-                if(fDebug) LogPrintf("spork - got updated spork %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
+                /*if(fDebug)*/ LogPrintf("spork - got updated spork %s block %d \n", hash.ToString().c_str(), chainActive.Tip()->nHeight);
             }
         }
 
@@ -57,7 +57,7 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
 
         if(!sporkManager.CheckSignature(spork)){
             LogPrintf("spork - invalid signature\n");
-            Misbehaving(pfrom->GetId(), 100);
+            //Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
@@ -74,7 +74,7 @@ void ProcessSpork(CNode* pfrom, const std::string& strCommand, CDataStream& vRec
 
         while(it != mapSporksActive.end()) {
             //pfrom->PushMessage("spork", it->second);//todo++
-			connman.PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", it->second));
+                        connman->PushMessage(pfrom, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", it->second));
             it++;
         }
     }
@@ -188,7 +188,7 @@ bool CSporkManager::UpdateSpork(int nSporkID, int64_t nValue)//CAmount
     return false;
 }
 
-void CSporkManager::Relay(CSporkMessage& msg, CConnman& connman)
+void CSporkManager::Relay(CSporkMessage& msg, CConnman *connman)
 {
     CInv inv(MSG_SPORK, msg.GetHash());
 
@@ -198,9 +198,9 @@ void CSporkManager::Relay(CSporkMessage& msg, CConnman& connman)
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
     }*/
-	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+        connman->ForEachNode([&vInv](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
     });
 }
 

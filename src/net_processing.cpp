@@ -1322,19 +1322,19 @@ void static ProcessGetData(CNode* pfrom, const CChainParams& chainparams, CConnm
 			
 			if (!push && it->type == MSG_SPORK) {
 				if(mapSporks.count(inv.hash)){
-					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", mapSporks[inv.hash]));
+                                        connman->PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "spork", mapSporks[inv.hash]));
 					push = true;
 				}
 			}
 			if (!push && it->type == MSG_MASTERNODE_WINNER) {
 				if(mapSeenMasternodeVotes.count(inv.hash)){
-					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
+                                        connman->PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnw", mapSeenMasternodeVotes[inv.hash]));//todo++
 					push = true;
 				}
 			}
 			if (!push && it->type == MSG_MASTERNODE_SCANNING_ERROR) {
 				if(mapMasternodeScanningErrors.count(inv.hash)){
-					connman.PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnse", mapMasternodeScanningErrors[inv.hash]));
+                                        connman->PushMessage(pfrom,msgMaker.Make(SERIALIZE_TRANSACTION_NO_WITNESS, "mnse", mapMasternodeScanningErrors[inv.hash]));
 					push = true;
 				}
 			}				 

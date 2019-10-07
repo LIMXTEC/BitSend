@@ -156,7 +156,7 @@ public:
 
         checkpointData = {
             {
-               (  0, uint256S("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")) //bitcoindev 04-2015
+                {  0, uint256S("0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a")} //bitcoindev 04-2015
 
             }
         };

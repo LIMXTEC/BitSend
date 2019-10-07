@@ -4511,13 +4511,13 @@ bool FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, int sig
     LOCK(pwallet->cs_wallet);
     // Get all of the previous transactions
     bool complete = true;
-    for (unsigned int i = 0; i < psbtx.tx->vin.size(); ++i) {
+    /*for (unsigned int i = 0; i < psbtx.tx->vin.size(); ++i) {
         const CTxIn& txin = psbtx.tx->vin[i];
         PSBTInput& input = psbtx.inputs.at(i);
 
         if (PSBTInputSigned(input)) {
             continue;
-        }
+        } // todoImp
 
         // Verify input looks sane. This will check that we have at most one uxto, witness or non-witness.
         if (!input.IsSane()) {
@@ -4587,7 +4587,7 @@ bool FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, int sig
                 AddKeypathToMap(pwallet, pubkey_it.first, psbt_out.hd_keypaths);
             }
         }
-    }
+    }*/
     return complete;
 }
 
@@ -4656,8 +4656,8 @@ UniValue walletprocesspsbt(const JSONRPCRequest& request)
     return result;
 }
 
-UniValue walletcreatefundedpsbt(const JSONRPCRequest& request)
-{
+UniValue walletcreatefundedpsbt(const JSONRPCRequest& request){}
+/*{
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CWallet* const pwallet = wallet.get();
 
@@ -4757,7 +4757,7 @@ UniValue walletcreatefundedpsbt(const JSONRPCRequest& request)
     result.pushKV("fee", ValueFromAmount(fee));
     result.pushKV("changepos", change_position);
     return result;
-}
+}*/
 
 extern UniValue abortrescan(const JSONRPCRequest& request); // in rpcdump.cpp
 extern UniValue dumpprivkey(const JSONRPCRequest& request); // in rpcdump.cpp

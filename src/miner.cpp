@@ -24,6 +24,7 @@
 #include <util.h>
 #include <utilmoneystr.h>
 #include <validationinterface.h>
+#include "masternodeman.h"
 
 #include <algorithm>
 #include <queue>
@@ -195,12 +196,12 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 
             CTxDestination address1;
             ExtractDestination(pblock->payee, address1);
-            CBitcoinAddress address2(address1);
+            //CBitcoinAddress address2(address1);
 
-            LogPrintf("Masternode payment to %s\n", address2.ToString().c_str());
+            //LogPrintf("Masternode payment to %s\n", EncodeDestination(address1).ToString());
         }
     }
-	CAmount blockValue = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight + 1, Params().GetConsensus());
+    CAmount blockValue = nFees + GetBlockSubsidy( pindexPrev->nHeight + 1, Params().GetConsensus());
     CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight+1, blockValue);
 
     //create masternode payment

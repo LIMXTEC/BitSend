@@ -63,7 +63,7 @@ bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
 
 
-void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman& connman);
+void ProcessSpork(CNode* pfrom, const string& strCommand, CDataStream& vRecv, CConnman* connman);
 //
 // Spork Class
 // Keeps track of all of the network spork settings
@@ -131,7 +131,7 @@ public:
     bool SetPrivKey(std::string strPrivKey);
     bool CheckSignature(CSporkMessage& spork);
     bool Sign(CSporkMessage& spork);
-    void Relay(CSporkMessage& msg, CConnman& connman);
+    void Relay(CSporkMessage& msg, CConnman* connman);
 	void RelayUpdateSpork(CSporkMessage& msg);
 
 };

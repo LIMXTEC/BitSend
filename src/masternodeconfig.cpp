@@ -4,6 +4,8 @@
 #include "masternodeconfig.h"
 #include "util.h"
 #include <base58.h>
+#include <utilstrencodings.h>
+#include <key_io.h>
 
 CMasternodeConfig masternodeConfig;
 
@@ -44,8 +46,9 @@ bool CMasternodeConfig::read(std::string& strErr) {
                 donationPercent = donation.substr(pos + 1);
                 donationAddress = donation.substr(0, pos);
             }
-            CBitsendAddress address(donationAddress);
-            if (!address.IsValid()) {
+            //CBitsendAddress address(donationAddress);
+
+            if (!IsValidDestinationString(donationAddress)) {
                 strErr = "Invalid Bitsend address in masternode.conf line: " + line;
                 streamConfig.close();
                 return false;

@@ -53,7 +53,7 @@ CActiveMasternode activeMasternode;
 
 */
 
-void ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
+void ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman* connman)
 {
     if(fProUserModeDarksendInstantX2) return; //disable all darksend/masternode related functionality
     if(!IsSporkActive(SPORK_7_MASTERNODE_SCANNING)) return;
@@ -113,7 +113,7 @@ void ProcessMessageMasternodePOS(CNode* pfrom, const std::string& strCommand, CD
         CMasternode* pmnB = mnodeman.Find(mnse.vinMasternodeB);
         if(pmnB == NULL) return;
 
-        if(fDebug) LogPrintf("ProcessMessageMasternodePOS::mnse - nHeight %d MasternodeA %s MasternodeB %s\n", mnse.nBlockHeight, pmnA->addr.ToString().c_str(), pmnB->addr.ToString().c_str());
+        //if(fDebug) LogPrintf("ProcessMessageMasternodePOS::mnse - nHeight %d MasternodeA %s MasternodeB %s\n", mnse.nBlockHeight, pmnA->addr.ToString().c_str(), pmnB->addr.ToString().c_str());
 
         pmnB->ApplyScanningError(mnse);
         mnse.Relay(pfrom, connman);
@@ -167,7 +167,7 @@ void CMasternodeScanning::DoMasternodePOSChecks()
 
     // -- first check : Port is open
 
-	bool ConnectNodeCheck = g_connman->OpenNetworkConnection((CAddress)pmn->addr, false, NULL, NULL);
+        bool ConnectNodeCheck;  g_connman->OpenNetworkConnection((CAddress)pmn->addr, false, NULL, NULL); ConnectNodeCheck=true;
     if(!ConnectNodeCheck){
         // we couldn't connect to the node, let's send a scanning error
 		LogPrintf("Not connected, either fail or offline");
@@ -202,7 +202,7 @@ bool CMasternodeScanningError::SignatureValid()
     pubkey = GetScriptForDestination(pmn->pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
-    CBitsendAddress address2(address1);
+    //CBitsendAddress address2(address1);
 
     if(!darkSendSigner.VerifyMessage(pmn->pubkey2, vchMasterNodeSignature, strMessage, errorMessage)) {
         LogPrintf("CMasternodeScanningError::SignatureValid() - Verify message failed\n");
@@ -231,7 +231,7 @@ bool CMasternodeScanningError::Sign()
     pubkey = GetScriptForDestination(pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
-    CBitsendAddress address2(address1);
+    //CBitsendAddress address2(address1);
     //LogPrintf("signing pubkey2 %s \n", address2.ToString().c_str());
 
     if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, key2)) {
@@ -263,7 +263,7 @@ void CMasternodeScanningError::RelayProcessBlock()
     });
 }
 
-void CMasternodeScanningError::Relay(CNode* pnode, CConnman& connman)
+void CMasternodeScanningError::Relay(CNode* pnode, CConnman* connman)
 {
     CInv inv(MSG_MASTERNODE_SCANNING_ERROR, GetHash());
 
@@ -273,8 +273,8 @@ void CMasternodeScanningError::Relay(CNode* pnode, CConnman& connman)
     BOOST_FOREACH(CNode* pnode, vNodes){
         pnode->PushMessage("inv", vInv);
     }*/
-	connman.ForEachNode([&vInv, &connman](CNode* pnode)
+        connman->ForEachNode([&vInv, &connman](CNode* pnode)
     {
-        connman.PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
+        g_connman->PushMessage(pnode, CNetMsgMaker(PROTOCOL_VERSION).Make(SERIALIZE_TRANSACTION_NO_WITNESS, "inv", vInv));
     });
 }
