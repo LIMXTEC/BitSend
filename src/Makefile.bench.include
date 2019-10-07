@@ -35,8 +35,8 @@ nodist_bench_bench_bitsend_SOURCES = $(GENERATED_BENCH_FILES)
 bench_bench_bitsend_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
 bench_bench_bitsend_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 bench_bench_bitsend_LDADD = \
-  $(LIBBITSEND_WALLET) \
-  $(LIBBITSEND_SERVER) \
+$(LIBBITSEND_SERVER) \
+  $(LIBBITSEND_WALLET) \  
   $(LIBBITSEND_COMMON) \
   $(LIBBITSEND_UTIL) \
   $(LIBBITSEND_CONSENSUS) \
