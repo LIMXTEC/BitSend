@@ -4657,7 +4657,9 @@ UniValue walletprocesspsbt(const JSONRPCRequest& request)
 }
 
 UniValue walletcreatefundedpsbt(const JSONRPCRequest& request){}
-/*{
+{
+    return NullUniValue;
+    /*
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CWallet* const pwallet = wallet.get();
 
@@ -4757,7 +4759,8 @@ UniValue walletcreatefundedpsbt(const JSONRPCRequest& request){}
     result.pushKV("fee", ValueFromAmount(fee));
     result.pushKV("changepos", change_position);
     return result;
-}*/
+    */
+}
 
 extern UniValue abortrescan(const JSONRPCRequest& request); // in rpcdump.cpp
 extern UniValue dumpprivkey(const JSONRPCRequest& request); // in rpcdump.cpp
