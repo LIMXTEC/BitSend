@@ -153,7 +153,7 @@ BIP9Stats AbstractThresholdConditionChecker::GetStateStatisticsFor(const CBlockI
 	/* if(pindexPrev->nHeight >= nHeightPrev && state != THRESHOLD_ACTIVE){
 		//Bug , Please report
 		LogPrintf("Bug Warning");
-	} *
+	} */
 	
     //return state;
 }

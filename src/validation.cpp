@@ -3636,7 +3636,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, const Consensus::P
         if(pindex != NULL){
             if(pindex->GetBlockHash() == block.hashPrevBlock){
                 CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, block.vtx[0]->GetValueOut());//todo++
-				CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitcoindev 02-06-2015//todo++
+				//CAmount hardblockpowreward = block.vtx[0]->vout[0].nValue; //write by Bitcoindev 02-06-2015//todo++
                                 //if(fDebug) LogPrintf("## Hardblockreward ## CheckBlock() : BTC masternode payments %d\n", hardblockpowreward);
 				bool fIsInitialDownload = IsInitialBlockDownload();
 
