@@ -81,9 +81,11 @@ void ThreadBitPool()
             if((int)vecMasternodesUsed.size() > (int)mnodeman.size() / 5)
                 vecMasternodesUsed.clear();
         }
+        */
 
- /*if(darkSendPool.GetState() == POOL_STATUS_IDLE && c % 6 == 0){
+/*if(darkSendPool.GetState() == POOL_STATUS_IDLE && c % 6 == 0){
      darkSendPool.DoAutomaticDenominating();
-        }*/
+        }
+*/
     }
 }
