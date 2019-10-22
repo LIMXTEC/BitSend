@@ -4656,7 +4656,7 @@ UniValue walletprocesspsbt(const JSONRPCRequest& request)
     return result;
 }
 
-UniValue walletcreatefundedpsbt(const JSONRPCRequest& request){}
+UniValue walletcreatefundedpsbt(const JSONRPCRequest& request)
 {
     return NullUniValue;
     /*
