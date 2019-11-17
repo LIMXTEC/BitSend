@@ -1010,22 +1010,25 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
 
 int GetInputAge(CTxIn& vin)
 {
-    /*CCoinsView viewDummy;
+    CCoinsView viewDummy;
     CCoinsViewCache view(&viewDummy);
     {
-        LOCK(mempool.cs);//todo++
+        LockPoints lp;
+        CCoinsViewMemPool viewMemPool(pcoinsTip.get(), pool);
+        view.SetBackend(viewMemPool);
+        /*LOCK(mempool.cs);//todo++
         CCoinsViewMemPool viewMempool(pcoinsTip, mempool);
-        view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
+        view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view **/
 
-        const Coin* coins = view.AccessCoin(vin.prevout.hash);
+        const Coin &coins = view.AccessCoin(vin.prevout.hash);
 
         if (coins){
-            if(coins->nHeight < 0) return 0;
-            return (chainActive.Tip()->nHeight+1) - coins->nHeight;
+            if(coins.nHeight < 0) return 0;
+            return (chainActive.Tip()->nHeight+1) - coins.nHeight;
         }
         else
             return -1;
-    }*/
+    }
 }
 
 bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransactionRef& ptx, bool ignoreFees)
