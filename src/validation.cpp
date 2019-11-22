@@ -1014,15 +1014,15 @@ int GetInputAge(CTxIn& vin)
     CCoinsViewCache view(&viewDummy);
     {
         LockPoints lp;
-        CCoinsViewMemPool viewMemPool(pcoinsTip.get(), pool);
+        CCoinsViewMemPool viewMemPool(pcoinsTip.get(), mempool);
         view.SetBackend(viewMemPool);
         /*LOCK(mempool.cs);//todo++
         CCoinsViewMemPool viewMempool(pcoinsTip, mempool);
         view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view **/
 
-        const Coin &coins = view.AccessCoin(vin.prevout.hash);
+        const Coin &coins = view.AccessCoin(vin.prevout);
 
-        if (coins){
+        if (coins.Is){
             if(coins.nHeight < 0) return 0;
             return (chainActive.Tip()->nHeight+1) - coins.nHeight;
         }
@@ -1033,7 +1033,7 @@ int GetInputAge(CTxIn& vin)
 
 bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransactionRef& ptx, bool ignoreFees)
 {
-        /*const CTransaction& tx = *ptx;
+        const CTransaction& tx = *ptx;
     const uint256 hash = tx.GetHash();
 
 	std::vector<uint256> vHashTxnToUncache;
@@ -1421,7 +1421,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, const CTransact
             if (!pool.exists(hash))
                 return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "mempool full");
         }
-    }*/
+    }
 
 	return true;
 }
