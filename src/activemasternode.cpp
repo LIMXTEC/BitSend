@@ -73,6 +73,8 @@ void CActiveMasternode::ManageStatus()
 				}
 		**/
 
+
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
         //TODO:
         if(pwalletMain->IsLocked()){
             notCapableReason = "Wallet is locked.";
@@ -130,6 +132,8 @@ void CActiveMasternode::ManageStatus()
             LogPrintf("CActiveMasternode::ManageStatus() - %s\n", notCapableReason.c_str());
         }
     }
+    }
+
 
     //send to all peers
     if(!Dseep(errorMessage)) {
@@ -176,7 +180,7 @@ bool CActiveMasternode::StopMasterNode(std::string& errorMessage) {
 
 // Send stop dseep to network for any Masternode
 bool CActiveMasternode::StopMasterNode(CTxIn vin, CService service, CKey keyMasternode, CPubKey pubKeyMasternode, std::string& errorMessage) {
-    pwalletMain->UnlockCoin(vin.prevout);
+    for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {pwalletMain->UnlockCoin(vin.prevout);}
     return Dseep(vin, service, keyMasternode, pubKeyMasternode, errorMessage, true);
 }
 
@@ -392,16 +396,18 @@ bool CActiveMasternode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubke
     ExtractDestination(pubScript, address1);
     //CBitsendAddress address2(address1);
 
-    CKeyID keyID = GetKeyForDestination(*pwalletMain, address1);
-    //const CKeyID *keyID = boost::get<CKeyID>(&address1);
-    if (keyID.IsNull()) {
-        LogPrintf("CActiveMasternode::GetMasterNodeVin - Address does not refer to a key\n");
-        return false;
-    }
+    for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
+        CKeyID keyID = GetKeyForDestination(*pwalletMain, address1);
+        //const CKeyID *keyID = boost::get<CKeyID>(&address1);
+        if (keyID.IsNull()) {
+            LogPrintf("CActiveMasternode::GetMasterNodeVin - Address does not refer to a key\n");
+            return false;
+        }
 
-    if (!pwalletMain->GetKey(keyID, secretKey)) {
-        LogPrintf ("CActiveMasternode::GetMasterNodeVin - Private key for address is not known\n");
-        return false;
+        if (!pwalletMain->GetKey(keyID, secretKey)) {
+            LogPrintf ("CActiveMasternode::GetMasterNodeVin - Private key for address is not known\n");
+            return false;
+        }
     }
 
     pubkey = secretKey.GetPubKey();
@@ -415,7 +421,9 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     vector<COutput> filteredCoins;
 
     // Retrieve all possible outputs
+    for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
     pwalletMain->AvailableCoins(vCoins);
+    }
 
     // Filter
     for(const COutput& out: vCoins)

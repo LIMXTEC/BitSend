@@ -40,7 +40,7 @@ static const size_t OUTPUT_GROUP_MAX_ENTRIES = 10;
 static CCriticalSection cs_wallets;
 static std::vector<std::shared_ptr<CWallet>> vpwallets GUARDED_BY(cs_wallets);
 
-CWallet* pwalletMain = NULL;
+//CWallet* pwalletMain = NULL;
 
 bool AddWallet(const std::shared_ptr<CWallet>& wallet)
 {
