@@ -96,26 +96,26 @@ static UniValue getnetworkhashps(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() > 2)
         throw std::runtime_error(
-            "getnetworkhashps ( nblocks height )\n"
-            "\nReturns the estimated network hashes per second based on the last n blocks.\n"
-            "Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change.\n"
-            "Pass in [height] to estimate the network speed at the time when a certain block was found.\n"
-            "\nArguments:\n"
-            "1. nblocks     (numeric, optional, default=120) The number of blocks, or -1 for blocks since last difficulty change.\n"
-            "2. height      (numeric, optional, default=-1) To estimate at the time of the given height.\n"
-            "\nResult:\n"
-            "x             (numeric) Hashes per second estimated\n"
-            "\nExamples:\n"
-            + HelpExampleCli("getnetworkhashps", "")
-            + HelpExampleRpc("getnetworkhashps", "")
-       );
+                "getnetworkhashps ( nblocks height )\n"
+                "\nReturns the estimated network hashes per second based on the last n blocks.\n"
+                "Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change.\n"
+                "Pass in [height] to estimate the network speed at the time when a certain block was found.\n"
+                "\nArguments:\n"
+                "1. nblocks     (numeric, optional, default=120) The number of blocks, or -1 for blocks since last difficulty change.\n"
+                "2. height      (numeric, optional, default=-1) To estimate at the time of the given height.\n"
+                "\nResult:\n"
+                "x             (numeric) Hashes per second estimated\n"
+                "\nExamples:\n"
+                + HelpExampleCli("getnetworkhashps", "")
+                + HelpExampleRpc("getnetworkhashps", "")
+                );
 
     LOCK(cs_main);
     return GetNetworkHashPS(!request.params[0].isNull() ? request.params[0].get_int() : 120, !request.params[1].isNull() ? request.params[1].get_int() : -1);
-}
+    }
 
-UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGenerate, uint64_t nMaxTries, bool keepScript)
-{
+    UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGenerate, uint64_t nMaxTries, bool keepScript)
+    {
     static const int nInnerLoopCount = 0x10000;
     int nHeightEnd = 0;
     int nHeight = 0;
@@ -166,18 +166,18 @@ static UniValue generatetoaddress(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 3)
         throw std::runtime_error(
-            "generatetoaddress nblocks address (maxtries)\n"
-            "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
-            "\nArguments:\n"
-            "1. nblocks      (numeric, required) How many blocks are generated immediately.\n"
-            "2. address      (string, required) The address to send the newly generated bitsend to.\n"
-            "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
-            "\nResult:\n"
-            "[ blockhashes ]     (array) hashes of blocks generated\n"
-            "\nExamples:\n"
-            "\nGenerate 11 blocks to myaddress\n"
-            + HelpExampleCli("generatetoaddress", "11 \"myaddress\"")
-        );
+                "generatetoaddress nblocks address (maxtries)\n"
+                "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
+                "\nArguments:\n"
+                "1. nblocks      (numeric, required) How many blocks are generated immediately.\n"
+                "2. address      (string, required) The address to send the newly generated bitsend to.\n"
+                "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
+                "\nResult:\n"
+                "[ blockhashes ]     (array) hashes of blocks generated\n"
+                "\nExamples:\n"
+                "\nGenerate 11 blocks to myaddress\n"
+                + HelpExampleCli("generatetoaddress", "11 \"myaddress\"")
+                );
 
     int nGenerate = request.params[0].get_int();
     uint64_t nMaxTries = 1000000;
@@ -200,23 +200,23 @@ static UniValue getmininginfo(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
-            "getmininginfo\n"
-            "\nReturns a json object containing mining-related information."
-            "\nResult:\n"
-            "{\n"
-            "  \"blocks\": nnn,             (numeric) The current block\n"
-            "  \"currentblockweight\": nnn, (numeric) The last block weight\n"
-            "  \"currentblocktx\": nnn,     (numeric) The last block transaction\n"
-            "  \"difficulty\": xxx.xxxxx    (numeric) The current difficulty\n"
-            "  \"networkhashps\": nnn,      (numeric) The network hashes per second\n"
-            "  \"pooledtx\": n              (numeric) The size of the mempool\n"
-            "  \"chain\": \"xxxx\",           (string) current network name as defined in BIP70 (main, test, regtest)\n"
-            "  \"warnings\": \"...\"          (string) any network and blockchain warnings\n"
-            "}\n"
-            "\nExamples:\n"
-            + HelpExampleCli("getmininginfo", "")
-            + HelpExampleRpc("getmininginfo", "")
-        );
+                "getmininginfo\n"
+                "\nReturns a json object containing mining-related information."
+                "\nResult:\n"
+                "{\n"
+                "  \"blocks\": nnn,             (numeric) The current block\n"
+                "  \"currentblockweight\": nnn, (numeric) The last block weight\n"
+                "  \"currentblocktx\": nnn,     (numeric) The last block transaction\n"
+                "  \"difficulty\": xxx.xxxxx    (numeric) The current difficulty\n"
+                "  \"networkhashps\": nnn,      (numeric) The network hashes per second\n"
+                "  \"pooledtx\": n              (numeric) The size of the mempool\n"
+                "  \"chain\": \"xxxx\",           (string) current network name as defined in BIP70 (main, test, regtest)\n"
+                "  \"warnings\": \"...\"          (string) any network and blockchain warnings\n"
+                "}\n"
+                "\nExamples:\n"
+                + HelpExampleCli("getmininginfo", "")
+                + HelpExampleRpc("getmininginfo", "")
+                );
 
 
     LOCK(cs_main);
@@ -239,22 +239,22 @@ static UniValue prioritisetransaction(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 3)
         throw std::runtime_error(
-            "prioritisetransaction <txid> <dummy value> <fee delta>\n"
-            "Accepts the transaction into mined blocks at a higher (or lower) priority\n"
-            "\nArguments:\n"
-            "1. \"txid\"       (string, required) The transaction id.\n"
-            "2. dummy          (numeric, optional) API-Compatibility for previous API. Must be zero or null.\n"
-            "                  DEPRECATED. For forward compatibility use named arguments and omit this parameter.\n"
-            "3. fee_delta      (numeric, required) The fee value (in satoshis) to add (or subtract, if negative).\n"
-            "                  Note, that this value is not a fee rate. It is a value to modify absolute fee of the TX.\n"
-            "                  The fee is not actually paid, only the algorithm for selecting transactions into a block\n"
-            "                  considers the transaction as it would have paid a higher (or lower) fee.\n"
-            "\nResult:\n"
-            "true              (boolean) Returns true\n"
-            "\nExamples:\n"
-            + HelpExampleCli("prioritisetransaction", "\"txid\" 0.0 10000")
-            + HelpExampleRpc("prioritisetransaction", "\"txid\", 0.0, 10000")
-        );
+                "prioritisetransaction <txid> <dummy value> <fee delta>\n"
+                "Accepts the transaction into mined blocks at a higher (or lower) priority\n"
+                "\nArguments:\n"
+                "1. \"txid\"       (string, required) The transaction id.\n"
+                "2. dummy          (numeric, optional) API-Compatibility for previous API. Must be zero or null.\n"
+                "                  DEPRECATED. For forward compatibility use named arguments and omit this parameter.\n"
+                "3. fee_delta      (numeric, required) The fee value (in satoshis) to add (or subtract, if negative).\n"
+                "                  Note, that this value is not a fee rate. It is a value to modify absolute fee of the TX.\n"
+                "                  The fee is not actually paid, only the algorithm for selecting transactions into a block\n"
+                "                  considers the transaction as it would have paid a higher (or lower) fee.\n"
+                "\nResult:\n"
+                "true              (boolean) Returns true\n"
+                "\nExamples:\n"
+                + HelpExampleCli("prioritisetransaction", "\"txid\" 0.0 10000")
+                + HelpExampleRpc("prioritisetransaction", "\"txid\", 0.0, 10000")
+                );
 
     LOCK(cs_main);
 
@@ -302,79 +302,79 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
-            "getblocktemplate ( TemplateRequest )\n"
-            "\nIf the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'.\n"
-            "It returns data needed to construct a block to work on.\n"
-            "For full specification, see BIPs 22, 23, 9, and 145:\n"
-            "    https://github.com/bitsend/bips/blob/master/bip-0022.mediawiki\n"
-            "    https://github.com/bitsend/bips/blob/master/bip-0023.mediawiki\n"
-            "    https://github.com/bitsend/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
-            "    https://github.com/bitsend/bips/blob/master/bip-0145.mediawiki\n"
+                "getblocktemplate ( TemplateRequest )\n"
+                "\nIf the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'.\n"
+                "It returns data needed to construct a block to work on.\n"
+                "For full specification, see BIPs 22, 23, 9, and 145:\n"
+                "    https://github.com/bitsend/bips/blob/master/bip-0022.mediawiki\n"
+                "    https://github.com/bitsend/bips/blob/master/bip-0023.mediawiki\n"
+                "    https://github.com/bitsend/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
+                "    https://github.com/bitsend/bips/blob/master/bip-0145.mediawiki\n"
 
-            "\nArguments:\n"
-            "1. template_request         (json object, optional) A json object in the following spec\n"
-            "     {\n"
-            "       \"mode\":\"template\"    (string, optional) This must be set to \"template\", \"proposal\" (see BIP 23), or omitted\n"
-            "       \"capabilities\":[     (array, optional) A list of strings\n"
-            "           \"support\"          (string) client side supported feature, 'longpoll', 'coinbasetxn', 'coinbasevalue', 'proposal', 'serverlist', 'workid'\n"
-            "           ,...\n"
-            "       ],\n"
-            "       \"rules\":[            (array, optional) A list of strings\n"
-            "           \"support\"          (string) client side supported softfork deployment\n"
-            "           ,...\n"
-            "       ]\n"
-            "     }\n"
-            "\n"
+                "\nArguments:\n"
+                "1. template_request         (json object, optional) A json object in the following spec\n"
+                "     {\n"
+                "       \"mode\":\"template\"    (string, optional) This must be set to \"template\", \"proposal\" (see BIP 23), or omitted\n"
+                "       \"capabilities\":[     (array, optional) A list of strings\n"
+                "           \"support\"          (string) client side supported feature, 'longpoll', 'coinbasetxn', 'coinbasevalue', 'proposal', 'serverlist', 'workid'\n"
+                "           ,...\n"
+                "       ],\n"
+                "       \"rules\":[            (array, optional) A list of strings\n"
+                "           \"support\"          (string) client side supported softfork deployment\n"
+                "           ,...\n"
+                "       ]\n"
+                "     }\n"
+                "\n"
 
-            "\nResult:\n"
-            "{\n"
-            "  \"version\" : n,                    (numeric) The preferred block version\n"
-            "  \"rules\" : [ \"rulename\", ... ],    (array of strings) specific block rules that are to be enforced\n"
-            "  \"vbavailable\" : {                 (json object) set of pending, supported versionbit (BIP 9) softfork deployments\n"
-            "      \"rulename\" : bitnumber          (numeric) identifies the bit number as indicating acceptance and readiness for the named softfork rule\n"
-            "      ,...\n"
-            "  },\n"
-            "  \"vbrequired\" : n,                 (numeric) bit mask of versionbits the server requires set in submissions\n"
-            "  \"previousblockhash\" : \"xxxx\",     (string) The hash of current highest block\n"
-            "  \"transactions\" : [                (array) contents of non-coinbase transactions that should be included in the next block\n"
-            "      {\n"
-            "         \"data\" : \"xxxx\",             (string) transaction data encoded in hexadecimal (byte-for-byte)\n"
-            "         \"txid\" : \"xxxx\",             (string) transaction id encoded in little-endian hexadecimal\n"
-            "         \"hash\" : \"xxxx\",             (string) hash encoded in little-endian hexadecimal (including witness data)\n"
-            "         \"depends\" : [                (array) array of numbers \n"
-            "             n                          (numeric) transactions before this one (by 1-based index in 'transactions' list) that must be present in the final block if this one is\n"
-            "             ,...\n"
-            "         ],\n"
-            "         \"fee\": n,                    (numeric) difference in value between transaction inputs and outputs (in satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one\n"
-            "         \"sigops\" : n,                (numeric) total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero\n"
-            "         \"weight\" : n,                (numeric) total transaction weight, as counted for purposes of block limits\n"
-            "      }\n"
-            "      ,...\n"
-            "  ],\n"
-            "  \"coinbaseaux\" : {                 (json object) data that should be included in the coinbase's scriptSig content\n"
-            "      \"flags\" : \"xx\"                  (string) key name is to be ignored, and value included in scriptSig\n"
-            "  },\n"
-            "  \"coinbasevalue\" : n,              (numeric) maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)\n"
-            "  \"coinbasetxn\" : { ... },          (json object) information for coinbase transaction\n"
-            "  \"target\" : \"xxxx\",                (string) The hash target\n"
-            "  \"mintime\" : xxx,                  (numeric) The minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)\n"
-            "  \"mutable\" : [                     (array of string) list of ways the block template may be changed \n"
-            "     \"value\"                          (string) A way the block template may be changed, e.g. 'time', 'transactions', 'prevblock'\n"
-            "     ,...\n"
-            "  ],\n"
-            "  \"noncerange\" : \"00000000ffffffff\",(string) A range of valid nonces\n"
-            "  \"sigoplimit\" : n,                 (numeric) limit of sigops in blocks\n"
-            "  \"sizelimit\" : n,                  (numeric) limit of block size\n"
-            "  \"weightlimit\" : n,                (numeric) limit of block weight\n"
-            "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
-            "  \"bits\" : \"xxxxxxxx\",              (string) compressed target of next block\n"
-            "  \"height\" : n                      (numeric) The height of the next block\n"
-            "}\n"
+                "\nResult:\n"
+                "{\n"
+                "  \"version\" : n,                    (numeric) The preferred block version\n"
+                "  \"rules\" : [ \"rulename\", ... ],    (array of strings) specific block rules that are to be enforced\n"
+                "  \"vbavailable\" : {                 (json object) set of pending, supported versionbit (BIP 9) softfork deployments\n"
+                "      \"rulename\" : bitnumber          (numeric) identifies the bit number as indicating acceptance and readiness for the named softfork rule\n"
+                "      ,...\n"
+                "  },\n"
+                "  \"vbrequired\" : n,                 (numeric) bit mask of versionbits the server requires set in submissions\n"
+                "  \"previousblockhash\" : \"xxxx\",     (string) The hash of current highest block\n"
+                "  \"transactions\" : [                (array) contents of non-coinbase transactions that should be included in the next block\n"
+                "      {\n"
+                "         \"data\" : \"xxxx\",             (string) transaction data encoded in hexadecimal (byte-for-byte)\n"
+                "         \"txid\" : \"xxxx\",             (string) transaction id encoded in little-endian hexadecimal\n"
+                "         \"hash\" : \"xxxx\",             (string) hash encoded in little-endian hexadecimal (including witness data)\n"
+                "         \"depends\" : [                (array) array of numbers \n"
+                "             n                          (numeric) transactions before this one (by 1-based index in 'transactions' list) that must be present in the final block if this one is\n"
+                "             ,...\n"
+                "         ],\n"
+                "         \"fee\": n,                    (numeric) difference in value between transaction inputs and outputs (in satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one\n"
+                "         \"sigops\" : n,                (numeric) total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero\n"
+                "         \"weight\" : n,                (numeric) total transaction weight, as counted for purposes of block limits\n"
+                "      }\n"
+                "      ,...\n"
+                "  ],\n"
+                "  \"coinbaseaux\" : {                 (json object) data that should be included in the coinbase's scriptSig content\n"
+                "      \"flags\" : \"xx\"                  (string) key name is to be ignored, and value included in scriptSig\n"
+                "  },\n"
+                "  \"coinbasevalue\" : n,              (numeric) maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)\n"
+                "  \"coinbasetxn\" : { ... },          (json object) information for coinbase transaction\n"
+                "  \"target\" : \"xxxx\",                (string) The hash target\n"
+                "  \"mintime\" : xxx,                  (numeric) The minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)\n"
+                "  \"mutable\" : [                     (array of string) list of ways the block template may be changed \n"
+                "     \"value\"                          (string) A way the block template may be changed, e.g. 'time', 'transactions', 'prevblock'\n"
+                "     ,...\n"
+                "  ],\n"
+                "  \"noncerange\" : \"00000000ffffffff\",(string) A range of valid nonces\n"
+                "  \"sigoplimit\" : n,                 (numeric) limit of sigops in blocks\n"
+                "  \"sizelimit\" : n,                  (numeric) limit of block size\n"
+                "  \"weightlimit\" : n,                (numeric) limit of block weight\n"
+                "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
+                "  \"bits\" : \"xxxxxxxx\",              (string) compressed target of next block\n"
+                "  \"height\" : n                      (numeric) The height of the next block\n"
+                "}\n"
 
-            "\nExamples:\n"
-            + HelpExampleCli("getblocktemplate", "{\"rules\": [\"segwit\"]}")
-            + HelpExampleRpc("getblocktemplate", "{\"rules\": [\"segwit\"]}")
-         );
+                "\nExamples:\n"
+                + HelpExampleCli("getblocktemplate", "{\"rules\": [\"segwit\"]}")
+                + HelpExampleRpc("getblocktemplate", "{\"rules\": [\"segwit\"]}")
+                );
 
     LOCK(cs_main);
 
@@ -514,8 +514,8 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
     // a segwit-block to a non-segwit caller.
     static bool fLastTemplateSupportsSegwit = true;
     if (pindexPrev != chainActive.Tip() ||
-        (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLast && GetTime() - nStart > 5) ||
-        fLastTemplateSupportsSegwit != fSupportsSegwit)
+            (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLast && GetTime() - nStart > 5) ||
+            fLastTemplateSupportsSegwit != fSupportsSegwit)
     {
         // Clear pindexPrev so future calls make a new block, despite any failures from here on
         pindexPrev = nullptr;
@@ -595,8 +595,8 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
     aMutable.push_back("time");
     aMutable.push_back("transactions");
     aMutable.push_back("prevblock");
-	
-	UniValue aVotes(UniValue::VARR);
+
+    UniValue aVotes(UniValue::VARR);
 
     UniValue result(UniValue::VOBJ);
     result.pushKV("capabilities", aCaps);
@@ -607,40 +607,40 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
         Consensus::DeploymentPos pos = Consensus::DeploymentPos(j);
         ThresholdState state = VersionBitsState(pindexPrev, consensusParams, pos, versionbitscache);
         switch (state) {
-            case ThresholdState::DEFINED:
-            case ThresholdState::FAILED:
-                // Not exposed to GBT at all
-                break;
-            case ThresholdState::LOCKED_IN:
-                // Ensure bit is set in block version
-                pblock->nVersion |= VersionBitsMask(consensusParams, pos);
-                // FALL THROUGH to get vbavailable set...
-            case ThresholdState::STARTED:
-            {
-                const struct VBDeploymentInfo& vbinfo = VersionBitsDeploymentInfo[pos];
-                vbavailable.pushKV(gbt_vb_name(pos), consensusParams.vDeployments[pos].bit);
-                if (setClientRules.find(vbinfo.name) == setClientRules.end()) {
-                    if (!vbinfo.gbt_force) {
-                        // If the client doesn't support this, don't indicate it in the [default] version
-                        pblock->nVersion &= ~VersionBitsMask(consensusParams, pos);
-                    }
+        case ThresholdState::DEFINED:
+        case ThresholdState::FAILED:
+            // Not exposed to GBT at all
+            break;
+        case ThresholdState::LOCKED_IN:
+            // Ensure bit is set in block version
+            pblock->nVersion |= VersionBitsMask(consensusParams, pos);
+            // FALL THROUGH to get vbavailable set...
+        case ThresholdState::STARTED:
+        {
+            const struct VBDeploymentInfo& vbinfo = VersionBitsDeploymentInfo[pos];
+            vbavailable.pushKV(gbt_vb_name(pos), consensusParams.vDeployments[pos].bit);
+            if (setClientRules.find(vbinfo.name) == setClientRules.end()) {
+                if (!vbinfo.gbt_force) {
+                    // If the client doesn't support this, don't indicate it in the [default] version
+                    pblock->nVersion &= ~VersionBitsMask(consensusParams, pos);
                 }
-                break;
             }
-            case ThresholdState::ACTIVE:
-            {
-                // Add to rules only
-                const struct VBDeploymentInfo& vbinfo = VersionBitsDeploymentInfo[pos];
-                aRules.push_back(gbt_vb_name(pos));
-                if (setClientRules.find(vbinfo.name) == setClientRules.end()) {
-                    // Not supported by the client; make sure it's safe to proceed
-                    if (!vbinfo.gbt_force) {
-                        // If we do anything other than throw an exception here, be sure version/force isn't sent to old clients
-                        throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("Support for '%s' rule requires explicit client support", vbinfo.name));
-                    }
+            break;
+        }
+        case ThresholdState::ACTIVE:
+        {
+            // Add to rules only
+            const struct VBDeploymentInfo& vbinfo = VersionBitsDeploymentInfo[pos];
+            aRules.push_back(gbt_vb_name(pos));
+            if (setClientRules.find(vbinfo.name) == setClientRules.end()) {
+                // Not supported by the client; make sure it's safe to proceed
+                if (!vbinfo.gbt_force) {
+                    // If we do anything other than throw an exception here, be sure version/force isn't sent to old clients
+                    throw JSONRPCError(RPC_INVALID_PARAMETER, strprintf("Support for '%s' rule requires explicit client support", vbinfo.name));
                 }
-                break;
             }
+            break;
+        }
         }
     }
     result.pushKV("version", pblock->nVersion);
@@ -685,9 +685,9 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
     if (!pblocktemplate->vchCoinbaseCommitment.empty() && fSupportsSegwit) {
         result.pushKV("default_witness_commitment", HexStr(pblocktemplate->vchCoinbaseCommitment.begin(), pblocktemplate->vchCoinbaseCommitment.end()));
     }
-	
-	result.push_back(Pair("votes", aVotes));
-	if(pblock->payee != CScript()){
+
+    result.push_back(Pair("votes", aVotes));
+    if(pblock->payee != CScript()){
         CTxDestination address1;
         ExtractDestination(pblock->payee, address1);
         //CBitcoinAddress address2(address1);
@@ -697,10 +697,10 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
         result.push_back(Pair("payee", ""));
         result.push_back(Pair("payee_amount", ""));
     }
-	bool MasternodePayments = false;
-	if(pblock->nTime > 1430465291) MasternodePayments = true;//1430465291 = START_MASTERNODE_PAYMENT
-	
-	result.push_back(Pair("masternode_payments", MasternodePayments));
+    bool MasternodePayments = false;
+    if(pblock->nTime > 1430465291) MasternodePayments = true;//1430465291 = START_MASTERNODE_PAYMENT
+
+    result.push_back(Pair("masternode_payments", MasternodePayments));
     result.push_back(Pair("enforce_masternode_payments", true));
 
     return result;
@@ -729,18 +729,18 @@ static UniValue submitblock(const JSONRPCRequest& request)
     // We allow 2 arguments for compliance with BIP22. Argument 2 is ignored.
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2) {
         throw std::runtime_error(
-            "submitblock \"hexdata\"  ( \"dummy\" )\n"
-            "\nAttempts to submit new block to network.\n"
-            "See https://en.bitsend.it/wiki/BIP_0022 for full specification.\n"
+                    "submitblock \"hexdata\"  ( \"dummy\" )\n"
+                    "\nAttempts to submit new block to network.\n"
+                    "See https://en.bitsend.it/wiki/BIP_0022 for full specification.\n"
 
-            "\nArguments\n"
-            "1. \"hexdata\"        (string, required) the hex-encoded block data to submit\n"
-            "2. \"dummy\"          (optional) dummy value, for compatibility with BIP22. This value is ignored.\n"
-            "\nResult:\n"
-            "\nExamples:\n"
-            + HelpExampleCli("submitblock", "\"mydata\"")
-            + HelpExampleRpc("submitblock", "\"mydata\"")
-        );
+                    "\nArguments\n"
+                    "1. \"hexdata\"        (string, required) the hex-encoded block data to submit\n"
+                    "2. \"dummy\"          (optional) dummy value, for compatibility with BIP22. This value is ignored.\n"
+                    "\nResult:\n"
+                    "\nExamples:\n"
+                    + HelpExampleCli("submitblock", "\"mydata\"")
+                    + HelpExampleRpc("submitblock", "\"mydata\"")
+                    );
     }
 
     std::shared_ptr<CBlock> blockptr = std::make_shared<CBlock>();
@@ -796,43 +796,43 @@ static UniValue submitblock(const JSONRPCRequest& request)
 static UniValue estimatefee(const JSONRPCRequest& request)
 {
     throw JSONRPCError(RPC_METHOD_DEPRECATED, "estimatefee was removed in v0.17.\n"
-        "Clients should use estimatesmartfee.");
+                                              "Clients should use estimatesmartfee.");
 }
 
 static UniValue estimatesmartfee(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
         throw std::runtime_error(
-            "estimatesmartfee conf_target (\"estimate_mode\")\n"
-            "\nEstimates the approximate fee per kilobyte needed for a transaction to begin\n"
-            "confirmation within conf_target blocks if possible and return the number of blocks\n"
-            "for which the estimate is valid. Uses virtual transaction size as defined\n"
-            "in BIP 141 (witness data is discounted).\n"
-            "\nArguments:\n"
-            "1. conf_target     (numeric) Confirmation target in blocks (1 - 1008)\n"
-            "2. \"estimate_mode\" (string, optional, default=CONSERVATIVE) The fee estimate mode.\n"
-            "                   Whether to return a more conservative estimate which also satisfies\n"
-            "                   a longer history. A conservative estimate potentially returns a\n"
-            "                   higher feerate and is more likely to be sufficient for the desired\n"
-            "                   target, but is not as responsive to short term drops in the\n"
-            "                   prevailing fee market.  Must be one of:\n"
-            "       \"UNSET\" (defaults to CONSERVATIVE)\n"
-            "       \"ECONOMICAL\"\n"
-            "       \"CONSERVATIVE\"\n"
-            "\nResult:\n"
-            "{\n"
-            "  \"feerate\" : x.x,     (numeric, optional) estimate fee rate in " + CURRENCY_UNIT + "/kB\n"
-            "  \"errors\": [ str... ] (json array of strings, optional) Errors encountered during processing\n"
-            "  \"blocks\" : n         (numeric) block number where estimate was found\n"
-            "}\n"
-            "\n"
-            "The request target will be clamped between 2 and the highest target\n"
-            "fee estimation is able to return based on how long it has been running.\n"
-            "An error is returned if not enough transactions and blocks\n"
-            "have been observed to make an estimate for any number of blocks.\n"
-            "\nExample:\n"
-            + HelpExampleCli("estimatesmartfee", "6")
-            );
+                "estimatesmartfee conf_target (\"estimate_mode\")\n"
+                "\nEstimates the approximate fee per kilobyte needed for a transaction to begin\n"
+                "confirmation within conf_target blocks if possible and return the number of blocks\n"
+                "for which the estimate is valid. Uses virtual transaction size as defined\n"
+                "in BIP 141 (witness data is discounted).\n"
+                "\nArguments:\n"
+                "1. conf_target     (numeric) Confirmation target in blocks (1 - 1008)\n"
+                "2. \"estimate_mode\" (string, optional, default=CONSERVATIVE) The fee estimate mode.\n"
+                "                   Whether to return a more conservative estimate which also satisfies\n"
+                "                   a longer history. A conservative estimate potentially returns a\n"
+                "                   higher feerate and is more likely to be sufficient for the desired\n"
+                "                   target, but is not as responsive to short term drops in the\n"
+                "                   prevailing fee market.  Must be one of:\n"
+                "       \"UNSET\" (defaults to CONSERVATIVE)\n"
+                "       \"ECONOMICAL\"\n"
+                "       \"CONSERVATIVE\"\n"
+                "\nResult:\n"
+                "{\n"
+                "  \"feerate\" : x.x,     (numeric, optional) estimate fee rate in " + CURRENCY_UNIT + "/kB\n"
+                                                                                                       "  \"errors\": [ str... ] (json array of strings, optional) Errors encountered during processing\n"
+                                                                                                       "  \"blocks\" : n         (numeric) block number where estimate was found\n"
+                                                                                                       "}\n"
+                                                                                                       "\n"
+                                                                                                       "The request target will be clamped between 2 and the highest target\n"
+                                                                                                       "fee estimation is able to return based on how long it has been running.\n"
+                                                                                                       "An error is returned if not enough transactions and blocks\n"
+                                                                                                       "have been observed to make an estimate for any number of blocks.\n"
+                                                                                                       "\nExample:\n"
+                + HelpExampleCli("estimatesmartfee", "6")
+                );
 
     RPCTypeCheck(request.params, {UniValue::VNUM, UniValue::VSTR});
     RPCTypeCheckArgument(request.params[0], UniValue::VNUM);
@@ -864,44 +864,44 @@ static UniValue estimaterawfee(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 2)
         throw std::runtime_error(
-            "estimaterawfee conf_target (threshold)\n"
-            "\nWARNING: This interface is unstable and may disappear or change!\n"
-            "\nWARNING: This is an advanced API call that is tightly coupled to the specific\n"
-            "         implementation of fee estimation. The parameters it can be called with\n"
-            "         and the results it returns will change if the internal implementation changes.\n"
-            "\nEstimates the approximate fee per kilobyte needed for a transaction to begin\n"
-            "confirmation within conf_target blocks if possible. Uses virtual transaction size as\n"
-            "defined in BIP 141 (witness data is discounted).\n"
-            "\nArguments:\n"
-            "1. conf_target (numeric) Confirmation target in blocks (1 - 1008)\n"
-            "2. threshold   (numeric, optional) The proportion of transactions in a given feerate range that must have been\n"
-            "               confirmed within conf_target in order to consider those feerates as high enough and proceed to check\n"
-            "               lower buckets.  Default: 0.95\n"
-            "\nResult:\n"
-            "{\n"
-            "  \"short\" : {            (json object, optional) estimate for short time horizon\n"
-            "      \"feerate\" : x.x,        (numeric, optional) estimate fee rate in " + CURRENCY_UNIT + "/kB\n"
-            "      \"decay\" : x.x,          (numeric) exponential decay (per block) for historical moving average of confirmation data\n"
-            "      \"scale\" : x,            (numeric) The resolution of confirmation targets at this time horizon\n"
-            "      \"pass\" : {              (json object, optional) information about the lowest range of feerates to succeed in meeting the threshold\n"
-            "          \"startrange\" : x.x,     (numeric) start of feerate range\n"
-            "          \"endrange\" : x.x,       (numeric) end of feerate range\n"
-            "          \"withintarget\" : x.x,   (numeric) number of txs over history horizon in the feerate range that were confirmed within target\n"
-            "          \"totalconfirmed\" : x.x, (numeric) number of txs over history horizon in the feerate range that were confirmed at any point\n"
-            "          \"inmempool\" : x.x,      (numeric) current number of txs in mempool in the feerate range unconfirmed for at least target blocks\n"
-            "          \"leftmempool\" : x.x,    (numeric) number of txs over history horizon in the feerate range that left mempool unconfirmed after target\n"
-            "      },\n"
-            "      \"fail\" : { ... },       (json object, optional) information about the highest range of feerates to fail to meet the threshold\n"
-            "      \"errors\":  [ str... ]   (json array of strings, optional) Errors encountered during processing\n"
-            "  },\n"
-            "  \"medium\" : { ... },    (json object, optional) estimate for medium time horizon\n"
-            "  \"long\" : { ... }       (json object) estimate for long time horizon\n"
-            "}\n"
-            "\n"
-            "Results are returned for any horizon which tracks blocks up to the confirmation target.\n"
-            "\nExample:\n"
-            + HelpExampleCli("estimaterawfee", "6 0.9")
-            );
+                "estimaterawfee conf_target (threshold)\n"
+                "\nWARNING: This interface is unstable and may disappear or change!\n"
+                "\nWARNING: This is an advanced API call that is tightly coupled to the specific\n"
+                "         implementation of fee estimation. The parameters it can be called with\n"
+                "         and the results it returns will change if the internal implementation changes.\n"
+                "\nEstimates the approximate fee per kilobyte needed for a transaction to begin\n"
+                "confirmation within conf_target blocks if possible. Uses virtual transaction size as\n"
+                "defined in BIP 141 (witness data is discounted).\n"
+                "\nArguments:\n"
+                "1. conf_target (numeric) Confirmation target in blocks (1 - 1008)\n"
+                "2. threshold   (numeric, optional) The proportion of transactions in a given feerate range that must have been\n"
+                "               confirmed within conf_target in order to consider those feerates as high enough and proceed to check\n"
+                "               lower buckets.  Default: 0.95\n"
+                "\nResult:\n"
+                "{\n"
+                "  \"short\" : {            (json object, optional) estimate for short time horizon\n"
+                "      \"feerate\" : x.x,        (numeric, optional) estimate fee rate in " + CURRENCY_UNIT + "/kB\n"
+                                                                                                              "      \"decay\" : x.x,          (numeric) exponential decay (per block) for historical moving average of confirmation data\n"
+                                                                                                              "      \"scale\" : x,            (numeric) The resolution of confirmation targets at this time horizon\n"
+                                                                                                              "      \"pass\" : {              (json object, optional) information about the lowest range of feerates to succeed in meeting the threshold\n"
+                                                                                                              "          \"startrange\" : x.x,     (numeric) start of feerate range\n"
+                                                                                                              "          \"endrange\" : x.x,       (numeric) end of feerate range\n"
+                                                                                                              "          \"withintarget\" : x.x,   (numeric) number of txs over history horizon in the feerate range that were confirmed within target\n"
+                                                                                                              "          \"totalconfirmed\" : x.x, (numeric) number of txs over history horizon in the feerate range that were confirmed at any point\n"
+                                                                                                              "          \"inmempool\" : x.x,      (numeric) current number of txs in mempool in the feerate range unconfirmed for at least target blocks\n"
+                                                                                                              "          \"leftmempool\" : x.x,    (numeric) number of txs over history horizon in the feerate range that left mempool unconfirmed after target\n"
+                                                                                                              "      },\n"
+                                                                                                              "      \"fail\" : { ... },       (json object, optional) information about the highest range of feerates to fail to meet the threshold\n"
+                                                                                                              "      \"errors\":  [ str... ]   (json array of strings, optional) Errors encountered during processing\n"
+                                                                                                              "  },\n"
+                                                                                                              "  \"medium\" : { ... },    (json object, optional) estimate for medium time horizon\n"
+                                                                                                              "  \"long\" : { ... }       (json object) estimate for long time horizon\n"
+                                                                                                              "}\n"
+                                                                                                              "\n"
+                                                                                                              "Results are returned for any horizon which tracks blocks up to the confirmation target.\n"
+                                                                                                              "\nExample:\n"
+                + HelpExampleCli("estimaterawfee", "6 0.9")
+                );
 
     RPCTypeCheck(request.params, {UniValue::VNUM, UniValue::VNUM}, true);
     RPCTypeCheckArgument(request.params[0], UniValue::VNUM);
@@ -964,7 +964,7 @@ static UniValue estimaterawfee(const JSONRPCRequest& request)
 
 UniValue masternodelist(const JSONRPCRequest& request)
 {
-	std::string strMode = "status";
+    std::string strMode = "status";
     std::string strFilter = "";
 
     if (request.params.size() >= 1) strMode = request.params[0].get_str();
@@ -972,31 +972,31 @@ UniValue masternodelist(const JSONRPCRequest& request)
 
     if (request.fHelp ||
             (strMode != "status" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank"
-                && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
+             && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
     {
         throw runtime_error(
-                "masternodelist ( \"mode\" \"filter\" )\n"
-                "Get a list of masternodes in different modes\n"
-                "\nArguments:\n"
-                "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
-                "2. \"filter\"    (string, optional) Filter results. Partial match by IP by default in all modes, additional matches in some modes\n"
-                "\nAvailable modes:\n"
-                "  activeseconds  - Print number of seconds masternode recognized by the network as enabled\n"
-                "  donation       - Show donation settings\n"
-                "  full           - Print info in format 'status protocol pubkey vin lastseen activeseconds' (can be additionally filtered, partial match)\n"
-                "  lastseen       - Print timestamp of when a masternode was last seen on the network\n"
-                "  pose           - Print Proof-of-Service score\n"
-                "  protocol       - Print protocol of a masternode (can be additionally filtered, exact match))\n"
-                "  pubkey         - Print public key associated with a masternode (can be additionally filtered, partial match)\n"
-                "  rank           - Print rank of a masternode based on current block\n"
-                "  status         - Print masternode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
-                "  vin            - Print vin associated with a masternode (can be additionally filtered, partial match)\n"
-                "  votes          - Print all masternode votes for a Bitcoin initiative (can be additionally filtered, partial match)\n"
-                );
+                    "masternodelist ( \"mode\" \"filter\" )\n"
+                    "Get a list of masternodes in different modes\n"
+                    "\nArguments:\n"
+                    "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
+                    "2. \"filter\"    (string, optional) Filter results. Partial match by IP by default in all modes, additional matches in some modes\n"
+                    "\nAvailable modes:\n"
+                    "  activeseconds  - Print number of seconds masternode recognized by the network as enabled\n"
+                    "  donation       - Show donation settings\n"
+                    "  full           - Print info in format 'status protocol pubkey vin lastseen activeseconds' (can be additionally filtered, partial match)\n"
+                    "  lastseen       - Print timestamp of when a masternode was last seen on the network\n"
+                    "  pose           - Print Proof-of-Service score\n"
+                    "  protocol       - Print protocol of a masternode (can be additionally filtered, exact match))\n"
+                    "  pubkey         - Print public key associated with a masternode (can be additionally filtered, partial match)\n"
+                    "  rank           - Print rank of a masternode based on current block\n"
+                    "  status         - Print masternode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
+                    "  vin            - Print vin associated with a masternode (can be additionally filtered, partial match)\n"
+                    "  votes          - Print all masternode votes for a Bitcoin initiative (can be additionally filtered, partial match)\n"
+                    );
     }
 
     //Object obj;
-	UniValue obj(UniValue::VOBJ);
+    UniValue obj(UniValue::VOBJ);
     if (strMode == "rank") {
         std::vector<pair<int, CMasternode> > vMasternodeRanks = mnodeman.GetMasternodeRanks(chainActive.Tip()->nHeight);
         typedef std::pair<int, CMasternode>s;
@@ -1018,7 +1018,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 //CBitcoinAddress address2(address1);
 
                 if(strFilter !="" && EncodeDestination(address1).find(strFilter) == string::npos &&
-                    strAddr.find(strFilter) == string::npos) continue;
+                        strAddr.find(strFilter) == string::npos) continue;
 
                 std::string strOut = "";
 
@@ -1040,12 +1040,12 @@ UniValue masternodelist(const JSONRPCRequest& request)
 
                 std::ostringstream stringStream;
                 stringStream << setw(10) <<
-                               mn.Status() << " " <<
-                               mn.protocolVersion << " " <<
-                               EncodeDestination(address1) << " " <<
-                               addrStream.str() << " " <<
-                               mn.lastTimeSeen << " " << setw(8) <<
-                               (mn.lastTimeSeen - mn.sigTime);
+                                mn.Status() << " " <<
+                                mn.protocolVersion << " " <<
+                                EncodeDestination(address1) << " " <<
+                                addrStream.str() << " " <<
+                                mn.lastTimeSeen << " " << setw(8) <<
+                                (mn.lastTimeSeen - mn.sigTime);
                 std::string output = stringStream.str();
                 stringStream << " " << strAddr;
                 if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
@@ -1056,7 +1056,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 obj.push_back(Pair(strAddr,       (int64_t)mn.lastTimeSeen));
             } else if (strMode == "protocol") {
                 if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(mn.protocolVersion) &&
-                    strAddr.find(strFilter) == string::npos) continue;
+                        strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strAddr,       (int64_t)mn.protocolVersion));
             } else if (strMode == "pubkey") {
                 CScript pubkey;
@@ -1066,7 +1066,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 //CBitcoinAddress address2(address1);
 
                 if(strFilter !="" && EncodeDestination(address1).find(strFilter) == string::npos &&
-                    strAddr.find(strFilter) == string::npos) continue;
+                        strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strAddr,       EncodeDestination(address1).c_str()));
             } else if (strMode == "pose") {
                 if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
@@ -1078,7 +1078,7 @@ UniValue masternodelist(const JSONRPCRequest& request)
                 obj.push_back(Pair(strAddr,       strStatus.c_str()));
             } else if (strMode == "vin") {
                 if(strFilter !="" && mn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
-                    strAddr.find(strFilter) == string::npos) continue;
+                        strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strAddr,       mn.vin.prevout.hash.ToString().c_str()));
             } else if(strMode == "votes"){
                 std::string strStatus = "ABSTAIN";
@@ -1103,47 +1103,140 @@ UniValue masternode(const JSONRPCRequest& request)
     string strCommand;
     if (request.params.size() >= 1)
         strCommand = request.params[0].get_str();
-	/*
+    /*
     if (request.fHelp  ||
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
             && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote" ))
     */ // with "&& strCommand != "vote-many" && strCommand != "vote""
     
-	if (request.fHelp  ||
-        (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))  
-        {
+    if (request.fHelp  ||
+            (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
+             && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))
+    {
         throw runtime_error(
-                "masternode \"command\"... ( \"passphrase\" )\n"
-                "Set of commands to execute masternode related actions\n"
-                "\nArguments:\n"
-                "1. \"command\"        (string or set of strings, required) The command to execute\n"
-                "2. \"passphrase\"     (string, optional) The wallet passphrase\n"
-                "\nAvailable commands:\n"
-                "  count        - Print number of all known masternodes (optional: 'enabled', 'both')\n"
-                "  current      - Print info on current masternode winner\n"
-                "  debug        - Print masternode status\n"
-                "  genkey       - Generate new masternodeprivkey\n"
-                "  enforce      - Enforce masternode payments\n"
-                "  outputs      - Print masternode compatible outputs\n"
-                "  start        - Start masternode configured in bitcoin.conf\n"
-                "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
-                "  start-many   - Start all masternodes configured in masternode.conf\n"
-                "  stop         - Stop masternode configured in bitcoin.conf\n"
-                "  stop-alias   - Stop single masternode by assigned alias configured in masternode.conf\n"
-                "  stop-many    - Stop all masternodes configured in masternode.conf\n"
-                "  list         - see masternodelist, This command has been removed.\n"
-                "  list-conf    - Print masternode.conf in JSON format\n"
-                "  winners      - Print list of masternode winners\n"
-                "  vote-many    - Not implemented\n"
-                "  vote         - Not implemented\n"
-                );
-            }
-				
-	if (strCommand == "stop")
+                    "masternode \"command\"... ( \"passphrase\" )\n"
+                    "Set of commands to execute masternode related actions\n"
+                    "\nArguments:\n"
+                    "1. \"command\"        (string or set of strings, required) The command to execute\n"
+                    "2. \"passphrase\"     (string, optional) The wallet passphrase\n"
+                    "\nAvailable commands:\n"
+                    "  count        - Print number of all known masternodes (optional: 'enabled', 'both')\n"
+                    "  current      - Print info on current masternode winner\n"
+                    "  debug        - Print masternode status\n"
+                    "  genkey       - Generate new masternodeprivkey\n"
+                    "  enforce      - Enforce masternode payments\n"
+                    "  outputs      - Print masternode compatible outputs\n"
+                    "  start        - Start masternode configured in bitcoin.conf\n"
+                    "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
+                    "  start-many   - Start all masternodes configured in masternode.conf\n"
+                    "  stop         - Stop masternode configured in bitcoin.conf\n"
+                    "  stop-alias   - Stop single masternode by assigned alias configured in masternode.conf\n"
+                    "  stop-many    - Stop all masternodes configured in masternode.conf\n"
+                    "  list         - see masternodelist, This command has been removed.\n"
+                    "  list-conf    - Print masternode.conf in JSON format\n"
+                    "  winners      - Print list of masternode winners\n"
+                    "  vote-many    - Not implemented\n"
+                    "  vote         - Not implemented\n"
+                    );
+    }
+
+    if (strCommand == "stop")
     {
         if(!fMasterNode) return "you must set masternode=1 in the configuration";
 
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
+            if(pwalletMain->IsLocked()) {
+                SecureString strWalletPass;
+                strWalletPass.reserve(100);
+
+                if (request.params.size() == 2){
+                    strWalletPass = request.params[1].get_str().c_str();
+                } else {
+                    throw runtime_error(
+                                "Your wallet is locked, passphrase is required\n");
+                }
+
+                if(!pwalletMain->Unlock(strWalletPass)){
+                    return "incorrect passphrase";
+                }
+            }
+
+            std::string errorMessage;
+            if(!activeMasternode.StopMasterNode(errorMessage)) {
+                return "stop failed: " + errorMessage;
+            }
+            pwalletMain->Lock();
+            CService service;
+            CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
+            service = service2;
+            g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
+
+            if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
+            if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
+        }
+
+        return "unknown";
+    }
+
+    if (strCommand == "stop-alias")
+    {
+        if (request.params.size() < 2){
+            throw runtime_error(
+                        "command needs at least 2 parameters\n");
+        }
+
+        std::string alias = request.params[1].get_str().c_str();
+
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
+            if(pwalletMain->IsLocked()) {
+                SecureString strWalletPass;
+                strWalletPass.reserve(100);
+
+                if (request.params.size() == 3){
+                    strWalletPass = request.params[2].get_str().c_str();
+                } else {
+                    throw runtime_error(
+                                "Your wallet is locked, passphrase is required\n");
+                }
+
+                if(!pwalletMain->Unlock(strWalletPass)){
+                    return "incorrect passphrase";
+                }
+            }
+
+            bool found = false;
+
+            //Object statusObj;
+            UniValue statusObj(UniValue::VOBJ);
+            statusObj.push_back(Pair("alias", alias));
+
+            BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+                if(mne.getAlias() == alias) {
+                    found = true;
+                    std::string errorMessage;
+                    bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+                    statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                    if(!result) {
+                        statusObj.push_back(Pair("errorMessage", errorMessage));
+                    }
+                    break;
+                }
+            }
+
+            if(!found) {
+                statusObj.push_back(Pair("result", "failed"));
+                statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+            }
+
+            pwalletMain->Lock();
+        }
+        return statusObj;
+    }
+
+    if (strCommand == "stop-many")
+    {
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
         if(pwalletMain->IsLocked()) {
             SecureString strWalletPass;
             strWalletPass.reserve(100);
@@ -1152,7 +1245,7 @@ UniValue masternode(const JSONRPCRequest& request)
                 strWalletPass = request.params[1].get_str().c_str();
             } else {
                 throw runtime_error(
-                    "Your wallet is locked, passphrase is required\n");
+                            "Your wallet is locked, passphrase is required\n");
             }
 
             if(!pwalletMain->Unlock(strWalletPass)){
@@ -1160,159 +1253,74 @@ UniValue masternode(const JSONRPCRequest& request)
             }
         }
 
-        std::string errorMessage;
-        if(!activeMasternode.StopMasterNode(errorMessage)) {
-        	return "stop failed: " + errorMessage;
+        int total = 0;
+        int successful = 0;
+        int fail = 0;
+
+
+        //Object resultsObj;
+        UniValue resultsObj(UniValue::VOBJ);
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+            total++;
+
+            std::string errorMessage;
+            bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+            //Object statusObj;
+            UniValue statusObj(UniValue::VOBJ);
+            statusObj.push_back(Pair("alias", mne.getAlias()));
+            statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+
+            if(result) {
+                successful++;
+            } else {
+                fail++;
+                statusObj.push_back(Pair("errorMessage", errorMessage));
+            }
+
+            resultsObj.push_back(Pair("status", statusObj));
         }
         pwalletMain->Lock();
-		CService service;
-		CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
-	    service = service2;
-		g_connman->OpenNetworkConnection((CAddress)service, false, NULL, service.ToString().c_str());
 
-        if(activeMasternode.status == MASTERNODE_STOPPED) return "successfully stopped masternode";
-        if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode";
-
-        return "unknown";
+        //Object returnObj;
+        UniValue returnObj(UniValue::VOBJ);
+        returnObj.push_back(Pair("overall", "Successfully stopped " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to stop " +
+                                 boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
+        returnObj.push_back(Pair("detail", resultsObj));
     }
-	
-	if (strCommand == "stop-alias")
-    {
-	    if (request.params.size() < 2){
-			throw runtime_error(
-			"command needs at least 2 parameters\n");
-	    }
 
-	    std::string alias = request.params[1].get_str().c_str();
-
-    	if(pwalletMain->IsLocked()) {
-    		SecureString strWalletPass;
-    	    strWalletPass.reserve(100);
-
-			if (request.params.size() == 3){
-				strWalletPass = request.params[2].get_str().c_str();
-			} else {
-				throw runtime_error(
-				"Your wallet is locked, passphrase is required\n");
-			}
-
-			if(!pwalletMain->Unlock(strWalletPass)){
-				return "incorrect passphrase";
-			}
-        }
-
-    	bool found = false;
-
-		//Object statusObj;
-		UniValue statusObj(UniValue::VOBJ);
-		statusObj.push_back(Pair("alias", alias));
-
-    	BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-    		if(mne.getAlias() == alias) {
-    			found = true;
-    			std::string errorMessage;
-    			bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
-
-				statusObj.push_back(Pair("result", result ? "successful" : "failed"));
-    			if(!result) {
-   					statusObj.push_back(Pair("errorMessage", errorMessage));
-   				}
-    			break;
-    		}
-    	}
-
-    	if(!found) {
-    		statusObj.push_back(Pair("result", "failed"));
-    		statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
-    	}
-
-    	pwalletMain->Lock();
-    	return statusObj;
-    }
-	
-	if (strCommand == "stop-many")
-    {
-    	if(pwalletMain->IsLocked()) {
-			SecureString strWalletPass;
-			strWalletPass.reserve(100);
-
-			if (request.params.size() == 2){
-				strWalletPass = request.params[1].get_str().c_str();
-			} else {
-				throw runtime_error(
-				"Your wallet is locked, passphrase is required\n");
-			}
-
-			if(!pwalletMain->Unlock(strWalletPass)){
-				return "incorrect passphrase";
-			}
-		}
-
-		int total = 0;
-		int successful = 0;
-		int fail = 0;
-
-
-		//Object resultsObj;
-		UniValue resultsObj(UniValue::VOBJ);
-
-		BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-			total++;
-
-			std::string errorMessage;
-			bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
-
-			//Object statusObj;
-			UniValue statusObj(UniValue::VOBJ);
-			statusObj.push_back(Pair("alias", mne.getAlias()));
-			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
-
-			if(result) {
-				successful++;
-			} else {
-				fail++;
-				statusObj.push_back(Pair("errorMessage", errorMessage));
-			}
-
-			resultsObj.push_back(Pair("status", statusObj));
-		}
-		pwalletMain->Lock();
-
-		//Object returnObj;
-		UniValue returnObj(UniValue::VOBJ);
-		returnObj.push_back(Pair("overall", "Successfully stopped " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to stop " +
-				boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
-		returnObj.push_back(Pair("detail", resultsObj));
-
-		return returnObj;
+        return returnObj;
 
     }
-	
-	if (strCommand == "count")
+
+    if (strCommand == "count")
     {
         if (request.params.size() > 2){
             throw runtime_error(
-            "too many parameters\n");
+                        "too many parameters\n");
         }
-		UniValue rtnStr(UniValue::VSTR);
+        UniValue rtnStr(UniValue::VSTR);
         if (request.params.size() == 2)
         {
             /*if(request.params[1] == "enabled"){
-				return mnodeman.CountEnabled();
-				//return rtnStr;
-			}*/
+                                return mnodeman.CountEnabled();
+                                //return rtnStr;
+                        }*/
             /* if(request.params[1] == "both"){
-				rtnStr = boost::lexical_cast<std::string>(mnodeman.CountEnabled()) + " / " + boost::lexical_cast<std::string>(mnodeman.size());
-				return rtnStr;
-			} */
+                                rtnStr = boost::lexical_cast<std::string>(mnodeman.CountEnabled()) + " / " + boost::lexical_cast<std::string>(mnodeman.size());
+                                return rtnStr;
+                        } */
         }
         return mnodeman.size();
     }
-	
-	if (strCommand == "start")
+
+    if (strCommand == "start")
     {
         if(!fMasterNode) return "you must set masternode=1 in the configuration";
 
+        // get all wallets
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
         if(pwalletMain->IsLocked()) {
             SecureString strWalletPass;
             strWalletPass.reserve(100);
@@ -1321,7 +1329,7 @@ UniValue masternode(const JSONRPCRequest& request)
                 strWalletPass = request.params[1].get_str().c_str();
             } else {
                 throw runtime_error(
-                    "Your wallet is locked, passphrase is required\n");
+                            "Your wallet is locked, passphrase is required\n");
             }
 
             if(!pwalletMain->Unlock(strWalletPass)){
@@ -1343,132 +1351,138 @@ UniValue masternode(const JSONRPCRequest& request)
         if(activeMasternode.status == MASTERNODE_NOT_CAPABLE) return "not capable masternode: " + activeMasternode.notCapableReason;
         if(activeMasternode.status == MASTERNODE_SYNC_IN_PROCESS) return "sync in process. Must wait until client is synced to start.";
 
+    }
+
         return "unknown";
     }
-	
-	if (strCommand == "start-alias")
+
+    if (strCommand == "start-alias")
     {
-	    if (request.params.size() < 2){
-			throw runtime_error(
-			"command needs at least 2 parameters\n");
-	    }
-
-	    std::string alias = request.params[1].get_str().c_str();
-
-    	if(pwalletMain->IsLocked()) {
-    		SecureString strWalletPass;
-    	    strWalletPass.reserve(100);
-
-			if (request.params.size() == 3){
-				strWalletPass = request.params[2].get_str().c_str();
-			} else {
-				throw runtime_error(
-				"Your wallet is locked, passphrase is required\n");
-			}
-
-			if(!pwalletMain->Unlock(strWalletPass)){
-				return "incorrect passphrase";
-			}
+        if (request.params.size() < 2){
+            throw runtime_error(
+                        "command needs at least 2 parameters\n");
         }
 
-    	bool found = false;
+        std::string alias = request.params[1].get_str().c_str();
 
-		//Object statusObj;
-		UniValue statusObj(UniValue::VOBJ);
-		statusObj.push_back(Pair("alias", alias));
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
+        if(pwalletMain->IsLocked()) {
+            SecureString strWalletPass;
+            strWalletPass.reserve(100);
 
-    	BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-    		if(mne.getAlias() == alias) {
-    			found = true;
-    			std::string errorMessage;
+            if (request.params.size() == 3){
+                strWalletPass = request.params[2].get_str().c_str();
+            } else {
+                throw runtime_error(
+                            "Your wallet is locked, passphrase is required\n");
+            }
+
+            if(!pwalletMain->Unlock(strWalletPass)){
+                return "incorrect passphrase";
+            }
+        }
+        }
+
+        bool found = false;
+
+        //Object statusObj;
+        UniValue statusObj(UniValue::VOBJ);
+        statusObj.push_back(Pair("alias", alias));
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+            if(mne.getAlias() == alias) {
+                found = true;
+                std::string errorMessage;
 
                 std::string strDonateAddress = mne.getDonationAddress();
                 std::string strDonationPercentage = mne.getDonationPercentage();
 
-    			bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+                bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
 
-    			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
-    			if(!result) {
-					statusObj.push_back(Pair("errorMessage", errorMessage));
-				}
-    			break;
-    		}
-    	}
+                statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                if(!result) {
+                    statusObj.push_back(Pair("errorMessage", errorMessage));
+                }
+                break;
+            }
+        }
 
-    	if(!found) {
-    		statusObj.push_back(Pair("result", "failed"));
-    		statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
-    	}
+        if(!found) {
+            statusObj.push_back(Pair("result", "failed"));
+            statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+        }
 
-    	pwalletMain->Lock();
-    	return statusObj;
+        //pwalletMain->Lock();
+        return statusObj;
 
     }
-	
-	if (strCommand == "start-many")
+
+    if (strCommand == "start-many")
     {
-    	if(pwalletMain->IsLocked()) {
-			SecureString strWalletPass;
-			strWalletPass.reserve(100);
+        for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
+        if(pwalletMain->IsLocked()) {
+            SecureString strWalletPass;
+            strWalletPass.reserve(100);
 
-			if (request.params.size() == 2){
-				strWalletPass = request.params[1].get_str().c_str();
-			} else {
-				throw runtime_error(
-				"Your wallet is locked, passphrase is required\n");
-			}
+            if (request.params.size() == 2){
+                strWalletPass = request.params[1].get_str().c_str();
+            } else {
+                throw runtime_error(
+                            "Your wallet is locked, passphrase is required\n");
+            }
 
-			if(!pwalletMain->Unlock(strWalletPass)){
-				return "incorrect passphrase";
-			}
-		}
+            if(!pwalletMain->Unlock(strWalletPass)){
+                return "incorrect passphrase";
+            }
+        }
+        }
 
-		std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
-		mnEntries = masternodeConfig.getEntries();
+        std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
+        mnEntries = masternodeConfig.getEntries();
 
-		int total = 0;
-		int successful = 0;
-		int fail = 0;
+        int total = 0;
+        int successful = 0;
+        int fail = 0;
 
-		//Object resultsObj;
-		UniValue resultsObj(UniValue::VOBJ);
+        //Object resultsObj;
+        UniValue resultsObj(UniValue::VOBJ);
 
-		BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-			total++;
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+            total++;
 
-			std::string errorMessage;
+            std::string errorMessage;
 
             std::string strDonateAddress = mne.getDonationAddress();
             std::string strDonationPercentage = mne.getDonationPercentage();
 
-			bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+            bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
 
-			//Object statusObj;
-			UniValue statusObj(UniValue::VOBJ);
-			statusObj.push_back(Pair("alias", mne.getAlias()));
+            //Object statusObj;
+            UniValue statusObj(UniValue::VOBJ);
+            statusObj.push_back(Pair("alias", mne.getAlias()));
             statusObj.push_back(Pair("result", result ? "successful" : "failed"));
 
-			if(result) {
-				successful++;
-			} else {
-				fail++;
-				statusObj.push_back(Pair("errorMessage", errorMessage));
-			}
+            if(result) {
+                successful++;
+            } else {
+                fail++;
+                statusObj.push_back(Pair("errorMessage", errorMessage));
+            }
 
-			resultsObj.push_back(Pair("status", statusObj));
-		}
-		pwalletMain->Lock();
+            resultsObj.push_back(Pair("status", statusObj));
+        }
+        //pwalletMain->Lock();
 
-		//Object returnObj;
-		UniValue returnObj(UniValue::VOBJ);
-		returnObj.push_back(Pair("overall", "Successfully started " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to start " +
-				boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
-		returnObj.push_back(Pair("detail", resultsObj));
+        //Object returnObj;
+        UniValue returnObj(UniValue::VOBJ);
+        returnObj.push_back(Pair("overall", "Successfully started " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to start " +
+                                 boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
+        returnObj.push_back(Pair("detail", resultsObj));
 
-		return returnObj;
+        return returnObj;
     }
-	
-	if (strCommand == "debug")
+
+    if (strCommand == "debug")
     {
         if(activeMasternode.status == MASTERNODE_REMOTELY_ENABLED) return "masternode started remotely";
         if(activeMasternode.status == MASTERNODE_INPUT_TOO_NEW) return "masternode input must have at least 15 confirmations";
@@ -1479,7 +1493,7 @@ UniValue masternode(const JSONRPCRequest& request)
 
         CTxIn vin = CTxIn();
         //CPubKey pubkey = CScript();
-		CPubKey pubkey;
+        CPubKey pubkey;
         CKey key;
         bool found = activeMasternode.GetMasterNodeVin(vin, pubkey, key);
         if(!found){
@@ -1500,7 +1514,7 @@ UniValue masternode(const JSONRPCRequest& request)
         CMasternode* winner = mnodeman.GetCurrentMasterNode(1);
         if(winner) {
             //Object obj;
-			UniValue obj(UniValue::VOBJ);
+            UniValue obj(UniValue::VOBJ);
             CScript pubkey;
             pubkey = GetScriptForDestination(winner->pubkey.GetID());
             CTxDestination address1;
@@ -1518,19 +1532,19 @@ UniValue masternode(const JSONRPCRequest& request)
 
         return "unknown";
     }
-	
-	if (strCommand == "genkey")
+
+    if (strCommand == "genkey")
     {
         CKey secret;
         secret.MakeNewKey(false);
 
         return EncodeSecret(secret);
     }
-	
-	if (strCommand == "winners")
+
+    if (strCommand == "winners")
     {
         //Object obj;
-		UniValue obj(UniValue::VOBJ);
+        UniValue obj(UniValue::VOBJ);
 
         for(int nHeight = chainActive.Tip()->nHeight-10; nHeight < chainActive.Tip()->nHeight+20; nHeight++)
         {
@@ -1547,47 +1561,47 @@ UniValue masternode(const JSONRPCRequest& request)
 
         return obj;
     }
-	
-	if(strCommand == "enforce")
+
+    if(strCommand == "enforce")
     {
         return (uint64_t)enforceMasternodePaymentsTime;
     }
-	
-	if(strCommand == "connect")
+
+    if(strCommand == "connect")
     {
         std::string strAddress = "";
         if (request.params.size() == 2){
             strAddress = request.params[1].get_str().c_str();
         } else {
             throw runtime_error(
-                "Masternode address required\n");
+                        "Masternode address required\n");
         }
 
         CService addr;
-		CService service2(LookupNumeric(strAddress.c_str(), 0));
-		addr = service2;
-		
-                /*bool pnode1 =*/ g_connman->OpenNetworkConnection((CAddress)addr, false, nullptr, addr.ToString().c_str(), false, false, true);
+        CService service2(LookupNumeric(strAddress.c_str(), 0));
+        addr = service2;
+
+        /*bool pnode1 =*/ g_connman->OpenNetworkConnection((CAddress)addr, false, nullptr, addr.ToString().c_str(), false, false, true);
 
         /*if(pnode1){
             return "successfully connected";
         } else {
             return "error connecting";
         }*/
-                return "attempted to connect";
+        return "attempted to connect";
     }
-	
-	if(strCommand == "list-conf")
+
+    if(strCommand == "list-conf")
     {
-    	std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
-    	mnEntries = masternodeConfig.getEntries();
+        std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
+        mnEntries = masternodeConfig.getEntries();
 
         //Object resultObj;
-		UniValue resultObj(UniValue::VOBJ);
+        UniValue resultObj(UniValue::VOBJ);
 
         BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
             //Object mnObj;
-			UniValue mnObj(UniValue::VOBJ);
+            UniValue mnObj(UniValue::VOBJ);
             mnObj.push_back(Pair("alias", mne.getAlias()));
             mnObj.push_back(Pair("address", mne.getIp()));
             mnObj.push_back(Pair("privateKey", mne.getPrivKey()));
@@ -1600,13 +1614,13 @@ UniValue masternode(const JSONRPCRequest& request)
 
         return resultObj;
     }
-	
-	if (strCommand == "outputs"){
+
+    if (strCommand == "outputs"){
         // Find possible candidates
         vector<COutput> possibleCoins = activeMasternode.SelectCoinsMasternode();
 
         //Object obj;
-		UniValue obj(UniValue::VOBJ);
+        UniValue obj(UniValue::VOBJ);
         BOOST_FOREACH(COutput& out, possibleCoins) {
             obj.push_back(Pair(out.tx->GetHash().ToString().c_str(), boost::lexical_cast<std::string>(out.i)));
         }
@@ -1614,8 +1628,8 @@ UniValue masternode(const JSONRPCRequest& request)
         return obj;
 
     }
-	
-	/*if(strCommand == "vote-many")
+
+    /*if(strCommand == "vote-many")
     {
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
         mnEntries = masternodeConfig.getEntries();
@@ -1630,8 +1644,8 @@ UniValue masternode(const JSONRPCRequest& request)
         if(vote == "nay") nVote = -1;
 
 
-		int success = 0;
-		int failed = 0;
+                int success = 0;
+                int failed = 0;
 
         Object resultObj;
 
@@ -1645,35 +1659,35 @@ UniValue masternode(const JSONRPCRequest& request)
             CPubKey pubKeyMasternode;
             CKey keyMasternode;
 
-			if(!darkSendSigner.SetKey(mne.getPrivKey(), errorMessage, keyMasternode, pubKeyMasternode)){
-				printf(" Error upon calling SetKey for %s\n", mne.getAlias().c_str());
-				failed++;
-				continue;
-			}
+                        if(!darkSendSigner.SetKey(mne.getPrivKey(), errorMessage, keyMasternode, pubKeyMasternode)){
+                                printf(" Error upon calling SetKey for %s\n", mne.getAlias().c_str());
+                                failed++;
+                                continue;
+                        }
 
-			CMasternode* pmn = mnodeman.Find(pubKeyMasternode);
-			if(pmn == NULL)
-			{
-				printf("Can't find masternode by pubkey for %s\n", mne.getAlias().c_str());
-				failed++;
-				continue;
+                        CMasternode* pmn = mnodeman.Find(pubKeyMasternode);
+                        if(pmn == NULL)
+                        {
+                                printf("Can't find masternode by pubkey for %s\n", mne.getAlias().c_str());
+                                failed++;
+                                continue;
             }
 
             std::string strMessage = pmn->vin.ToString() + boost::lexical_cast<std::string>(nVote);
 
-			if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
-				printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
-				failed++;
-				continue;
-			}
+                        if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
+                                printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
+                                failed++;
+                                continue;
+                        }
 
-			if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
-				printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
-				failed++;
-				continue;
-			}
+                        if(!darkSendSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, keyMasternode)){
+                                printf(" Error upon calling SignMessage for %s\n", mne.getAlias().c_str());
+                                failed++;
+                                continue;
+                        }
 
-			success++;
+                        success++;
 
             //send to all peers
             //LOCK(cs_vNodes);
@@ -1681,10 +1695,10 @@ UniValue masternode(const JSONRPCRequest& request)
                // pnode->PushMessage("mvote", pmn->vin, vchMasterNodeSignature, nVote);
 
         }
-		return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
+                return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
     }*/
-	
-	/*if (strCommand == "list")
+
+    /*if (strCommand == "list")
     {
         UniValue newParams(UniValue::VARR);
         
@@ -1701,23 +1715,23 @@ UniValue masternode(const JSONRPCRequest& request)
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         argNames
   //  --------------------- ------------------------  -----------------------  ----------
-    { "mining",             "getnetworkhashps",       &getnetworkhashps,       {"nblocks","height"} },
-    { "mining",             "getmininginfo",          &getmininginfo,          {} },
-    { "mining",             "prioritisetransaction",  &prioritisetransaction,  {"txid","dummy","fee_delta"} },
-    { "mining",             "getblocktemplate",       &getblocktemplate,       {"template_request"} },
-    { "mining",             "submitblock",            &submitblock,            {"hexdata","dummy"} },
+  { "mining",             "getnetworkhashps",       &getnetworkhashps,       {"nblocks","height"} },
+  { "mining",             "getmininginfo",          &getmininginfo,          {} },
+  { "mining",             "prioritisetransaction",  &prioritisetransaction,  {"txid","dummy","fee_delta"} },
+  { "mining",             "getblocktemplate",       &getblocktemplate,       {"template_request"} },
+  { "mining",             "submitblock",            &submitblock,            {"hexdata","dummy"} },
 
 
-    { "generating",         "generatetoaddress",      &generatetoaddress,      {"nblocks","address","maxtries"} },
-	
-	{ "masternode",         "masternode",             &masternode,             {"strCommand"} },
-	{ "masternode",         "masternodelist",         &masternodelist,         {"strMode"} },
-	
+  { "generating",         "generatetoaddress",      &generatetoaddress,      {"nblocks","address","maxtries"} },
 
-    { "hidden",             "estimatefee",            &estimatefee,            {} },
-    { "util",               "estimatesmartfee",       &estimatesmartfee,       {"conf_target", "estimate_mode"} },
+  { "masternode",         "masternode",             &masternode,             {"strCommand"} },
+  { "masternode",         "masternodelist",         &masternodelist,         {"strMode"} },
 
-    { "hidden",             "estimaterawfee",         &estimaterawfee,         {"conf_target", "threshold"} },
+
+  { "hidden",             "estimatefee",            &estimatefee,            {} },
+  { "util",               "estimatesmartfee",       &estimatesmartfee,       {"conf_target", "estimate_mode"} },
+
+  { "hidden",             "estimaterawfee",         &estimaterawfee,         {"conf_target", "threshold"} },
 };
 
 void RegisterMiningRPCCommands(CRPCTable &t)
