@@ -25,7 +25,7 @@ python27
 
 Download the source code:
 ```
-git clone https://github.com/bitsend/bitsend
+git clone https://github.com/LIMXTEC/BitSend
 ```
 
 See [dependencies.md](dependencies.md) for a complete overview.

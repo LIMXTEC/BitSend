@@ -28,7 +28,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/bitsend/bitsend.git"
+- "url": "https://github.com/LIMXTEC/BitSend.git"
   "dir": "bitsend"
 files: []
 script: |

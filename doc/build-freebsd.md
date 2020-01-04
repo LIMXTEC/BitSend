@@ -24,7 +24,7 @@ See [dependencies.md](dependencies.md) for a complete overview.
 
 Download the source code:
 ```
-git clone https://github.com/bitsend/bitsend
+git clone https://github.com/LIMXTEC/BitSend
 ```
 
 ## Building Bitsend Core

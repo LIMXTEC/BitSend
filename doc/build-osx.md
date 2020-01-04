@@ -43,7 +43,7 @@ Build Bitsend Core
 
 1. Clone the Bitsend Core source code and cd into `bitsend`
 
-        git clone https://github.com/bitsend/bitsend
+        git clone https://github.com/LIMXTEC/BitSend
         cd bitsend
 
 2.  Build Bitsend Core:
@@ -93,4 +93,4 @@ Notes
 
 * Tested on OS X 10.10 Yosemite through macOS 10.13 High Sierra on 64-bit Intel processors only.
 
-* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitsend/bitsend/issues/7714)
+* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)

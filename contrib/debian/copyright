@@ -2,12 +2,12 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Bitsend
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
  irc://#bitsend@freenode.net
-Source: https://github.com/bitsend/bitsend
+Source: https://github.com/bitcoin/bitcoin
 
 Files: *
 Copyright: 2009-2018, Bitsend Core Developers
 License: Expat
-Comment: The Bitsend Core Developers encompasses the current developers listed on bitsend.org,
+Comment: The Bitsend Core Developers encompasses the current developers listed on bitsend.cc,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -91,7 +91,7 @@ Files: src/qt/res/icons/about.png
        src/qt/res/src/bitsend.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://bitsendtalk.org/?topic=1756.0
+Comment: Site: https://bitcointalk.org/?topic=1756.0
 
 Files: src/qt/res/icons/proxy.png
        src/qt/res/src/proxy.svg
