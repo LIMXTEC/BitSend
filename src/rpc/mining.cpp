@@ -1203,60 +1203,61 @@ UniValue masternode(const JSONRPCRequest& request)
                     return "incorrect passphrase";
                 }
             }
-
-            bool found = false;
-
-            //Object statusObj;
-            UniValue statusObj(UniValue::VOBJ);
-            statusObj.push_back(Pair("alias", alias));
-
-            BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-                if(mne.getAlias() == alias) {
-                    found = true;
-                    std::string errorMessage;
-                    bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
-
-                    statusObj.push_back(Pair("result", result ? "successful" : "failed"));
-                    if(!result) {
-                        statusObj.push_back(Pair("errorMessage", errorMessage));
-                    }
-                    break;
-                }
-            }
-
-            if(!found) {
-                statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
-            }
-
-            pwalletMain->Lock();
         }
+
+        bool found = false;
+
+        //Object statusObj;
+        UniValue statusObj(UniValue::VOBJ);
+        statusObj.push_back(Pair("alias", alias));
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+        if(mne.getAlias() == alias) {
+            found = true;
+            std::string errorMessage;
+            bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+                statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                if(!result) {
+                    statusObj.push_back(Pair("errorMessage", errorMessage));
+                }
+                break;
+            }
+        }
+
+        if(!found) {
+            statusObj.push_back(Pair("result", "failed"));
+            statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+        }
+
+        //pwalletMain->Lock();
+ 
         return statusObj;
     }
 
     if (strCommand == "stop-many")
     {
         for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
-        if(pwalletMain->IsLocked()) {
-            SecureString strWalletPass;
-            strWalletPass.reserve(100);
+            if(pwalletMain->IsLocked()) {
+                SecureString strWalletPass;
+                strWalletPass.reserve(100);
 
-            if (request.params.size() == 2){
-                strWalletPass = request.params[1].get_str().c_str();
-            } else {
-                throw runtime_error(
-                            "Your wallet is locked, passphrase is required\n");
-            }
+                if (request.params.size() == 2){
+                    strWalletPass = request.params[1].get_str().c_str();
+                } else {
+                    throw runtime_error(
+                                "Your wallet is locked, passphrase is required\n");
+                }
 
-            if(!pwalletMain->Unlock(strWalletPass)){
-                return "incorrect passphrase";
+                if(!pwalletMain->Unlock(strWalletPass)){
+                    return "incorrect passphrase";
+                }
             }
         }
 
         int total = 0;
         int successful = 0;
         int fail = 0;
-
 
         //Object resultsObj;
         UniValue resultsObj(UniValue::VOBJ);
@@ -1281,17 +1282,15 @@ UniValue masternode(const JSONRPCRequest& request)
 
             resultsObj.push_back(Pair("status", statusObj));
         }
-        pwalletMain->Lock();
+        //pwalletMain->Lock();
 
         //Object returnObj;
         UniValue returnObj(UniValue::VOBJ);
         returnObj.push_back(Pair("overall", "Successfully stopped " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to stop " +
                                  boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
         returnObj.push_back(Pair("detail", resultsObj));
-    }
 
         return returnObj;
-
     }
 
     if (strCommand == "count")
