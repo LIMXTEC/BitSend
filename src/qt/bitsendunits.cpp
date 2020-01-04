@@ -42,9 +42,9 @@ QString BitsendUnits::longName(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BTC");
-    case mBTC: return QString("mBTC");
-    case uBTC: return QString::fromUtf8("µBTC (bits)");
+    case BTC: return QString("BSD");
+    case mBTC: return QString("mBSD");
+    case uBTC: return QString::fromUtf8("µBSD (bits)");
     case SAT: return QString("Satoshi (sat)");
     default: return QString("???");
     }
