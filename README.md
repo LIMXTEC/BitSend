@@ -1,9 +1,9 @@
 Bitsend Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/bitsend/bitsend.svg?branch=master)](https://travis-ci.org/bitsend/bitsend)
+[![Build Status](https://travis-ci.org/LIMXTEC/BitSend.svg?branch=master)](https://travis-ci.org/LIMXTEC/BitSend)
 
-https://bitsendcore.org
+https://bitsend.cc
 
 What is Bitsend?
 ----------------
@@ -15,8 +15,8 @@ out collectively by the network. Bitsend Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Bitsend Core software, see https://bitsendcore.org/en/download/, or read the
-[original whitepaper](https://bitsendcore.org/bitsend.pdf).
+the Bitsend Core software, see https://github.com/LIMXTEC/BitSend/releases, or read the
+[original whitepaper](https://github.com/LIMXTEC/BitSend/releases/download/v0.14.0.5/Z.Whitepaper.E3.Juni.2018.pdf).
 
 License
 -------
@@ -28,7 +28,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/bitsend/bitsend/tags) are created
+completely stable. [Tags](https://github.com/LIMXTEC/BitSend/tags) are created
 regularly to indicate new official, stable release versions of Bitsend Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -65,7 +65,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[Bitsend Core's Transifex page](https://www.transifex.com/projects/p/bitsend/).
+[Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.
@@ -73,4 +73,4 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitsend-translators).
+Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitcoin-translators).
