@@ -527,8 +527,8 @@ void SetupServerArgs()
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/bitsend/bitsend>";
-    const std::string URL_WEBSITE = "<https://bitsendcore.org>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/LIMXTEC/BitSend>";
+    const std::string URL_WEBSITE = "<https://bitsend.cc>";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +

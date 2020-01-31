@@ -5,7 +5,7 @@ Setup
 ---------------------
 Bitsend Core is the original Bitsend client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bitsend transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Bitsend Core, visit [bitsendcore.org](https://bitsendcore.org/en/releases/).
+To download Bitsend Core, visit [bitsend.cc](https://bitsend.cc).
 
 Running
 ---------------------
@@ -28,10 +28,10 @@ Drag Bitsend Core to your applications folder, and then run Bitsend Core.
 
 ### Need Help?
 
-* See the documentation at the [Bitsend Wiki](https://en.bitsend.it/wiki/Main_Page)
+* See the documentation at the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [#bitsend](http://webchat.freenode.net?channels=bitsend) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bitsend).
-* Ask for help on the [BitsendTalk](https://bitsendtalk.org/) forums, in the [Technical Support board](https://bitsendtalk.org/index.php?board=4.0).
+* Ask for help on [#bitcoin](http://webchat.freenode.net?channels=bitcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bitcoin).
+* Ask for help on the [BitcoinTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
 
 Building
 ---------------------
@@ -63,9 +63,9 @@ The Bitsend repo's [root README](/README.md) contains relevant information on th
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [BitsendTalk](https://bitsendtalk.org/) forums, in the [Development & Technical Discussion board](https://bitsendtalk.org/index.php?board=6.0).
-* Discuss project-specific development on #bitsend-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitsend-core-dev).
-* Discuss general Bitsend development on #bitsend-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitsend-dev).
+* Discuss on the [bitcointalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bitcoin-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitcoin-core-dev).
+* Discuss general Bitsend development on #bitcoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitcoin-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

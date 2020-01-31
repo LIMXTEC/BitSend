@@ -102,4 +102,4 @@ To create a new language template, you will need to edit the languages manifest 
 ### Questions and general assistance
 The Bitsend-Core translation maintainers include *tcatm, seone, Diapolo, wumpus and luke-jr*. You can find them, and others, in the Freenode IRC chatroom - `irc.freenode.net #bitsend-core-dev`.
 
-If you are a translator, you should also subscribe to the mailing list, https://groups.google.com/forum/#!forum/bitsend-translators. Announcements will be posted during application pre-releases to notify translators to check for updates.
+If you are a translator, you should also subscribe to the mailing list, https://groups.google.com/forum/#!forum/bitcoin-translators. Announcements will be posted during application pre-releases to notify translators to check for updates.

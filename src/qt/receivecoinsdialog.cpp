@@ -150,7 +150,7 @@ void ReceiveCoinsDialog::on_receiveButton_clicked()
     } else {
         address_type = model->wallet().getDefaultAddressType();
         if (address_type == OutputType::BECH32) {
-            address_type = OutputType::P2SH_SEGWIT;
+            address_type = OutputType::LEGACY;
         }
     }
     address = model->getAddressTableModel()->addRow(AddressTableModel::Receive, label, "", address_type);

@@ -306,10 +306,10 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
                 "\nIf the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'.\n"
                 "It returns data needed to construct a block to work on.\n"
                 "For full specification, see BIPs 22, 23, 9, and 145:\n"
-                "    https://github.com/bitsend/bips/blob/master/bip-0022.mediawiki\n"
-                "    https://github.com/bitsend/bips/blob/master/bip-0023.mediawiki\n"
-                "    https://github.com/bitsend/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
-                "    https://github.com/bitsend/bips/blob/master/bip-0145.mediawiki\n"
+                "    https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki\n"
+                "    https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki\n"
+                "    https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
+                "    https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki\n"
 
                 "\nArguments:\n"
                 "1. template_request         (json object, optional) A json object in the following spec\n"
@@ -731,7 +731,7 @@ static UniValue submitblock(const JSONRPCRequest& request)
         throw std::runtime_error(
                     "submitblock \"hexdata\"  ( \"dummy\" )\n"
                     "\nAttempts to submit new block to network.\n"
-                    "See https://en.bitsend.it/wiki/BIP_0022 for full specification.\n"
+                    "See https://en.bitcoin.it/wiki/BIP_0022 for full specification.\n"
 
                     "\nArguments\n"
                     "1. \"hexdata\"        (string, required) the hex-encoded block data to submit\n"
@@ -1203,60 +1203,61 @@ UniValue masternode(const JSONRPCRequest& request)
                     return "incorrect passphrase";
                 }
             }
-
-            bool found = false;
-
-            //Object statusObj;
-            UniValue statusObj(UniValue::VOBJ);
-            statusObj.push_back(Pair("alias", alias));
-
-            BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-                if(mne.getAlias() == alias) {
-                    found = true;
-                    std::string errorMessage;
-                    bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
-
-                    statusObj.push_back(Pair("result", result ? "successful" : "failed"));
-                    if(!result) {
-                        statusObj.push_back(Pair("errorMessage", errorMessage));
-                    }
-                    break;
-                }
-            }
-
-            if(!found) {
-                statusObj.push_back(Pair("result", "failed"));
-                statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
-            }
-
-            pwalletMain->Lock();
         }
+
+        bool found = false;
+
+        //Object statusObj;
+        UniValue statusObj(UniValue::VOBJ);
+        statusObj.push_back(Pair("alias", alias));
+
+        BOOST_FOREACH(CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+        if(mne.getAlias() == alias) {
+            found = true;
+            std::string errorMessage;
+            bool result = activeMasternode.StopMasterNode(mne.getIp(), mne.getPrivKey(), errorMessage);
+
+                statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                if(!result) {
+                    statusObj.push_back(Pair("errorMessage", errorMessage));
+                }
+                break;
+            }
+        }
+
+        if(!found) {
+            statusObj.push_back(Pair("result", "failed"));
+            statusObj.push_back(Pair("errorMessage", "could not find alias in config. Verify with list-conf."));
+        }
+
+        //pwalletMain->Lock();
+ 
         return statusObj;
     }
 
     if (strCommand == "stop-many")
     {
         for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()) {
-        if(pwalletMain->IsLocked()) {
-            SecureString strWalletPass;
-            strWalletPass.reserve(100);
+            if(pwalletMain->IsLocked()) {
+                SecureString strWalletPass;
+                strWalletPass.reserve(100);
 
-            if (request.params.size() == 2){
-                strWalletPass = request.params[1].get_str().c_str();
-            } else {
-                throw runtime_error(
-                            "Your wallet is locked, passphrase is required\n");
-            }
+                if (request.params.size() == 2){
+                    strWalletPass = request.params[1].get_str().c_str();
+                } else {
+                    throw runtime_error(
+                                "Your wallet is locked, passphrase is required\n");
+                }
 
-            if(!pwalletMain->Unlock(strWalletPass)){
-                return "incorrect passphrase";
+                if(!pwalletMain->Unlock(strWalletPass)){
+                    return "incorrect passphrase";
+                }
             }
         }
 
         int total = 0;
         int successful = 0;
         int fail = 0;
-
 
         //Object resultsObj;
         UniValue resultsObj(UniValue::VOBJ);
@@ -1281,17 +1282,15 @@ UniValue masternode(const JSONRPCRequest& request)
 
             resultsObj.push_back(Pair("status", statusObj));
         }
-        pwalletMain->Lock();
+        //pwalletMain->Lock();
 
         //Object returnObj;
         UniValue returnObj(UniValue::VOBJ);
         returnObj.push_back(Pair("overall", "Successfully stopped " + boost::lexical_cast<std::string>(successful) + " masternodes, failed to stop " +
                                  boost::lexical_cast<std::string>(fail) + ", total " + boost::lexical_cast<std::string>(total)));
         returnObj.push_back(Pair("detail", resultsObj));
-    }
 
         return returnObj;
-
     }
 
     if (strCommand == "count")
