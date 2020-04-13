@@ -585,22 +585,24 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
     if (tx.IsCoinBase())
         return state.DoS(100, false, REJECT_INVALID, "coinbase");
 
-    // Rather not work on nonstandard transactions (unless -testnet/-regtest)
-    std::string reason;
-    if (fRequireStandard && !IsStandardTx(tx, reason))
-        return state.DoS(0, false, REJECT_NONSTANDARD, reason);
+    if(!test_accept){
+        // Rather not work on nonstandard transactions (unless -testnet/-regtest)
+        std::string reason;
+        if (fRequireStandard && !IsStandardTx(tx, reason))
+            return state.DoS(0, false, REJECT_NONSTANDARD, reason);
 
-    // Do not work on transactions that are too small.
-    // A transaction with 1 segwit input and 1 P2WPHK output has non-witness size of 82 bytes.
-    // Transactions smaller than this are not relayed to reduce unnecessary malloc overhead.
-    if (::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < MIN_STANDARD_TX_NONWITNESS_SIZE)
-        return state.DoS(0, false, REJECT_NONSTANDARD, "tx-size-small");
+        // Do not work on transactions that are too small.
+        // A transaction with 1 segwit input and 1 P2WPHK output has non-witness size of 82 bytes.
+        // Transactions smaller than this are not relayed to reduce unnecessary malloc overhead.
+        if (::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < MIN_STANDARD_TX_NONWITNESS_SIZE)
+            return state.DoS(0, false, REJECT_NONSTANDARD, "tx-size-small");
 
-    // Only accept nLockTime-using transactions that can be mined in the next
-    // block; we don't want our mempool filled up with transactions that can't
-    // be mined yet.
-    if (!CheckFinalTx(tx, STANDARD_LOCKTIME_VERIFY_FLAGS))
-        return state.DoS(0, false, REJECT_NONSTANDARD, "non-final");
+        // Only accept nLockTime-using transactions that can be mined in the next
+        // block; we don't want our mempool filled up with transactions that can't
+        // be mined yet.
+        if (!CheckFinalTx(tx, STANDARD_LOCKTIME_VERIFY_FLAGS))
+            return state.DoS(0, false, REJECT_NONSTANDARD, "non-final");
+    }
 
     // is it already in the memory pool?
     if (pool.exists(hash)) {
@@ -685,6 +687,17 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         // we have all inputs cached now, so switch back to dummy, so we don't need to keep lock on mempool
         view.SetBackend(dummy);
 
+        if (test_accept) {
+            // Check against previous transactions
+            // This is done last to help prevent CPU exhaustion denial-of-service attacks.
+            PrecomputedTransactionData txdata(tx);
+            if (!CheckInputs(tx, state, view, false, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, true, false, txdata)) {
+
+                return false; // state filled in by CheckInputs
+            }
+            // Tx was accepted, but not added
+            return true;
+        }
         // Only accept BIP68 sequence locked transactions that can be mined in the next
         // block; we don't want our mempool filled up with transactions that can't
         // be mined yet.
@@ -904,6 +917,8 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         }
 
         constexpr unsigned int scriptVerifyFlags = STANDARD_SCRIPT_VERIFY_FLAGS;
+
+
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
