@@ -49,6 +49,13 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "activemasternode.h"
+#include "masternodeman.h"
+#include "masternodeconfig.h"
+#include "spork.h"
+#include "signhelper_mn.h"
+
+
 #ifndef WIN32
 #include <signal.h>
 #endif
@@ -202,6 +209,7 @@ void Shutdown()
     StopREST();
     StopRPC();
     StopHTTPServer();
+    DumpMasternodes();
     g_wallet_init_interface.Flush();
     StopMapPort();
 
@@ -484,6 +492,18 @@ void SetupServerArgs()
 
     SetupChainParamsBaseOptions();
 
+    /**TODO-- *
+         gArgs.AddArg("-litemode=<n>", strprintf(_("Disable all Bitsend specific functionality (Masternodes) (0-1, default: %u)"),false, 0));
+
+
+        gArgs.AddArg("-masternode=<n>", strprintf(_("Enable the client to act as a masternode (0-1, default: %u)"), 0));
+        gArgs.AddArg("-mnconf=<file>", strprintf(_("Specify masternode configuration file (default: %s)"), "masternode.conf"));
+        gArgs.AddArg("-mnconflock=<n>", strprintf(_("Lock masternodes from masternode configuration file (default: %u)"), 1));
+        gArgs.AddArg("-masternodeprivkey=<n>", _("Set the masternode private key"));
+        gArgs.AddArg("-masternodeaddr=<n>", strprintf(_("Set external address:port to get to this masternode (example: %s)"), "128.127.106.235:9999"));
+        gArgs.AddArg("-budgetvotemode=<mode>", _("Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)"));
+/**TODO-- */
+
     gArgs.AddArg("-acceptnonstdtxn", strprintf("Relay and mine \"non-standard\" transactions (%sdefault: %u)", "testnet/regtest only; ", !testnetChainParams->RequireStandard()), true, OptionsCategory::NODE_RELAY);
     gArgs.AddArg("-incrementalrelayfee=<amt>", strprintf("Fee rate (in %s/kB) used to define cost of relay, used for mempool limiting and BIP 125 replacement. (default: %s)", CURRENCY_UNIT, FormatMoney(DEFAULT_INCREMENTAL_RELAY_FEE)), true, OptionsCategory::NODE_RELAY);
     gArgs.AddArg("-dustrelayfee=<amt>", strprintf("Fee rate (in %s/kB) used to defined dust, the value of an output such that it will cost more than its value in fees at this fee rate to spend it. (default: %s)", CURRENCY_UNIT, FormatMoney(DUST_RELAY_TX_FEE)), true, OptionsCategory::NODE_RELAY);
@@ -531,6 +551,8 @@ std::string LicenseInfo()
     const std::string URL_WEBSITE = "<https://bitsend.cc>";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2009, COPYRIGHT_YEAR) + " ") + "\n" +
+            CopyrightHolders(strprintf(_("Copyright (C) 2014 -%i The Dash Developers"), COPYRIGHT_YEAR)) + "\n" +
+            CopyrightHolders(strprintf(_("Copyright (C) 2015 -%i The Bitsend Core Developers"), COPYRIGHT_YEAR)) + "\n" + "\n" +
            "\n" +
            strprintf(_("Please contribute if you find %s useful. "
                        "Visit %s for further information about the software."),
@@ -1676,7 +1698,97 @@ bool AppInitMain()
         return false;
     }
 
-    // ********************************************************* Step 12: start node
+    /**TODO-- */
+            // ********************************************************* Step 12a: setup Masternode
+
+    //string strNode = "23.23.186.131";
+        //CAddress addr;
+        //ConnectNode(addr, strNode.c_str(), true);
+
+        uiInterface.InitMessage(_("Loading masternode cache..."));
+
+        CMasternodeDB mndb;
+        CMasternodeDB::ReadResult readResult = mndb.Read(mnodeman);
+        if (readResult == CMasternodeDB::FileError)
+            LogPrintf("Missing masternode cache file - mncache.dat, will try to recreate\n");
+        else if (readResult != CMasternodeDB::Ok)
+        {
+            LogPrintf("Error reading mncache.dat: ");
+            if(readResult == CMasternodeDB::IncorrectFormat)
+                LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
+            else
+                LogPrintf("file format is unknown or invalid, please fix it manually\n");
+        }
+
+        fMasterNode = gArgs.GetBoolArg("-masternode", false);
+        if(fMasterNode) {
+            LogPrintf("IS DARKSEND MASTER NODE\n");
+            strMasterNodeAddr = gArgs.GetArg("-masternodeaddr", "");
+
+            LogPrintf(" addr %s\n", strMasterNodeAddr.c_str());
+
+            if(!strMasterNodeAddr.empty()){
+                CService addrTest;
+                            CService service2(LookupNumeric(strMasterNodeAddr.c_str(), 0));
+                            addrTest = service2;
+                if (!addrTest.IsValid()) {
+                    return InitError("Invalid -masternodeaddr address: " + strMasterNodeAddr);
+                }
+            }
+
+            strMasterNodePrivKey = gArgs.GetArg("-masternodeprivkey", "");
+            if(!strMasterNodePrivKey.empty()){
+                std::string errorMessage;
+
+                CKey key;
+                CPubKey pubkey;
+
+                if(!darkSendSigner.SetKey(strMasterNodePrivKey, errorMessage, key, pubkey))
+                {
+                    return InitError(_("Invalid masternodeprivkey. Please see documenation."));
+                }
+
+                activeMasternode.pubKeyMasternode = pubkey;
+
+            } else {
+                return InitError(_("You must specify a masternodeprivkey in the configuration. Please see documentation for help."));
+            }
+        }
+#ifdef ENABLE_WALLET
+    LogPrintf("Using masternode config file %s\n", GetMasternodeConfigFile().string());
+
+    if(gArgs.GetBoolArg("-mnconflock", true)) {
+        LogPrintf("Locking Masternodes:\n");
+        uint256 mnTxHash;
+        int outputIndex;
+        for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries()) {
+            mnTxHash.SetHex(mne.getTxHash());
+            outputIndex = boost::lexical_cast<unsigned int>(mne.getOutputIndex());
+            COutPoint outpoint = COutPoint(mnTxHash, outputIndex);
+            for (const std::shared_ptr<CWallet>& pwalletMain : GetWallets()){pwalletMain->LockCoin(outpoint);}// This is dirty fix,
+            //it can lock output for every wallet in case of multiwallets on same daemon
+
+            LogPrintf("  %s %s - locked successfully\n", mne.getTxHash(), mne.getOutputIndex());
+        }
+    }
+#endif // ENABLE_WALLET
+
+            //-promode active all Masternode and Darksend related functionality (Darksendcore and Masternode is but online) (For disalbel DS-Core and InstantX use -disable_DS_InstantX)
+        fProUserModeDarksendInstantX = gArgs.GetBoolArg("-promode", false); //BitSenddev im Standart an (Darksend und Instantx ist im QT nicht sichtbar)
+            fProUserModeDarksendInstantX2 = gArgs.GetBoolArg("-disable_DS_InstantX", false);  // BitSenddev im Standart aus (Darksend und Instantx ist im Core an)
+        if((fMasterNode && !fProUserModeDarksendInstantX) || (fMasterNode && fProUserModeDarksendInstantX2)){
+            return InitError("You can not start a masternode in -promode=0 or -disable_Darksend_InstantX_on_Core=1");
+        } //BitSenddev 13-05-2016
+
+        LogPrintf("fProUserModeDarksendInstantX -promode %d # ", fProUserModeDarksendInstantX);
+            LogPrintf("fProUserModeDarksendInstantX2 -disable_Darksend_InstantX  %d  #", fProUserModeDarksendInstantX2);
+
+
+        darkSendSigner.InitCollateralAddress();
+
+        threadGroup.create_thread(boost::bind(&ThreadBitPool)); //TODO-- ends
+
+    // ********************************************************* Step 12b: start node
 
     int chain_active_height;
 
