@@ -44,7 +44,7 @@ SplashScreen::SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const Netw
     QString versionText     = QString("Version %1").arg(QString::fromStdString(FormatFullVersion()));
     versionText = versionText.rightJustified(25, '.', true);
     QString copyrightText   = "Welcome to Bitsend Core 0.17+\n\nOfficial website\nbitsend.cc";
-    QString copyrightText   = QString::fromUtf8(CopyrightHolders(strprintf("\xc2\xA9 %u-%u ", 2009, COPYRIGHT_YEAR)).c_str());
+    //QString copyrightText   = QString::fromUtf8(CopyrightHolders(strprintf("\xc2\xA9 %u-%u ", 2009, COPYRIGHT_YEAR)).c_str());
     QString titleAddText    = networkStyle->getTitleAddText();
 
     QString font            = QApplication::font().toString();
