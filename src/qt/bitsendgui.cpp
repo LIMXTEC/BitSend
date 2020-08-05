@@ -8,6 +8,7 @@
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
+#include <qt/masternodelist.h>
 #include <qt/modaloverlay.h>
 #include <qt/networkstyle.h>
 #include <qt/notificator.h>
@@ -28,6 +29,7 @@
 #include <qt/macdockiconhandler.h>
 #endif
 
+#include <activemasternode.h>
 #include <chainparams.h>
 #include <interfaces/handler.h>
 #include <interfaces/node.h>
@@ -261,6 +263,14 @@ void BitsendGUI::createActions()
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
+	
+	//kaali	
+	masternodeAction = new QAction(platformStyle->SingleColorIcon(":/icons/overview"), tr("&Masternodes"), this);
+    masternodeAction->setStatusTip(tr("Show information about Masternodes"));
+    masternodeAction->setToolTip(masternodeAction->statusTip());
+    masternodeAction->setCheckable(true);
+    masternodeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    tabGroup->addAction(masternodeAction);
 
 #ifdef ENABLE_WALLET
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
@@ -277,6 +287,9 @@ void BitsendGUI::createActions()
     connect(receiveCoinsMenuAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
+	//kaali
+	connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(platformStyle->TextColorIcon(":/icons/quit"), tr("E&xit"), this);
@@ -412,6 +425,7 @@ void BitsendGUI::createToolBars()
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
+		toolbar->addAction(masternodeAction);
         overviewAction->setChecked(true);
 
 #ifdef ENABLE_WALLET
@@ -563,6 +577,8 @@ void BitsendGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     receiveCoinsMenuAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
+	//kaali
+	masternodeAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
     changePassphraseAction->setEnabled(enabled);
@@ -693,6 +709,13 @@ void BitsendGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
+//kaali
+void BitsendGUI::gotoMasternodePage()
+{
+    masternodeAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoMasternodePage();
+}
+
 void BitsendGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
@@ -720,19 +743,35 @@ void BitsendGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
-    switch(count)
-    {
-    case 0: icon = ":/icons/connect_0"; break;
-    case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
-    case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
-    case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
-    default: icon = ":/icons/connect_4"; break;
-    }
+    bool IsMasternodeActive = activeMasternode.status == MASTERNODE_IS_CAPABLE || activeMasternode.status == MASTERNODE_REMOTELY_ENABLED;
+	if(IsMasternodeActive){
+		switch(count)
+		{
+		case 0: icon = ":/icons/connect_0_16"; break;
+		case 1: case 2: case 3: icon = ":/icons/connect_1_16"; break;
+		case 4: case 5: case 6: icon = ":/icons/connect_2_16"; break;
+		case 7: case 8: case 9: icon = ":/icons/connect_3_16"; break;
+		default: icon = ":/icons/connect_4_16"; break;
+		}
+	} else {
+		switch(count)
+		{
+		case 0: icon = ":/icons/connect_0"; break;
+		case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
+		case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
+		case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
+		default: icon = ":/icons/connect_4"; break;
+		}
+	}
 
     QString tooltip;
 
     if (m_node.getNetworkActive()) {
-        tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+		if(IsMasternodeActive){
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Masternode is active ") + QString(".<br>") + tr("Click to disable network activity.");
+		} else {
+			tooltip = tr("%n active connection(s) to Bitsend network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+		}
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
         icon = ":/icons/network_disabled";
