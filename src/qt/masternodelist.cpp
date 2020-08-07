@@ -1,16 +1,17 @@
-#include "qt/masternodelist.h"
+#include <qt/masternodelist.h>
 #include <qt/forms/ui_masternodelist.h>
+#include <qt/clientmodel.h>
+#include <qt/guiutil.h>
+#include <qt/walletmodel.h>
 
-#include "activemasternode.h"
-#include "clientmodel.h"
-#include "guiutil.h"
-#include "init.h"
-//#include "masternode-sync.h"
-#include "masternodeconfig.h"
-#include "masternodeman.h"
-#include "sync.h"
-#include "wallet/wallet.h"
-#include "walletmodel.h"
+#include <activemasternode.h>
+#include <init.h>
+#include <key_io.h>
+//#include <masternode-sync.h>
+#include <masternodeconfig.h>
+#include <masternodeman.h>
+#include <sync.h>
+#include <wallet/wallet.h>
 
 #include <QMessageBox>
 #include <QTimer>
@@ -100,7 +101,7 @@ void MasternodeList::StartAlias(std::string strAlias)
         if (mne.getAlias() == strAlias) {
             std::string strError;
             //CMasternodeBroadcast mnb;
-				std::string strDonateAddress = mne.getDonationAddress();
+                std::string strDonateAddress = mne.getDonationAddress();
                 std::string strDonationPercentage = mne.getDonationPercentage();
             bool fSuccess = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, strError);
             if (fSuccess) {
@@ -141,8 +142,8 @@ void MasternodeList::StartAll(std::string strCommand)
         CMasternode* pmn = mnodeman.Find(txin);
 
         if (strCommand == "start-missing" && pmn) continue;
-			//kaali
-			std::string strDonateAddress = mne.getDonationAddress();
+            //kaali
+            std::string strDonateAddress = mne.getDonationAddress();
             std::string strDonationPercentage = mne.getDonationPercentage();
             bool fSuccess = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strDonateAddress, strDonationPercentage, strError);
             
@@ -188,21 +189,17 @@ void MasternodeList::updateMyMasternodeInfo(QString strAlias, QString strAddr, C
         nNewRow = ui->tableWidgetMyMasternodes->rowCount();
         ui->tableWidgetMyMasternodes->insertRow(nNewRow);
     }
-	CScript pubkey;
+    CScript pubkey;
     pubkey = GetScriptForDestination(pmn->pubkey.GetID());
-	CTxDestination address1;
-	ExtractDestination(pubkey, address1);
-    // BitSend ToDo:
-	// CBitsendAddress address2(address1);
+    CTxDestination address1;
+    ExtractDestination(pubkey, address1);
     QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
     QTableWidgetItem* addrItem = new QTableWidgetItem(pmn ? QString::fromStdString(pmn->addr.ToString()) : strAddr);
     QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(pmn ? pmn->protocolVersion : -1));
     QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(pmn ? pmn->Status() : "MISSING"));
     QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::number(pmn->lastTimeSeen - pmn->sigTime));
     QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", pmn ? pmn->lastTimeSeen : 0)));
-    // BitSend ToDo:
-	// QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(pmn ? address2.ToString() : ""));
-    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(pmn ? "" : ""));
+    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(pmn ? EncodeDestination(address1) : ""));
 
     ui->tableWidgetMyMasternodes->setItem(nNewRow, 0, aliasItem);
     ui->tableWidgetMyMasternodes->setItem(nNewRow, 1, addrItem);
@@ -268,12 +265,10 @@ void MasternodeList::updateNodeList()
     std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
 
     for (CMasternode& mn : vMasternodes) {
-		CScript pubkey;
-		pubkey = GetScriptForDestination(mn.pubkey.GetID());
-		CTxDestination address1;
-		ExtractDestination(pubkey, address1);
-		// BitSend ToDo:
-		// CBitsendAddress address2(address1);
+        CScript pubkey;
+        pubkey = GetScriptForDestination(mn.pubkey.GetID());
+        CTxDestination address1;
+        ExtractDestination(pubkey, address1);
         // populate list
         // Address, Protocol, Status, Active Seconds, Last Seen, Pub Key
         QTableWidgetItem* addressItem = new QTableWidgetItem(QString::fromStdString(mn.addr.ToString()));
@@ -281,10 +276,8 @@ void MasternodeList::updateNodeList()
         QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(mn.Status()));
         QTableWidgetItem* activeSecondsItem = new QTableWidgetItem(QString::number(mn.lastTimeSeen - mn.sigTime));
         QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", mn.lastTimeSeen)));
-        // BitSend ToDo:
-		// QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(address2.ToString()));
-		QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(""));
-		
+        QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(EncodeDestination(address1)));
+
         if (strCurrentFilter != "") {
             strToFilter = addressItem->text() + " " +
                           protocolItem->text() + " " +
