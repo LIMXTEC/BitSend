@@ -235,7 +235,7 @@ bool CActiveMasternode::Dseep(CTxIn vin, CService service, CKey keyMasternode, C
     else
     {
         // Seems like we are trying to send a ping while the Masternode is not registered in the network
-        retErrorMessage = "Darksend Masternode List doesn't include our Masternode, Shutting down Masternode pinging service! " + vin.ToString();
+        retErrorMessage = "Masternode List doesn't include our Masternode, Shutting down Masternode pinging service! " + vin.ToString();
         LogPrintf("CActiveMasternode::Dseep() - Error: %s\n", retErrorMessage.c_str());
         status = MASTERNODE_NOT_CAPABLE;
         notCapableReason = retErrorMessage;
