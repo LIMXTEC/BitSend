@@ -121,6 +121,10 @@ private:
     QAction* encryptWalletAction = nullptr;
     QAction* backupWalletAction = nullptr;
     QAction* changePassphraseAction = nullptr;
+    //BSD
+    QAction* unlockWalletAction = nullptr;
+    QAction* lockWalletAction = nullptr;
+    
     QAction* aboutQtAction = nullptr;
     QAction* openRPCConsoleAction = nullptr;
     QAction* openAction = nullptr;
