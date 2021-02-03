@@ -16,8 +16,6 @@
 
 unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Params& params, const CBlockHeader *pblock)
 {
-	// current difficulty formula, ERC3 - DUAL_KGW3, written by Christian Knoepke - apfelbaum@email.de
-	// BitSend and Eropecoin Developer
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
 	bool kgwdebug=false;
@@ -151,6 +149,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 {
     //Initial DK3
     int Diff_Fork1 = 951000;
+    assert(pindexLast != nullptr);
+    unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
     if (pindexLast->nHeight+1 <= Diff_Fork1)
     {
         return DUAL_KGW3(pindexLast, params, pblock);
@@ -161,7 +161,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             return nProofOfWorkLimit;
 
         // Only change once per difficulty adjustment interval
-        if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentIntervalV2() != 0)
+        if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentIntervalV() != 0)
         {
             if (params.fPowAllowMinDifficultyBlocks)
             {
@@ -174,7 +174,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
                 {
                     // Return the last non-special-min-difficulty-rules-block
                     const CBlockIndex* pindex = pindexLast;
-                    while (pindex->pprev && pindex->nHeight % params.DifficultyAdjustmentIntervalV2() != 0 && pindex->nBits == nProofOfWorkLimit)
+                    while (pindex->pprev && pindex->nHeight % params.DifficultyAdjustmentIntervalV() != 0 && pindex->nBits == nProofOfWorkLimit)
                         pindex = pindex->pprev;
                     return pindex->nBits;
                 }
@@ -192,7 +192,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
         // Go back by what we want to be 14 days worth of blocks
         const CBlockIndex* pindexFirst = pindexLast;
-        for (int i = 0; pindexFirst && i < blockstogoback2; i++)
+        for (int i = 0; pindexFirst && i < blockstogoback; i++)
             pindexFirst = pindexFirst->pprev;
 
         assert(pindexFirst);
