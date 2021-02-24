@@ -1220,14 +1220,19 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
    
+   //FORKX17_Main_Net = 240000
 	CAmount nSubsidy = 50 * COIN;
 
 	if (nHeight <= 2)
 		nSubsidy = 1306400 * COIN;
 
+    
     if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
-	if (nHeight >= ((FORKX17_Main_Net*33)-50256))nSubsidy = 1/10 * COIN;
-
+    if (nHeight > (950000))nSubsidy = 12.5 * COIN;
+    if (nHeight > (1000000))nSubsidy = 6.25 * COIN;
+    if (nHeight > (1050000))nSubsidy = 3.125 * COIN;
+    if (nHeight > (1100000))nSubsidy = 1.5625 * COIN;
+    // In the last stage we will generate 315000 BSD per year
 
     return nSubsidy;
 }
@@ -1236,7 +1241,12 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue/5; // start at 20%
 
-
+   if(nHeight >= 1000000)
+   {
+       // We change it to 50% 
+       ret = blockValue / 2;
+       return ret;
+   }
 
    if(nHeight > 140500) ret += blockValue / 20;
 	// 140500
@@ -1262,30 +1272,6 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 	// 235540
 	if(nHeight > 140500+((288*30)* 11)) ret += blockValue / 20;
 	//  244180
-	/* For later Stop by 20% /80%
-	if(nHeight > 140500+((288*30)* 12)) ret += blockValue / 50;
-	// 252820
-	if(nHeight > 140500+((288*30)* 13)) ret += blockValue / 50;
-	// 261460
-	if(nHeight > 140500+((288*30)* 14)) ret += blockValue / 50;
-	// 270100
-	if(nHeight > 140500+((288*30)* 15)) ret += blockValue / 50;
-	// 278740
-	if(nHeight > 140500+((288*30)* 16)) ret += blockValue / 50;
-	// 287380
-	if(nHeight > 140500+((288*30)* 17)) ret += blockValue / 50;
-	// 296020
-	if(nHeight > 140500+((288*30)* 18)) ret += blockValue / 50;
-	// 304660
-	if(nHeight > 140500+((288*30)* 19)) ret += blockValue / 50;
-	// 313300
-	if(nHeight > 140500+((288*30)* 20)) ret += blockValue / 50;
-	//  321940
-	if(nHeight > 140500+((288*30)* 21)) ret += blockValue / 100;
-	*/
-  //  LogPrintf("Zugriff main.cpp 1448 blockValue %u\n", blockValue);
-
-
     return ret;
 }
 

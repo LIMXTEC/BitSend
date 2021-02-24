@@ -16,8 +16,6 @@
 
 unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Params& params, const CBlockHeader *pblock)
 {
-	// current difficulty formula, ERC3 - DUAL_KGW3, written by Christian Knoepke - apfelbaum@email.de
-	// BitSend and Eropecoin Developer
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
 	bool kgwdebug=false;
@@ -150,7 +148,56 @@ unsigned int static DUAL_KGW3(const CBlockIndex* pindexLast, const Consensus::Pa
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
     //Initial DK3
-    return DUAL_KGW3(pindexLast, params, pblock);
+    int Diff_Fork1 = 951000;
+    assert(pindexLast != nullptr);
+    unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
+    if (pindexLast->nHeight+1 <= Diff_Fork1)
+    {
+        return DUAL_KGW3(pindexLast, params, pblock);
+    }
+    //// Update 0.17.9 BSD
+            // Genesis block
+        if (pindexLast == NULL)
+            return nProofOfWorkLimit;
+
+        // Only change once per difficulty adjustment interval
+        if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval() != 0)
+        {
+            if (params.fPowAllowMinDifficultyBlocks)
+            {
+                // Special difficulty rule for testnet:
+                // If the new block's timestamp is more than 2* 10 minutes
+                // then allow mining of a min-difficulty block.
+                if (pblock->GetBlockTime() > pindexLast->GetBlockTime() + params.nPowTargetSpacing*2)
+                    return nProofOfWorkLimit;
+                else
+                {
+                    // Return the last non-special-min-difficulty-rules-block
+                    const CBlockIndex* pindex = pindexLast;
+                    while (pindex->pprev && pindex->nHeight % params.DifficultyAdjustmentInterval() != 0 && pindex->nBits == nProofOfWorkLimit)
+                        pindex = pindex->pprev;
+                    return pindex->nBits;
+                }
+            }
+            // LogPrintf("difficulty adjustment interval %d  \n",(pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval());
+            return pindexLast->nBits;
+        }
+
+        // Go back by what we want to be 14 days worth of blocks
+        // Litecoin: This fixes an issue where a 51% attack can change difficulty at will.
+        // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
+        int blockstogoback = params.DifficultyAdjustmentInterval()-1;
+        if ((pindexLast->nHeight+1) != params.DifficultyAdjustmentInterval())
+            blockstogoback = params.DifficultyAdjustmentInterval();
+
+        // Go back by what we want to be 14 days worth of blocks
+        const CBlockIndex* pindexFirst = pindexLast;
+        for (int i = 0; pindexFirst && i < blockstogoback; i++)
+            pindexFirst = pindexFirst->pprev;
+
+        assert(pindexFirst);
+        return CalculateNextWorkRequired(pindexLast, pindexFirst->GetBlockTime(), params);
+        //// Update 0.17.9 BSD END
 
 }
 
@@ -161,10 +208,10 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
 
     // Limit adjustment step
     int64_t nActualTimespan = pindexLast->GetBlockTime() - nFirstBlockTime;
-    if (nActualTimespan < params.nPowTargetTimespan/4)
-        nActualTimespan = params.nPowTargetTimespan/4;
-    if (nActualTimespan > params.nPowTargetTimespan*4)
-        nActualTimespan = params.nPowTargetTimespan*4;
+    if (nActualTimespan < params.nPowTargetTimespan/1.2)
+        nActualTimespan = params.nPowTargetTimespan/1.2;
+    if (nActualTimespan > params.nPowTargetTimespan*1.2)
+        nActualTimespan = params.nPowTargetTimespan*1.2;
 
     // Retarget
     const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
