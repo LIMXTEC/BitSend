@@ -1,7 +1,7 @@
 
-#include "signhelper_mn.h"//
 #include "protocol.h"
 #include "activemasternode.h"
+#include "signhelper_mn.h"
 #include "masternodeman.h"
 #include "netaddress.h"
 #include <boost/lexical_cast.hpp>
