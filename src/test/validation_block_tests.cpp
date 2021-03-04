@@ -119,11 +119,11 @@ void BuildChain(const uint256& root, int height, const unsigned int invalid_rate
     }
 }
 
-//TODO
 BOOST_AUTO_TEST_CASE(processnewblock_signals_ordering)
 {
 }
-/*    // build a large-ish chain that's likely to have some forks
+/* TODO: Fix ProcessNewBlockHeaders error 
+    // build a large-ish chain that's likely to have some forks
     std::vector<std::shared_ptr<const CBlock>> blocks;
     while (blocks.size() < 50) {
         blocks.clear();

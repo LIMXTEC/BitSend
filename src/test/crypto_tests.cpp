@@ -246,7 +246,8 @@ BOOST_AUTO_TEST_CASE(sha1_testvectors) {
     TestSHA1(test1, "b7755760681cbfd971451668f32af5774f4656b5");
 }
 
-/*BOOST_AUTO_TEST_CASE(sha256_testvectors) {
+/* TODO: Fix TestVector check errors
+BOOST_AUTO_TEST_CASE(sha256_testvectors) {
     TestSHA256("", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
     TestSHA256("abc", "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad");
     TestSHA256("message digest",

@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_CASE(rpc_togglenetwork)
     BOOST_CHECK_EQUAL(netState, true);
 }
 
-/*TODO
+/* TODO: Fix std::runtime_error: Invalid private key
 BOOST_AUTO_TEST_CASE(rpc_rawsign)
 {
     UniValue r;

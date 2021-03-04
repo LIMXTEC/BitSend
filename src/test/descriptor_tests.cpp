@@ -109,6 +109,7 @@ void Check(const std::string& prv, const std::string& pub, int flags, const std:
 
 BOOST_FIXTURE_TEST_SUITE(descriptor_tests, BasicTestingSetup)
 
+// TODO: Fix error in Check
 BOOST_AUTO_TEST_CASE(descriptor_test)
 {
 /*    // Basic single-key compressed

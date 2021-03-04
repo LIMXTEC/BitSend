@@ -113,7 +113,7 @@ BOOST_FIXTURE_TEST_CASE(rescan, TestChain100Setup)
 // greater or equal than key birthday. Previously there was a bug where
 // importwallet RPC would start the scan at the latest block with timestamp less
 // than or equal to key birthday.
-/*TODO
+/* TODO: Fix tests
 BOOST_FIXTURE_TEST_CASE(importwallet_rescan, TestChain100Setup)
 {
     // Create two blocks with same timestamp to verify that importwallet rescan
@@ -315,7 +315,7 @@ public:
     std::unique_ptr<CWallet> wallet;
 };
 
-/*TODO
+/* TODO: Fix test
 BOOST_FIXTURE_TEST_CASE(ListCoins, ListCoinsTestingSetup)
 {
     std::string coinbaseAddress = coinbaseKey.GetPubKey().GetID().ToString();

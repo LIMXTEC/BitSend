@@ -20,7 +20,8 @@ extern UniValue read_json(const std::string& jsondata);
 BOOST_FIXTURE_TEST_SUITE(key_io_tests, BasicTestingSetup)
 
 // Goal: check that parsed keys match test payload
-/*BOOST_AUTO_TEST_CASE(key_io_valid_parse)
+/* TODO: Fix test
+BOOST_AUTO_TEST_CASE(key_io_valid_parse)
 {
     UniValue tests = read_json(std::string(json_tests::key_io_valid, json_tests::key_io_valid + sizeof(json_tests::key_io_valid)));
     CKey privkey;
@@ -84,7 +85,8 @@ BOOST_FIXTURE_TEST_SUITE(key_io_tests, BasicTestingSetup)
 BOOST_AUTO_TEST_CASE(key_io_valid_gen)
 {
 }
-/*    UniValue tests = read_json(std::string(json_tests::key_io_valid, json_tests::key_io_valid + sizeof(json_tests::key_io_valid)));
+/* TODO: Fix test - end bracket above to avoid empty test suite error    
+    UniValue tests = read_json(std::string(json_tests::key_io_valid, json_tests::key_io_valid + sizeof(json_tests::key_io_valid)));
 
     for (unsigned int idx = 0; idx < tests.size(); idx++) {
         UniValue test = tests[idx];
@@ -120,7 +122,8 @@ BOOST_AUTO_TEST_CASE(key_io_valid_gen)
 
 
 // Goal: check that base58 parsing code is robust against a variety of corrupted data
-/*BOOST_AUTO_TEST_CASE(key_io_invalid)
+/* TODO: Fix test
+BOOST_AUTO_TEST_CASE(key_io_invalid)
 {
     UniValue tests = read_json(std::string(json_tests::key_io_invalid, json_tests::key_io_invalid + sizeof(json_tests::key_io_invalid))); // Negative testcases
     CKey privkey;

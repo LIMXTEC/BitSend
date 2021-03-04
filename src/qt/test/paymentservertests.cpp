@@ -64,6 +64,7 @@ static SendCoinsRecipient handleRequest(PaymentServer* server, std::vector<unsig
     return sigCatcher.recipient;
 }
 
+// TODO: Fix all out-commented QCOMPARE
 void PaymentServerTests::paymentServerTests()
 {
     SelectParams(CBaseChainParams::MAIN);

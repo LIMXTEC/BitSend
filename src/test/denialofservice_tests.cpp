@@ -151,6 +151,7 @@ BOOST_AUTO_TEST_CASE(stale_tip_peer_management)
     // Now tip should definitely be stale, and we should look for an extra
     // outbound peer
     peerLogic->CheckForStaleTipAndEvictPeers(consensusParams);
+    //TODO: Fix GetTryNewOutboundPeer error. Error in net.cpp?
     //BOOST_CHECK(connman->GetTryNewOutboundPeer());
 
     // Still no peers should be marked for disconnection
@@ -391,6 +392,7 @@ BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
         for (unsigned int j = 1; j < tx.vin.size(); j++)
             tx.vin[j].scriptSig = tx.vin[0].scriptSig;
 
+        // TODO: Fix AddOrphanTx error. Error in net_processing.cpp?
         //BOOST_CHECK(!AddOrphanTx(MakeTransactionRef(tx), i));
     }
 
