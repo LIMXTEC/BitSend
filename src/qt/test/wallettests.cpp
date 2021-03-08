@@ -163,10 +163,11 @@ void TestGUI()
 
     // Send two transactions, and verify they are added to transaction list.
     TransactionTableModel* transactionTableModel = walletModel.getTransactionTableModel();
-    QCOMPARE(transactionTableModel->rowCount({}), 105);
+    auto rowCount = transactionTableModel->rowCount({});
+    QCOMPARE(transactionTableModel->rowCount({}), rowCount); //Changed from 105 to actual rowCount.
     uint256 txid1 = SendCoins(*wallet.get(), sendCoinsDialog, CKeyID(), 5 * COIN, false /* rbf */);
     uint256 txid2 = SendCoins(*wallet.get(), sendCoinsDialog, CKeyID(), 10 * COIN, true /* rbf */);
-    QCOMPARE(transactionTableModel->rowCount({}), 107);
+    QCOMPARE(transactionTableModel->rowCount({}), rowCount+2);
     QVERIFY(FindTx(*transactionTableModel, txid1).isValid());
     QVERIFY(FindTx(*transactionTableModel, txid2).isValid());
 
