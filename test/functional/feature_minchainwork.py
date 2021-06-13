@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2018 The Bitsend Core developers
+# Copyright (c) 2017-2018 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test logic for setting nMinimumChainWork on command line.
@@ -17,13 +17,13 @@ only succeeds past a given node once its nMinimumChainWork has been exceeded.
 
 import time
 
-from test_framework.test_framework import BitsendTestFramework
-from test_framework.util import connect_nodes, assert_equal
+from test_framework.test_framework import BitSendTestFramework
+from test_framework.util import assert_equal
 
 # 2 hashes required per regtest block (with no difficulty adjustment)
 REGTEST_WORK_PER_BLOCK = 2
 
-class MinimumChainWorkTest(BitsendTestFramework):
+class MinimumChainWorkTest(BitSendTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3
@@ -39,7 +39,7 @@ class MinimumChainWorkTest(BitsendTestFramework):
         # block relay to inbound peers.
         self.setup_nodes()
         for i in range(self.num_nodes-1):
-            connect_nodes(self.nodes[i+1], i)
+            self.connect_nodes(i+1, i)
 
     def run_test(self):
         # Start building a chain on node0.  node2 shouldn't be able to sync until node1's
@@ -51,7 +51,8 @@ class MinimumChainWorkTest(BitsendTestFramework):
 
         num_blocks_to_generate = int((self.node_min_work[1] - starting_chain_work) / REGTEST_WORK_PER_BLOCK)
         self.log.info("Generating %d blocks on node0", num_blocks_to_generate)
-        hashes = self.nodes[0].generate(num_blocks_to_generate)
+        hashes = self.nodes[0].generatetoaddress(num_blocks_to_generate,
+                                                 self.nodes[0].get_deterministic_priv_key().address)
 
         self.log.info("Node0 current chain work: %s", self.nodes[0].getblockheader(hashes[-1])['chainwork'])
 
@@ -72,7 +73,7 @@ class MinimumChainWorkTest(BitsendTestFramework):
         assert_equal(self.nodes[2].getblockcount(), starting_blockcount)
 
         self.log.info("Generating one more block")
-        self.nodes[0].generate(1)
+        self.nodes[0].generatetoaddress(1, self.nodes[0].get_deterministic_priv_key().address)
 
         self.log.info("Verifying nodes are all synced")
 

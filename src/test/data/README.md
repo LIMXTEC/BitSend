@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Bitsend.
+This directory contains data-driven tests for various aspects of BitSend.
 
 License
 --------

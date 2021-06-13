@@ -1,13 +1,14 @@
-# Copyright (c) 2013-2016 The Bitsend Core developers
+# Copyright (c) 2013-2016 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 DIST_SUBDIRS = secp256k1 univalue
 
-AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS) $(GPROF_LDFLAGS) $(SANITIZER_LDFLAGS)
+AM_LDFLAGS = $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS) $(GPROF_LDFLAGS) $(SANITIZER_LDFLAGS)
 AM_CXXFLAGS = $(DEBUG_CXXFLAGS) $(HARDENED_CXXFLAGS) $(WARN_CXXFLAGS) $(NOWARN_CXXFLAGS) $(ERROR_CXXFLAGS) $(GPROF_CXXFLAGS) $(SANITIZER_CXXFLAGS)
 AM_CPPFLAGS = $(DEBUG_CPPFLAGS) $(HARDENED_CPPFLAGS)
 AM_LIBTOOLFLAGS = --preserve-dup-deps
+PTHREAD_FLAGS = $(PTHREAD_CFLAGS) $(PTHREAD_LIBS)
 EXTRA_LIBRARIES =
 
 if EMBEDDED_UNIVALUE
@@ -19,9 +20,8 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BITSEND_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+BITSEND_INCLUDES=-I$(builddir) -I$(srcdir)/secp256k1/include $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-BITSEND_INCLUDES += -I$(srcdir)/secp256k1/include
 BITSEND_INCLUDES += $(UNIVALUE_CFLAGS)
 
 LIBBITSEND_SERVER=libbitsend_server.a
@@ -41,6 +41,7 @@ LIBBITSENDCONSENSUS=libbitsendconsensus.la
 endif
 if ENABLE_WALLET
 LIBBITSEND_WALLET=libbitsend_wallet.a
+LIBBITSEND_WALLET_TOOL=libbitsend_wallet_tool.a
 endif
 
 LIBBITSEND_CRYPTO= $(LIBBITSEND_CRYPTO_BASE)
@@ -70,6 +71,7 @@ EXTRA_LIBRARIES += \
   $(LIBBITSEND_SERVER) \
   $(LIBBITSEND_CLI) \
   $(LIBBITSEND_WALLET) \
+  $(LIBBITSEND_WALLET_TOOL) \
   $(LIBBITSEND_ZMQ)
 
 lib_LTLIBRARIES = $(LIBBITSENDCONSENSUS)
@@ -83,94 +85,122 @@ if BUILD_BITSENDD
   bin_PROGRAMS += bitsendd
 endif
 
-if BUILD_BITSEND_UTILS
-  bin_PROGRAMS += bitsend-cli bitsend-tx
+if BUILD_BITSEND_NODE
+  bin_PROGRAMS += bitsend-node
+endif
+
+if BUILD_BITSEND_CLI
+  bin_PROGRAMS += bitsend-cli
+endif
+if BUILD_BITSEND_TX
+  bin_PROGRAMS += bitsend-tx
+endif
+if ENABLE_WALLET
+if BUILD_BITSEND_WALLET
+  bin_PROGRAMS += bitsend-wallet
+endif
 endif
 
 .PHONY: FORCE check-symbols check-security
 # bitsend core #
 BITSEND_CORE_H = \
-  activemasternode.h \
-  masternode.h \
-  masternode-pos.h \
-  masternodeman.h \
-  masternodeconfig.h \
-  spork.h \
-  signhelper_mn.h \
   addrdb.h \
   addrman.h \
+  attributes.h \
+  banman.h \
   base58.h \
   bech32.h \
-  bloom.h \
   blockencodings.h \
+  blockfilter.h \
+  bloom.h \
   chain.h \
   chainparams.h \
   chainparamsbase.h \
   chainparamsseeds.h \
-  checkpoints.h \
   checkqueue.h \
   clientversion.h \
   coins.h \
   compat.h \
+  compat/assumptions.h \
   compat/byteswap.h \
+  compat/cpuid.h \
   compat/endian.h \
   compat/sanity.h \
   compressor.h \
   consensus/consensus.h \
+  consensus/tx_check.h \
   consensus/tx_verify.h \
   core_io.h \
   core_memusage.h \
   cuckoocache.h \
+  dbwrapper.h \
+  flatfile.h \
   fs.h \
   httprpc.h \
   httpserver.h \
   index/base.h \
+  index/blockfilterindex.h \
+  index/disktxpos.h \
   index/txindex.h \
   indirectmap.h \
   init.h \
+  interfaces/chain.h \
   interfaces/handler.h \
   interfaces/node.h \
   interfaces/wallet.h \
   key.h \
   key_io.h \
-  keystore.h \
-  dbwrapper.h \
-  limitedmap.h \
   logging.h \
+  logging/timer.h \
   memusage.h \
   merkleblock.h \
   miner.h \
   net.h \
+  net_permissions.h \
   net_processing.h \
+  net_types.h \
   netaddress.h \
   netbase.h \
   netmessagemaker.h \
+  node/coin.h \
+  node/coinstats.h \
+  node/context.h \
+  node/psbt.h \
+  node/transaction.h \
+  node/ui_interface.h \
+  node/utxo_snapshot.h \
   noui.h \
+  optional.h \
   outputtype.h \
   policy/feerate.h \
   policy/fees.h \
   policy/policy.h \
   policy/rbf.h \
+  policy/settings.h \
   pow.h \
   protocol.h \
+  psbt.h \
   random.h \
+  randomenv.h \
   reverse_iterator.h \
-  reverselock.h \
   rpc/blockchain.h \
   rpc/client.h \
   rpc/mining.h \
   rpc/protocol.h \
-  rpc/server.h \
-  rpc/rawtransaction.h \
+  rpc/rawtransaction_util.h \
   rpc/register.h \
+  rpc/request.h \
+  rpc/server.h \
   rpc/util.h \
   scheduler.h \
   script/descriptor.h \
-  script/ismine.h \
+  script/keyorigin.h \
   script/sigcache.h \
   script/sign.h \
+  script/signingprovider.h \
   script/standard.h \
   shutdown.h \
+  signet.h \
   streams.h \
   support/allocators/secure.h \
   support/allocators/zeroafterfree.h \
@@ -178,38 +208,66 @@ BITSEND_CORE_H = \
   support/events.h \
   support/lockedpool.h \
   sync.h \
-  threadsafety.h \
   threadinterrupt.h \
+  threadsafety.h \
   timedata.h \
   torcontrol.h \
   txdb.h \
+  txrequest.h \
   txmempool.h \
-  ui_interface.h \
   undo.h \
-  util.h \
-  utilmemory.h \
-  utilmoneystr.h \
-  utiltime.h \
+  util/asmap.h \
+  util/bip32.h \
+  util/bytevectorhash.h \
+  util/check.h \
+  util/error.h \
+  util/fees.h \
+  util/golombrice.h \
+  util/macros.h \
+  util/memory.h \
+  util/message.h \
+  util/moneystr.h \
+  util/rbf.h \
+  util/ref.h \
+  util/settings.h \
+  util/spanparsing.h \
+  util/string.h \
+  util/system.h \
+  util/threadnames.h \
+  util/time.h \
+  util/translation.h \
+  util/ui_change_type.h \
+  util/url.h \
+  util/vector.h \
   validation.h \
   validationinterface.h \
   versionbits.h \
-  walletinitinterface.h \
+  versionbitsinfo.h \
+  wallet/bdb.h \
   wallet/coincontrol.h \
+  wallet/coinselection.h \
+  wallet/context.h \
   wallet/crypter.h \
   wallet/db.h \
   wallet/feebumper.h \
   wallet/fees.h \
+  wallet/ismine.h \
+  wallet/load.h \
   wallet/rpcwallet.h \
+  wallet/salvage.h \
+  wallet/scriptpubkeyman.h \
+  wallet/sqlite.h \
   wallet/wallet.h \
   wallet/walletdb.h \
+  wallet/wallettool.h \
   wallet/walletutil.h \
-  wallet/coinselection.h \
+  walletinitinterface.h \
   warnings.h \
   zmq/zmqabstractnotifier.h \
-  zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h \
-  zmq/zmqrpc.h
+  zmq/zmqrpc.h \
+  zmq/zmqutil.h
 
 
 obj/build.h: FORCE
@@ -219,38 +277,42 @@ obj/build.h: FORCE
 libbitsend_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between bitsendd and bitsend-qt
+# Contains code accessing mempool and chain state that is meant to be separated
+# from wallet and gui code (see node/README.md). Shared code should go in
+# libbitsend_common or libbitsend_util libraries, instead.
 libbitsend_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitsend_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_server_a_SOURCES = \
-  activemasternode.cpp \
-  bitpool.cpp \
-  masternode.cpp \
-  masternode-pos.cpp \
-  masternodeconfig.cpp \
-  masternodeman.cpp \
-  spork.cpp \
   addrdb.cpp \
   addrman.cpp \
-  bloom.cpp \
+  banman.cpp \
   blockencodings.cpp \
+  blockfilter.cpp \
   chain.cpp \
-  checkpoints.cpp \
   consensus/tx_verify.cpp \
+  dbwrapper.cpp \
+  flatfile.cpp \
   httprpc.cpp \
   httpserver.cpp \
   index/base.cpp \
+  index/blockfilterindex.cpp \
   index/txindex.cpp \
   init.cpp \
-  dbwrapper.cpp \
-  merkleblock.cpp \
+  interfaces/chain.cpp \
+  interfaces/node.cpp \
   miner.cpp \
   net.cpp \
   net_processing.cpp \
+  node/coin.cpp \
+  node/coinstats.cpp \
+  node/context.cpp \
+  node/psbt.cpp \
+  node/transaction.cpp \
+  node/ui_interface.cpp \
   noui.cpp \
-  outputtype.cpp \
   policy/fees.cpp \
-  policy/policy.cpp \
   policy/rbf.cpp \
+  policy/settings.cpp \
   pow.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
@@ -259,49 +321,70 @@ libbitsend_server_a_SOURCES = \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
   rpc/server.cpp \
-  rpc/util.cpp \
   script/sigcache.cpp \
   shutdown.cpp \
+  signet.cpp \
   timedata.cpp \
   torcontrol.cpp \
   txdb.cpp \
+  txrequest.cpp \
   txmempool.cpp \
-  ui_interface.cpp \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
   $(BITSEND_CORE_H)
 
+if ENABLE_WALLET
+libbitsend_server_a_SOURCES += wallet/init.cpp
+endif
+if !ENABLE_WALLET
+libbitsend_server_a_SOURCES += dummywallet.cpp
+endif
+
 if ENABLE_ZMQ
-libbitsend_zmq_a_CPPFLAGS = $(BITSEND_INCLUDES) $(ZMQ_CFLAGS)
+libbitsend_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(ZMQ_CFLAGS)
 libbitsend_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp \
-  zmq/zmqrpc.cpp
+  zmq/zmqrpc.cpp \
+  zmq/zmqutil.cpp
 endif
 
 
 # wallet: shared between bitsendd and bitsend-qt, but only linked
 # when wallet enabled
-libbitsend_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
+libbitsend_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(SQLITE_CFLAGS)
 libbitsend_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_wallet_a_SOURCES = \
-  activemasternode.cpp \
   interfaces/wallet.cpp \
+  wallet/bdb.cpp \
   wallet/coincontrol.cpp \
+  wallet/context.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/feebumper.cpp \
   wallet/fees.cpp \
-  wallet/init.cpp \
+  wallet/load.cpp \
   wallet/rpcdump.cpp \
   wallet/rpcwallet.cpp \
+  wallet/salvage.cpp \
+  wallet/scriptpubkeyman.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
+  $(BITSEND_CORE_H)
+
+if USE_SQLITE
+libbitsend_wallet_a_SOURCES += wallet/sqlite.cpp
+endif
+
+libbitsend_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
+libbitsend_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libbitsend_wallet_tool_a_SOURCES = \
+  wallet/wallettool.cpp \
   $(BITSEND_CORE_H)
 
 # crypto primitives library
@@ -310,57 +393,31 @@ crypto_libbitsend_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libbitsend_crypto_base_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
+  crypto/chacha_poly_aead.h \
+  crypto/chacha_poly_aead.cpp \
   crypto/chacha20.h \
   crypto/chacha20.cpp \
   crypto/common.h \
+  crypto/hkdf_sha256_32.cpp \
+  crypto/hkdf_sha256_32.h \
   crypto/hmac_sha256.cpp \
   crypto/hmac_sha256.h \
   crypto/hmac_sha512.cpp \
   crypto/hmac_sha512.h \
+  crypto/poly1305.h \
+  crypto/poly1305.cpp \
   crypto/ripemd160.cpp \
   crypto/ripemd160.h \
   crypto/sha1.cpp \
   crypto/sha1.h \
   crypto/sha256.cpp \
   crypto/sha256.h \
+  crypto/sha3.cpp \
+  crypto/sha3.h \
   crypto/sha512.cpp \
-  crypto/sha512.h  \
-  crypto/aes_helper.c \
-  crypto/luffa.c \
-  crypto/groestl.c \
-  crypto/jh.c \
-  crypto/echo.c \
-  crypto/shavite.c \
-  crypto/keccak.c \
-  crypto/skein.c \
-  crypto/fugue.c \
-  crypto/hamsi.c \
-  crypto/haval.c \
-  crypto/shabal.c \
-  crypto/whirlpool.c \
-  crypto/sph_sha2big.c \
-  crypto/bmw.c \
-  crypto/simd.c \
-  crypto/cubehash.c \
-  crypto/blake.c \
-  crypto/sph_blake.h \
-  crypto/sph_bmw.h \
-  crypto/sph_cubehash.h \
-  crypto/sph_echo.h \
-  crypto/sph_groestl.h \
-  crypto/sph_jh.h \
-  crypto/sph_keccak.h \
-  crypto/sph_luffa.h \
-  crypto/sph_shavite.h \
-  crypto/sph_simd.h \
-  crypto/sph_skein.h \
-  crypto/sph_types.h \
-  crypto/sph_fugue.h \
-  crypto/sph_hamsi.h \
-  crypto/sph_haval.h \
-  crypto/sph_shabal.h \
-  crypto/sph_sha2.h \
-  crypto/sph_whirlpool.h 
+  crypto/sha512.h \
+  crypto/siphash.cpp \
+  crypto/siphash.h
 
 if USE_ASM
 crypto_libbitsend_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
@@ -394,6 +451,7 @@ libbitsend_consensus_a_SOURCES = \
   consensus/merkle.cpp \
   consensus/merkle.h \
   consensus/params.h \
+  consensus/tx_check.cpp \
   consensus/validation.h \
   hash.cpp \
   hash.h \
@@ -416,17 +474,17 @@ libbitsend_consensus_a_SOURCES = \
   tinyformat.h \
   uint256.cpp \
   uint256.h \
-  utilstrencodings.cpp \
-  utilstrencodings.h \
+  util/strencodings.cpp \
+  util/strencodings.h \
   version.h
 
 # common: shared between bitsendd, and bitsend-qt and non-server tools
 libbitsend_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_common_a_SOURCES = \
-  activemasternode.cpp \
   base58.cpp \
   bech32.cpp \
+  bloom.cpp \
   chainparams.cpp \
   coins.cpp \
   compressor.cpp \
@@ -434,16 +492,23 @@ libbitsend_common_a_SOURCES = \
   core_write.cpp \
   key.cpp \
   key_io.cpp \
-  keystore.cpp \
+  merkleblock.cpp \
   netaddress.cpp \
   netbase.cpp \
+  net_permissions.cpp \
+  outputtype.cpp \
   policy/feerate.cpp \
+  policy/policy.cpp \
   protocol.cpp \
+  psbt.cpp \
+  rpc/rawtransaction_util.cpp \
+  rpc/util.cpp \
   scheduler.cpp \
   script/descriptor.cpp \
-  script/ismine.cpp \
   script/sign.cpp \
+  script/signingprovider.cpp \
   script/standard.cpp \
+  versionbitsinfo.cpp \
   warnings.cpp \
   $(BITSEND_CORE_H)
 
@@ -461,18 +526,33 @@ libbitsend_util_a_SOURCES = \
   compat/strnlen.cpp \
   fs.cpp \
   interfaces/handler.cpp \
-  interfaces/node.cpp \
   logging.cpp \
   random.cpp \
-  rpc/protocol.cpp \
+  randomenv.cpp \
+  rpc/request.cpp \
   support/cleanse.cpp \
   sync.cpp \
   threadinterrupt.cpp \
-  util.cpp \
-  utilmoneystr.cpp \
-  utilstrencodings.cpp \
-  utiltime.cpp \
+  util/asmap.cpp \
+  util/bip32.cpp \
+  util/bytevectorhash.cpp \
+  util/error.cpp \
+  util/fees.cpp \
+  util/system.cpp \
+  util/message.cpp \
+  util/moneystr.cpp \
+  util/rbf.cpp \
+  util/settings.cpp \
+  util/threadnames.cpp \
+  util/spanparsing.cpp \
+  util/strencodings.cpp \
+  util/string.cpp \
+  util/time.cpp \
   $(BITSEND_CORE_H)
+
+if USE_LIBEVENT
+libbitsend_util_a_SOURCES += util/url.cpp
+endif
 
 if GLIBC_BACK_COMPAT
 libbitsend_util_a_SOURCES += compat/glibc_compat.cpp
@@ -483,28 +563,29 @@ endif
 libbitsend_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 libbitsend_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitsend_cli_a_SOURCES = \
+  compat/stdin.h \
+  compat/stdin.cpp \
   rpc/client.cpp \
   $(BITSEND_CORE_H)
 
 nodist_libbitsend_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitsendd binary #
-bitsendd_SOURCES = bitsendd.cpp
-bitsendd_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
-bitsendd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitsendd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# bitsendd & bitsend-node binaries #
+bitsend_daemon_sources = bitsendd.cpp
+bitsend_bin_cppflags = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
+bitsend_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bitsend_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitsendd_SOURCES += bitsendd-res.rc
+bitsend_daemon_sources += bitsendd-res.rc
 endif
 
-bitsendd_LDADD = \
-  $(LIBBITSEND_SERVER) \
+bitsend_bin_ldadd = \
   $(LIBBITSEND_WALLET) \
   $(LIBBITSEND_COMMON) \
-  $(LIBUNIVALUE) \
   $(LIBBITSEND_UTIL) \
+  $(LIBUNIVALUE) \
   $(LIBBITSEND_ZMQ) \
   $(LIBBITSEND_CONSENSUS) \
   $(LIBBITSEND_CRYPTO) \
@@ -513,13 +594,25 @@ bitsendd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitsendd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+bitsend_bin_ldadd += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
+
+bitsendd_SOURCES = $(bitsend_daemon_sources)
+bitsendd_CPPFLAGS = $(bitsend_bin_cppflags)
+bitsendd_CXXFLAGS = $(bitsend_bin_cxxflags)
+bitsendd_LDFLAGS = $(bitsend_bin_ldflags)
+bitsendd_LDADD = $(LIBBITSEND_SERVER) $(bitsend_bin_ldadd)
+
+bitsend_node_SOURCES = $(bitsend_daemon_sources)
+bitsend_node_CPPFLAGS = $(bitsend_bin_cppflags)
+bitsend_node_CXXFLAGS = $(bitsend_bin_cxxflags)
+bitsend_node_LDFLAGS = $(bitsend_bin_ldflags)
+bitsend_node_LDADD = $(LIBBITSEND_SERVER) $(bitsend_bin_ldadd)
 
 # bitsend-cli binary #
 bitsend_cli_SOURCES = bitsend-cli.cpp
 bitsend_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES) $(EVENT_CFLAGS)
 bitsend_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitsend_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bitsend_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
 bitsend_cli_SOURCES += bitsend-cli-res.rc
@@ -531,14 +624,14 @@ bitsend_cli_LDADD = \
   $(LIBBITSEND_UTIL) \
   $(LIBBITSEND_CRYPTO)
 
-bitsend_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+bitsend_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
 
 # bitsend-tx binary #
 bitsend_tx_SOURCES = bitsend-tx.cpp
 bitsend_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITSEND_INCLUDES)
 bitsend_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitsend_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bitsend_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
 bitsend_tx_SOURCES += bitsend-tx-res.rc
@@ -552,13 +645,25 @@ bitsend_tx_LDADD = \
   $(LIBBITSEND_CRYPTO) \
   $(LIBSECP256K1)
 
-bitsend_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+bitsend_tx_LDADD += $(BOOST_LIBS)
+#
+
+# bitsend-wallet binary #
+bitsend_wallet_SOURCES = bitsend-wallet.cpp
+bitsend_wallet_CPPFLAGS = $(bitsend_bin_cppflags)
+bitsend_wallet_CXXFLAGS = $(bitsend_bin_cxxflags)
+bitsend_wallet_LDFLAGS = $(bitsend_bin_ldflags)
+bitsend_wallet_LDADD = $(LIBBITSEND_WALLET_TOOL) $(bitsend_bin_ldadd)
+
+if TARGET_WINDOWS
+bitsend_wallet_SOURCES += bitsend-wallet-res.rc
+endif
 #
 
 # bitsendconsensus library #
 if BUILD_BITSEND_LIBS
 include_HEADERS = script/bitsendconsensus.h
-libbitsendconsensus_la_SOURCES = $(crypto_libbitsend_crypto_base_a_SOURCES) $(libbitsend_consensus_a_SOURCES)
+libbitsendconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitsend_crypto_base_a_SOURCES) $(libbitsend_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
   libbitsendconsensus_la_SOURCES += compat/glibc_compat.cpp
@@ -583,12 +688,18 @@ CLEANFILES = $(EXTRA_LIBRARIES)
 CLEANFILES += *.gcda *.gcno
 CLEANFILES += compat/*.gcda compat/*.gcno
 CLEANFILES += consensus/*.gcda consensus/*.gcno
+CLEANFILES += crc32c/src/*.gcda crc32c/src/*.gcno
 CLEANFILES += crypto/*.gcda crypto/*.gcno
+CLEANFILES += index/*.gcda index/*.gcno
+CLEANFILES += interfaces/*.gcda interfaces/*.gcno
+CLEANFILES += node/*.gcda node/*.gcno
 CLEANFILES += policy/*.gcda policy/*.gcno
 CLEANFILES += primitives/*.gcda primitives/*.gcno
+CLEANFILES += rpc/*.gcda rpc/*.gcno
 CLEANFILES += script/*.gcda script/*.gcno
 CLEANFILES += support/*.gcda support/*.gcno
 CLEANFILES += univalue/*.gcda univalue/*.gcno
+CLEANFILES += util/*.gcda util/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
@@ -610,7 +721,6 @@ clean-local:
 	-rm -f leveldb/*/*.gcda leveldb/*/*.gcno leveldb/helpers/memenv/*.gcda leveldb/helpers/memenv/*.gcno
 	-rm -f config.h
 	-rm -rf test/__pycache__
-	-rm -rf *.dSYM test/*.dSYM bench/*.dSYM qt/*.dSYM qt/test/*.dSYM
 
 .rc.o:
 	@test -f $(WINDRES)
@@ -618,24 +728,34 @@ clean-local:
 	$(AM_V_GEN) $(WINDRES) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) -DWINDRES_PREPROC -i $< -o $@
 
 check-symbols: $(bin_PROGRAMS)
+if TARGET_DARWIN
+	@echo "Checking macOS dynamic libraries..."
+	$(AM_V_at) OTOOL=$(OTOOL) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py $(bin_PROGRAMS)
+endif
+
+if TARGET_WINDOWS
+	@echo "Checking Windows dynamic libraries..."
+	$(AM_V_at) OBJDUMP=$(OBJDUMP) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py $(bin_PROGRAMS)
+endif
+
 if GLIBC_BACK_COMPAT
 	@echo "Checking glibc back compat..."
-	$(AM_V_at) READELF=$(READELF) CPPFILT=$(CPPFILT) $(top_srcdir)/contrib/devtools/symbol-check.py < $(bin_PROGRAMS)
+	$(AM_V_at) READELF=$(READELF) CPPFILT=$(CPPFILT) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py $(bin_PROGRAMS)
 endif
 
 check-security: $(bin_PROGRAMS)
 if HARDEN
 	@echo "Checking binary security..."
-	$(AM_V_at) READELF=$(READELF) OBJDUMP=$(OBJDUMP) $(top_srcdir)/contrib/devtools/security-check.py < $(bin_PROGRAMS)
+	$(AM_V_at) READELF=$(READELF) OBJDUMP=$(OBJDUMP) OTOOL=$(OTOOL) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
-
-%.pb.cc %.pb.h: %.proto
-	@test -f $(PROTOC)
-	$(AM_V_GEN) $(PROTOC) --cpp_out=$(@D) --proto_path=$(<D) $<
 
 if EMBEDDED_LEVELDB
+include Makefile.crc32c.include
 include Makefile.leveldb.include
 endif
+
+include Makefile.test_util.include
+include Makefile.test_fuzz.include
 
 if ENABLE_TESTS
 include Makefile.test.include

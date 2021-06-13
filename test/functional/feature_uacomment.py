@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2018 The Bitsend Core developers
+# Copyright (c) 2017-2019 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the -uacomment option."""
 
 import re
 
-from test_framework.test_framework import BitsendTestFramework
+from test_framework.test_framework import BitSendTestFramework
 from test_framework.test_node import ErrorMatch
 from test_framework.util import assert_equal
 
 
-class UacommentTest(BitsendTestFramework):
+class UacommentTest(BitSendTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True
@@ -27,12 +27,12 @@ class UacommentTest(BitsendTestFramework):
 
         self.log.info("test -uacomment max length")
         self.stop_node(0)
-        expected = "Error: Total length of network version string \([0-9]+\) exceeds maximum length \(256\). Reduce the number or size of uacomments."
+        expected = r"Error: Total length of network version string \([0-9]+\) exceeds maximum length \(256\). Reduce the number or size of uacomments."
         self.nodes[0].assert_start_raises_init_error(["-uacomment=" + 'a' * 256], expected, match=ErrorMatch.FULL_REGEX)
 
         self.log.info("test -uacomment unsafe characters")
-        for unsafe_char in ['/', ':', '(', ')']:
-            expected = "Error: User Agent comment \(" + re.escape(unsafe_char) + "\) contains unsafe characters."
+        for unsafe_char in ['/', ':', '(', ')', '₿', '🏃']:
+            expected = r"Error: User Agent comment \(" + re.escape(unsafe_char) + r"\) contains unsafe characters."
             self.nodes[0].assert_start_raises_init_error(["-uacomment=" + unsafe_char], expected, match=ErrorMatch.FULL_REGEX)
 
 

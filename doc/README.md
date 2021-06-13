@@ -1,15 +1,15 @@
-Bitsend Core
+BitSend Core
 =============
 
 Setup
 ---------------------
-Bitsend Core is the original Bitsend client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Bitsend transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+BitSend Core is the original BitSend client and it builds the backbone of the network. It downloads and, by default, stores the entire history of BitSend transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Bitsend Core, visit [bitsend.cc](https://bitsend.cc).
+To download BitSend Core, visit [bitsendcore.org](https://bitsendcore.org/en/download/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Bitsend Core on your native platform.
+The following are some helpful notes on how to run BitSend Core on your native platform.
 
 ### Unix
 
@@ -24,38 +24,40 @@ Unpack the files into a directory, and then run bitsend-qt.exe.
 
 ### macOS
 
-Drag Bitsend Core to your applications folder, and then run Bitsend Core.
+Drag BitSend Core to your applications folder, and then run BitSend Core.
 
 ### Need Help?
 
-* See the documentation at the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page)
+* See the documentation at the [BitSend Wiki](https://en.bitsend.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [#bitcoin](http://webchat.freenode.net?channels=bitcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=bitcoin).
-* Ask for help on the [BitcoinTalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
+* Ask for help on [#bitsend](https://webchat.freenode.net/#bitsend) on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitsend).
+* Ask for help on the [BitSendTalk](https://bitsendtalk.org/) forums, in the [Technical Support board](https://bitsendtalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build Bitsend Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build BitSend Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [macOS Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
 - [Windows Build Notes](build-windows.md)
+- [FreeBSD Build Notes](build-freebsd.md)
 - [OpenBSD Build Notes](build-openbsd.md)
 - [NetBSD Build Notes](build-netbsd.md)
-- [Gitian Building Guide](gitian-building.md)
+- [Gitian Building Guide (External Link)](https://github.com/bitsend-core/docs/blob/master/gitian-building.md)
 
 Development
 ---------------------
-The Bitsend repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The BitSend repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
+- [Productivity Notes](productivity.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/bitsend/doxygen/)
+- [Source Code Documentation (External Link)](https://doxygen.bitsendcore.org/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
-- [Travis CI](travis-ci.md)
+- [JSON-RPC Interface](JSON-RPC-interface.md)
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Shared Libraries](shared-libraries.md)
 - [BIPS](bips.md)
@@ -63,21 +65,22 @@ The Bitsend repo's [root README](/README.md) contains relevant information on th
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [bitcointalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
-* Discuss project-specific development on #bitcoin-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitcoin-core-dev).
-* Discuss general Bitsend development on #bitcoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=bitcoin-dev).
+* Discuss on the [BitSendTalk](https://bitsendtalk.org/) forums, in the [Development & Technical Discussion board](https://bitsendtalk.org/index.php?board=6.0).
+* Discuss project-specific development on #bitsend-core-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitsend-core-dev).
+* Discuss general BitSend development on #bitsend-dev on Freenode. If you don't have an IRC client, use [webchat here](https://webchat.freenode.net/#bitsend-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
+- [bitsend.conf Configuration File](bitsend-conf.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)
+- [Reduce Memory](reduce-memory.md)
 - [Reduce Traffic](reduce-traffic.md)
 - [Tor Support](tor.md)
 - [Init Scripts (systemd/upstart/openrc)](init.md)
 - [ZMQ](zmq.md)
+- [PSBT support](psbt.md)
 
 License
 ---------------------
 Distributed under the [MIT software license](/COPYING).
-This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
-cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

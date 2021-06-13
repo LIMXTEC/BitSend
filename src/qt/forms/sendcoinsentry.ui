@@ -17,9 +17,6 @@
    <bool>false</bool>
   </property>
   <widget class="QFrame" name="SendCoins">
-   <property name="toolTip">
-    <string>This is a normal payment.</string>
-   </property>
    <property name="frameShape">
     <enum>QFrame::NoFrame</enum>
    </property>
@@ -57,7 +54,7 @@
       <item>
        <widget class="QValidatedLineEdit" name="payTo">
         <property name="toolTip">
-         <string>The Bitsend address to send the payment to</string>
+         <string>The BitSend address to send the payment to</string>
         </property>
        </widget>
       </item>
@@ -147,6 +144,9 @@
       <property name="toolTip">
        <string>Enter a label for this address to add it to the list of used addresses</string>
       </property>
+      <property name="placeholderText">
+       <string>Enter a label for this address to add it to the list of used addresses</string>
+      </property>
      </widget>
     </item>
     <item row="2" column="0">
@@ -165,7 +165,11 @@
     <item row="2" column="1">
      <layout class="QHBoxLayout" name="horizontalLayoutAmount" stretch="0,1,0">
       <item>
-       <widget class="BitsendAmountField" name="payAmount"/>
+       <widget class="BitSendAmountField" name="payAmount">
+         <property name="toolTip">
+          <string>The amount to send in the selected unit</string>
+         </property>
+       </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="checkboxSubtractFeeFromAmount">
@@ -199,7 +203,7 @@
     <item row="3" column="1">
      <widget class="QLabel" name="messageTextLabel">
       <property name="toolTip">
-       <string>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitsend network.</string>
+       <string>A message that was attached to the bitsend: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the BitSend network.</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
@@ -709,7 +713,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="BitsendAmountField" name="payAmount_is">
+     <widget class="BitSendAmountField" name="payAmount_is">
       <property name="acceptDrops">
        <bool>false</bool>
       </property>
@@ -1242,7 +1246,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="BitsendAmountField" name="payAmount_s">
+     <widget class="BitSendAmountField" name="payAmount_s">
       <property name="acceptDrops">
        <bool>false</bool>
       </property>
@@ -1258,7 +1262,7 @@
    <header>qt/qvalidatedlineedit.h</header>
   </customwidget>
   <customwidget>
-   <class>BitsendAmountField</class>
+   <class>BitSendAmountField</class>
    <extends>QLineEdit</extends>
    <header>qt/bitsendamountfield.h</header>
   </customwidget>

@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Bitsend"
-            VALUE "FileDescription",    "bitsend-tx (CLI Bitsend transaction editor utility)"
+            VALUE "CompanyName",        "BitSend"
+            VALUE "FileDescription",    "bitsend-tx (CLI BitSend transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "bitsend-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR

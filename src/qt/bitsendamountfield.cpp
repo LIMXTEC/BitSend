@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2018 The Bitsend Core developers
+// Copyright (c) 2011-2019 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,6 +6,7 @@
 
 #include <qt/bitsendunits.h>
 #include <qt/guiconstants.h>
+#include <qt/guiutil.h>
 #include <qt/qvaluecombobox.h>
 
 #include <QApplication>
@@ -23,16 +24,14 @@ class AmountSpinBox: public QAbstractSpinBox
 
 public:
     explicit AmountSpinBox(QWidget *parent):
-        QAbstractSpinBox(parent),
-        currentUnit(BitsendUnits::BTC),
-        singleStep(100000) // satoshis
+        QAbstractSpinBox(parent)
     {
         setAlignment(Qt::AlignRight);
 
-        connect(lineEdit(), SIGNAL(textEdited(QString)), this, SIGNAL(valueChanged()));
+        connect(lineEdit(), &QLineEdit::textEdited, this, &AmountSpinBox::valueChanged);
     }
 
-    QValidator::State validate(QString &text, int &pos) const
+    QValidator::State validate(QString &text, int &pos) const override
     {
         if(text.isEmpty())
             return QValidator::Intermediate;
@@ -42,34 +41,58 @@ public:
         return valid ? QValidator::Intermediate : QValidator::Invalid;
     }
 
-    void fixup(QString &input) const
+    void fixup(QString &input) const override
     {
-        bool valid = false;
-        CAmount val = parse(input, &valid);
-        if(valid)
-        {
-            input = BitsendUnits::format(currentUnit, val, false, BitsendUnits::separatorAlways);
+        bool valid;
+        CAmount val;
+
+        if (input.isEmpty() && !m_allow_empty) {
+            valid = true;
+            val = m_min_amount;
+        } else {
+            valid = false;
+            val = parse(input, &valid);
+        }
+
+        if (valid) {
+            val = qBound(m_min_amount, val, m_max_amount);
+            input = BitSendUnits::format(currentUnit, val, false, BitSendUnits::SeparatorStyle::ALWAYS);
             lineEdit()->setText(input);
         }
     }
 
-    CAmount value(bool *valid_out=0) const
+    CAmount value(bool *valid_out=nullptr) const
     {
         return parse(text(), valid_out);
     }
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(BitsendUnits::format(currentUnit, value, false, BitsendUnits::separatorAlways));
+        lineEdit()->setText(BitSendUnits::format(currentUnit, value, false, BitSendUnits::SeparatorStyle::ALWAYS));
         Q_EMIT valueChanged();
     }
 
-    void stepBy(int steps)
+    void SetAllowEmpty(bool allow)
+    {
+        m_allow_empty = allow;
+    }
+
+    void SetMinValue(const CAmount& value)
+    {
+        m_min_amount = value;
+    }
+
+    void SetMaxValue(const CAmount& value)
+    {
+        m_max_amount = value;
+    }
+
+    void stepBy(int steps) override
     {
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), BitsendUnits::maxMoney());
+        val = qBound(m_min_amount, val, m_max_amount);
         setValue(val);
     }
 
@@ -79,7 +102,7 @@ public:
         CAmount val = value(&valid);
 
         currentUnit = unit;
-
+        lineEdit()->setPlaceholderText(BitSendUnits::format(currentUnit, m_min_amount, false, BitSendUnits::SeparatorStyle::ALWAYS));
         if(valid)
             setValue(val);
         else
@@ -91,7 +114,7 @@ public:
         singleStep = step;
     }
 
-    QSize minimumSizeHint() const
+    QSize minimumSizeHint() const override
     {
         if(cachedMinimumSizeHint.isEmpty())
         {
@@ -99,7 +122,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(BitsendUnits::format(BitsendUnits::BTC, BitsendUnits::maxMoney(), false, BitsendUnits::separatorAlways));
+            int w = GUIUtil::TextWidth(fm, BitSendUnits::format(BitSendUnits::BTC, BitSendUnits::maxMoney(), false, BitSendUnits::SeparatorStyle::ALWAYS));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -125,22 +148,25 @@ public:
     }
 
 private:
-    int currentUnit;
-    CAmount singleStep;
+    int currentUnit{BitSendUnits::BTC};
+    CAmount singleStep{CAmount(100000)}; // satoshis
     mutable QSize cachedMinimumSizeHint;
+    bool m_allow_empty{true};
+    CAmount m_min_amount{CAmount(0)};
+    CAmount m_max_amount{BitSendUnits::maxMoney()};
 
     /**
      * Parse a string into a number of base monetary units and
      * return validity.
      * @note Must return 0 if !valid.
      */
-    CAmount parse(const QString &text, bool *valid_out=0) const
+    CAmount parse(const QString &text, bool *valid_out=nullptr) const
     {
         CAmount val = 0;
-        bool valid = BitsendUnits::parse(currentUnit, text, &val);
+        bool valid = BitSendUnits::parse(currentUnit, text, &val);
         if(valid)
         {
-            if(val < 0 || val > BitsendUnits::maxMoney())
+            if(val < 0 || val > BitSendUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -149,7 +175,7 @@ private:
     }
 
 protected:
-    bool event(QEvent *event)
+    bool event(QEvent *event) override
     {
         if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease)
         {
@@ -164,21 +190,20 @@ protected:
         return QAbstractSpinBox::event(event);
     }
 
-    StepEnabled stepEnabled() const
+    StepEnabled stepEnabled() const override
     {
         if (isReadOnly()) // Disable steps when AmountSpinBox is read-only
             return StepNone;
         if (text().isEmpty()) // Allow step-up with empty field
             return StepUpEnabled;
 
-        StepEnabled rv = 0;
+        StepEnabled rv = StepNone;
         bool valid = false;
         CAmount val = value(&valid);
-        if(valid)
-        {
-            if(val > 0)
+        if (valid) {
+            if (val > m_min_amount)
                 rv |= StepDownEnabled;
-            if(val < BitsendUnits::maxMoney())
+            if (val < m_max_amount)
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -190,9 +215,9 @@ Q_SIGNALS:
 
 #include <qt/bitsendamountfield.moc>
 
-BitsendAmountField::BitsendAmountField(QWidget *parent) :
+BitSendAmountField::BitSendAmountField(QWidget *parent) :
     QWidget(parent),
-    amount(0)
+    amount(nullptr)
 {
     amount = new AmountSpinBox(this);
     amount->setLocale(QLocale::c());
@@ -202,7 +227,7 @@ BitsendAmountField::BitsendAmountField(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new BitsendUnits(this));
+    unit->setModel(new BitSendUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -213,26 +238,26 @@ BitsendAmountField::BitsendAmountField(QWidget *parent) :
     setFocusProxy(amount);
 
     // If one if the widgets changes, the combined content changes as well
-    connect(amount, SIGNAL(valueChanged()), this, SIGNAL(valueChanged()));
-    connect(unit, SIGNAL(currentIndexChanged(int)), this, SLOT(unitChanged(int)));
+    connect(amount, &AmountSpinBox::valueChanged, this, &BitSendAmountField::valueChanged);
+    connect(unit, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &BitSendAmountField::unitChanged);
 
     // Set default based on configuration
     unitChanged(unit->currentIndex());
 }
 
-void BitsendAmountField::clear()
+void BitSendAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-void BitsendAmountField::setEnabled(bool fEnabled)
+void BitSendAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
     unit->setEnabled(fEnabled);
 }
 
-bool BitsendAmountField::validate()
+bool BitSendAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -240,7 +265,7 @@ bool BitsendAmountField::validate()
     return valid;
 }
 
-void BitsendAmountField::setValid(bool valid)
+void BitSendAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -248,7 +273,7 @@ void BitsendAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool BitsendAmountField::eventFilter(QObject *object, QEvent *event)
+bool BitSendAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -258,45 +283,60 @@ bool BitsendAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *BitsendAmountField::setupTabChain(QWidget *prev)
+QWidget *BitSendAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount BitsendAmountField::value(bool *valid_out) const
+CAmount BitSendAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void BitsendAmountField::setValue(const CAmount& value)
+void BitSendAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void BitsendAmountField::setReadOnly(bool fReadOnly)
+void BitSendAmountField::SetAllowEmpty(bool allow)
+{
+    amount->SetAllowEmpty(allow);
+}
+
+void BitSendAmountField::SetMinValue(const CAmount& value)
+{
+    amount->SetMinValue(value);
+}
+
+void BitSendAmountField::SetMaxValue(const CAmount& value)
+{
+    amount->SetMaxValue(value);
+}
+
+void BitSendAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void BitsendAmountField::unitChanged(int idx)
+void BitSendAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, BitsendUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, BitSendUnits::UnitRole).toInt();
 
     amount->setDisplayUnit(newUnit);
 }
 
-void BitsendAmountField::setDisplayUnit(int newUnit)
+void BitSendAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }
 
-void BitsendAmountField::setSingleStep(const CAmount& step)
+void BitSendAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }

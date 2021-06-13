@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2018 The Bitsend Core developers
+# Copyright (c) 2014-2018 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test spending coinbase transactions.
@@ -12,14 +12,17 @@ in the next block are accepted into the memory pool,
 but less mature coinbase spends are NOT.
 """
 
-from test_framework.test_framework import BitsendTestFramework
+from test_framework.test_framework import BitSendTestFramework
 from test_framework.blocktools import create_raw_transaction
 from test_framework.util import assert_equal, assert_raises_rpc_error
 
 
-class MempoolSpendCoinbaseTest(BitsendTestFramework):
+class MempoolSpendCoinbaseTest(BitSendTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
+
+    def skip_test_if_missing_module(self):
+        self.skip_if_no_wallet()
 
     def run_test(self):
         chain_height = self.nodes[0].getblockcount()

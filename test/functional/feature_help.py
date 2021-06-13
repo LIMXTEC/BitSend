@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The Bitsend Core developers
+# Copyright (c) 2018-2019 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Verify that starting bitsend with -h works as expected."""
 
-from test_framework.test_framework import BitsendTestFramework
+from test_framework.test_framework import BitSendTestFramework
 from test_framework.util import assert_equal
 
-class HelpTest(BitsendTestFramework):
+class HelpTest(BitSendTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1
@@ -17,7 +17,7 @@ class HelpTest(BitsendTestFramework):
         # Don't start the node
 
     def get_node_output(self, *, ret_code_expected):
-        ret_code = self.nodes[0].process.wait(timeout=5)
+        ret_code = self.nodes[0].process.wait(timeout=60)
         assert_equal(ret_code, ret_code_expected)
         self.nodes[0].stdout.seek(0)
         self.nodes[0].stderr.seek(0)

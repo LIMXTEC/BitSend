@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2018 The Bitsend Core developers
+// Copyright (c) 2011-2018 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,9 +15,9 @@
 EditAddressDialog::EditAddressDialog(Mode _mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditAddressDialog),
-    mapper(0),
+    mapper(nullptr),
     mode(_mode),
-    model(0)
+    model(nullptr)
 {
     ui->setupUi(this);
 
@@ -43,6 +43,8 @@ EditAddressDialog::EditAddressDialog(Mode _mode, QWidget *parent) :
     GUIUtil::ItemDelegate* delegate = new GUIUtil::ItemDelegate(mapper);
     connect(delegate, &GUIUtil::ItemDelegate::keyEscapePressed, this, &EditAddressDialog::reject);
     mapper->setItemDelegate(delegate);
+
+    GUIUtil::handleCloseWindowShortcut(this);
 }
 
 EditAddressDialog::~EditAddressDialog()
@@ -108,7 +110,7 @@ void EditAddressDialog::accept()
             break;
         case AddressTableModel::INVALID_ADDRESS:
             QMessageBox::warning(this, windowTitle(),
-                tr("The entered address \"%1\" is not a valid Bitsend address.").arg(ui->addressEdit->text()),
+                tr("The entered address \"%1\" is not a valid BitSend address.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:

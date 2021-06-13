@@ -1,17 +1,16 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2018 The Bitsend Core developers
+// Copyright (c) 2009-2019 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_ARITH_UINT256_H
 #define BITSEND_ARITH_UINT256_H
 
-#include <assert.h>
 #include <cstring>
+#include <limits>
 #include <stdexcept>
 #include <stdint.h>
 #include <string>
-#include <vector>
 
 class uint256;
 
@@ -28,11 +27,6 @@ protected:
     static constexpr int WIDTH = BITS / 32;
     uint32_t pn[WIDTH];
 public:
-
-	uint64_t Get64(int n=0) const
-    {
-        return pn[2*n] | (uint64_t)pn[2*n+1] << 32;
-    }
 
     base_uint()
     {
@@ -194,7 +188,7 @@ public:
     {
         // prefix operator
         int i = 0;
-        while (i < WIDTH && --pn[i] == (uint32_t)-1)
+        while (i < WIDTH && --pn[i] == std::numeric_limits<uint32_t>::max())
             i++;
         return *this;
     }
@@ -275,7 +269,7 @@ public:
      * Thus 0x1234560000 is compact (0x05123456)
      * and  0xc0de000000 is compact (0x0600c0de)
      *
-     * Bitsend only uses this "compact" format for encoding difficulty
+     * BitSend only uses this "compact" format for encoding difficulty
      * targets, which are unsigned 256bit quantities.  Thus, all the
      * complexities of the sign bit and using base 256 are probably an
      * implementation accident.

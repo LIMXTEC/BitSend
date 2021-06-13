@@ -1,37 +1,41 @@
-Bitsend Core integration/staging tree
+BitSend Core integration/staging tree
 =====================================
 
-# Test 1
+https://bitsendcore.org
 
-https://bitsend.cc
-
-What is Bitsend?
+What is BitSend?
 ----------------
 
-Bitsend is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Bitsend uses peer-to-peer technology to operate
+BitSend is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. BitSend uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Bitsend Core is the name of open source
+out collectively by the network. BitSend Core is the name of open source
 software which enables the use of this currency.
 
-For more information, as well as an immediately useable, binary version of
-the Bitsend Core software, see https://github.com/LIMXTEC/BitSend/releases, or read the
-[original whitepaper](https://github.com/LIMXTEC/BitSend/releases/download/v0.14.0.5/Z.Whitepaper.E3.Juni.2018.pdf).
+For more information, as well as an immediately usable, binary version of
+the BitSend Core software, see https://bitsendcore.org/en/download/, or read the
+[original whitepaper](https://bitsendcore.org/bitsend.pdf).
 
 License
 -------
 
-Bitsend Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+BitSend Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/LIMXTEC/BitSend/tags) are created
-regularly to indicate new official, stable release versions of Bitsend Core.
+The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
+completely stable. [Tags](https://github.com/bitsend/bitsend/tags) are created
+regularly from release branches to indicate new official, stable release versions of BitSend Core.
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
+The https://github.com/bitsend-core/gui repository is used exclusively for the
+development of the GUI. Its master branch is identical in all monotree
+repositories. Release branches and tags do not exist, so please do not fork
+that repository unless it is for development reasons.
+
+The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
+and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
 
 Testing
 -------
@@ -65,7 +69,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
+[BitSend Core's Transifex page](https://www.transifex.com/bitsend/bitsend/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.
@@ -73,4 +77,4 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitcoin-translators).
+Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitsend-translators).

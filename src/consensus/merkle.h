@@ -1,14 +1,12 @@
-// Copyright (c) 2015-2018 The Bitsend Core developers
+// Copyright (c) 2015-2019 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITSEND_CONSENSUS_MERKLE_H
 #define BITSEND_CONSENSUS_MERKLE_H
 
-#include <stdint.h>
 #include <vector>
 
-#include <primitives/transaction.h>
 #include <primitives/block.h>
 #include <uint256.h>
 

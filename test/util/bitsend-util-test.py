@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright 2014 BitPay Inc.
-# Copyright 2016-2017 The Bitsend Core developers
+# Copyright 2016-2017 The BitSend Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test framework for bitsend utils.
@@ -9,14 +9,9 @@ Runs automatically during `make check`.
 
 Can also be run manually."""
 
-from __future__ import division,print_function,unicode_literals
-
 import argparse
 import binascii
-try:
-    import configparser
-except ImportError:
-    import ConfigParser as configparser
+import configparser
 import difflib
 import json
 import logging
@@ -28,7 +23,7 @@ import sys
 def main():
     config = configparser.ConfigParser()
     config.optionxform = str
-    config.readfp(open(os.path.join(os.path.dirname(__file__), "../config.ini"), encoding="utf8"))
+    config.read_file(open(os.path.join(os.path.dirname(__file__), "../config.ini"), encoding="utf8"))
     env_conf = dict(config.items('environment'))
 
     parser = argparse.ArgumentParser(description=__doc__)
@@ -44,8 +39,7 @@ def main():
     # Add the format/level to the logger
     logging.basicConfig(format=formatter, level=level)
 
-    # TODO: Fix json reading
-    #bctester(os.path.join(env_conf["SRCDIR"], "test", "util", "data"), "bitsend-util-test.json", env_conf)
+    bctester(os.path.join(env_conf["SRCDIR"], "test", "util", "data"), "bitsend-util-test.json", env_conf)
 
 def bctester(testDir, input_basename, buildenv):
     """ Loads and parses the input file, runs all tests and reports results"""

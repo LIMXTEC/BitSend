@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2014 The Bitsend Core developers
+// Copyright (c) 2011-2014 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,26 +10,26 @@
 /** Base58 entry widget validator, checks for valid characters and
  * removes some whitespace.
  */
-class BitsendAddressEntryValidator : public QValidator
+class BitSendAddressEntryValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit BitsendAddressEntryValidator(QObject *parent);
+    explicit BitSendAddressEntryValidator(QObject *parent);
 
-    State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 };
 
-/** Bitsend address widget validator, checks for a valid bitsend address.
+/** BitSend address widget validator, checks for a valid bitsend address.
  */
-class BitsendAddressCheckValidator : public QValidator
+class BitSendAddressCheckValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit BitsendAddressCheckValidator(QObject *parent);
+    explicit BitSendAddressCheckValidator(QObject *parent);
 
-    State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 };
 
 #endif // BITSEND_QT_BITSENDADDRESSVALIDATOR_H

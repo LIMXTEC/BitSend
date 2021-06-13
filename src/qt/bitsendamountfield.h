@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2018 The Bitsend Core developers
+// Copyright (c) 2011-2018 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,19 +17,28 @@ QT_END_NAMESPACE
 
 /** Widget for entering bitsend amounts.
   */
-class BitsendAmountField: public QWidget
+class BitSendAmountField: public QWidget
 {
     Q_OBJECT
 
     // ugly hack: for some unknown reason CAmount (instead of qint64) does not work here as expected
-    // discussion: https://github.com/bitcoin/bitcoin/pull/5117
+    // discussion: https://github.com/bitsend/bitsend/pull/5117
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChanged USER true)
 
 public:
-    explicit BitsendAmountField(QWidget *parent = 0);
+    explicit BitSendAmountField(QWidget *parent = nullptr);
 
-    CAmount value(bool *value=0) const;
+    CAmount value(bool *value=nullptr) const;
     void setValue(const CAmount& value);
+
+    /** If allow empty is set to false the field will be set to the minimum allowed value if left empty. **/
+    void SetAllowEmpty(bool allow);
+
+    /** Set the minimum value in satoshis **/
+    void SetMinValue(const CAmount& value);
+
+    /** Set the maximum value in satoshis **/
+    void SetMaxValue(const CAmount& value);
 
     /** Set single step in satoshis **/
     void setSingleStep(const CAmount& step);
@@ -61,7 +70,7 @@ Q_SIGNALS:
 
 protected:
     /** Intercept focus-in event and ',' key presses */
-    bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) override;
 
 private:
     AmountSpinBox *amount;

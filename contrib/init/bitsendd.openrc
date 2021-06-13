@@ -18,8 +18,8 @@ BITSENDD_BIN=${BITSENDD_BIN:-/usr/bin/bitsendd}
 BITSENDD_NICE=${BITSENDD_NICE:-${NICELEVEL:-0}}
 BITSENDD_OPTS="${BITSENDD_OPTS:-${BITSEND_OPTS}}"
 
-name="Bitsend Core Daemon"
-description="Bitsend cryptocurrency P2P network daemon"
+name="BitSend Core Daemon"
+description="BitSend cryptocurrency P2P network daemon"
 
 command="/usr/bin/bitsendd"
 command_args="-pid=\"${BITSENDD_PIDFILE}\" \
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Bitsend Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"BitSend Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

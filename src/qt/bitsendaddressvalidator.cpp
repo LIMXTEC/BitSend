@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2018 The Bitsend Core developers
+// Copyright (c) 2011-2018 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,12 +15,12 @@
   - All lower-case letters except for 'l'
 */
 
-BitsendAddressEntryValidator::BitsendAddressEntryValidator(QObject *parent) :
+BitSendAddressEntryValidator::BitSendAddressEntryValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State BitsendAddressEntryValidator::validate(QString &input, int &pos) const
+QValidator::State BitSendAddressEntryValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
 
@@ -80,15 +80,15 @@ QValidator::State BitsendAddressEntryValidator::validate(QString &input, int &po
     return state;
 }
 
-BitsendAddressCheckValidator::BitsendAddressCheckValidator(QObject *parent) :
+BitSendAddressCheckValidator::BitSendAddressCheckValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State BitsendAddressCheckValidator::validate(QString &input, int &pos) const
+QValidator::State BitSendAddressCheckValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
-    // Validate the passed Bitsend address
+    // Validate the passed BitSend address
     if (IsValidDestinationString(input.toStdString())) {
         return QValidator::Acceptable;
     }

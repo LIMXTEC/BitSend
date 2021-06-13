@@ -1,30 +1,16 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2018 The Bitsend Core developers
+// Copyright (c) 2009-2019 The BitSend Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <primitives/block.h>
 
-#include "chain.h"
 #include <hash.h>
 #include <tinyformat.h>
-#include <utilstrencodings.h>
-#include <crypto/common.h>
 
 uint256 CBlockHeader::GetHash() const
 {
-   const int FORKX17_Main_Net2 = 1477958400;
-	if(GetBlockTime() >= FORKX17_Main_Net2) // BitSend PoW Hardfork, https://chainz.cryptoid.info/bsd/block.dws?229114.htm
-	{
-		return XEVAN(BEGIN(nVersion), END(nNonce));
-		strprintf("XEVAN_Hash is on.");
-	}
-    else
-	{
-	 return HashX11(BEGIN(nVersion), END(nNonce));
-	 strprintf("X11_Hash is on.");
-	}
-    //return HashX11(BEGIN(nVersion), END(nNonce));//return SerializeHash(*this);//TODO-- algo xevan
+    return SerializeHash(*this);
 }
 
 std::string CBlock::ToString() const

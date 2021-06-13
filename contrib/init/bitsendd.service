@@ -5,20 +5,50 @@
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/bitsend/bitsend.conf
+# /etc/bitsend/bitsend.conf, but keep in mind those explicitly
+# specified as arguments in ExecStart= will override those in the
+# config file.
 
 [Unit]
-Description=Bitsend daemon
+Description=BitSend daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/bitsendd -daemon -conf=/etc/bitsend/bitsend.conf -pid=/run/bitsendd/bitsendd.pid
-# Creates /run/bitsendd owned by bitsend
-RuntimeDirectory=bitsendd
-User=bitsend
+ExecStart=/usr/bin/bitsendd -daemon \
+                            -pid=/run/bitsendd/bitsendd.pid \
+                            -conf=/etc/bitsend/bitsend.conf \
+                            -datadir=/var/lib/bitsendd
+
+# Make sure the config directory is readable by the service user
+PermissionsStartOnly=true
+ExecStartPre=/bin/chgrp bitsend /etc/bitsend
+
+# Process management
+####################
+
 Type=forking
 PIDFile=/run/bitsendd/bitsendd.pid
 Restart=on-failure
+TimeoutStopSec=600
+
+# Directory creation and permissions
+####################################
+
+# Run as bitsend:bitsend
+User=bitsend
+Group=bitsend
+
+# /run/bitsendd
+RuntimeDirectory=bitsendd
+RuntimeDirectoryMode=0710
+
+# /etc/bitsend
+ConfigurationDirectory=bitsend
+ConfigurationDirectoryMode=0710
+
+# /var/lib/bitsendd
+StateDirectory=bitsendd
+StateDirectoryMode=0710
 
 # Hardening measures
 ####################
@@ -28,6 +58,9 @@ PrivateTmp=true
 
 # Mount /usr, /boot/ and /etc read-only for the process.
 ProtectSystem=full
+
+# Deny access to /home, /root and /run/user
+ProtectHome=true
 
 # Disallow the process and all of its children to gain
 # new privileges through execve().

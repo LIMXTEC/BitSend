@@ -1,4 +1,4 @@
-This directory contains the BitsendQT graphical user interface (GUI). It uses the cross-platform framework [Qt](https://www1.qt.io/developers/).
+This directory contains the BitSendQT graphical user interface (GUI). It uses the cross-platform framework [Qt](https://www1.qt.io/developers/).
 
 The current precise version for Qt 5 is specified in [qt.mk](/depends/packages/qt.mk).
 
@@ -32,7 +32,7 @@ Tests.
 
 ### bitsendgui.(h/cpp)
 
-Represents the main window of the Bitsend UI.
+Represents the main window of the BitSend UI.
 
 ### \*model.(h/cpp)
 
@@ -50,7 +50,7 @@ Various dialogs, e.g. to open a URL. Inherit from [QDialog](https://doc.qt.io/qt
 
 ### paymentserver.(h/cpp)
 
-Used to process BIP21 and BIP70 (see https://github.com/bitcoin/bitcoin/pull/11622) payment URI / requests. Also handles URI based application switching (e.g. when following a bitsend:... link from a browser).
+Used to process BIP21 payment URI requests. Also handles URI based application switching (e.g. when following a bitsend:... link from a browser).
 
 ### walletview.(h/cpp)
 
@@ -58,14 +58,14 @@ Represents the view to a single wallet.
 
 ### Other .h/cpp files
 
-* UI elements like BitsendAmountField, which inherit from QWidget.
+* UI elements like BitSendAmountField, which inherit from QWidget.
 * `bitsendstrings.cpp`: automatically generated
 * `bitsendunits.(h/cpp)`: BTC / mBTC / etc handling
 * `callback.h`
 * `guiconstants.h`: UI colors, app name, etc
 * `guiutil.h`: several helper functions
-* `macdockiconhandler.(h/cpp)`
-* `macdockiconhandler.(h/cpp)`: display notifications in macOS
+* `macdockiconhandler.(h/mm)`: macOS dock icon handler
+* `macnotificationhandler.(h/mm)`: display notifications in macOS
 
 ## Contribute
 
