@@ -257,3 +257,34 @@ arith_uint256 UintToArith256(const uint256 &a)
         b.pn[x] = ReadLE32(a.begin() + x*4);
     return b;
 }
+
+// Explicit instantiations for base_uint<512>
+template base_uint<512>::base_uint(const std::string&);
+template base_uint<512>& base_uint<512>::operator<<=(unsigned int);
+template base_uint<512>& base_uint<512>::operator>>=(unsigned int);
+template base_uint<512>& base_uint<512>::operator*=(uint32_t b32);
+template base_uint<512>& base_uint<512>::operator*=(const base_uint<512>& b);
+template base_uint<512>& base_uint<512>::operator/=(const base_uint<512>& b);
+template int base_uint<512>::CompareTo(const base_uint<512>&) const;
+template bool base_uint<512>::EqualTo(uint64_t) const;
+template double base_uint<512>::getdouble() const;
+template<> std::string base_uint<512>::GetHex() const { return ArithToUint512(*this).GetHex(); }
+template std::string base_uint<512>::ToString() const;
+template<> void base_uint<512>::SetHex(const char* psz) { *this = UintToArith512(uint512S(psz)); }
+template void base_uint<512>::SetHex(const std::string&);
+template unsigned int base_uint<512>::bits() const;
+
+uint512 ArithToUint512(const arith_uint512 &a)
+{
+    uint512 b;
+    for(int x=0; x<a.WIDTH; ++x)
+        WriteLE32(b.begin() + x*4, a.pn[x]);
+    return b;
+}
+arith_uint512 UintToArith512(const uint512 &a)
+{
+    arith_uint512 b;
+    for(int x=0; x<b.WIDTH; ++x)
+        b.pn[x] = ReadLE32(a.begin() + x*4);
+    return b;
+}

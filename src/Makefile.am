@@ -388,6 +388,7 @@ libbitsend_wallet_tool_a_SOURCES = \
   $(BITSEND_CORE_H)
 
 # crypto primitives library
+crypto_libbitsend_crypto_base_a_CFLAGS = -fpic
 crypto_libbitsend_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS)
 crypto_libbitsend_crypto_base_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libbitsend_crypto_base_a_SOURCES = \
@@ -415,10 +416,45 @@ crypto_libbitsend_crypto_base_a_SOURCES = \
   crypto/sha3.cpp \
   crypto/sha3.h \
   crypto/sha512.cpp \
-  crypto/sha512.h \
+  crypto/sha512.h  \
   crypto/siphash.cpp \
-  crypto/siphash.h
-
+  crypto/siphash.h \
+  crypto/aes_helper.c \
+  crypto/luffa.c \
+  crypto/groestl.c \
+  crypto/jh.c \
+  crypto/echo.c \
+  crypto/shavite.c \
+  crypto/keccak.c \
+  crypto/skein.c \
+  crypto/fugue.c \
+  crypto/hamsi.c \
+  crypto/haval.c \
+  crypto/shabal.c \
+  crypto/whirlpool.c \
+  crypto/sph_sha2big.c \
+  crypto/bmw.c \
+  crypto/simd.c \
+  crypto/cubehash.c \
+  crypto/blake.c \
+  crypto/sph_blake.h \
+  crypto/sph_bmw.h \
+  crypto/sph_cubehash.h \
+  crypto/sph_echo.h \
+  crypto/sph_groestl.h \
+  crypto/sph_jh.h \
+  crypto/sph_keccak.h \
+  crypto/sph_luffa.h \
+  crypto/sph_shavite.h \
+  crypto/sph_simd.h \
+  crypto/sph_skein.h \
+  crypto/sph_types.h \
+  crypto/sph_fugue.h \
+  crypto/sph_hamsi.h \
+  crypto/sph_haval.h \
+  crypto/sph_shabal.h \
+  crypto/sph_sha2.h \
+  crypto/sph_whirlpool.h
 if USE_ASM
 crypto_libbitsend_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
 endif

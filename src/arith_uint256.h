@@ -13,6 +13,7 @@
 #include <string>
 
 class uint256;
+class uint512;
 
 class uint_error : public std::runtime_error {
 public:
@@ -24,9 +25,11 @@ template<unsigned int BITS>
 class base_uint
 {
 protected:
+// TODO: WIDTH and pn made public
+public:
     static constexpr int WIDTH = BITS / 32;
     uint32_t pn[WIDTH];
-public:
+
 
     base_uint()
     {
@@ -283,5 +286,30 @@ public:
 
 uint256 ArithToUint256(const arith_uint256 &);
 arith_uint256 UintToArith256(const uint256 &);
+
+/** 512-bit unsigned big integer. */
+class arith_uint512 : public base_uint<512> {
+public:
+    arith_uint512() {}
+    arith_uint512(const base_uint<512>& b) : base_uint<512>(b) {}
+    arith_uint512(uint64_t b) : base_uint<512>(b) {}
+    explicit arith_uint512(const std::string& str) : base_uint<512>(str) {}
+
+    arith_uint256 trim256() const {
+        arith_uint256 ret;
+        for (unsigned int i = 0; i < ret.WIDTH; ++i) {
+            ret.pn[i] = pn[i];
+        }
+        return ret;
+    }
+
+    friend uint512 ArithToUint512(const arith_uint512 &);
+    friend arith_uint512 UintToArith512(const uint512 &);
+};
+
+uint512 ArithToUint512(const arith_uint512 &);
+arith_uint512 UintToArith512(const uint512 &);
+
+
 
 #endif // BITSEND_ARITH_UINT256_H

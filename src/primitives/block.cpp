@@ -10,7 +10,13 @@
 
 uint256 CBlockHeader::GetHash() const
 {
-    return SerializeHash(*this);
+    // BitSend PoW Hardfork, https://chainz.cryptoid.info/bsd/block.dws?229114.htm
+    const int FORKX17_Main_Net2 = 1477958400;
+    if(GetBlockTime() >= FORKX17_Main_Net2)
+        // return XEVAN(BEGIN(nVersion), END(nNonce));
+		return XEVAN((char*)&(nVersion), (char*)&((&(nNonce))[1]));
+    else
+        return SerializeHash(*this);
 }
 
 std::string CBlock::ToString() const
