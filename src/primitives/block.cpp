@@ -16,7 +16,7 @@ uint256 CBlockHeader::GetHash() const
         // return XEVAN(BEGIN(nVersion), END(nNonce));
 		return XEVAN((char*)&(nVersion), (char*)&((&(nNonce))[1]));
     else
-        return SerializeHash(*this);
+        return HashX11((char*)&(nVersion), (char*)&((&(nNonce))[1]));
 }
 
 std::string CBlock::ToString() const

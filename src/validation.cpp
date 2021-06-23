@@ -1235,14 +1235,20 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+    int FORKX17_Main_Net = 240000;
+	CAmount nSubsidy = 50 * COIN;
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
+	if (nHeight <= 2)
+		nSubsidy = 1306400 * COIN;
+
+    
+    if (nHeight > (FORKX17_Main_Net-1000))nSubsidy = 25 * COIN;
+    if (nHeight > (950000))nSubsidy = 12.5 * COIN;
+    if (nHeight > (1000000))nSubsidy = 6.25 * COIN;
+    if (nHeight > (1050000))nSubsidy = 3.125 * COIN;
+    if (nHeight > (1100000))nSubsidy = 1.5625 * COIN;
+    // In the last stage we will generate 315000 BSD per year
+
     return nSubsidy;
 }
 
@@ -3500,9 +3506,11 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, BlockValidatio
 
     // Check proof of work
     const Consensus::Params& consensusParams = params.GetConsensus();
-    if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
-        return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "bad-diffbits", "incorrect proof of work");
-
+	if(nHeight >= 260000){
+    	if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
+        	return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "bad-diffbits", "incorrect proof of work");
+	}
+	
     // Check against checkpoints
     if (fCheckpointsEnabled) {
         // Don't accept any forks from the main chain prior to last checkpoint.
