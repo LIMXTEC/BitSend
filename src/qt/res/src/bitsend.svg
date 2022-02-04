@@ -1,58 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="256.000000pt" height="256.000000pt" viewBox="0 0 256.000000 256.000000"
+ preserveAspectRatio="xMidYMid meet">
 
-<!-- Designer: Jonas Schnelli
-  	 License: MIT
--->
-
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1"
-	 id="svg2" sodipodi:docname="bitsend-logo-noshadow.svg" inkscape:version="0.48.2 r9819" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1024px" height="1024px"
-	 viewBox="-34 -34 580 580" enable-background="new 0 0 1024 1024" xml:space="preserve">
-
-	<!-- nice shadow with alpha 0.35 -->
-	<filter id="dropShadowAlpha">
-		<feColorMatrix result="matrixOut" in="SourceAlpha" type="saturate"
-	      values="0.1" />
-		<feGaussianBlur in="matrixOut" result="blur-out" stdDeviation="6" />
-		<feColorMatrix in="blur-out" result="color-out" type="matrix"
-		      values="0 0 0 0   0
-		              0 0 0 0   0 
-		              0 0 0 0   0 
-		              0 0 0 0.35 0"/>
-		<feBlend in="SourceGraphic" in2="color-out" mode="normal" />
-	</filter>
-	
-	<g>
-		<!-- white background circle for making B not transparent but still keep inner shadows -->
-		<circle cx="255" cy="255" r="200" stroke-width="2" fill="white"/>
-	
-		<radialGradient id="innerBtop" cx="277.4905" cy="196.4412" r="34.3969" gradientUnits="userSpaceOnUse">
-			<stop offset="0" style="stop-color:#F9AA4B"/>
-			<stop offset="1" style="stop-color:#F7931A"/>
-		</radialGradient>
-		<path fill="url(#innerBtop)" filter="url(#dropShadowAlpha)" d="M254.647,174.6l-13.983,56.08c15.855,3.951,64.735,20.071,72.656-11.656
-			C321.568,185.928,270.503,178.552,254.647,174.6z"/>
-		
-		<radialGradient id="innerBbottom" cx="261.9153" cy="284.5671" r="39.8381" gradientUnits="userSpaceOnUse">
-			<stop offset="0" style="stop-color:#F9AA4B"/>
-			<stop offset="1" style="stop-color:#F7931A"/>
-		</radialGradient>
-		<path fill="url(#innerBbottom)" filter="url(#dropShadowAlpha)" d="M233.608,258.984l-15.425,61.832c19.04,4.729,77.769,23.584,86.448-11.296
-			C313.703,273.144,252.647,263.736,233.608,258.984z"/>
-				
-		<radialGradient id="coinShape" cx="256.0276" cy="256.0027" r="255.9878" gradientUnits="userSpaceOnUse">
-			<stop offset="0" style="stop-color:#F9AA4B"/>
-			<stop offset="1" style="stop-color:#F7931A"/>
-		</radialGradient>
-		<path fill="url(#coinShape)" filter="url(#dropShadowAlpha)" d="M317.871,7.656c-137.12-34.192-276.024,49.28-310.2,186.44
-			c-34.208,137.136,49.256,276.048,186.36,310.24c137.16,34.199,276.063-49.265,310.256-186.408
-			C538.479,180.776,455.023,41.848,317.871,7.656z M368.807,219.528c-3.688,24.936-17.512,37.008-35.864,41.24
-			c25.2,13.12,38.024,33.239,25.809,68.12c-15.16,43.319-51.176,46.976-99.072,37.912l-11.624,46.584l-28.088-7l11.472-45.96
-			c-7.279-1.809-14.72-3.729-22.384-5.809l-11.512,46.177l-28.056-7l11.624-46.673c-6.561-1.68-13.225-3.464-20.024-5.168
-			l-36.552-9.111l13.943-32.152c0,0,20.696,5.504,20.416,5.096c7.952,1.969,11.48-3.216,12.872-6.672l18.368-73.64l0.048-0.2
-			l13.104-52.568c0.344-5.968-1.712-13.496-13.088-16.336c0.439-0.296-20.4-5.072-20.4-5.072l7.472-30l38.736,9.673l-0.032,0.144
-			c5.824,1.448,11.824,2.824,17.937,4.216L245.423,89.2l28.072,7l-11.28,45.224c7.536,1.721,15.12,3.456,22.504,5.297l11.2-44.929
-			l28.088,7l-11.504,46.145C347.967,167.152,373.904,185.464,368.807,219.528z"/>
-	</g>
+<g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M0 1825 l0 -735 605 -545 606 -545 674 0 675 0 0 1280 0 1280 -1280
+0 -1280 0 0 -735z m1663 556 c365 -94 635 -357 734 -716 24 -88 27 -117 28
+-250 0 -125 -4 -165 -24 -240 -44 -173 -128 -323 -250 -449 -95 -97 -170 -152
+-292 -210 -151 -73 -225 -89 -419 -90 -143 -1 -176 2 -250 22 -357 97 -625
+368 -722 730 -28 106 -31 332 -4 447 56 245 206 469 405 604 124 85 294 152
+431 171 94 13 274 3 363 -19z"/>
+<path d="M1461 2304 c0 -11 3 -14 6 -6 3 7 2 16 -1 19 -3 4 -6 -2 -5 -13z"/>
+<path d="M1300 2163 c-107 -18 -257 -89 -352 -167 -116 -96 -218 -260 -253
+-407 -22 -93 -20 -268 5 -362 62 -244 240 -441 475 -526 494 -179 1015 184
+1015 706 0 128 -20 222 -70 328 -127 272 -390 437 -689 434 -58 -1 -117 -4
+-131 -6z m-133 -589 c-57 -60 -124 -132 -148 -161 -24 -28 -48 -52 -53 -52 -9
+-1 30 42 194 217 57 61 106 110 108 108 2 -2 -44 -53 -101 -112z m550 -111
+c-81 -2 -213 -2 -295 0 -81 1 -14 3 148 3 162 0 229 -2 147 -3z m173 -93 c0
+-5 -5 -10 -11 -10 -5 0 -7 5 -4 10 3 6 8 10 11 10 2 0 4 -4 4 -10z m-96 -133
+c-38 -40 -71 -71 -73 -69 -5 3 130 142 138 142 2 0 -27 -33 -65 -73z m-165
+-176 c-30 -32 -56 -56 -58 -54 -5 3 99 113 107 113 2 0 -20 -26 -49 -59z m211
+-98 c-1 -5 -7 -33 -14 -62 -10 -47 -16 -56 -40 -62 -52 -14 -76 13 -53 59 10
+21 20 27 44 27 25 0 33 5 38 22 5 21 26 33 25 16z m-365 -14 c11 -17 -3 -23
+-20 -9 -18 15 -68 5 -62 -13 2 -6 20 -15 40 -20 43 -10 52 -29 26 -53 -23 -20
+-83 -24 -101 -6 -16 16 -2 28 16 13 20 -16 71 -10 71 8 0 8 -15 19 -33 23 -63
+17 -49 68 19 68 21 0 41 -5 44 -11z m-255 -34 c-7 -8 -17 -15 -23 -15 -6 0 -3
+6 8 13 11 9 15 19 10 28 -6 11 -5 12 5 2 11 -10 11 -15 0 -28z m-83 -7 c-3 -8
+-6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z m453 7 c18 -22 3 -35 -41 -35
+-28 0 -39 -4 -36 -12 2 -8 19 -12 38 -11 32 1 33 0 15 -13 -25 -18 -41 -18
+-60 2 -20 19 -20 34 0 62 18 26 65 30 84 7z m120 1 c0 -7 -3 -28 -6 -45 -10
+-46 -27 -38 -19 9 4 25 3 40 -3 40 -27 0 -42 -15 -48 -46 -3 -19 -11 -34 -16
+-34 -10 0 -3 64 8 82 9 15 84 9 84 -6z m-393 -38 c-3 -7 -5 -2 -5 12 0 14 2
+19 5 13 2 -7 2 -19 0 -25z m-57 -25 c-11 -17 -11 -17 -6 0 3 10 7 26 7 35 1
+15 2 15 6 0 2 -10 -1 -25 -7 -35z m-133 0 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18
+2 -7 2 -21 0 -30z m83 2 c-7 -8 -20 -15 -29 -14 -11 0 -9 3 7 9 12 5 22 17 23
+27 0 11 3 13 6 5 3 -7 -1 -19 -7 -27z m115 -13 c-3 -3 -11 0 -18 7 -9 10 -8
+11 6 5 10 -3 15 -9 12 -12z"/>
+<path d="M1762 908 c-16 -16 -15 -58 2 -58 19 0 38 26 34 46 -4 22 -20 28 -36
+12z"/>
+<path d="M1527 913 c-14 -13 -6 -23 18 -23 16 0 25 6 25 15 0 15 -31 21 -43 8z"/>
+</g>
 </svg>

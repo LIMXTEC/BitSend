@@ -17,9 +17,9 @@ BitSendUnits::BitSendUnits(QObject *parent):
 QList<BitSendUnits::Unit> BitSendUnits::availableUnits()
 {
     QList<BitSendUnits::Unit> unitlist;
-    unitlist.append(BTC);
-    unitlist.append(mBTC);
-    unitlist.append(uBTC);
+    unitlist.append(BSD);
+    unitlist.append(mBSD);
+    unitlist.append(uBSD);
     unitlist.append(SAT);
     return unitlist;
 }
@@ -28,9 +28,9 @@ bool BitSendUnits::valid(int unit)
 {
     switch(unit)
     {
-    case BTC:
-    case mBTC:
-    case uBTC:
+    case BSD:
+    case mBSD:
+    case uBSD:
     case SAT:
         return true;
     default:
@@ -42,9 +42,9 @@ QString BitSendUnits::longName(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BTC");
-    case mBTC: return QString("mBTC");
-    case uBTC: return QString::fromUtf8("µBTC (bits)");
+    case BSD: return QString("BSD");
+    case mBSD: return QString("mBSD");
+    case uBSD: return QString::fromUtf8("µBSD (bits)");
     case SAT: return QString("Satoshi (sat)");
     default: return QString("???");
     }
@@ -54,7 +54,7 @@ QString BitSendUnits::shortName(int unit)
 {
     switch(unit)
     {
-    case uBTC: return QString::fromUtf8("bits");
+    case uBSD: return QString::fromUtf8("bits");
     case SAT: return QString("sat");
     default: return longName(unit);
     }
@@ -64,9 +64,9 @@ QString BitSendUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BitSends");
-    case mBTC: return QString("Milli-BitSends (1 / 1" THIN_SP_UTF8 "000)");
-    case uBTC: return QString("Micro-BitSends (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BSD: return QString("BitSends");
+    case mBSD: return QString("Milli-BitSends (1 / 1" THIN_SP_UTF8 "000)");
+    case uBSD: return QString("Micro-BitSends (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
@@ -76,9 +76,9 @@ qint64 BitSendUnits::factor(int unit)
 {
     switch(unit)
     {
-    case BTC: return 100000000;
-    case mBTC: return 100000;
-    case uBTC: return 100;
+    case BSD: return 100000000;
+    case mBSD: return 100000;
+    case uBSD: return 100;
     case SAT: return 1;
     default: return 100000000;
     }
@@ -88,9 +88,9 @@ int BitSendUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case BTC: return 8;
-    case mBTC: return 5;
-    case uBTC: return 2;
+    case BSD: return 8;
+    case mBSD: return 5;
+    case uBSD: return 2;
     case SAT: return 0;
     default: return 0;
     }

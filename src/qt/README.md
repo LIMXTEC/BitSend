@@ -60,7 +60,7 @@ Represents the view to a single wallet.
 
 * UI elements like BitSendAmountField, which inherit from QWidget.
 * `bitsendstrings.cpp`: automatically generated
-* `bitsendunits.(h/cpp)`: BTC / mBTC / etc handling
+* `bitsendunits.(h/cpp)`: BSD / mBSD / etc handling
 * `callback.h`
 * `guiconstants.h`: UI colors, app name, etc
 * `guiutil.h`: several helper functions

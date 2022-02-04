@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2019 The BitSend Core developers
-// Distributed under the MIT software license, see the accompanying
+// Ddistributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <qt/bitsendamountfield.h>
@@ -122,7 +122,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = GUIUtil::TextWidth(fm, BitSendUnits::format(BitSendUnits::BTC, BitSendUnits::maxMoney(), false, BitSendUnits::SeparatorStyle::ALWAYS));
+            int w = GUIUtil::TextWidth(fm, BitSendUnits::format(BitSendUnits::BSD, BitSendUnits::maxMoney(), false, BitSendUnits::SeparatorStyle::ALWAYS));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -148,7 +148,7 @@ public:
     }
 
 private:
-    int currentUnit{BitSendUnits::BTC};
+    int currentUnit{BitSendUnits::BSD};
     CAmount singleStep{CAmount(100000)}; // satoshis
     mutable QSize cachedMinimumSizeHint;
     bool m_allow_empty{true};

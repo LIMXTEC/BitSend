@@ -150,7 +150,7 @@ bool parseBitSendURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitSendUnits::parse(BitSendUnits::BTC, i->second, &rv.amount))
+                if(!BitSendUnits::parse(BitSendUnits::BSD, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -183,7 +183,7 @@ QString formatBitSendURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitSendUnits::format(BitSendUnits::BTC, info.amount, false, BitSendUnits::SeparatorStyle::NEVER));
+        ret += QString("?amount=%1").arg(BitSendUnits::format(BitSendUnits::BSD, info.amount, false, BitSendUnits::SeparatorStyle::NEVER));
         paramCount++;
     }
 
