@@ -3611,7 +3611,7 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
     // No witness data is allowed in blocks that don't commit to witness data, as this would otherwise leave room for spam
     if (!fHaveWitness) {
       for (const auto& tx : block.vtx) {
-            if (tx->HasWitness()) {
+            if (tx->HasWitness() && nHeight > 1085371) {
                 return state.Invalid(BlockValidationResult::BLOCK_MUTATED, "unexpected-witness", strprintf("%s : unexpected witness data found", __func__));
             }
         }
