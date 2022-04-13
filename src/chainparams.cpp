@@ -120,10 +120,12 @@ public:
         // This is fine at runtime as we'll fall back to using them as an addrfetch if they don't support the
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
-        vSeeds.emplace_back("37.120.186.85"); // Pieter Wuille, only supports x1, x5, x9, and xd
-        vSeeds.emplace_back("85.146.167.185"); // Matt Corallo, only supports x9
-        vSeeds.emplace_back("185.194.140.60"); // Luke Dashjr
-        vSeeds.emplace_back("188.68.39.1"); // Christian Decker, supports x1 - x
+        vSeeds.emplace_back("188.68.39.1"); // Randomly 
+        vSeeds.emplace_back("185.194.142.125"); // Randomly 
+        vSeeds.emplace_back("212.237.211.107"); // Randomly 
+        vSeeds.emplace_back("66.151.242.154"); //Randomly 
+        vSeeds.emplace_back("217.61.61.66"); // Randomly 
+        vSeeds.emplace_back("31.25.241.224"); // Randomly 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,102);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
